@@ -6,7 +6,33 @@ on:
 permissions:
   contents: read
 jobs:
-
+  format-last-files:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'refactor/elvorance-typescript-monorepo' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm ci
+      - name: Format and show exact workflow diff
+        run: |
+          npm exec prettier -- --write services/crm/src/application/configuration.ts .github/workflows/verify.yml
+          git diff -- .github/workflows/verify.yml
+          git diff -- services/crm/src/application/configuration.ts
+      - name: Commit only CRM TypeScript formatting
+        run: |
+          git add services/crm/src/application/configuration.ts
+          git diff --cached --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "style: normalize CRM TypeScript module"
+          git push origin HEAD:refs/heads/refactor/elvorance-typescript-monorepo
   verify:
     runs-on: ubuntu-latest
     services:
