@@ -319,7 +319,7 @@ async function main() {
           });
       });
       await go(ctx, 'quote-builder', { id: discountQuoteId });
-      field(ctx, '[name="discount"]', '350');
+      field(ctx, '[data-input="quote-discount-input"]', '350');
       await submit(ctx, '#rep-quote-form');
       await click(ctx, '[data-action="send-quote"][data-id="' + discountQuoteId + '"]');
       assert.equal(ctx.A.state().quotes.find((q) => q.id === discountQuoteId).status, 'draft');

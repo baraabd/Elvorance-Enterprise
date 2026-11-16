@@ -689,6 +689,8 @@ test('WF22', 'دورة خصم ثم تعديل العميل ثم اعتماد ج�
   revision.navigate('quote-builder', { id: setup.quoteId });
   const qty = revision.q('[data-input="quote-qty"]');
   revision.input('[data-input="quote-qty"]', Number(qty.value) + 1);
+  // Recalculate installments after the changed quantity before requesting fresh approval.
+  revision.click('[data-action="quote-payment-suggest"]');
   revision.click('[data-action="save-send-quote"]');
   const draft = find(revision, 'quotes', setup.quoteId);
   assert.equal(
