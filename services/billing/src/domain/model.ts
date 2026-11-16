@@ -1,4 +1,4 @@
-import type { ContractSnapshot, Entity } from '@atlas/contracts';
+import type { ContractSnapshot, Entity } from '@elvorance/contracts';
 export interface ContractAccount extends Entity {
   contractId: string;
   clientId: string;
