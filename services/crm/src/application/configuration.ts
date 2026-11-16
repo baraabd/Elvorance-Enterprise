@@ -1,6 +1,6 @@
-import { defaultConfiguration, defaultCatalog, validateConfiguration, type Configuration } from '@atlas/questionnaire';
-import type { Principal, Entity } from '@atlas/contracts';
-import { assert, hasRole, object, requireRole, integer, type Transaction } from '@atlas/service-kit';
+import { defaultConfiguration, defaultCatalog, validateConfiguration, type Configuration } from '@elvorance/questionnaire';
+import type { Principal, Entity } from '@elvorance/contracts';
+import { assert, hasRole, object, requireRole, integer, type Transaction } from '@elvorance/service-kit';
 
 type ServiceCatalogItem = {id:string;title:string;price:number;category:string;active?:boolean;short?:string;duration?:string;unit?:string;features?:string[];deliverables?:string[];recommendationTags?:string[]};
 interface StoredConfiguration extends Entity { definition: Configuration; catalog:ServiceCatalogItem[]; updatedBy:string; }

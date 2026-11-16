@@ -1,4 +1,4 @@
-import { createService, type AppOptions } from '@atlas/service-kit';
+import { createService, type AppOptions } from '@elvorance/service-kit';
 import { registerRoutes } from './transport/routes.ts';
 export function createApp(options: AppOptions) {
   const app = createService('delivery', options);

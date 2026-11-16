@@ -1,4 +1,4 @@
-import type { Principal, CustomerContext } from '@atlas/contracts';
+import type { Principal, CustomerContext } from '@elvorance/contracts';
 import {
   assert,
   bool,
@@ -11,7 +11,7 @@ import {
   text,
   version,
   type Transaction,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 import type { Customer, Region } from '../domain/model.ts';
 export async function customer(
   tx: Transaction,

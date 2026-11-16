@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { command, routeId, type Repository } from '@atlas/service-kit';
+import { command, routeId, type Repository } from '@elvorance/service-kit';
 import {
   createTicket,
   readNotification,
