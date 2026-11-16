@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { SignJWT } from 'jose';
-import { authFromEnv, MemoryRepository, principalFromClaims } from '@atlas/service-kit';
+import { authFromEnv, MemoryRepository, principalFromClaims } from '@elvorance/service-kit';
 import { createApp as createIdentity } from '../../services/identity/src/app.ts';
 import { createApp as createGateway } from '../../services/api-gateway/src/app.ts';
 import { auth, principals } from './helpers.ts';
@@ -12,7 +12,7 @@ const env = {
   AUTH_MODE: 'dev-hs256',
   DEV_JWT_SECRET: secret,
   OIDC_ISSUER: 'https://issuer.example.test',
-  OIDC_AUDIENCE: 'atlas-api',
+  OIDC_AUDIENCE: 'elvorance-api',
 };
 async function token(
   overrides: Record<string, unknown> = {},

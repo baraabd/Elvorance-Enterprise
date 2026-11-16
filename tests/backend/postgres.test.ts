@@ -2,9 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomBytes, randomUUID } from 'node:crypto';
 import pg from 'pg';
-import type { CustomerContext, Entity } from '@atlas/contracts';
-import { PgRepository, type Migration } from '@atlas/service-kit';
-import { consumeEvent } from '@atlas/events';
+import type { CustomerContext, Entity } from '@elvorance/contracts';
+import { PgRepository, type Migration } from '@elvorance/service-kit';
+import { consumeEvent } from '@elvorance/events';
 import {
   tables as identityTables,
   migrations as identityMigrations,
@@ -44,9 +44,9 @@ import {
   handleEvent as billingEvent,
 } from '../../services/billing/src/app.ts';
 import { auth, call, principals } from './helpers.ts';
-import type { EventEnvelope } from '@atlas/contracts';
+import type { EventEnvelope } from '@elvorance/contracts';
 
-const adminUrl = process.env.ATLAS_TEST_POSTGRES_URL;
+const adminUrl = process.env.ELVORANCE_TEST_POSTGRES_URL;
 const configs: { name: string; tables: readonly string[]; migrations: Migration[] }[] = [
   { name: 'identity', tables: identityTables, migrations: identityMigrations },
   { name: 'crm', tables: crmTables, migrations: crmMigrations },
@@ -71,7 +71,7 @@ test(
     t.diagnostic(
       `Real PostgreSQL server version: ${version}; no RabbitMQ broker was used in this test.`,
     );
-    const prefix = `atlas_test_${randomUUID().replaceAll('-', '').slice(0, 10)}`;
+    const prefix = `elvorance_test_${randomUUID().replaceAll('-', '').slice(0, 10)}`;
     const provisioned: {
       name: string;
       db: string;

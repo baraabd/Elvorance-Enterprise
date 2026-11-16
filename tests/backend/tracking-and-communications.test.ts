@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { MemoryRepository, newId } from '@atlas/service-kit';
+import { MemoryRepository, newId } from '@elvorance/service-kit';
 import { createApp as trackingApp } from '../../services/tracking/src/app.ts';
 import { createApp as communicationsApp } from '../../services/communications/src/app.ts';
 import { auth, call } from './helpers.ts';
