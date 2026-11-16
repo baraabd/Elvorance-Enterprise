@@ -25,7 +25,7 @@ for (const app of apps) {
   await mkdir(resolve(output, 'assets'), { recursive: true });
   const result = await build({
     absWorkingDir: root,
-    entryPoints: [resolve(root, `apps/${app.folder}/src/main.js`)],
+    entryPoints: [resolve(root, `apps/${app.folder}/src/main.ts`)],
     outfile: resolve(output, 'assets/app.js'),
     bundle: true,
     platform: 'browser',
@@ -41,7 +41,7 @@ for (const app of apps) {
   const html = await read(`apps/${app.folder}/index.html`);
   await writeFile(resolve(output, 'index.html'), html);
   await copyContent(
-    resolve(root, `apps/${app.folder}/config.example.js`),
+    resolve(root, `apps/${app.folder}/config.example.ts`),
     resolve(output, 'config.js'),
   );
   await copyContent(output, resolve(root, `dist/${app.folder}`));
@@ -49,7 +49,7 @@ for (const app of apps) {
   const js = (await readFile(resolve(output, 'assets/app.js'), 'utf8'))
     .replace(/<\/script/gi, '<\\/script')
     .replace(/\/\/# sourceMappingURL=.*$/m, '');
-  const config = await read(`apps/${app.folder}/config.example.js`);
+  const config = await read(`apps/${app.folder}/config.example.ts`);
   const portable = html
     .replace(/<link\b[^>]*href="\.\/assets\/app\.css"[^>]*>/, () => `<style>${css}</style>`)
     .replace(
@@ -66,7 +66,7 @@ for (const app of apps) {
     await recordAppBuild(app.folder, [
       ...Object.keys(result.metafile.inputs),
       `apps/${app.folder}/index.html`,
-      `apps/${app.folder}/config.example.js`,
+      `apps/${app.folder}/config.example.ts`,
       `apps/${app.folder}/src/styles.css`,
       ...['styles', 'polish', 'tracking'].map((name) => `packages/design-system/src/${name}.css`),
     ]),
