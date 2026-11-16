@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import type { CustomerContext } from '@atlas/contracts';
-import { AppError, MemoryRepository } from '@atlas/service-kit';
+import type { CustomerContext } from '@elvorance/contracts';
+import { AppError, MemoryRepository } from '@elvorance/service-kit';
 import { createApp as crmApp } from '../../services/crm/src/app.ts';
 import { createApp as salesApp } from '../../services/sales/src/app.ts';
 import { auth, call } from './helpers.ts';
@@ -279,7 +279,7 @@ test('out-of-order consent events cannot cancel a new visit or overwrite a newer
     '../../services/sales/src/application/events.ts'
   );
   const { handleEvent: crmEvent } = await import('../../services/crm/src/application/events.ts');
-  const { consumeEvent } = await import('@atlas/events');
+  const { consumeEvent } = await import('@elvorance/events');
   const salesRepository = new MemoryRepository('sales', [
     'visits',
     'quotes',

@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import type { CustomerContext, Entity, EventEnvelope } from '@atlas/contracts';
-import { MemoryRepository } from '@atlas/service-kit';
-import { consumeEvent } from '@atlas/events';
+import type { CustomerContext, Entity, EventEnvelope } from '@elvorance/contracts';
+import { MemoryRepository } from '@elvorance/service-kit';
+import { consumeEvent } from '@elvorance/events';
 import { createApp as crmApp } from '../../services/crm/src/app.ts';
 import { createApp as salesApp, handleEvent as salesEvent } from '../../services/sales/src/app.ts';
 import {
