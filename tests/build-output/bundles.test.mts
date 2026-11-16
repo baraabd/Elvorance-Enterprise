@@ -32,10 +32,8 @@ for (const app of apps) {
         dom.window.document.querySelectorAll('script[src],link[rel="stylesheet"]').length,
         0,
       );
-      assert.match(
-        dom.window.document.querySelector('style').textContent,
-        /data:font\/woff;base64/,
-      );
+      assert.match(dom.window.document.querySelector('style').textContent, /system-ui/);
+      assert.doesNotMatch(dom.window.document.querySelector('style').textContent, /__ATLAS_FONT_|__ELVORANCE_FONT_/);
       assert.ok(dom.window.document.querySelector('#main-content').textContent.trim().length > 100);
       assert.deepEqual(errors, []);
     } finally {
