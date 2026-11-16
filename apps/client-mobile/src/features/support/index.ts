@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** client / support: original v1.1 views and local demo actions. */
 export function createSupportFeature(context, { state }) {
   const {
@@ -101,7 +103,7 @@ export function createSupportFeature(context, { state }) {
       }<section class="card stack"><div class="client-message-list">${(ticket.messages || [])
         .map(
           (message) =>
-            `<article class="message-bubble ${message.role === 'client' ? 'message-bubble-own' : ''}"><div class="row-between tiny muted"><span>${message.role === 'client' ? 'أنت' : 'فريق أطلس'}</span><span>${E(
+            `<article class="message-bubble ${message.role === 'client' ? 'message-bubble-own' : ''}"><div class="row-between tiny muted"><span>${message.role === 'client' ? 'أنت' : 'فريق إلفورانس'}</span><span>${E(
               A.date(message.at, {
                 time: true,
               }),

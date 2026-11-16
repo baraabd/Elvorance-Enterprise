@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** client / projects: original v1.1 views and local demo actions. */
 export function createProjectsFeature(context, { state }) {
   const {
@@ -94,7 +96,7 @@ export function createProjectsFeature(context, { state }) {
       (item) => item.status === 'pending' && item.type !== 'client_attachment',
     );
     return wrap(
-      `${heading('مساحة المشروع', project.title, `مدير المشروع: ${project.manager || 'فريق أطلس'} · التسليم ${date(project.dueDate)}`, badge(label(projectLabels, project.status), project.status))}<section class="card client-progress-summary"><div><p class="eyebrow">المرحلة الحالية</p><h2>${E(project.status === 'planning' ? 'خطة بانتظار البدء' : label(stageLabels, project.stage))}</h2><p class="muted small">${project.status === 'planning' ? 'المشروع مسجل بعد اعتماد العقد، ولم يبدأ التنفيذ. يحدد الفريق المسؤول والمواعيد ثم يبدأ المراحل؛ لا توجد تسليمات جاهزة بعد.' : project.status === 'completed' ? 'اكتمل المشروع. ملفاتك واتفاقك يبقيان في متناولك.' : 'نُحدّث المراحل عند إنجاز العمل، وتظهر طلبات المراجعة هنا.'}</p></div><div><strong class="hero-number num">${num(project.progress)}<small>%</small></strong>${A.progress(num(project.progress))}</div></section>${
+      `${heading('مساحة المشروع', project.title, `مدير المشروع: ${project.manager || 'فريق إلفورانس'} · التسليم ${date(project.dueDate)}`, badge(label(projectLabels, project.status), project.status))}<section class="card client-progress-summary"><div><p class="eyebrow">المرحلة الحالية</p><h2>${E(project.status === 'planning' ? 'خطة بانتظار البدء' : label(stageLabels, project.stage))}</h2><p class="muted small">${project.status === 'planning' ? 'المشروع مسجل بعد اعتماد العقد، ولم يبدأ التنفيذ. يحدد الفريق المسؤول والمواعيد ثم يبدأ المراحل؛ لا توجد تسليمات جاهزة بعد.' : project.status === 'completed' ? 'اكتمل المشروع. ملفاتك واتفاقك يبقيان في متناولك.' : 'نُحدّث المراحل عند إنجاز العمل، وتظهر طلبات المراجعة هنا.'}</p></div><div><strong class="hero-number num">${num(project.progress)}<small>%</small></strong>${A.progress(num(project.progress))}</div></section>${
         pending.length
           ? `<div class="notice notice-warn row-between"><div class="row">${A.icon('eye')}<div><strong>${pending.length} عناصر تحتاج رأيك</strong><p class="small">راجع النسخة المعروضة قبل الاعتماد أو طلب التعديل.</p></div></div>${go(
               'ابدأ المراجعة',
@@ -446,7 +448,7 @@ export function createProjectsFeature(context, { state }) {
       return error('هذا المرفق غير متاح للتنزيل.');
     const anchor = document.createElement('a');
     anchor.href = item.fileData;
-    anchor.download = item.fileName || item.title || 'atlas-attachment';
+    anchor.download = item.fileName || item.title || 'elvorance-attachment';
     document.body.append(anchor);
     anchor.click();
     anchor.remove();

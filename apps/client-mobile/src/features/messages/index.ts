@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** client / messages: original v1.1 views and local demo actions. */
 export function createMessagesFeature(context, { state }) {
   const {
@@ -23,7 +25,7 @@ export function createMessagesFeature(context, { state }) {
       .slice()
       .sort((a, b) => String(a.at).localeCompare(String(b.at)));
     return wrap(
-      `${heading('المحادثات', 'مساحة واحدة مع فريقك', 'الرسائل محفوظة محليًا ومشتركة بين تطبيقات العرض التجريبي.', go('الدعم', 'support', {}, 'btn-secondary', 'headphones'))}<section class="card client-chat-card"><div class="row">${A.avatar(rep?.name || 'فريق أطلس')}<div><h3>${E(rep?.name || 'فريق أطلس')}</h3><p class="small muted">المندوب المسؤول · ${E(client?.name)}</p></div></div><div class="divider"></div><div class="client-message-list" id="client-messages">${
+      `${heading('المحادثات', 'مساحة واحدة مع فريقك', 'الرسائل محفوظة محليًا ومشتركة بين تطبيقات العرض التجريبي.', go('الدعم', 'support', {}, 'btn-secondary', 'headphones'))}<section class="card client-chat-card"><div class="row">${A.avatar(rep?.name || 'فريق إلفورانس')}<div><h3>${E(rep?.name || 'فريق إلفورانس')}</h3><p class="small muted">المندوب المسؤول · ${E(client?.name)}</p></div></div><div class="divider"></div><div class="client-message-list" id="client-messages">${
         messages
           .map(
             (message) =>

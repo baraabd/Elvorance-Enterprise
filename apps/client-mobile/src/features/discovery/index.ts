@@ -1,4 +1,6 @@
-import {configured, visibleQuestions, validateAnswers, recommendServices} from '@atlas/questionnaire';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import {configured, visibleQuestions, validateAnswers, recommendServices} from '@elvorance/questionnaire';
 
 /** Customer self-assessment uses same tenant-authored questionnaire as the representative. */
 export function createClientDiscoveryFeature(context,{state}){

@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** client / catalog: original v1.1 views and local demo actions. */
 export function createCatalogFeature(context, { state }) {
   const {
@@ -70,7 +72,7 @@ export function createCatalogFeature(context, { state }) {
       (item) => !category || item.category === category,
     );
     return wrap(
-      `${heading('خدمات أطلس', 'ما الخطوة التالية لعملك؟', 'اختر خدمة. افهم ما ستستلمه. ثم شاركنا احتياجك.', go('طلباتي', 'requests', {}, 'btn-secondary', 'list'))}<section class="card card-accent"><div class="row-between"><div><h3>أخبرنا عن نشاطك</h3><p class="small muted">نفس الأسئلة والخدمات التي تعتمدها الإدارة ويستخدمها المندوب.</p></div>${go('فتح استبيان الاحتياج','needs-survey',{},'btn-primary','arrow-left')}</div></section><div class="search-box">${A.icon('search')}<input aria-label="ابحث في الخدمات" placeholder="موقع، متجر، هوية، تطبيق…" data-input="filter-services"></div><div class="chips">${go('الكل', 'services', {}, `chip ${!category ? 'active' : ''}`, '')}${categories
+      `${heading('خدمات إلفورانس', 'ما الخطوة التالية لعملك؟', 'اختر خدمة. افهم ما ستستلمه. ثم شاركنا احتياجك.', go('طلباتي', 'requests', {}, 'btn-secondary', 'list'))}<section class="card card-accent"><div class="row-between"><div><h3>أخبرنا عن نشاطك</h3><p class="small muted">نفس الأسئلة والخدمات التي تعتمدها الإدارة ويستخدمها المندوب.</p></div>${go('فتح استبيان الاحتياج','needs-survey',{},'btn-primary','arrow-left')}</div></section><div class="search-box">${A.icon('search')}<input aria-label="ابحث في الخدمات" placeholder="موقع، متجر، هوية، تطبيق…" data-input="filter-services"></div><div class="chips">${go('الكل', 'services', {}, `chip ${!category ? 'active' : ''}`, '')}${categories
         .map((item) =>
           go(
             label(serviceCategories, item),

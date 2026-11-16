@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** client / dashboard: original v1.1 views and local demo actions. */
 export function createDashboardFeature(context, { projects, quotes }) {
   const {
