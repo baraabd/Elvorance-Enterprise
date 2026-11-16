@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "com.atlascrm.rep"
+    namespace = "com.elvorance.rep"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.atlascrm.rep"
+        applicationId "com.elvorance.rep"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

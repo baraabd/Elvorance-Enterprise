@@ -1,6 +1,6 @@
 {
-  "appId": "com.atlascrm.client",
-  "appName": "مساحتي مع أطلس",
+  "appId": "com.elvorance.client",
+  "appName": "مساحتي مع إلفورانس",
   "webDir": "dist",
   "server": {
     "androidScheme": "https"

@@ -1,6 +1,6 @@
 {
-  "appId": "com.atlascrm.rep",
-  "appName": "أطلس الميداني",
+  "appId": "com.elvorance.rep",
+  "appName": "إلفورانس الميداني",
   "webDir": "dist",
   "server": {
     "androidScheme": "https"

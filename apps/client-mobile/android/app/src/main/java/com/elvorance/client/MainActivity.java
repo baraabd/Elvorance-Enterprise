@@ -1,4 +1,4 @@
-package com.atlascrm.client;
+package com.elvorance.client;
 
 import com.getcapacitor.BridgeActivity;
 

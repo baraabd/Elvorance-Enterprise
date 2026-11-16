@@ -1,4 +1,4 @@
-package com.atlascrm.rep;
+package com.elvorance.rep;
 
 import com.getcapacitor.BridgeActivity;
 

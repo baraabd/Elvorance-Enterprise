@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">أطلس الميداني</string>
-    <string name="title_activity_main">أطلس الميداني</string>
-    <string name="package_name">com.atlascrm.rep</string>
-    <string name="custom_url_scheme">com.atlascrm.rep</string>
+    <string name="app_name">إلفورانس الميداني</string>
+    <string name="title_activity_main">إلفورانس الميداني</string>
+    <string name="package_name">com.elvorance.rep</string>
+    <string name="custom_url_scheme">com.elvorance.rep</string>
 </resources>
