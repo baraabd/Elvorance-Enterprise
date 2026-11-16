@@ -195,6 +195,9 @@ async function create(api, options = {}) {
       virtualConsole: console,
     },
   );
+  // JSDOM does not expose structuredClone even when Node.js does.
+  // Provide the standard API in this isolated test window before app startup.
+  dom.window.structuredClone = structuredClone;
   const w = dom.window,
     flags = { online: true, visible: true },
     intervals = new Map();

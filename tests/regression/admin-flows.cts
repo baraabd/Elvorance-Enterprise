@@ -27,6 +27,9 @@ function environment(role = 'admin', stored) {
       virtualConsole: console,
     },
   );
+  // JSDOM does not expose structuredClone even when Node.js does.
+  // Provide the standard API in this isolated test window before app startup.
+  dom.window.structuredClone = structuredClone;
   const w = dom.window;
   w.scrollTo = () => {};
   w.print = () => {};
@@ -118,10 +121,10 @@ function test(name, fn) {
   cases.push({ name, fn });
 }
 
-test('All 23 admin routes render with valid navigation, actions and child navigation parents', (env) => {
+test('All 25 admin routes render with valid navigation, actions and child navigation parents', (env) => {
   const def = env.definitions.admin;
   // Includes the new tracking configuration/status screen, without claiming GPS/network tests.
-  assert.equal(Object.keys(def.routes).length, 23);
+  assert.equal(Object.keys(def.routes).length, 25);
   assert.equal(def.nav.length, 5);
   const ids = {
     'team-member': 'rep-1',

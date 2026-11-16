@@ -30,6 +30,9 @@ async function create(saved = {}, app = 'rep', hash = '') {
       virtualConsole: vc,
     },
   );
+  // JSDOM does not expose structuredClone even when Node.js does.
+  // Provide the standard API in this isolated test window before app startup.
+  dom.window.structuredClone = structuredClone;
   const w = dom.window;
   w.scrollTo = () => {};
   Object.entries(saved).forEach(([key, value]) => w.localStorage.setItem(key, value));
