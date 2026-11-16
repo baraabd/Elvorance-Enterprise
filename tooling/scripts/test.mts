@@ -28,11 +28,12 @@ const files = [
 if (!files.length) throw new Error('No test files found.');
 const runnable = [];
 for (const file of files) {
-  if (!file.endsWith('.ts') && !file.endsWith('.tsx')) {
+  if (file.endsWith('.mts')) {
     runnable.push(file);
     continue;
   }
-  const outfile = resolve(root, 'dist/tests', relative(root, file).replace(/\.(ts|mts|cts)$/, '.mjs'));
+  const isCjs = file.endsWith('.cts');
+  const outfile = resolve(root, 'dist/tests', relative(root, file).replace(/\.(ts|mts|cts)$/, isCjs ? '.cjs' : '.mjs'));
   await mkdir(dirname(outfile), { recursive: true });
   await build({
     entryPoints: [file],
