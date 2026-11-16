@@ -44,7 +44,8 @@ export function createQuotesFeature(context, { state, visits }) {
   };
   const quoteApproval = (s, q) => {
     const m = quoteMath(q),
-      fingerprint = quoteFingerprint(q);
+      // Approval signatures must use the same persisted quote representation as admin.
+      fingerprint = A.quoteFingerprint(q);
     return s.approvals.find(
       (a) =>
         a.type === 'discount' &&
@@ -62,7 +63,7 @@ export function createQuotesFeature(context, { state, visits }) {
         a.type === 'discount' &&
         a.quoteId === q.id &&
         a.status === 'pending' &&
-        a.quoteFingerprint === quoteFingerprint(q),
+        a.quoteFingerprint === A.quoteFingerprint(q),
     );
   const quoteStatus = (s, q) =>
     pendingApproval(s, q) ? A.badge('بانتظار اعتماد الخصم', 'warn') : badge(q.status);
@@ -350,7 +351,8 @@ export function createQuotesFeature(context, { state, visits }) {
   }
   function addDiscountApproval(s, q) {
     const m = quoteMath(q),
-      fingerprint = quoteFingerprint(q);
+      // Admin verifies the fingerprint of this saved quote, not an editor-only projection.
+      fingerprint = A.quoteFingerprint(q);
     const duplicate = s.approvals.find(
       (a) =>
         a.quoteId === q.id &&
