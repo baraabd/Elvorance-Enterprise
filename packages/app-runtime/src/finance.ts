@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Shared deterministic USD quote/instalment calculations. Amounts are stored in whole cents internally. */
 export const cents = (value) => Math.round(Number(value) * 100);
 export const dollars = (minor) => Math.round(minor) / 100;

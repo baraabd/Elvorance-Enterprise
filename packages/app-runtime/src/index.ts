@@ -1,20 +1,22 @@
-import { validateFormFields } from './form-validation.js';
-import { createDemoData } from '@atlas/demo-data';
-import { createDemoRepository } from '@atlas/demo-data/repository';
-import { icons } from '@atlas/design-system/icons';
-import { esc, icon, badge, avatar, progress, empty } from '@atlas/ui/primitives';
-import { clone, id, today, addDays, date, assert } from './utilities.js';
-import { createDemoPayments, quoteFingerprint } from './demo-workflows.js';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import { validateFormFields } from './form-validation.ts';
+import { createDemoData } from '@elvorance/demo-data';
+import { createDemoRepository } from '@elvorance/demo-data/repository';
+import { icons } from '@elvorance/design-system/icons';
+import { esc, icon, badge, avatar, progress, empty } from '@elvorance/ui/primitives';
+import { clone, id, today, addDays, date, assert } from './utilities.ts';
+import { createDemoPayments, quoteFingerprint } from './demo-workflows.ts';
 
-/* Atlas runtime: routing, accessible shell, persistence and reusable components.
+/* Elvorance runtime: routing, accessible shell, persistence and reusable components.
  * Replace Store with an API adapter for production; role authorization belongs on that API.
  */
 export function installRuntime(options = {}) {
-  if (window.Atlas) return window.Atlas;
+  if (window.Elvorance) return window.Elvorance;
   const seed = options.seed || createDemoData;
   const STORE_KEY = options.storageKey || 'atlas.crm.2027.v1';
-  window.AtlasSeed = seed;
-  window.AtlasIcons = icons;
+  window.ElvoranceSeed = seed;
+  window.ElvoranceIcons = icons;
   const apps = new Map();
   let app,
     state,
@@ -52,7 +54,7 @@ export function installRuntime(options = {}) {
       ? state.reps.find((x) => x.id === state.session.repId)?.name || 'المندوب'
       : app?.id === 'client'
         ? state.clients.find((x) => x.id === state.session.clientId)?.contact || 'العميل'
-        : 'إدارة أطلس';
+        : 'إدارة إلفورانس';
   }
   function persist(next) {
     if (!storageAvailable) {
@@ -79,7 +81,7 @@ export function installRuntime(options = {}) {
       mutator(next);
     } catch (error) {
       state = base;
-      if (!error.userMessage) console.error('Atlas state update failed', error);
+      if (!error.userMessage) console.error('Elvorance state update failed', error);
       toast(error.userMessage || 'لم يُحفظ التغيير. راجع البيانات وحاول مجددًا.', 'error');
       return false;
     }
@@ -134,7 +136,7 @@ export function installRuntime(options = {}) {
         : 'إدارة المبيعات';
   }
   function logo() {
-    return '<span class="atlas-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-type">أطلس<span>ATLAS</span></span>';
+    return '<span class="elvorance-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-type">إلفورانس<span>ELVORANCE</span></span>';
   }
   function notificationItems() {
     return state.notifications.filter(
@@ -154,7 +156,7 @@ export function installRuntime(options = {}) {
         )
         .join('');
     document.getElementById('app').innerHTML =
-      `<a class="skip-link" href="#main-content" data-action="skip-content">انتقل إلى المحتوى</a><div class="app-shell"><aside class="sidebar" aria-label="القائمة الرئيسية"><div class="brand">${logo()}</div><div class="workspace-card"><span class="workspace-dot"></span><div><strong>${esc(app.name)}</strong><span>${esc(app.subtitle)}</span></div></div><nav class="side-nav">${navigation('side')}</nav><div class="sidebar-bottom"><div class="side-promo"><span class="eyebrow">WORK, IN SYNC.</span><p>خطوة أقرب.<br>علاقة أقوى.</p><div class="side-orbit" aria-hidden="true"></div></div><span class="demo-tag">بيانات توضيحية · تجربة تفاعلية</span><button class="side-user" data-action="workspace-info">${avatar(headerName())}<span>${esc(headerName())}<small>مساحة أطلس</small></span>${icon('chevron-left')}</button></div></aside><div class="workspace"><header class="topbar"><div class="mobile-brand">${logo()}</div><div class="desktop-breadcrumb"><span>${esc(app.name)}</span>${icon('chevron-left')}<strong id="breadcrumb-current">الرئيسية</strong></div><div class="topbar-actions"><button class="connection-pill" data-action="connection-info" aria-label="حالة حفظ البيانات"><span class="status-dot"></span><span id="connection-text">محفوظ محليًا</span></button><button class="icon-btn notification-btn" data-action="notifications" aria-label="الإشعارات">${icon('bell')}<span id="notification-dot"></span></button><button class="user-top" data-action="workspace-info" aria-label="معلومات الحساب">${avatar(headerName())}</button></div></header><div id="offline-banner"></div><main id="main-content" class="main-content" tabindex="-1"></main><footer class="page-footer"><span>أطلس · كل علاقة تصنع فرقًا</span><span>تجربة محلية ببيانات توضيحية</span></footer></div><nav class="bottom-nav" aria-label="تنقل التطبيق">${navigation('bottom')}</nav></div><dialog id="app-modal" class="modal" aria-labelledby="modal-title"></dialog><div id="toasts" class="toasts" aria-live="polite" aria-atomic="false"></div><div id="print-area"></div>`;
+      `<a class="skip-link" href="#main-content" data-action="skip-content">انتقل إلى المحتوى</a><div class="app-shell"><aside class="sidebar" aria-label="القائمة الرئيسية"><div class="brand">${logo()}</div><div class="workspace-card"><span class="workspace-dot"></span><div><strong>${esc(app.name)}</strong><span>${esc(app.subtitle)}</span></div></div><nav class="side-nav">${navigation('side')}</nav><div class="sidebar-bottom"><div class="side-promo"><span class="eyebrow">WORK, IN SYNC.</span><p>خطوة أقرب.<br>علاقة أقوى.</p><div class="side-orbit" aria-hidden="true"></div></div><span class="demo-tag">بيانات توضيحية · تجربة تفاعلية</span><button class="side-user" data-action="workspace-info">${avatar(headerName())}<span>${esc(headerName())}<small>مساحة إلفورانس</small></span>${icon('chevron-left')}</button></div></aside><div class="workspace"><header class="topbar"><div class="mobile-brand">${logo()}</div><div class="desktop-breadcrumb"><span>${esc(app.name)}</span>${icon('chevron-left')}<strong id="breadcrumb-current">الرئيسية</strong></div><div class="topbar-actions"><button class="connection-pill" data-action="connection-info" aria-label="حالة حفظ البيانات"><span class="status-dot"></span><span id="connection-text">محفوظ محليًا</span></button><button class="icon-btn notification-btn" data-action="notifications" aria-label="الإشعارات">${icon('bell')}<span id="notification-dot"></span></button><button class="user-top" data-action="workspace-info" aria-label="معلومات الحساب">${avatar(headerName())}</button></div></header><div id="offline-banner"></div><main id="main-content" class="main-content" tabindex="-1"></main><footer class="page-footer"><span>إلفورانس · كل علاقة تصنع فرقًا</span><span>تجربة محلية ببيانات توضيحية</span></footer></div><nav class="bottom-nav" aria-label="تنقل التطبيق">${navigation('bottom')}</nav></div><dialog id="app-modal" class="modal" aria-labelledby="modal-title"></dialog><div id="toasts" class="toasts" aria-live="polite" aria-atomic="false"></div><div id="print-area"></div>`;
   }
   function refresh() {
     if (!app) return;
@@ -172,14 +174,14 @@ export function installRuntime(options = {}) {
             `<button class="btn btn-primary" data-go="${esc(app.home || 'home')}">الرئيسية</button>`,
           );
     } catch (error) {
-      console.error('Atlas route render failed', routeName, error);
+      console.error('Elvorance route render failed', routeName, error);
       main.innerHTML = empty(
         'تعذر عرض هذه الصفحة',
         'حاول إعادة فتح الصفحة. بياناتك المحفوظة باقية.',
         `<button class="btn btn-primary" data-action="refresh-view">إعادة المحاولة</button>`,
       );
     }
-    document.title = `${definition?.title || app.name} · ${app.name} | أطلس`;
+    document.title = `${definition?.title || app.name} · ${app.name} | إلفورانس`;
     const breadcrumb = document.getElementById('breadcrumb-current');
     if (breadcrumb) breadcrumb.textContent = definition?.title || app.name;
     document.querySelectorAll('[data-nav]').forEach((el) => {
@@ -205,10 +207,10 @@ export function installRuntime(options = {}) {
       try {
         app.afterRender({ state, params: routeParams, route: routeName });
       } catch (error) {
-        console.error('Atlas afterRender failed', error);
+        console.error('Elvorance afterRender failed', error);
       }
     window.dispatchEvent(
-      new CustomEvent('atlas:render', { detail: { appId: app.id, route: routeName } }),
+      new CustomEvent('elvorance:render', { detail: { appId: app.id, route: routeName } }),
     );
   }
   function modal(title, body, options = {}) {
@@ -281,7 +283,7 @@ export function installRuntime(options = {}) {
     );
   }
   function printDocument(title, html) {
-    printContent = `<article class="print-document" dir="rtl"><header><strong>أطلس للحلول الرقمية</strong><span>نسخة توضيحية · ${date(new Date())}</span></header><h1>${esc(title)}</h1>${html}<footer>مستند من تجربة أطلس؛ لا يمثل عقدًا أو دفعة فعلية.</footer></article>`;
+    printContent = `<article class="print-document" dir="rtl"><header><strong>إلفورانس للحلول الرقمية</strong><span>نسخة توضيحية · ${date(new Date())}</span></header><h1>${esc(title)}</h1>${html}<footer>مستند من تجربة إلفورانس؛ لا يمثل عقدًا أو دفعة فعلية.</footer></article>`;
     modal(title, `<div class="document">${html}</div>`, {
       wide: true,
       footer: `<button class="btn btn-primary" data-action="print-document">${icon('download')} طباعة / حفظ PDF</button>`,
@@ -361,7 +363,7 @@ export function installRuntime(options = {}) {
       }
     },
     'download-data': () =>
-      download('atlas-demo-data.json', JSON.stringify(state, null, 2), 'application/json'),
+      download('elvorance-demo-data.json', JSON.stringify(state, null, 2), 'application/json'),
     'reset-demo': () =>
       confirm(
         'إعادة بيانات التجربة؟',
@@ -381,7 +383,7 @@ export function installRuntime(options = {}) {
     'workspace-info': () =>
       modal(
         'مساحة العمل',
-        `<div class="row">${avatar(headerName())}<div><h3>${esc(headerName())}</h3><p class="muted">${esc(app.name)} · ${esc(state.settings.city)}</p></div></div><div class="divider"></div><p class="small muted">واجهة مستقلة ضمن تجربة أطلس. البيانات توضيحية وتُحفظ على هذا المتصفح.</p><button class="btn btn-secondary btn-block" data-action="connection-info">${icon('settings')} إعدادات التجربة</button>`,
+        `<div class="row">${avatar(headerName())}<div><h3>${esc(headerName())}</h3><p class="muted">${esc(app.name)} · ${esc(state.settings.city)}</p></div></div><div class="divider"></div><p class="small muted">واجهة مستقلة ضمن تجربة إلفورانس. البيانات توضيحية وتُحفظ على هذا المتصفح.</p><button class="btn btn-secondary btn-block" data-action="connection-info">${icon('settings')} إعدادات التجربة</button>`,
       ),
     'print-document': () => {
       document.getElementById('print-area').innerHTML = printContent || '';
@@ -391,7 +393,7 @@ export function installRuntime(options = {}) {
   function dispatch(name, event, el, form = null) {
     const handler = app.actions?.[name] || coreActions[name];
     if (!handler) {
-      console.warn('Unknown Atlas action', name);
+      console.warn('Unknown Elvorance action', name);
       toast('تعذر فتح هذا الإجراء.', 'error');
       return;
     }
@@ -404,7 +406,7 @@ export function installRuntime(options = {}) {
           toast('تعذر إكمال الإجراء. حاول مجددًا.', 'error');
         });
     } catch (e) {
-      console.error('Atlas action failed', name, e);
+      console.error('Elvorance action failed', name, e);
       toast('تعذر إكمال الإجراء. راجع البيانات وحاول مجددًا.', 'error');
     }
   }
@@ -505,7 +507,7 @@ export function installRuntime(options = {}) {
     });
     if ('BroadcastChannel' in window)
       try {
-        channel = new BroadcastChannel('atlas-2027');
+        channel = new BroadcastChannel('elvorance-2027');
         channel.onmessage = () => {
           const next = readState();
           if (next._revision > state._revision) applyExternal(next);
@@ -525,7 +527,7 @@ export function installRuntime(options = {}) {
   }
   function start(appId) {
     app = apps.get(appId);
-    if (!app) throw Error('Unknown Atlas application');
+    if (!app) throw Error('Unknown Elvorance application');
     state = readState();
     if (storageAvailable) {
       try {
@@ -541,7 +543,7 @@ export function installRuntime(options = {}) {
     refresh();
     document.documentElement.dataset.ready = 'true';
   }
-  window.Atlas = {
+  window.Elvorance = {
     assert,
     quoteFingerprint,
     recordInvoicePayment,
@@ -576,5 +578,5 @@ export function installRuntime(options = {}) {
     rep: (id) => state.reps.find((r) => r.id === id),
     service: (id) => state.catalog.find((s) => s.id === id),
   };
-  return window.Atlas;
+  return window.Elvorance;
 }

@@ -1,5 +1,7 @@
-/* ATLAS_DASHBOARD_DRILLDOWN_2027 */
-import { normalizedFinancials, dollars, cents, suggestedPlan } from '@atlas/app-runtime/finance';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+/* ELVORANCE_DASHBOARD_DRILLDOWN_2027 */
+import { normalizedFinancials, dollars, cents, suggestedPlan } from '@elvorance/app-runtime/finance';
 /** rep / quotes: original v1.1 views and local demo actions. */
 export function createQuotesFeature(context, { state, visits }) {
   const {
@@ -921,7 +923,7 @@ export function createQuotesFeature(context, { state, visits }) {
           m = quoteMath(q);
         A.printDocument(
           q.title,
-          `<div class="document" dir="rtl"><p>أطلس للحلول الرقمية · وثيقة من العرض التجريبي</p><h1>${e(q.title)}</h1><p>العميل: ${e(c?.name)} · صالح حتى ${e(date(q.validUntil))}</p><table class="data-table"><thead><tr><th>البند</th><th>الكمية</th><th>السعر</th><th>الإجمالي</th></tr></thead><tbody>${q.items.map((it) => `<tr><td>${e(it.title)}</td><td>${Number(it.qty)}</td><td>${cash(it.price)}</td><td>${cash(Number(it.qty) * Number(it.price))}</td></tr>`).join('')}</tbody></table><p>قيمة الخدمات: ${cash(m.subtotal)} · الخصم: ${cash(m.discount)}</p><h2>الإجمالي: ${cash(m.total)}</h2><h3>الشروط</h3><p>${e(q.terms)}</p><p>${e(q.notes)}</p><small>هذه الوثيقة جزء من نموذج محلي تفاعلي، ولا تمثل فاتورة مدفوعة أو عقدًا موقّعًا.</small></div>`,
+          `<div class="document" dir="rtl"><p>إلفورانس للحلول الرقمية · وثيقة من العرض التجريبي</p><h1>${e(q.title)}</h1><p>العميل: ${e(c?.name)} · صالح حتى ${e(date(q.validUntil))}</p><table class="data-table"><thead><tr><th>البند</th><th>الكمية</th><th>السعر</th><th>الإجمالي</th></tr></thead><tbody>${q.items.map((it) => `<tr><td>${e(it.title)}</td><td>${Number(it.qty)}</td><td>${cash(it.price)}</td><td>${cash(Number(it.qty) * Number(it.price))}</td></tr>`).join('')}</tbody></table><p>قيمة الخدمات: ${cash(m.subtotal)} · الخصم: ${cash(m.discount)}</p><h2>الإجمالي: ${cash(m.total)}</h2><h3>الشروط</h3><p>${e(q.terms)}</p><p>${e(q.notes)}</p><small>هذه الوثيقة جزء من نموذج محلي تفاعلي، ولا تمثل فاتورة مدفوعة أو عقدًا موقّعًا.</small></div>`,
         );
       },
     },

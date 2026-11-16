@@ -1,4 +1,6 @@
-/* ATLAS_DASHBOARD_DRILLDOWN_2027 */
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+/* ELVORANCE_DASHBOARD_DRILLDOWN_2027 */
 /** rep / tasks: original v1.1 views and local demo actions. */
 export function createTasksFeature(context, { state }) {
   const { A, act, chipLink, client, date, drilldownSummary, e, head, ic, iconGo, ownClients, rep } = context;

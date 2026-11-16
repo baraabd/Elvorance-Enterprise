@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Browser input guard shared by the three frontends; server validation remains authoritative. */
 const normalizeDigits = (value) => String(value).replace(/[\u0660-\u0669]/g, ch => String(ch.charCodeAt(0)-0x660)).replace(/[\u06F0-\u06F9]/g,ch=>String(ch.charCodeAt(0)-0x6F0));
 export function fieldProblem(input) {

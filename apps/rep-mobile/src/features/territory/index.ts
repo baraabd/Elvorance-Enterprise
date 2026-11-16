@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** rep / territory: original v1.1 views and local demo actions. */
 export function createTerritoryFeature(context) {
   const {
@@ -69,7 +71,7 @@ export function createTerritoryFeature(context) {
           الخطوة_التالية: v.nextAction || '',
           المتابعة: v.followUpAt || '',
         }));
-        A.exportCSV('Atlas-My-Visits.csv', rows);
+        A.exportCSV('Elvorance-My-Visits.csv', rows);
       },
     },
     api: {

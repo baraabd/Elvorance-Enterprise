@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Local preview workflows. The Sales and Billing services enforce production rules. */
 export function quoteFingerprint(quote) {
   return JSON.stringify({
