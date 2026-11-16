@@ -55,10 +55,10 @@ interface RuntimeOptions {
   url?: string;
   log?: (message: string) => void;
 }
-const MAIN = 'elvorance.events';
-const RETRY = 'elvorance.events.retry';
-const READY = 'elvorance.events.retry.ready';
-const DEAD = 'elvorance.events.dead';
+const MAIN = 'atlas.events';
+const RETRY = 'atlas.events.retry';
+const READY = 'atlas.events.retry.ready';
+const DEAD = 'atlas.events.dead';
 async function confirmed(
   channel: ConfirmChannel,
   exchange: string,
@@ -98,7 +98,7 @@ export function startEventRuntime(options: RuntimeOptions): EventRuntime {
   let ready = false;
   let stopped = false;
   let timer: ReturnType<typeof setTimeout> | undefined;
-  const queue = `elvorance.${options.repository.serviceName}.v1`;
+  const queue = `atlas.${options.repository.serviceName}.v1`;
   const log = options.log ?? (() => {});
   const schedule = (delay: number): void => {
     if (!stopped)

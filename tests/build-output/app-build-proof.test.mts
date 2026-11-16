@@ -22,14 +22,14 @@ async function fixture(t) {
     await writeFile(resolve(workspaceRoot, path), content);
   }
   for (const path of buildToolInputs) await write(path);
-  await write('packages/ui/src/common.js', 'shared UI');
+  await write('packages/ui/src/common.ts', 'shared UI');
   const records = [];
   for (const { folder } of apps) {
     const inputs = [
-      `apps/${folder}/src/main.js`,
+      `apps/${folder}/src/main.ts`,
       `apps/${folder}/index.html`,
-      `apps/${folder}/config.example.js`,
-      'packages/ui/src/common.js',
+      `apps/${folder}/config.example.ts`,
+      'packages/ui/src/common.ts',
     ];
     for (const path of inputs) await write(path);
     for (const file of [
@@ -77,8 +77,8 @@ test('native sync proof rejects stale source and changed or missing assets', asy
     assertAppBuild('client-mobile', fixtureState),
     /output file is unavailable.*config\.js/,
   );
-  await write('packages/ui/src/common.js', 'changed shared source');
-  await assert.rejects(assertAppBuild('admin-web', fixtureState), /source changed.*common\.js/);
+  await write('packages/ui/src/common.ts', 'changed shared source');
+  await assert.rejects(assertAppBuild('admin-web', fixtureState), /source changed.*common\.ts/);
 });
 
 test('native sync proof rejects truncated manifests and paths outside its workspace', async (t) => {

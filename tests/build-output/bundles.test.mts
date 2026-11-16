@@ -25,7 +25,7 @@ for (const app of apps) {
     });
     try {
       await new Promise((resolve) => setTimeout(resolve, 40));
-      assert.equal(dom.window.document.documentElement.dataset.ready, 'true');
+      assert.equal(dom.window.document.documentElement.dataset.ready, 'true', `Runtime errors: ${errors.join(' | ')}`);
       assert.equal(dom.window.document.body.dataset.app, app.id);
       assert.equal(
         dom.window.document.querySelectorAll('script[src],link[rel="stylesheet"]').length,

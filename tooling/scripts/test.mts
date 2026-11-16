@@ -39,11 +39,11 @@ for (const file of files) {
     outfile,
     bundle: true,
     platform: 'node',
-    format: 'esm',
+    format: isCjs ? 'cjs' : 'esm',
     target: 'node24',
-    external: ['pg-native'],
+    external: ['pg-native', ...(isCjs ? ['esbuild', 'jsdom'] : [])],
     banner: {
-      js: "import { createRequire as __elvoranceCreateRequire } from 'node:module'; const require = __elvoranceCreateRequire(import.meta.url);",
+      js: isCjs ? '' : "import { createRequire as __elvoranceCreateRequire } from 'node:module'; const require = __elvoranceCreateRequire(import.meta.url);",
     },
   });
   runnable.push(outfile);

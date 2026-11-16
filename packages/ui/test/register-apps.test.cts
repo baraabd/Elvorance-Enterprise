@@ -9,7 +9,7 @@ const path = require('node:path');
 const assert = require('node:assert/strict');
 const esbuild = require('esbuild');
 const { JSDOM, VirtualConsole } = require('jsdom');
-const workspace = path.resolve(__dirname, '../../..');
+const workspace = process.cwd();
 const expected = {
   rep: {
     dir: 'rep-mobile',
@@ -147,7 +147,7 @@ function routeParams(role, route, state) {
   return rows[route] || {};
 }
 async function verify(role, spec) {
-  const entry = `import { installRuntime } from ${JSON.stringify(path.join(workspace, 'packages/app-runtime/src/index.js'))};\nimport { registerApp } from ${JSON.stringify(path.join(workspace, 'apps', spec.dir, 'src/app.js'))};\nconst runtime = installRuntime();\nwindow.ElvoranceAppDefinition = registerApp(runtime);\nruntime.start(${JSON.stringify(role)});`;
+  const entry = `import { installRuntime } from ${JSON.stringify(path.join(workspace, 'packages/app-runtime/src/index.ts'))};\nimport { registerApp } from ${JSON.stringify(path.join(workspace, 'apps', spec.dir, 'src/app.ts'))};\nconst runtime = installRuntime();\nwindow.ElvoranceAppDefinition = registerApp(runtime);\nruntime.start(${JSON.stringify(role)});`;
   const bundle = await esbuild.build({
     stdin: { contents: entry, resolveDir: workspace, sourcefile: role + '-registration.js' },
     bundle: true,

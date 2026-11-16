@@ -4,10 +4,10 @@ import type { Channel } from 'amqplib';
  * Adding a consumer is a topology migration: deploy its durable binding before producers emit the new event.
  */
 export const exchanges = {
-  main: 'elvorance.events',
-  retry: 'elvorance.events.retry',
-  ready: 'elvorance.events.retry.ready',
-  dead: 'elvorance.events.dead',
+  main: 'atlas.events',
+  retry: 'atlas.events.retry',
+  ready: 'atlas.events.retry.ready',
+  dead: 'atlas.events.dead',
 } as const;
 export const serviceBindings: Readonly<Record<string, readonly string[]>> = {
   identity: [],
@@ -35,7 +35,7 @@ export async function provisionTopology(channel: TopologyChannel): Promise<void>
     await channel.assertExchange(name, 'direct', { durable: true });
   for (const [service, bindings] of Object.entries(serviceBindings)) {
     if (!bindings.length) continue;
-    const queue = `elvorance.${service}.v1`;
+    const queue = `atlas.${service}.v1`;
     await channel.assertQueue(queue, {
       durable: true,
       arguments: {
