@@ -98,7 +98,7 @@ async function addQuote(ctx, clientId, title, discount, send) {
   field(ctx, 'input[name="title"]', title);
   await click(ctx, '[data-action="quote-add"][data-id="svc-security"]');
   await click(ctx, '[data-action="quote-add"][data-id="svc-social"]');
-  field(ctx, 'input[name="discount"]', String(discount));
+  field(ctx, '[data-input="quote-discount-input"]', String(discount));
   if (send) await click(ctx, '[data-action="save-send-quote"]');
   else await submit(ctx, '#rep-quote-form');
   return ctx.A.state().quotes.find((q) => q.title === title);
