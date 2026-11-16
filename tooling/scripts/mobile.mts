@@ -1,8 +1,10 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { spawnSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { root, apps } from './workspace.mjs';
-import { assertAppBuild } from './app-build-proof.mjs';
+import { root, apps } from './workspace.mts';
+import { assertAppBuild } from './app-build-proof.mts';
 
 export async function runMobile(
   args,

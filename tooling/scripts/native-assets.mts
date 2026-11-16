@@ -1,10 +1,12 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Rasterize the existing three-bar vector brand for native launcher/splash assets.
  * Uses no external asset service and keeps generation reproducible on Windows/macOS/Linux.
  */
 import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { zlibSync } from 'fflate';
-import { root, apps } from './workspace.mjs';
+import { root, apps } from './workspace.mts';
 
 const brand = JSON.parse(
   await readFile(resolve(root, 'packages/design-system/src/brand.json'), 'utf8'),
@@ -98,5 +100,5 @@ for (const app of apps.filter((item) => item.nativeId)) {
     colorPath,
     `<?xml version="1.0" encoding="utf-8"?><resources><color name="ic_launcher_background">${brand.background}</color></resources>\n`,
   );
-  console.log(`Applied Atlas brand to ${app.folder} native assets.`);
+  console.log(`Applied Elvorance brand to ${app.folder} native assets.`);
 }

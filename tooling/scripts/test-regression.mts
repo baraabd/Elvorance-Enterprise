@@ -1,8 +1,10 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { build } from 'esbuild';
 import { mkdir, writeFile, copyFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { root, apps } from './workspace.mjs';
+import { root, apps } from './workspace.mts';
 
 const output = resolve(root, 'dist/test-adapters');
 await mkdir(resolve(output, 'src/shared'), { recursive: true });
@@ -19,24 +21,24 @@ const bundle = async (source, file) =>
     minify: false,
   });
 await bundle(
-  "import { icons } from '@atlas/design-system/icons'; window.AtlasIcons = icons;",
+  "import { icons } from '@elvorance/design-system/icons'; window.ElvoranceIcons = icons;",
   'src/shared/icons.js',
 );
 await bundle(
-  "import { createDemoData } from '@atlas/demo-data'; window.AtlasSeed = createDemoData;",
+  "import { createDemoData } from '@elvorance/demo-data'; window.ElvoranceSeed = createDemoData;",
   'src/shared/seed.js',
 );
 await bundle(
-  "import { installRuntime } from '@atlas/app-runtime'; installRuntime();",
+  "import { installRuntime } from '@elvorance/app-runtime'; installRuntime();",
   'src/shared/core.js',
 );
 await bundle(
-  "import { installSiteTracking } from '@atlas/app-runtime/tracking'; installSiteTracking();",
+  "import { installSiteTracking } from '@elvorance/app-runtime/tracking'; installSiteTracking();",
   'src/shared/tracking.js',
 );
 for (const app of apps)
   await bundle(
-    `import { registerApp } from './apps/${app.folder}/src/app.js'; registerApp(window.Atlas);`,
+    `import { registerApp } from './apps/${app.folder}/src/app.ts'; registerApp(window.Elvorance);`,
     `src/apps/${app.id}.js`,
   );
 await copyFile(
@@ -54,7 +56,7 @@ const suites = [
 ];
 const summary = [];
 for (const suite of suites) {
-  const result = spawnSync(process.execPath, [resolve(root, `tests/regression/${suite}.cjs`)], {
+  const result = spawnSync(process.execPath, [resolve(root, `tests/regression/${suite}.cts`)], {
     cwd: root,
     encoding: 'utf8',
     maxBuffer: 12 * 1024 * 1024,
