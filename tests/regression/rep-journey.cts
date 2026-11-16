@@ -146,7 +146,7 @@ async function main() {
       submit(ctx,field(ctx,'#rep-quote-form'));
       await pause();
       const quote=state(ctx).quotes.find((q:any)=>q.title==='عرض تجريبي مرتبط بزيارة مؤهلة');
-      assert.ok(quote,'Quote was not saved');
+      assert.ok(quote,'Quote was not saved; toast: '+String(ctx.w.document.querySelector('#toasts')?.textContent)+'; valid: '+field(ctx,'#rep-quote-form').checkValidity());
       assert.equal(quote.visitId,'visit-1');
       assert.ok(quote.items.length>0);
       assert.ok(quote.total>0);

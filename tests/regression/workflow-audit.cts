@@ -709,7 +709,7 @@ test('WF22', 'دورة خصم ثم تعديل العميل ثم اعتماد ج�
     resend = env('rep', approved.serialize());
   resend.navigate('quote-detail', { id: setup.quoteId });
   resend.click(`[data-action="send-quote"][data-id="${setup.quoteId}"]`);
-  assert.equal(find(resend, 'quotes', setup.quoteId).status, 'sent');
+  assert.equal(find(resend, 'quotes', setup.quoteId).status, 'sent', 'Resend reason: '+resend.q('#toasts').textContent.trim());
   const final = env('client', resend.serialize()),
     contractId = acceptFixture(final, setup.quoteId);
   assert.equal(final.state().contracts.filter((item) => item.quoteId === setup.quoteId).length, 1);
