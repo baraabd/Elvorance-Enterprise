@@ -1,5 +1,5 @@
 import Fastify, { type FastifyInstance, type FastifyRequest } from 'fastify';
-import type { Principal } from '@atlas/contracts';
+import type { Principal } from '@elvorance/contracts';
 import { type AuthVerifier } from './auth.ts';
 import { AppError, assert } from './errors.ts';
 import type { Repository, Transaction } from './repository.ts';
