@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs, {
@@ -12,15 +14,15 @@ import fs, {
 } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
-import { copyContent } from '../../tooling/scripts/copy-content.mjs';
+import { copyContent } from '../../tooling/scripts/copy-content.mts';
 
 test('content copy preserves bytes from read-only sources without copying modes or calling chmod', async (t) => {
-  const temporary = await mkdtemp(resolve(tmpdir(), 'atlas-content-copy-'));
+  const temporary = await mkdtemp(resolve(tmpdir(), 'elvorance-content-copy-'));
   t.after(() => rm(temporary, { recursive: true, force: true }));
   const source = resolve(temporary, 'source/config.js');
   const target = resolve(temporary, 'output/config.js');
   await mkdir(resolve(temporary, 'source/nested'), { recursive: true });
-  await writeFile(source, 'window.ATLAS_CONFIG = { label: "أطلس" };\r\n');
+  await writeFile(source, 'window.ELVORANCE_CONFIG = { label: "إلفورانس" };\r\n');
   await writeFile(resolve(temporary, 'source/nested/font.bin'), Buffer.from([0, 128, 255, 13, 10]));
   await chmod(source, 0o444);
   const sourceMode = (await stat(source)).mode;
@@ -44,7 +46,7 @@ test('content copy preserves bytes from read-only sources without copying modes 
 });
 
 test('content copy refuses symbolic links and propagates real filesystem failures', async (t) => {
-  const temporary = await mkdtemp(resolve(tmpdir(), 'atlas-content-failure-'));
+  const temporary = await mkdtemp(resolve(tmpdir(), 'elvorance-content-failure-'));
   t.after(() => rm(temporary, { recursive: true, force: true }));
   const source = resolve(temporary, 'source');
   const target = resolve(temporary, 'target');

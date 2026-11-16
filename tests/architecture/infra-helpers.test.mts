@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomBytes, createHmac } from 'node:crypto';
@@ -6,21 +8,21 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import { fileURLToPath } from 'node:url';
-import { smoke } from '../../infra/compose/smoke.mjs';
+import { smoke } from '../../infra/compose/smoke.mts';
 
 test('environment helper preserves unrelated settings and never prints generated credentials', (t) => {
-  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'atlas-compose-env-'));
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'elvorance-compose-env-'));
   t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
   fs.copyFileSync(
-    fileURLToPath(new URL('../../infra/compose/init-env.mjs', import.meta.url)),
-    path.join(directory, 'init-env.mjs'),
+    fileURLToPath(new URL('../../infra/compose/init-env.mts', import.meta.url)),
+    path.join(directory, 'init-env.mts'),
   );
   fs.writeFileSync(
     path.join(directory, '.env.example'),
     'CUSTOM_SETTING=keep-me\nDEV_JWT_SECRET=REPLACE_WITH_GENERATED_VALUE\n',
   );
   const run = () =>
-    spawnSync(process.execPath, [path.join(directory, 'init-env.mjs')], { encoding: 'utf8' });
+    spawnSync(process.execPath, [path.join(directory, 'init-env.mts')], { encoding: 'utf8' });
   const first = run();
   assert.equal(first.status, 0);
   const saved = fs.readFileSync(path.join(directory, '.env'), 'utf8');
@@ -42,8 +44,8 @@ test('development smoke uses verified claims, GET requests and no persisted toke
   const result = await smoke({
     baseUrl: 'http://127.0.0.1:3000',
     secret,
-    issuer: 'https://atlas.local.invalid',
-    audience: 'atlas-enterprise',
+    issuer: 'https://elvorance.local.invalid',
+    audience: 'elvorance-enterprise',
     fetcher: async (url, options) => {
       assert.equal(options.method, undefined);
       const token = options.headers.Authorization?.slice(7);
@@ -60,7 +62,7 @@ test('development smoke uses verified claims, GET requests and no persisted toke
         createHmac('sha256', secret).update(`${header}.${payload}`).digest('base64url'),
       );
       const claims = JSON.parse(Buffer.from(payload, 'base64url'));
-      assert.equal(claims.aud, 'atlas-enterprise');
+      assert.equal(claims.aud, 'elvorance-enterprise');
       assert(claims.exp > claims.iat);
       return new Response(
         JSON.stringify(

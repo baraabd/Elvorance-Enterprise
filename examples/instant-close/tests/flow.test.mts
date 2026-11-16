@@ -1,6 +1,8 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {initialState,transition,gateSummary,quoteValid,ROLES,OUTCOMES,WorkflowError} from '../src/domain.mjs';
+import {initialState,transition,gateSummary,quoteValid,ROLES,OUTCOMES,WorkflowError} from '../src/domain.mts';
 const run=(s,type,role,extra={})=>transition(s,{type,...extra},role,'2027-01-02T09:00:00Z');
 const choose=(s)=>run(s,'SELECT_OUTCOME',ROLES.REP,{outcome:OUTCOMES.READY});
 const sent=(s)=>run(choose(s),'SEND_QUOTE',ROLES.REP);

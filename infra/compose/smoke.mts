@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { createHmac } from 'node:crypto';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -20,8 +22,8 @@ export async function smoke({ baseUrl, secret, issuer, audience, fetcher = fetch
   const now = Math.floor(Date.now() / 1000);
   const encode = (value) => Buffer.from(JSON.stringify(value)).toString('base64url');
   const claims = {
-    sub: 'atlas-local-smoke-admin',
-    tenant_id: 'atlas-local-smoke',
+    sub: 'elvorance-local-smoke-admin',
+    tenant_id: 'elvorance-local-smoke',
     roles: ['admin'],
     iss: issuer,
     aud: audience,

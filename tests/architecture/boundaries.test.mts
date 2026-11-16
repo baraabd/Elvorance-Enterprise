@@ -1,12 +1,14 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { auditRepository, isPathWithin } from '../../tooling/scripts/check-boundaries.mjs';
+import { auditRepository, isPathWithin } from '../../tooling/scripts/check-boundaries.mts';
 
 function fixture(t) {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'atlas-boundaries-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'elvorance-boundaries-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, content) => {
     const target = path.join(root, file);
@@ -22,7 +24,7 @@ function fixture(t) {
     write(
       `${folder}/package.json`,
       JSON.stringify({
-        name: `@atlas/${name}`,
+        name: `@elvorance/${name}`,
         private: true,
         type: 'module',
         dependencies,
@@ -41,20 +43,20 @@ test('permitted frontend and backend contract edges pass', (t) => {
   const f = fixture(t);
   f.workspace('packages', 'contracts');
   f.workspace('packages', 'design-system');
-  f.workspace('packages', 'ui', { '@atlas/design-system': '*' });
-  f.workspace('packages', 'service-kit', { '@atlas/contracts': '*' });
-  f.workspace('packages', 'events', { '@atlas/contracts': '*', '@atlas/service-kit': '*' });
-  f.workspace('apps', 'rep-mobile', { '@atlas/ui': '*' });
-  f.workspace('services', 'sales', { '@atlas/service-kit': '*', '@atlas/events': '*' });
-  f.write('apps/rep-mobile/src/index.mjs', "import '@atlas/ui';");
-  f.write('services/sales/src/index.mjs', "import '@atlas/service-kit'; import('@atlas/events');");
+  f.workspace('packages', 'ui', { '@elvorance/design-system': '*' });
+  f.workspace('packages', 'service-kit', { '@elvorance/contracts': '*' });
+  f.workspace('packages', 'events', { '@elvorance/contracts': '*', '@elvorance/service-kit': '*' });
+  f.workspace('apps', 'rep-mobile', { '@elvorance/ui': '*' });
+  f.workspace('services', 'sales', { '@elvorance/service-kit': '*', '@elvorance/events': '*' });
+  f.write('apps/rep-mobile/src/index.mjs', "import '@elvorance/ui';");
+  f.write('services/sales/src/index.mjs', "import '@elvorance/service-kit'; import('@elvorance/events');");
   assert.deepEqual(f.report().violations, []);
 });
 
 test('app-to-app package dependency is rejected before any import', (t) => {
   const f = fixture(t);
   f.workspace('apps', 'client-mobile');
-  f.workspace('apps', 'rep-mobile', { '@atlas/client-mobile': '*' });
+  f.workspace('apps', 'rep-mobile', { '@elvorance/client-mobile': '*' });
   assert(has(f.report(), 'forbidden-dependency'));
 });
 
@@ -88,7 +90,7 @@ test('service-kit cannot import a business service', (t) => {
 test('service cannot depend on UI via a devDependency exception', (t) => {
   const f = fixture(t);
   f.workspace('packages', 'ui');
-  f.workspace('services', 'crm', {}, { devDependencies: { '@atlas/ui': '*' } });
+  f.workspace('services', 'crm', {}, { devDependencies: { '@elvorance/ui': '*' } });
   assert(has(f.report(), 'forbidden-dependency'));
 });
 
@@ -102,7 +104,7 @@ test('file dependency alias cannot hide a sibling service', (t) => {
 test('npm dependency alias cannot hide a sibling service', (t) => {
   const f = fixture(t);
   f.workspace('services', 'billing');
-  f.workspace('services', 'sales', { innocent: 'npm:@atlas/billing@2.0.0' });
+  f.workspace('services', 'sales', { innocent: 'npm:@elvorance/billing@2.0.0' });
   assert(has(f.report(), 'forbidden-dependency'));
 });
 
@@ -125,37 +127,37 @@ test('tsconfig paths cannot hide an app-to-service edge', (t) => {
 });
 
 test('Windows containment accepts TypeScript paths without admitting another directory or drive', () => {
-  const root = 'C:\\AtlasCRM';
+  const root = 'C:\\Elvorance';
   for (const file of [
-    'C:/AtlasCRM/tsconfig.json',
-    'c:/atlascrm/apps/admin-web/tsconfig.json',
-    'C:\\AtlasCRM\\apps/admin-web/tsconfig.json',
-    'C:/AtlasCRM/..cache/tsconfig.json',
-    'C:/AtlasCRM/',
+    'C:/Elvorance/tsconfig.json',
+    'c:/elvorance/apps/admin-web/tsconfig.json',
+    'C:\\Elvorance\\apps/admin-web/tsconfig.json',
+    'C:/Elvorance/..cache/tsconfig.json',
+    'C:/Elvorance/',
   ]) {
     assert.equal(isPathWithin(root, file, path.win32), true, file);
   }
   for (const file of [
-    'C:/AtlasCRM-other/tsconfig.json',
-    'C:/AtlasCRM/../other/tsconfig.json',
+    'C:/Elvorance-other/tsconfig.json',
+    'C:/Elvorance/../other/tsconfig.json',
     'C:/',
-    'D:/AtlasCRM/tsconfig.json',
-    '//server/share/AtlasCRM/tsconfig.json',
+    'D:/Elvorance/tsconfig.json',
+    '//server/share/Elvorance/tsconfig.json',
   ]) {
     assert.equal(isPathWithin(root, file, path.win32), false, file);
   }
   assert.equal(
     isPathWithin(
-      '\\\\server\\share\\AtlasCRM',
-      '//server/share/AtlasCRM/tsconfig.json',
+      '\\\\server\\share\\Elvorance',
+      '//server/share/Elvorance/tsconfig.json',
       path.win32,
     ),
     true,
   );
   assert.equal(
     isPathWithin(
-      '\\\\server\\share\\AtlasCRM',
-      '//server/other/AtlasCRM/tsconfig.json',
+      '\\\\server\\share\\Elvorance',
+      '//server/other/Elvorance/tsconfig.json',
       path.win32,
     ),
     false,
@@ -185,7 +187,7 @@ test('a declared external package cannot conceal a tsconfig alias into a service
   assert(
     report.edges.some(
       (edge) =>
-        edge.from === '@atlas/admin-web' && edge.to === '@atlas/crm' && edge.via === 'source',
+        edge.from === '@elvorance/admin-web' && edge.to === '@elvorance/crm' && edge.via === 'source',
     ),
   );
 });
@@ -261,7 +263,7 @@ test('allowed internal import still requires its own workspace declaration', (t)
   const f = fixture(t);
   f.workspace('apps', 'rep-mobile');
   f.workspace('packages', 'ui');
-  f.write('apps/rep-mobile/src/index.mjs', "import '@atlas/ui';");
+  f.write('apps/rep-mobile/src/index.mjs', "import '@elvorance/ui';");
   assert(has(f.report(), 'undeclared-dependency'));
 });
 
@@ -284,8 +286,8 @@ test('external imports need declared dependencies', (t) => {
 
 test('workspace dependency cycles are rejected', (t) => {
   const f = fixture(t);
-  f.workspace('packages', 'ui', { '@atlas/app-runtime': '*' });
-  f.workspace('packages', 'app-runtime', { '@atlas/ui': '*' });
+  f.workspace('packages', 'ui', { '@elvorance/app-runtime': '*' });
+  f.workspace('packages', 'app-runtime', { '@elvorance/ui': '*' });
   assert(has(f.report(), 'dependency-cycle'));
 });
 

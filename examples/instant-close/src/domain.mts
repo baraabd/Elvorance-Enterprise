@@ -1,5 +1,7 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /**
- * AtlasCRM — Instant-close domain workflow (demo/reference implementation).
+ * Elvorance — Instant-close domain workflow (demo/reference implementation).
  * Pure, deterministic state transitions; no network, payment processing or legal e-signature.
  */
 export class WorkflowError extends Error {

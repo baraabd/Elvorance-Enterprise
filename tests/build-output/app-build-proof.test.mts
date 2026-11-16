@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
@@ -9,11 +11,11 @@ import {
   completeAppBuilds,
   invalidateAppBuilds,
   recordAppBuild,
-} from '../../tooling/scripts/app-build-proof.mjs';
-import { apps } from '../../tooling/scripts/workspace.mjs';
+} from '../../tooling/scripts/app-build-proof.mts';
+import { apps } from '../../tooling/scripts/workspace.mts';
 
 async function fixture(t) {
-  const workspaceRoot = await mkdtemp(resolve(tmpdir(), 'atlas-build-proof-'));
+  const workspaceRoot = await mkdtemp(resolve(tmpdir(), 'elvorance-build-proof-'));
   t.after(() => rm(workspaceRoot, { recursive: true, force: true }));
   async function write(path, content = path) {
     await mkdir(dirname(resolve(workspaceRoot, path)), { recursive: true });
@@ -48,7 +50,7 @@ test('native sync proof requires the whole build to finish even when representat
   const fixtureState = await fixture(t);
   const { records } = fixtureState;
   await assert.rejects(assertAppBuild('rep-mobile', fixtureState), {
-    code: 'ATLAS_BUILD_REQUIRED',
+    code: 'ELVORANCE_BUILD_REQUIRED',
   });
   await assert.rejects(
     completeAppBuilds(records.slice(0, 1), fixtureState),
@@ -89,7 +91,7 @@ test('native sync proof rejects truncated manifests and paths outside its worksp
   manifest.apps['rep-mobile'].inputs['../outside-workspace'] = 'untrusted';
   await write('dist/apps-build.json', JSON.stringify(manifest));
   await assert.rejects(assertAppBuild('rep-mobile', fixtureState), {
-    code: 'ATLAS_BUILD_REQUIRED',
+    code: 'ELVORANCE_BUILD_REQUIRED',
   });
   await write('dist/apps-build.json', '{');
   await assert.rejects(

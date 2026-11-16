@@ -1,9 +1,11 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { JSDOM, VirtualConsole } from 'jsdom';
-import { root, apps } from '../../tooling/scripts/workspace.mjs';
+import { root, apps } from '../../tooling/scripts/workspace.mts';
 
 for (const app of apps) {
   test(`actual portable ${app.id} output starts without external assets`, async () => {
@@ -13,7 +15,7 @@ for (const app of apps) {
     virtualConsole.on('jsdomError', (error) => errors.push(error.message));
     virtualConsole.on('error', (...args) => errors.push(args.map(String).join(' ')));
     const dom = new JSDOM(html, {
-      url: `https://atlas-build.test/${app.id}.html`,
+      url: `https://elvorance-build.test/${app.id}.html`,
       runScripts: 'dangerously',
       pretendToBeVisual: true,
       virtualConsole,

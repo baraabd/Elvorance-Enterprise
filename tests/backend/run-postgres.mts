@@ -1,6 +1,8 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Optional real database verifier. No production URL is used and no password is printed.
- * Install embedded-postgres separately, or set ATLAS_EMBEDDED_POSTGRES_MODULE to its JS entry point.
- * Standard CI can instead run npm test with ATLAS_TEST_POSTGRES_URL pointing at a disposable admin database.
+ * Install embedded-postgres separately, or set ELVORANCE_EMBEDDED_POSTGRES_MODULE to its JS entry point.
+ * Standard CI can instead run npm test with ELVORANCE_TEST_POSTGRES_URL pointing at a disposable admin database.
  */
 import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -11,9 +13,9 @@ import { createServer } from 'node:net';
 import { spawn } from 'node:child_process';
 import { build } from 'esbuild';
 const root = resolve(fileURLToPath(new URL('../..', import.meta.url)));
-const moduleId = process.env.ATLAS_EMBEDDED_POSTGRES_MODULE ?? 'embedded-postgres';
+const moduleId = process.env.ELVORANCE_EMBEDDED_POSTGRES_MODULE ?? 'embedded-postgres';
 const { default: EmbeddedPostgres } = await import(moduleId);
-const directory = await mkdtemp(join(tmpdir(), 'atlas-postgres-test-'));
+const directory = await mkdtemp(join(tmpdir(), 'elvorance-postgres-test-'));
 const probe = createServer();
 await new Promise((resolve) => probe.listen(0, '127.0.0.1', resolve));
 const port = probe.address().port;
@@ -50,7 +52,7 @@ try {
     target: 'node24',
     external: ['pg-native'],
     banner: {
-      js: "import { createRequire as __atlasCreateRequire } from 'node:module'; const require = __atlasCreateRequire(import.meta.url);",
+      js: "import { createRequire as __elvoranceCreateRequire } from 'node:module'; const require = __elvoranceCreateRequire(import.meta.url);",
     },
   });
   phase = 'test';
@@ -59,7 +61,7 @@ try {
     stdio: 'inherit',
     env: {
       ...process.env,
-      ATLAS_TEST_POSTGRES_URL: `postgresql://postgres:${password}@127.0.0.1:${port}/postgres`,
+      ELVORANCE_TEST_POSTGRES_URL: `postgresql://postgres:${password}@127.0.0.1:${port}/postgres`,
     },
   });
   process.exitCode = await new Promise((resolve, reject) => {
