@@ -1,6 +1,8 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /* Migrated v1.1 regression cases: sources are generated from the CURRENT modular workspaces, never the old application code. */
-/* Focused business-transition audit. Uses actual Atlas scripts, not reimplemented handlers.
- * Run: ATLAS_JSDOM_PATH=/path/to/jsdom node tests/workflow-audit.cjs
+/* Focused business-transition audit. Uses actual Elvorance scripts, not reimplemented handlers.
+ * Run: ELVORANCE_JSDOM_PATH=/path/to/jsdom node tests/workflow-audit.cjs
  * Writes only docs/WORKFLOW-AUDIT.txt; structured results are printed to stdout.
  */
 'use strict';
@@ -39,7 +41,7 @@ function environment(role, serialized) {
   const dom = new JSDOM(
     '<!doctype html><html lang="ar" dir="rtl"><body><div id="app"></div></body></html>',
     {
-      url: `https://atlas-workflow.example.test/${role}/`,
+      url: `https://elvorance-workflow.example.test/${role}/`,
       runScripts: 'outside-only',
       pretendToBeVisual: true,
       virtualConsole: vc,
@@ -65,7 +67,7 @@ function environment(role, serialized) {
   };
   w.URL.createObjectURL = (blob) => {
     downloads.push({ text: blob.parts.join(''), type: blob.type });
-    return 'blob:atlas-workflow';
+    return 'blob:elvorance-workflow';
   };
   w.URL.revokeObjectURL = () => {};
   if (serialized)
@@ -76,8 +78,8 @@ function environment(role, serialized) {
   ['src/shared/icons.js', 'src/shared/seed.js', 'src/shared/core.js'].forEach((file) =>
     w.eval(sources[file]),
   );
-  const register = w.Atlas.register;
-  w.Atlas.register = (definition) => {
+  const register = w.Elvorance.register;
+  w.Elvorance.register = (definition) => {
     definitions[definition.id] = definition;
     inventories[definition.id] = Object.fromEntries(
       Object.entries(definition.actions).map(([name, handler]) => [name, handler.toString()]),
@@ -91,7 +93,7 @@ function environment(role, serialized) {
     register(definition);
   };
   w.eval(sources[`src/apps/${role}.js`]);
-  w.Atlas.start(role);
+  w.Elvorance.start(role);
   const q = (selector, parent = w.document) => {
     const node = parent.querySelector(selector);
     assert.ok(node, `Missing UI element: ${selector}`);
@@ -104,9 +106,9 @@ function environment(role, serialized) {
     errors,
     downloads,
     definitions,
-    state: () => w.Atlas.state(),
-    serialize: () => w.localStorage.getItem(key) || JSON.stringify(w.Atlas.state()),
-    stored: () => JSON.parse(w.localStorage.getItem(key) || JSON.stringify(w.Atlas.state())),
+    state: () => w.Elvorance.state(),
+    serialize: () => w.localStorage.getItem(key) || JSON.stringify(w.Elvorance.state()),
+    stored: () => JSON.parse(w.localStorage.getItem(key) || JSON.stringify(w.Elvorance.state())),
     q,
     navigate(route, params = {}) {
       w.location.hash =
@@ -152,12 +154,12 @@ function environment(role, serialized) {
         el: target,
         form: node,
         data,
-        state: state || w.Atlas.state(),
-        params: w.Atlas.params(),
+        state: state || w.Elvorance.state(),
+        params: w.Elvorance.params(),
       });
     },
     fixture(mutator) {
-      assert.equal(w.Atlas.update(mutator), true, 'Fixture must persist');
+      assert.equal(w.Elvorance.update(mutator), true, 'Fixture must persist');
     },
     external(mutator, notify = false) {
       const next = clone(env.stored());
@@ -390,7 +392,7 @@ test('WF11', 'تحصيل جزئي وكامل يزامن الفاتورة وال�
           amount: 500,
           paid: 0,
           status: 'due',
-          due: a.w.Atlas.addDays(3),
+          due: a.w.Elvorance.addDays(3),
         },
       ],
     });
@@ -403,7 +405,7 @@ test('WF11', 'تحصيل جزئي وكامل يزامن الفاتورة وال�
       total: 500,
       paid: 0,
       status: 'due',
-      dueDate: a.w.Atlas.addDays(3),
+      dueDate: a.w.Elvorance.addDays(3),
       notes: '',
     });
   });
@@ -471,7 +473,7 @@ test('WF15', 'إسناد مهمة يظهر للمندوب وإكمالها يع�
   a.fill('title', 'مهمة تكامل مستقلة');
   a.fill('repId', 'rep-1');
   a.fill('clientId', 'client-1');
-  a.fill('dueDate', a.w.Atlas.addDays(2));
+  a.fill('dueDate', a.w.Elvorance.addDays(2));
   a.fill('priority', 'high');
   a.submit();
   const task = a.state().tasks.find((t) => t.title === 'مهمة تكامل مستقلة');
@@ -633,7 +635,7 @@ function discountRequest(envFactory) {
     q.id = 'audit-discount-quote';
     q.title = 'عرض دورة مراجعة الخصم';
     q.status = 'draft';
-    q.validUntil = r.w.Atlas.addDays(14);
+    q.validUntil = r.w.Elvorance.addDays(14);
     q.discount =
       Math.round(q.items.reduce((n, item) => n + item.qty * item.price, 0) * 0.3 * 100) / 100;
     q.total = q.items.reduce((n, item) => n + item.qty * item.price, 0) - q.discount;
@@ -774,7 +776,7 @@ test('WF26', 'انتهاء صلاحية العرض بعد فتح الموافق�
   c.fill('acceptTerms', true);
   const count = c.state().contracts.length;
   c.external((s) => {
-    s.quotes.find((q) => q.id === 'quote-1').validUntil = c.w.Atlas.addDays(-1);
+    s.quotes.find((q) => q.id === 'quote-1').validUntil = c.w.Elvorance.addDays(-1);
   });
   c.submit();
   assert.equal(persisted(c, 'quotes', 'quote-1').status, 'sent');
@@ -785,7 +787,7 @@ test('WF27', 'تغيير الكتالوج لا يغيّر النطاق المج�
   r.fixture((s) => {
     const q = s.quotes.find((q) => q.id === 'quote-1');
     q.status = 'draft';
-    q.validUntil = r.w.Atlas.addDays(14);
+    q.validUntil = r.w.Elvorance.addDays(14);
   });
   r.navigate('quote-detail', { id: 'quote-1' });
   r.click('[data-action="send-quote"][data-id="quote-1"]');
@@ -820,7 +822,7 @@ test('WF28', 'طلب خدمة العميل يصل لفرصة المندوب ثم
   set('title', 'طلب موقع ضمن اختبار تكامل مستقل');
   set('brief', 'نحتاج موقعًا تعريفيًا واضحًا مع الخدمات وطلب التواصل وربط المتابعة ضمن الفريق.');
   set('budget', 2500);
-  set('deadline', c.w.Atlas.addDays(30));
+  set('deadline', c.w.Elvorance.addDays(30));
   c.submit(form);
   const opportunity = c
     .state()
@@ -925,7 +927,7 @@ test('WF33', 'حذف المندوب بعد فتح إسناد مهمة لا ين�
   a.click('[data-action="new-task"]');
   a.fill('title', 'مهمة يجب رفضها بعد حذف المسؤول');
   a.fill('repId', 'rep-2');
-  a.fill('dueDate', a.w.Atlas.addDays(2));
+  a.fill('dueDate', a.w.Elvorance.addDays(2));
   a.external((s) => {
     s.reps = s.reps.filter((r) => r.id !== 'rep-2');
   });
@@ -981,7 +983,7 @@ test(
       finish.navigate('project-detail', { id: projectId });
       finish.click(`[data-action="edit-milestone"][data-milestone="${milestone.id}"]`);
       finish.fill('status', 'done');
-      finish.fill('date', finish.w.Atlas.today());
+      finish.fill('date', finish.w.Elvorance.today());
       finish.submit();
     }
     assert.equal(find(finish, 'projects', projectId).status, 'completed');
@@ -1137,7 +1139,7 @@ test('WF40', 'تعافي عقد معتمد قديم يصنع السجلات ال
           amount: 500,
           paid: 200,
           status: 'partial',
-          due: c.w.Atlas.addDays(10),
+          due: c.w.Elvorance.addDays(10),
         },
       ],
     }),
@@ -1314,8 +1316,8 @@ async function run() {
   }
   for (const entry of tests) {
     if (
-      process.env.ATLAS_AUDIT_FILTER &&
-      !new RegExp(process.env.ATLAS_AUDIT_FILTER).test(entry.id)
+      process.env.ELVORANCE_AUDIT_FILTER &&
+      !new RegExp(process.env.ELVORANCE_AUDIT_FILTER).test(entry.id)
     )
       continue;
     currentTest = entry.id;
@@ -1388,7 +1390,7 @@ async function run() {
     };
   });
   const summary = {
-    suite: 'Focused Atlas cross-app workflow and state-transition audit',
+    suite: 'Focused Elvorance cross-app workflow and state-transition audit',
     generated_at: new Date().toISOString(),
     scope:
       'Actual modules in JSDOM; delegated forms/buttons plus explicit invalid-ID handler calls; latest-storage interleavings simulate stale forms. Not exhaustive algorithm, browser, geolocation, legal-signature or payment-provider verification.',
@@ -1411,7 +1413,7 @@ async function run() {
     })),
   };
   const lines = [
-    'أطلس 2027 — تدقيق مسارات الأعمال وشروط النهاية',
+    'إلفورانس 2027 — تدقيق مسارات الأعمال وشروط النهاية',
     '',
     `التاريخ: ${summary.generated_at}`,
     `النتيجة: ${summary.passed} ناجح / ${summary.failed} فاشل / ${summary.total} حالة مستقلة.`,
@@ -1472,7 +1474,7 @@ async function run() {
   lines.push(
     '',
     'إعادة التشغيل:',
-    'ATLAS_JSDOM_PATH=/path/to/jsdom node tests/workflow-audit.cjs',
+    'ELVORANCE_JSDOM_PATH=/path/to/jsdom node tests/workflow-audit.cjs',
     'النتائج المنظمة تطبع إلى stdout؛ هذا التقرير يتولد من الاختبار نفسه.',
   );
   fs.mkdirSync(path.join(root, 'docs'), { recursive: true });

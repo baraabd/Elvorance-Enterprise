@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /* Migrated v1.1 regression cases: sources are generated from the CURRENT modular workspaces, never the old application code. */
 /* Meaningful journeys through the real DOM/runtime. Synthetic storage; no browser/network. */
 const fs = require('node:fs');
@@ -17,12 +19,12 @@ async function create(saved = {}, app = 'rep', hash = '') {
   vc.on('jsdomError', (err) => runtime.push(String(err)));
   vc.on('error', (...args) => runtime.push(args.map(String).join(' ')));
   vc.on('warn', (...args) => {
-    if (args.join(' ').includes('Unknown Atlas')) runtime.push(args.join(' '));
+    if (args.join(' ').includes('Unknown Elvorance')) runtime.push(args.join(' '));
   });
   const dom = new JSDOM(
     '<!doctype html><html lang="ar" dir="rtl"><body><div id="app"></div></body></html>',
     {
-      url: 'https://atlas-journey.test/' + app + '/' + hash,
+      url: 'https://elvorance-journey.test/' + app + '/' + hash,
       runScripts: 'outside-only',
       pretendToBeVisual: true,
       virtualConsole: vc,
@@ -35,9 +37,9 @@ async function create(saved = {}, app = 'rep', hash = '') {
     w.eval(fs.readFileSync(path.join(root, 'src/shared/' + name + '.js'), 'utf8')),
   );
   w.eval(fs.readFileSync(path.join(root, 'src/apps/' + app + '.js'), 'utf8'));
-  w.Atlas.start(app);
+  w.Elvorance.start(app);
   await pause();
-  const ctx = { dom, w, A: w.Atlas, runtime };
+  const ctx = { dom, w, A: w.Elvorance, runtime };
   contexts.push(ctx);
   return ctx;
 }

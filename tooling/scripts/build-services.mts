@@ -1,7 +1,9 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { build } from 'esbuild';
 import { mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { root, serviceNames } from './workspace.mjs';
+import { root, serviceNames } from './workspace.mts';
 
 for (const name of serviceNames) {
   await mkdir(resolve(root, `dist/services/${name}`), { recursive: true });
@@ -14,7 +16,7 @@ for (const name of serviceNames) {
     target: 'node24',
     external: ['pg-native'],
     banner: {
-      js: "import { createRequire as __atlasCreateRequire } from 'node:module'; const require = __atlasCreateRequire(import.meta.url);",
+      js: "import { createRequire as __elvoranceCreateRequire } from 'node:module'; const require = __elvoranceCreateRequire(import.meta.url);",
     },
     sourcemap: true,
     legalComments: 'none',

@@ -1,5 +1,7 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import test from 'node:test';import assert from 'node:assert/strict';
-import {fieldProblem} from '../../packages/app-runtime/src/form-validation.js';
+import {fieldProblem} from '../../packages/app-runtime/src/form-validation.ts';
 const field=(name,value,type='text',extra={})=>({name,value,type,disabled:false,...extra});
 test('numeric field rejects alphabetic input',()=>assert(fieldProblem(field('price','two hundred'))));
 test('numeric field accepts decimal values',()=>assert.equal(fieldProblem(field('amount','250.50')),''));

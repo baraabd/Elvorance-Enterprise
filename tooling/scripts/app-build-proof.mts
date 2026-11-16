@@ -1,17 +1,19 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { isAbsolute, relative, resolve } from 'node:path';
-import { apps, root } from './workspace.mjs';
+import { apps, root } from './workspace.mts';
 
 const manifestPath = 'dist/apps-build.json';
 const schemaVersion = 1;
 export const buildToolInputs = [
   'package.json',
   'package-lock.json',
-  'tooling/scripts/workspace.mjs',
-  'tooling/scripts/build-apps.mjs',
-  'tooling/scripts/copy-content.mjs',
-  'tooling/scripts/app-build-proof.mjs',
+  'tooling/scripts/workspace.mts',
+  'tooling/scripts/build-apps.mts',
+  'tooling/scripts/copy-content.mts',
+  'tooling/scripts/app-build-proof.mts',
 ];
 
 function containedPath(workspaceRoot, path) {
@@ -87,7 +89,7 @@ function buildRequired(folder, reason, cause) {
     `${folder}: ${reason}. Run npm run build:apps successfully before mobile:sync; existing dist files may be incomplete or stale.`,
     cause ? { cause } : undefined,
   );
-  error.code = 'ATLAS_BUILD_REQUIRED';
+  error.code = 'ELVORANCE_BUILD_REQUIRED';
   return error;
 }
 

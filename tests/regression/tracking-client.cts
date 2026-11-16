@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /* Migrated v1.1 regression cases: sources are generated from the CURRENT modular workspaces, never the old application code. */
 /* GPS and same-origin API are mocked. No real position, device key or network is
  * exposed. Run after npm install: node tests/tracking-client.cjs. */
@@ -7,7 +9,7 @@ const assert = require('node:assert/strict');
 const { JSDOM, VirtualConsole } = require('jsdom');
 const root = path.resolve(__dirname, '../../dist/test-adapters');
 const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const storageKey = 'atlas.tracking.device.v1';
+const storageKey = 'elvorance.tracking.device.v1';
 const checks = [],
   contexts = [];
 
@@ -61,7 +63,7 @@ function service() {
     };
   }
   api.fetch = async (url, options = {}) => {
-    const pathname = new URL(url, 'https://atlas-tracking.test').pathname;
+    const pathname = new URL(url, 'https://elvorance-tracking.test').pathname;
     const body = options.body ? JSON.parse(options.body) : null;
     calls.push({
       path: pathname,
@@ -187,7 +189,7 @@ async function create(api, options = {}) {
   const dom = new JSDOM(
     '<!doctype html><html lang="ar" dir="rtl"><head></head><body><div id="app"></div></body></html>',
     {
-      url: options.url || 'https://atlas-tracking.test/' + role + '.html',
+      url: options.url || 'https://elvorance-tracking.test/' + role + '.html',
       runScripts: 'outside-only',
       pretendToBeVisual: true,
       virtualConsole: console,
@@ -256,12 +258,12 @@ async function create(api, options = {}) {
     w.eval(fs.readFileSync(path.join(root, file), 'utf8'));
   const holder =
     role === 'admin'
-      ? '<div data-atlas-live-team' +
+      ? '<div data-elvorance-live-team' +
         (options.rep ? ' data-rep="' + options.rep + '"' : '') +
         (options.hidden ? ' hidden' : '') +
         '></div>'
-      : '<div data-atlas-tracking-control></div>';
-  w.Atlas.register({
+      : '<div data-elvorance-tracking-control></div>';
+  w.Elvorance.register({
     id: role,
     name: 'اختبار الموقع',
     home: 'home',
@@ -272,7 +274,7 @@ async function create(api, options = {}) {
     },
     actions: {},
   });
-  w.Atlas.start(role);
+  w.Elvorance.start(role);
   w.eval(fs.readFileSync(path.join(root, 'src/shared/tracking.js'), 'utf8'));
   await pause(25);
   const ctx = {
@@ -332,7 +334,7 @@ async function consentStart(ctx) {
   await click(ctx, 'start');
 }
 const pointCalls = (api) => api.calls.filter((call) => call.path.endsWith('/point'));
-const controlStatus = (ctx) => $(ctx, '[data-atlas-tracking-control] .tracking-badge').className;
+const controlStatus = (ctx) => $(ctx, '[data-elvorance-tracking-control] .tracking-badge').className;
 async function check(name, fn) {
   const from = contexts.length;
   try {
@@ -701,7 +703,7 @@ async function main() {
       assert.equal(api.calls.filter((call) => call.path.endsWith('/locations')).length, count);
       await admin.visible(true);
       await pause(15);
-      admin.w.Atlas.go('other');
+      admin.w.Elvorance.go('other');
       await pause(20);
       const away = api.calls.filter((call) => call.path.endsWith('/locations')).length;
       await admin.tick(5000);

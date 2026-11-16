@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { createHash, randomUUID } from 'node:crypto';
 import { lstat, mkdir, readFile, realpath, rm, writeFile } from 'node:fs/promises';
 import { dirname, isAbsolute, relative, resolve } from 'node:path';
@@ -68,8 +70,8 @@ export async function applyHotfix({ project, patch, check = false }) {
   }
   await rejectLinks(projectRoot, 'package.json');
   const pkg = JSON.parse(await readFile(resolve(projectRoot, 'package.json'), 'utf8'));
-  if (pkg.name !== 'atlas-crm-enterprise' || !['2.0.0', '2.0.1'].includes(pkg.version)) {
-    throw new Error('Select the AtlasCRM Enterprise 2.0.0/2.0.1 project root.');
+  if (pkg.name !== 'elvorance-crm-enterprise' || !['2.0.0', '2.0.1'].includes(pkg.version)) {
+    throw new Error('Select the Elvorance Enterprise 2.0.0/2.0.1 project root.');
   }
   const plans = [];
   const conflicts = [];
@@ -85,7 +87,7 @@ export async function applyHotfix({ project, patch, check = false }) {
       ) ||
       path
         .split('/')
-        .some((part) => ['.env', 'node_modules', '.git', '.atlas-backups'].includes(part))
+        .some((part) => ['.env', 'node_modules', '.git', '.elvorance-backups'].includes(part))
     )
       throw new Error(`Path is outside this hotfix scope: ${path}`);
     const source = localPath(resolve(patchRoot, 'files'), path);
@@ -110,7 +112,7 @@ export async function applyHotfix({ project, patch, check = false }) {
   if (check || !plans.length)
     return { checked: manifest.files.length, changed: 0, pending: plans.length, backup: null };
 
-  const backupRelative = `.atlas-backups/hotfix-2.0.1-${new Date().toISOString().replaceAll(':', '-')}-${randomUUID().slice(0, 8)}`;
+  const backupRelative = `.elvorance-backups/hotfix-2.0.1-${new Date().toISOString().replaceAll(':', '-')}-${randomUUID().slice(0, 8)}`;
   await rejectLinks(projectRoot, backupRelative);
   const backup = resolve(projectRoot, backupRelative);
   await mkdir(backup, { recursive: true });
@@ -168,7 +170,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
       args.some((arg, index) => index !== projectAt + 1 && !['--project', '--check'].includes(arg))
     ) {
       throw new Error(
-        'Usage: node apply.mjs --project C:\\Mobile_Apps\\AtlasCRM-Enterprise [--check]',
+        'Usage: node apply.mjs --project C:\\Mobile_Apps\\Elvorance-Enterprise [--check]',
       );
     }
     const result = await applyHotfix({

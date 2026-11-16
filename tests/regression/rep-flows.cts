@@ -1,5 +1,7 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /* Migrated v1.1 regression cases: sources are generated from the CURRENT modular workspaces, never the old application code. */
-/* Behavioral checks of the real Atlas rep app in JSDOM. No browser/network. */
+/* Behavioral checks of the real Elvorance rep app in JSDOM. No browser/network. */
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
@@ -22,7 +24,7 @@ async function create(saved) {
   const dom = new JSDOM(
     '<!doctype html><html dir="rtl" lang="ar"><body><div id="app"></div></body></html>',
     {
-      url: 'https://atlas-flow.example.test/rep/',
+      url: 'https://elvorance-flow.example.test/rep/',
       runScripts: 'outside-only',
       pretendToBeVisual: true,
       virtualConsole: vc,
@@ -38,9 +40,9 @@ async function create(saved) {
     'src/apps/rep.js',
   ])
     w.eval(fs.readFileSync(path.join(root, file), 'utf8') + '\n//# sourceURL=' + file);
-  w.Atlas.start('rep');
+  w.Elvorance.start('rep');
   await sleep(15);
-  return { dom, w, A: w.Atlas, errors };
+  return { dom, w, A: w.Elvorance, errors };
 }
 async function go(ctx, route, params = {}) {
   ctx.A.go(route, params);

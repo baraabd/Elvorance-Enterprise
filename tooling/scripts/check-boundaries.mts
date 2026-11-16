@@ -1,10 +1,12 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import fs from 'node:fs';
 import path from 'node:path';
 import { builtinModules, createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
-const ts = require(process.env.ATLAS_TYPESCRIPT_PATH || 'typescript');
+const ts = require(process.env.ELVORANCE_TYPESCRIPT_PATH || 'typescript');
 const builtins = new Set(builtinModules.flatMap((name) => [name, `node:${name}`]));
 const codeExtensions = new Set(['.js', '.mjs', '.cjs', '.jsx', '.ts', '.mts', '.cts', '.tsx']);
 const frontendPackages = new Set([
@@ -144,7 +146,7 @@ export function auditRepository(inputRoot) {
       for (const [name, version] of Object.entries(workspace.json[field] || {})) {
         const target = dependencyTarget(name, String(version), workspace);
         if (target) checkEdge(workspace, target, workspace.manifest, name, undefined, field);
-        else if (name.startsWith('@atlas/'))
+        else if (name.startsWith('@elvorance/'))
           add(
             'unknown-internal-package',
             workspace.manifest,

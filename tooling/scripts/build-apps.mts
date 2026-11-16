@@ -1,9 +1,11 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { build } from 'esbuild';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { apps, root } from './workspace.mjs';
-import { copyContent } from './copy-content.mjs';
-import { invalidateAppBuilds, recordAppBuild, completeAppBuilds } from './app-build-proof.mjs';
+import { apps, root } from './workspace.mts';
+import { copyContent } from './copy-content.mts';
+import { invalidateAppBuilds, recordAppBuild, completeAppBuilds } from './app-build-proof.mts';
 
 await invalidateAppBuilds();
 const buildRecords = [];
@@ -11,7 +13,7 @@ const buildRecords = [];
 const read = (path) => readFile(resolve(root, path), 'utf8');
 // The deliverable does not redistribute embedded font binaries.
 // Consumers may add their own licensed fonts; system Arabic fallbacks work without them.
-const systemFontCss = (css) => css.replace(/^@font-face\{font-family:AtlasArabic;.*$/gm, '');
+const systemFontCss = (css) => css.replace(/^@font-face\{font-family:ElvoranceArabic;.*$/gm, '');
 const commonCss = (
   await Promise.all(
     ['styles', 'polish', 'tracking'].map((name) => read(`packages/design-system/src/${name}.css`)),
@@ -28,7 +30,7 @@ for (const app of apps) {
     bundle: true,
     platform: 'browser',
     format: 'iife',
-    globalName: 'AtlasBundle',
+    globalName: 'ElvoranceBundle',
     target: ['es2022'],
     legalComments: 'none',
     sourcemap: true,
@@ -74,7 +76,7 @@ for (const app of apps) {
 const launcherCss = systemFontCss(commonCss);
 await writeFile(
   resolve(root, 'dist/index.html'),
-  (await read('tooling/launcher.html')).replace('/* ATLAS_SHARED_CSS */', launcherCss),
+  (await read('tooling/launcher.html')).replace('/* ELVORANCE_SHARED_CSS */', launcherCss),
 );
 await copyContent(resolve(root, 'README.md'), resolve(root, 'dist/README.md'));
 await copyContent(resolve(root, 'docs'), resolve(root, 'dist/docs'));
