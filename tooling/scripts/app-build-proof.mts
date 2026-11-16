@@ -105,9 +105,9 @@ export async function assertAppBuild(folder, { workspaceRoot = root } = {}) {
   const record = manifest?.apps?.[folder];
   const requiredInputs = [
     ...buildToolInputs,
-    `apps/${folder}/src/main.js`,
+    `apps/${folder}/src/main.ts`,
     `apps/${folder}/index.html`,
-    `apps/${folder}/config.example.js`,
+    `apps/${folder}/config.example.ts`,
   ];
   if (
     manifest?.schemaVersion !== schemaVersion ||
