@@ -16,8 +16,9 @@ const frontendPackages = new Set([
   'demo-data',
   'api-client',
   'mobile-platform',
+  'questionnaire',
 ]);
-const backendPackages = new Set(['contracts', 'service-kit', 'events']);
+const backendPackages = new Set(['contracts', 'service-kit', 'events', 'questionnaire']);
 const packageRules = {
   contracts: [],
   'service-kit': ['contracts'],
@@ -25,7 +26,8 @@ const packageRules = {
   ui: [...frontendPackages, 'contracts'],
   'design-system': [],
   'app-runtime': [...frontendPackages, 'contracts'],
-  'demo-data': ['contracts'],
+  'demo-data': ['contracts', 'questionnaire'],
+  questionnaire: [],
   'api-client': ['contracts', 'mobile-platform'],
   'mobile-platform': ['contracts'],
 };
