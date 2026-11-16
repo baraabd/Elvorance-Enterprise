@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Scoped read selectors retained from v1.1. */
 export function createQueries({ N }) {
   const list = (s, key) => (Array.isArray(s[key]) ? s[key] : []);

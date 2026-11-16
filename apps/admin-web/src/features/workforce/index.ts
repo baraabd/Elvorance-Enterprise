@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** admin / workforce: original v1.1 views and local demo actions. */
 export function createWorkforceFeature(context, { pipeline, state }) {
   const {
@@ -79,7 +81,7 @@ export function createWorkforceFeature(context, { pipeline, state }) {
         'المتابعة الميدانية',
         'أين يوجد الفريق الآن؟',
         'قراءات الجهاز بموافقة المندوب، مع وقت القراءة ودقتها وحالة الاتصال.',
-      ) + '<div data-atlas-live-team></div>',
+      ) + '<div data-elvorance-live-team></div>',
     );
   }
   function team({ state: s, params = {} }) {

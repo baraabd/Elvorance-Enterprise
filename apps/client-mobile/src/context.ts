@@ -1,5 +1,7 @@
-import { createClientUi } from '../../../packages/ui/src/index.js';
-import { createQueries } from './queries.js';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import { createClientUi } from '../../../packages/ui/src/index.ts';
+import { createQueries } from './queries.ts';
 export function createContext(A) {
   const num = (value) => (Number.isFinite(Number(value)) ? Number(value) : 0);
   const cents = (value) => Math.round(Number(value) * 100);

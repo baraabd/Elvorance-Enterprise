@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** admin / territories: original v1.1 views and local demo actions. */
 export function createTerritoriesFeature(context, { customers, state, workforce }) {
   const {

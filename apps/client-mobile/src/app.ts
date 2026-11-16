@@ -1,19 +1,21 @@
-import { createContext } from './context.js';
-import { createLocalDemo } from './state/local-demo.js';
-import { createLifecycle } from './lifecycle.js';
-import { createDashboardFeature } from './features/dashboard/index.js';
-import { createCatalogFeature } from './features/catalog/index.js';
-import { createClientDiscoveryFeature } from './features/discovery/index.js';
-import { createQuotesFeature } from './features/quotes/index.js';
-import { createContractsFeature } from './features/contracts/index.js';
-import { createProjectsFeature } from './features/projects/index.js';
-import { createBillingFeature } from './features/billing/index.js';
-import { createSupportFeature } from './features/support/index.js';
-import { createMessagesFeature } from './features/messages/index.js';
-import { createAccountFeature } from './features/account/index.js';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import { createContext } from './context.ts';
+import { createLocalDemo } from './state/local-demo.ts';
+import { createLifecycle } from './lifecycle.ts';
+import { createDashboardFeature } from './features/dashboard/index.ts';
+import { createCatalogFeature } from './features/catalog/index.ts';
+import { createClientDiscoveryFeature } from './features/discovery/index.ts';
+import { createQuotesFeature } from './features/quotes/index.ts';
+import { createContractsFeature } from './features/contracts/index.ts';
+import { createProjectsFeature } from './features/projects/index.ts';
+import { createBillingFeature } from './features/billing/index.ts';
+import { createSupportFeature } from './features/support/index.ts';
+import { createMessagesFeature } from './features/messages/index.ts';
+import { createAccountFeature } from './features/account/index.ts';
 
 /** Compose independently scoped features. The caller installs the runtime first. */
-export function registerApp(A = window.Atlas) {
+export function registerApp(A = window.Elvorance) {
   const context = createContext(A);
   // Explicit ports allow visits/quotes and contracts/quotes to collaborate without
   // importing another feature's private state or introducing ESM import cycles.

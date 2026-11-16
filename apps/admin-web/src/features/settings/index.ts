@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** admin / settings: original v1.1 views and local demo actions. */
 export function createSettingsFeature(context, { state }) {
   const { E, action, fail, form, icon, input, pageTitle, sectionTitle, wrap } = context;
