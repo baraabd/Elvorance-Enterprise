@@ -100,9 +100,7 @@ function cleanCatalog(input: unknown): ServiceCatalogItem[] {
     };
   });
 }
-export async function readConfiguration(
-  tx: Transaction,
-): Promise<{
+export async function readConfiguration(tx: Transaction): Promise<{
   recordVersion: number;
   definition: Configuration;
   catalog: ServiceCatalogItem[];
