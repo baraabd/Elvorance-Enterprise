@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Browser-local adapter. Never a server authority or a multi-device synchronization layer. */
 export function createDemoRepository({ storage, key, seed, onUnavailable = () => {} }) {
   let available = true;

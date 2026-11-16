@@ -1,5 +1,7 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Optional authenticated, tenant-scoped configuration channel. It never stores bearer tokens. */
-import {validateConfiguration} from './index.js';
+import {validateConfiguration} from './index.ts';
 export function installConfigurationSync(runtime, {baseUrl, getAccessToken, intervalMs=30000, onStatus=()=>{}}={}) {
   if(!baseUrl||typeof getAccessToken!=='function') return {enabled:false};
   const url=new URL('/v1/crm/configuration',baseUrl);

@@ -1,11 +1,13 @@
-import { createPrimitives } from './primitives.js';
-import { createRepButtons, createClientButtons, createAdminButtons } from './buttons.js';
-import { createClientForms, createAdminForms } from './forms.js';
-import { createRepPageHeads, createClientPageHeads, createAdminPageHeads } from './page-heads.js';
-export { createPrimitives, esc, icon, badge, avatar, progress, empty } from './primitives.js';
-export * from './buttons.js';
-export * from './forms.js';
-export * from './page-heads.js';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import { createPrimitives } from './primitives.ts';
+import { createRepButtons, createClientButtons, createAdminButtons } from './buttons.ts';
+import { createClientForms, createAdminForms } from './forms.ts';
+import { createRepPageHeads, createClientPageHeads, createAdminPageHeads } from './page-heads.ts';
+export { createPrimitives, esc, icon, badge, avatar, progress, empty } from './primitives.ts';
+export * from './buttons.ts';
+export * from './forms.ts';
+export * from './page-heads.ts';
 export function createRepUi(A) {
   const primitives = createPrimitives(A),
     e = primitives.escapeValue,

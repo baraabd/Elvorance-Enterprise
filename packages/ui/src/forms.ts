@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** v1.1 markup variants. Keep DOM shape and attribute order stable. */
 export function createClientForms({ E }) {
   const field = (title, name, value = '', options = {}) =>

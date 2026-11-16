@@ -1,12 +1,14 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** v1.1 markup variants. Keep DOM shape and attribute order stable. */
 export function createRepPageHeads({ e, ic }) {
   const head = (title, sub, action = '') =>
-    `<div class="page-head row-between"><div><p class="eyebrow">أطلس / مساحة المندوب</p><h1>${e(title)}</h1>${sub ? `<p class="muted">${e(sub)}</p>` : ''}</div>${action}</div>`;
+    `<div class="page-head row-between"><div><p class="eyebrow">إلفورانس / مساحة المندوب</p><h1>${e(title)}</h1>${sub ? `<p class="muted">${e(sub)}</p>` : ''}</div>${action}</div>`;
   const section = (title, sub = '', action = '') =>
     `<div class="section-head row-between"><div><h2>${e(title)}</h2>${sub ? `<p class="muted small">${e(sub)}</p>` : ''}</div>${action}</div>`;
   const metric = (value, label, icon, detail = '') =>
     `<div class="stat"><div class="row-between"><span class="stat-label">${e(label)}</span>${ic(icon)}</div><div class="stat-value num">${e(value)}</div>${detail ? `<span class="tiny muted">${e(detail)}</span>` : ''}</div>`;
-  // ATLAS_DASHBOARD_DRILLDOWN_2027: accessible, reusable KPI drill-down control, not an inert statistic.
+  // ELVORANCE_DASHBOARD_DRILLDOWN_2027: accessible, reusable KPI drill-down control, not an inert statistic.
   const metricLink = (value, label, symbol, detail, route, filter) =>
     `<button type="button" class="stat rep-stat-link" data-go="${e(route)}" data-param-filter="${e(filter)}" data-param-source="dashboard" aria-label="${e('عرض ' + label + ': ' + value)}"><span class="row-between"><span class="stat-label">${e(label)}</span>${ic(symbol)}</span><strong class="stat-value num">${e(value)}</strong>${detail ? `<span class="tiny muted">${e(detail)}</span>` : ''}<span class="rep-stat-open" aria-hidden="true">${ic('chevron-left')}</span></button>`;
   // Context is shown only after entry from dashboard, preserving ordinary list navigation.

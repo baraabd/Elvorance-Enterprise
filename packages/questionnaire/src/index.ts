@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Tenant-editable discovery schema. Stable identifiers survive copy edits. No customer answers are seeded here. */
 const activities = [
   ['clinic','عيادة / مركز طبي'], ['restaurant','مطعم / مقهى'], ['workshop','ورشة / صيانة'],

@@ -1,5 +1,7 @@
-import { defaultConfiguration } from '@atlas/questionnaire';
-/* Atlas 2027 — synthetic, deterministic relationships. No real customer data. */
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import { defaultConfiguration } from '@elvorance/questionnaire';
+/* Elvorance 2027 — synthetic, deterministic relationships. No real customer data. */
 const iso = (days = 0, hour = 12, minute = 0) => {
   const d = new Date();
   d.setDate(d.getDate() + days);
@@ -1052,7 +1054,7 @@ export function createDemoData() {
       _revision: 0,
       _queue: [],
       settings: {
-        company: 'أطلس للحلول الرقمية',
+        company: 'إلفورانس للحلول الرقمية',
         currency: 'USD',
         city: 'حلب',
         weeklyTarget: 24,

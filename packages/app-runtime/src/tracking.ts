@@ -1,11 +1,13 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /* Real, explicitly consented location sharing. No CRM seed coordinates are used.
  * The same-origin worker owns sessions and freshness; this module owns GPS consent.
  */
 export function installSiteTracking(options = {}) {
-  if (window.AtlasTracking) return;
-  const A = options.runtime || window.Atlas;
+  if (window.ElvoranceTracking) return;
+  const A = options.runtime || window.Elvorance;
   if (!A) return;
-  const STORAGE_KEY = 'atlas.tracking.device.v1';
+  const STORAGE_KEY = 'elvorance.tracking.device.v1';
   const POLL_MS = 5000,
     READING_MS = 15000,
     FRESH_MS = 45000;
@@ -216,7 +218,7 @@ export function installSiteTracking(options = {}) {
       effectiveStatus(acknowledged, Date.now()) !== 'live'
     )
       phase = 'stale';
-    document.querySelectorAll('[data-atlas-tracking-control]').forEach((holder, index) => {
+    document.querySelectorAll('[data-elvorance-tracking-control]').forEach((holder, index) => {
       const focused = holder.contains(document.activeElement)
         ? document.activeElement?.dataset.trackAction
         : null;
@@ -712,7 +714,7 @@ export function installSiteTracking(options = {}) {
   }
 
   function renderAdmin() {
-    document.querySelectorAll('[data-atlas-live-team]').forEach((holder) => {
+    document.querySelectorAll('[data-elvorance-live-team]').forEach((holder) => {
       const rows = holder.dataset.rep
         ? adminRows.filter((row) => row.repId === holder.dataset.rep)
         : adminRows;
@@ -733,7 +735,7 @@ export function installSiteTracking(options = {}) {
   }
 
   async function pollAdmin() {
-    if (!visible() || !Array.from(document.querySelectorAll('[data-atlas-live-team]')).some(shown))
+    if (!visible() || !Array.from(document.querySelectorAll('[data-elvorance-live-team]')).some(shown))
       return;
     // Age existing readings even when a slow request is still pending.
     renderAdmin();
@@ -762,7 +764,7 @@ export function installSiteTracking(options = {}) {
 
   function syncAdminPolling() {
     const shouldPoll =
-      visible() && Array.from(document.querySelectorAll('[data-atlas-live-team]')).some(shown);
+      visible() && Array.from(document.querySelectorAll('[data-elvorance-live-team]')).some(shown);
     if (!shouldPoll && adminTimer !== null) {
       clearInterval(adminTimer);
       adminTimer = null;
@@ -805,7 +807,7 @@ export function installSiteTracking(options = {}) {
   }
 
   function mount() {
-    const hasControls = Boolean(document.querySelector('[data-atlas-tracking-control]'));
+    const hasControls = Boolean(document.querySelector('[data-elvorance-tracking-control]'));
     if (hasControls) {
       renderControls();
       if (!mounted) checkService();
@@ -821,7 +823,7 @@ export function installSiteTracking(options = {}) {
     if (!button || button.disabled) return;
     event.preventDefault();
     const name = button.dataset.trackAction;
-    if (name === 'start') startSharing(button.closest('[data-atlas-tracking-control]'));
+    if (name === 'start') startSharing(button.closest('[data-elvorance-tracking-control]'));
     else if (name === 'stop') stopSharing();
     else if (name === 'fresh') requestFresh();
     else if (name === 'retry-service') checkService();
@@ -858,11 +860,11 @@ export function installSiteTracking(options = {}) {
   window.addEventListener('pagehide', () => {
     pauseSharing('hidden');
   });
-  window.addEventListener('atlas:render', mount);
-  document.addEventListener('atlas:render', mount);
-  window.AtlasTracking = { mount };
+  window.addEventListener('elvorance:render', mount);
+  document.addEventListener('elvorance:render', mount);
+  window.ElvoranceTracking = { mount };
   if (document.readyState === 'loading')
     document.addEventListener('DOMContentLoaded', mount, { once: true });
   else mount();
-  return window.AtlasTracking;
+  return window.ElvoranceTracking;
 }
