@@ -67,7 +67,20 @@ for (const suite of suites) {
   );
   summary.push({ suite, status: result.status === 0 ? 'passed' : 'failed' });
   console.log(`${result.status === 0 ? 'PASS' : 'FAIL'} current modular frontend: ${suite}`);
-  if (result.status !== 0) console.error((result.stderr || result.stdout || '').slice(-6000));
+  if (result.status !== 0) {
+    let parsed = null;
+    try {
+      parsed = JSON.parse(result.stdout || '');
+    } catch {
+      // Some legacy suites emit line-oriented diagnostics instead of JSON.
+    }
+    const failures = parsed?.results?.filter((row) => row.status === 'failed');
+    if (failures?.length) {
+      console.error(JSON.stringify({ suite, failed: failures }, null, 2).slice(0, 14000));
+    } else {
+      console.error((result.stderr || result.stdout || '').slice(0, 10000));
+    }
+  }
 }
 await writeFile(
   resolve(root, 'dist/evidence/regression/summary.json'),
