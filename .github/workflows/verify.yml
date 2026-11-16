@@ -30,7 +30,10 @@ jobs:
           git diff --quiet && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # GitHub App tokens cannot update workflow files without the workflows permission.
+          git restore -- .github/workflows/verify.yml
           git add -u
+          git diff --cached --quiet && exit 0
           git commit -m "style: apply Prettier to TypeScript migration"
           git push origin HEAD:refs/heads/refactor/elvorance-typescript-monorepo
   verify:
