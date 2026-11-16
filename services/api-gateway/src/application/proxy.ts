@@ -1,4 +1,4 @@
-import { AppError, assert } from '@atlas/service-kit';
+import { AppError, assert } from '@elvorance/service-kit';
 export interface ProxyRequest {
   origin: string;
   suffix: string;

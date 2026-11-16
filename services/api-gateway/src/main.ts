@@ -1,4 +1,4 @@
-import { authFromEnv, listen } from '@atlas/service-kit';
+import { authFromEnv, listen } from '@elvorance/service-kit';
 import { createApp } from './app.ts';
 import { upstreamsFromEnv } from './infrastructure/config.ts';
 const app = createApp({

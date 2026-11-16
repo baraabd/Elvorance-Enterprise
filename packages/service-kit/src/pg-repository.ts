@@ -1,5 +1,5 @@
 import pg from 'pg';
-import type { Entity, EventEnvelope } from '@atlas/contracts';
+import type { Entity, EventEnvelope } from '@elvorance/contracts';
 import { AppError, assert } from './errors.ts';
 import type { Migration } from './migrations.ts';
 import {
@@ -56,14 +56,14 @@ export class PgRepository implements Repository {
       max: 10,
       connectionTimeoutMillis: 5000,
       statement_timeout: 15_000,
-      application_name: `atlas-${serviceName}`,
+      application_name: `elvorance-${serviceName}`,
     });
   }
   async migrate(): Promise<void> {
     const client = await this.pool.connect();
     try {
       await client.query('BEGIN');
-      await client.query("SELECT pg_advisory_xact_lock(hashtext('atlas_schema_migrations'))");
+      await client.query("SELECT pg_advisory_xact_lock(hashtext('elvorance_schema_migrations'))");
       await client.query(
         'CREATE TABLE IF NOT EXISTS schema_migrations (version integer PRIMARY KEY, name text NOT NULL, applied_at timestamptz NOT NULL DEFAULT now())',
       );
