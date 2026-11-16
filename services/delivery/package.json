@@ -1,5 +1,5 @@
 {
-  "name": "@atlas/delivery",
+  "name": "@elvorance/delivery",
   "version": "2.0.0",
   "private": true,
   "type": "module",
@@ -8,9 +8,9 @@
     "./domain": "./src/domain/model.ts"
   },
   "dependencies": {
-    "@atlas/contracts": "2.0.0",
-    "@atlas/service-kit": "2.0.0",
-    "@atlas/events": "2.0.0",
+    "@elvorance/contracts": "2.0.0",
+    "@elvorance/service-kit": "2.0.0",
+    "@elvorance/events": "2.0.0",
     "fastify": "5.12.8"
   }
 }
