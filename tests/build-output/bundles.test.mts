@@ -21,6 +21,7 @@ for (const app of apps) {
       virtualConsole,
       beforeParse(window) {
         window.scrollTo = () => {};
+        window.structuredClone = globalThis.structuredClone;
       },
     });
     try {

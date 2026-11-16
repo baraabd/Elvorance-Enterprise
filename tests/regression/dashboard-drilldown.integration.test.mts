@@ -138,7 +138,7 @@ await test('empty dashboard KPI still opens a filtered empty state rather than d
 await test('keyboard focus design and mobile tap style exist; source is module-based and safe to include', async () => {
  const css=await readFile(join(root,'apps/rep-mobile/src/styles.css'),'utf8');
  assert.match(css,/\.rep-stat-link:focus-visible/);assert.match(css,/touch-action:manipulation/);
- const runtime=await readFile(join(root,'packages/app-runtime/src/index.js'),'utf8');
+ const runtime=await readFile(join(root,'packages/app-runtime/src/index.ts'),'utf8');
  assert.ok(runtime.includes("if (el.dataset.go)"));
  assert.ok(runtime.includes("key.startsWith('param')"));
 });
