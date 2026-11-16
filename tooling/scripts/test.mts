@@ -17,7 +17,7 @@ async function walk(dir) {
     if (['node_modules', 'dist', 'android', 'ios', 'baseline'].includes(item.name)) continue;
     const file = resolve(dir, item.name);
     if (item.isDirectory()) found.push(...(await walk(file)));
-    else if (/\.test\\.(mts|cts|ts|tsx)$/.test(item.name)) found.push(file);
+    else if (/\.test\.(mts|cts|ts|tsx)$/.test(item.name)) found.push(file);
   }
   return found;
 }
@@ -28,7 +28,7 @@ const files = [
 if (!files.length) throw new Error('No test files found.');
 const runnable = [];
 for (const file of files) {
-  if (!/\.(ts|mts|cts)$/.test(file)) {
+  if (!file.endsWith('.ts') && !file.endsWith('.tsx')) {
     runnable.push(file);
     continue;
   }
