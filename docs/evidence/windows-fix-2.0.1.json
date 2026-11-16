@@ -1,0 +1,125 @@
+{
+  "release": "2.0.1",
+  "recordedAt": "2026-11-13T20:30:25.423928+00:00",
+  "execution": {
+    "platform": "Linux",
+    "node": "24.22.1",
+    "sourceVerifyNpm": "11.9.0",
+    "cleanInstallVerifyNpm": "11.19.0",
+    "nativeWindowsExecuted": false,
+    "dockerExecuted": false,
+    "apkBuilt": false,
+    "ipaBuilt": false
+  },
+  "cleanInstall": {
+    "source": "Original AtlasCRM-Enterprise-2.0.0.zip with source hotfix applied",
+    "packagesAdded": 222,
+    "preflightPassed": true,
+    "applied": true,
+    "reapplyChanged": 0,
+    "verifyExitCode": 0,
+    "formatExitCode": 0
+  },
+  "tests": {
+    "total": 65,
+    "passed": 64,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "PostgreSQL integration requires ATLAS_TEST_POSTGRES_URL; not configured in this run",
+    "architectureFixturesPassed": 26
+  },
+  "parity": {
+    "routes": 64,
+    "passed": 64,
+    "actions": 122,
+    "assets": 9,
+    "assetsPassed": 9,
+    "runtimeErrors": 0
+  },
+  "behavior": {
+    "passed": 137,
+    "failed": 0,
+    "suites": {
+      "rep-flows": 16,
+      "client-flows": 16,
+      "admin-flows": 16,
+      "rep-journey": 17,
+      "client-lifecycle": 14,
+      "workflow-audit": 40,
+      "tracking-client": 18
+    }
+  },
+  "permissionRegression": {
+    "method": "Full build with fs.promises.cp and chmod replaced by EPERM failures; delegated build verification",
+    "appsBuilt": 3,
+    "nativeWindows": false
+  },
+  "androidSync": {
+    "rep-mobile": {
+      "exitCode": 0,
+      "plugins": 3
+    },
+    "client-mobile": {
+      "exitCode": 0,
+      "plugins": 2
+    },
+    "scope": "Asset and plugin synchronization on Linux, without Gradle or device execution"
+  },
+  "dependencyAudit": {
+    "npm": "11.19.0",
+    "reportedVulnerabilities": 0,
+    "fflate": "0.8.3",
+    "esbuildAllowScripts": "esbuild@0.28.2",
+    "unreviewedInstallScripts": 0
+  },
+  "composeStatic": {
+    "buildProducers": 8,
+    "uniqueImageTags": 8,
+    "migratorsReusingDomainImages": 7,
+    "runtimeExecuted": false
+  },
+  "windowsCi": {
+    "added": true,
+    "node": "24.21.0",
+    "npm": "11.19.0",
+    "executionObserved": false
+  },
+  "userReportedBackend": {
+    "source": "User supplied Windows logs; not a run performed in this environment",
+    "smokePassed": 9,
+    "domainReady200": 7,
+    "databaseConnectionsAllowed": 7,
+    "crossDatabaseConnectionsDenied": 42,
+    "migratorsExitZero": 7
+  },
+  "logs": [
+    {
+      "name": "atlas-windows-fix-verify.log",
+      "sha256": "a114e9400f8cc172ff3841933587faa74e0c478874942ece29a92fb814223621"
+    },
+    {
+      "name": "atlas-hotfix-clean-ci.log",
+      "sha256": "222097a0afa3b42235f0fb5aa160cb8b865d5915e544e7f0ef0f4ddca54aeb00"
+    },
+    {
+      "name": "atlas-hotfix-clean-verify.log",
+      "sha256": "ef7037f74e3a1319aa8ffcd49abf2df2d3cc7b81fbb6e48551e2389f55b7ee1e"
+    },
+    {
+      "name": "atlas-hotfix-clean-format.log",
+      "sha256": "6e1db057ce114f44772d19fdb9ca5e24d015dfe6eba87906aab977e2307bc795"
+    },
+    {
+      "name": "atlas-hotfix-clean-rep-sync.log",
+      "sha256": "719aa619e4921f9a27952b6eb15114bc067d6f4c58610a00780abd99b2f9ffd1"
+    },
+    {
+      "name": "atlas-hotfix-clean-client-sync.log",
+      "sha256": "046f5b55d6386200aa89ec40d72f6a287d8fc4b48b6fed28bff19909a246ae7e"
+    },
+    {
+      "name": "atlas-hotfix-clean-package.log",
+      "sha256": "477c4d7c3b476b91a64a740668966265065c058e24cf60bfc171264f366fa33c"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+node_modules
+dist
+preview
+.atlas-backups
+package-lock.json
+**/android
+**/ios
+packages/design-system/src/*.css
+apps/*/src/styles.css
+tests/design-parity/baseline
+tests/design-parity/baseline*.json
+tests/design-parity/artifacts
+tests/regression/*results.json
+docs/evidence
+

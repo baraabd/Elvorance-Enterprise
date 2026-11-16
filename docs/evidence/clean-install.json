@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-11-13T18:40:40.175233+00:00",
+  "method": "Independent clean source copy, npm ci from committed lockfile, complete verification chain, then final formatting check",
+  "environment": {
+    "node": "v24.22.1",
+    "npm": "11.9.0",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "cleanCopy": {
+    "sourceFilesCopied": 415,
+    "sourceBytesCopied": 3801612,
+    "preexistingNodeModules": false,
+    "sourceSymlinks": 0,
+    "workspacePackages": 20,
+    "dependenciesOutsideCopy": 0,
+    "packageLockSha256": "adf43602873d60f132737911028b38a5f953331727d0248b62e57103b68e23e0",
+    "lockfileUnchanged": true
+  },
+  "install": {
+    "command": "npm ci --no-audit --no-fund",
+    "exitCode": 0,
+    "seconds": 4.92,
+    "packagesAdded": 222
+  },
+  "verify": {
+    "command": "npm run verify",
+    "exitCode": 0,
+    "seconds": 92.1,
+    "types": "passed",
+    "boundaries": {
+      "status": "passed",
+      "workspaces": 20,
+      "sourceFiles": 145,
+      "internalEdges": 155,
+      "violations": 0
+    },
+    "applicationsBuilt": 3,
+    "servicesBuilt": 8,
+    "nodeTests": {
+      "total": 51,
+      "passed": 50,
+      "failed": 0,
+      "skipped": 1,
+      "skipReason": "Real PostgreSQL test requires ATLAS_TEST_POSTGRES_URL; no PostgreSQL instance was attached to this clean-copy run"
+    },
+    "designParity": {
+      "routes": 64,
+      "routesPassed": 64,
+      "routesFailed": 0,
+      "actions": 122,
+      "assets": 9,
+      "assetsPassed": 9,
+      "assetsFailed": 0,
+      "runtimeErrors": 0
+    },
+    "behavioralRegressions": {
+      "suites": 7,
+      "passed": 137,
+      "failed": 0,
+      "results": {
+        "admin-flows": {
+          "passed": 16,
+          "failed": 0
+        },
+        "client-flows": {
+          "passed": 16,
+          "failed": 0
+        },
+        "client-lifecycle": {
+          "passed": 14,
+          "failed": 0
+        },
+        "rep-flows": {
+          "passed": 16,
+          "failed": 0
+        },
+        "rep-journey": {
+          "passed": 17,
+          "failed": 0
+        },
+        "tracking-client": {
+          "passed": 18,
+          "failed": 0
+        },
+        "workflow-audit": {
+          "passed": 40,
+          "failed": 0
+        }
+      }
+    }
+  },
+  "format": {
+    "command": "npm run check:format",
+    "exitCode": 0,
+    "seconds": 14.45,
+    "phase": "after formatting-only source synchronization and reviewed packaging/whitespace tooling changes"
+  },
+  "postVerifySync": {
+    "purpose": "Final Prettier/documentation synchronization; no application or domain behavior change",
+    "changedJsTsWithIdenticalNormalizedOutput": 6,
+    "normalizedUsing": "esbuild.transform with minify, ESNext and legalComments:none",
+    "separatelyReviewedToolingChanges": {
+      "tooling/scripts/package.mjs": "Preserve executable bits in ZIP entries",
+      "tooling/scripts/build-apps.mjs": "Remove generated whitespace-only script line"
+    },
+    "newMetadata": ".gitattributes",
+    "unexpectedSemanticChanges": [],
+    "fullBehavioralSuitesRerunAfterFormatting": false
+  },
+  "scope": "Executed on Linux. This confirms standalone dependencies, paths and locked builds; it is not a claim of execution on Windows, Android or iOS.",
+  "status": "passed"
+}

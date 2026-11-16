@@ -1,0 +1,8 @@
+import { createService, type AppOptions } from '@atlas/service-kit';
+import { registerRoutes } from './transport/routes.ts';
+export function createApp(options: AppOptions) {
+  const app = createService('delivery', options);
+  registerRoutes(app, options.repository);
+  return app;
+}
+export { handleEvent, subscriptions } from './application/events.ts';

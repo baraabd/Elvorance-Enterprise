@@ -1,0 +1,43 @@
+{
+  "observedAt": "2026-11-13T18:35:27.385259+00:00",
+  "environment": {
+    "node": "24.22.1",
+    "npm": "11.9.0",
+    "dockerAvailable": false
+  },
+  "unitTests": {
+    "command": "node --test tests/architecture/boundaries.test.mjs tests/architecture/infra-helpers.test.mjs",
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0,
+    "boundaryCases": 24,
+    "infraHelperCases": 4
+  },
+  "sourceGraph": {
+    "ok": true,
+    "workspaces": 20,
+    "sourceFiles": 161,
+    "edgeCount": 155,
+    "violations": []
+  },
+  "composeStatic": {
+    "yamlParsed": 2,
+    "containersPerFile": 17,
+    "domainDatabases": 7,
+    "migrationJobs": 7,
+    "gatewayHasDatabase": false,
+    "servicePortsPublished": false,
+    "postgresPortPublished": false,
+    "shellSyntax": "passed",
+    "nodeSyntax": "passed"
+  },
+  "notExecutedHere": [
+    "Docker Compose runtime",
+    "Compose init and isolation shell scripts against a running container",
+    "live RabbitMQ",
+    "actual HTTP smoke against deployed gateway",
+    "Android or iOS compiled build/device"
+  ],
+  "postgresEvidence": "tests/backend/verification.json records the separate real PostgreSQL 16.11 verification; this is not a Compose execution result.",
+  "scope": "Static architecture policy and helper behavior. Root final verification must be rerun after formatting/source changes."
+}

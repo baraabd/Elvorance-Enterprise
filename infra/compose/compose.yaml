@@ -1,0 +1,377 @@
+name: ${COMPOSE_PROJECT_NAME:-atlas-enterprise}
+
+x-service-environment: &service-environment
+  NODE_ENV: development
+  HOST: 0.0.0.0
+  AUTH_MODE: ${AUTH_MODE:-dev-hs256}
+  DEV_JWT_SECRET: ${DEV_JWT_SECRET:?Run node infra/compose/init-env.mjs}
+  OIDC_ISSUER: ${OIDC_ISSUER:-https://atlas.local.invalid}
+  OIDC_AUDIENCE: ${OIDC_AUDIENCE:-atlas-enterprise}
+  OIDC_JWKS_URL: ${OIDC_JWKS_URL:-}
+  RABBITMQ_URL: amqp://${RABBITMQ_USER:-atlas}:${RABBITMQ_PASSWORD:?Run init-env.mjs}@rabbitmq:5672/atlas
+  AUTO_MIGRATE: 'false'
+
+x-service: &service
+  restart: unless-stopped
+  init: true
+  read_only: true
+  tmpfs: [/tmp]
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  networks: [mesh, data]
+  healthcheck:
+    test:
+      [
+        CMD,
+        node,
+        -e,
+        "fetch('http://127.0.0.1:'+process.env.PORT+'/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+      ]
+    interval: 10s
+    timeout: 5s
+    start_period: 30s
+    retries: 12
+
+services:
+  postgres:
+    image: ${POSTGRES_IMAGE:-postgres:16-bookworm}
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Run init-env.mjs}
+      IDENTITY_DB_PASSWORD: ${IDENTITY_DB_PASSWORD:?Run init-env.mjs}
+      CRM_DB_PASSWORD: ${CRM_DB_PASSWORD:?Run init-env.mjs}
+      SALES_DB_PASSWORD: ${SALES_DB_PASSWORD:?Run init-env.mjs}
+      DELIVERY_DB_PASSWORD: ${DELIVERY_DB_PASSWORD:?Run init-env.mjs}
+      BILLING_DB_PASSWORD: ${BILLING_DB_PASSWORD:?Run init-env.mjs}
+      TRACKING_DB_PASSWORD: ${TRACKING_DB_PASSWORD:?Run init-env.mjs}
+      COMMUNICATIONS_DB_PASSWORD: ${COMMUNICATIONS_DB_PASSWORD:?Run init-env.mjs}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./postgres/010-service-databases.sh:/docker-entrypoint-initdb.d/010-service-databases.sh:ro
+      - ./postgres/check-isolation.sh:/opt/atlas/check-isolation.sh:ro
+    networks: [data]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -h 127.0.0.1 -U "$${POSTGRES_USER}" -d postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  rabbitmq:
+    image: ${RABBITMQ_IMAGE:-rabbitmq:4-management}
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-atlas}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:?Run init-env.mjs}
+      RABBITMQ_DEFAULT_VHOST: atlas
+    ports:
+      - '${RABBITMQ_MANAGEMENT_BIND_HOST:-127.0.0.1}:${RABBITMQ_MANAGEMENT_PORT:-15672}:15672'
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks: [mesh]
+    healthcheck:
+      test: [CMD, rabbitmq-diagnostics, -q, ping]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+
+  identity-migrate:
+    <<: *service
+    image: atlas-identity:${IMAGE_TAG:-local}
+    pull_policy: never
+    command: [--migrate-only]
+    restart: 'no'
+    healthcheck:
+      disable: true
+    environment:
+      <<: *service-environment
+      PORT: '3001'
+      DATABASE_URL: postgresql://atlas_identity:${IDENTITY_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_identity
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  identity:
+    <<: *service
+    image: atlas-identity:${IMAGE_TAG:-local}
+    build:
+      context: ../..
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:24-bookworm-slim}
+        SERVICE_NAME: identity
+    environment:
+      <<: *service-environment
+      PORT: '3001'
+      DATABASE_URL: postgresql://atlas_identity:${IDENTITY_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_identity
+    depends_on:
+      identity-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  crm-migrate:
+    <<: *service
+    image: atlas-crm:${IMAGE_TAG:-local}
+    pull_policy: never
+    command: [--migrate-only]
+    restart: 'no'
+    healthcheck:
+      disable: true
+    environment:
+      <<: *service-environment
+      PORT: '3002'
+      DATABASE_URL: postgresql://atlas_crm:${CRM_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_crm
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  crm:
+    <<: *service
+    image: atlas-crm:${IMAGE_TAG:-local}
+    build:
+      context: ../..
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:24-bookworm-slim}
+        SERVICE_NAME: crm
+    environment:
+      <<: *service-environment
+      PORT: '3002'
+      DATABASE_URL: postgresql://atlas_crm:${CRM_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_crm
+    depends_on:
+      crm-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  sales-migrate:
+    <<: *service
+    image: atlas-sales:${IMAGE_TAG:-local}
+    pull_policy: never
+    command: [--migrate-only]
+    restart: 'no'
+    healthcheck:
+      disable: true
+    environment:
+      <<: *service-environment
+      PORT: '3003'
+      DATABASE_URL: postgresql://atlas_sales:${SALES_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_sales
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  sales:
+    <<: *service
+    image: atlas-sales:${IMAGE_TAG:-local}
+    build:
+      context: ../..
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:24-bookworm-slim}
+        SERVICE_NAME: sales
+    environment:
+      <<: *service-environment
+      PORT: '3003'
+      DATABASE_URL: postgresql://atlas_sales:${SALES_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_sales
+      CRM_URL: http://crm:3002
+    depends_on:
+      sales-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  delivery-migrate:
+    <<: *service
+    image: atlas-delivery:${IMAGE_TAG:-local}
+    pull_policy: never
+    command: [--migrate-only]
+    restart: 'no'
+    healthcheck:
+      disable: true
+    environment:
+      <<: *service-environment
+      PORT: '3004'
+      DATABASE_URL: postgresql://atlas_delivery:${DELIVERY_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_delivery
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  delivery:
+    <<: *service
+    image: atlas-delivery:${IMAGE_TAG:-local}
+    build:
+      context: ../..
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:24-bookworm-slim}
+        SERVICE_NAME: delivery
+    environment:
+      <<: *service-environment
+      PORT: '3004'
+      DATABASE_URL: postgresql://atlas_delivery:${DELIVERY_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_delivery
+    depends_on:
+      delivery-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  billing-migrate:
+    <<: *service
+    image: atlas-billing:${IMAGE_TAG:-local}
+    pull_policy: never
+    command: [--migrate-only]
+    restart: 'no'
+    healthcheck:
+      disable: true
+    environment:
+      <<: *service-environment
+      PORT: '3005'
+      DATABASE_URL: postgresql://atlas_billing:${BILLING_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_billing
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  billing:
+    <<: *service
+    image: atlas-billing:${IMAGE_TAG:-local}
+    build:
+      context: ../..
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:24-bookworm-slim}
+        SERVICE_NAME: billing
+    environment:
+      <<: *service-environment
+      PORT: '3005'
+      DATABASE_URL: postgresql://atlas_billing:${BILLING_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_billing
+    depends_on:
+      billing-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  tracking-migrate:
+    <<: *service
+    image: atlas-tracking:${IMAGE_TAG:-local}
+    pull_policy: never
+    command: [--migrate-only]
+    restart: 'no'
+    healthcheck:
+      disable: true
+    environment:
+      <<: *service-environment
+      PORT: '3006'
+      DATABASE_URL: postgresql://atlas_tracking:${TRACKING_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_tracking
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  tracking:
+    <<: *service
+    image: atlas-tracking:${IMAGE_TAG:-local}
+    build:
+      context: ../..
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:24-bookworm-slim}
+        SERVICE_NAME: tracking
+    environment:
+      <<: *service-environment
+      PORT: '3006'
+      DATABASE_URL: postgresql://atlas_tracking:${TRACKING_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_tracking
+    depends_on:
+      tracking-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  communications-migrate:
+    <<: *service
+    image: atlas-communications:${IMAGE_TAG:-local}
+    pull_policy: never
+    command: [--migrate-only]
+    restart: 'no'
+    healthcheck:
+      disable: true
+    environment:
+      <<: *service-environment
+      PORT: '3007'
+      DATABASE_URL: postgresql://atlas_communications:${COMMUNICATIONS_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_communications
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  communications:
+    <<: *service
+    image: atlas-communications:${IMAGE_TAG:-local}
+    build:
+      context: ../..
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:24-bookworm-slim}
+        SERVICE_NAME: communications
+    environment:
+      <<: *service-environment
+      PORT: '3007'
+      DATABASE_URL: postgresql://atlas_communications:${COMMUNICATIONS_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_communications
+    depends_on:
+      communications-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  api-gateway:
+    <<: *service
+    image: atlas-api-gateway:${IMAGE_TAG:-local}
+    build:
+      context: ../..
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:24-bookworm-slim}
+        SERVICE_NAME: api-gateway
+    networks: [mesh]
+    ports:
+      - '${GATEWAY_BIND_HOST:-127.0.0.1}:${GATEWAY_PORT:-3000}:3000'
+    environment:
+      NODE_ENV: development
+      HOST: 0.0.0.0
+      PORT: '3000'
+      AUTH_MODE: ${AUTH_MODE:-dev-hs256}
+      DEV_JWT_SECRET: ${DEV_JWT_SECRET:?Run init-env.mjs}
+      OIDC_ISSUER: ${OIDC_ISSUER:-https://atlas.local.invalid}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:-atlas-enterprise}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:-}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://127.0.0.1:4173,http://localhost:4173,https://localhost,capacitor://localhost}
+      IDENTITY_URL: http://identity:3001
+      CRM_URL: http://crm:3002
+      SALES_URL: http://sales:3003
+      DELIVERY_URL: http://delivery:3004
+      BILLING_URL: http://billing:3005
+      TRACKING_URL: http://tracking:3006
+      COMMUNICATIONS_URL: http://communications:3007
+    depends_on:
+      identity:
+        condition: service_healthy
+      crm:
+        condition: service_healthy
+      sales:
+        condition: service_healthy
+      delivery:
+        condition: service_healthy
+      billing:
+        condition: service_healthy
+      tracking:
+        condition: service_healthy
+      communications:
+        condition: service_healthy
+
+networks:
+  mesh: {}
+  data:
+    internal: true
+
+volumes:
+  postgres-data: {}
+  rabbitmq-data: {}

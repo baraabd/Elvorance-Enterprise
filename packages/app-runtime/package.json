@@ -1,0 +1,16 @@
+{
+  "name": "@atlas/app-runtime",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./tracking": "./src/tracking.js",
+    "./finance": "./src/finance.js"
+  },
+  "dependencies": {
+    "@atlas/demo-data": "2.0.0",
+    "@atlas/ui": "2.0.0",
+    "@atlas/design-system": "2.0.0"
+  }
+}

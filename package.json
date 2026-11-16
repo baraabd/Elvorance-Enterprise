@@ -1,0 +1,54 @@
+{
+  "name": "atlas-crm-enterprise",
+  "version": "2.4.1",
+  "private": true,
+  "type": "module",
+  "description": "Atlas Enterprise consolidated development source: dynamic configuration, KPI drilldowns, revised quote finances, visit readiness, microservices.",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "services/*"
+  ],
+  "engines": {
+    "node": ">=24.15 <25",
+    "npm": ">=11 <12"
+  },
+  "packageManager": "npm@11.19.0",
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  },
+  "scripts": {
+    "dev": "node tooling/scripts/dev.mjs",
+    "dev:rep": "node tooling/scripts/dev.mjs rep-mobile",
+    "dev:client": "node tooling/scripts/dev.mjs client-mobile",
+    "dev:admin": "node tooling/scripts/dev.mjs admin-web",
+    "build": "npm run build:apps && npm run build:services",
+    "build:apps": "node tooling/scripts/build-apps.mjs",
+    "build:services": "node tooling/scripts/build-services.mjs",
+    "check:types": "tsc --noEmit",
+    "check:boundaries": "node tooling/scripts/check-boundaries.mjs",
+    "check:format": "prettier --check .",
+    "format": "prettier --write .",
+    "test": "node tooling/scripts/test.mjs",
+    "test:parity": "node tests/design-parity/parity.mjs",
+    "test:regression": "node tooling/scripts/test-regression.mjs",
+    "verify": "npm run check:types && npm run check:boundaries && npm run build && npm test && npm run test:parity && npm run test:regression",
+    "mobile:sync": "node tooling/scripts/mobile.mjs sync",
+    "mobile:add": "node tooling/scripts/mobile.mjs add",
+    "package": "node tooling/scripts/package.mjs",
+    "infra:up": "docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml build && docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml up --no-build -d --wait --wait-timeout 180",
+    "infra:down": "docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml down",
+    "test:merged": "node --test tests/questionnaire/dynamic-form.test.mjs tests/validation/numeric-fields.test.mjs tests/regression/dashboard-drilldown.integration.test.mjs tests/regression/finance-2.3.test.mjs tests/regression/quote-ui-consolidated.test.mjs examples/instant-close/tests/flow.test.mjs"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.6.2",
+    "@types/amqplib": "0.10.8",
+    "@types/node": "24.10.1",
+    "@types/pg": "8.23.1",
+    "esbuild": "0.28.2",
+    "fflate": "0.8.3",
+    "jsdom": "31.0.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3"
+  }
+}

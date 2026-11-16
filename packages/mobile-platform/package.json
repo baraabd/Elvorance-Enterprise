@@ -1,0 +1,15 @@
+{
+  "name": "@atlas/mobile-platform",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "@capacitor/core": "8.6.2",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/geolocation": "8.2.4",
+    "@capacitor/network": "8.0.1"
+  }
+}

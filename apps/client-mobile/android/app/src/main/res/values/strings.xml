@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">مساحتي مع أطلس</string>
+    <string name="title_activity_main">مساحتي مع أطلس</string>
+    <string name="package_name">com.atlascrm.client</string>
+    <string name="custom_url_scheme">com.atlascrm.client</string>
+</resources>

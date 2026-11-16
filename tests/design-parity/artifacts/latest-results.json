@@ -1,0 +1,661 @@
+{
+  "schemaVersion": 1,
+  "method": "Frozen v1.1 full-route DOM + exact CSS/font/icon parity against bundled ES modules",
+  "startedAt": "2026-11-13T20:22:46.205Z",
+  "cases": [
+    {
+      "id": "rep/home",
+      "status": "passed",
+      "expectedHash": "cca863141abae388c1dc4ca1f76d174c746c569028dae8c3d3f28ae294ccaae6",
+      "actualHash": "cca863141abae388c1dc4ca1f76d174c746c569028dae8c3d3f28ae294ccaae6",
+      "title": "الرئيسية · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/territory",
+      "status": "passed",
+      "expectedHash": "ecd9b0f48e9b23fb9ca4702e7b43bc404f8a29e04a9c535d4276d625ab100f25",
+      "actualHash": "ecd9b0f48e9b23fb9ca4702e7b43bc404f8a29e04a9c535d4276d625ab100f25",
+      "title": "المناطق والمسار · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/clients",
+      "status": "passed",
+      "expectedHash": "e0c0bae7927060a74b93c2963c2d405185ea1e278ef266e9d1b379a0fba20d14",
+      "actualHash": "e0c0bae7927060a74b93c2963c2d405185ea1e278ef266e9d1b379a0fba20d14",
+      "title": "العملاء · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/client-form",
+      "status": "passed",
+      "expectedHash": "88084d22638742efb1cdcebe1d0a044cb8e03dc844e053e746e1e83aee3dad33",
+      "actualHash": "88084d22638742efb1cdcebe1d0a044cb8e03dc844e053e746e1e83aee3dad33",
+      "title": "ملف العميل · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/client-detail",
+      "status": "passed",
+      "expectedHash": "0a0ed46286b91574ea8ce8e5feb505fff34a07ea15b2f202e504572ae5f5dd0e",
+      "actualHash": "0a0ed46286b91574ea8ce8e5feb505fff34a07ea15b2f202e504572ae5f5dd0e",
+      "title": "تفاصيل العميل · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/visit-checkin",
+      "status": "passed",
+      "expectedHash": "c153e68c5e9204bbd02681a355120fa502960b3313efa333ec52c61cd970add7",
+      "actualHash": "c153e68c5e9204bbd02681a355120fa502960b3313efa333ec52c61cd970add7",
+      "title": "تسجيل الوصول · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/visit-active",
+      "status": "passed",
+      "expectedHash": "ea62131d265c857126e96bc512ec4cc1d7c3b5146a0775f9bfcb21c3fa3d3352",
+      "actualHash": "ea62131d265c857126e96bc512ec4cc1d7c3b5146a0775f9bfcb21c3fa3d3352",
+      "title": "الزيارة الجارية · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": [
+        {
+          "url": "/api/tracking/status",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "id": "rep/visit-outcome",
+      "status": "passed",
+      "expectedHash": "7b4746246fe365a121ab4ac6816ac780dc07d88f33bc563fc74371dfaa7afc47",
+      "actualHash": "7b4746246fe365a121ab4ac6816ac780dc07d88f33bc563fc74371dfaa7afc47",
+      "title": "نتيجة الزيارة · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/visit-detail",
+      "status": "passed",
+      "expectedHash": "a3639172aa4be26d307ae9f6aeab70655e284baf6ca4b9e456ab91ab390e94dc",
+      "actualHash": "a3639172aa4be26d307ae9f6aeab70655e284baf6ca4b9e456ab91ab390e94dc",
+      "title": "سجل الزيارة · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/catalog",
+      "status": "passed",
+      "expectedHash": "0d08f8af31b880b11f53c050c3c3c319902cb05f15f1dc3a7ba4f5082074e708",
+      "actualHash": "0d08f8af31b880b11f53c050c3c3c319902cb05f15f1dc3a7ba4f5082074e708",
+      "title": "الخدمات · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/service-detail",
+      "status": "passed",
+      "expectedHash": "70f5ca6538f8cacb26a5fa6f19d6a8332c3ee9b00eb9f8e41973d382468919f5",
+      "actualHash": "70f5ca6538f8cacb26a5fa6f19d6a8332c3ee9b00eb9f8e41973d382468919f5",
+      "title": "تفاصيل الخدمة · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/opportunities",
+      "status": "passed",
+      "expectedHash": "8274796a3a1ce1cda3b2a02c20919e3a097a7ef411e29ea4fdf9748dc8df00e8",
+      "actualHash": "8274796a3a1ce1cda3b2a02c20919e3a097a7ef411e29ea4fdf9748dc8df00e8",
+      "title": "الفرص · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/opportunity-detail",
+      "status": "passed",
+      "expectedHash": "933195b9096abc714ef690d6e2d04d8d78d9d1992626d6e617fbe9f98408a4fa",
+      "actualHash": "933195b9096abc714ef690d6e2d04d8d78d9d1992626d6e617fbe9f98408a4fa",
+      "title": "تفاصيل الفرصة · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/quote-builder",
+      "status": "passed",
+      "expectedHash": "1e6c5204121555fae1927e0ccc1333d00db205dacfe60226e0154e89f92c4b69",
+      "actualHash": "1e6c5204121555fae1927e0ccc1333d00db205dacfe60226e0154e89f92c4b69",
+      "title": "إعداد عرض السعر · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/quotes",
+      "status": "passed",
+      "expectedHash": "56786149e36ad1486e16c6bccaeb993b6f6b371535d70137a771eb05044f0cca",
+      "actualHash": "56786149e36ad1486e16c6bccaeb993b6f6b371535d70137a771eb05044f0cca",
+      "title": "عروض الأسعار · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/quote-detail",
+      "status": "passed",
+      "expectedHash": "e341a5668f02e0cc41829232aba4e8f806d8618f96dfb6c5d7cc096b2cc53a82",
+      "actualHash": "e341a5668f02e0cc41829232aba4e8f806d8618f96dfb6c5d7cc096b2cc53a82",
+      "title": "تفاصيل العرض · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/tasks",
+      "status": "passed",
+      "expectedHash": "b3808ad91a1920e644283edcc75b1d0624593aad0e25ae66e0809426a960f628",
+      "actualHash": "b3808ad91a1920e644283edcc75b1d0624593aad0e25ae66e0809426a960f628",
+      "title": "المهام · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/messages",
+      "status": "passed",
+      "expectedHash": "6bf9aece103e632bfb7f2ef109732c98a5aaecd8ce182befaca40059b7ebac3f",
+      "actualHash": "6bf9aece103e632bfb7f2ef109732c98a5aaecd8ce182befaca40059b7ebac3f",
+      "title": "المحادثات · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "rep/more",
+      "status": "passed",
+      "expectedHash": "e470e7a3e92c4c307a48419e2a9a225a2fd2cc5e9b5d597c903a979594f79325",
+      "actualHash": "e470e7a3e92c4c307a48419e2a9a225a2fd2cc5e9b5d597c903a979594f79325",
+      "title": "المزيد · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": [
+        {
+          "url": "/api/tracking/status",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "id": "rep/profile",
+      "status": "passed",
+      "expectedHash": "29b22d73c4d9e5c000827fbf4d16aec77c7921959fff849bc2e41173ed09e078",
+      "actualHash": "29b22d73c4d9e5c000827fbf4d16aec77c7921959fff849bc2e41173ed09e078",
+      "title": "الملف الشخصي · أطلس للمندوب | أطلس",
+      "trackingFixtureRequests": [
+        {
+          "url": "/api/tracking/status",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "id": "client/home",
+      "status": "passed",
+      "expectedHash": "ac25f6f1109c5183aba367727a7c40107afce07054c04661c69719b8df2921dd",
+      "actualHash": "ac25f6f1109c5183aba367727a7c40107afce07054c04661c69719b8df2921dd",
+      "title": "الرئيسية · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/services",
+      "status": "passed",
+      "expectedHash": "b9d6068a086450f6710cfdaa9f4f2742db5e0965b6da89f5ae4037a0cc02510d",
+      "actualHash": "b9d6068a086450f6710cfdaa9f4f2742db5e0965b6da89f5ae4037a0cc02510d",
+      "title": "الخدمات · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/service-detail",
+      "status": "passed",
+      "expectedHash": "1147bb49e39e101ba31273da0d70ffd0812215c5d2191bf7b5a7da423ba31c4d",
+      "actualHash": "1147bb49e39e101ba31273da0d70ffd0812215c5d2191bf7b5a7da423ba31c4d",
+      "title": "تفاصيل الخدمة · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/request-service",
+      "status": "passed",
+      "expectedHash": "1b118e4f99447e5432da7bfc7e267891d9629116f08f062fe14b4c9dd4acdee8",
+      "actualHash": "1b118e4f99447e5432da7bfc7e267891d9629116f08f062fe14b4c9dd4acdee8",
+      "title": "طلب خدمة · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/requests",
+      "status": "passed",
+      "expectedHash": "4fc90d962c1ff3a0570ddda1987e05ffefebb103c62f25277dd989103179f344",
+      "actualHash": "4fc90d962c1ff3a0570ddda1987e05ffefebb103c62f25277dd989103179f344",
+      "title": "طلبات الخدمات · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/quotes",
+      "status": "passed",
+      "expectedHash": "381054baf18f66c219b5e894c4666b6a28d3b01222598cabb4c2054391d03ff6",
+      "actualHash": "381054baf18f66c219b5e894c4666b6a28d3b01222598cabb4c2054391d03ff6",
+      "title": "عروض الأسعار · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/quote-detail",
+      "status": "passed",
+      "expectedHash": "5438e125692f68b7326ad352d1d155a3f98bf8688b9d477c74b955b25cb5e25d",
+      "actualHash": "5438e125692f68b7326ad352d1d155a3f98bf8688b9d477c74b955b25cb5e25d",
+      "title": "مراجعة العرض · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/contracts",
+      "status": "passed",
+      "expectedHash": "8ff56aed9f6d6c676c25dbf3b52b1d5e3e6c69073508f9fac1e71f0f8d1acc91",
+      "actualHash": "8ff56aed9f6d6c676c25dbf3b52b1d5e3e6c69073508f9fac1e71f0f8d1acc91",
+      "title": "العقود · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/contract-detail",
+      "status": "passed",
+      "expectedHash": "ef8899ce303abc7c4260bb3e1ce2dc92e6e264651151348e3ccb4ec1c31d3215",
+      "actualHash": "ef8899ce303abc7c4260bb3e1ce2dc92e6e264651151348e3ccb4ec1c31d3215",
+      "title": "تفاصيل العقد · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/projects",
+      "status": "passed",
+      "expectedHash": "d8df7ea6e91776492950aeb018741daf062c1eadd207c7970ee92a8f969105d0",
+      "actualHash": "d8df7ea6e91776492950aeb018741daf062c1eadd207c7970ee92a8f969105d0",
+      "title": "مشاريعي · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/project-detail",
+      "status": "passed",
+      "expectedHash": "f60689f45e127b6ac760c04a1e89d62f8e31d0bab3cd9d9365aadd8a6a780c69",
+      "actualHash": "f60689f45e127b6ac760c04a1e89d62f8e31d0bab3cd9d9365aadd8a6a780c69",
+      "title": "مساحة المشروع · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/deliverable-detail",
+      "status": "passed",
+      "expectedHash": "f8d0d3e5cb1b815a87dcd3a860cc3998550a324cd15f9465d03662d1f8a951ed",
+      "actualHash": "f8d0d3e5cb1b815a87dcd3a860cc3998550a324cd15f9465d03662d1f8a951ed",
+      "title": "مراجعة التسليم · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/invoices",
+      "status": "passed",
+      "expectedHash": "624000dd85bd81767aceff3d410d0503e642197f2f652e4bf5115c8607abd223",
+      "actualHash": "624000dd85bd81767aceff3d410d0503e642197f2f652e4bf5115c8607abd223",
+      "title": "الفواتير · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/invoice-detail",
+      "status": "passed",
+      "expectedHash": "5ec8ddf0e854c7a59ca6c7bf48a4ff3dd0142531e159efc6a0d06c7f3a625032",
+      "actualHash": "5ec8ddf0e854c7a59ca6c7bf48a4ff3dd0142531e159efc6a0d06c7f3a625032",
+      "title": "تفاصيل الفاتورة · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/support",
+      "status": "passed",
+      "expectedHash": "14fbd1e3a48cf59a718978bca36cbe2e66338a71184c4892a185051e7065321d",
+      "actualHash": "14fbd1e3a48cf59a718978bca36cbe2e66338a71184c4892a185051e7065321d",
+      "title": "مركز المساعدة · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/new-ticket",
+      "status": "passed",
+      "expectedHash": "e028711c514e82c80440f4a83bc400cab57b2abfbf903c9ecb40fc433100db8a",
+      "actualHash": "e028711c514e82c80440f4a83bc400cab57b2abfbf903c9ecb40fc433100db8a",
+      "title": "طلب مساعدة · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/ticket-detail",
+      "status": "passed",
+      "expectedHash": "ee1a99a2985cfff316efe1e09a216269a85300658443718bdc09d77fb26c67f5",
+      "actualHash": "ee1a99a2985cfff316efe1e09a216269a85300658443718bdc09d77fb26c67f5",
+      "title": "تفاصيل طلب المساعدة · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/messages",
+      "status": "passed",
+      "expectedHash": "a2572c7f419cb8293215d7ae1ef5be0bab71c3a838d7fb25bd0cb10fa1878e79",
+      "actualHash": "a2572c7f419cb8293215d7ae1ef5be0bab71c3a838d7fb25bd0cb10fa1878e79",
+      "title": "المحادثات · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/account",
+      "status": "passed",
+      "expectedHash": "1e390a03293e49e482843d81c65693cca0d8a97c7e9602f05aa36209c387138f",
+      "actualHash": "1e390a03293e49e482843d81c65693cca0d8a97c7e9602f05aa36209c387138f",
+      "title": "حسابي · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/profile",
+      "status": "passed",
+      "expectedHash": "5459dd421afccd34e34ce683bd9fbfb6136f1dee80bcc8e42d9ac43e7a5d4b50",
+      "actualHash": "5459dd421afccd34e34ce683bd9fbfb6136f1dee80bcc8e42d9ac43e7a5d4b50",
+      "title": "بيانات نشاطي · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "client/preferences",
+      "status": "passed",
+      "expectedHash": "ae7b9c07c53c63cfe41ee8a43439d6a399f3430a747f0ef09a2ef499ddf5b0ff",
+      "actualHash": "ae7b9c07c53c63cfe41ee8a43439d6a399f3430a747f0ef09a2ef499ddf5b0ff",
+      "title": "التفضيلات والاحتياجات · مساحة العميل | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/home",
+      "status": "passed",
+      "expectedHash": "e20608265f5242a9793b52239e23b32653a7abe44685181638b9a56680483cff",
+      "actualHash": "e20608265f5242a9793b52239e23b32653a7abe44685181638b9a56680483cff",
+      "title": "نظرة الإدارة · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/team",
+      "status": "passed",
+      "expectedHash": "e97ec16f8f2174bcccafbdd997882232af7c6a973bcbc670ec292bff573a4756",
+      "actualHash": "e97ec16f8f2174bcccafbdd997882232af7c6a973bcbc670ec292bff573a4756",
+      "title": "الفريق · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/live-tracking",
+      "status": "passed",
+      "expectedHash": "8dfd8af541cc9c3a8a339502c075980bff459c018ef25c3310fc464c9283db95",
+      "actualHash": "8dfd8af541cc9c3a8a339502c075980bff459c018ef25c3310fc464c9283db95",
+      "title": "مواقع الفريق الآن · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": [
+        {
+          "url": "/api/tracking/locations",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "id": "admin/team-member",
+      "status": "passed",
+      "expectedHash": "972fa2bc1c2377042bc140f2d3d712b5769b07997a7fb07ae5bbcc96795a4a30",
+      "actualHash": "972fa2bc1c2377042bc140f2d3d712b5769b07997a7fb07ae5bbcc96795a4a30",
+      "title": "ملف المندوب · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/territories",
+      "status": "passed",
+      "expectedHash": "5b27530d888d68fb31bcd9f4d291dc8b59e335d1a7fc69a22b94eda6a8db6a49",
+      "actualHash": "5b27530d888d68fb31bcd9f4d291dc8b59e335d1a7fc69a22b94eda6a8db6a49",
+      "title": "المناطق · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/zone-detail",
+      "status": "passed",
+      "expectedHash": "4ceb0461f0e421d3b4c8086968798d3f7670d5a28e412cfad9624dec7f32b657",
+      "actualHash": "4ceb0461f0e421d3b4c8086968798d3f7670d5a28e412cfad9624dec7f32b657",
+      "title": "تفاصيل المنطقة · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/clients",
+      "status": "passed",
+      "expectedHash": "be36d4463e06156cb8bb2fb51c6fa37c3055f2cc81cd96501219103d0ba2956d",
+      "actualHash": "be36d4463e06156cb8bb2fb51c6fa37c3055f2cc81cd96501219103d0ba2956d",
+      "title": "العملاء · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/client-detail",
+      "status": "passed",
+      "expectedHash": "8b007a98bd4fb062bddbad98adc35968c2e8aae85ec0dd9d53e10902ecd7e75f",
+      "actualHash": "8b007a98bd4fb062bddbad98adc35968c2e8aae85ec0dd9d53e10902ecd7e75f",
+      "title": "ملف العميل · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/pipeline",
+      "status": "passed",
+      "expectedHash": "d21877a626d04958c3d84f934abe450a49db915b699b208b99914a1a6e16a98d",
+      "actualHash": "d21877a626d04958c3d84f934abe450a49db915b699b208b99914a1a6e16a98d",
+      "title": "مسار المبيعات · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/opportunity",
+      "status": "passed",
+      "expectedHash": "a12d5b3ee38cc6fa2e7a7e2dc03ca28b0fe842a4d0c2b72c2f662d3f458f5185",
+      "actualHash": "a12d5b3ee38cc6fa2e7a7e2dc03ca28b0fe842a4d0c2b72c2f662d3f458f5185",
+      "title": "تفاصيل الفرصة · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/tasks",
+      "status": "passed",
+      "expectedHash": "9b85230843826e369a4d8c50871efe1b5ea14af975837538718f2f1872ebc817",
+      "actualHash": "9b85230843826e369a4d8c50871efe1b5ea14af975837538718f2f1872ebc817",
+      "title": "المهام · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/approvals",
+      "status": "passed",
+      "expectedHash": "babefdab3c6f0de9544a1f86b15eb591eb9632ce3d8b2e89b8747627ea29ab38",
+      "actualHash": "babefdab3c6f0de9544a1f86b15eb591eb9632ce3d8b2e89b8747627ea29ab38",
+      "title": "الموافقات · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/projects",
+      "status": "passed",
+      "expectedHash": "680cea5d3bca9f5ddb484b14abf652e8f9c41cda1d5773ba0664b465a2ea2868",
+      "actualHash": "680cea5d3bca9f5ddb484b14abf652e8f9c41cda1d5773ba0664b465a2ea2868",
+      "title": "المشاريع · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/project-detail",
+      "status": "passed",
+      "expectedHash": "df78578a4099bb7789250eddd75e7796e94fe33f3effa9ff1c6f98792ed90b97",
+      "actualHash": "df78578a4099bb7789250eddd75e7796e94fe33f3effa9ff1c6f98792ed90b97",
+      "title": "إدارة المشروع · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/analytics",
+      "status": "passed",
+      "expectedHash": "8074c400ff0595fb7011fe405c1014773de111517ec8c47fb83048906843ad6a",
+      "actualHash": "8074c400ff0595fb7011fe405c1014773de111517ec8c47fb83048906843ad6a",
+      "title": "التحليلات · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/invoices",
+      "status": "passed",
+      "expectedHash": "bda1edbf05099fc53d287abc7b18fd9f10cc47f3f9fb1cdbab8260f412b6f069",
+      "actualHash": "bda1edbf05099fc53d287abc7b18fd9f10cc47f3f9fb1cdbab8260f412b6f069",
+      "title": "الفواتير · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/invoice-detail",
+      "status": "passed",
+      "expectedHash": "eace9a8e30b51f7e441a39b945ce823914b6532574f52c75a7ce8f448066b967",
+      "actualHash": "eace9a8e30b51f7e441a39b945ce823914b6532574f52c75a7ce8f448066b967",
+      "title": "تفاصيل الفاتورة · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/support",
+      "status": "passed",
+      "expectedHash": "8292e36ef108151d476abef4a540dfbabda45da082f0823e17066c0bd96e0a75",
+      "actualHash": "8292e36ef108151d476abef4a540dfbabda45da082f0823e17066c0bd96e0a75",
+      "title": "الدعم · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/ticket-detail",
+      "status": "passed",
+      "expectedHash": "bb0795967a3d055164abf7d5f4275c2d51522134e3980f90dbde3f88e6f832c6",
+      "actualHash": "bb0795967a3d055164abf7d5f4275c2d51522134e3980f90dbde3f88e6f832c6",
+      "title": "طلب الدعم · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/messages",
+      "status": "passed",
+      "expectedHash": "b0a152d29e64b4f363d242d03a9cd239591c19fb6476ca61f97e10fafc390608",
+      "actualHash": "b0a152d29e64b4f363d242d03a9cd239591c19fb6476ca61f97e10fafc390608",
+      "title": "المحادثات · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/conversation",
+      "status": "passed",
+      "expectedHash": "b4bf569b96ae2fdb2d0462832c47d5429dae8a977eb8362ac6f01370800a7cd8",
+      "actualHash": "b4bf569b96ae2fdb2d0462832c47d5429dae8a977eb8362ac6f01370800a7cd8",
+      "title": "المحادثة · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/settings",
+      "status": "passed",
+      "expectedHash": "886a3b4ff359e40a57a08407f0f68b8b50e30e6eb71671d2636a2cbd9ae59375",
+      "actualHash": "886a3b4ff359e40a57a08407f0f68b8b50e30e6eb71671d2636a2cbd9ae59375",
+      "title": "الإعدادات · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    },
+    {
+      "id": "admin/more",
+      "status": "passed",
+      "expectedHash": "59892ef3836a8db174543dc74dc2d0863f27ab73159e2973a642b3e8a2d96850",
+      "actualHash": "59892ef3836a8db174543dc74dc2d0863f27ab73159e2973a642b3e8a2d96850",
+      "title": "المزيد · أطلس للإدارة | أطلس",
+      "trackingFixtureRequests": []
+    }
+  ],
+  "registrations": [
+    {
+      "app": "rep",
+      "routes": 20,
+      "actions": 51,
+      "status": "passed"
+    },
+    {
+      "app": "client",
+      "routes": 21,
+      "actions": 28,
+      "status": "passed"
+    },
+    {
+      "app": "admin",
+      "routes": 23,
+      "actions": 43,
+      "status": "passed"
+    }
+  ],
+  "assets": [
+    {
+      "id": "rep-app-css",
+      "kind": "app-css",
+      "target": "apps/rep-mobile/src/styles.css",
+      "expectedHash": "6e6fa5592d066e5144d7e631518a0bacbdbede9bd2c590ba37d04e0997f3af28",
+      "actualHash": "6e6fa5592d066e5144d7e631518a0bacbdbede9bd2c590ba37d04e0997f3af28",
+      "status": "passed"
+    },
+    {
+      "id": "client-app-css",
+      "kind": "app-css",
+      "target": "apps/client-mobile/src/styles.css",
+      "expectedHash": "12492324ccc67ad7c87d6722c14e147589b256292cf6ddcd53de59173f8f0a47",
+      "actualHash": "12492324ccc67ad7c87d6722c14e147589b256292cf6ddcd53de59173f8f0a47",
+      "status": "passed"
+    },
+    {
+      "id": "admin-app-css",
+      "kind": "app-css",
+      "target": "apps/admin-web/src/styles.css",
+      "expectedHash": "7ffb662836fc4726df65c83d4696f4bf8375a98d45def1535c26bd3e50f30c44",
+      "actualHash": "7ffb662836fc4726df65c83d4696f4bf8375a98d45def1535c26bd3e50f30c44",
+      "status": "passed"
+    },
+    {
+      "id": "shared-styles.css",
+      "kind": "shared-css",
+      "target": "packages/design-system/src/styles.css",
+      "expectedHash": "daff1579dcfc88450f6bc21439a856503a19ebdb10332851228a7cda38985928",
+      "actualHash": "daff1579dcfc88450f6bc21439a856503a19ebdb10332851228a7cda38985928",
+      "status": "passed"
+    },
+    {
+      "id": "shared-polish.css",
+      "kind": "shared-css",
+      "target": "packages/design-system/src/polish.css",
+      "expectedHash": "16d94da288574980a4cc0d38275442863903f058c579035b7c8b1db0d01abbe5",
+      "actualHash": "16d94da288574980a4cc0d38275442863903f058c579035b7c8b1db0d01abbe5",
+      "status": "passed"
+    },
+    {
+      "id": "shared-tracking.css",
+      "kind": "shared-css",
+      "target": "packages/design-system/src/tracking.css",
+      "expectedHash": "8eb41567c858388f0d88eed932da6a61105af00f9ec36f0579dbe9599b6394ad",
+      "actualHash": "8eb41567c858388f0d88eed932da6a61105af00f9ec36f0579dbe9599b6394ad",
+      "status": "passed"
+    },
+    {
+      "id": "NotoSansArabic-Regular.woff",
+      "kind": "font",
+      "target": "packages/design-system/fonts/NotoSansArabic-Regular.woff",
+      "expectedHash": "1a3a4a190b4efcc92a6ef604af70fdea90ae1e5eb919f23af990d87ace8cf798",
+      "actualHash": "1a3a4a190b4efcc92a6ef604af70fdea90ae1e5eb919f23af990d87ace8cf798",
+      "status": "passed"
+    },
+    {
+      "id": "NotoSansArabic-Bold.woff",
+      "kind": "font",
+      "target": "packages/design-system/fonts/NotoSansArabic-Bold.woff",
+      "expectedHash": "6b83e0bba78f6d484c2eaa37e2fcc10178cbfa1b33c5d0701aa878d3e59cd1b7",
+      "actualHash": "6b83e0bba78f6d484c2eaa37e2fcc10178cbfa1b33c5d0701aa878d3e59cd1b7",
+      "status": "passed"
+    },
+    {
+      "id": "LICENSE.txt",
+      "kind": "font-license",
+      "target": "packages/design-system/fonts/LICENSE.txt",
+      "expectedHash": "075f91382875da1c4b491f1facf2586f55448705133264d98ce15cab6211b125",
+      "actualHash": "075f91382875da1c4b491f1facf2586f55448705133264d98ce15cab6211b125",
+      "status": "passed"
+    }
+  ],
+  "errors": [],
+  "baselineSha256": "ea7e69d91615471fc55c09847296e43f6cca7ebee553ea3cf588b159988a80f2",
+  "reference": {
+    "label": "Atlas v1.1",
+    "sourceSha256": {
+      "src/shared/icons.js": "30facd34b2b3eb0c7d74db1d6dcce1708f0cd97001c827866b5a37152cbba267",
+      "src/shared/seed.js": "a01cdd5bf407545e8432dd02e40369c0c935a5ea7883a991653ab0c3d08eca0f",
+      "src/shared/core.js": "677bf702b0b2d95c878a3e0f25669791256d2cc20567ae2f3b5d480b2c140316",
+      "src/shared/tracking.js": "316f95ba716b9be72090093a2e93819d4aef402a367a103b36f028641f989f60",
+      "src/apps/rep.js": "939e36e9a51ef746a2b74b1f2b1526f6cee29c5d8a88394f9f605a9b398a4d33",
+      "src/apps/client.js": "bf55d2845097ecc9e280ed0c19a5d275914d7f5897a08d63d317424f8a6d51ed",
+      "src/apps/admin.js": "280a8c8e2fe87837bd76e6f4a7ae454addc55a69496dacf4bfb7fdcba31d42f5"
+    },
+    "generatedAt": "2026-11-13T18:18:41.435Z",
+    "node": "v24.22.1",
+    "icu": "78.3"
+  },
+  "finishedAt": "2026-11-13T20:22:50.476Z",
+  "summary": {
+    "routes": 64,
+    "routesPassed": 64,
+    "routesFailed": 0,
+    "actions": 122,
+    "assets": 9,
+    "assetsPassed": 9,
+    "assetsFailed": 0,
+    "runtimeErrors": 0
+  }
+}

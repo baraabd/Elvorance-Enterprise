@@ -1,0 +1,17 @@
+{
+  "name": "@atlas/ui",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./primitives": "./src/primitives.js"
+  },
+  "dependencies": {
+    "@atlas/design-system": "2.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "jsdom": "31.0.0"
+  }
+}

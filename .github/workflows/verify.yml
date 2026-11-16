@@ -1,0 +1,61 @@
+name: Verify Atlas Enterprise
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-bookworm
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: atlas-ci-only
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      ATLAS_TEST_POSTGRES_URL: postgresql://postgres:atlas-ci-only@localhost:5432/postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - run: npm run check:format
+      - run: npm run package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-enterprise-source
+          path: dist/AtlasCRM-Enterprise-*.zip
+          retention-days: 14
+  verify-windows:
+    runs-on: windows-latest
+    # The PostgreSQL integration test runs in the Ubuntu job above. This job
+    # exercises the reported Windows build, path aliases and portable bundles.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.21.0
+          cache: npm
+      - run: npm.cmd install --global npm@11.19.0
+      - run: npm.cmd ci
+      - run: npm.cmd run verify
+      - run: npm.cmd run check:format
+      - run: npm.cmd run package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-enterprise-source-windows
+          path: dist/AtlasCRM-Enterprise-*.zip
+          retention-days: 14

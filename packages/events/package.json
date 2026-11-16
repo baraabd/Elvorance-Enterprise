@@ -1,0 +1,14 @@
+{
+  "name": "@atlas/events",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@atlas/contracts": "2.0.0",
+    "@atlas/service-kit": "2.0.0",
+    "amqplib": "0.10.9"
+  }
+}

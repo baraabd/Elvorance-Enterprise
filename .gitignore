@@ -1,0 +1,45 @@
+node_modules/
+dist/
+coverage/
+.atlas-backups/
+.env
+.env.*
+!.env.example
+infra/compose/.env
+*.log
+.DS_Store
+**/.gradle/
+**/build/
+**/Pods/
+**/DerivedData/
+**/local.properties
+**/xcuserdata/
+**/public/assets/
+**/public/index.html
+**/public/config.js
+**/capacitor-cordova-ios-plugins/
+**/capacitor-cordova-android-plugins/
+**/capacitor.config.json
+!apps/*/capacitor.config.json
+tests/regression/*results.json
+
+
+# Local database tools and exports
+infra/compose/compose.db-gui.yaml
+/database-schema-export/
+/backups/
+*.dump
+*.backup
+*.sql.gz
+
+# Private keys and signing material
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Local editor state
+.vscode/settings.json
+.idea/

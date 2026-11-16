@@ -1,0 +1,17 @@
+{
+  "name": "@atlas/admin-web",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node ../../tooling/scripts/build-apps.mjs",
+    "dev": "node ../../tooling/scripts/dev.mjs admin-web"
+  },
+  "dependencies": {
+    "@atlas/app-runtime": "2.0.0",
+    "@atlas/ui": "2.0.0",
+    "@atlas/api-client": "2.0.0",
+    "@atlas/design-system": "2.0.0",
+    "@atlas/questionnaire": "2.4.0"
+  }
+}

@@ -1,0 +1,372 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { randomBytes, randomUUID } from 'node:crypto';
+import pg from 'pg';
+import type { CustomerContext, Entity } from '@atlas/contracts';
+import { PgRepository, type Migration } from '@atlas/service-kit';
+import { consumeEvent } from '@atlas/events';
+import {
+  tables as identityTables,
+  migrations as identityMigrations,
+} from '../../services/identity/src/infrastructure/migrations/001_initial.ts';
+import {
+  tables as crmTables,
+  migrations as crmMigrations,
+} from '../../services/crm/src/infrastructure/migrations/001_initial.ts';
+import {
+  tables as salesTables,
+  migrations as salesMigrations,
+} from '../../services/sales/src/infrastructure/migrations/001_initial.ts';
+import {
+  tables as deliveryTables,
+  migrations as deliveryMigrations,
+} from '../../services/delivery/src/infrastructure/migrations/001_initial.ts';
+import {
+  tables as billingTables,
+  migrations as billingMigrations,
+} from '../../services/billing/src/infrastructure/migrations/001_initial.ts';
+import {
+  tables as trackingTables,
+  migrations as trackingMigrations,
+} from '../../services/tracking/src/infrastructure/migrations/001_initial.ts';
+import {
+  tables as communicationsTables,
+  migrations as communicationsMigrations,
+} from '../../services/communications/src/infrastructure/migrations/001_initial.ts';
+import { createApp as crmApp } from '../../services/crm/src/app.ts';
+import { createApp as salesApp } from '../../services/sales/src/app.ts';
+import {
+  createApp as deliveryApp,
+  handleEvent as deliveryEvent,
+} from '../../services/delivery/src/app.ts';
+import {
+  createApp as billingApp,
+  handleEvent as billingEvent,
+} from '../../services/billing/src/app.ts';
+import { auth, call, principals } from './helpers.ts';
+import type { EventEnvelope } from '@atlas/contracts';
+
+const adminUrl = process.env.ATLAS_TEST_POSTGRES_URL;
+const configs: { name: string; tables: readonly string[]; migrations: Migration[] }[] = [
+  { name: 'identity', tables: identityTables, migrations: identityMigrations },
+  { name: 'crm', tables: crmTables, migrations: crmMigrations },
+  { name: 'sales', tables: salesTables, migrations: salesMigrations },
+  { name: 'delivery', tables: deliveryTables, migrations: deliveryMigrations },
+  { name: 'billing', tables: billingTables, migrations: billingMigrations },
+  { name: 'tracking', tables: trackingTables, migrations: trackingMigrations },
+  { name: 'communications', tables: communicationsTables, migrations: communicationsMigrations },
+];
+
+test(
+  'PostgreSQL: seven owned databases, 42 denied cross-service connections, forced tenant RLS, atomic outbox/inbox and full contract provisioning',
+  { skip: !adminUrl, timeout: 120000 },
+  async (t) => {
+    const administrator = new pg.Client({
+      connectionString: adminUrl!,
+      connectionTimeoutMillis: 5000,
+    });
+    await administrator.connect();
+    const version = (await administrator.query<{ server_version: string }>('SHOW server_version'))
+      .rows[0]!.server_version;
+    t.diagnostic(
+      `Real PostgreSQL server version: ${version}; no RabbitMQ broker was used in this test.`,
+    );
+    const prefix = `atlas_test_${randomUUID().replaceAll('-', '').slice(0, 10)}`;
+    const provisioned: {
+      name: string;
+      db: string;
+      role: string;
+      password: string;
+      url: string;
+      repository: PgRepository;
+    }[] = [];
+    const apps: { close(): Promise<void> }[] = [];
+    t.after(async () => {
+      await Promise.all(apps.map((app) => app.close()));
+      for (const service of provisioned) await service.repository.close();
+      for (const service of provisioned) {
+        await administrator.query(`DROP DATABASE IF EXISTS ${service.db} WITH (FORCE)`);
+        await administrator.query(`DROP ROLE IF EXISTS ${service.role}`);
+      }
+      await administrator.end();
+    });
+    for (const config of configs) {
+      const role = `${prefix}_${config.name}`;
+      const db = role;
+      const password = randomBytes(24).toString('hex');
+      await administrator.query(
+        `CREATE ROLE ${role} LOGIN PASSWORD '${password}' NOSUPERUSER NOCREATEDB NOCREATEROLE NOBYPASSRLS`,
+      );
+      await administrator.query(`CREATE DATABASE ${db} OWNER ${role}`);
+      await administrator.query(`REVOKE ALL ON DATABASE ${db} FROM PUBLIC`);
+      await administrator.query(`GRANT CONNECT ON DATABASE ${db} TO ${role}`);
+      const parsed = new URL(adminUrl!);
+      parsed.username = role;
+      parsed.password = password;
+      parsed.pathname = `/${db}`;
+      const url = parsed.toString();
+      const repository = new PgRepository(config.name, url, config.tables, config.migrations);
+      provisioned.push({ name: config.name, db, role, password, url, repository });
+      await repository.migrate();
+      await repository.migrate();
+      await repository.ping();
+    }
+    let rejectedConnections = 0;
+    for (const source of provisioned)
+      for (const target of provisioned)
+        if (source.name !== target.name) {
+          const url = new URL(source.url);
+          url.pathname = `/${target.db}`;
+          const forbidden = new pg.Client({
+            connectionString: url.toString(),
+            connectionTimeoutMillis: 2000,
+          });
+          try {
+            await assert.rejects(
+              forbidden.connect(),
+              (error) =>
+                typeof error === 'object' &&
+                error !== null &&
+                'code' in error &&
+                error.code === '42501',
+            );
+            rejectedConnections += 1;
+          } finally {
+            await forbidden.end().catch(() => {});
+          }
+        }
+    assert.equal(rejectedConnections, 42);
+    t.diagnostic(
+      'Database isolation: 7 own-role connections succeeded; all 42 cross-service connections were denied.',
+    );
+    const byName = (name: string) => provisioned.find((service) => service.name === name)!;
+    const crmRepository = byName('crm').repository;
+    await assert.rejects(
+      crmRepository.transaction('tenant-a', async (tx) => {
+        await tx.insert<Entity>('customers', { id: 'rolled-back', name: 'Never committed' });
+        await tx.emit('crm.test.v1', 'rolled-back', 1, {});
+        throw new Error('Rollback test');
+      }),
+    );
+    assert.equal(
+      (await crmRepository.transaction('tenant-a', (tx) => tx.list('customers'))).length,
+      0,
+    );
+    assert.equal((await crmRepository.leaseOutbox()).length, 0);
+    await crmRepository.transaction('tenant-a', async (tx) => {
+      await tx.insert<Entity>('customers', {
+        id: 'rls-probe',
+        name: 'Tenant A',
+        repId: 'rep-a',
+        regionId: null,
+        phone: '',
+        email: '',
+        notes: '',
+        doNotContact: false,
+      });
+    });
+    assert.equal(
+      await crmRepository.transaction('tenant-b', (tx) => tx.get('customers', 'rls-probe')),
+      undefined,
+    );
+    const rawOwner = new pg.Client({ connectionString: byName('crm').url });
+    await rawOwner.connect();
+    assert.equal(
+      (await rawOwner.query('SELECT * FROM customers')).rowCount,
+      0,
+      'FORCE RLS applies even to the owning service role without a tenant context',
+    );
+    const flags = await rawOwner.query<{ relrowsecurity: boolean; relforcerowsecurity: boolean }>(
+      "SELECT relrowsecurity,relforcerowsecurity FROM pg_class WHERE relname='customers'",
+    );
+    assert.equal(flags.rows[0]!.relforcerowsecurity, true);
+    await rawOwner.end();
+    const crm = crmApp({ repository: crmRepository, auth });
+    const sales = salesApp({
+      repository: byName('sales').repository,
+      auth,
+      customerDirectory: {
+        async getCustomer(id, authorization) {
+          const response = await crm.inject({
+            method: 'GET',
+            url: `/v1/customers/${id}/context`,
+            headers: { authorization },
+          });
+          assert.equal(response.statusCode, 200);
+          return response.json() as CustomerContext;
+        },
+      },
+    });
+    const delivery = deliveryApp({ repository: byName('delivery').repository, auth });
+    const billing = billingApp({ repository: byName('billing').repository, auth });
+    apps.push(crm, sales, delivery, billing);
+    const customer = (
+      await call(crm, 'POST', '/v1/customers', 'rep', { name: 'PostgreSQL customer' })
+    ).body;
+    principals.client!.clientId = customer.id;
+    let visit = (
+      await call(sales, 'POST', '/v1/visits', 'rep', {
+        clientId: customer.id,
+        scheduledAt: new Date().toISOString(),
+        purpose: 'PG lifecycle verification',
+      })
+    ).body;
+    visit = (
+      await call(sales, 'POST', `/v1/visits/${visit.id}/start`, 'rep', {
+        expectedVersion: visit.version,
+        proof: { kind: 'manual', reason: 'Explicit QA manual proof' },
+      })
+    ).body;
+    let quote = (
+      await call(sales, 'POST', '/v1/quotes', 'rep', {
+        visitId: visit.id,
+        currency: 'SAR',
+        items: [
+          {
+            serviceId: 'scope-1',
+            title: 'Immutable contract scope',
+            quantity: 3,
+            unitPriceMinor: 3333,
+            deliverables: ['Actual scoped deliverable'],
+            duration: 'To be planned',
+          },
+        ],
+        terms: 'PostgreSQL original snapshot',
+        validUntil: new Date(Date.now() + 86400000).toISOString().slice(0, 10),
+        paymentPlan: [
+          { id: 'first', label: 'First installment', amountMinor: 5000, dueOn: null },
+          { id: 'last', label: 'Final installment', amountMinor: 4999, dueOn: null },
+        ],
+      })
+    ).body;
+    quote = (
+      await call(sales, 'POST', `/v1/quotes/${quote.id}/send`, 'rep', {
+        expectedVersion: quote.version,
+      })
+    ).body;
+    const accepts = await Promise.all([
+      call(sales, 'POST', `/v1/quotes/${quote.id}/accept`, 'client', {
+        expectedVersion: quote.version,
+        consent: true,
+      }),
+      call(sales, 'POST', `/v1/quotes/${quote.id}/accept`, 'client', {
+        expectedVersion: quote.version,
+        consent: true,
+      }),
+    ]);
+    assert.deepEqual(accepts.map((response) => response.status).sort(), [200, 409]);
+    const contract = accepts.find((response) => response.status === 200)!.body.contract;
+    assert.equal((await call(sales, 'GET', '/v1/contracts', 'client')).body.items.length, 1);
+    const approveInput = {
+      expectedVersion: contract.version,
+      signerName: 'PostgreSQL QA',
+      consent: true,
+    };
+    const approveKey = 'pg-approval-idempotent';
+    const approved = await call(
+      sales,
+      'POST',
+      `/v1/contracts/${contract.id}/approve`,
+      'client',
+      approveInput,
+      approveKey,
+    );
+    assert.equal(approved.status, 200);
+    assert.equal(
+      (
+        await call(
+          sales,
+          'POST',
+          `/v1/contracts/${contract.id}/approve`,
+          'client',
+          approveInput,
+          approveKey,
+        )
+      ).body.version,
+      approved.body.version,
+    );
+    const salesRaw = new pg.Client({ connectionString: byName('sales').url });
+    await salesRaw.connect();
+    const persisted = await salesRaw.query<{ event: EventEnvelope }>(
+      "SELECT event FROM outbox WHERE event->>'type'='contract.approved.v1'",
+    );
+    assert.equal(persisted.rowCount, 1);
+    const event = persisted.rows[0]!.event;
+    assert.equal((event.payload as { totalMinor: number }).totalMinor, 9999);
+    await assert.rejects(
+      consumeEvent(byName('delivery').repository, 'pg-delivery', event, async (tx, value) => {
+        await deliveryEvent(tx, value);
+        throw new Error('Consumer fails before commit');
+      }),
+    );
+    assert.equal((await call(delivery, 'GET', '/v1/projects', 'client')).body.items.length, 0);
+    assert.equal(
+      await consumeEvent(byName('delivery').repository, 'pg-delivery', event, deliveryEvent),
+      'processed',
+    );
+    assert.equal(
+      await consumeEvent(byName('delivery').repository, 'pg-delivery', event, deliveryEvent),
+      'duplicate',
+    );
+    await consumeEvent(byName('billing').repository, 'pg-billing', event, billingEvent);
+    assert.equal(
+      await consumeEvent(byName('billing').repository, 'pg-billing', event, billingEvent),
+      'duplicate',
+    );
+    const projects = (await call(delivery, 'GET', '/v1/projects', 'client')).body.items;
+    const invoices = (await call(billing, 'GET', '/v1/invoices', 'client')).body.items;
+    assert.equal(projects.length, 1);
+    assert.equal(projects[0].status, 'planning');
+    assert.equal(projects[0].progress, 0);
+    assert.equal(invoices.length, 2);
+    assert.equal(
+      invoices.reduce((sum: number, item: Record<string, any>) => sum + item.amountMinor, 0),
+      9999,
+    );
+    const first = invoices[0];
+    const paymentInput = {
+      expectedVersion: first.version,
+      requestId: 'pg-receipt-unique',
+      amountMinor: first.amountMinor,
+      method: 'bank_transfer',
+      reference: 'Verified PG bank receipt',
+    };
+    const payments = await Promise.all([
+      call(billing, 'POST', `/v1/invoices/${first.id}/payments`, 'finance', paymentInput),
+      call(billing, 'POST', `/v1/invoices/${first.id}/payments`, 'finance', paymentInput),
+    ]);
+    assert.deepEqual(payments.map((response) => response.status).sort(), [200, 409]);
+    assert.equal(
+      (await call(billing, 'GET', `/v1/invoices/${first.id}/payments`, 'finance')).body.items
+        .length,
+      1,
+    );
+    const leases = await byName('sales').repository.leaseOutbox();
+    assert.ok(leases.length >= 3);
+    const approvedLease = leases.find((row) => row.event.type === 'contract.approved.v1')!;
+    await byName('sales').repository.markPublished(approvedLease.event.id, 'wrong-lease-token');
+    assert.equal(
+      (
+        await salesRaw.query('SELECT published_at FROM outbox WHERE id=$1', [
+          approvedLease.event.id,
+        ])
+      ).rows[0].published_at,
+      null,
+    );
+    await byName('sales').repository.markPublished(
+      approvedLease.event.id,
+      approvedLease.leaseToken,
+    );
+    assert.ok(
+      (
+        await salesRaw.query('SELECT published_at FROM outbox WHERE id=$1', [
+          approvedLease.event.id,
+        ])
+      ).rows[0].published_at,
+    );
+    await salesRaw.end();
+    t.diagnostic(
+      'Verified: tenant RLS, transaction rollback, concurrent accept/payment guards, atomic approval/outbox, inbox rollback/retry, unique project, balanced invoices, and lease ownership.',
+    );
+  },
+);

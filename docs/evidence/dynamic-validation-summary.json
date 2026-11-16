@@ -1,0 +1,27 @@
+{
+  "reference_base": "AtlasCRM Enterprise 2.0.1",
+  "reference_target": "2.4.0",
+  "test_runner": "node --test",
+  "tests_passed": 20,
+  "tests_failed": 0,
+  "checks": [
+    "configuration defaults and edit",
+    "sector dynamic questions",
+    "required fields",
+    "Other detail validation",
+    "unknown option",
+    "archived service",
+    "numeric range",
+    "phone and email",
+    "catalog edit",
+    "stable question ID"
+  ],
+  "limitations": [
+    "Node22 runtime and npm offline cache incomplete",
+    "no full build",
+    "no live PostgreSQL testing",
+    "Chromium sandbox blocked local page",
+    "no production auth wiring",
+    "preview design not parity-checked against 2.3"
+  ]
+}

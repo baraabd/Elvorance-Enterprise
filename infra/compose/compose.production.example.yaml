@@ -1,0 +1,713 @@
+# Standalone production reference; do not merge with the development Compose file.
+# Requires real OIDC, reviewed image digests, and externally provisioned secret files.
+name: ${COMPOSE_PROJECT_NAME:-atlas-production}
+services:
+  postgres:
+    image: ${POSTGRES_IMAGE:?Set a reviewed immutable image digest}
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_admin_password
+      IDENTITY_DB_PASSWORD_FILE: /run/secrets/identity_db_password
+      CRM_DB_PASSWORD_FILE: /run/secrets/crm_db_password
+      SALES_DB_PASSWORD_FILE: /run/secrets/sales_db_password
+      DELIVERY_DB_PASSWORD_FILE: /run/secrets/delivery_db_password
+      BILLING_DB_PASSWORD_FILE: /run/secrets/billing_db_password
+      TRACKING_DB_PASSWORD_FILE: /run/secrets/tracking_db_password
+      COMMUNICATIONS_DB_PASSWORD_FILE: /run/secrets/communications_db_password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./postgres/010-service-databases.sh:/docker-entrypoint-initdb.d/010-service-databases.sh:ro
+      - ./postgres/check-isolation.sh:/opt/atlas/check-isolation.sh:ro
+    networks:
+      - data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -h 127.0.0.1 -U "$${POSTGRES_USER}" -d postgres
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    secrets:
+      - postgres_admin_password
+      - identity_db_password
+      - crm_db_password
+      - sales_db_password
+      - delivery_db_password
+      - billing_db_password
+      - tracking_db_password
+      - communications_db_password
+  rabbitmq:
+    image: ${RABBITMQ_IMAGE:?Set a reviewed immutable image digest}
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-atlas}
+      RABBITMQ_DEFAULT_VHOST: atlas
+      RABBITMQ_DEFAULT_PASS_FILE: /run/secrets/rabbitmq_password
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+      - ../docker/rabbitmq-secret-entrypoint.sh:/opt/atlas/rabbitmq-secret-entrypoint.sh:ro
+    networks:
+      - mesh
+    healthcheck:
+      test:
+        - CMD
+        - rabbitmq-diagnostics
+        - -q
+        - ping
+      interval: 10s
+      timeout: 5s
+      retries: 15
+    secrets:
+      - rabbitmq_password
+    entrypoint:
+      - /bin/sh
+      - /opt/atlas/rabbitmq-secret-entrypoint.sh
+    command:
+      - rabbitmq-server
+  identity-migrate:
+    restart: 'no'
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      disable: true
+    image: ${IDENTITY_IMAGE:?Set a reviewed service image digest}
+    command:
+      - --migrate-only
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3001'
+      DATABASE_URL_FILE: /run/secrets/identity_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    secrets:
+      - identity_database_url
+      - rabbitmq_url
+  identity:
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:'+process.env.PORT+'/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 12
+    image: ${IDENTITY_IMAGE:?Set a reviewed service image digest}
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3001'
+      DATABASE_URL_FILE: /run/secrets/identity_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      identity-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+    secrets:
+      - identity_database_url
+      - rabbitmq_url
+  crm-migrate:
+    restart: 'no'
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      disable: true
+    image: ${CRM_IMAGE:?Set a reviewed service image digest}
+    command:
+      - --migrate-only
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3002'
+      DATABASE_URL_FILE: /run/secrets/crm_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    secrets:
+      - crm_database_url
+      - rabbitmq_url
+  crm:
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:'+process.env.PORT+'/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 12
+    image: ${CRM_IMAGE:?Set a reviewed service image digest}
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3002'
+      DATABASE_URL_FILE: /run/secrets/crm_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      crm-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+    secrets:
+      - crm_database_url
+      - rabbitmq_url
+  sales-migrate:
+    restart: 'no'
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      disable: true
+    image: ${SALES_IMAGE:?Set a reviewed service image digest}
+    command:
+      - --migrate-only
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3003'
+      DATABASE_URL_FILE: /run/secrets/sales_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    secrets:
+      - sales_database_url
+      - rabbitmq_url
+  sales:
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:'+process.env.PORT+'/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 12
+    image: ${SALES_IMAGE:?Set a reviewed service image digest}
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3003'
+      CRM_URL: http://crm:3002
+      DATABASE_URL_FILE: /run/secrets/sales_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      sales-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+    secrets:
+      - sales_database_url
+      - rabbitmq_url
+  delivery-migrate:
+    restart: 'no'
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      disable: true
+    image: ${DELIVERY_IMAGE:?Set a reviewed service image digest}
+    command:
+      - --migrate-only
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3004'
+      DATABASE_URL_FILE: /run/secrets/delivery_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    secrets:
+      - delivery_database_url
+      - rabbitmq_url
+  delivery:
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:'+process.env.PORT+'/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 12
+    image: ${DELIVERY_IMAGE:?Set a reviewed service image digest}
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3004'
+      DATABASE_URL_FILE: /run/secrets/delivery_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      delivery-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+    secrets:
+      - delivery_database_url
+      - rabbitmq_url
+  billing-migrate:
+    restart: 'no'
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      disable: true
+    image: ${BILLING_IMAGE:?Set a reviewed service image digest}
+    command:
+      - --migrate-only
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3005'
+      DATABASE_URL_FILE: /run/secrets/billing_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    secrets:
+      - billing_database_url
+      - rabbitmq_url
+  billing:
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:'+process.env.PORT+'/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 12
+    image: ${BILLING_IMAGE:?Set a reviewed service image digest}
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3005'
+      DATABASE_URL_FILE: /run/secrets/billing_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      billing-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+    secrets:
+      - billing_database_url
+      - rabbitmq_url
+  tracking-migrate:
+    restart: 'no'
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      disable: true
+    image: ${TRACKING_IMAGE:?Set a reviewed service image digest}
+    command:
+      - --migrate-only
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3006'
+      DATABASE_URL_FILE: /run/secrets/tracking_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    secrets:
+      - tracking_database_url
+      - rabbitmq_url
+  tracking:
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:'+process.env.PORT+'/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 12
+    image: ${TRACKING_IMAGE:?Set a reviewed service image digest}
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3006'
+      DATABASE_URL_FILE: /run/secrets/tracking_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      tracking-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+    secrets:
+      - tracking_database_url
+      - rabbitmq_url
+  communications-migrate:
+    restart: 'no'
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      disable: true
+    image: ${COMMUNICATIONS_IMAGE:?Set a reviewed service image digest}
+    command:
+      - --migrate-only
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3007'
+      DATABASE_URL_FILE: /run/secrets/communications_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    secrets:
+      - communications_database_url
+      - rabbitmq_url
+  communications:
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+      - data
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:'+process.env.PORT+'/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 12
+    image: ${COMMUNICATIONS_IMAGE:?Set a reviewed service image digest}
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      AUTO_MIGRATE: 'false'
+      PORT: '3007'
+      DATABASE_URL_FILE: /run/secrets/communications_database_url
+      RABBITMQ_URL_FILE: /run/secrets/rabbitmq_url
+    depends_on:
+      communications-migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+    secrets:
+      - communications_database_url
+      - rabbitmq_url
+  api-gateway:
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mesh
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:'+process.env.PORT+'/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 12
+    image: ${API_GATEWAY_IMAGE:?Set a reviewed gateway image digest}
+    ports:
+      - ${GATEWAY_BIND_HOST:-127.0.0.1}:${GATEWAY_PORT:-3000}:3000
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: '3000'
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${OIDC_ISSUER:?Set the production issuer}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Set the API audience}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      CORS_ORIGINS: ${CORS_ORIGINS:?Set explicit allowed client origins}
+      IDENTITY_URL: http://identity:3001
+      CRM_URL: http://crm:3002
+      SALES_URL: http://sales:3003
+      DELIVERY_URL: http://delivery:3004
+      BILLING_URL: http://billing:3005
+      TRACKING_URL: http://tracking:3006
+      COMMUNICATIONS_URL: http://communications:3007
+    depends_on:
+      identity:
+        condition: service_healthy
+      crm:
+        condition: service_healthy
+      sales:
+        condition: service_healthy
+      delivery:
+        condition: service_healthy
+      billing:
+        condition: service_healthy
+      tracking:
+        condition: service_healthy
+      communications:
+        condition: service_healthy
+networks:
+  mesh: {}
+  data:
+    internal: true
+volumes:
+  postgres-data: {}
+  rabbitmq-data: {}
+secrets:
+  postgres_admin_password:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/postgres_admin_password
+  identity_db_password:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/identity_db_password
+  crm_db_password:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/crm_db_password
+  sales_db_password:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/sales_db_password
+  delivery_db_password:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/delivery_db_password
+  billing_db_password:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/billing_db_password
+  tracking_db_password:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/tracking_db_password
+  communications_db_password:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/communications_db_password
+  rabbitmq_password:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/rabbitmq_password
+  rabbitmq_url:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/rabbitmq_url
+  identity_database_url:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/identity_database_url
+  crm_database_url:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/crm_database_url
+  sales_database_url:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/sales_database_url
+  delivery_database_url:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/delivery_database_url
+  billing_database_url:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/billing_database_url
+  tracking_database_url:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/tracking_database_url
+  communications_database_url:
+    file: ${SECRETS_DIR:?Set an absolute secrets directory}/communications_database_url

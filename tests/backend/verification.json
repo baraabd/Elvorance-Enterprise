@@ -1,0 +1,74 @@
+{
+  "recordedAt": "2026-11-13T18:32:24.426207+00:00",
+  "typecheck": {
+    "command": "npm run check:types",
+    "status": "passed"
+  },
+  "workspaceSuite": {
+    "command": "npm test",
+    "status": "passed",
+    "tests": 51,
+    "passed": 50,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "PostgreSQL integration needs a disposable database URL in the default suite; it was separately executed against a real local server."
+  },
+  "postgres": {
+    "command": "node tests/backend/run-postgres.mjs",
+    "optionalModuleEnvironment": "ATLAS_EMBEDDED_POSTGRES_MODULE",
+    "status": "passed",
+    "version": "16.11",
+    "tests": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "ownDatabaseConnections": 7,
+    "crossServiceConnectionsDenied": 42,
+    "runtime": "Real PostgreSQL over loopback TCP. Domain HTTP handlers used Fastify inject and real service-owned PgRepository instances. Consumers invoked directly through transactional inbox; no live RabbitMQ was used.",
+    "checks": [
+      "seven service-owned databases and non-superuser roles",
+      "idempotent migrations",
+      "forced tenant RLS including database owner without tenant context",
+      "transaction rollback includes domain and outbox",
+      "concurrent quote acceptance creates one pending contract",
+      "explicit contract approval and outbox commit together",
+      "consumer rollback leaves inbox retryable",
+      "duplicate inbox deliveries have no duplicate effects",
+      "one planning project and exact balanced invoice installments",
+      "concurrent payment records do not duplicate or exceed balance",
+      "outbox publication requires the correct lease token"
+    ]
+  },
+  "rabbitmq": {
+    "liveBrokerExecuted": false,
+    "coveredByTests": [
+      "durable topology for all consumers before producer outbox drain",
+      "publisher confirms/mandatory-routing implementation reviewed",
+      "transactional inbox deduplication and rollback",
+      "late first-start delivery queue provision regression fixture"
+    ],
+    "limitation": "Broker restarts, actual quorum persistence, network faults and live delivery retries still require the Compose RabbitMQ environment."
+  },
+  "regressions": [
+    "cached command denied after changed signed principal claims",
+    "cached customer create rechecks current assignment",
+    "draft create/edit/revise/send recheck fresh CRM consent and assignment",
+    "list/detail/ticket authorization requires role plus owner id",
+    "dual-role quote visibility follows exact owning role",
+    "out-of-order customer events cannot reverse newer consent",
+    "delayed representative opt-out cannot overwrite newer customer opt-in"
+  ],
+  "api": {
+    "operations": 56,
+    "gatewayPaths": 46,
+    "openapi": "packages/contracts/openapi.json",
+    "routeInventory": "packages/contracts/route-inventory.json"
+  },
+  "limits": [
+    "Existing local-demo UI workflows are not claimed as fully connected to the new services.",
+    "Application contract approval is not a qualified electronic-signature service.",
+    "Recorded collections do not execute bank/card payments.",
+    "Communications sends in-app records, not external SMS or email.",
+    "Tracking stores only the latest point and requires fresh GPS from an open client."
+  ]
+}

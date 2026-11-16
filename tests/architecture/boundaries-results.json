@@ -1,0 +1,1095 @@
+{
+  "ok": true,
+  "workspaces": 20,
+  "sourceFiles": 161,
+  "edgeCount": 155,
+  "violations": [],
+  "edges": [
+    {
+      "from": "@atlas/admin-web",
+      "to": "@atlas/app-runtime",
+      "file": "apps/admin-web/package.json",
+      "specifier": "@atlas/app-runtime",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/admin-web",
+      "to": "@atlas/ui",
+      "file": "apps/admin-web/package.json",
+      "specifier": "@atlas/ui",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/admin-web",
+      "to": "@atlas/api-client",
+      "file": "apps/admin-web/package.json",
+      "specifier": "@atlas/api-client",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/admin-web",
+      "to": "@atlas/design-system",
+      "file": "apps/admin-web/package.json",
+      "specifier": "@atlas/design-system",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/client-mobile",
+      "to": "@atlas/app-runtime",
+      "file": "apps/client-mobile/package.json",
+      "specifier": "@atlas/app-runtime",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/client-mobile",
+      "to": "@atlas/ui",
+      "file": "apps/client-mobile/package.json",
+      "specifier": "@atlas/ui",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/client-mobile",
+      "to": "@atlas/api-client",
+      "file": "apps/client-mobile/package.json",
+      "specifier": "@atlas/api-client",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/client-mobile",
+      "to": "@atlas/design-system",
+      "file": "apps/client-mobile/package.json",
+      "specifier": "@atlas/design-system",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/client-mobile",
+      "to": "@atlas/mobile-platform",
+      "file": "apps/client-mobile/package.json",
+      "specifier": "@atlas/mobile-platform",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/rep-mobile",
+      "to": "@atlas/app-runtime",
+      "file": "apps/rep-mobile/package.json",
+      "specifier": "@atlas/app-runtime",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/rep-mobile",
+      "to": "@atlas/ui",
+      "file": "apps/rep-mobile/package.json",
+      "specifier": "@atlas/ui",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/rep-mobile",
+      "to": "@atlas/api-client",
+      "file": "apps/rep-mobile/package.json",
+      "specifier": "@atlas/api-client",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/rep-mobile",
+      "to": "@atlas/design-system",
+      "file": "apps/rep-mobile/package.json",
+      "specifier": "@atlas/design-system",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/rep-mobile",
+      "to": "@atlas/mobile-platform",
+      "file": "apps/rep-mobile/package.json",
+      "specifier": "@atlas/mobile-platform",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/api-gateway",
+      "to": "@atlas/contracts",
+      "file": "services/api-gateway/package.json",
+      "specifier": "@atlas/contracts",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/api-gateway",
+      "to": "@atlas/service-kit",
+      "file": "services/api-gateway/package.json",
+      "specifier": "@atlas/service-kit",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/contracts",
+      "file": "services/billing/package.json",
+      "specifier": "@atlas/contracts",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/service-kit",
+      "file": "services/billing/package.json",
+      "specifier": "@atlas/service-kit",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/events",
+      "file": "services/billing/package.json",
+      "specifier": "@atlas/events",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/contracts",
+      "file": "services/communications/package.json",
+      "specifier": "@atlas/contracts",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/service-kit",
+      "file": "services/communications/package.json",
+      "specifier": "@atlas/service-kit",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/events",
+      "file": "services/communications/package.json",
+      "specifier": "@atlas/events",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/contracts",
+      "file": "services/crm/package.json",
+      "specifier": "@atlas/contracts",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/service-kit",
+      "file": "services/crm/package.json",
+      "specifier": "@atlas/service-kit",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/events",
+      "file": "services/crm/package.json",
+      "specifier": "@atlas/events",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/contracts",
+      "file": "services/delivery/package.json",
+      "specifier": "@atlas/contracts",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/service-kit",
+      "file": "services/delivery/package.json",
+      "specifier": "@atlas/service-kit",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/events",
+      "file": "services/delivery/package.json",
+      "specifier": "@atlas/events",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/contracts",
+      "file": "services/identity/package.json",
+      "specifier": "@atlas/contracts",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/service-kit",
+      "file": "services/identity/package.json",
+      "specifier": "@atlas/service-kit",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/events",
+      "file": "services/identity/package.json",
+      "specifier": "@atlas/events",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/contracts",
+      "file": "services/sales/package.json",
+      "specifier": "@atlas/contracts",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/service-kit",
+      "file": "services/sales/package.json",
+      "specifier": "@atlas/service-kit",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/events",
+      "file": "services/sales/package.json",
+      "specifier": "@atlas/events",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/contracts",
+      "file": "services/tracking/package.json",
+      "specifier": "@atlas/contracts",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/service-kit",
+      "file": "services/tracking/package.json",
+      "specifier": "@atlas/service-kit",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/events",
+      "file": "services/tracking/package.json",
+      "specifier": "@atlas/events",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/api-client",
+      "to": "@atlas/contracts",
+      "file": "packages/api-client/package.json",
+      "specifier": "@atlas/contracts",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/app-runtime",
+      "to": "@atlas/demo-data",
+      "file": "packages/app-runtime/package.json",
+      "specifier": "@atlas/demo-data",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/app-runtime",
+      "to": "@atlas/ui",
+      "file": "packages/app-runtime/package.json",
+      "specifier": "@atlas/ui",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/app-runtime",
+      "to": "@atlas/design-system",
+      "file": "packages/app-runtime/package.json",
+      "specifier": "@atlas/design-system",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/events",
+      "to": "@atlas/contracts",
+      "file": "packages/events/package.json",
+      "specifier": "@atlas/contracts",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/events",
+      "to": "@atlas/service-kit",
+      "file": "packages/events/package.json",
+      "specifier": "@atlas/service-kit",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/service-kit",
+      "to": "@atlas/contracts",
+      "file": "packages/service-kit/package.json",
+      "specifier": "@atlas/contracts",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/ui",
+      "to": "@atlas/design-system",
+      "file": "packages/ui/package.json",
+      "specifier": "@atlas/design-system",
+      "via": "dependencies"
+    },
+    {
+      "from": "@atlas/admin-web",
+      "to": "@atlas/ui",
+      "file": "apps/admin-web/src/context.js",
+      "specifier": "../../../packages/ui/src/index.js",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/admin-web",
+      "to": "@atlas/app-runtime",
+      "file": "apps/admin-web/src/main.js",
+      "specifier": "@atlas/app-runtime",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/admin-web",
+      "to": "@atlas/app-runtime",
+      "file": "apps/admin-web/src/main.js",
+      "specifier": "@atlas/app-runtime/tracking",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/client-mobile",
+      "to": "@atlas/ui",
+      "file": "apps/client-mobile/src/context.js",
+      "specifier": "../../../packages/ui/src/index.js",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/client-mobile",
+      "to": "@atlas/mobile-platform",
+      "file": "apps/client-mobile/src/main.js",
+      "specifier": "@atlas/mobile-platform",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/client-mobile",
+      "to": "@atlas/app-runtime",
+      "file": "apps/client-mobile/src/main.js",
+      "specifier": "@atlas/app-runtime",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/client-mobile",
+      "to": "@atlas/app-runtime",
+      "file": "apps/client-mobile/src/main.js",
+      "specifier": "@atlas/app-runtime/tracking",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/rep-mobile",
+      "to": "@atlas/ui",
+      "file": "apps/rep-mobile/src/context.js",
+      "specifier": "../../../packages/ui/src/index.js",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/rep-mobile",
+      "to": "@atlas/mobile-platform",
+      "file": "apps/rep-mobile/src/main.js",
+      "specifier": "@atlas/mobile-platform",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/rep-mobile",
+      "to": "@atlas/app-runtime",
+      "file": "apps/rep-mobile/src/main.js",
+      "specifier": "@atlas/app-runtime",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/rep-mobile",
+      "to": "@atlas/app-runtime",
+      "file": "apps/rep-mobile/src/main.js",
+      "specifier": "@atlas/app-runtime/tracking",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/api-gateway",
+      "to": "@atlas/service-kit",
+      "file": "services/api-gateway/src/app.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/api-gateway",
+      "to": "@atlas/service-kit",
+      "file": "services/api-gateway/src/application/proxy.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/api-gateway",
+      "to": "@atlas/service-kit",
+      "file": "services/api-gateway/src/infrastructure/config.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/api-gateway",
+      "to": "@atlas/service-kit",
+      "file": "services/api-gateway/src/main.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/api-gateway",
+      "to": "@atlas/service-kit",
+      "file": "services/api-gateway/src/transport/routes.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/service-kit",
+      "file": "services/billing/src/app.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/contracts",
+      "file": "services/billing/src/application/events.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/service-kit",
+      "file": "services/billing/src/application/events.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/contracts",
+      "file": "services/billing/src/application/payments.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/service-kit",
+      "file": "services/billing/src/application/payments.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/contracts",
+      "file": "services/billing/src/domain/model.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/service-kit",
+      "file": "services/billing/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/service-kit",
+      "file": "services/billing/src/infrastructure/repository.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/service-kit",
+      "file": "services/billing/src/main.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/events",
+      "file": "services/billing/src/main.ts",
+      "specifier": "@atlas/events",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/billing",
+      "to": "@atlas/service-kit",
+      "file": "services/billing/src/transport/routes.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/service-kit",
+      "file": "services/communications/src/app.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/contracts",
+      "file": "services/communications/src/application/events.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/service-kit",
+      "file": "services/communications/src/application/events.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/contracts",
+      "file": "services/communications/src/application/tickets.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/service-kit",
+      "file": "services/communications/src/application/tickets.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/contracts",
+      "file": "services/communications/src/domain/model.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/service-kit",
+      "file": "services/communications/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/service-kit",
+      "file": "services/communications/src/infrastructure/repository.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/service-kit",
+      "file": "services/communications/src/main.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/events",
+      "file": "services/communications/src/main.ts",
+      "specifier": "@atlas/events",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/communications",
+      "to": "@atlas/service-kit",
+      "file": "services/communications/src/transport/routes.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/service-kit",
+      "file": "services/crm/src/app.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/contracts",
+      "file": "services/crm/src/application/customers.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/service-kit",
+      "file": "services/crm/src/application/customers.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/contracts",
+      "file": "services/crm/src/application/events.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/service-kit",
+      "file": "services/crm/src/application/events.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/contracts",
+      "file": "services/crm/src/domain/model.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/service-kit",
+      "file": "services/crm/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/service-kit",
+      "file": "services/crm/src/infrastructure/repository.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/service-kit",
+      "file": "services/crm/src/main.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/events",
+      "file": "services/crm/src/main.ts",
+      "specifier": "@atlas/events",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/crm",
+      "to": "@atlas/service-kit",
+      "file": "services/crm/src/transport/routes.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/service-kit",
+      "file": "services/delivery/src/app.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/contracts",
+      "file": "services/delivery/src/application/events.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/service-kit",
+      "file": "services/delivery/src/application/events.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/contracts",
+      "file": "services/delivery/src/application/projects.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/service-kit",
+      "file": "services/delivery/src/application/projects.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/contracts",
+      "file": "services/delivery/src/domain/model.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/service-kit",
+      "file": "services/delivery/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/service-kit",
+      "file": "services/delivery/src/infrastructure/repository.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/service-kit",
+      "file": "services/delivery/src/main.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/events",
+      "file": "services/delivery/src/main.ts",
+      "specifier": "@atlas/events",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/delivery",
+      "to": "@atlas/service-kit",
+      "file": "services/delivery/src/transport/routes.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/service-kit",
+      "file": "services/identity/src/app.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/contracts",
+      "file": "services/identity/src/application/identity.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/service-kit",
+      "file": "services/identity/src/application/identity.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/contracts",
+      "file": "services/identity/src/application/identity.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/contracts",
+      "file": "services/identity/src/domain/model.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/service-kit",
+      "file": "services/identity/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/service-kit",
+      "file": "services/identity/src/infrastructure/repository.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/service-kit",
+      "file": "services/identity/src/main.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/events",
+      "file": "services/identity/src/main.ts",
+      "specifier": "@atlas/events",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/identity",
+      "to": "@atlas/service-kit",
+      "file": "services/identity/src/transport/routes.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/service-kit",
+      "file": "services/sales/src/app.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/contracts",
+      "file": "services/sales/src/application/events.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/service-kit",
+      "file": "services/sales/src/application/events.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/contracts",
+      "file": "services/sales/src/application/ports.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/contracts",
+      "file": "services/sales/src/application/quotes.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/service-kit",
+      "file": "services/sales/src/application/quotes.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/contracts",
+      "file": "services/sales/src/application/visits.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/service-kit",
+      "file": "services/sales/src/application/visits.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/contracts",
+      "file": "services/sales/src/domain/model.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/contracts",
+      "file": "services/sales/src/domain/quote.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/service-kit",
+      "file": "services/sales/src/domain/quote.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/contracts",
+      "file": "services/sales/src/infrastructure/crm-client.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/service-kit",
+      "file": "services/sales/src/infrastructure/crm-client.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/service-kit",
+      "file": "services/sales/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/service-kit",
+      "file": "services/sales/src/infrastructure/repository.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/service-kit",
+      "file": "services/sales/src/main.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/events",
+      "file": "services/sales/src/main.ts",
+      "specifier": "@atlas/events",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/sales",
+      "to": "@atlas/service-kit",
+      "file": "services/sales/src/transport/routes.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/service-kit",
+      "file": "services/tracking/src/app.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/contracts",
+      "file": "services/tracking/src/application/sessions.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/service-kit",
+      "file": "services/tracking/src/application/sessions.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/contracts",
+      "file": "services/tracking/src/domain/model.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/service-kit",
+      "file": "services/tracking/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/service-kit",
+      "file": "services/tracking/src/infrastructure/repository.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/service-kit",
+      "file": "services/tracking/src/main.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/events",
+      "file": "services/tracking/src/main.ts",
+      "specifier": "@atlas/events",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/tracking",
+      "to": "@atlas/service-kit",
+      "file": "services/tracking/src/transport/routes.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/api-client",
+      "to": "@atlas/contracts",
+      "file": "packages/api-client/src/index.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/app-runtime",
+      "to": "@atlas/demo-data",
+      "file": "packages/app-runtime/src/index.js",
+      "specifier": "@atlas/demo-data",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/app-runtime",
+      "to": "@atlas/demo-data",
+      "file": "packages/app-runtime/src/index.js",
+      "specifier": "@atlas/demo-data/repository",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/app-runtime",
+      "to": "@atlas/design-system",
+      "file": "packages/app-runtime/src/index.js",
+      "specifier": "@atlas/design-system/icons",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/app-runtime",
+      "to": "@atlas/ui",
+      "file": "packages/app-runtime/src/index.js",
+      "specifier": "@atlas/ui/primitives",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/events",
+      "to": "@atlas/contracts",
+      "file": "packages/events/src/index.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/events",
+      "to": "@atlas/service-kit",
+      "file": "packages/events/src/index.ts",
+      "specifier": "@atlas/service-kit",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/service-kit",
+      "to": "@atlas/contracts",
+      "file": "packages/service-kit/src/auth.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/service-kit",
+      "to": "@atlas/contracts",
+      "file": "packages/service-kit/src/http.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/service-kit",
+      "to": "@atlas/contracts",
+      "file": "packages/service-kit/src/memory-repository.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/service-kit",
+      "to": "@atlas/contracts",
+      "file": "packages/service-kit/src/pg-repository.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/service-kit",
+      "to": "@atlas/contracts",
+      "file": "packages/service-kit/src/repository.ts",
+      "specifier": "@atlas/contracts",
+      "via": "source"
+    },
+    {
+      "from": "@atlas/ui",
+      "to": "@atlas/design-system",
+      "file": "packages/ui/src/primitives.js",
+      "specifier": "@atlas/design-system/icons",
+      "via": "source"
+    }
+  ],
+  "scope": "Static workspace manifests and JS/TS module graph; no claim of runtime SQL, network, authentication or database isolation."
+}

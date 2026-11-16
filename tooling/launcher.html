@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#17221b" />
+    <meta
+      name="description"
+      content="ثلاثة تطبيقات مستقلة تربط المندوب الميداني والعميل والإدارة في تجربة عربية متكاملة."
+    />
+    <title>أطلس 2027 | مساحة واحدة. ثلاث تجارب.</title>
+    <style>
+      /* ATLAS_SHARED_CSS */
+      body {
+        background: #f4f6f0;
+      }
+      .hub {
+        max-width: 1240px;
+        margin: auto;
+        padding: 30px 22px 50px;
+      }
+      .hub-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 28px;
+      }
+      .hub-brand {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+      }
+      .hub-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        color: #62735e;
+      }
+      .hub-title {
+        max-width: 820px;
+        margin: 35px auto 40px;
+        text-align: center;
+      }
+      .hub-title .eyebrow {
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+        letter-spacing: 3px;
+        color: #61705d;
+      }
+      .hub-title h1 {
+        font-size: clamp(33px, 6vw, 70px);
+        line-height: 1.5;
+        letter-spacing: -1.5px;
+        margin: 18px 0;
+      }
+      .hub-title h1 span {
+        display: inline-block;
+        background: #d9f99d;
+        line-height: 1.4;
+        padding: 0 12px;
+        border-radius: 13px;
+      }
+      .hub-title > p {
+        color: #6b7769;
+        font-size: 14px;
+        line-height: 2;
+        max-width: 60ch;
+        margin: auto;
+      }
+      .app-choices {
+        display: grid;
+        gap: 22px;
+      }
+      .app-choice {
+        border: 1px solid #dfe5d8;
+        border-radius: 27px;
+        background: white;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition: transform 0.2s;
+      }
+      .app-choice:hover {
+        transform: translateY(-4px);
+      }
+      .choice-top {
+        height: 285px;
+        background: #e7eedf;
+        padding: 24px 26px 0;
+        overflow: hidden;
+        position: relative;
+      }
+      .app-choice:nth-child(2) .choice-top {
+        background: #dfe9e0;
+      }
+      .app-choice:nth-child(3) .choice-top {
+        background: #e7e9e1;
+      }
+      .choice-top:before {
+        content: '';
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        border: 1px solid #b7c9ab50;
+        position: absolute;
+        left: -70px;
+        top: 60px;
+        box-shadow:
+          0 0 0 35px #ffffff24,
+          0 0 0 70px #ffffff24;
+      }
+      .mini-app {
+        max-width: 240px;
+        margin: 0 auto;
+        background: #f7f8f4;
+        border: 6px solid #17221b;
+        border-bottom: 0;
+        border-radius: 30px 30px 0 0;
+        height: 280px;
+        box-shadow: 0 20px 30px #17221b16;
+        padding: 19px 14px;
+        position: relative;
+        transform: rotate(-3deg);
+      }
+      .app-choice:nth-child(2) .mini-app {
+        transform: rotate(3deg);
+      }
+      .mini-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+        font-size: 12px;
+      }
+      .mini-dot {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #d9f99d;
+      }
+      .mini-hero {
+        border-radius: 16px;
+        background: #17221b;
+        color: white;
+        padding: 15px;
+        font-size: 11px;
+        position: relative;
+        overflow: hidden;
+      }
+      .mini-hero strong {
+        font-size: 18px;
+        display: block;
+        margin-bottom: 3px;
+      }
+      .mini-hero span {
+        font-size: 9px;
+        color: #c3d6bd;
+      }
+      .mini-line {
+        height: 5px;
+        background: #d9f99d;
+        border-radius: 10px;
+        width: 60%;
+        margin-top: 12px;
+      }
+      .mini-row {
+        display: flex;
+        gap: 7px;
+        margin-top: 12px;
+      }
+      .mini-card {
+        background: #fff;
+        border: 1px solid #e2e7dc;
+        border-radius: 11px;
+        padding: 11px;
+        flex: 1;
+        font-size: 8px;
+        color: #78836f;
+      }
+      .mini-card strong {
+        font-size: 17px;
+        display: block;
+        color: #203221;
+      }
+      .mini-list {
+        background: #fff;
+        border: 1px solid #e2e7dc;
+        border-radius: 10px;
+        padding: 11px;
+        margin-top: 10px;
+        font-size: 9px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .mini-square {
+        height: 26px;
+        width: 26px;
+        background: #edf3e4;
+        border-radius: 8px;
+      }
+      .mini-admin {
+        max-width: 300px;
+        border-radius: 15px 15px 0 0;
+        height: 230px;
+        margin-top: 35px;
+        transform: rotate(-2deg) !important;
+        border-width: 5px;
+        padding: 12px;
+        display: grid;
+        grid-template-columns: 1fr 44px;
+        gap: 10px;
+      }
+      .mini-sidebar {
+        background: #17221b;
+        border-radius: 7px;
+        padding: 9px 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .mini-sidebar i {
+        height: 5px;
+        background: #5c7359;
+        border-radius: 5px;
+      }
+      .mini-sidebar i:first-child {
+        background: #d9f99d;
+        height: 15px;
+      }
+      .mini-chart {
+        height: 80px;
+        display: flex;
+        align-items: flex-end;
+        gap: 5px;
+        margin-top: 12px;
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
+        direction: ltr;
+      }
+      .mini-chart i {
+        width: 18%;
+        background: #d9f99d;
+        border-radius: 4px 4px 0 0;
+      }
+      .mini-chart i:nth-child(3) {
+        background: #176b55;
+      }
+      .choice-info {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .choice-kicker {
+        font-size: 10px;
+        color: #84917e;
+        letter-spacing: 0.06em;
+      }
+      .choice-info h2 {
+        font-size: 22px;
+        margin: 8px 0;
+      }
+      .choice-info p {
+        font-size: 12px;
+        color: #7b8576;
+        line-height: 1.9;
+        min-height: 50px;
+      }
+      .choice-info .btn {
+        margin-top: 20px;
+        min-height: 49px;
+      }
+      .hub-note {
+        margin: 32px auto 0;
+        text-align: center;
+        font-size: 11px;
+        color: #7c8877;
+        max-width: 75ch;
+        line-height: 1.9;
+      }
+      .hub-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 35px;
+        border-top: 1px solid #dfe5d8;
+        padding-top: 20px;
+        color: #819078;
+        font-size: 10px;
+      }
+      .hub-footer a {
+        color: #607655;
+      }
+      .hub-downloads {
+        margin: 24px auto 0;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .hub-downloads .btn {
+        font-size: 11px;
+        min-height: 44px;
+      }
+      .mini-stage {
+        display: flex;
+        gap: 5px;
+        margin-top: 13px;
+      }
+      .mini-stage i {
+        height: 4px;
+        background: #dce7d4;
+        border-radius: 4px;
+        flex: 1;
+      }
+      .mini-stage i:nth-child(-n + 3) {
+        background: #176b55;
+      }
+      @media (min-width: 750px) {
+        .app-choices {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .hub {
+          padding: 35px 35px 45px;
+        }
+        .hub-title {
+          margin-top: 55px;
+        }
+        .choice-top {
+          height: 270px;
+          padding-inline: 20px;
+        }
+      }
+      @media (max-width: 749px) {
+        .hub-title {
+          margin-top: 25px;
+        }
+        .app-choice {
+          max-width: 450px;
+          width: 100%;
+          margin: auto;
+        }
+        .choice-top {
+          height: 245px;
+        }
+        .mini-app {
+          height: 250px;
+        }
+        .hub-status {
+          font-size: 9px;
+        }
+        .hub-title > p {
+          font-size: 12px;
+        }
+        .choice-info p {
+          min-height: 0;
+        }
+        .hub-footer {
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hub">
+      <header class="hub-header">
+        <div class="hub-brand">
+          <span class="atlas-mark" aria-hidden="true"><i></i><i></i><i></i></span
+          ><span class="brand-type">أطلس<span>ATLAS</span></span>
+        </div>
+        <div class="hub-status"><span class="status-dot"></span>تصميم 2027 · تجربة تفاعلية</div>
+      </header>
+      <main>
+        <section class="hub-title">
+          <span class="eyebrow">RELATIONSHIPS. IN MOTION.</span>
+          <h1>كل فريقك.<br />في <span>اتجاه واحد.</span></h1>
+          <p>
+            من أول زيارة إلى آخر تسليم. ثلاث تجارب مستقلة تجعل المبيعات الميدانية وخدمة العميل
+            وإدارة الفريق تعمل معًا.
+          </p>
+        </section>
+        <section class="app-choices" aria-label="اختر التطبيق">
+          <article class="app-choice">
+            <div class="choice-top" aria-hidden="true">
+              <div class="mini-app">
+                <div class="mini-top"><b>أطلس الميداني</b><i class="mini-dot"></i></div>
+                <div class="mini-hero">
+                  <strong>يومك يبدأ بفرصة.</strong><span>3 زيارات · منطقة الشهباء</span>
+                  <div class="mini-line"></div>
+                </div>
+                <div class="mini-row">
+                  <div class="mini-card"><strong>5,650</strong>فرص مكتسبة</div>
+                  <div class="mini-card"><strong>03</strong>زيارات اليوم</div>
+                </div>
+                <div class="mini-list"><i class="mini-square"></i><b>مقهى مدار · 11:00</b></div>
+              </div>
+            </div>
+            <div class="choice-info">
+              <span class="choice-kicker">01 / FIELD SALES</span>
+              <h2>المندوب الميداني</h2>
+              <p>خطط ليومك، افهم احتياج العميل، وسجّل زيارتك وابنِ عرضًا يستحق الموافقة.</p>
+              <a class="btn btn-primary" href="rep.html"
+                >افتح تطبيق المندوب <span aria-hidden="true">←</span></a
+              >
+            </div>
+          </article>
+          <article class="app-choice">
+            <div class="choice-top" aria-hidden="true">
+              <div class="mini-app">
+                <div class="mini-top"><b>مساحتي مع أطلس</b><i class="mini-dot"></i></div>
+                <div class="mini-hero">
+                  <strong>فكرتك تتشكّل.</strong><span>موقع مقهى مدار · مرحلة التصميم</span>
+                  <div class="mini-line" style="width: 42%"></div>
+                </div>
+                <div class="mini-stage"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="mini-list">
+                  <i class="mini-square" style="background: #d9f99d"></i
+                  ><b>تصميم جديد بانتظار رأيك</b>
+                </div>
+                <div class="mini-row">
+                  <div class="mini-card"><strong>02</strong>مشاريعك</div>
+                  <div class="mini-card"><strong>42%</strong>نسبة الإنجاز</div>
+                </div>
+              </div>
+            </div>
+            <div class="choice-info">
+              <span class="choice-kicker">02 / CLIENT EXPERIENCE</span>
+              <h2>تطبيق العميل</h2>
+              <p>عقود واضحة، ومراحل مرئية، ومساحة لرأيك. تابع مشروعك واعتمد كل خطوة بثقة.</p>
+              <a class="btn btn-primary" href="client.html"
+                >افتح تطبيق العميل <span aria-hidden="true">←</span></a
+              >
+            </div>
+          </article>
+          <article class="app-choice">
+            <div class="choice-top" aria-hidden="true">
+              <div class="mini-app mini-admin">
+                <div>
+                  <div class="mini-top"><b>مركز القيادة</b><i class="mini-dot"></i></div>
+                  <div class="mini-row">
+                    <div class="mini-card"><strong>12</strong>عميلًا</div>
+                    <div class="mini-card"><strong>05</strong>مندوبين</div>
+                  </div>
+                  <div class="mini-chart">
+                    <i style="height: 35%"></i><i style="height: 55%"></i><i style="height: 90%"></i
+                    ><i style="height: 65%"></i><i style="height: 80%"></i>
+                  </div>
+                  <div class="mini-list">
+                    <i class="mini-square"></i><b>الفريق والمناطق، أمامك.</b>
+                  </div>
+                </div>
+                <div class="mini-sidebar"><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+            <div class="choice-info">
+              <span class="choice-kicker">03 / OPERATIONS & INSIGHTS</span>
+              <h2>لوحة الإدارة</h2>
+              <p>وزّع المناطق، تابع الفريق، واتخذ قراراتك من الزيارات والفرص والمشاريع الفعلية.</p>
+              <a class="btn btn-primary" href="admin.html"
+                >افتح لوحة الإدارة <span aria-hidden="true">←</span></a
+              >
+            </div>
+          </article>
+        </section>
+        <p class="hub-note">
+          بيانات توضيحية جاهزة للتجربة. تُحفظ تعديلاتك في متصفحك وتظهر بين التطبيقات عند فتحها من
+          هذا العنوان. الاعتمادات والدفعات والمراسلات داخل التجربة فقط. خدمات الشركة ومزامنة الأجهزة
+          تُشغّل مستقلة؛ هذه الواجهة تستخدم بيانات التجربة المحلية.
+        </p>
+        <div class="hub-downloads" aria-label="تنزيل التطبيقات والكود">
+          <a class="btn btn-primary" href="AtlasCRM-Enterprise-2.0.1.zip" download
+            >تنزيل الكود الكامل <span aria-hidden="true">↓</span></a
+          ><a class="btn btn-secondary" href="rep.html" download="AtlasCRM-Representative.html"
+            >HTML المندوب</a
+          ><a class="btn btn-secondary" href="client.html" download="AtlasCRM-Customer.html"
+            >HTML العميل</a
+          ><a class="btn btn-secondary" href="admin.html" download="AtlasCRM-Administration.html"
+            >HTML الإدارة</a
+          >
+        </div>
+      </main>
+      <footer class="hub-footer">
+        <span>أطلس · كل علاقة تصنع فرقًا.</span><a href="README.md">دليل التجربة والتطوير</a
+        ><a href="docs/ARCHITECTURE.md">دليل الشاشات والوظائف</a
+        ><span>HTML · CSS · JavaScript</span>
+      </footer>
+    </div>
+  </body>
+</html>

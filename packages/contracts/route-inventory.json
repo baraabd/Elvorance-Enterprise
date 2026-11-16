@@ -1,0 +1,450 @@
+[
+  {
+    "service": "identity",
+    "method": "GET",
+    "gatewayPath": "/v1/identity/me",
+    "servicePath": "/v1/me",
+    "roles": ["admin", "rep", "client", "finance", "delivery", "support"],
+    "summary": "Verified principal and optional membership profile"
+  },
+  {
+    "service": "identity",
+    "method": "GET",
+    "gatewayPath": "/v1/identity/tenant",
+    "servicePath": "/v1/tenant",
+    "roles": ["admin", "rep", "client", "finance", "delivery", "support"],
+    "summary": "Current tenant profile"
+  },
+  {
+    "service": "identity",
+    "method": "POST",
+    "gatewayPath": "/v1/identity/tenant",
+    "servicePath": "/v1/tenant",
+    "roles": ["admin"],
+    "summary": "Create tenant display profile"
+  },
+  {
+    "service": "identity",
+    "method": "GET",
+    "gatewayPath": "/v1/identity/memberships",
+    "servicePath": "/v1/memberships",
+    "roles": ["admin"],
+    "summary": "List tenant membership profiles"
+  },
+  {
+    "service": "identity",
+    "method": "POST",
+    "gatewayPath": "/v1/identity/memberships",
+    "servicePath": "/v1/memberships",
+    "roles": ["admin"],
+    "summary": "Record an externally provisioned identity profile"
+  },
+  {
+    "service": "crm",
+    "method": "GET",
+    "gatewayPath": "/v1/crm/customers",
+    "servicePath": "/v1/customers",
+    "roles": ["admin", "rep", "client", "finance", "delivery", "support"],
+    "summary": "List scoped customers"
+  },
+  {
+    "service": "crm",
+    "method": "GET",
+    "gatewayPath": "/v1/crm/customers/{id}",
+    "servicePath": "/v1/customers/{id}",
+    "roles": ["admin", "rep", "client", "finance", "delivery", "support"],
+    "summary": "Read a scoped customer"
+  },
+  {
+    "service": "crm",
+    "method": "GET",
+    "gatewayPath": "/v1/crm/customers/{id}/context",
+    "servicePath": "/v1/customers/{id}/context",
+    "roles": ["admin", "rep", "client", "finance", "delivery", "support"],
+    "summary": "Read current sales assignment and consent version"
+  },
+  {
+    "service": "crm",
+    "method": "POST",
+    "gatewayPath": "/v1/crm/customers",
+    "servicePath": "/v1/customers",
+    "roles": ["admin", "rep"],
+    "summary": "Create a customer"
+  },
+  {
+    "service": "crm",
+    "method": "PATCH",
+    "gatewayPath": "/v1/crm/customers/{id}",
+    "servicePath": "/v1/customers/{id}",
+    "roles": ["admin", "rep", "client"],
+    "summary": "Update customer or explicit contact preference"
+  },
+  {
+    "service": "crm",
+    "method": "GET",
+    "gatewayPath": "/v1/crm/regions",
+    "servicePath": "/v1/regions",
+    "roles": ["admin", "rep", "client", "finance", "delivery", "support"],
+    "summary": "List tenant regions"
+  },
+  {
+    "service": "crm",
+    "method": "POST",
+    "gatewayPath": "/v1/crm/regions",
+    "servicePath": "/v1/regions",
+    "roles": ["admin"],
+    "summary": "Create a region"
+  },
+  {
+    "service": "sales",
+    "method": "GET",
+    "gatewayPath": "/v1/sales/visits",
+    "servicePath": "/v1/visits",
+    "roles": ["admin", "rep"],
+    "summary": "List assigned visits"
+  },
+  {
+    "service": "sales",
+    "method": "GET",
+    "gatewayPath": "/v1/sales/visits/{id}",
+    "servicePath": "/v1/visits/{id}",
+    "roles": ["admin", "rep"],
+    "summary": "Read assigned visit and server closing evidence"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/visits",
+    "servicePath": "/v1/visits",
+    "roles": ["admin", "rep"],
+    "summary": "Schedule a visit with fresh CRM ownership and consent"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/visits/{id}/start",
+    "servicePath": "/v1/visits/{id}/start",
+    "roles": ["admin", "rep"],
+    "summary": "Start one active visit per representative"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/visits/{id}/complete",
+    "servicePath": "/v1/visits/{id}/complete",
+    "roles": ["admin", "rep"],
+    "summary": "Close visit with server-derived agreement snapshot"
+  },
+  {
+    "service": "sales",
+    "method": "GET",
+    "gatewayPath": "/v1/sales/quotes",
+    "servicePath": "/v1/quotes",
+    "roles": ["admin", "rep", "client"],
+    "summary": "List role-scoped quotes; client cannot read drafts"
+  },
+  {
+    "service": "sales",
+    "method": "GET",
+    "gatewayPath": "/v1/sales/quotes/{id}",
+    "servicePath": "/v1/quotes/{id}",
+    "roles": ["admin", "rep", "client"],
+    "summary": "Read role-scoped quote snapshot"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/quotes",
+    "servicePath": "/v1/quotes",
+    "roles": ["admin", "rep"],
+    "summary": "Prepare a draft snapshot during a started visit"
+  },
+  {
+    "service": "sales",
+    "method": "PATCH",
+    "gatewayPath": "/v1/sales/quotes/{id}",
+    "servicePath": "/v1/quotes/{id}",
+    "roles": ["admin", "rep"],
+    "summary": "Edit an unsent draft"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/quotes/{id}/revise",
+    "servicePath": "/v1/quotes/{id}/revise",
+    "roles": ["admin", "rep"],
+    "summary": "Create one editable revision preserving the previous snapshot"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/quotes/{id}/send",
+    "servicePath": "/v1/quotes/{id}/send",
+    "roles": ["admin", "rep"],
+    "summary": "Send a draft after rechecking CRM scope and expiry"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/quotes/{id}/accept",
+    "servicePath": "/v1/quotes/{id}/accept",
+    "roles": ["client"],
+    "summary": "Accept a quote and create exactly one pending contract"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/quotes/{id}/reject",
+    "servicePath": "/v1/quotes/{id}/reject",
+    "roles": ["client"],
+    "summary": "Respond to an owned sent quote"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/quotes/{id}/request-changes",
+    "servicePath": "/v1/quotes/{id}/request-changes",
+    "roles": ["client"],
+    "summary": "Respond to an owned sent quote"
+  },
+  {
+    "service": "sales",
+    "method": "GET",
+    "gatewayPath": "/v1/sales/contracts",
+    "servicePath": "/v1/contracts",
+    "roles": ["admin", "rep", "client", "finance", "delivery"],
+    "summary": "List scoped contracts"
+  },
+  {
+    "service": "sales",
+    "method": "GET",
+    "gatewayPath": "/v1/sales/contracts/{id}",
+    "servicePath": "/v1/contracts/{id}",
+    "roles": ["admin", "rep", "client", "finance", "delivery"],
+    "summary": "Read immutable contractual scope"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/contracts/{id}/approve",
+    "servicePath": "/v1/contracts/{id}/approve",
+    "roles": ["client"],
+    "summary": "Explicitly approve contractual scope and emit contract.approved.v1"
+  },
+  {
+    "service": "sales",
+    "method": "GET",
+    "gatewayPath": "/v1/sales/contracts/{id}/fulfillment",
+    "servicePath": "/v1/contracts/{id}/fulfillment",
+    "roles": ["admin", "rep", "client", "finance", "delivery"],
+    "summary": "Read eventual project and invoice provisioning status"
+  },
+  {
+    "service": "delivery",
+    "method": "GET",
+    "gatewayPath": "/v1/delivery/projects",
+    "servicePath": "/v1/projects",
+    "roles": ["admin", "delivery", "rep", "client"],
+    "summary": "List role-scoped projects"
+  },
+  {
+    "service": "delivery",
+    "method": "GET",
+    "gatewayPath": "/v1/delivery/projects/{id}",
+    "servicePath": "/v1/projects/{id}",
+    "roles": ["admin", "delivery", "rep", "client"],
+    "summary": "Read project, actual milestones and deliverables"
+  },
+  {
+    "service": "delivery",
+    "method": "POST",
+    "gatewayPath": "/v1/delivery/projects/{id}/milestones",
+    "servicePath": "/v1/projects/{id}/milestones",
+    "roles": ["admin", "delivery"],
+    "summary": "Plan an explicit real milestone"
+  },
+  {
+    "service": "delivery",
+    "method": "POST",
+    "gatewayPath": "/v1/delivery/projects/{id}/milestones/{milestoneId}",
+    "servicePath": "/v1/projects/{id}/milestones/{milestoneId}",
+    "roles": ["admin", "delivery"],
+    "summary": "Advance an actual milestone in order"
+  },
+  {
+    "service": "delivery",
+    "method": "POST",
+    "gatewayPath": "/v1/delivery/projects/{id}/deliverables",
+    "servicePath": "/v1/projects/{id}/deliverables",
+    "roles": ["admin", "delivery"],
+    "summary": "Submit actual content for review"
+  },
+  {
+    "service": "delivery",
+    "method": "POST",
+    "gatewayPath": "/v1/delivery/projects/{id}/deliverables/{deliverableId}/revise",
+    "servicePath": "/v1/projects/{id}/deliverables/{deliverableId}/revise",
+    "roles": ["admin", "delivery"],
+    "summary": "Resubmit changed content with revision history"
+  },
+  {
+    "service": "delivery",
+    "method": "POST",
+    "gatewayPath": "/v1/delivery/projects/{id}/deliverables/{deliverableId}/review",
+    "servicePath": "/v1/projects/{id}/deliverables/{deliverableId}/review",
+    "roles": ["client"],
+    "summary": "Approve or request changes to a particular revision"
+  },
+  {
+    "service": "delivery",
+    "method": "POST",
+    "gatewayPath": "/v1/delivery/projects/{id}/complete",
+    "servicePath": "/v1/projects/{id}/complete",
+    "roles": ["admin", "delivery"],
+    "summary": "Complete explicitly after milestones and customer approvals"
+  },
+  {
+    "service": "billing",
+    "method": "GET",
+    "gatewayPath": "/v1/billing/invoices",
+    "servicePath": "/v1/invoices",
+    "roles": ["admin", "finance", "rep", "client"],
+    "summary": "List scoped invoices"
+  },
+  {
+    "service": "billing",
+    "method": "GET",
+    "gatewayPath": "/v1/billing/invoices/{id}",
+    "servicePath": "/v1/invoices/{id}",
+    "roles": ["admin", "finance", "rep", "client"],
+    "summary": "Read an invoice"
+  },
+  {
+    "service": "billing",
+    "method": "GET",
+    "gatewayPath": "/v1/billing/invoices/{id}/payments",
+    "servicePath": "/v1/invoices/{id}/payments",
+    "roles": ["admin", "finance", "rep", "client"],
+    "summary": "Read payment ledger"
+  },
+  {
+    "service": "billing",
+    "method": "GET",
+    "gatewayPath": "/v1/billing/contracts/{id}/account",
+    "servicePath": "/v1/contracts/{id}/account",
+    "roles": ["admin", "finance", "rep", "client"],
+    "summary": "Read contracted and collected totals"
+  },
+  {
+    "service": "billing",
+    "method": "POST",
+    "gatewayPath": "/v1/billing/invoices/{id}/payments",
+    "servicePath": "/v1/invoices/{id}/payments",
+    "roles": ["admin", "finance"],
+    "summary": "Record an externally verified collection"
+  },
+  {
+    "service": "tracking",
+    "method": "POST",
+    "gatewayPath": "/v1/tracking/sessions",
+    "servicePath": "/v1/sessions",
+    "roles": ["rep"],
+    "summary": "Start consented representative session"
+  },
+  {
+    "service": "tracking",
+    "method": "GET",
+    "gatewayPath": "/v1/tracking/sessions/current",
+    "servicePath": "/v1/sessions/current",
+    "roles": ["rep"],
+    "summary": "Read own current sessions"
+  },
+  {
+    "service": "tracking",
+    "method": "GET",
+    "gatewayPath": "/v1/tracking/sessions/{id}",
+    "servicePath": "/v1/sessions/{id}",
+    "roles": ["admin", "rep"],
+    "summary": "Read own/admin current point and freshness"
+  },
+  {
+    "service": "tracking",
+    "method": "POST",
+    "gatewayPath": "/v1/tracking/sessions/{id}/points",
+    "servicePath": "/v1/sessions/{id}/points",
+    "roles": ["rep"],
+    "summary": "Replace latest point with fresh ordered GPS reading"
+  },
+  {
+    "service": "tracking",
+    "method": "POST",
+    "gatewayPath": "/v1/tracking/sessions/{id}/state",
+    "servicePath": "/v1/sessions/{id}/state",
+    "roles": ["admin", "rep"],
+    "summary": "Pause/resume own session or stop it"
+  },
+  {
+    "service": "tracking",
+    "method": "GET",
+    "gatewayPath": "/v1/tracking/latest",
+    "servicePath": "/v1/latest",
+    "roles": ["admin"],
+    "summary": "List latest tenant representative locations"
+  },
+  {
+    "service": "communications",
+    "method": "GET",
+    "gatewayPath": "/v1/communications/notifications",
+    "servicePath": "/v1/notifications",
+    "roles": ["admin", "support", "rep", "client"],
+    "summary": "Read scoped in-app notifications"
+  },
+  {
+    "service": "communications",
+    "method": "POST",
+    "gatewayPath": "/v1/communications/notifications/{id}/read",
+    "servicePath": "/v1/notifications/{id}/read",
+    "roles": ["admin", "support", "rep", "client"],
+    "summary": "Mark in-app notification read"
+  },
+  {
+    "service": "communications",
+    "method": "GET",
+    "gatewayPath": "/v1/communications/tickets",
+    "servicePath": "/v1/tickets",
+    "roles": ["admin", "support", "rep", "client"],
+    "summary": "List own or support tickets"
+  },
+  {
+    "service": "communications",
+    "method": "GET",
+    "gatewayPath": "/v1/communications/tickets/{id}",
+    "servicePath": "/v1/tickets/{id}",
+    "roles": ["admin", "support", "rep", "client"],
+    "summary": "Read ticket conversation"
+  },
+  {
+    "service": "communications",
+    "method": "POST",
+    "gatewayPath": "/v1/communications/tickets",
+    "servicePath": "/v1/tickets",
+    "roles": ["rep", "client"],
+    "summary": "Open an own support ticket"
+  },
+  {
+    "service": "communications",
+    "method": "POST",
+    "gatewayPath": "/v1/communications/tickets/{id}/replies",
+    "servicePath": "/v1/tickets/{id}/replies",
+    "roles": ["admin", "support", "rep", "client"],
+    "summary": "Reply to an open scoped ticket"
+  },
+  {
+    "service": "communications",
+    "method": "POST",
+    "gatewayPath": "/v1/communications/tickets/{id}/status",
+    "servicePath": "/v1/tickets/{id}/status",
+    "roles": ["admin", "support", "rep", "client"],
+    "summary": "Resolve or reopen a scoped ticket"
+  }
+]
