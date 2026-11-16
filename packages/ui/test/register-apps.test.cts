@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /* Registration and route smoke checks for the real ESM features and runtime.
  * Build in memory, execute in JSDOM, and use synthetic local state only.
  * No browser process, network, or native plugin is required.
@@ -109,7 +111,7 @@ for (const folder of fs.readdirSync(path.join(workspace, 'packages'))) {
 const resolveWorkspace = {
   name: 'local-workspace-exports',
   setup(build) {
-    build.onResolve({ filter: /^@atlas\// }, (args) =>
+    build.onResolve({ filter: /^@elvorance\// }, (args) =>
       aliases[args.path] ? { path: aliases[args.path] } : undefined,
     );
   },
@@ -145,7 +147,7 @@ function routeParams(role, route, state) {
   return rows[route] || {};
 }
 async function verify(role, spec) {
-  const entry = `import { installRuntime } from ${JSON.stringify(path.join(workspace, 'packages/app-runtime/src/index.js'))};\nimport { registerApp } from ${JSON.stringify(path.join(workspace, 'apps', spec.dir, 'src/app.js'))};\nconst runtime = installRuntime();\nwindow.AtlasAppDefinition = registerApp(runtime);\nruntime.start(${JSON.stringify(role)});`;
+  const entry = `import { installRuntime } from ${JSON.stringify(path.join(workspace, 'packages/app-runtime/src/index.js'))};\nimport { registerApp } from ${JSON.stringify(path.join(workspace, 'apps', spec.dir, 'src/app.js'))};\nconst runtime = installRuntime();\nwindow.ElvoranceAppDefinition = registerApp(runtime);\nruntime.start(${JSON.stringify(role)});`;
   const bundle = await esbuild.build({
     stdin: { contents: entry, resolveDir: workspace, sourcefile: role + '-registration.js' },
     bundle: true,
@@ -163,7 +165,7 @@ async function verify(role, spec) {
   const dom = new JSDOM(
     '<!doctype html><html dir="rtl" lang="ar"><body><div id="app"></div></body></html>',
     {
-      url: 'https://atlas-modules.test/' + role + '/',
+      url: 'https://elvorance-modules.test/' + role + '/',
       runScripts: 'dangerously',
       pretendToBeVisual: true,
       virtualConsole: vc,
@@ -175,12 +177,12 @@ async function verify(role, spec) {
     const script = w.document.createElement('script');
     script.textContent = bundle.outputFiles[0].text;
     w.document.head.append(script);
-    assert.ok(w.AtlasAppDefinition, role + ' registerApp did not register a definition');
-    const definition = w.AtlasAppDefinition;
+    assert.ok(w.ElvoranceAppDefinition, role + ' registerApp did not register a definition');
+    const definition = w.ElvoranceAppDefinition;
     assert.deepEqual(Object.keys(definition.routes).sort(), [...spec.routes].sort());
     assert.equal(Object.keys(definition.actions).length, spec.actions);
     assert.ok(Object.values(definition.actions).every((fn) => typeof fn === 'function'));
-    w.Atlas.update((s) => {
+    w.Elvorance.update((s) => {
       const v = s.visits.find((row) => row.id === 'visit-1');
       if (role === 'rep') {
         v.status = 'active';
@@ -189,7 +191,7 @@ async function verify(role, spec) {
       }
     });
     for (const route of spec.routes) {
-      w.Atlas.go(route, routeParams(role, route, w.Atlas.state()));
+      w.Elvorance.go(route, routeParams(role, route, w.Elvorance.state()));
       await pause(10);
       const content = w.document.querySelector('#main-content');
       assert.ok(content?.textContent.trim(), role + '/' + route + ' rendered no content');

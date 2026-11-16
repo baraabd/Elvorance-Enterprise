@@ -1,5 +1,7 @@
-import {defaultConfiguration,defaultCatalog,visibleQuestions,validateAnswers,validateConfiguration,recommendServices,QUESTION_SECTIONS,FIELD_TYPES} from '../packages/questionnaire/src/index.js';
-const STORE='atlas.crm.config.prototype.2027.v1';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import {defaultConfiguration,defaultCatalog,visibleQuestions,validateAnswers,validateConfiguration,recommendServices,QUESTION_SECTIONS,FIELD_TYPES} from '../packages/questionnaire/src/index.ts';
+const STORE='elvorance.crm.config.prototype.2027.v1';
 const seed=()=>({config:defaultConfiguration(),catalog:defaultCatalog(),answers:{},tasks:[{name:'متابعة عرض جديد',status:'open'},{name:'الرد على العميل',status:'done'}],projects:[{name:'موقع عيادة الندى',status:'active'},{name:'تصميم متجر خيط',status:'active'},{name:'هوية شركة الشرق',status:'completed'}],invoices:[{name:'الدفعة الثانية - عيادة الندى',total:1500,paid:250},{name:'الدفعة الأخيرة - متجر خيط',total:900,paid:0}]});
 const load=()=>{try{return JSON.parse(localStorage.getItem(STORE)||'null')||seed()}catch{return seed()}};let db=load();
 const save=()=>{db.config.revision++;db.config.updatedAt=new Date().toISOString();localStorage.setItem(STORE,JSON.stringify(db));refresh()};

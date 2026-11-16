@@ -1,4 +1,6 @@
-import { icons } from '@atlas/design-system/icons';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import { icons } from '@elvorance/design-system/icons';
 /** Shared v1.1 primitives used by the runtime and all three app facades. */
 export const esc = (value) =>
   String(value ?? '').replace(
