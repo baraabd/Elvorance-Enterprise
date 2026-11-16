@@ -1,5 +1,5 @@
 {
-  "name": "@atlas/events",
+  "name": "@elvorance/events",
   "version": "2.0.0",
   "private": true,
   "type": "module",
@@ -7,8 +7,8 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@atlas/contracts": "2.0.0",
-    "@atlas/service-kit": "2.0.0",
+    "@elvorance/contracts": "2.0.0",
+    "@elvorance/service-kit": "2.0.0",
     "amqplib": "0.10.9"
   }
 }

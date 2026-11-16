@@ -1,13 +1,13 @@
 {
-  "name": "@atlas/demo-data",
+  "name": "@elvorance/demo-data",
   "version": "2.0.0",
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.js",
-    "./repository": "./src/repository.js"
+    ".": "./src/index.ts",
+    "./repository": "./src/repository.ts"
   },
   "dependencies": {
-    "@atlas/questionnaire": "2.4.0"
+    "@elvorance/questionnaire": "2.4.0"
   }
 }

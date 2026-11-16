@@ -1,10 +1,10 @@
 {
-  "name": "@atlas/design-system",
+  "name": "@elvorance/design-system",
   "version": "2.0.0",
   "private": true,
   "type": "module",
   "exports": {
-    "./icons": "./src/icons.js",
+    "./icons": "./src/icons.ts",
     "./styles.css": "./src/styles.css",
     "./polish.css": "./src/polish.css",
     "./tracking.css": "./src/tracking.css"

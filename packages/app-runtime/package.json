@@ -1,16 +1,16 @@
 {
-  "name": "@atlas/app-runtime",
+  "name": "@elvorance/app-runtime",
   "version": "2.0.0",
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.js",
-    "./tracking": "./src/tracking.js",
-    "./finance": "./src/finance.js"
+    ".": "./src/index.ts",
+    "./tracking": "./src/tracking.ts",
+    "./finance": "./src/finance.ts"
   },
   "dependencies": {
-    "@atlas/demo-data": "2.0.0",
-    "@atlas/ui": "2.0.0",
-    "@atlas/design-system": "2.0.0"
+    "@elvorance/demo-data": "2.0.0",
+    "@elvorance/ui": "2.0.0",
+    "@elvorance/design-system": "2.0.0"
   }
 }
