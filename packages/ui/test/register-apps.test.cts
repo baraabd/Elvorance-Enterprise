@@ -173,6 +173,7 @@ async function verify(role, spec) {
   );
   const w = dom.window;
   w.scrollTo = () => {};
+  w.structuredClone = globalThis.structuredClone;
   try {
     const script = w.document.createElement('script');
     script.textContent = bundle.outputFiles[0].text;
