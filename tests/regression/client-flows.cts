@@ -1,11 +1,13 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /* Migrated v1.1 regression cases: sources are generated from the CURRENT modular workspaces, never the old application code. */
-/* Behavioral checks of the real Atlas client app. JSDOM is a DOM test adapter,
+/* Behavioral checks of the real Elvorance client app. JSDOM is a DOM test adapter,
  * not evidence of native browser layout, legal signing or actual payment. */
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
 const jsdomRoot =
-  process.env.ATLAS_JSDOM_PATH || path.dirname(require.resolve('jsdom/package.json'));
+  process.env.ELVORANCE_JSDOM_PATH || path.dirname(require.resolve('jsdom/package.json'));
 const { JSDOM, VirtualConsole } = require(jsdomRoot);
 const FileList = require(path.join(jsdomRoot, 'lib/generated/idl/FileList.js'));
 const idlUtils = require(path.join(jsdomRoot, 'lib/generated/idl/utils.js'));
@@ -29,7 +31,7 @@ async function create(saved) {
   const dom = new JSDOM(
     '<!doctype html><html dir="rtl" lang="ar"><head></head><body><div id="app"></div></body></html>',
     {
-      url: 'https://atlas-client-flow.example.test/client/',
+      url: 'https://elvorance-client-flow.example.test/client/',
       runScripts: 'outside-only',
       pretendToBeVisual: true,
       virtualConsole: vc,
@@ -45,9 +47,9 @@ async function create(saved) {
     'src/apps/client.js',
   ])
     w.eval(fs.readFileSync(path.join(root, file), 'utf8') + '\n//# sourceURL=' + file);
-  w.Atlas.start('client');
+  w.Elvorance.start('client');
   await pause(5);
-  return { dom, w, A: w.Atlas, errors };
+  return { dom, w, A: w.Elvorance, errors };
 }
 const $ = (ctx, selector) => {
   const node = ctx.w.document.querySelector(selector);

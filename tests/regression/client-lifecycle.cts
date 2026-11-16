@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /* Migrated v1.1 regression cases: sources are generated from the CURRENT modular workspaces, never the old application code. */
 /* Real DOM lifecycle tests. Run after npm install: node tests/client-lifecycle.cjs.
  * These verify local demo workflows, not real payment, signing or browser layout. */
@@ -20,7 +22,7 @@ async function create(app = 'client', snapshot) {
   const dom = new JSDOM(
     '<!doctype html><html lang="ar" dir="rtl"><head></head><body><div id="app"></div></body></html>',
     {
-      url: 'https://atlas-lifecycle.test/' + app + '.html',
+      url: 'https://elvorance-lifecycle.test/' + app + '.html',
       runScripts: 'outside-only',
       pretendToBeVisual: true,
       virtualConsole: console,
@@ -37,9 +39,9 @@ async function create(app = 'client', snapshot) {
     'src/apps/' + app + '.js',
   ])
     w.eval(fs.readFileSync(path.join(root, file), 'utf8') + '\n//# sourceURL=' + file);
-  w.Atlas.start(app);
+  w.Elvorance.start(app);
   await pause(5);
-  const context = { dom, w, A: w.Atlas, errors };
+  const context = { dom, w, A: w.Elvorance, errors };
   contexts.push(context);
   return context;
 }

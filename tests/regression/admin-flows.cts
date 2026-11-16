@@ -1,5 +1,7 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /* Migrated v1.1 regression cases: sources are generated from the CURRENT modular workspaces, never the old application code. */
-/* Actual Atlas shared runtime + admin module, exercised in JSDOM, without a browser. */
+/* Actual Elvorance shared runtime + admin module, exercised in JSDOM, without a browser. */
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -19,7 +21,7 @@ function environment(role = 'admin', stored) {
   const dom = new JSDOM(
     '<!doctype html><html lang="ar" dir="rtl"><body><div id="app"></div></body></html>',
     {
-      url: `https://atlas.example.test/${role}/`,
+      url: `https://elvorance.example.test/${role}/`,
       runScripts: 'outside-only',
       pretendToBeVisual: true,
       virtualConsole: console,
@@ -46,20 +48,20 @@ function environment(role = 'admin', stored) {
   };
   w.URL.createObjectURL = (blob) => {
     downloads.push({ text: blob.parts.join(''), type: blob.type });
-    return 'blob:atlas-demo-test';
+    return 'blob:elvorance-demo-test';
   };
   w.URL.revokeObjectURL = () => {};
   if (stored) Object.entries(stored).forEach(([key, value]) => w.localStorage.setItem(key, value));
   ['src/shared/icons.js', 'src/shared/seed.js', 'src/shared/core.js'].forEach((file) =>
     w.eval(load(file)),
   );
-  const register = w.Atlas.register;
-  w.Atlas.register = (definition) => {
+  const register = w.Elvorance.register;
+  w.Elvorance.register = (definition) => {
     definitions[definition.id] = definition;
     register(definition);
   };
   w.eval(load(`src/apps/${role}.js`));
-  w.Atlas.start(role);
+  w.Elvorance.start(role);
   function navigate(route, params = {}) {
     w.location.hash =
       '#' + route + (Object.keys(params).length ? '?' + new URLSearchParams(params) : '');
@@ -107,7 +109,7 @@ function environment(role = 'admin', stored) {
     checks,
     submit,
     serialized,
-    state: () => w.Atlas.state(),
+    state: () => w.Elvorance.state(),
     close: () => dom.window.close(),
   };
 }
@@ -212,7 +214,7 @@ test('Assigned task persists with target representative and scoped notification'
   env.fill('title', 'إعداد خطة متابعة للاختبار');
   env.fill('repId', 'rep-1');
   env.fill('clientId', 'client-1');
-  env.fill('dueDate', env.w.Atlas.addDays(2));
+  env.fill('dueDate', env.w.Elvorance.addDays(2));
   env.fill('priority', 'high');
   env.submit();
   const task = env.state().tasks.find((t) => t.title === 'إعداد خطة متابعة للاختبار');
@@ -232,7 +234,7 @@ test('Assigned task persists with target representative and scoped notification'
 });
 
 function addApprovalFixture(env, id) {
-  env.w.Atlas.update((s) => {
+  env.w.Elvorance.update((s) => {
     // Approval fixtures must match the real quote; stale/mismatched approvals are now rejected.
     const quote = s.quotes.find((q) => q.id === 'quote-3');
     quote.items = [{ serviceId: 'svc-store', title: 'متجر اختبار الاعتماد', qty: 1, price: 3200 }];
@@ -244,7 +246,7 @@ function addApprovalFixture(env, id) {
       repId: quote.repId,
       clientId: quote.clientId,
       quoteId: quote.id,
-      quoteFingerprint: env.w.Atlas.quoteFingerprint(quote),
+      quoteFingerprint: env.w.Elvorance.quoteFingerprint(quote),
       subtotal: 3200,
       title: 'مراجعة خصم تحقق',
       details: 'طلب اختبار يحافظ على عقد العرض.',
@@ -300,8 +302,8 @@ test('Project completion requires finished milestones and approved actual conten
     JSON.parse(JSON.stringify(env.state().projects.find((p) => p.id === 'project-1').milestones)),
     oldMilestones,
   );
-  env.w.Atlas.closeModal();
-  env.w.Atlas.update((s) => {
+  env.w.Elvorance.closeModal();
+  env.w.Elvorance.update((s) => {
     const p = s.projects.find((p) => p.id === 'project-1');
     p.milestones.forEach((m) => {
       m.status = 'done';
@@ -329,7 +331,7 @@ test('Project completion requires finished milestones and approved actual conten
 });
 
 test('Milestone updates recalculate project progress and reopen an incomplete project', (env) => {
-  env.w.Atlas.update((s) => {
+  env.w.Elvorance.update((s) => {
     const p = s.projects.find((p) => p.id === 'project-1');
     p.status = 'completed';
     p.progress = 100;
@@ -388,7 +390,7 @@ test('Support reply persists and is visible in the real client module after relo
 });
 
 test('Analytics filters and actual core CSV export preserve rows and neutralize formulas', (env) => {
-  env.w.Atlas.update((s) => {
+  env.w.Elvorance.update((s) => {
     s.reps.find((r) => r.id === 'rep-1').name = '=1+1';
   });
   env.navigate('analytics');
@@ -486,7 +488,7 @@ async function main() {
     }
   }
   const summary = {
-    suite: 'Atlas 2027 admin JSDOM flows',
+    suite: 'Elvorance 2027 admin JSDOM flows',
     date: new Date().toISOString(),
     platform: 'JSDOM; no native browser execution',
     passed: results.filter((r) => r.status === 'passed').length,
@@ -494,7 +496,7 @@ async function main() {
     total: results.length,
     results,
   };
-  const output = process.env.ATLAS_ADMIN_RESULTS || path.join(__dirname, 'admin-results.json');
+  const output = process.env.ELVORANCE_ADMIN_RESULTS || path.join(__dirname, 'admin-results.json');
   fs.writeFileSync(output, JSON.stringify(summary, null, 2));
   console.log(JSON.stringify(summary, null, 2));
   process.exitCode = summary.failed ? 1 : 0;

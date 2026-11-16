@@ -1,6 +1,8 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { runMobile } from '../../tooling/scripts/mobile.mjs';
+import { runMobile } from '../../tooling/scripts/mobile.mts';
 
 test('native sync does not copy partial or stale output after a failed build', async () => {
   let spawned = false;

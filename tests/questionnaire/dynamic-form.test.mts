@@ -1,6 +1,8 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {defaultConfiguration,defaultCatalog, visibleQuestions,validateConfiguration,validateAnswers,recommendServices} from '../../packages/questionnaire/src/index.js';
+import {defaultConfiguration,defaultCatalog, visibleQuestions,validateConfiguration,validateAnswers,recommendServices} from '../../packages/questionnaire/src/index.ts';
 const conf=defaultConfiguration(),catalog=defaultCatalog();
 const answers={situation:'lost',reach:'social',bottleneck:'booking',impact:'sales',priority:'growth',constraints:'time',goals:['new_clients','sales'],solutions:['svc-web','svc-social'],clinic_access:'reminder'};
 test('default questionnaire is valid and editable',()=>assert.deepEqual(validateConfiguration(conf,catalog),[]));

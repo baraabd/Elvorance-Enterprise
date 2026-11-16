@@ -1,6 +1,8 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import {test} from 'node:test';
 import {strict as assert} from 'node:assert';
-import {normalizedFinancials,planAudit,suggestedPlan} from '../../packages/app-runtime/src/finance.js';
+import {normalizedFinancials,planAudit,suggestedPlan} from '../../packages/app-runtime/src/finance.ts';
 
 test('amount discount and balanced 30/40/remainder',()=>{
  const f=normalizedFinancials({items:[{qty:1,price:950}],discountMode:'amount',discountValue:100});

@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /* Explicit baseline regeneration only. Normal parity tests do not read v1.1 source. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -17,7 +19,7 @@ import {
   applyFixture,
   canonicalAppCss,
   writeJson,
-} from './harness.mjs';
+} from './harness.mts';
 
 const option = process.argv.indexOf('--reference');
 if (option < 0 || !process.argv[option + 1])
@@ -66,17 +68,17 @@ function extractedCss(app) {
 function boot(surface, app) {
   for (const file of sourcePaths.filter((file) => file.startsWith('src/shared/')))
     executeScript(surface, source[file], file);
-  const register = surface.w.Atlas.register;
-  surface.w.Atlas.register = (definition) => {
-    surface.w.AtlasParityDefinition = definition;
+  const register = surface.w.Elvorance.register;
+  surface.w.Elvorance.register = (definition) => {
+    surface.w.ElvoranceParityDefinition = definition;
     register(definition);
   };
   executeScript(surface, source[`src/apps/${app}.js`], `src/apps/${app}.js`);
-  surface.w.Atlas.start(app);
+  surface.w.Elvorance.start(app);
 }
 const seedSurface = createSurface();
 executeScript(seedSurface, source['src/shared/seed.js'], 'reference-seed');
-const seedState = clone(seedSurface.w.AtlasSeed());
+const seedState = clone(seedSurface.w.ElvoranceSeed());
 seedSurface.close();
 
 const quote = clone(seedState.quotes.find((row) => row.id === 'quote-1'));
@@ -234,7 +236,7 @@ const baseParams = {
 const baseline = {
   schemaVersion: 1,
   reference: {
-    label: 'Atlas v1.1',
+    label: 'Elvorance v1.1',
     sourceSha256: Object.fromEntries(sourcePaths.map((file) => [file, hash(source[file])])),
     generatedAt: new Date().toISOString(),
     node: process.version,
@@ -263,7 +265,7 @@ for (const app of Object.keys(appNames)) {
   const metadataSurface = createSurface({ app, state: seedState });
   boot(metadataSurface, app);
   await settle(metadataSurface);
-  const definition = metadataSurface.w.AtlasParityDefinition;
+  const definition = metadataSurface.w.ElvoranceParityDefinition;
   baseline.apps[app] = {
     routes: Object.keys(definition.routes),
     actions: Object.keys(definition.actions),

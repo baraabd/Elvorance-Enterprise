@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -42,7 +44,7 @@ export function createSurface({
   const dom = new JSDOM(
     '<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"></head><body><div id="app"></div></body></html>',
     {
-      url: `https://atlas-parity.test/${app}/#${route}${query ? '?' + query : ''}`,
+      url: `https://elvorance-parity.test/${app}/#${route}${query ? '?' + query : ''}`,
       runScripts: 'dangerously',
       pretendToBeVisual: true,
       virtualConsole,
@@ -121,7 +123,7 @@ export function snapshot(surface) {
   return {
     title: w.document.title,
     html: copy.innerHTML,
-    iconsHash: hash(JSON.stringify(w.AtlasIcons || {})),
+    iconsHash: hash(JSON.stringify(w.ElvoranceIcons || {})),
   };
 }
 
@@ -143,7 +145,7 @@ export async function bundleApps() {
   const output = {};
   await Promise.all(
     Object.entries(appNames).map(async ([app, folder]) => {
-      const source = `import { installRuntime } from '@atlas/app-runtime';\nimport { installSiteTracking } from '@atlas/app-runtime/tracking';\nimport { registerApp } from './apps/${folder}/src/app.js';\nconst runtime = installRuntime();\nwindow.AtlasParityDefinition = registerApp(runtime);\ninstallSiteTracking({ runtime, disabled: false });\nruntime.start(${JSON.stringify(app)});`;
+      const source = `import { installRuntime } from '@elvorance/app-runtime';\nimport { installSiteTracking } from '@elvorance/app-runtime/tracking';\nimport { registerApp } from './apps/${folder}/src/app.ts';\nconst runtime = installRuntime();\nwindow.ElvoranceParityDefinition = registerApp(runtime);\ninstallSiteTracking({ runtime, disabled: false });\nruntime.start(${JSON.stringify(app)});`;
       const result = await esbuild.build({
         stdin: { contents: source, resolveDir: workspace, sourcefile: `${app}-parity-entry.js` },
         absWorkingDir: workspace,

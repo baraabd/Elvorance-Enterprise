@@ -1,8 +1,10 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createDemoData} from '../../packages/demo-data/src/index.js';
-import {createContext} from '../../apps/rep-mobile/src/context.js';
-import {createQuotesFeature} from '../../apps/rep-mobile/src/features/quotes/index.js';
+import {createDemoData} from '../../packages/demo-data/src/index.ts';
+import {createContext} from '../../apps/rep-mobile/src/context.ts';
+import {createQuotesFeature} from '../../apps/rep-mobile/src/features/quotes/index.ts';
 const s=createDemoData();
 const escape=v=>String(v??'').replace(/[&<>"']/g,k=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[k]));
 const A={state:()=>s,escape:escape,esc:escape,icon:(n)=>`<svg data-icon="${escape(n)}"></svg>`,money:n=>'$'+Number(n||0).toLocaleString('en-US'),badge:l=>`<span>${escape(l)}</span>`,today:()=>new Date().toISOString().slice(0,10),addDays:n=>new Date(Date.now()+n*86400000).toISOString().slice(0,10),date:v=>String(v||''),empty:(a,b)=>`<p>${escape(a)} ${escape(b)}</p>`,id:()=> 'test-id', quoteFingerprint:()=> 'sample'};

@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {
@@ -14,7 +16,7 @@ import {
   readJson,
   writeJson,
   firstDifference,
-} from './harness.mjs';
+} from './harness.mts';
 
 const baselineFile = path.join(directory, 'baseline-v1.1.json');
 const evidenceFile = path.join(directory, 'artifacts/latest-results.json');
@@ -49,7 +51,7 @@ try {
       executeScript(surface, bundles[expected.app], expected.app + '-esm-bundle');
       await settle(surface);
       if (!registered.has(expected.app)) {
-        const definition = surface.w.AtlasParityDefinition;
+        const definition = surface.w.ElvoranceParityDefinition;
         if (!definition) throw new Error('registerApp did not provide a definition.');
         const names = (values) => [...values].sort();
         const matches =

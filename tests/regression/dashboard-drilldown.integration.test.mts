@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Runs using Node's built-in test runner; does not require npm dependencies or browser access. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -10,10 +12,10 @@ const { createDemoData } = await importAt('packages/demo-data/src/index.js');
 const { createRepButtons } = await importAt('packages/ui/src/buttons.js');
 const { createRepPageHeads } = await importAt('packages/ui/src/page-heads.js');
 const { createQueries } = await importAt('apps/rep-mobile/src/queries.js');
-const { createDashboardFeature } = await importAt('apps/rep-mobile/src/features/dashboard/index.js');
-const { createTasksFeature } = await importAt('apps/rep-mobile/src/features/tasks/index.js');
-const { createOpportunitiesFeature } = await importAt('apps/rep-mobile/src/features/opportunities/index.js');
-const { createQuotesFeature } = await importAt('apps/rep-mobile/src/features/quotes/index.js');
+const { createDashboardFeature } = await importAt('apps/rep-mobile/src/features/dashboard/index.ts');
+const { createTasksFeature } = await importAt('apps/rep-mobile/src/features/tasks/index.ts');
+const { createOpportunitiesFeature } = await importAt('apps/rep-mobile/src/features/opportunities/index.ts');
+const { createQuotesFeature } = await importAt('apps/rep-mobile/src/features/quotes/index.ts');
 
 const s = createDemoData();
 const e = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

@@ -1,10 +1,12 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, resolve } from 'node:path';
-import { applyHotfix } from '../../tooling/patches/apply-hotfix.mjs';
+import { applyHotfix } from '../../tooling/patches/apply-hotfix.mts';
 
 const fingerprints = (text) => {
   const hash = (value) => createHash('sha256').update(value).digest('hex');
@@ -12,7 +14,7 @@ const fingerprints = (text) => {
 };
 
 async function fixture(t) {
-  const temporary = await mkdtemp(resolve(tmpdir(), 'atlas-hotfix-test-'));
+  const temporary = await mkdtemp(resolve(tmpdir(), 'elvorance-hotfix-test-'));
   t.after(() => rm(temporary, { recursive: true, force: true }));
   const project = resolve(temporary, 'project');
   const patch = resolve(temporary, 'patch');
@@ -24,11 +26,11 @@ async function fixture(t) {
   await write(
     project,
     'package.json',
-    JSON.stringify({ name: 'atlas-crm-enterprise', version: '2.0.0' }),
+    JSON.stringify({ name: 'elvorance-crm-enterprise', version: '2.0.0' }),
   );
   await write(project, 'infra/compose/.env', 'unchanged local development settings');
   const files = [];
-  for (const path of ['tooling/scripts/first.mjs', 'tooling/scripts/second.mjs']) {
+  for (const path of ['tooling/scripts/first.mts', 'tooling/scripts/second.mts']) {
     const before = `// previous ${path}\n`;
     const after = `// corrected ${path}\n`;
     await write(project, path, before.replaceAll('\n', '\r\n'));
@@ -67,7 +69,7 @@ test('hotfix detects all local conflicts before changing any file', async (t) =>
   await state.write(state.project, state.files[1].path, '// user changes');
   await assert.rejects(applyHotfix(state), /Local edits.*No files changed/s);
   assert.deepEqual(await readFile(resolve(state.project, firstPath)), original);
-  assert.equal((await readdir(state.project)).includes('.atlas-backups'), false);
+  assert.equal((await readdir(state.project)).includes('.elvorance-backups'), false);
 });
 
 test('hotfix rejects damaged payloads and out-of-scope writes before applying', async (t) => {
@@ -77,5 +79,5 @@ test('hotfix rejects damaged payloads and out-of-scope writes before applying', 
   const manifest = { schemaVersion: 1, release: '2.0.1', files: [{ path: 'infra/compose/.env' }] };
   await state.write(state.patch, 'manifest.json', JSON.stringify(manifest));
   await assert.rejects(applyHotfix(state), /outside this hotfix scope/);
-  assert.equal((await readdir(state.project)).includes('.atlas-backups'), false);
+  assert.equal((await readdir(state.project)).includes('.elvorance-backups'), false);
 });
