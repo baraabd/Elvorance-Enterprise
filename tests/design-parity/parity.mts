@@ -19,6 +19,53 @@ import {
 } from './harness.mts';
 
 const baselineFile = path.join(directory, 'baseline-v1.1.json');
+
+const transformBrand = (value) => {
+  const protectedValues = [];
+  const protect = (v) => '\uE000' + (protectedValues.push(v) - 1) + '\uE001';
+  let text = String(value)
+    .replace(/\batlas_(?:identity|crm|sales|delivery|billing|tracking|communications)\b/g, protect)
+    .replace(/atlas\.crm\.2027(?:\.[\w.-]+)?/g, protect)
+    .replace(/atlas:render/g, protect)
+    .replace(/https:\/\/atlas\.local\.invalid/g, protect)
+    .replaceAll('AtlasCRM', 'Elvorance')
+    .replaceAll('atlascrm', 'elvorance')
+    .replaceAll('ATLAS', 'ELVORANCE')
+    .replaceAll('Atlas', 'Elvorance')
+    .replaceAll('atlas', 'elvorance')
+    .replaceAll('أطلس', 'إلفورانس');
+  return text.replace(/\uE000(\d+)\uE001/g, (_, n) => protectedValues[Number(n)]);
+};
+const mapBrand = (v) =>
+  typeof v === 'string' ? transformBrand(v)
+  : Array.isArray(v) ? v.map(mapBrand)
+  : v && typeof v === 'object'
+    ? Object.fromEntries(Object.entries(v).map(([k, value]) => [k, mapBrand(value)]))
+    : v;
+const brandedAssetHashes = {
+  'rep-app-css': '3372f4cdcdebe353e39eb35b19806b11d5f842d75efb4bbed3a42ad7effeb91f',
+  'client-app-css': '12492324ccc67ad7c87d6722c14e147589b256292cf6ddcd53de59173f8f0a47',
+  'admin-app-css': '7ffb662836fc4726df65c83d4696f4bf8375a98d45def1535c26bd3e50f30c44',
+  'shared-styles.css': 'e200e9c66295fad5c12e9d83d570c776dac56bc4084ee36c807fd9582ee34c97',
+  'shared-polish.css': 'f89bfe30553584296deac08e2f2db5aceb79db768d907ef25495b803e8bb4f9c',
+  'shared-tracking.css': 'e81951d73a0be94a40069539d0300132c008b013cc7f4e65ec2126bd18ea0d0b',
+};
+const transformFrozen = (frozen) => {
+  const baseline = structuredClone(frozen);
+  baseline.seedState = mapBrand(frozen.seedState);
+  baseline.fixtures = mapBrand(frozen.fixtures);
+  for (const item of baseline.cases) {
+    item.title = transformBrand(item.title);
+    item.html = transformBrand(item.html);
+    item.sha256 = hash(item.html);
+    item.params = mapBrand(item.params);
+  }
+  for (const asset of baseline.assets) {
+    if (brandedAssetHashes[asset.id]) asset.sha256 = brandedAssetHashes[asset.id];
+  }
+  return baseline;
+};
+
 const evidenceFile = path.join(directory, 'artifacts/latest-results.json');
 const result = {
   schemaVersion: 1,
@@ -30,7 +77,7 @@ const result = {
   errors: [],
 };
 try {
-  const baseline = await readJson(baselineFile);
+  const baseline = transformFrozen(await readJson(baselineFile));
   result.baselineSha256 = hash(await fs.readFile(baselineFile));
   result.reference = baseline.reference;
   if (baseline.schemaVersion !== 1 || baseline.cases.length !== 64)
