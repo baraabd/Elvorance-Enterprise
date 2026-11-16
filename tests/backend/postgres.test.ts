@@ -81,7 +81,11 @@ test(
       repository: PgRepository;
     }[] = [];
     const apps: { close(): Promise<void> }[] = [];
+    // Keep track of raw SQL clients so an early assertion cannot leave them connected
+    // while DROP DATABASE WITH (FORCE) is running in test cleanup.
+    const rawClients = new Set<pg.Client>();
     t.after(async () => {
+      await Promise.all([...rawClients].map((client) => client.end().catch(() => {})));
       await Promise.all(apps.map((app) => app.close()));
       for (const service of provisioned) await service.repository.close();
       for (const service of provisioned) {
@@ -170,6 +174,7 @@ test(
       undefined,
     );
     const rawOwner = new pg.Client({ connectionString: byName('crm').url });
+    rawClients.add(rawOwner);
     await rawOwner.connect();
     assert.equal(
       (await rawOwner.query('SELECT * FROM customers')).rowCount,
@@ -181,6 +186,7 @@ test(
     );
     assert.equal(flags.rows[0]!.relforcerowsecurity, true);
     await rawOwner.end();
+    rawClients.delete(rawOwner);
     const crm = crmApp({ repository: crmRepository, auth });
     const sales = salesApp({
       repository: byName('sales').repository,
@@ -286,6 +292,7 @@ test(
       approved.body.version,
     );
     const salesRaw = new pg.Client({ connectionString: byName('sales').url });
+    rawClients.add(salesRaw);
     await salesRaw.connect();
     const persisted = await salesRaw.query<{ event: EventEnvelope }>(
       "SELECT event FROM outbox WHERE event->>'type'='contract.approved.v1'",
@@ -365,6 +372,7 @@ test(
       ).rows[0].published_at,
     );
     await salesRaw.end();
+    rawClients.delete(salesRaw);
     t.diagnostic(
       'Verified: tenant RLS, transaction rollback, concurrent accept/payment guards, atomic approval/outbox, inbox rollback/retry, unique project, balanced invoices, and lease ownership.',
     );
