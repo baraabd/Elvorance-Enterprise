@@ -1,4 +1,4 @@
-import { createService, type AppOptions } from '@atlas/service-kit';
+import { createService, type AppOptions } from '@elvorance/service-kit';
 import type { CustomerDirectory } from './application/ports.ts';
 import { registerRoutes } from './transport/routes.ts';
 export interface SalesAppOptions extends AppOptions {

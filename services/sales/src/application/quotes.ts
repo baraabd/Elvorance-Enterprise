@@ -1,4 +1,4 @@
-import type { Principal } from '@atlas/contracts';
+import type { Principal } from '@elvorance/contracts';
 import {
   assert,
   hasRole,
@@ -11,7 +11,7 @@ import {
   text,
   version,
   type Transaction,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 import { quoteContent } from '../domain/quote.ts';
 import type { Contract, Fulfillment, Quote } from '../domain/model.ts';
 import { toApprovedSnapshot } from '../domain/model.ts';

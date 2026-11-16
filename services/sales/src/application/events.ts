@@ -1,4 +1,4 @@
-import type { EventEnvelope } from '@atlas/contracts';
+import type { EventEnvelope } from '@elvorance/contracts';
 import {
   array,
   assert,
@@ -8,7 +8,7 @@ import {
   object,
   text,
   type Transaction,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 import type { CustomerProjection, Fulfillment, Visit } from '../domain/model.ts';
 export const subscriptions = [
   'delivery.project_created.v1',

@@ -1,4 +1,4 @@
-import type { Principal } from '@atlas/contracts';
+import type { Principal } from '@elvorance/contracts';
 import {
   assert,
   finite,
@@ -14,7 +14,7 @@ import {
   text,
   version,
   type Transaction,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 import type { Contract, Quote, Visit } from '../domain/model.ts';
 import type { CustomerDirectory } from './ports.ts';
 export async function visit(tx: Transaction, principal: Principal, id: string): Promise<Visit> {

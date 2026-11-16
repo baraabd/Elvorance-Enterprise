@@ -1,4 +1,4 @@
-import type { ContractSnapshot, Entity, PaymentInstallment, ScopeItem } from '@atlas/contracts';
+import type { ContractSnapshot, Entity, PaymentInstallment, ScopeItem } from '@elvorance/contracts';
 export interface Visit extends Entity {
   clientId: string;
   customerName: string;
