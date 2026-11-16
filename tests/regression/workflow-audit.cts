@@ -678,7 +678,7 @@ test('WF22', 'دورة خصم ثم تعديل العميل ثم اعتماد ج�
     r = env('rep', setup.a.serialize());
   r.navigate('quote-detail', { id: setup.quoteId });
   r.click(`[data-action="send-quote"][data-id="${setup.quoteId}"]`);
-  assert.equal(find(r, 'quotes', setup.quoteId).status, 'sent');
+  assert.equal(find(r, 'quotes', setup.quoteId).status, 'sent', 'First send reason: '+r.q('#toasts').textContent.trim());
   const c = env('client', r.serialize());
   c.navigate('quote-detail', { id: setup.quoteId });
   c.click('[data-action="revise-quote-modal"]');
