@@ -660,6 +660,8 @@ function approveDiscount(envFactory, serialized, approvalId) {
   a.fill('decision', 'approved');
   a.fill('note', 'اعتماد خصم الاختبار بعد مراجعة النطاق والأسعار');
   a.submit();
+  const decision = a.state().approvals.find((entry) => entry.id === approvalId);
+  assert.equal(decision?.status, 'approved', 'Admin approval was not committed: ' + a.q('#toasts').textContent.trim());
   return a;
 }
 function approvedDiscount(envFactory) {
