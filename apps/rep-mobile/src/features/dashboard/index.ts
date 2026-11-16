@@ -1,4 +1,6 @@
-/* ATLAS_DASHBOARD_DRILLDOWN_2027 */
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+/* ELVORANCE_DASHBOARD_DRILLDOWN_2027 */
 /** rep / dashboard: original v1.1 views and local demo actions. */
 export function createDashboardFeature(context, { territory }) {
   const {

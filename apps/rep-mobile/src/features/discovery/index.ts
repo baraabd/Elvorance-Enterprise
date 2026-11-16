@@ -1,4 +1,6 @@
-import { configured, visibleQuestions, validateAnswers, recommendServices } from '@atlas/questionnaire';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import { configured, visibleQuestions, validateAnswers, recommendServices } from '@elvorance/questionnaire';
 
 /** CRM discovery wizard. Every completed answer stores the questionnaire revision and label snapshot. */
 export function createDiscoveryFeature(context,{state}){

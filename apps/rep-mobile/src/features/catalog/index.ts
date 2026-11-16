@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** rep / catalog: original v1.1 views and local demo actions. */
 export function createCatalogFeature(context) {
   const { A, act, cash, categoryNames, chipLink, e, go, head, ic, missing } = context;

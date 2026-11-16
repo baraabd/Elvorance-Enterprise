@@ -1,6 +1,8 @@
-/* ATLAS_DASHBOARD_DRILLDOWN_2027 */
-import { createRepUi } from '../../../packages/ui/src/index.js';
-import { createQueries } from './queries.js';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+/* ELVORANCE_DASHBOARD_DRILLDOWN_2027 */
+import { createRepUi } from '../../../packages/ui/src/index.ts';
+import { createQueries } from './queries.ts';
 export function createContext(A) {
   const cash = (value) => A.money(Number(value) || 0);
   const now = () => new Date().toISOString();

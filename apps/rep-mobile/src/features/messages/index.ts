@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** rep / messages: original v1.1 views and local demo actions. */
 export function createMessagesFeature(context, { state }) {
   const { A, client, e, go, head, ic, notify, now, ownClients, time } = context;

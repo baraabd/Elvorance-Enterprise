@@ -1,20 +1,22 @@
-import { createContext } from './context.js';
-import { createLocalDemo } from './state/local-demo.js';
-import { createLifecycle } from './lifecycle.js';
-import { createDashboardFeature } from './features/dashboard/index.js';
-import { createTerritoryFeature } from './features/territory/index.js';
-import { createCustomersFeature } from './features/customers/index.js';
-import { createVisitsFeature } from './features/visits/index.js';
-import { createDiscoveryFeature } from './features/discovery/index.js';
-import { createCatalogFeature } from './features/catalog/index.js';
-import { createOpportunitiesFeature } from './features/opportunities/index.js';
-import { createQuotesFeature } from './features/quotes/index.js';
-import { createTasksFeature } from './features/tasks/index.js';
-import { createMessagesFeature } from './features/messages/index.js';
-import { createAccountFeature } from './features/account/index.js';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import { createContext } from './context.ts';
+import { createLocalDemo } from './state/local-demo.ts';
+import { createLifecycle } from './lifecycle.ts';
+import { createDashboardFeature } from './features/dashboard/index.ts';
+import { createTerritoryFeature } from './features/territory/index.ts';
+import { createCustomersFeature } from './features/customers/index.ts';
+import { createVisitsFeature } from './features/visits/index.ts';
+import { createDiscoveryFeature } from './features/discovery/index.ts';
+import { createCatalogFeature } from './features/catalog/index.ts';
+import { createOpportunitiesFeature } from './features/opportunities/index.ts';
+import { createQuotesFeature } from './features/quotes/index.ts';
+import { createTasksFeature } from './features/tasks/index.ts';
+import { createMessagesFeature } from './features/messages/index.ts';
+import { createAccountFeature } from './features/account/index.ts';
 
 /** Compose independently scoped features. The caller installs the runtime first. */
-export function registerApp(A = window.Atlas) {
+export function registerApp(A = window.Elvorance) {
   const context = createContext(A);
   // Explicit ports allow visits/quotes and contracts/quotes to collaborate without
   // importing another feature's private state or introducing ESM import cycles.
@@ -109,7 +111,7 @@ export function registerApp(A = window.Atlas) {
   local.api.decorateActions(actions);
   const definition = {
     id: 'rep',
-    name: 'أطلس للمندوب',
+    name: 'إلفورانس للمندوب',
     subtitle: 'مساحة المبيعات الميدانية',
     home: 'home',
     nav: [
