@@ -13,8 +13,9 @@ export function createRepPageHeads({ e, ic }) {
     `<button type="button" class="stat rep-stat-link" data-go="${e(route)}" data-param-filter="${e(filter)}" data-param-source="dashboard" aria-label="${e('عرض ' + label + ': ' + value)}"><span class="row-between"><span class="stat-label">${e(label)}</span>${ic(symbol)}</span><strong class="stat-value num">${e(value)}</strong>${detail ? `<span class="tiny muted">${e(detail)}</span>` : ''}<span class="rep-stat-open" aria-hidden="true">${ic('chevron-left')}</span></button>`;
   // Context is shown only after entry from dashboard, preserving ordinary list navigation.
   const drilldownSummary = (params, label, count, detail) =>
-    params?.source !== 'dashboard' ? '' :
-    `<section class="rep-drilldown-context" aria-label="تفاصيل ${e(label)}"><div><span class="tiny muted">من ملخص لوحة التحكم</span><h2>${e(label)}</h2><p class="small muted">${e(String(count) + ' سجل مطابق')}${detail ? ' · ' + e(detail) : ''}</p></div><button type="button" class="btn btn-secondary btn-sm" data-go="home">${ic('arrow-right')}<span>العودة إلى لوحة التحكم</span></button></section>`;
+    params?.source !== 'dashboard'
+      ? ''
+      : `<section class="rep-drilldown-context" aria-label="تفاصيل ${e(label)}"><div><span class="tiny muted">من ملخص لوحة التحكم</span><h2>${e(label)}</h2><p class="small muted">${e(String(count) + ' سجل مطابق')}${detail ? ' · ' + e(detail) : ''}</p></div><button type="button" class="btn btn-secondary btn-sm" data-go="home">${ic('arrow-right')}<span>العودة إلى لوحة التحكم</span></button></section>`;
   return {
     head,
     section,

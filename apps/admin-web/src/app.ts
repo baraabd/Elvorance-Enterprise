@@ -114,9 +114,9 @@ export function registerApp(A = window.Elvorance) {
   });
   features.push(settingsFeature);
   Object.assign(ports['settings'], settingsFeature.api);
-  const configurationFeature = createConfigurationFeature(context, {state:ports['state']});
+  const configurationFeature = createConfigurationFeature(context, { state: ports['state'] });
   features.push(configurationFeature);
-  Object.assign(ports['configuration'],configurationFeature.api);
+  Object.assign(ports['configuration'], configurationFeature.api);
   const routes = {},
     actions = {
       ...local.actions,

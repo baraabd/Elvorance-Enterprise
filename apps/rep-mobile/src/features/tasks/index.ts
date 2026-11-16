@@ -3,10 +3,13 @@
 /* ELVORANCE_DASHBOARD_DRILLDOWN_2027 */
 /** rep / tasks: original v1.1 views and local demo actions. */
 export function createTasksFeature(context, { state }) {
-  const { A, act, chipLink, client, date, drilldownSummary, e, head, ic, iconGo, ownClients, rep } = context;
+  const { A, act, chipLink, client, date, drilldownSummary, e, head, ic, iconGo, ownClients, rep } =
+    context;
   const commit = (...args) => state.commit(...args);
   function tasks({ state: s, params }) {
-    const filter = ['open', 'done', 'cancelled', 'all'].includes(params.filter) ? params.filter : 'open',
+    const filter = ['open', 'done', 'cancelled', 'all'].includes(params.filter)
+        ? params.filter
+        : 'open',
       rows = s.tasks
         .filter((t) => t.repId === rep(s).id && (filter === 'all' || t.status === filter))
         .sort((a, b) => String(a.dueDate).localeCompare(String(b.dueDate)));

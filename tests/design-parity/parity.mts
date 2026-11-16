@@ -37,11 +37,13 @@ const transformBrand = (value) => {
   return text.replace(/\uE000(\d+)\uE001/g, (_, n) => protectedValues[Number(n)]);
 };
 const mapBrand = (v) =>
-  typeof v === 'string' ? transformBrand(v)
-  : Array.isArray(v) ? v.map(mapBrand)
-  : v && typeof v === 'object'
-    ? Object.fromEntries(Object.entries(v).map(([k, value]) => [k, mapBrand(value)]))
-    : v;
+  typeof v === 'string'
+    ? transformBrand(v)
+    : Array.isArray(v)
+      ? v.map(mapBrand)
+      : v && typeof v === 'object'
+        ? Object.fromEntries(Object.entries(v).map(([k, value]) => [k, mapBrand(value)]))
+        : v;
 const brandedAssetHashes = {
   'rep-app-css': '3372f4cdcdebe353e39eb35b19806b11d5f842d75efb4bbed3a42ad7effeb91f',
   'client-app-css': '12492324ccc67ad7c87d6722c14e147589b256292cf6ddcd53de59173f8f0a47',
@@ -73,16 +75,16 @@ const evidenceFile = path.join(directory, 'artifacts/latest-results.json');
  * Tests for these features also run in the regression and questionnaire suites.
  */
 const evolvedRoutes = new Map([
- ['rep/home','Clickable dashboard KPI drilldown cards'],
- ['rep/visit-active','Dynamic questionnaire and visit-stage workflow'],
- ['rep/opportunities','Open-opportunity filter and deep links'],
- ['rep/quote-builder','Discount, instalments and guided proposal builder'],
- ['client/home','Client decision dashboard navigation'],
- ['client/services','Admin-driven service catalog'],
- ['client/invoices','Billing view and outstanding balance links'],
- ['admin/home','Operational decision dashboard'],
- ['admin/settings','Administrative question and service configuration'],
- ['admin/more','Administrative navigation to configuration'],
+  ['rep/home', 'Clickable dashboard KPI drilldown cards'],
+  ['rep/visit-active', 'Dynamic questionnaire and visit-stage workflow'],
+  ['rep/opportunities', 'Open-opportunity filter and deep links'],
+  ['rep/quote-builder', 'Discount, instalments and guided proposal builder'],
+  ['client/home', 'Client decision dashboard navigation'],
+  ['client/services', 'Admin-driven service catalog'],
+  ['client/invoices', 'Billing view and outstanding balance links'],
+  ['admin/home', 'Operational decision dashboard'],
+  ['admin/settings', 'Administrative question and service configuration'],
+  ['admin/more', 'Administrative navigation to configuration'],
 ]);
 
 const result = {
@@ -120,9 +122,15 @@ try {
         if (!definition) throw new Error('registerApp did not provide a definition.');
         const names = (values) => [...values].sort();
         const matches =
-          baseline.apps[expected.app].routes.every((route) => Object.hasOwn(definition.routes, route)) &&
-          baseline.apps[expected.app].actions.every((action) => Object.hasOwn(definition.actions, action)) &&
-          baseline.apps[expected.app].nav.every((entry) => definition.nav.some((current) => current.id === entry.id));
+          baseline.apps[expected.app].routes.every((route) =>
+            Object.hasOwn(definition.routes, route),
+          ) &&
+          baseline.apps[expected.app].actions.every((action) =>
+            Object.hasOwn(definition.actions, action),
+          ) &&
+          baseline.apps[expected.app].nav.every((entry) =>
+            definition.nav.some((current) => current.id === entry.id),
+          );
         result.registrations.push({
           app: expected.app,
           routes: Object.keys(definition.routes).length,
@@ -145,7 +153,10 @@ try {
           // accessible content and not throw runtime errors in the deterministic harness.
           const text = surface.w.document.querySelector('#main-content')?.textContent?.trim() || '';
           if (text.length < 40 || text.includes('تعذر عرض هذه الصفحة'))
-            differences.dom = { message: 'Evolved route failed functional render guard', textLength: text.length };
+            differences.dom = {
+              message: 'Evolved route failed functional render guard',
+              textLength: text.length,
+            };
           else {
             item.intentionalChange = evolvedRoutes.get(expected.id);
             item.status = 'evolved';
@@ -187,7 +198,12 @@ try {
       });
     } catch (error) {
       if (asset.kind === 'font' && error?.code === 'ENOENT')
-        result.assets.push({ id: asset.id, kind: asset.kind, status: 'not-bundled', reason: 'Licensed font binaries intentionally excluded from source distribution' });
+        result.assets.push({
+          id: asset.id,
+          kind: asset.kind,
+          status: 'not-bundled',
+          reason: 'Licensed font binaries intentionally excluded from source distribution',
+        });
       else result.assets.push({ id: asset.id, status: 'failed', error: String(error.message) });
     }
   }
@@ -197,7 +213,8 @@ try {
 result.finishedAt = new Date().toISOString();
 result.summary = {
   routes: result.cases.length,
-  routesPassed: result.cases.filter((row) => row.status === 'passed' || row.status === 'evolved').length,
+  routesPassed: result.cases.filter((row) => row.status === 'passed' || row.status === 'evolved')
+    .length,
   unchangedRoutes: result.cases.filter((row) => row.status === 'passed').length,
   evolvedRoutes: result.cases.filter((row) => row.status === 'evolved').length,
   routesFailed: result.cases.filter((row) => row.status === 'failed').length,

@@ -49,7 +49,10 @@ test('permitted frontend and backend contract edges pass', (t) => {
   f.workspace('apps', 'rep-mobile', { '@elvorance/ui': '*' });
   f.workspace('services', 'sales', { '@elvorance/service-kit': '*', '@elvorance/events': '*' });
   f.write('apps/rep-mobile/src/index.mjs', "import '@elvorance/ui';");
-  f.write('services/sales/src/index.mjs', "import '@elvorance/service-kit'; import('@elvorance/events');");
+  f.write(
+    'services/sales/src/index.mjs',
+    "import '@elvorance/service-kit'; import('@elvorance/events');",
+  );
   assert.deepEqual(f.report().violations, []);
 });
 
@@ -187,7 +190,9 @@ test('a declared external package cannot conceal a tsconfig alias into a service
   assert(
     report.edges.some(
       (edge) =>
-        edge.from === '@elvorance/admin-web' && edge.to === '@elvorance/crm' && edge.via === 'source',
+        edge.from === '@elvorance/admin-web' &&
+        edge.to === '@elvorance/crm' &&
+        edge.via === 'source',
     ),
   );
 });

@@ -64,7 +64,12 @@ export function createContext(A) {
   };
   const stageList = ['new', 'qualified', 'proposal', 'negotiation', 'won', 'lost'];
   const outcomes = [
-    ['ready_to_contract', 'العميل موافق ومستعد لبدء التنفيذ', 'check-circle', 'انتقل إلى اعتماد العرض والعقد من العميل ثم تحقّق من الدفعة الأولى قبل تشغيل المشروع.'],
+    [
+      'ready_to_contract',
+      'العميل موافق ومستعد لبدء التنفيذ',
+      'check-circle',
+      'انتقل إلى اعتماد العرض والعقد من العميل ثم تحقّق من الدفعة الأولى قبل تشغيل المشروع.',
+    ],
     ['interested', 'مهتم بالخدمة', 'target', 'احتياج واضح وخطوة تجارية تالية.'],
     ['no_decision_maker', 'صاحب القرار غير موجود', 'user', 'حدّد الشخص المناسب وموعد العودة.'],
     ['closed', 'الموقع مغلق', 'lock', 'وثّق الملاحظة وجدول محاولة أخرى.'],
@@ -132,7 +137,8 @@ export function createContext(A) {
     draft: 'مقترح محفوظ لم يُرسل بعد',
     no_quote: 'زيارة دون عرض سعر',
   };
-  const { e, ic, go, act, iconGo, head, section, metric, metricLink, drilldownSummary } = createRepUi(A);
+  const { e, ic, go, act, iconGo, head, section, metric, metricLink, drilldownSummary } =
+    createRepUi(A);
   const { rep, ownClients, client, ownVisits, ownQuotes, ownOpps, activeVisit, getVisit } =
     createQueries({});
   return {

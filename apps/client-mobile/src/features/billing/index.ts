@@ -29,12 +29,14 @@ export function createBillingFeature(context, { state }) {
   const commit = (...args) => state.commit(...args);
   function renderInvoices({ state, params }) {
     const invoices = mine(state, 'invoices').filter(
-      (item) => (!params.contract || item.contractId === params.contract) && (params.open !== '1' || num(item.total)>num(item.paid)),
+      (item) =>
+        (!params.contract || item.contractId === params.contract) &&
+        (params.open !== '1' || num(item.total) > num(item.paid)),
     );
     const total = invoices.reduce((sum, item) => sum + num(item.total), 0);
     const paid = invoices.reduce((sum, item) => sum + num(item.paid), 0);
     return wrap(
-      `${heading('الفواتير',params.open==='1'?'الرصيد المتبقي على الفواتير':'دفعات واضحة، بلا مفاجآت','سجل مالي تجريبي مرتبط بعقودك.')}<div class="row wrap">${go('كل الفواتير','invoices',{},'btn-secondary btn-sm')}${go('الرئيسية','home',{},'btn-ghost btn-sm')}</div><div class="metric-grid"><div class="stat"><span class="stat-label">إجمالي الفواتير</span><strong class="stat-value num">${money(total)}</strong></div><div class="stat"><span class="stat-label">مسجل كمدفوع</span><strong class="stat-value num">${money(paid)}</strong></div><div class="stat"><span class="stat-label">المتبقي</span><strong class="stat-value num">${money(Math.max(0, total - paid))}</strong></div></div><div class="stack-sm">${
+      `${heading('الفواتير', params.open === '1' ? 'الرصيد المتبقي على الفواتير' : 'دفعات واضحة، بلا مفاجآت', 'سجل مالي تجريبي مرتبط بعقودك.')}<div class="row wrap">${go('كل الفواتير', 'invoices', {}, 'btn-secondary btn-sm')}${go('الرئيسية', 'home', {}, 'btn-ghost btn-sm')}</div><div class="metric-grid"><div class="stat"><span class="stat-label">إجمالي الفواتير</span><strong class="stat-value num">${money(total)}</strong></div><div class="stat"><span class="stat-label">مسجل كمدفوع</span><strong class="stat-value num">${money(paid)}</strong></div><div class="stat"><span class="stat-label">المتبقي</span><strong class="stat-value num">${money(Math.max(0, total - paid))}</strong></div></div><div class="stack-sm">${
         invoices
           .map(
             (invoice) =>

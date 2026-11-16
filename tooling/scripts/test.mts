@@ -33,7 +33,11 @@ for (const file of files) {
     continue;
   }
   const isCjs = file.endsWith('.cts');
-  const outfile = resolve(root, 'dist/tests', relative(root, file).replace(/\.(ts|mts|cts)$/, isCjs ? '.cjs' : '.mjs'));
+  const outfile = resolve(
+    root,
+    'dist/tests',
+    relative(root, file).replace(/\.(ts|mts|cts)$/, isCjs ? '.cjs' : '.mjs'),
+  );
   await mkdir(dirname(outfile), { recursive: true });
   await build({
     entryPoints: [file],
@@ -44,7 +48,9 @@ for (const file of files) {
     target: 'node24',
     external: ['pg-native', ...(isCjs ? ['esbuild', 'jsdom'] : [])],
     banner: {
-      js: isCjs ? '' : "import { createRequire as __elvoranceCreateRequire } from 'node:module'; const require = __elvoranceCreateRequire(import.meta.url);",
+      js: isCjs
+        ? ''
+        : "import { createRequire as __elvoranceCreateRequire } from 'node:module'; const require = __elvoranceCreateRequire(import.meta.url);",
     },
   });
   runnable.push(outfile);

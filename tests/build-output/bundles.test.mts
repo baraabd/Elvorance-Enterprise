@@ -26,14 +26,21 @@ for (const app of apps) {
     });
     try {
       await new Promise((resolve) => setTimeout(resolve, 40));
-      assert.equal(dom.window.document.documentElement.dataset.ready, 'true', `Runtime errors: ${errors.join(' | ')}`);
+      assert.equal(
+        dom.window.document.documentElement.dataset.ready,
+        'true',
+        `Runtime errors: ${errors.join(' | ')}`,
+      );
       assert.equal(dom.window.document.body.dataset.app, app.id);
       assert.equal(
         dom.window.document.querySelectorAll('script[src],link[rel="stylesheet"]').length,
         0,
       );
       assert.match(dom.window.document.querySelector('style').textContent, /system-ui/);
-      assert.doesNotMatch(dom.window.document.querySelector('style').textContent, /__ATLAS_FONT_|__ELVORANCE_FONT_/);
+      assert.doesNotMatch(
+        dom.window.document.querySelector('style').textContent,
+        /__ATLAS_FONT_|__ELVORANCE_FONT_/,
+      );
       assert.ok(dom.window.document.querySelector('#main-content').textContent.trim().length > 100);
       assert.deepEqual(errors, []);
     } finally {

@@ -337,7 +337,8 @@ async function consentStart(ctx) {
   await click(ctx, 'start');
 }
 const pointCalls = (api) => api.calls.filter((call) => call.path.endsWith('/point'));
-const controlStatus = (ctx) => $(ctx, '[data-elvorance-tracking-control] .tracking-badge').className;
+const controlStatus = (ctx) =>
+  $(ctx, '[data-elvorance-tracking-control] .tracking-badge').className;
 async function check(name, fn) {
   const from = contexts.length;
   try {

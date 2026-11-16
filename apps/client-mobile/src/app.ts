@@ -46,9 +46,9 @@ export function registerApp(A = window.Elvorance) {
   });
   features.push(catalogFeature);
   Object.assign(ports['catalog'], catalogFeature.api);
-  const discoveryFeature=createClientDiscoveryFeature(context,{state:ports['state']});
+  const discoveryFeature = createClientDiscoveryFeature(context, { state: ports['state'] });
   features.push(discoveryFeature);
-  Object.assign(ports.discovery,discoveryFeature.api);
+  Object.assign(ports.discovery, discoveryFeature.api);
   const quotesFeature = createQuotesFeature(context, {
     contracts: ports['contracts'],
     state: ports['state'],

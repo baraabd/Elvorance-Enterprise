@@ -129,16 +129,23 @@ export function createDashboardFeature(context, { workforce }) {
         }</section><section class="card">${sectionTitle('آخر الأنشطة')}${activityList(s, 5)}</section></aside></div>`,
     );
   }
-  function completedVisits({state:s}) {
-    const records=list(s,'visits').filter(v=>v.status==='completed');
-    return wrap(pageTitle('الزيارات المكتملة',`${records.length} زيارة موثقة`,'النتائج والعميل والمندوب والتاريخ لكل زيارة.',go('home','العودة للوحة','arrow-right','','btn btn-secondary'))+
-      `<section class="card"><div class="list">${records.length?records.map(v=>`<article class="list-item"><div><strong>${E(customerName(s,v.clientId))}</strong><p class="small muted">${E(person(s,v.repId))} · ${E(A.date(v.endedAt||v.startedAt))}</p><p class="small">${E(v.outcome||v.notes||'زيارة مكتملة')}</p></div></article>`).join(''):empty('لا زيارات مكتملة','تظهر هنا الزيارات بعد إنهائها.')}</div></section>`);
+  function completedVisits({ state: s }) {
+    const records = list(s, 'visits').filter((v) => v.status === 'completed');
+    return wrap(
+      pageTitle(
+        'الزيارات المكتملة',
+        `${records.length} زيارة موثقة`,
+        'النتائج والعميل والمندوب والتاريخ لكل زيارة.',
+        go('home', 'العودة للوحة', 'arrow-right', '', 'btn btn-secondary'),
+      ) +
+        `<section class="card"><div class="list">${records.length ? records.map((v) => `<article class="list-item"><div><strong>${E(customerName(s, v.clientId))}</strong><p class="small muted">${E(person(s, v.repId))} · ${E(A.date(v.endedAt || v.startedAt))}</p><p class="small">${E(v.outcome || v.notes || 'زيارة مكتملة')}</p></div></article>`).join('') : empty('لا زيارات مكتملة', 'تظهر هنا الزيارات بعد إنهائها.')}</div></section>`,
+    );
   }
-  const customerName=(s,id)=>s.clients.find(c=>c.id===id)?.name||'عميل غير موجود';
+  const customerName = (s, id) => s.clients.find((c) => c.id === id)?.name || 'عميل غير موجود';
   return {
     id: 'dashboard',
     routes: {
-      'visits-completed': {title:'الزيارات المكتملة',render:completedVisits},
+      'visits-completed': { title: 'الزيارات المكتملة', render: completedVisits },
       home: {
         title: 'نظرة الإدارة',
         render: home,

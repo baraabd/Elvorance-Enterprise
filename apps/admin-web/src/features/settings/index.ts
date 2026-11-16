@@ -26,7 +26,7 @@ export function createSettingsFeature(context, { state }) {
       ['support', 'الدعم', 'headphones'],
       ['messages', 'المحادثات', 'message'],
       ['settings', 'الإعدادات', 'settings'],
-      ['configuration','إدارة الأسئلة والخدمات','checklist'],
+      ['configuration', 'إدارة الأسئلة والخدمات', 'checklist'],
     ];
     return wrap(
       pageTitle(

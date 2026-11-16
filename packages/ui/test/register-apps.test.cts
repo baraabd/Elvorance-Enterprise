@@ -180,8 +180,14 @@ async function verify(role, spec) {
     w.document.head.append(script);
     assert.ok(w.ElvoranceAppDefinition, role + ' registerApp did not register a definition');
     const definition = w.ElvoranceAppDefinition;
-    assert.ok(spec.routes.every((route) => Object.hasOwn(definition.routes, route)), `${role}: baseline routes missing; current=${Object.keys(definition.routes)}`);
-    assert.ok(Object.keys(definition.actions).length >= spec.actions, `${role}: action count regressed below ${spec.actions}`);
+    assert.ok(
+      spec.routes.every((route) => Object.hasOwn(definition.routes, route)),
+      `${role}: baseline routes missing; current=${Object.keys(definition.routes)}`,
+    );
+    assert.ok(
+      Object.keys(definition.actions).length >= spec.actions,
+      `${role}: action count regressed below ${spec.actions}`,
+    );
     assert.ok(Object.values(definition.actions).every((fn) => typeof fn === 'function'));
     w.Elvorance.update((s) => {
       const v = s.visits.find((row) => row.id === 'visit-1');

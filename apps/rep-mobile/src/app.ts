@@ -60,9 +60,9 @@ export function registerApp(A = window.Elvorance) {
   });
   features.push(visitsFeature);
   Object.assign(ports['visits'], visitsFeature.api);
-  const discoveryFeature = createDiscoveryFeature(context,{state:ports['state']});
+  const discoveryFeature = createDiscoveryFeature(context, { state: ports['state'] });
   features.push(discoveryFeature);
-  Object.assign(ports.discovery,discoveryFeature.api);
+  Object.assign(ports.discovery, discoveryFeature.api);
   const catalogFeature = createCatalogFeature(context);
   features.push(catalogFeature);
   Object.assign(ports['catalog'], catalogFeature.api);

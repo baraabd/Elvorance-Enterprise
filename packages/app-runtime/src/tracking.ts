@@ -735,7 +735,10 @@ export function installSiteTracking(options = {}) {
   }
 
   async function pollAdmin() {
-    if (!visible() || !Array.from(document.querySelectorAll('[data-elvorance-live-team]')).some(shown))
+    if (
+      !visible() ||
+      !Array.from(document.querySelectorAll('[data-elvorance-live-team]')).some(shown)
+    )
       return;
     // Age existing readings even when a slow request is still pending.
     renderAdmin();

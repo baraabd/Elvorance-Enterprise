@@ -34,7 +34,11 @@ export function createOpportunitiesFeature(context, { quotes, state, visits }) {
   function opportunities({ state: s, params }) {
     const filter = ['all', 'open', ...stageList].includes(params.filter) ? params.filter : 'all',
       all = ownOpps(s),
-      rows = all.filter((o) => filter === 'all' || (filter === 'open' ? !['won', 'lost'].includes(o.stage) : o.stage === filter));
+      rows = all.filter(
+        (o) =>
+          filter === 'all' ||
+          (filter === 'open' ? !['won', 'lost'].includes(o.stage) : o.stage === filter),
+      );
     return `${head('كل فرصة لها خطوة', 'تابع مراحل البيع من التأهيل حتى القرار.', act('opportunity-new', 'فرصة جديدة', 'plus', '', 'btn btn-primary'))}${drilldownSummary(params, filter === 'won' ? 'قيمة الفرص المكتسبة' : filter === 'open' ? 'فرص قيد العمل' : 'الفرص', rows.length, filter === 'won' ? 'الإجمالي: ' + cash(rows.reduce((sum, o) => sum + Number(o.value), 0)) : 'اضغط على الفرصة لعرض التفاصيل')}<div class="metric-grid">${metric(cash(all.filter((o) => !['won', 'lost'].includes(o.stage)).reduce((v, o) => v + Number(o.value), 0)), 'قيمة الفرص المفتوحة', 'briefcase')}${metric(all.filter((o) => o.stage === 'negotiation').length, 'في التفاوض', 'message')}${metric(all.filter((o) => o.stage === 'won').length, 'فرص مكتسبة', 'check-circle')}</div><div class="chips">${chipLink('opportunities', 'all', 'الكل', filter === 'all')}${chipLink('opportunities', 'open', 'قيد العمل', filter === 'open')}${stageList.map((st) => chipLink('opportunities', st, labels[st], st === filter)).join('')}</div><div class="grid-2">${rows.map((o) => `<article class="card"><div class="row-between">${badge(o.stage)}${iconGo('opportunity-detail', 'فتح ' + o.title, 'chevron-left', `data-id="${o.id}"`)}</div><h2>${e(o.title)}</h2><p class="muted small">${e(s.clients.find((c) => c.id === o.clientId)?.name)}</p><div class="row-between"><strong class="stat-value num">${cash(o.value)}</strong><span class="small">${Number(o.probability) || 0}% احتمال مسجّل</span></div>${A.progress(Number(o.probability) || 0)}<div class="row-between tiny muted"><span>الموعد المتوقع</span><span>${e(date(o.expectedClose))}</span></div></article>`).join('') || A.empty('لا فرص في هذه المرحلة', 'يمكنك إنشاء فرصة لاحتياج حقيقي من ملف العميل.')}</div>${go('quotes', 'إدارة عروض الأسعار', 'file', '', 'btn btn-secondary btn-block')}`;
   }
   function opportunityDetail({ state: s, params }) {

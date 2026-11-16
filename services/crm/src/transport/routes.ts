@@ -16,7 +16,8 @@ export function registerRoutes(app: FastifyInstance, repository: Repository): vo
   );
   app.put('/v1/configuration', async (request) =>
     command(request, repository, 'crm.publishConfiguration', (tx) =>
-      publishConfiguration(tx,request.principal,request.body)),
+      publishConfiguration(tx, request.principal, request.body),
+    ),
   );
   app.get('/v1/customers', async (request) =>
     repository.transaction(request.principal.tenantId, async (tx) => ({

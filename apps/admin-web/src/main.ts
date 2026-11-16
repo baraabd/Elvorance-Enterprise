@@ -16,8 +16,11 @@ export const definition = registerApp(runtime);
 installSiteTracking({ runtime, disabled: !config.siteTracking });
 runtime.start('admin');
 const syncBase = config.configurationApiBaseUrl || '';
-if (syncBase) window.ElvoranceConfigurationSync = installConfigurationSync(runtime, {
-  baseUrl: syncBase,
-  getAccessToken: () => window.ELVORANCE_AUTH?.getAccessToken?.(),
-  onStatus: ({connected,error}) => { if (!connected) console.warn('Elvorance configuration sync unavailable:', error); },
-});
+if (syncBase)
+  window.ElvoranceConfigurationSync = installConfigurationSync(runtime, {
+    baseUrl: syncBase,
+    getAccessToken: () => window.ELVORANCE_AUTH?.getAccessToken?.(),
+    onStatus: ({ connected, error }) => {
+      if (!connected) console.warn('Elvorance configuration sync unavailable:', error);
+    },
+  });

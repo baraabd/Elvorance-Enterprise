@@ -86,7 +86,9 @@ export function createWorkforceFeature(context, { pipeline, state }) {
   }
   function team({ state: s, params = {} }) {
     const reps = list(s, 'reps').filter(
-      (rep) => (params.status || ui.teamStatus) === 'all' || rep.status === (params.status || ui.teamStatus),
+      (rep) =>
+        (params.status || ui.teamStatus) === 'all' ||
+        rep.status === (params.status || ui.teamStatus),
     );
     return wrap(
       pageTitle(

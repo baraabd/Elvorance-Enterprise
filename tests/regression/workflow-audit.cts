@@ -661,7 +661,11 @@ function approveDiscount(envFactory, serialized, approvalId) {
   a.fill('note', 'اعتماد خصم الاختبار بعد مراجعة النطاق والأسعار');
   a.submit();
   const decision = a.state().approvals.find((entry) => entry.id === approvalId);
-  assert.equal(decision?.status, 'approved', 'Admin approval was not committed: ' + a.q('#toasts').textContent.trim());
+  assert.equal(
+    decision?.status,
+    'approved',
+    'Admin approval was not committed: ' + a.q('#toasts').textContent.trim(),
+  );
   return a;
 }
 function approvedDiscount(envFactory) {
@@ -680,7 +684,11 @@ test('WF22', 'دورة خصم ثم تعديل العميل ثم اعتماد ج�
     r = env('rep', setup.a.serialize());
   r.navigate('quote-detail', { id: setup.quoteId });
   r.click(`[data-action="send-quote"][data-id="${setup.quoteId}"]`);
-  assert.equal(find(r, 'quotes', setup.quoteId).status, 'sent', 'First send reason: '+r.q('#toasts').textContent.trim());
+  assert.equal(
+    find(r, 'quotes', setup.quoteId).status,
+    'sent',
+    'First send reason: ' + r.q('#toasts').textContent.trim(),
+  );
   const c = env('client', r.serialize());
   c.navigate('quote-detail', { id: setup.quoteId });
   c.click('[data-action="revise-quote-modal"]');
@@ -711,7 +719,11 @@ test('WF22', 'دورة خصم ثم تعديل العميل ثم اعتماد ج�
     resend = env('rep', approved.serialize());
   resend.navigate('quote-detail', { id: setup.quoteId });
   resend.click(`[data-action="send-quote"][data-id="${setup.quoteId}"]`);
-  assert.equal(find(resend, 'quotes', setup.quoteId).status, 'sent', 'Resend reason: '+resend.q('#toasts').textContent.trim());
+  assert.equal(
+    find(resend, 'quotes', setup.quoteId).status,
+    'sent',
+    'Resend reason: ' + resend.q('#toasts').textContent.trim(),
+  );
   const final = env('client', resend.serialize()),
     contractId = acceptFixture(final, setup.quoteId);
   assert.equal(final.state().contracts.filter((item) => item.quoteId === setup.quoteId).length, 1);

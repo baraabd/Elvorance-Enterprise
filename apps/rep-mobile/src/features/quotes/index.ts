@@ -1,7 +1,12 @@
 // @ts-nocheck
 // Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /* ELVORANCE_DASHBOARD_DRILLDOWN_2027 */
-import { normalizedFinancials, dollars, cents, suggestedPlan } from '@elvorance/app-runtime/finance';
+import {
+  normalizedFinancials,
+  dollars,
+  cents,
+  suggestedPlan,
+} from '@elvorance/app-runtime/finance';
 /** rep / quotes: original v1.1 views and local demo actions. */
 export function createQuotesFeature(context, { state, visits }) {
   const {
@@ -39,8 +44,17 @@ export function createQuotesFeature(context, { state, visits }) {
   const visitWorking = (...args) => visits.visitWorking(...args);
   const writeDraft = (...args) => state.writeDraft(...args);
   const quoteMath = (q) => {
-    const f=normalizedFinancials(q);
-    return { subtotal:dollars(f.subtotalCents),discount:dollars(f.discountCents),total:dollars(f.totalCents),percent:f.percent, plan:f.plan, audit:f.audit, mode:f.mode, discountValue:f.value };
+    const f = normalizedFinancials(q);
+    return {
+      subtotal: dollars(f.subtotalCents),
+      discount: dollars(f.discountCents),
+      total: dollars(f.totalCents),
+      percent: f.percent,
+      plan: f.plan,
+      audit: f.audit,
+      mode: f.mode,
+      discountValue: f.value,
+    };
   };
   const quoteApproval = (s, q) => {
     const m = quoteMath(q),
@@ -87,7 +101,12 @@ export function createQuotesFeature(context, { state, visits }) {
       base,
       q.proposedDuration ? 'مدة التنفيذ المقترحة: ' + q.proposedDuration : '',
       q.paymentWishes ? 'تفضيلات الدفع المقترحة، وتؤكد نهائيًا في العقد: ' + q.paymentWishes : '',
-      quoteMath(q).plan.length ? 'الدفعات المقترحة: ' + quoteMath(q).plan.map(p=>p.label+': '+p.amount+' دولار').join('، ') : '',
+      quoteMath(q).plan.length
+        ? 'الدفعات المقترحة: ' +
+          quoteMath(q)
+            .plan.map((p) => p.label + ': ' + p.amount + ' دولار')
+            .join('، ')
+        : '',
     ]
       .filter(Boolean)
       .join('\n\n');
@@ -228,25 +247,51 @@ export function createQuotesFeature(context, { state, visits }) {
     }
     return ui.quote;
   }
-  function financialEditor(q,m) {
-    const plan=m.plan||[];
-    let distributed=0;
-    const rows=plan.map((payment,i)=>{
-      distributed += cents(payment.amount);
-      const remainder=Math.round((m.total*100) - distributed);
-      return `<div class="rep-pay-row"><div class="row-between"><strong>${i+1} · ${e(payment.label||('الدفعة '+(i+1)))}</strong><small class="muted" id="rep-payment-rest-${i}">${remainder<0?'زيادة '+cash(-remainder/100):'متبقٍ '+cash(remainder/100)}</small></div><label class="field">المبلغ بالدولار<input type="number" class="input num" inputmode="decimal" step="0.01" min="0.01" data-input="quote-payment-amount" data-index="${i}" value="${e(payment.amount)}" required></label><button class="btn btn-ghost btn-sm" type="button" data-action="quote-payment-fill" data-index="${i}">تخصيص المتبقي لهذه الدفعة</button></div>`;
-    }).join('');
-    const audit=m.audit;
+  function financialEditor(q, m) {
+    const plan = m.plan || [];
+    let distributed = 0;
+    const rows = plan
+      .map((payment, i) => {
+        distributed += cents(payment.amount);
+        const remainder = Math.round(m.total * 100 - distributed);
+        return `<div class="rep-pay-row"><div class="row-between"><strong>${i + 1} · ${e(payment.label || 'الدفعة ' + (i + 1))}</strong><small class="muted" id="rep-payment-rest-${i}">${remainder < 0 ? 'زيادة ' + cash(-remainder / 100) : 'متبقٍ ' + cash(remainder / 100)}</small></div><label class="field">المبلغ بالدولار<input type="number" class="input num" inputmode="decimal" step="0.01" min="0.01" data-input="quote-payment-amount" data-index="${i}" value="${e(payment.amount)}" required></label><button class="btn btn-ghost btn-sm" type="button" data-action="quote-payment-fill" data-index="${i}">تخصيص المتبقي لهذه الدفعة</button></div>`;
+      })
+      .join('');
+    const audit = m.audit;
     const balance = audit.remainingCents;
-    const message = !Number.isFinite(m.total)||m.total<=0?'أضف خدمة بسعر صحيح لإعداد الدفعات.':audit.kind==='first_low'?`الدفعة الأولى أقل من 20%، يجب ألا تقل عن ${cash(audit.minFirstCents/100)}.`:balance>0?`متبقٍ للتوزيع: ${cash(balance/100)}.`:balance<0?`زيادة يجب تسويتها: ${cash(-balance/100)}.`:'جدول الدفعات متوازن.';
-    return `<section class="card stack rep-financial-editor" aria-label="الخصم وتوزيع الدفعات"><h2>السعر والخصم أولًا</h2><p class="muted small">اختر الدولار أو النسبة، ثم راجع صافي العرض قبل الدفعات.</p><div class="rep-amount-summary"><span>قيمة الخدمات قبل الخصم</span><strong class="num" id="rep-quote-subtotal">${cash(m.subtotal)}</strong></div><div class="row wrap"><button type="button" class="btn ${m.mode==='amount'?'btn-primary':'btn-secondary'}" data-action="quote-discount-mode" data-value="amount" aria-pressed="${m.mode==='amount'}">خصم بالدولار</button><button type="button" class="btn ${m.mode==='percent'?'btn-primary':'btn-secondary'}" data-action="quote-discount-mode" data-value="percent" aria-pressed="${m.mode==='percent'}">خصم بالنسبة المئوية</button></div><label class="field">${m.mode==='percent'?'نسبة الخصم (%)':'قيمة الخصم ($)'}<input class="input num" type="number" inputmode="decimal" min="0" ${m.mode==='percent'?'max="100"':''} step="0.01" data-input="quote-discount-input" value="${e(m.discountValue)}"></label><div class="rep-amount-summary"><span>الخصم الفعلي</span><strong class="num" id="rep-quote-discount-value">${cash(m.discount)}</strong></div><div class="rep-net-total"><span>صافي العرض بعد الخصم</span><strong class="num" id="rep-quote-total">${cash(m.total)}</strong></div><p id="rep-discount-notice" class="notice notice-warn small" ${m.percent>15?'':'hidden'}>الخصم يتجاوز 15% ويحتاج اعتماد الإدارة قبل الإرسال.</p><h2>جدول الدفعات</h2><p class="small muted">الدفعة الأولى لا تقل عن 20% من صافي العرض. لا يُعد هذا الجدول إثباتًا لأي تحصيل.</p><div class="rep-distribution"><div><span>صافي العرض</span><strong id="rep-finance-net">${cash(m.total)}</strong></div><div><span>الموزع</span><strong id="rep-finance-distributed">${cash(audit.sumCents/100)}</strong></div><div><span>المتبقي</span><strong id="rep-finance-balance">${cash(Math.abs(balance)/100)}</strong></div></div><div id="rep-payment-rows" class="stack-sm">${rows}</div><div class="row wrap"><button class="btn btn-secondary" data-action="quote-payment-add" type="button">+ إضافة دفعة بالمتبقي</button><button class="btn btn-ghost" data-action="quote-payment-suggest" type="button">اقتراح 30% / 40% / الرصيد</button></div><div class="notice ${audit.valid?'notice-good':'notice-warn'}" id="rep-plan-status" role="status">${e(message)}</div></section>`;
+    const message =
+      !Number.isFinite(m.total) || m.total <= 0
+        ? 'أضف خدمة بسعر صحيح لإعداد الدفعات.'
+        : audit.kind === 'first_low'
+          ? `الدفعة الأولى أقل من 20%، يجب ألا تقل عن ${cash(audit.minFirstCents / 100)}.`
+          : balance > 0
+            ? `متبقٍ للتوزيع: ${cash(balance / 100)}.`
+            : balance < 0
+              ? `زيادة يجب تسويتها: ${cash(-balance / 100)}.`
+              : 'جدول الدفعات متوازن.';
+    return `<section class="card stack rep-financial-editor" aria-label="الخصم وتوزيع الدفعات"><h2>السعر والخصم أولًا</h2><p class="muted small">اختر الدولار أو النسبة، ثم راجع صافي العرض قبل الدفعات.</p><div class="rep-amount-summary"><span>قيمة الخدمات قبل الخصم</span><strong class="num" id="rep-quote-subtotal">${cash(m.subtotal)}</strong></div><div class="row wrap"><button type="button" class="btn ${m.mode === 'amount' ? 'btn-primary' : 'btn-secondary'}" data-action="quote-discount-mode" data-value="amount" aria-pressed="${m.mode === 'amount'}">خصم بالدولار</button><button type="button" class="btn ${m.mode === 'percent' ? 'btn-primary' : 'btn-secondary'}" data-action="quote-discount-mode" data-value="percent" aria-pressed="${m.mode === 'percent'}">خصم بالنسبة المئوية</button></div><label class="field">${m.mode === 'percent' ? 'نسبة الخصم (%)' : 'قيمة الخصم ($)'}<input class="input num" type="number" inputmode="decimal" min="0" ${m.mode === 'percent' ? 'max="100"' : ''} step="0.01" data-input="quote-discount-input" value="${e(m.discountValue)}"></label><div class="rep-amount-summary"><span>الخصم الفعلي</span><strong class="num" id="rep-quote-discount-value">${cash(m.discount)}</strong></div><div class="rep-net-total"><span>صافي العرض بعد الخصم</span><strong class="num" id="rep-quote-total">${cash(m.total)}</strong></div><p id="rep-discount-notice" class="notice notice-warn small" ${m.percent > 15 ? '' : 'hidden'}>الخصم يتجاوز 15% ويحتاج اعتماد الإدارة قبل الإرسال.</p><h2>جدول الدفعات</h2><p class="small muted">الدفعة الأولى لا تقل عن 20% من صافي العرض. لا يُعد هذا الجدول إثباتًا لأي تحصيل.</p><div class="rep-distribution"><div><span>صافي العرض</span><strong id="rep-finance-net">${cash(m.total)}</strong></div><div><span>الموزع</span><strong id="rep-finance-distributed">${cash(audit.sumCents / 100)}</strong></div><div><span>المتبقي</span><strong id="rep-finance-balance">${cash(Math.abs(balance) / 100)}</strong></div></div><div id="rep-payment-rows" class="stack-sm">${rows}</div><div class="row wrap"><button class="btn btn-secondary" data-action="quote-payment-add" type="button">+ إضافة دفعة بالمتبقي</button><button class="btn btn-ghost" data-action="quote-payment-suggest" type="button">اقتراح 30% / 40% / الرصيد</button></div><div class="notice ${audit.valid ? 'notice-good' : 'notice-warn'}" id="rep-plan-status" role="status">${e(message)}</div></section>`;
   }
   function quoteBuilder({ state: s, params }) {
     const existing = params.id && ownQuotes(s).find((q) => q.id === params.id);
     if (params.id && (!existing || !['draft', 'revision_requested'].includes(existing.status)))
       return missing('لا يمكن تعديل هذا العرض؛ يمكنك نسخه كعرض جديد');
-    const v = params.visit ? s.visits.find(x=>x.id===params.visit):existing?.visitId?s.visits.find(x=>x.id===existing.visitId):null;
-    if(v?.status==='active'&&!v.discovery) return head('أكمل استبيان الاحتياج أولًا','حتى لا يُرسل عرض مبني على إجابات ناقصة.',go('visit-questionnaire','فتح الاستبيان','checklist',`data-id="${v.id}"`,'btn btn-primary'));
+    const v = params.visit
+      ? s.visits.find((x) => x.id === params.visit)
+      : existing?.visitId
+        ? s.visits.find((x) => x.id === existing.visitId)
+        : null;
+    if (v?.status === 'active' && !v.discovery)
+      return head(
+        'أكمل استبيان الاحتياج أولًا',
+        'حتى لا يُرسل عرض مبني على إجابات ناقصة.',
+        go(
+          'visit-questionnaire',
+          'فتح الاستبيان',
+          'checklist',
+          `data-id="${v.id}"`,
+          'btn btn-primary',
+        ),
+      );
     const q = ensureQuote(s, params),
       m = quoteMath(q);
     return `${head(existing ? 'تعديل عرض السعر' : 'عرض واضح من أول سطر', 'اختياراتك محفوظة كمسودة عند التنقل وإعادة التحميل.', quoteReturn(s, q, q.visitId))}${q.visitId ? '<div class="notice notice-good">هذا العرض مرتبط بالزيارة، وستظهر بنوده تلقائيًا في ملخص الختام.</div>' : ''}${q.conflict ? `<div class="card notice notice-warn"><h3>تغيّرت النسخة المحفوظة أثناء عملك</h3><p>حافظنا على مدخلاتك أدناه. راجع التغيير في العرض الحالي، ثم اختر تطبيق مدخلاتك على النسخة الجديدة أو استخدام المحفوظ.</p><div class="row wrap">${go('quote-detail', 'مراجعة العرض الحالي', 'file', `data-id="${q.id}"`)}${act('quote-rebase', 'استخدام مدخلاتي بعد المراجعة', 'check')}${act('quote-discard', 'استخدام النسخة المحفوظة', 'refresh')}</div></div>` : ''}<form id="rep-quote-form" data-submit="save-quote" class="dashboard-grid"><div class="main-column"><div class="card"><div class="form-grid"><label class="field">العميل<select class="select" required name="clientId" data-change="quote-field" data-field="clientId" ${q.visitId ? 'disabled title="عميل العرض محدد بالزيارة المرتبطة"' : ''}><option value="">اختر العميل</option>${ownClients(
@@ -276,7 +321,7 @@ export function createQuotesFeature(context, { state, visits }) {
       )
       .join(
         '',
-      )}</div></div>${financialEditor(q,m)}<div class="card stack"><div class="form-grid"><label class="field">مدة التنفيذ المقترحة<input class="input" name="proposedDuration" maxlength="200" value="${e(q.proposedDuration)}" data-input="quote-field" data-field="proposedDuration"></label><label class="field">رغبات الدفع المقترحة<input class="input" name="paymentWishes" maxlength="400" value="${e(q.paymentWishes)}" data-input="quote-field" data-field="paymentWishes"></label></div><label class="field">الشروط والنطاق<textarea class="textarea" name="terms" required minlength="10" maxlength="2000" rows="4" data-input="quote-field" data-field="terms">${e(q.terms)}</textarea></label><label class="field">ملاحظة للعميل<textarea class="textarea" name="notes" maxlength="1200" rows="3" data-input="quote-field" data-field="notes">${e(q.notes)}</textarea></label></div></div><aside class="side-column"><div class="card rep-quote-summary"><h2>ملخص العرض</h2><p class="muted small">يُحسب المبلغ النهائي بعد الخصم في القسم السابق.</p><div class="rep-net-total"><span>الإجمالي بعد الخصم</span><strong class="stat-value num" id="rep-quote-total-aside">${cash(m.total)}</strong></div><button class="btn btn-primary btn-block" type="button" data-action="save-send-quote">${ic('send')}<span id="rep-send-label">${m.percent > 15 ? 'طلب اعتماد الخصم' : 'إرسال إلى العميل'}</span></button><button class="btn btn-secondary btn-block" type="submit">${ic('file')}حفظ المسودة</button><p class="tiny muted">الإرسال يظهر العرض في تطبيق العميل ضمن هذا العرض المحلي، دون بريد أو رسالة خارجية.</p></div></aside></form>`;
+      )}</div></div>${financialEditor(q, m)}<div class="card stack"><div class="form-grid"><label class="field">مدة التنفيذ المقترحة<input class="input" name="proposedDuration" maxlength="200" value="${e(q.proposedDuration)}" data-input="quote-field" data-field="proposedDuration"></label><label class="field">رغبات الدفع المقترحة<input class="input" name="paymentWishes" maxlength="400" value="${e(q.paymentWishes)}" data-input="quote-field" data-field="paymentWishes"></label></div><label class="field">الشروط والنطاق<textarea class="textarea" name="terms" required minlength="10" maxlength="2000" rows="4" data-input="quote-field" data-field="terms">${e(q.terms)}</textarea></label><label class="field">ملاحظة للعميل<textarea class="textarea" name="notes" maxlength="1200" rows="3" data-input="quote-field" data-field="notes">${e(q.notes)}</textarea></label></div></div><aside class="side-column"><div class="card rep-quote-summary"><h2>ملخص العرض</h2><p class="muted small">يُحسب المبلغ النهائي بعد الخصم في القسم السابق.</p><div class="rep-net-total"><span>الإجمالي بعد الخصم</span><strong class="stat-value num" id="rep-quote-total-aside">${cash(m.total)}</strong></div><button class="btn btn-primary btn-block" type="button" data-action="save-send-quote">${ic('send')}<span id="rep-send-label">${m.percent > 15 ? 'طلب اعتماد الخصم' : 'إرسال إلى العميل'}</span></button><button class="btn btn-secondary btn-block" type="submit">${ic('file')}حفظ المسودة</button><p class="tiny muted">الإرسال يظهر العرض في تطبيق العميل ضمن هذا العرض المحلي، دون بريد أو رسالة خارجية.</p></div></aside></form>`;
   }
   function quotes({ state: s, params }) {
     const filter = params.filter || 'all',
@@ -331,8 +376,10 @@ export function createQuotesFeature(context, { state, visits }) {
       return 'يجب أن يكون الخصم أقل من إجمالي الخدمات، وألا يكون سالبًا.';
     if (q.paymentPlanEdited && !m.audit.valid) {
       if (m.audit.kind === 'first_low') return 'الدفعة الأولى يجب ألا تقل عن 20% من صافي العرض.';
-      if (m.audit.kind === 'short') return 'الدفعات أقل من صافي العرض بقيمة ' + cash(m.audit.remainingCents/100) + '.';
-      if (m.audit.kind === 'excess') return 'الدفعات تتجاوز صافي العرض بقيمة ' + cash(-m.audit.remainingCents/100) + '.';
+      if (m.audit.kind === 'short')
+        return 'الدفعات أقل من صافي العرض بقيمة ' + cash(m.audit.remainingCents / 100) + '.';
+      if (m.audit.kind === 'excess')
+        return 'الدفعات تتجاوز صافي العرض بقيمة ' + cash(-m.audit.remainingCents / 100) + '.';
       return 'أكمل مبالغ الدفعات بأرقام موجبة.';
     }
     if (!m.audit.valid) return 'أكمل جدول الدفعات بعد التسعير والخصم.';
@@ -597,12 +644,33 @@ export function createQuotesFeature(context, { state, visits }) {
     set('rep-quote-total-aside', cash(m.total));
     set('rep-quote-discount-value', cash(m.discount));
     set('rep-finance-net', cash(m.total));
-    set('rep-finance-distributed', cash(m.audit.sumCents/100));
-    set('rep-finance-balance', cash(Math.abs(m.audit.remainingCents)/100));
-    const status=document.getElementById('rep-plan-status');
-    if(status){const audit=m.audit;status.textContent=audit.kind==='first_low'?'الدفعة الأولى أقل من 20%: الحد الأدنى '+cash(audit.minFirstCents/100):audit.kind==='short'?'متبقٍ للتوزيع: '+cash(audit.remainingCents/100):audit.kind==='excess'?'زيادة يجب تسويتها: '+cash(-audit.remainingCents/100):audit.valid?'جدول الدفعات متوازن.':'راجع الأسعار والدفعات.';status.classList.toggle('notice-good',!!audit.valid);status.classList.toggle('notice-warn',!audit.valid);}
-    let sum=0;
-    m.plan.forEach((payment,i)=>{sum+=cents(payment.amount);const balance=Math.round(m.total*100)-sum;set('rep-payment-rest-'+i, balance<0?'زيادة '+cash(-balance/100):'متبقٍ '+cash(balance/100));});
+    set('rep-finance-distributed', cash(m.audit.sumCents / 100));
+    set('rep-finance-balance', cash(Math.abs(m.audit.remainingCents) / 100));
+    const status = document.getElementById('rep-plan-status');
+    if (status) {
+      const audit = m.audit;
+      status.textContent =
+        audit.kind === 'first_low'
+          ? 'الدفعة الأولى أقل من 20%: الحد الأدنى ' + cash(audit.minFirstCents / 100)
+          : audit.kind === 'short'
+            ? 'متبقٍ للتوزيع: ' + cash(audit.remainingCents / 100)
+            : audit.kind === 'excess'
+              ? 'زيادة يجب تسويتها: ' + cash(-audit.remainingCents / 100)
+              : audit.valid
+                ? 'جدول الدفعات متوازن.'
+                : 'راجع الأسعار والدفعات.';
+      status.classList.toggle('notice-good', !!audit.valid);
+      status.classList.toggle('notice-warn', !audit.valid);
+    }
+    let sum = 0;
+    m.plan.forEach((payment, i) => {
+      sum += cents(payment.amount);
+      const balance = Math.round(m.total * 100) - sum;
+      set(
+        'rep-payment-rest-' + i,
+        balance < 0 ? 'زيادة ' + cash(-balance / 100) : 'متبقٍ ' + cash(balance / 100),
+      );
+    });
     set('rep-send-label', m.percent > 15 ? 'طلب اعتماد الخصم' : 'إرسال إلى العميل');
     const warning = document.getElementById('rep-discount-notice');
     if (warning) warning.hidden = m.percent <= 15;
@@ -635,7 +703,8 @@ export function createQuotesFeature(context, { state, visits }) {
         if (ui.quote) persistQuoteDraft(ui.quote);
         ui.quote = null;
         const v = c ? currentVisitFor(state, c.id, el.dataset.visit) : null;
-        if (v?.status === 'active' && !v.discovery) return A.go('visit-questionnaire',{id:v.id});
+        if (v?.status === 'active' && !v.discovery)
+          return A.go('visit-questionnaire', { id: v.id });
         const params = {
           client: c?.id || '',
           opportunity: el.dataset.opportunity || '',
@@ -730,54 +799,76 @@ export function createQuotesFeature(context, { state, visits }) {
         }
         updateQuoteNumbers();
       },
-      'quote-discount-input'({el}) {
-        if(!ui.quote)return;
-        ui.quote.discountValue=el.value;
-        const f=normalizedFinancials(ui.quote);
-        ui.quote.discount=dollars(f.discountCents);
-        persistQuoteDraft(ui.quote);updateQuoteNumbers();
+      'quote-discount-input'({ el }) {
+        if (!ui.quote) return;
+        ui.quote.discountValue = el.value;
+        const f = normalizedFinancials(ui.quote);
+        ui.quote.discount = dollars(f.discountCents);
+        persistQuoteDraft(ui.quote);
+        updateQuoteNumbers();
       },
-      'quote-payment-amount'({el}) {
-        if(!ui.quote)return;
-        const f=normalizedFinancials(ui.quote);
-        const index=Number(el.dataset.index);
-        if(index<0 || index>=f.plan.length)return;
-        ui.quote.paymentPlan=f.plan.map((p,i)=>i===index?{...p,amount:el.value}:p);
-        ui.quote.paymentPlanEdited=true;
-        persistQuoteDraft(ui.quote);updateQuoteNumbers();
+      'quote-payment-amount'({ el }) {
+        if (!ui.quote) return;
+        const f = normalizedFinancials(ui.quote);
+        const index = Number(el.dataset.index);
+        if (index < 0 || index >= f.plan.length) return;
+        ui.quote.paymentPlan = f.plan.map((p, i) => (i === index ? { ...p, amount: el.value } : p));
+        ui.quote.paymentPlanEdited = true;
+        persistQuoteDraft(ui.quote);
+        updateQuoteNumbers();
       },
-      'quote-discount-mode'({el}) {
-        if(!ui.quote)return;
-        const mode=el.dataset.value;
-        if(!['amount','percent'].includes(mode))return;
-        const financials=normalizedFinancials(ui.quote);
-        ui.quote.discountMode=mode;
-        ui.quote.discountValue=mode==='amount'?dollars(financials.discountCents):Number(financials.percent.toFixed(2));
-        ui.quote.discount=dollars(financials.discountCents);
-        persistQuoteDraft(ui.quote);A.refresh();
+      'quote-discount-mode'({ el }) {
+        if (!ui.quote) return;
+        const mode = el.dataset.value;
+        if (!['amount', 'percent'].includes(mode)) return;
+        const financials = normalizedFinancials(ui.quote);
+        ui.quote.discountMode = mode;
+        ui.quote.discountValue =
+          mode === 'amount'
+            ? dollars(financials.discountCents)
+            : Number(financials.percent.toFixed(2));
+        ui.quote.discount = dollars(financials.discountCents);
+        persistQuoteDraft(ui.quote);
+        A.refresh();
       },
       'quote-payment-add'() {
-        if(!ui.quote)return;
-        const financials=normalizedFinancials(ui.quote);
-        if(financials.audit.remainingCents<=0)return A.toast('لا يوجد رصيد موجب لإضافته.', 'info');
-        ui.quote.paymentPlan=financials.plan.concat([{id:'instalment-'+Date.now(),label:'دفعة إضافية',amount:dollars(financials.audit.remainingCents),due:''}]);
-        ui.quote.paymentPlanEdited=true;persistQuoteDraft(ui.quote);A.refresh();
+        if (!ui.quote) return;
+        const financials = normalizedFinancials(ui.quote);
+        if (financials.audit.remainingCents <= 0)
+          return A.toast('لا يوجد رصيد موجب لإضافته.', 'info');
+        ui.quote.paymentPlan = financials.plan.concat([
+          {
+            id: 'instalment-' + Date.now(),
+            label: 'دفعة إضافية',
+            amount: dollars(financials.audit.remainingCents),
+            due: '',
+          },
+        ]);
+        ui.quote.paymentPlanEdited = true;
+        persistQuoteDraft(ui.quote);
+        A.refresh();
       },
-      'quote-payment-fill'({el}) {
-        if(!ui.quote)return;
-        const index=Number(el.dataset.index);const f=normalizedFinancials(ui.quote);
-        if(index<0 || index>=f.plan.length)return;
-        const other=f.plan.reduce((n,p,i)=>n+(i===index?0:cents(p.amount)),0);
-        const remain=f.totalCents-other;
-        if(remain<=0)return A.toast('لا يوجد مبلغ صالح لتوزيعه هنا.', 'error');
-        ui.quote.paymentPlan=f.plan.map((p,i)=>i===index?{...p,amount:dollars(remain)}:p);
-        ui.quote.paymentPlanEdited=true;persistQuoteDraft(ui.quote);A.refresh();
+      'quote-payment-fill'({ el }) {
+        if (!ui.quote) return;
+        const index = Number(el.dataset.index);
+        const f = normalizedFinancials(ui.quote);
+        if (index < 0 || index >= f.plan.length) return;
+        const other = f.plan.reduce((n, p, i) => n + (i === index ? 0 : cents(p.amount)), 0);
+        const remain = f.totalCents - other;
+        if (remain <= 0) return A.toast('لا يوجد مبلغ صالح لتوزيعه هنا.', 'error');
+        ui.quote.paymentPlan = f.plan.map((p, i) =>
+          i === index ? { ...p, amount: dollars(remain) } : p,
+        );
+        ui.quote.paymentPlanEdited = true;
+        persistQuoteDraft(ui.quote);
+        A.refresh();
       },
       'quote-payment-suggest'() {
-        if(!ui.quote)return;
-        ui.quote.paymentPlanEdited=false;
-        ui.quote.paymentPlan=[];
-        persistQuoteDraft(ui.quote);A.refresh();
+        if (!ui.quote) return;
+        ui.quote.paymentPlanEdited = false;
+        ui.quote.paymentPlan = [];
+        persistQuoteDraft(ui.quote);
+        A.refresh();
       },
       'quote-add'({ el, state }) {
         const svc = state.catalog.find((x) => x.id === el.dataset.id);

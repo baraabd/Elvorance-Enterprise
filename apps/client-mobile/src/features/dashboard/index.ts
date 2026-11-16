@@ -110,17 +110,23 @@ export function createDashboardFeature(context, { projects, quotes }) {
       ${section('مشاريعك', 'التفاصيل التي تهمك، دون أن تضيع في الرسائل.', go('كل المشاريع', 'projects', {}, 'btn-ghost btn-sm'))}<div class="grid-2">${projects.slice(0, 2).map(projectCard).join('') || A.empty('لم يبدأ مشروع بعد', 'عروضك وعقودك هي نقطة البداية.', go('العروض', 'quotes'))}</div></div>
       <aside class="side-column stack"><section class="card"><div class="row"><span class="icon-box icon-box-dark">${A.icon('briefcase')}</span><div><h3>علاقات واضحة</h3><p class="muted small">من العرض إلى التسليم.</p></div></div><div class="client-link-list">${go('عروض الأسعار', 'quotes', {}, 'btn-ghost btn-block', 'file')}${go('العقود والاتفاقات', 'contracts', {}, 'btn-ghost btn-block', 'signature')}${go('الفواتير والدفعات', 'invoices', {}, 'btn-ghost btn-block', 'receipt')}${go('طلبات الخدمات', 'requests', {}, 'btn-ghost btn-block', 'layers')}</div></section><section class="card card-dark"><span class="icon-box">${A.icon('headphones')}</span><h3>فريقك قريب.</h3><p class="small">سؤال عن تصميم؟ تعديل في الخطة؟ افتح محادثة أو تذكرة مرتبطة بمشروعك.</p>${go('مركز المساعدة', 'support', {}, 'btn-lime btn-block', 'arrow-left')}</section></aside></div>`);
   }
-  function renderDecisions({state:s}) {
-    const pendingQuotes=mine(s,'quotes').filter(q=>q.status==='sent');
-    const pendingContracts=mine(s,'contracts').filter(c=>c.status==='pending');
-    const pendingReviews=mine(s,'projects').flatMap(p=>(p.deliverables||[]).filter(d=>d.status==='pending'&&d.type!=='client_attachment').map(d=>({project:p,deliverable:d})));
-    const count=pendingQuotes.length+pendingContracts.length+pendingReviews.length;
-    return wrap(`${heading('قراراتك المطلوبة',`تحتاج مراجعتك · ${count}`,'افتح كل مستند واتخذ قرارك بنفسك؛ لا تُسجل موافقة تلقائيًا.')}${go('العودة للرئيسية','home',{},'btn-secondary','arrow-right')}<div class="stack-sm">${pendingQuotes.map(q=>`<article class="card row-between"><div><strong>${E(q.title)}</strong><p class="muted small">عرض ينتظر قرارك</p></div>${go('فتح العرض','quote-detail',{id:q.id},'btn-primary','arrow-left')}</article>`).join('')}${pendingContracts.map(c=>`<article class="card row-between"><div><strong>${E(c.title)}</strong><p class="muted small">عقد بانتظار اعتمادك</p></div>${go('مراجعة العقد','contract-detail',{id:c.id},'btn-primary','arrow-left')}</article>`).join('')}${pendingReviews.map(({project,deliverable})=>`<article class="card row-between"><div><strong>${E(deliverable.title)}</strong><p class="muted small">${E(project.title)} · تسليم بانتظار رأيك</p></div>${go('مراجعة التصميم','deliverable-detail',{id:project.id,'param-deliverable':deliverable.id},'btn-primary','arrow-left')}</article>`).join('')}${count?'':A.empty('لا قرارات معلقة','كل الموافقات الحالية قد حُسمت أو لم تُنشأ بعد.')}</div>`);
+  function renderDecisions({ state: s }) {
+    const pendingQuotes = mine(s, 'quotes').filter((q) => q.status === 'sent');
+    const pendingContracts = mine(s, 'contracts').filter((c) => c.status === 'pending');
+    const pendingReviews = mine(s, 'projects').flatMap((p) =>
+      (p.deliverables || [])
+        .filter((d) => d.status === 'pending' && d.type !== 'client_attachment')
+        .map((d) => ({ project: p, deliverable: d })),
+    );
+    const count = pendingQuotes.length + pendingContracts.length + pendingReviews.length;
+    return wrap(
+      `${heading('قراراتك المطلوبة', `تحتاج مراجعتك · ${count}`, 'افتح كل مستند واتخذ قرارك بنفسك؛ لا تُسجل موافقة تلقائيًا.')}${go('العودة للرئيسية', 'home', {}, 'btn-secondary', 'arrow-right')}<div class="stack-sm">${pendingQuotes.map((q) => `<article class="card row-between"><div><strong>${E(q.title)}</strong><p class="muted small">عرض ينتظر قرارك</p></div>${go('فتح العرض', 'quote-detail', { id: q.id }, 'btn-primary', 'arrow-left')}</article>`).join('')}${pendingContracts.map((c) => `<article class="card row-between"><div><strong>${E(c.title)}</strong><p class="muted small">عقد بانتظار اعتمادك</p></div>${go('مراجعة العقد', 'contract-detail', { id: c.id }, 'btn-primary', 'arrow-left')}</article>`).join('')}${pendingReviews.map(({ project, deliverable }) => `<article class="card row-between"><div><strong>${E(deliverable.title)}</strong><p class="muted small">${E(project.title)} · تسليم بانتظار رأيك</p></div>${go('مراجعة التصميم', 'deliverable-detail', { id: project.id, 'param-deliverable': deliverable.id }, 'btn-primary', 'arrow-left')}</article>`).join('')}${count ? '' : A.empty('لا قرارات معلقة', 'كل الموافقات الحالية قد حُسمت أو لم تُنشأ بعد.')}</div>`,
+    );
   }
   return {
     id: 'dashboard',
     routes: {
-      decisions: {title:'قرارات مطلوبة',render:renderDecisions,nav:'home'},
+      decisions: { title: 'قرارات مطلوبة', render: renderDecisions, nav: 'home' },
       home: {
         title: 'الرئيسية',
         nav: 'home',
