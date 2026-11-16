@@ -1,4 +1,6 @@
-import { configured, defaultConfiguration, validateConfiguration, QUESTION_SECTIONS, FIELD_TYPES } from '@atlas/questionnaire';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import { configured, defaultConfiguration, validateConfiguration, QUESTION_SECTIONS, FIELD_TYPES } from '@elvorance/questionnaire';
 
 /** Versioned questionnaire + catalog authoring. Drafts persist only after full validation. */
 export function createConfigurationFeature(context, {state}) {
@@ -39,7 +41,7 @@ export function createConfigurationFeature(context, {state}) {
   const generatedId=(s,A,prefix)=>{let i=1,id;do{id=`${prefix}-${i++}`}while(s.includes(id));return id;};
   const lines=(v)=>String(v||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
   async function validateAndPersist(label,mutator){
-    const remote=window.AtlasConfigurationSync;
+    const remote=window.ElvoranceConfigurationSync;
     if(remote?.enabled){
       try {
         const draft=structuredClone(A.state());

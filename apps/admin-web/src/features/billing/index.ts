@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** admin / billing: original v1.1 views and local demo actions. */
 export function createBillingFeature(context, { state }) {
   const {
@@ -129,7 +131,7 @@ export function createBillingFeature(context, { state }) {
     if (!invoice) return fail('الفاتورة غير موجودة.');
     A.printDocument(
       'فاتورة تجريبية',
-      `<article class="document" dir="rtl"><p>${E(s.settings?.company || 'أطلس')}</p><h1>${E(invoice.title)}</h1><p>العميل: ${E(customer(s, invoice.clientId))}</p><p>رقم السجل: ${E(invoice.id)} · الاستحقاق: ${E(date(invoice.dueDate))}</p><table class="data-table"><tbody><tr><th>الإجمالي</th><td>${E(money(invoice.total))}</td></tr><tr><th>المسجل كمحصّل</th><td>${E(money(invoice.paid))}</td></tr><tr><th>المتبقي</th><td>${E(money(Math.max(0, N(invoice.total) - N(invoice.paid))))}</td></tr></tbody></table><p>${E(invoice.notes || '')}</p><p>وثيقة عرض تجريبي؛ ليست إثبات دفع أو فاتورة ضريبية معتمدة.</p></article>`,
+      `<article class="document" dir="rtl"><p>${E(s.settings?.company || 'إلفورانس')}</p><h1>${E(invoice.title)}</h1><p>العميل: ${E(customer(s, invoice.clientId))}</p><p>رقم السجل: ${E(invoice.id)} · الاستحقاق: ${E(date(invoice.dueDate))}</p><table class="data-table"><tbody><tr><th>الإجمالي</th><td>${E(money(invoice.total))}</td></tr><tr><th>المسجل كمحصّل</th><td>${E(money(invoice.paid))}</td></tr><tr><th>المتبقي</th><td>${E(money(Math.max(0, N(invoice.total) - N(invoice.paid))))}</td></tr></tbody></table><p>${E(invoice.notes || '')}</p><p>وثيقة عرض تجريبي؛ ليست إثبات دفع أو فاتورة ضريبية معتمدة.</p></article>`,
     );
   }
   function exportInvoices() {
@@ -139,7 +141,7 @@ export function createBillingFeature(context, { state }) {
       );
     if (!rows.length) return A.toast('لا فواتير تطابق الفلتر.', 'info');
     A.exportCSV(
-      `Atlas-Invoices-${A.today()}.csv`,
+      `Elvorance-Invoices-${A.today()}.csv`,
       rows.map((i) => ({
         الفاتورة: i.title,
         العميل: customer(s, i.clientId),

@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** admin / analytics: original v1.1 views and local demo actions. */
 export function createAnalyticsFeature(context, { workforce }) {
   const {
@@ -98,7 +100,7 @@ export function createAnalyticsFeature(context, { workforce }) {
     const data = analyticsData(A.state());
     if (!data.rows.length) return A.toast('لا بيانات تطابق الفلاتر للتصدير.', 'info');
     A.exportCSV(
-      `Atlas-Analytics-${A.today()}.csv`,
+      `Elvorance-Analytics-${A.today()}.csv`,
       data.rows.map((row) => ({
         المندوب: row.name,
         المناطق: row.zones,

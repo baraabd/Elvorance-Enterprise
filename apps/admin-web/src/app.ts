@@ -1,23 +1,25 @@
-import { createContext } from './context.js';
-import { createLocalDemo } from './state/local-demo.js';
-import { createLifecycle } from './lifecycle.js';
-import { createDashboardFeature } from './features/dashboard/index.js';
-import { createWorkforceFeature } from './features/workforce/index.js';
-import { createTerritoriesFeature } from './features/territories/index.js';
-import { createCustomersFeature } from './features/customers/index.js';
-import { createPipelineFeature } from './features/pipeline/index.js';
-import { createTasksFeature } from './features/tasks/index.js';
-import { createApprovalsFeature } from './features/approvals/index.js';
-import { createProjectsFeature } from './features/projects/index.js';
-import { createAnalyticsFeature } from './features/analytics/index.js';
-import { createBillingFeature } from './features/billing/index.js';
-import { createSupportFeature } from './features/support/index.js';
-import { createMessagesFeature } from './features/messages/index.js';
-import { createSettingsFeature } from './features/settings/index.js';
-import { createConfigurationFeature } from './features/configuration/index.js';
+// @ts-nocheck
+// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
+import { createContext } from './context.ts';
+import { createLocalDemo } from './state/local-demo.ts';
+import { createLifecycle } from './lifecycle.ts';
+import { createDashboardFeature } from './features/dashboard/index.ts';
+import { createWorkforceFeature } from './features/workforce/index.ts';
+import { createTerritoriesFeature } from './features/territories/index.ts';
+import { createCustomersFeature } from './features/customers/index.ts';
+import { createPipelineFeature } from './features/pipeline/index.ts';
+import { createTasksFeature } from './features/tasks/index.ts';
+import { createApprovalsFeature } from './features/approvals/index.ts';
+import { createProjectsFeature } from './features/projects/index.ts';
+import { createAnalyticsFeature } from './features/analytics/index.ts';
+import { createBillingFeature } from './features/billing/index.ts';
+import { createSupportFeature } from './features/support/index.ts';
+import { createMessagesFeature } from './features/messages/index.ts';
+import { createSettingsFeature } from './features/settings/index.ts';
+import { createConfigurationFeature } from './features/configuration/index.ts';
 
 /** Compose independently scoped features. The caller installs the runtime first. */
-export function registerApp(A = window.Atlas) {
+export function registerApp(A = window.Elvorance) {
   const context = createContext(A);
   // Explicit ports allow visits/quotes and contracts/quotes to collaborate without
   // importing another feature's private state or introducing ESM import cycles.
@@ -131,7 +133,7 @@ export function registerApp(A = window.Atlas) {
   }
   const definition = {
     id: 'admin',
-    name: 'أطلس للإدارة',
+    name: 'إلفورانس للإدارة',
     subtitle: 'رؤية أوضح. قرارات أقرب.',
     home: 'home',
     nav: [
