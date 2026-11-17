@@ -1,16 +1,16 @@
 import { installConfigurationSync } from '@elvorance/questionnaire/sync';
 import { installRuntime } from '@elvorance/app-runtime';
+import { mountLiveWorkspace } from '@elvorance/api-client/live-workspace';
 import { installSiteTracking } from '@elvorance/app-runtime/tracking';
 import { registerApp } from './app.ts';
 
 const config = window.ELVORANCE_CONFIG ?? { dataMode: 'demo' as const, siteTracking: false };
-if (config.dataMode !== 'demo') {
-  throw new Error(
-    'This preserved UI uses the explicit local-demo adapter. Migrate feature commands to the API client before enabling server mode.',
-  );
+if (config.dataMode !== 'demo' && config.dataMode !== 'server') {
+  throw new Error('Unsupported Elvorance dataMode.');
 }
-const runtime = installRuntime();
-export const definition = registerApp(runtime);
+const runtime = config.dataMode === 'demo' ? installRuntime() : null;
+export const definition = runtime ? registerApp(runtime) : null;
+if (runtime) {
 installSiteTracking({ runtime, disabled: !config.siteTracking });
 runtime.start('admin');
 const syncBase = 'configurationApiBaseUrl' in config ? config.configurationApiBaseUrl || '' : '';
@@ -31,3 +31,21 @@ if (syncBase)
       if (!connected) console.warn('Elvorance configuration sync unavailable:', error);
     },
   });
+
+} else {
+  const root = document.getElementById('app');
+  if (!root) throw new Error('Elvorance application root does not exist.');
+  const apiBaseUrl =
+    'apiBaseUrl' in config && typeof config.apiBaseUrl === 'string'
+      ? config.apiBaseUrl
+      : 'http://127.0.0.1:3000';
+  void mountLiveWorkspace({
+    root,
+    role: 'admin',
+    baseUrl: apiBaseUrl,
+    accessToken: async () => (await window.ELVORANCE_AUTH?.getAccessToken?.()) ?? null,
+  }).catch((error: unknown) => {
+    console.error('Elvorance authenticated API startup failed', error);
+    root.textContent = 'تعذّر بدء مساحة البيانات الحية. تحقق من إعدادات API.';
+  });
+}
