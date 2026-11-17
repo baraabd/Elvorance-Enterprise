@@ -1,0 +1,94 @@
+name: Rep native verification
+on:
+  push:
+    branches: [feat/rep-staging-mobile-20261117]
+  pull_request:
+    paths:
+      - 'apps/rep-mobile/**'
+      - 'packages/**'
+      - 'tooling/**'
+      - '.github/workflows/rep-native-verification.yml'
+      - 'package*.json'
+permissions:
+  contents: read
+concurrency:
+  group: rep-native-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - name: Package reproducible diagnostic toolchain
+        run: |
+          mkdir -p /tmp/elvorance-toolchain
+          cp "$(command -v node)" /tmp/elvorance-toolchain/node
+          tar -czf /tmp/elvorance-toolchain/dependencies.tar.gz node_modules
+          printf '%s\n' "$GITHUB_SHA" > /tmp/elvorance-toolchain/source-sha.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rep-linux-verification-toolchain
+          path: /tmp/elvorance-toolchain/
+          retention-days: 1
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: npm ci
+      - run: npm run build:apps
+      - run: npm run mobile:sync -- rep-mobile android
+      - name: Compile Android without release signing
+        working-directory: apps/rep-mobile/android
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon lintRelease testDebugUnitTest bundleRelease
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rep-android-compile-reports
+          path: |
+            apps/rep-mobile/android/app/build/reports/
+            apps/rep-mobile/android/app/build/outputs/bundle/release/
+          retention-days: 7
+  ios:
+    runs-on: macos-15
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - name: Require supported Xcode
+        run: |
+          xcodebuild -version
+          test "$(xcodebuild -version | head -1 | awk '{print $2}' | cut -d. -f1)" -ge 26
+      - run: npm ci
+      - run: npm run build:apps
+      - run: npm run mobile:sync -- rep-mobile ios
+      - name: Compile iOS simulator without distribution credentials
+        run: |
+          set -o pipefail
+          xcodebuild -project apps/rep-mobile/ios/App/App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath dist/ios-derived CODE_SIGNING_ALLOWED=NO build | tee ios-build.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rep-ios-simulator-compile-report
+          path: ios-build.log
+          retention-days: 7
