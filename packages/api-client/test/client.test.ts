@@ -80,3 +80,43 @@ test('surfaces domain conflicts with request ID without retrying the mutation', 
   );
   assert.equal(calls, 1);
 });
+
+test('PATCH and PUT use the authenticated API with versioned payloads and stable keys', async () => {
+  const requests: Array<{ url: string; method: string; key: string | null; body: unknown }> = [];
+  const client = createApiClient({
+    baseUrl: 'https://api.example.com',
+    accessToken: async () => 'test-token',
+    fetch: async (url, init) => {
+      const headers = new Headers(init?.headers);
+      assert.equal(headers.get('authorization'), 'Bearer test-token');
+      requests.push({
+        url: String(url),
+        method: init?.method ?? '',
+        key: headers.get('idempotency-key'),
+        body: JSON.parse(String(init?.body)),
+      });
+      return Response.json({ version: 2 });
+    },
+  });
+  await client.patch('/v1/crm/customers/c-1', { expectedVersion: 1, name: 'Updated' }, {
+    idempotencyKey: 'edit-customer-1',
+  });
+  await client.put('/v1/crm/configuration', { expectedVersion: 1, title: 'Current' }, {
+    idempotencyKey: 'publish-config-1',
+  });
+  assert.deepEqual(requests, [
+    {
+      url: 'https://api.example.com/v1/crm/customers/c-1',
+      method: 'PATCH',
+      key: 'edit-customer-1',
+      body: { expectedVersion: 1, name: 'Updated' },
+    },
+    {
+      url: 'https://api.example.com/v1/crm/configuration',
+      method: 'PUT',
+      key: 'publish-config-1',
+      body: { expectedVersion: 1, title: 'Current' },
+    },
+  ]);
+  await assert.rejects(client.patch('/v1/crm/customers/c-1', {}, { idempotencyKey: 'invalid' }));
+});
