@@ -216,7 +216,7 @@ test(
       });
       const response = await crm.inject({
         method: init?.method ?? 'GET',
-        url: new URL(String(url)).pathname,
+        url: new URL(String(url)).pathname.replace(/^\/v1\/crm(?=\/)/, '/v1'),
         headers,
         ...(init?.body ? { payload: String(init.body) } : {}),
       });
