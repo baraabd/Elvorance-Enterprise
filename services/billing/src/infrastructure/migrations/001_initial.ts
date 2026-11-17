@@ -1,4 +1,4 @@
-import { storageMigration } from '@atlas/service-kit';
+import { storageMigration } from '@elvorance/service-kit';
 export const tables = ['contract_accounts', 'invoices', 'payments'] as const;
 export const migrations = [
   storageMigration(

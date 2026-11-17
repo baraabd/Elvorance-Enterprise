@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { assert } from '@atlas/service-kit';
+import { assert } from '@elvorance/service-kit';
 import { forward } from '../application/proxy.ts';
 import { serviceNames, type Upstreams } from '../domain/routes.ts';
 export function registerRoutes(

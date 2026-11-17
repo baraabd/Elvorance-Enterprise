@@ -1,4 +1,4 @@
-import type { Principal } from '@atlas/contracts';
+import type { Principal } from '@elvorance/contracts';
 import {
   assert,
   finite,
@@ -13,7 +13,7 @@ import {
   text,
   version,
   type Transaction,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 import type { TrackingSession } from '../domain/model.ts';
 export async function createSession(
   tx: Transaction,

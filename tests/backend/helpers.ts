@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import type { FastifyInstance } from 'fastify';
-import type { Principal } from '@atlas/contracts';
-import { AppError, type AuthVerifier } from '@atlas/service-kit';
+import type { Principal } from '@elvorance/contracts';
+import { AppError, type AuthVerifier } from '@elvorance/service-kit';
 export const principals: Record<string, Principal> = {
   admin: { sub: 'admin-a', tenantId: 'tenant-a', roles: ['admin'] },
   rep: { sub: 'rep-user-a', tenantId: 'tenant-a', roles: ['rep'], repId: 'rep-a' },

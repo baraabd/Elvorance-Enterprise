@@ -1,5 +1,5 @@
 import Fastify from 'fastify';
-import { AppError, type AuthVerifier } from '@atlas/service-kit';
+import { AppError, type AuthVerifier } from '@elvorance/service-kit';
 import { registerRoutes } from './transport/routes.ts';
 import type { Upstreams } from './domain/routes.ts';
 export interface GatewayOptions {

@@ -1,4 +1,4 @@
-import type { Principal } from '@atlas/contracts';
+import type { Principal } from '@elvorance/contracts';
 import {
   assert,
   dateOnly,
@@ -13,7 +13,7 @@ import {
   text,
   version,
   type Transaction,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 import type { Deliverable, Project } from '../domain/model.ts';
 export async function project(tx: Transaction, principal: Principal, id: string): Promise<Project> {
   const value = (await tx.get<Project>('projects', id)) ?? notFound('Project');

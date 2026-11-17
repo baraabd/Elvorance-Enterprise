@@ -6,7 +6,7 @@ import {
   requireOwner,
   routeId,
   type Repository,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 import type { ContractAccount, Invoice, Payment } from '../domain/model.ts';
 import { invoice, recordPayment } from '../application/payments.ts';
 export function registerRoutes(app: FastifyInstance, repository: Repository): void {

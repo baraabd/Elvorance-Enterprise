@@ -18,6 +18,6 @@
   .rep-home-hero .hero-grid>div>p:not(.eyebrow){font-size:12px}
   .stat-value{font-size:28px;letter-spacing:-.8px}
 }
-/* Shared dynamic-questionnaire controls — Atlas 2027 */
+/* Shared dynamic-questionnaire controls — Elvorance 2027 */
 .survey-stepper{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0 20px}.survey-step{font-size:12px;line-height:1.6;background:#fff;border:1px solid #dfe6da;border-radius:14px;padding:9px;text-align:center}.survey-step.current{background:#172920;color:#fff}.survey-step.complete{background:#e5f4d2;color:#173525}.survey-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-block:12px}.survey-question{padding:18px}.survey-question .field{width:100%}.survey-other[hidden]{display:none!important}.metric-link{width:100%;text-align:inherit;display:block;text-decoration:none;color:inherit;cursor:pointer}.metric-link:hover{border-color:#9bb889;transform:translateY(-2px)}.metric-link:focus-visible{outline:3px solid #176b55;outline-offset:3px}.questionnaire-actions{display:flex;gap:10px;flex-wrap:wrap}
 @media(max-width:480px){.survey-stepper{grid-template-columns:repeat(2,1fr)}.survey-options{grid-template-columns:1fr}}

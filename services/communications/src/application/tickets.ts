@@ -1,4 +1,4 @@
-import type { Principal } from '@atlas/contracts';
+import type { Principal } from '@elvorance/contracts';
 import {
   assert,
   hasRole,
@@ -12,7 +12,7 @@ import {
   text,
   version,
   type Transaction,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 import type { Notification, Ticket } from '../domain/model.ts';
 export function visible(
   principal: Principal,

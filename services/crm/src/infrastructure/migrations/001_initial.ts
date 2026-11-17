@@ -1,7 +1,7 @@
-import { storageMigration, type Migration } from '@atlas/service-kit';
+import { storageMigration, type Migration } from '@elvorance/service-kit';
 // Do not edit the existing migration's definition: deployed databases already record its checksum.
 export const tables = ['customers', 'regions', 'configuration'] as const;
-const initial = storageMigration(['customers','regions'], '');
+const initial = storageMigration(['customers', 'regions'], '');
 const configuration: Migration = {
   version: 2,
   name: 'tenant_configuration',

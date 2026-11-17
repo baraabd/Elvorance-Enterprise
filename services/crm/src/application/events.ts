@@ -1,5 +1,5 @@
-import type { EventEnvelope } from '@atlas/contracts';
-import { assert, integer, object, text, type Transaction } from '@atlas/service-kit';
+import type { EventEnvelope } from '@elvorance/contracts';
+import { assert, integer, object, text, type Transaction } from '@elvorance/service-kit';
 import type { Customer } from '../domain/model.ts';
 import { customerContext } from './customers.ts';
 export const subscriptions = ['sales.visit_completed.v1'];

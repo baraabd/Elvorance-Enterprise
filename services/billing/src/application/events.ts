@@ -1,4 +1,4 @@
-import type { ContractSnapshot, EventEnvelope } from '@atlas/contracts';
+import type { ContractSnapshot, EventEnvelope } from '@elvorance/contracts';
 import {
   array,
   assert,
@@ -7,7 +7,7 @@ import {
   object,
   text,
   type Transaction,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 import type { ContractAccount, Invoice } from '../domain/model.ts';
 export const subscriptions = ['contract.approved.v1'];
 export async function handleEvent(tx: Transaction, event: EventEnvelope): Promise<void> {

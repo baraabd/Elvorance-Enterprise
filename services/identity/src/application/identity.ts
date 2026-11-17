@@ -1,6 +1,6 @@
-import { roles } from '@atlas/contracts';
-import { array, object, oneOf, requireRole, text, type Transaction } from '@atlas/service-kit';
-import type { Principal } from '@atlas/contracts';
+import { roles } from '@elvorance/contracts';
+import { array, object, oneOf, requireRole, text, type Transaction } from '@elvorance/service-kit';
+import type { Principal } from '@elvorance/contracts';
 import type { Membership, TenantProfile } from '../domain/model.ts';
 export async function createTenant(
   tx: Transaction,

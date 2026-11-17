@@ -1,145 +1,1303 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>أطلس — معاينة إعدادات الإدارة المرنة</title><style>
-@charset "UTF-8";
-:root{font-family:"Noto Sans Arabic",Tahoma,Arial,sans-serif;background:#f6f8f4;color:#18261f;font-size:14px}*{box-sizing:border-box}body{margin:0;direction:rtl}.layout{max-width:1240px;margin:auto;display:grid;grid-template-columns:240px 1fr;min-height:100vh;gap:26px;padding:22px}.sidebar{border-radius:26px;background:#142920;color:#fff;padding:26px;position:sticky;top:22px;height:calc(100vh - 44px);display:flex;flex-direction:column;gap:12px}.logo{font-weight:900;font-size:28px;margin:14px 0 28px}.logo small{display:block;font-size:11px;letter-spacing:2px;color:#d6f1a4}.nav{display:block;width:100%;text-align:right;background:transparent;border:0;color:#e5f4e5;padding:13px 16px;border-radius:14px;font-weight:700;cursor:pointer}.nav.active,.nav:hover{background:#d9f99d;color:#142920}.side-foot{margin-top:auto;font-size:12px;color:#b1c9b7;line-height:1.8}.content{padding:15px 0 80px;min-width:0}.eyebrow{color:#58856e;font-size:12px;font-weight:700}h1{font-size:30px;margin:10px 0}h2{font-size:21px;margin:4px 0 14px}h3{font-size:16px;margin:4px 0 10px}p{line-height:1.7;margin:6px 0 14px}.muted{color:#718177}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}.stat{padding:19px;border:1px solid #dde7dc;border-radius:21px;background:#fff;text-align:right;color:#18261f;cursor:pointer;display:flex;flex-direction:column;gap:10px;min-height:120px}.stat span{font-size:13px;color:#6c7d70}.stat strong{font-size:28px}.stat:hover{border-color:#439a6f;transform:translateY(-2px)}button:focus-visible,a:focus-visible{outline:3px solid #3c9e6a;outline-offset:2px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.panel{background:white;border-radius:24px;border:1px solid #e0e9dd;padding:22px;margin:15px 0}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #d6e0d3;border-radius:14px;background:#fff;padding:12px 19px;font-weight:800;color:#223e2d;cursor:pointer;text-decoration:none}.btn.primary{background:#182e22;border-color:#182e22;color:#fff}.btn.lime{background:#d9f99d}.btn.danger{color:#b14641}.btn.sm{padding:8px 12px;font-size:12px}.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.between{display:flex;justify-content:space-between;align-items:center;gap:12px}.stack{display:flex;flex-direction:column;gap:14px}.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:8px;font-weight:700;font-size:13px}.field.full{grid-column:1/-1}.field input,.field select,.field textarea{font:inherit;font-weight:400;border:1px solid #d8e3d8;border-radius:13px;padding:12px;background:#fbfdfa;color:#172e20;width:100%;min-width:0}.field textarea{min-height:80px;resize:vertical}.field input:invalid,.field select:invalid{box-shadow:none}.line{border-top:1px solid #e9eee7;margin:12px 0}.pill{border:1px solid #d4e3d2;border-radius:100px;padding:6px 13px;background:#f5faed;font-size:12px}.item{padding:16px;border:1px solid #e1eae1;border-radius:16px;background:#fff;margin:8px 0}.item:hover{background:#f9fcf6}.value{font-weight:800;font-size:18px}.alert{padding:14px;background:#fff4de;border:1px solid #ebd9b3;border-radius:14px}.success{background:#ecf8e8;border-color:#b7dfbb}.choice{display:flex;gap:10px;align-items:center;padding:10px;background:#fbfdfa;border:1px solid #e7efe4;border-radius:12px;font-weight:500}.choice input{width:auto}.steps{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}.step{padding:9px 14px;background:#e8eee8;color:#5e7263;border-radius:12px;font-size:12px}.step.current{background:#142920;color:white}.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.toplinks{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.toplinks a{padding:9px 12px;background:#e7f1e2;border-radius:11px;text-decoration:none;color:#1e5136;font-weight:700}.notice{padding:12px;background:#eff5ec;border-radius:12px;color:#47644f}.badge{font-size:11px;color:#497b5c;background:#edfae7;border-radius:20px;padding:5px 9px}.toast{position:fixed;bottom:20px;left:20px;background:#182c21;color:#fff;padding:14px 22px;border-radius:12px;z-index:50;box-shadow:0 6px 30px #1738222b;max-width:500px}.listbox{max-height:530px;overflow-y:auto}.preview-mark{font-size:11px;color:#799284}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
-@media(max-width:760px){.layout{grid-template-columns:1fr;gap:8px;padding:12px}.sidebar{height:auto;position:static;padding:16px;border-radius:18px;display:block}.logo{font-size:22px;margin:6px}.side-foot{display:none}.nav{display:inline-block;width:auto;padding:9px;margin:2px;font-size:11px}.content{padding:8px 0 80px}h1{font-size:23px}.cards{gap:8px}.stat{padding:14px;min-height:95px}.stat strong{font-size:20px}.stat span{font-size:11px}.grid,.form,.results{grid-template-columns:1fr}.panel{padding:16px}.field.full{grid-column:1}.steps{gap:4px}.step{font-size:10px;padding:8px}}
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>إلفورانس — معاينة إعدادات الإدارة المرنة</title>
+    <style>
+      @charset "UTF-8";
+      :root {
+        font-family: 'Noto Sans Arabic', Tahoma, Arial, sans-serif;
+        background: #f6f8f4;
+        color: #18261f;
+        font-size: 14px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        direction: rtl;
+      }
+      .layout {
+        max-width: 1240px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        min-height: 100vh;
+        gap: 26px;
+        padding: 22px;
+      }
+      .sidebar {
+        border-radius: 26px;
+        background: #142920;
+        color: #fff;
+        padding: 26px;
+        position: sticky;
+        top: 22px;
+        height: calc(100vh - 44px);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .logo {
+        font-weight: 900;
+        font-size: 28px;
+        margin: 14px 0 28px;
+      }
+      .logo small {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 2px;
+        color: #d6f1a4;
+      }
+      .nav {
+        display: block;
+        width: 100%;
+        text-align: right;
+        background: transparent;
+        border: 0;
+        color: #e5f4e5;
+        padding: 13px 16px;
+        border-radius: 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .nav.active,
+      .nav:hover {
+        background: #d9f99d;
+        color: #142920;
+      }
+      .side-foot {
+        margin-top: auto;
+        font-size: 12px;
+        color: #b1c9b7;
+        line-height: 1.8;
+      }
+      .content {
+        padding: 15px 0 80px;
+        min-width: 0;
+      }
+      .eyebrow {
+        color: #58856e;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      h1 {
+        font-size: 30px;
+        margin: 10px 0;
+      }
+      h2 {
+        font-size: 21px;
+        margin: 4px 0 14px;
+      }
+      h3 {
+        font-size: 16px;
+        margin: 4px 0 10px;
+      }
+      p {
+        line-height: 1.7;
+        margin: 6px 0 14px;
+      }
+      .muted {
+        color: #718177;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin: 20px 0;
+      }
+      .stat {
+        padding: 19px;
+        border: 1px solid #dde7dc;
+        border-radius: 21px;
+        background: #fff;
+        text-align: right;
+        color: #18261f;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 120px;
+      }
+      .stat span {
+        font-size: 13px;
+        color: #6c7d70;
+      }
+      .stat strong {
+        font-size: 28px;
+      }
+      .stat:hover {
+        border-color: #439a6f;
+        transform: translateY(-2px);
+      }
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid #3c9e6a;
+        outline-offset: 2px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .panel {
+        background: white;
+        border-radius: 24px;
+        border: 1px solid #e0e9dd;
+        padding: 22px;
+        margin: 15px 0;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        border: 1px solid #d6e0d3;
+        border-radius: 14px;
+        background: #fff;
+        padding: 12px 19px;
+        font-weight: 800;
+        color: #223e2d;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .btn.primary {
+        background: #182e22;
+        border-color: #182e22;
+        color: #fff;
+      }
+      .btn.lime {
+        background: #d9f99d;
+      }
+      .btn.danger {
+        color: #b14641;
+      }
+      .btn.sm {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .between {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .field.full {
+        grid-column: 1/-1;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        font: inherit;
+        font-weight: 400;
+        border: 1px solid #d8e3d8;
+        border-radius: 13px;
+        padding: 12px;
+        background: #fbfdfa;
+        color: #172e20;
+        width: 100%;
+        min-width: 0;
+      }
+      .field textarea {
+        min-height: 80px;
+        resize: vertical;
+      }
+      .field input:invalid,
+      .field select:invalid {
+        box-shadow: none;
+      }
+      .line {
+        border-top: 1px solid #e9eee7;
+        margin: 12px 0;
+      }
+      .pill {
+        border: 1px solid #d4e3d2;
+        border-radius: 100px;
+        padding: 6px 13px;
+        background: #f5faed;
+        font-size: 12px;
+      }
+      .item {
+        padding: 16px;
+        border: 1px solid #e1eae1;
+        border-radius: 16px;
+        background: #fff;
+        margin: 8px 0;
+      }
+      .item:hover {
+        background: #f9fcf6;
+      }
+      .value {
+        font-weight: 800;
+        font-size: 18px;
+      }
+      .alert {
+        padding: 14px;
+        background: #fff4de;
+        border: 1px solid #ebd9b3;
+        border-radius: 14px;
+      }
+      .success {
+        background: #ecf8e8;
+        border-color: #b7dfbb;
+      }
+      .choice {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px;
+        background: #fbfdfa;
+        border: 1px solid #e7efe4;
+        border-radius: 12px;
+        font-weight: 500;
+      }
+      .choice input {
+        width: auto;
+      }
+      .steps {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+        margin: 18px 0;
+      }
+      .step {
+        padding: 9px 14px;
+        background: #e8eee8;
+        color: #5e7263;
+        border-radius: 12px;
+        font-size: 12px;
+      }
+      .step.current {
+        background: #142920;
+        color: white;
+      }
+      .results {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .toplinks {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 8px 0;
+      }
+      .toplinks a {
+        padding: 9px 12px;
+        background: #e7f1e2;
+        border-radius: 11px;
+        text-decoration: none;
+        color: #1e5136;
+        font-weight: 700;
+      }
+      .notice {
+        padding: 12px;
+        background: #eff5ec;
+        border-radius: 12px;
+        color: #47644f;
+      }
+      .badge {
+        font-size: 11px;
+        color: #497b5c;
+        background: #edfae7;
+        border-radius: 20px;
+        padding: 5px 9px;
+      }
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: #182c21;
+        color: #fff;
+        padding: 14px 22px;
+        border-radius: 12px;
+        z-index: 50;
+        box-shadow: 0 6px 30px #1738222b;
+        max-width: 500px;
+      }
+      .listbox {
+        max-height: 530px;
+        overflow-y: auto;
+      }
+      .preview-mark {
+        font-size: 11px;
+        color: #799284;
+      }
+      .actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+      @media (max-width: 760px) {
+        .layout {
+          grid-template-columns: 1fr;
+          gap: 8px;
+          padding: 12px;
+        }
+        .sidebar {
+          height: auto;
+          position: static;
+          padding: 16px;
+          border-radius: 18px;
+          display: block;
+        }
+        .logo {
+          font-size: 22px;
+          margin: 6px;
+        }
+        .side-foot {
+          display: none;
+        }
+        .nav {
+          display: inline-block;
+          width: auto;
+          padding: 9px;
+          margin: 2px;
+          font-size: 11px;
+        }
+        .content {
+          padding: 8px 0 80px;
+        }
+        h1 {
+          font-size: 23px;
+        }
+        .cards {
+          gap: 8px;
+        }
+        .stat {
+          padding: 14px;
+          min-height: 95px;
+        }
+        .stat strong {
+          font-size: 20px;
+        }
+        .stat span {
+          font-size: 11px;
+        }
+        .grid,
+        .form,
+        .results {
+          grid-template-columns: 1fr;
+        }
+        .panel {
+          padding: 16px;
+        }
+        .field.full {
+          grid-column: 1;
+        }
+        .steps {
+          gap: 4px;
+        }
+        .step {
+          font-size: 10px;
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">إلفورانس <small>ELVORANCE CRM · 2027</small></div>
+        <div id="appnav"></div>
+        <p class="side-foot">
+          نسخة عرض مستقلة · بيانات اصطناعية متزامنة ضمن هذا المتصفح. لا تمثل بيئة الإنتاج أو هوية
+          مستخدم فعلية.
+        </p>
+      </aside>
+      <main class="content">
+        <div class="eyebrow">إدارة مرنة • إصدار قابل للتعديل</div>
+        <div class="toplinks">
+          <a href="?app=admin">لوحة الإدارة</a><a href="?app=rep">تطبيق المندوب</a
+          ><a href="?app=client">تطبيق العميل</a>
+        </div>
+        <div id="root"></div>
+      </main>
+    </div>
+    <div id="toast" aria-live="polite"></div>
+    <script type="module">
+      /** Tenant-editable discovery schema. Stable identifiers survive copy edits. No customer answers are seeded here. */
+      const activities = [
+        ['clinic', 'عيادة / مركز طبي'],
+        ['restaurant', 'مطعم / مقهى'],
+        ['workshop', 'ورشة / صيانة'],
+        ['factory', 'مصنع / منشأة إنتاج'],
+        ['retail', 'متجر / بقالية'],
+        ['salon', 'صالون / مركز تجميل'],
+        ['services', 'شركة خدمات'],
+        ['other', 'نشاط آخر'],
+      ].map(([id, label]) => ({ id, label, active: true }));
+      const option = (values) => values.map(([id, label]) => ({ id, label }));
+      const base = [
+        [
+          'situation',
+          'ما الموقف مع العملاء الذي تتمنى تغييره أولًا؟',
+          'challenge',
+          [
+            ['slow', 'تأخر الخدمة أو الانتظار'],
+            ['lost', 'فقدان فرص البيع'],
+            ['visibility', 'ضعف معرفة الناس بالنشاط'],
+            ['errors', 'أخطاء في متابعة الطلبات'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'reach',
+          'كيف يصل العملاء إليكم الآن؟',
+          'challenge',
+          [
+            ['walkin', 'زيارات مباشرة'],
+            ['referrals', 'توصيات ومعارف'],
+            ['social', 'وسائل التواصل'],
+            ['maps', 'خرائط ومحركات بحث'],
+            ['phone', 'الهاتف أو واتساب'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'bottleneck',
+          'أين يضيع الوقت أو تتكرر الأخطاء أثناء الخدمة؟',
+          'challenge',
+          [
+            ['booking', 'الحجوزات وتنظيم الدور'],
+            ['followup', 'الرد والمتابعة'],
+            ['records', 'السجلات والفواتير'],
+            ['inventory', 'المخزون أو التوريد'],
+            ['manual', 'العمل الورقي'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'impact',
+          'كيف يؤثر هذا الوضع عليكم وعلى تجربة العميل؟',
+          'challenge',
+          [
+            ['time', 'يضيع وقت الفريق'],
+            ['sales', 'تنخفض المبيعات'],
+            ['trust', 'تقل ثقة العملاء'],
+            ['repeat', 'تنخفض الزيارات المتكررة'],
+            ['unknown', 'لم يُقَس بعد'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'priority',
+          'إذا تحسن جانب واحد أولًا، أي فرق سيعني لكم أكثر؟',
+          'challenge',
+          [
+            ['growth', 'طلبات ومبيعات أكثر'],
+            ['speed', 'خدمة أسرع'],
+            ['loyalty', 'عودة العملاء مجددًا'],
+            ['accuracy', 'أخطاء أقل'],
+            ['visibility', 'ظهور أقوى'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'constraints',
+          'ما الظروف التي يجب احترامها عند تطبيق أي حل؟',
+          'challenge',
+          [
+            ['electricity', 'الكهرباء والإنترنت'],
+            ['budget', 'الميزانية'],
+            ['language', 'اللغة وطريقة استخدام الفريق'],
+            ['time', 'عدم تعطيل العمل'],
+            ['privacy', 'خصوصية بيانات العملاء'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'goals',
+          'ما النتائج التي يريد العميل تحقيقها؟',
+          'goal',
+          [
+            ['sales', 'زيادة المبيعات'],
+            ['new_clients', 'استقطاب عملاء جدد'],
+            ['appointments', 'تنظيم المواعيد'],
+            ['online', 'الحضور الرقمي'],
+            ['tracking', 'متابعة الطلبات'],
+            ['loyalty', 'عودة العملاء'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        ['solutions', 'الخدمات التي يرغب العميل في عرض أسعارها', 'solution', []],
+      ].map(([id, label, section, choices], i) => ({
+        id,
+        label,
+        section,
+        type: id === 'goals' || id === 'solutions' ? 'multi' : 'single',
+        required: true,
+        active: true,
+        activityIds: ['*'],
+        order: (i + 1) * 10,
+        options: option(choices),
+        otherAllowed: id !== 'solutions',
+        min: null,
+        max: null,
+      }));
+      const sectorQuestions = [
+        [
+          'clinic',
+          'clinic_access',
+          'ما أكثر ما يرهق المراجعين عند حجز موعد أو متابعة نتيجة؟',
+          [
+            ['queues', 'الازدحام وانتظار الدور'],
+            ['calls', 'ضغط الهاتف'],
+            ['reminder', 'نسيان المواعيد'],
+            ['records', 'الملفات والمتابعة'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'restaurant',
+          'restaurant_orders',
+          'ما أكثر ما يُفقد المطعم طلبات أثناء ساعات الذروة؟',
+          [
+            ['menu', 'صعوبة الوصول للقائمة'],
+            ['orders', 'تداخل الطلبات'],
+            ['delivery', 'تأخر التوصيل'],
+            ['social', 'الرسائل غير المنظمة'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'workshop',
+          'workshop_tracking',
+          'أين يضيع التواصل مع صاحب السيارة أو الجهاز؟',
+          [
+            ['estimate', 'تقدير السعر'],
+            ['status', 'متابعة حالة الإصلاح'],
+            ['parts', 'توفر القطع'],
+            ['pickup', 'توقيت التسليم'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'factory',
+          'factory_sales',
+          'ما العقبة الأكبر بين طلب العميل وتسليم الإنتاج؟',
+          [
+            ['quotations', 'تجهيز عروض الأسعار'],
+            ['production', 'جدولة الإنتاج'],
+            ['inventory', 'المخزون'],
+            ['distribution', 'التوزيع'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'retail',
+          'retail_sales',
+          'ما الذي يعطل البيع في المتجر أكثر؟',
+          [
+            ['stock', 'نفاد الأصناف'],
+            ['online', 'غياب الطلبات الرقمية'],
+            ['delivery', 'صعوبة التوصيل'],
+            ['loyalty', 'ضعف عودة العملاء'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'salon',
+          'salon_appointments',
+          'ما أكثر ما يزعج الزبائن أثناء الحجز؟',
+          [
+            ['double', 'تضارب المواعيد'],
+            ['cancel', 'الإلغاء المتأخر'],
+            ['reminder', 'غياب التذكير'],
+            ['online', 'صعوبة الحجز'],
+            ['other', 'أخرى'],
+          ],
+        ],
+        [
+          'services',
+          'services_pipeline',
+          'أين تتعثر متابعة عروض الخدمات؟',
+          [
+            ['leads', 'فقدان العملاء المحتملين'],
+            ['pricing', 'تأخر التسعير'],
+            ['updates', 'عدم وصول التحديثات'],
+            ['contracts', 'إدارة العقود'],
+            ['other', 'أخرى'],
+          ],
+        ],
+      ].map(([activity, id, label, choices], i) => ({
+        id,
+        label,
+        section: 'challenge',
+        type: 'single',
+        required: true,
+        active: true,
+        activityIds: [activity],
+        order: 25 + i,
+        options: option(choices),
+        otherAllowed: true,
+        min: null,
+        max: null,
+      }));
 
-</style></head><body><div class="layout"><aside class="sidebar"><div class="logo">أطلس <small>ATLAS CRM · 2027</small></div><div id="appnav"></div><p class="side-foot">نسخة عرض مستقلة · بيانات اصطناعية متزامنة ضمن هذا المتصفح. لا تمثل بيئة الإنتاج أو هوية مستخدم فعلية.</p></aside><main class="content"><div class="eyebrow">إدارة مرنة • إصدار قابل للتعديل</div><div class="toplinks"><a href="?app=admin">لوحة الإدارة</a><a href="?app=rep">تطبيق المندوب</a><a href="?app=client">تطبيق العميل</a></div><div id="root"></div></main></div><div id="toast" aria-live="polite"></div><script type="module">
-/** Tenant-editable discovery schema. Stable identifiers survive copy edits. No customer answers are seeded here. */
-const activities = [
-  ['clinic','عيادة / مركز طبي'], ['restaurant','مطعم / مقهى'], ['workshop','ورشة / صيانة'],
-  ['factory','مصنع / منشأة إنتاج'], ['retail','متجر / بقالية'], ['salon','صالون / مركز تجميل'],
-  ['services','شركة خدمات'], ['other','نشاط آخر']
-].map(([id,label])=>({id,label,active:true}));
-const option = (values) => values.map(([id,label])=>({id,label}));
-const base = [
-  ['situation','ما الموقف مع العملاء الذي تتمنى تغييره أولًا؟','challenge', [['slow','تأخر الخدمة أو الانتظار'],['lost','فقدان فرص البيع'],['visibility','ضعف معرفة الناس بالنشاط'],['errors','أخطاء في متابعة الطلبات'],['other','أخرى']]],
-  ['reach','كيف يصل العملاء إليكم الآن؟','challenge', [['walkin','زيارات مباشرة'],['referrals','توصيات ومعارف'],['social','وسائل التواصل'],['maps','خرائط ومحركات بحث'],['phone','الهاتف أو واتساب'],['other','أخرى']]],
-  ['bottleneck','أين يضيع الوقت أو تتكرر الأخطاء أثناء الخدمة؟','challenge', [['booking','الحجوزات وتنظيم الدور'],['followup','الرد والمتابعة'],['records','السجلات والفواتير'],['inventory','المخزون أو التوريد'],['manual','العمل الورقي'],['other','أخرى']]],
-  ['impact','كيف يؤثر هذا الوضع عليكم وعلى تجربة العميل؟','challenge', [['time','يضيع وقت الفريق'],['sales','تنخفض المبيعات'],['trust','تقل ثقة العملاء'],['repeat','تنخفض الزيارات المتكررة'],['unknown','لم يُقَس بعد'],['other','أخرى']]],
-  ['priority','إذا تحسن جانب واحد أولًا، أي فرق سيعني لكم أكثر؟','challenge', [['growth','طلبات ومبيعات أكثر'],['speed','خدمة أسرع'],['loyalty','عودة العملاء مجددًا'],['accuracy','أخطاء أقل'],['visibility','ظهور أقوى'],['other','أخرى']]],
-  ['constraints','ما الظروف التي يجب احترامها عند تطبيق أي حل؟','challenge', [['electricity','الكهرباء والإنترنت'],['budget','الميزانية'],['language','اللغة وطريقة استخدام الفريق'],['time','عدم تعطيل العمل'],['privacy','خصوصية بيانات العملاء'],['other','أخرى']]],
-  ['goals','ما النتائج التي يريد العميل تحقيقها؟','goal', [['sales','زيادة المبيعات'],['new_clients','استقطاب عملاء جدد'],['appointments','تنظيم المواعيد'],['online','الحضور الرقمي'],['tracking','متابعة الطلبات'],['loyalty','عودة العملاء'],['other','أخرى']]],
-  ['solutions','الخدمات التي يرغب العميل في عرض أسعارها','solution',[]]
-].map(([id,label,section,choices],i)=>({id,label,section,type:id==='goals'||id==='solutions'?'multi':'single',required:true,active:true,activityIds:['*'],order:(i+1)*10,options:option(choices),otherAllowed:id!=='solutions',min:null,max:null}));
-const sectorQuestions = [
-  ['clinic','clinic_access','ما أكثر ما يرهق المراجعين عند حجز موعد أو متابعة نتيجة؟',[['queues','الازدحام وانتظار الدور'],['calls','ضغط الهاتف'],['reminder','نسيان المواعيد'],['records','الملفات والمتابعة'],['other','أخرى']]],
-  ['restaurant','restaurant_orders','ما أكثر ما يُفقد المطعم طلبات أثناء ساعات الذروة؟',[['menu','صعوبة الوصول للقائمة'],['orders','تداخل الطلبات'],['delivery','تأخر التوصيل'],['social','الرسائل غير المنظمة'],['other','أخرى']]],
-  ['workshop','workshop_tracking','أين يضيع التواصل مع صاحب السيارة أو الجهاز؟',[['estimate','تقدير السعر'],['status','متابعة حالة الإصلاح'],['parts','توفر القطع'],['pickup','توقيت التسليم'],['other','أخرى']]],
-  ['factory','factory_sales','ما العقبة الأكبر بين طلب العميل وتسليم الإنتاج؟',[['quotations','تجهيز عروض الأسعار'],['production','جدولة الإنتاج'],['inventory','المخزون'],['distribution','التوزيع'],['other','أخرى']]],
-  ['retail','retail_sales','ما الذي يعطل البيع في المتجر أكثر؟',[['stock','نفاد الأصناف'],['online','غياب الطلبات الرقمية'],['delivery','صعوبة التوصيل'],['loyalty','ضعف عودة العملاء'],['other','أخرى']]],
-  ['salon','salon_appointments','ما أكثر ما يزعج الزبائن أثناء الحجز؟',[['double','تضارب المواعيد'],['cancel','الإلغاء المتأخر'],['reminder','غياب التذكير'],['online','صعوبة الحجز'],['other','أخرى']]],
-  ['services','services_pipeline','أين تتعثر متابعة عروض الخدمات؟',[['leads','فقدان العملاء المحتملين'],['pricing','تأخر التسعير'],['updates','عدم وصول التحديثات'],['contracts','إدارة العقود'],['other','أخرى']]]
-].map(([activity,id,label,choices],i)=>({id,label,section:'challenge',type:'single',required:true,active:true,activityIds:[activity],order:25+i,options:option(choices),otherAllowed:true,min:null,max:null}));
+      function defaultCatalog() {
+        const seeds = [
+          ['svc-web', 'موقع إلكتروني احترافي', 1800, 'web', 'online,visibility,موقع'],
+          ['svc-store', 'متجر إلكتروني وطلبات', 3200, 'commerce', 'orders,stock,delivery'],
+          ['svc-brand', 'هوية بصرية للمنشأة', 650, 'design', 'trust,visibility,هوية'],
+          [
+            'svc-social',
+            'إدارة حضور وسائل التواصل',
+            350,
+            'marketing',
+            'social,new_clients,loyalty',
+          ],
+          ['svc-seo', 'ظهور في البحث والخرائط', 450, 'marketing', 'maps,new_clients,visibility'],
+          ['svc-app', 'تطبيق هاتف مخصص', 6500, 'software', 'mobile,online,تطبيق'],
+          [
+            'svc-crm',
+            'نظام إدارة العملاء والمتابعة',
+            4200,
+            'software',
+            'records,followup,tracking,leads',
+          ],
+          ['svc-cloud', 'استضافة وصيانة', 35, 'infrastructure', 'hosting,electricity,cloud'],
+          ['svc-security', 'فحص وحماية تقنية', 900, 'infrastructure', 'privacy,security,حماية'],
+          [
+            'svc-book',
+            'نظام مواعيد وحجوزات',
+            2200,
+            'software',
+            'appointments,booking,queues,reminder',
+          ],
+        ];
+        return seeds.map(([id, title, price, category, tags]) => ({
+          id,
+          title,
+          price,
+          category,
+          short: title,
+          unit: 'للمشروع',
+          duration: 'حسب النطاق',
+          features: [],
+          deliverables: [],
+          active: true,
+          recommendationTags: tags.split(','),
+        }));
+      }
 
-function defaultCatalog() {
-  const seeds=[
-    ['svc-web','موقع إلكتروني احترافي',1800,'web','online,visibility,موقع'],
-    ['svc-store','متجر إلكتروني وطلبات',3200,'commerce','orders,stock,delivery'],
-    ['svc-brand','هوية بصرية للمنشأة',650,'design','trust,visibility,هوية'],
-    ['svc-social','إدارة حضور وسائل التواصل',350,'marketing','social,new_clients,loyalty'],
-    ['svc-seo','ظهور في البحث والخرائط',450,'marketing','maps,new_clients,visibility'],
-    ['svc-app','تطبيق هاتف مخصص',6500,'software','mobile,online,تطبيق'],
-    ['svc-crm','نظام إدارة العملاء والمتابعة',4200,'software','records,followup,tracking,leads'],
-    ['svc-cloud','استضافة وصيانة',35,'infrastructure','hosting,electricity,cloud'],
-    ['svc-security','فحص وحماية تقنية',900,'infrastructure','privacy,security,حماية'],
-    ['svc-book','نظام مواعيد وحجوزات',2200,'software','appointments,booking,queues,reminder']
-  ];
-  return seeds.map(([id,title,price,category,tags])=>({id,title,price,category,short:title,unit:'للمشروع',duration:'حسب النطاق',features:[],deliverables:[],active:true,recommendationTags:tags.split(',')}));
-}
+      const QUESTION_SECTIONS = {
+        challenge: 'اكتشاف التحديات',
+        goal: 'النتائج المطلوبة',
+        solution: 'اختيار الحلول',
+      };
+      const FIELD_TYPES = {
+        single: 'اختيار واحد',
+        multi: 'اختيارات متعددة',
+        text: 'نص',
+        number: 'رقم',
+      };
+      function defaultConfiguration() {
+        return {
+          schemaVersion: 1,
+          revision: 1,
+          activities: structuredClone(activities),
+          questions: structuredClone([...base, ...sectorQuestions]),
+          updatedAt: null,
+        };
+      }
+      function configured(state) {
+        return state?.formConfig || defaultConfiguration();
+      }
+      function visibleQuestions(config, activityId, section) {
+        return (config.questions || [])
+          .filter(
+            (q) =>
+              q.active !== false &&
+              q.section === section &&
+              (q.activityIds || ['*']).some((a) => a === '*' || a === activityId),
+          )
+          .sort((a, b) => (a.order || 0) - (b.order || 0));
+      }
+      function validateConfiguration(value, catalog = []) {
+        const errors = [];
+        if (!value || typeof value !== 'object') return ['التعريف يجب أن يكون كائنًا.'];
+        const activities = value.activities,
+          questions = value.questions;
+        if (!Array.isArray(activities) || activities.length < 1 || activities.length > 100)
+          errors.push('يجب تعريف 1–100 نوع نشاط.');
+        if (!Array.isArray(questions) || questions.length < 1 || questions.length > 250)
+          errors.push('يجب تعريف 1–250 سؤالًا.');
+        const ids = new Set(),
+          aIds = new Set();
+        (Array.isArray(activities) ? activities : []).forEach((a, i) => {
+          if (!/^[a-z0-9_-]{2,50}$/i.test(a?.id || '') || aIds.has(a.id))
+            errors.push(`معرّف النشاط ${i + 1} غير صالح أو مكرر.`);
+          else aIds.add(a.id);
+          if (typeof a?.label !== 'string' || a.label.trim().length < 2 || a.label.length > 100)
+            errors.push(`اسم النشاط ${i + 1} غير صالح.`);
+        });
+        (Array.isArray(questions) ? questions : []).forEach((q, i) => {
+          if (!/^[a-z0-9_-]{2,60}$/i.test(q?.id || '') || ids.has(q.id))
+            errors.push(`معرّف السؤال ${i + 1} غير صالح أو مكرر.`);
+          else ids.add(q.id);
+          if (typeof q?.label !== 'string' || q.label.trim().length < 8 || q.label.length > 300)
+            errors.push(`صياغة السؤال ${i + 1} يجب أن تكون 8–300 حرف.`);
+          if (!QUESTION_SECTIONS[q?.section]) errors.push(`قسم السؤال ${i + 1} غير صالح.`);
+          if (!FIELD_TYPES[q?.type]) errors.push(`نوع السؤال ${i + 1} غير صالح.`);
+          if (typeof q?.required !== 'boolean') errors.push(`إلزامية السؤال ${i + 1} غير محددة.`);
+          if (
+            !Array.isArray(q?.activityIds) ||
+            !q.activityIds.length ||
+            q.activityIds.some((a) => a !== '*' && !aIds.has(a))
+          )
+            errors.push(`أنشطة السؤال ${i + 1} غير صالحة.`);
+          if (q?.type === 'single' || q?.type === 'multi') {
+            if (q.id === 'solutions') return;
+            if (!Array.isArray(q.options) || q.options.length < 1 || q.options.length > 60)
+              errors.push(`خيارات السؤال ${i + 1} مطلوبة (1–60).`);
+            const choices = new Set();
+            (Array.isArray(q.options) ? q.options : []).forEach((opt, j) => {
+              if (!/^[a-z0-9_-]{1,60}$/i.test(opt?.id || '') || choices.has(opt.id))
+                errors.push(`رمز الخيار ${j + 1} في السؤال ${i + 1} غير صالح.`);
+              else choices.add(opt.id);
+              if (typeof opt?.label !== 'string' || !opt.label.trim() || opt.label.length > 150)
+                errors.push(`نص الخيار ${j + 1} في السؤال ${i + 1} غير صالح.`);
+            });
+          }
+          if (
+            q.type === 'number' &&
+            (![q.min, q.max].every(
+              (n) => n === null || n === undefined || (typeof n === 'number' && Number.isFinite(n)),
+            ) ||
+              (q.min != null && q.max != null && q.min > q.max))
+          )
+            errors.push(`حدود السؤال الرقمي ${i + 1} غير صالحة.`);
+        });
+        if (catalog && (!Array.isArray(catalog) || catalog.length > 250))
+          errors.push('الكتالوج لا يتجاوز 250 خدمة.');
+        (Array.isArray(catalog) ? catalog : []).forEach((s, i) => {
+          if (!/^[a-z0-9_-]{2,60}$/i.test(s?.id || ''))
+            errors.push(`معرّف الخدمة ${i + 1} غير صالح.`);
+          if (typeof s?.title !== 'string' || s.title.trim().length < 2 || s.title.length > 150)
+            errors.push(`اسم الخدمة ${i + 1} غير صالح.`);
+          if (
+            typeof s?.price !== 'number' ||
+            !Number.isFinite(s.price) ||
+            s.price < 0 ||
+            s.price > 100000000
+          )
+            errors.push(`السعر ${i + 1} يجب أن يكون رقمًا موجبًا أو صفرًا لخدمة بتقدير خاص.`);
+        });
+        return errors;
+      }
+      function validateAnswers(config, activityId, answers = {}, catalog = []) {
+        const errors = {};
+        const questionSet = [
+          ...visibleQuestions(config, activityId, 'challenge'),
+          ...visibleQuestions(config, activityId, 'goal'),
+          ...visibleQuestions(config, activityId, 'solution'),
+        ];
+        for (const q of questionSet) {
+          const value = answers[q.id];
+          const selected = Array.isArray(value)
+            ? value
+            : value == null || value === ''
+              ? []
+              : [value];
+          if (q.required && !selected.length) {
+            errors[q.id] = 'هذا السؤال مطلوب.';
+            continue;
+          }
+          if (q.type === 'single' && selected.length > 1) {
+            errors[q.id] = 'اختر إجابة واحدة فقط.';
+            continue;
+          }
+          if (['single', 'multi'].includes(q.type)) {
+            const valid =
+              q.id === 'solutions'
+                ? new Set(catalog.filter((s) => s.active !== false).map((s) => s.id))
+                : new Set((q.options || []).map((o) => o.id));
+            if (selected.some((x) => !valid.has(x))) errors[q.id] = 'توجد خيارات غير معتمدة.';
+            if (
+              selected.includes('other') &&
+              q.otherAllowed &&
+              String(answers[q.id + '__other'] || '').trim().length < 3
+            )
+              errors[q.id] = 'اشرح خيار «أخرى» بثلاثة أحرف على الأقل.';
+          }
+          if (q.type === 'number' && selected.length) {
+            const n = Number(value);
+            if (
+              typeof value === 'boolean' ||
+              String(value).trim() === '' ||
+              !Number.isFinite(n) ||
+              (q.min != null && n < q.min) ||
+              (q.max != null && n > q.max)
+            )
+              errors[q.id] = 'أدخل رقمًا صالحًا ضمن المجال.';
+          }
+          if (
+            q.type === 'text' &&
+            selected.length &&
+            (typeof value !== 'string' ||
+              value.trim().length < (q.required ? 2 : 1) ||
+              value.length > 2000)
+          )
+            errors[q.id] = 'أدخل نصًا صالحًا، حتى 2000 حرف.';
+        }
+        return errors;
+      }
+      function recommendServices(config, activity, answers, catalog) {
+        // Explainable heuristics; no claim of AI prediction or guaranteed revenue.
+        const combined = Object.values(answers || {})
+          .flat()
+          .join(' ')
+          .toLowerCase();
+        const rules = [
+          [
+            'booking',
+            ['appointments', 'booking', 'reminder', 'queues', 'double', 'cancel', 'svc-book'],
+          ],
+          ['web', ['online', 'visibility', 'maps', 'svc-web']],
+          ['social', ['social', 'new_clients', 'loyalty', 'svc-social']],
+          ['crm', ['records', 'followup', 'tracking', 'leads', 'svc-crm']],
+          ['store', ['orders', 'delivery', 'stock', 'svc-store']],
+          ['seo', ['maps', 'visibility', 'new_clients', 'svc-seo']],
+        ];
+        return catalog
+          .filter((s) => s.active !== false)
+          .map((s) => {
+            let score = 0;
+            const reasons = [];
+            const name = (s.id + ' ' + s.category + ' ' + s.title).toLowerCase();
+            for (const [key, triggers] of rules) {
+              if (name.includes(key) || s.id.includes(key)) {
+                const hits = triggers.filter((word) => combined.includes(word));
+                score += hits.length * 2;
+                if (hits.length) reasons.push('يتوافق مع إجاباتك عن: ' + hits.join('، '));
+              }
+            }
+            if (s.recommendationTags) {
+              for (const tag of s.recommendationTags) {
+                if (combined.includes(String(tag).toLowerCase())) {
+                  score += 3;
+                  reasons.push('مرتبط بهدف: ' + tag);
+                }
+              }
+            }
+            return { ...s, score, reasons: reasons.slice(0, 2) };
+          })
+          .filter((s) => s.score > 0)
+          .sort((a, b) => b.score - a.score);
+      }
 
-const QUESTION_SECTIONS = {challenge:'اكتشاف التحديات',goal:'النتائج المطلوبة',solution:'اختيار الحلول'};
-const FIELD_TYPES = {single:'اختيار واحد',multi:'اختيارات متعددة',text:'نص',number:'رقم'};
-function defaultConfiguration() { return {schemaVersion:1,revision:1,activities:structuredClone(activities),questions:structuredClone([...base,...sectorQuestions]),updatedAt:null}; }
-function configured(state) { return state?.formConfig || defaultConfiguration(); }
-function visibleQuestions(config, activityId, section) {return (config.questions||[]).filter(q=>q.active!==false&&q.section===section&&(q.activityIds||['*']).some(a=>a==='*'||a===activityId)).sort((a,b)=>(a.order||0)-(b.order||0));}
-function validateConfiguration(value, catalog=[]) {
-  const errors=[];
-  if(!value || typeof value!=='object') return ['التعريف يجب أن يكون كائنًا.'];
-  const activities=value.activities, questions=value.questions;
-  if(!Array.isArray(activities)||activities.length<1||activities.length>100) errors.push('يجب تعريف 1–100 نوع نشاط.');
-  if(!Array.isArray(questions)||questions.length<1||questions.length>250) errors.push('يجب تعريف 1–250 سؤالًا.');
-  const ids=new Set(), aIds=new Set();
-  (Array.isArray(activities)?activities:[]).forEach((a,i)=>{if(!/^[a-z0-9_-]{2,50}$/i.test(a?.id||'')||aIds.has(a.id)) errors.push(`معرّف النشاط ${i+1} غير صالح أو مكرر.`); else aIds.add(a.id);if(typeof a?.label!=='string'||a.label.trim().length<2||a.label.length>100)errors.push(`اسم النشاط ${i+1} غير صالح.`);});
-  (Array.isArray(questions)?questions:[]).forEach((q,i)=>{
-    if(!/^[a-z0-9_-]{2,60}$/i.test(q?.id||'')||ids.has(q.id)) errors.push(`معرّف السؤال ${i+1} غير صالح أو مكرر.`);else ids.add(q.id);
-    if(typeof q?.label!=='string'||q.label.trim().length<8||q.label.length>300)errors.push(`صياغة السؤال ${i+1} يجب أن تكون 8–300 حرف.`);
-    if(!QUESTION_SECTIONS[q?.section]) errors.push(`قسم السؤال ${i+1} غير صالح.`);
-    if(!FIELD_TYPES[q?.type])errors.push(`نوع السؤال ${i+1} غير صالح.`);
-    if(typeof q?.required!=='boolean')errors.push(`إلزامية السؤال ${i+1} غير محددة.`);
-    if(!Array.isArray(q?.activityIds)||!q.activityIds.length||q.activityIds.some(a=>a!=='*'&&!aIds.has(a)))errors.push(`أنشطة السؤال ${i+1} غير صالحة.`);
-    if(q?.type==='single'||q?.type==='multi'){
-      if(q.id==='solutions') return;
-      if(!Array.isArray(q.options)||q.options.length<1||q.options.length>60)errors.push(`خيارات السؤال ${i+1} مطلوبة (1–60).`);
-      const choices=new Set();(Array.isArray(q.options)?q.options:[]).forEach((opt,j)=>{if(!/^[a-z0-9_-]{1,60}$/i.test(opt?.id||'')||choices.has(opt.id))errors.push(`رمز الخيار ${j+1} في السؤال ${i+1} غير صالح.`);else choices.add(opt.id);if(typeof opt?.label!=='string'||!opt.label.trim()||opt.label.length>150)errors.push(`نص الخيار ${j+1} في السؤال ${i+1} غير صالح.`);});
-    }
-    if(q.type==='number' && (![q.min,q.max].every(n=>n===null||n===undefined||(typeof n==='number'&&Number.isFinite(n)))||q.min!=null&&q.max!=null&&q.min>q.max))errors.push(`حدود السؤال الرقمي ${i+1} غير صالحة.`);
-  });
-  if(catalog && (!Array.isArray(catalog)||catalog.length>250))errors.push('الكتالوج لا يتجاوز 250 خدمة.');
-  (Array.isArray(catalog)?catalog:[]).forEach((s,i)=>{if(!/^[a-z0-9_-]{2,60}$/i.test(s?.id||''))errors.push(`معرّف الخدمة ${i+1} غير صالح.`);if(typeof s?.title!=='string'||s.title.trim().length<2||s.title.length>150)errors.push(`اسم الخدمة ${i+1} غير صالح.`);if(typeof s?.price!=='number'||!Number.isFinite(s.price)||s.price<0||s.price>100000000)errors.push(`السعر ${i+1} يجب أن يكون رقمًا موجبًا أو صفرًا لخدمة بتقدير خاص.`);});
-  return errors;
-}
-function validateAnswers(config, activityId, answers={}, catalog=[]) {
-  const errors={};const questionSet=[...visibleQuestions(config,activityId,'challenge'),...visibleQuestions(config,activityId,'goal'),...visibleQuestions(config,activityId,'solution')];
-  for(const q of questionSet) {
-    const value=answers[q.id]; const selected=Array.isArray(value)?value:(value==null||value===''?[]:[value]);
-    if(q.required&&!selected.length) {errors[q.id]='هذا السؤال مطلوب.';continue;}
-    if(q.type==='single'&&selected.length>1){errors[q.id]='اختر إجابة واحدة فقط.';continue;}
-    if(['single','multi'].includes(q.type)) {
-      const valid=q.id==='solutions'?new Set(catalog.filter(s=>s.active!==false).map(s=>s.id)):new Set((q.options||[]).map(o=>o.id));
-      if(selected.some(x=>!valid.has(x))) errors[q.id]='توجد خيارات غير معتمدة.';
-      if(selected.includes('other')&&q.otherAllowed&&String(answers[q.id+'__other']||'').trim().length<3)errors[q.id]='اشرح خيار «أخرى» بثلاثة أحرف على الأقل.';
-    }
-    if(q.type==='number'&&selected.length){const n=Number(value);if(typeof value==='boolean'||String(value).trim()===''||!Number.isFinite(n)||(q.min!=null&&n<q.min)||(q.max!=null&&n>q.max))errors[q.id]='أدخل رقمًا صالحًا ضمن المجال.';}
-    if(q.type==='text'&&selected.length&&(typeof value!=='string'||value.trim().length<(q.required?2:1)||value.length>2000)) errors[q.id]='أدخل نصًا صالحًا، حتى 2000 حرف.';
-  }
-  return errors;
-}
-function recommendServices(config, activity, answers, catalog) {
-  // Explainable heuristics; no claim of AI prediction or guaranteed revenue.
-  const combined=Object.values(answers||{}).flat().join(' ').toLowerCase();
-  const rules=[['booking', ['appointments','booking','reminder','queues','double','cancel','svc-book']],['web',['online','visibility','maps','svc-web']],['social',['social','new_clients','loyalty','svc-social']],['crm',['records','followup','tracking','leads','svc-crm']],['store',['orders','delivery','stock','svc-store']],['seo',['maps','visibility','new_clients','svc-seo']]];
-  return catalog.filter(s=>s.active!==false).map(s=>{let score=0;const reasons=[];const name=(s.id+' '+s.category+' '+s.title).toLowerCase();for(const [key,triggers] of rules){if(name.includes(key)||s.id.includes(key)){const hits=triggers.filter(word=>combined.includes(word));score+=hits.length*2; if(hits.length)reasons.push('يتوافق مع إجاباتك عن: '+hits.join('، '));}}if(s.recommendationTags){for(const tag of s.recommendationTags){if(combined.includes(String(tag).toLowerCase())){score+=3;reasons.push('مرتبط بهدف: '+tag);}}}return {...s,score,reasons:reasons.slice(0,2)};}).filter(s=>s.score>0).sort((a,b)=>b.score-a.score);
-}
-
-const STORE='atlas.crm.config.prototype.2027.v1';
-const seed=()=>({config:defaultConfiguration(),catalog:defaultCatalog(),answers:{},tasks:[{name:'متابعة عرض جديد',status:'open'},{name:'الرد على العميل',status:'done'}],projects:[{name:'موقع عيادة الندى',status:'active'},{name:'تصميم متجر خيط',status:'active'},{name:'هوية شركة الشرق',status:'completed'}],invoices:[{name:'الدفعة الثانية - عيادة الندى',total:1500,paid:250},{name:'الدفعة الأخيرة - متجر خيط',total:900,paid:0}]});
-const load=()=>{try{return JSON.parse(localStorage.getItem(STORE)||'null')||seed()}catch{return seed()}};let db=load();
-const save=()=>{db.config.revision++;db.config.updatedAt=new Date().toISOString();localStorage.setItem(STORE,JSON.stringify(db));refresh()};
-const $=s=>document.querySelector(s);const esc=s=>String(s??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
-const app=new URL(location.href).searchParams.get('app')||'admin';let route='home',selectedActivity=db.answers.activityId||'';
-const navItems=app==='admin'?[['home','الملخصات'],['questions','الأسئلة'],['activities','الأنشطة'],['services','الخدمات']]:app==='rep'?[['home','رحلة العميل'],['survey','استبيان الزيارة'],['services','خدمات الشركة']]:[['home','مساحتي'],['survey','احتياجاتي'],['services','الخدمات']];
-const button=(label,action,klass='btn',extra='')=>`<button type="button" class="${klass}" data-action="${action}" ${extra}>${esc(label)}</button>`;
-const toast=msg=>{$('#toast').innerHTML=`<div class="toast" role="status">${esc(msg)}</div>`;setTimeout(()=>$('#toast').replaceChildren(),3800)};
-const options=(pairs,value)=>pairs.map(([v,label])=>`<option value="${esc(v)}" ${v===value?'selected':''}>${esc(label)}</option>`).join('');
-const input=(label,name,value='',type='text',extra='required')=>`<label class="field"><span>${esc(label)}</span><input name="${esc(name)}" type="${type}" value="${esc(value)}" ${extra}></label>`;
-const textarea=(label,name,value='',extra='')=>`<label class="field full"><span>${esc(label)}</span><textarea name="${esc(name)}" rows="3" ${extra}>${esc(value)}</textarea></label>`;
-const panel=(title,body)=>`<section class="panel"><h2>${esc(title)}</h2>${body}</section>`;
-function adminHome(){const active=db.projects.filter(x=>x.status!=='completed').length;const due=db.invoices.reduce((a,x)=>a+Math.max(0,x.total-x.paid),0);const tasks=db.tasks.filter(x=>x.status==='open').length;
- return `<h1>لوحة الإدارة</h1><p class="muted">جميع البطاقات تنقل إلى قائمة التفاصيل أو إدارة البيانات.</p><div class="cards"><button class="stat" data-route="projects"><span>مشاريع جارية ↗</span><strong>${active}</strong></button><button class="stat" data-route="tasks"><span>مهام مفتوحة ↗</span><strong>${tasks}</strong></button><button class="stat" data-route="invoices"><span>الرصيد المتبقي ↗</span><strong>$${due.toLocaleString()}</strong></button></div>${panel('مصدر البيانات المعتمدة',`<p>الأسئلة: ${db.config.questions.length} · الأنشطة: ${db.config.activities.length} · الخدمات: ${db.catalog.length}</p>${button('إدارة بنك الأسئلة','questions','btn primary')}`)}`;
-}
-function qRows(){return db.config.questions.slice().sort((a,b)=>a.order-b.order).map(q=>`<article class="item between"><div><span class="badge">${esc(QUESTION_SECTIONS[q.section])} · ${esc(FIELD_TYPES[q.type])}</span><h3>${esc(q.label)} ${q.required?'*':''}</h3><p class="muted">${esc(q.activityIds.join('، '))} · ${q.active?'نشط':'مؤرشف'}</p></div><div>${button('تعديل','q:'+q.id,'btn sm')}${button(q.active?'أرشفة':'تفعيل','toggleq:'+q.id,'btn sm')}</div></article>`).join('')}
-function questions(){return `<h1>إدارة بنك الأسئلة</h1><p class="muted">أضف أو عدّل الأسئلة التي يطرحها المندوب والعميل؛ يحتفظ كل سؤال برمز ثابت للتحليل.</p>${button('إضافة سؤال','q:new','btn primary')}<div class="listbox">${qRows()}</div>`}
-function renderActivities(){return `<h1>أنشطة المنشآت</h1>${button('إضافة نشاط','a:new','btn primary')}${db.config.activities.map(a=>`<article class="item between"><div><strong>${esc(a.label)}</strong><p class="muted">${a.active?'نشط':'مؤرشف'}</p></div>${button('تعديل','a:'+a.id)}</article>`).join('')}`}
-function services(){return `<h1>الخدمات القابلة للتعديل</h1>${app==='admin'?button('إضافة خدمة','s:new','btn primary'):''}${db.catalog.filter(x=>app==='admin'||x.active).map(s=>`<article class="item between"><div><strong>${esc(s.title)}</strong><p>${esc(s.short||'')} · $${Number(s.price).toLocaleString()}</p></div>${app==='admin'?button('تعديل','s:'+s.id):'<span class="badge">السعر استرشادي</span>'}</article>`).join('')}`}
-function editQuestion(id){const q=db.config.questions.find(x=>x.id===id)||{id:'',label:'',activityIds:['*'],section:'challenge',type:'single',required:true,active:true,order:100,options:[],otherAllowed:true};return `<h1>${id==='new'?'إضافة سؤال':'تعديل السؤال'}</h1><form id="edit" data-kind="q" data-id="${esc(q.id)}" class="panel form">${input('السؤال *','label',q.label,'text','required minlength="8" maxlength="300"')}<label class="field"><span>القسم *</span><select name="section" required>${options(Object.entries(QUESTION_SECTIONS),q.section)}</select></label><label class="field"><span>نوع الإجابة *</span><select name="type" required>${options(Object.entries(FIELD_TYPES),q.type)}</select></label><label class="field"><span>النشاط *</span><select name="activity">${options([['*','كل الأنشطة'],...db.config.activities.map(a=>[a.id,a.label])],q.activityIds[0])}</select></label>${textarea('الخيارات (كل سطر يمثل خيارًا)','choices',(q.options||[]).map(x=>x.label).join('\n'))}${input('ترتيب الظهور','order',q.order,'number','required min="0" max="10000" step="1"')}<label class="field"><span>إلزامي؟</span><select name="required">${options([['true','نعم'],['false','لا']],String(q.required))}</select></label><div class="actions"><button class="btn primary" type="submit">حفظ</button>${button('إلغاء','questions')}</div></form>`}
-function editActivity(id){const a=db.config.activities.find(x=>x.id===id)||{label:'',active:true};return `<h1>نشاط المنشأة</h1><form id="edit" data-kind="a" data-id="${esc(id)}" class="panel form">${input('اسم النشاط *','label',a.label,'text','required minlength="2" maxlength="100"')}<label class="field"><span>الحالة</span><select name="active">${options([['true','نشط'],['false','مؤرشف']],String(a.active))}</select></label><div class="actions"><button class="btn primary" type="submit">حفظ</button>${button('إلغاء','activities')}</div></form>`}
-function editService(id){const s=db.catalog.find(x=>x.id===id)||{title:'',price:0,short:'',category:'software',active:true,recommendationTags:[]};return `<h1>تعديل الخدمة</h1><form id="edit" data-kind="s" data-id="${esc(id)}" class="panel form">${input('اسم الخدمة *','title',s.title,'text','required minlength="2" maxlength="150"')}${input('السعر بالدولار *','price',s.price,'number','required min="0" max="100000000" step="0.01"')}${input('التصنيف *','category',s.category,'text','required pattern="[A-Za-z0-9_-]{2,60}"')}${textarea('الوصف *','short',s.short,'required minlength="5" maxlength="300"')}${textarea('وسوم الترشيح (كل سطر)','tags',(s.recommendationTags||[]).join('\n'))}<label class="field"><span>الحالة</span><select name="active">${options([['true','متاحة'],['false','مؤرشفة']],String(s.active))}</select></label><div class="actions"><button class="btn primary" type="submit">حفظ</button>${button('إلغاء','services')}</div></form>`}
-function currentList(){const rows=route==='projects'?db.projects.filter(x=>x.status!=='completed').map(x=>[x.name,'مشروع جارٍ']):route==='invoices'?db.invoices.filter(x=>x.total>x.paid).map(x=>[x.name,'متبقي $'+(x.total-x.paid)]):db.tasks.filter(x=>x.status==='open').map(x=>[x.name,'مهمة مفتوحة']);return `<h1>${route==='projects'?'مشاريع جارية':route==='invoices'?'الفواتير غير المسددة':'مهام مفتوحة'}</h1><p>عدد السجلات: ${rows.length}</p>${rows.map(([a,b])=>`<div class="item between"><strong>${esc(a)}</strong><span class="badge">${esc(b)}</span></div>`).join('')}${button('العودة للوحة','home')}`}
-function renderSurvey(){const c=db.config,a=selectedActivity||db.answers.activityId||'';const data=db.answers.answers||{};const act=!!a;const qs=act?['challenge','goal','solution'].flatMap(sec=>visibleQuestions(c,a,sec)):[];const recommendations=recommendServices(c,a,data,db.catalog).slice(0,4);return `<h1>استبيان احتياج المنشأة</h1><p class="muted">تتغير الأسئلة تلقائيًا بحسب نوع النشاط الذي تضيفه أو تعدله الإدارة.</p><div class="steps"><span class="step current">1 · النشاط</span><span class="step">2 · التحديات</span><span class="step">3 · النتائج</span><span class="step">4 · الحلول</span></div><form id="survey" class="stack"><section class="panel"><label class="field"><span>ما نوع نشاط المنشأة؟ *</span><select id="sector" name="activityId" required><option value="">اختر النشاط</option>${options(c.activities.filter(x=>x.active).map(x=>[x.id,x.label]),a)}</select></label></section>${act?qs.map(q=>{const current=data[q.id],vals=Array.isArray(current)?current:[current||''];let opts=q.id==='solutions'?db.catalog.filter(x=>x.active).map(x=>({id:x.id,label:x.title})):q.options;let ctrl='';if(q.type==='single')ctrl=`<select name="ans_${esc(q.id)}" ${q.required?'required':''}><option value="">اختر</option>${options(opts.map(x=>[x.id,x.label]),vals[0])}</select>`;else if(q.type==='multi')ctrl=`<div class="survey-options">${opts.map(x=>`<label class="choice"><input type="checkbox" name="ans_${esc(q.id)}" value="${esc(x.id)}" ${vals.includes(x.id)?'checked':''}>${esc(x.label)}</label>`).join('')}</div>`;else if(q.type==='number')ctrl=`<input type="number" step="any" name="ans_${esc(q.id)}" value="${esc(current||'')}" ${q.required?'required':''}>`;else ctrl=`<textarea name="ans_${esc(q.id)}" rows="3" maxlength="2000" ${q.required?'required':''}>${esc(current||'')}</textarea>`;return `<div class="panel"><label class="field"><span>${esc(q.label)} ${q.required?'*':''}</span>${ctrl}</label>${q.otherAllowed&&opts.some(x=>x.id==='other')?input('في حال أخرى، وضّح','other_'+q.id,data[q.id+'__other']||'','text','minlength="3" maxlength="500"'):''}</div>`}).join(''):''}${act?`<div class="panel"><h3>ترشيحات مرتبطة بالإجابات الحالية</h3>${recommendations.length?recommendations.map(x=>`<p><strong>${esc(x.title)}</strong> · ${esc(x.reasons.join('، '))}</p>`).join(''):'<p class="muted">اختر إجاباتك أولًا لمعرفة الترشيحات.</p>'}</div>`:''}<button class="btn primary" type="submit">حفظ الإجابات والتحقق من اكتمالها</button></form>${db.answers.savedAt?`<div class="alert success">آخر حفظ: ${esc(db.answers.savedAt)} · الإصدار ${esc(db.answers.revision)}</div>`:''}`}
-function render(){const nav=$('#appnav');nav.innerHTML=navItems.map(([id,label])=>`<button class="nav ${route===id?'active':''}" data-route="${id}">${esc(label)}</button>`).join('');const root=$('#root');if(route==='home')root.innerHTML=app==='admin'?adminHome():`<h1>${app==='rep'?'تطبيق المندوب':'تطبيق العميل'}</h1><p>الأنشطة والأسئلة والخدمات هي نفسها المعتمدة داخل الإدارة.</p><div class="cards"><button class="stat" data-route="survey"><span>استبيان الاحتياج ↗</span><strong>${db.config.questions.filter(x=>x.active).length}</strong></button><button class="stat" data-route="services"><span>الخدمات المتاحة ↗</span><strong>${db.catalog.filter(x=>x.active).length}</strong></button><button class="stat" data-route="home"><span>إصدار الأسئلة</span><strong>${db.config.revision}</strong></button></div>${panel('تغيير الإدارة يظهر هنا',`<p>يمكنك فتح الإدارة في نافذة أخرى وتعديل سؤال أو خدمة. ستقرأ التطبيقات الإعدادات نفسها في هذا المتصفح.</p>`)}`;else if(route==='questions')root.innerHTML=questions();else if(route==='activities')root.innerHTML=renderActivities();else if(route==='services')root.innerHTML=services();else if(route==='survey')root.innerHTML=renderSurvey();else if(route.startsWith('q:'))root.innerHTML=editQuestion(route.slice(2));else if(route.startsWith('a:'))root.innerHTML=editActivity(route.slice(2));else if(route.startsWith('s:'))root.innerHTML=editService(route.slice(2));else if(['projects','tasks','invoices'].includes(route))root.innerHTML=currentList();else root.innerHTML=adminHome();}
-function refresh(){db=load();render()};
-document.addEventListener('click',e=>{const target=e.target.closest('[data-route],[data-action]');if(!target)return;const cmd=target.dataset.route||target.dataset.action;if(!cmd)return;if(cmd.startsWith('toggleq:')){const q=db.config.questions.find(x=>x.id===cmd.split(':')[1]);if(q){q.active=!q.active;save();}return;}route=cmd;render()});
-document.addEventListener('change',e=>{if(e.target.id==='sector'){selectedActivity=e.target.value;db.answers={activityId:selectedActivity,answers:{}};render()}});
-document.addEventListener('submit',e=>{const f=e.target;if(f.id!=='edit'&&f.id!=='survey')return;e.preventDefault();if(!f.reportValidity())return;
- if(f.id==='edit'){
-   const values=Object.fromEntries(new FormData(f)),kind=f.dataset.kind,id=f.dataset.id;const lines=x=>String(x||'').split(/\r?\n/).map(y=>y.trim()).filter(Boolean);
-   if(kind==='q'){const prev=db.config.questions.find(x=>x.id===id);const existingIds=db.config.questions.map(x=>x.id);let n=1;while(existingIds.includes('question-'+n))n++;const key=prev?.id||'question-'+n;const old=prev?.options||[];const opts=lines(values.choices).map((label,i)=>({id:old[i]?.id||`choice-${i+1}`,label}));const next={id:key,label:values.label,section:values.section,type:values.type,required:values.required==='true',active:prev?.active!==false,activityIds:[values.activity],order:Number(values.order),options:opts,otherAllowed:opts.some(x=>x.label==='أخرى'||x.id==='other'),min:null,max:null};if(prev)Object.assign(prev,next);else db.config.questions.push(next);}
-   if(kind==='a'){const old=db.config.activities.find(x=>x.id===id);const next={id:old?.id||'activity-'+(db.config.activities.length+1),label:values.label,active:values.active==='true'};if(old)Object.assign(old,next);else db.config.activities.push(next);}
-   if(kind==='s'){const old=db.catalog.find(x=>x.id===id);const next={id:old?.id||'svc-'+(db.catalog.length+1),title:values.title,short:values.short,price:Number(values.price),category:values.category,active:values.active==='true',recommendationTags:lines(values.tags),unit:'للمشروع',duration:'حسب النطاق',features:[],deliverables:[]};if(old)Object.assign(old,next);else db.catalog.push(next);}
-   const issues=validateConfiguration(db.config,db.catalog);if(issues.length){toast('لم يُحفظ التغيير: '+issues[0]);db=load();return;}save();route=kind==='q'?'questions':kind==='a'?'activities':'services';render();toast('حُفظ التعديل وأصبح متاحًا في التطبيقات الثلاثة');return;
- }
- const config=db.config,a=f.elements.activityId?.value||selectedActivity;if(!a){toast('اختر نوع النشاط أولًا');return;}const answers={};const qs=['challenge','goal','solution'].flatMap(sec=>visibleQuestions(config,a,sec));for(const q of qs){const values=[...f.querySelectorAll(`[name="ans_${q.id}"]`)];answers[q.id]=q.type==='multi'?values.filter(x=>x.checked).map(x=>x.value):values[0]?.value||'';const other=f.elements.namedItem('other_'+q.id);if(other&&other.value.trim())answers[q.id+'__other']=other.value.trim()}const errors=validateAnswers(config,a,answers,db.catalog);if(Object.values(errors).length){toast('أكمل المطلوب: '+Object.values(errors)[0]);return;}db.answers={activityId:a,answers,savedAt:new Date().toLocaleString('ar'),revision:config.revision};save();toast('حُفظ الاستبيان الكامل بنجاح');
-});
-window.addEventListener('storage',e=>{if(e.key===STORE){db=load();render()}});render();
-
-</script></body></html>
+      const STORE = 'elvorance.crm.config.prototype.2027.v1';
+      const seed = () => ({
+        config: defaultConfiguration(),
+        catalog: defaultCatalog(),
+        answers: {},
+        tasks: [
+          { name: 'متابعة عرض جديد', status: 'open' },
+          { name: 'الرد على العميل', status: 'done' },
+        ],
+        projects: [
+          { name: 'موقع عيادة الندى', status: 'active' },
+          { name: 'تصميم متجر خيط', status: 'active' },
+          { name: 'هوية شركة الشرق', status: 'completed' },
+        ],
+        invoices: [
+          { name: 'الدفعة الثانية - عيادة الندى', total: 1500, paid: 250 },
+          { name: 'الدفعة الأخيرة - متجر خيط', total: 900, paid: 0 },
+        ],
+      });
+      const load = () => {
+        try {
+          return JSON.parse(localStorage.getItem(STORE) || 'null') || seed();
+        } catch {
+          return seed();
+        }
+      };
+      let db = load();
+      const save = () => {
+        db.config.revision++;
+        db.config.updatedAt = new Date().toISOString();
+        localStorage.setItem(STORE, JSON.stringify(db));
+        refresh();
+      };
+      const $ = (s) => document.querySelector(s);
+      const esc = (s) =>
+        String(s ?? '').replace(
+          /[&<>"']/g,
+          (x) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[x],
+        );
+      const app = new URL(location.href).searchParams.get('app') || 'admin';
+      let route = 'home',
+        selectedActivity = db.answers.activityId || '';
+      const navItems =
+        app === 'admin'
+          ? [
+              ['home', 'الملخصات'],
+              ['questions', 'الأسئلة'],
+              ['activities', 'الأنشطة'],
+              ['services', 'الخدمات'],
+            ]
+          : app === 'rep'
+            ? [
+                ['home', 'رحلة العميل'],
+                ['survey', 'استبيان الزيارة'],
+                ['services', 'خدمات الشركة'],
+              ]
+            : [
+                ['home', 'مساحتي'],
+                ['survey', 'احتياجاتي'],
+                ['services', 'الخدمات'],
+              ];
+      const button = (label, action, klass = 'btn', extra = '') =>
+        `<button type="button" class="${klass}" data-action="${action}" ${extra}>${esc(label)}</button>`;
+      const toast = (msg) => {
+        $('#toast').innerHTML = `<div class="toast" role="status">${esc(msg)}</div>`;
+        setTimeout(() => $('#toast').replaceChildren(), 3800);
+      };
+      const options = (pairs, value) =>
+        pairs
+          .map(
+            ([v, label]) =>
+              `<option value="${esc(v)}" ${v === value ? 'selected' : ''}>${esc(label)}</option>`,
+          )
+          .join('');
+      const input = (label, name, value = '', type = 'text', extra = 'required') =>
+        `<label class="field"><span>${esc(label)}</span><input name="${esc(name)}" type="${type}" value="${esc(value)}" ${extra}></label>`;
+      const textarea = (label, name, value = '', extra = '') =>
+        `<label class="field full"><span>${esc(label)}</span><textarea name="${esc(name)}" rows="3" ${extra}>${esc(value)}</textarea></label>`;
+      const panel = (title, body) =>
+        `<section class="panel"><h2>${esc(title)}</h2>${body}</section>`;
+      function adminHome() {
+        const active = db.projects.filter((x) => x.status !== 'completed').length;
+        const due = db.invoices.reduce((a, x) => a + Math.max(0, x.total - x.paid), 0);
+        const tasks = db.tasks.filter((x) => x.status === 'open').length;
+        return `<h1>لوحة الإدارة</h1><p class="muted">جميع البطاقات تنقل إلى قائمة التفاصيل أو إدارة البيانات.</p><div class="cards"><button class="stat" data-route="projects"><span>مشاريع جارية ↗</span><strong>${active}</strong></button><button class="stat" data-route="tasks"><span>مهام مفتوحة ↗</span><strong>${tasks}</strong></button><button class="stat" data-route="invoices"><span>الرصيد المتبقي ↗</span><strong>$${due.toLocaleString()}</strong></button></div>${panel('مصدر البيانات المعتمدة', `<p>الأسئلة: ${db.config.questions.length} · الأنشطة: ${db.config.activities.length} · الخدمات: ${db.catalog.length}</p>${button('إدارة بنك الأسئلة', 'questions', 'btn primary')}`)}`;
+      }
+      function qRows() {
+        return db.config.questions
+          .slice()
+          .sort((a, b) => a.order - b.order)
+          .map(
+            (q) =>
+              `<article class="item between"><div><span class="badge">${esc(QUESTION_SECTIONS[q.section])} · ${esc(FIELD_TYPES[q.type])}</span><h3>${esc(q.label)} ${q.required ? '*' : ''}</h3><p class="muted">${esc(q.activityIds.join('، '))} · ${q.active ? 'نشط' : 'مؤرشف'}</p></div><div>${button('تعديل', 'q:' + q.id, 'btn sm')}${button(q.active ? 'أرشفة' : 'تفعيل', 'toggleq:' + q.id, 'btn sm')}</div></article>`,
+          )
+          .join('');
+      }
+      function questions() {
+        return `<h1>إدارة بنك الأسئلة</h1><p class="muted">أضف أو عدّل الأسئلة التي يطرحها المندوب والعميل؛ يحتفظ كل سؤال برمز ثابت للتحليل.</p>${button('إضافة سؤال', 'q:new', 'btn primary')}<div class="listbox">${qRows()}</div>`;
+      }
+      function renderActivities() {
+        return `<h1>أنشطة المنشآت</h1>${button('إضافة نشاط', 'a:new', 'btn primary')}${db.config.activities.map((a) => `<article class="item between"><div><strong>${esc(a.label)}</strong><p class="muted">${a.active ? 'نشط' : 'مؤرشف'}</p></div>${button('تعديل', 'a:' + a.id)}</article>`).join('')}`;
+      }
+      function services() {
+        return `<h1>الخدمات القابلة للتعديل</h1>${app === 'admin' ? button('إضافة خدمة', 's:new', 'btn primary') : ''}${db.catalog
+          .filter((x) => app === 'admin' || x.active)
+          .map(
+            (s) =>
+              `<article class="item between"><div><strong>${esc(s.title)}</strong><p>${esc(s.short || '')} · $${Number(s.price).toLocaleString()}</p></div>${app === 'admin' ? button('تعديل', 's:' + s.id) : '<span class="badge">السعر استرشادي</span>'}</article>`,
+          )
+          .join('')}`;
+      }
+      function editQuestion(id) {
+        const q = db.config.questions.find((x) => x.id === id) || {
+          id: '',
+          label: '',
+          activityIds: ['*'],
+          section: 'challenge',
+          type: 'single',
+          required: true,
+          active: true,
+          order: 100,
+          options: [],
+          otherAllowed: true,
+        };
+        return `<h1>${id === 'new' ? 'إضافة سؤال' : 'تعديل السؤال'}</h1><form id="edit" data-kind="q" data-id="${esc(q.id)}" class="panel form">${input('السؤال *', 'label', q.label, 'text', 'required minlength="8" maxlength="300"')}<label class="field"><span>القسم *</span><select name="section" required>${options(Object.entries(QUESTION_SECTIONS), q.section)}</select></label><label class="field"><span>نوع الإجابة *</span><select name="type" required>${options(Object.entries(FIELD_TYPES), q.type)}</select></label><label class="field"><span>النشاط *</span><select name="activity">${options([['*', 'كل الأنشطة'], ...db.config.activities.map((a) => [a.id, a.label])], q.activityIds[0])}</select></label>${textarea('الخيارات (كل سطر يمثل خيارًا)', 'choices', (q.options || []).map((x) => x.label).join('\n'))}${input('ترتيب الظهور', 'order', q.order, 'number', 'required min="0" max="10000" step="1"')}<label class="field"><span>إلزامي؟</span><select name="required">${options(
+          [
+            ['true', 'نعم'],
+            ['false', 'لا'],
+          ],
+          String(q.required),
+        )}</select></label><div class="actions"><button class="btn primary" type="submit">حفظ</button>${button('إلغاء', 'questions')}</div></form>`;
+      }
+      function editActivity(id) {
+        const a = db.config.activities.find((x) => x.id === id) || { label: '', active: true };
+        return `<h1>نشاط المنشأة</h1><form id="edit" data-kind="a" data-id="${esc(id)}" class="panel form">${input('اسم النشاط *', 'label', a.label, 'text', 'required minlength="2" maxlength="100"')}<label class="field"><span>الحالة</span><select name="active">${options(
+          [
+            ['true', 'نشط'],
+            ['false', 'مؤرشف'],
+          ],
+          String(a.active),
+        )}</select></label><div class="actions"><button class="btn primary" type="submit">حفظ</button>${button('إلغاء', 'activities')}</div></form>`;
+      }
+      function editService(id) {
+        const s = db.catalog.find((x) => x.id === id) || {
+          title: '',
+          price: 0,
+          short: '',
+          category: 'software',
+          active: true,
+          recommendationTags: [],
+        };
+        return `<h1>تعديل الخدمة</h1><form id="edit" data-kind="s" data-id="${esc(id)}" class="panel form">${input('اسم الخدمة *', 'title', s.title, 'text', 'required minlength="2" maxlength="150"')}${input('السعر بالدولار *', 'price', s.price, 'number', 'required min="0" max="100000000" step="0.01"')}${input('التصنيف *', 'category', s.category, 'text', 'required pattern="[A-Za-z0-9_-]{2,60}"')}${textarea('الوصف *', 'short', s.short, 'required minlength="5" maxlength="300"')}${textarea('وسوم الترشيح (كل سطر)', 'tags', (s.recommendationTags || []).join('\n'))}<label class="field"><span>الحالة</span><select name="active">${options(
+          [
+            ['true', 'متاحة'],
+            ['false', 'مؤرشفة'],
+          ],
+          String(s.active),
+        )}</select></label><div class="actions"><button class="btn primary" type="submit">حفظ</button>${button('إلغاء', 'services')}</div></form>`;
+      }
+      function currentList() {
+        const rows =
+          route === 'projects'
+            ? db.projects.filter((x) => x.status !== 'completed').map((x) => [x.name, 'مشروع جارٍ'])
+            : route === 'invoices'
+              ? db.invoices
+                  .filter((x) => x.total > x.paid)
+                  .map((x) => [x.name, 'متبقي $' + (x.total - x.paid)])
+              : db.tasks.filter((x) => x.status === 'open').map((x) => [x.name, 'مهمة مفتوحة']);
+        return `<h1>${route === 'projects' ? 'مشاريع جارية' : route === 'invoices' ? 'الفواتير غير المسددة' : 'مهام مفتوحة'}</h1><p>عدد السجلات: ${rows.length}</p>${rows.map(([a, b]) => `<div class="item between"><strong>${esc(a)}</strong><span class="badge">${esc(b)}</span></div>`).join('')}${button('العودة للوحة', 'home')}`;
+      }
+      function renderSurvey() {
+        const c = db.config,
+          a = selectedActivity || db.answers.activityId || '';
+        const data = db.answers.answers || {};
+        const act = !!a;
+        const qs = act
+          ? ['challenge', 'goal', 'solution'].flatMap((sec) => visibleQuestions(c, a, sec))
+          : [];
+        const recommendations = recommendServices(c, a, data, db.catalog).slice(0, 4);
+        return `<h1>استبيان احتياج المنشأة</h1><p class="muted">تتغير الأسئلة تلقائيًا بحسب نوع النشاط الذي تضيفه أو تعدله الإدارة.</p><div class="steps"><span class="step current">1 · النشاط</span><span class="step">2 · التحديات</span><span class="step">3 · النتائج</span><span class="step">4 · الحلول</span></div><form id="survey" class="stack"><section class="panel"><label class="field"><span>ما نوع نشاط المنشأة؟ *</span><select id="sector" name="activityId" required><option value="">اختر النشاط</option>${options(
+          c.activities.filter((x) => x.active).map((x) => [x.id, x.label]),
+          a,
+        )}</select></label></section>${
+          act
+            ? qs
+                .map((q) => {
+                  const current = data[q.id],
+                    vals = Array.isArray(current) ? current : [current || ''];
+                  let opts =
+                    q.id === 'solutions'
+                      ? db.catalog
+                          .filter((x) => x.active)
+                          .map((x) => ({ id: x.id, label: x.title }))
+                      : q.options;
+                  let ctrl = '';
+                  if (q.type === 'single')
+                    ctrl = `<select name="ans_${esc(q.id)}" ${q.required ? 'required' : ''}><option value="">اختر</option>${options(
+                      opts.map((x) => [x.id, x.label]),
+                      vals[0],
+                    )}</select>`;
+                  else if (q.type === 'multi')
+                    ctrl = `<div class="survey-options">${opts.map((x) => `<label class="choice"><input type="checkbox" name="ans_${esc(q.id)}" value="${esc(x.id)}" ${vals.includes(x.id) ? 'checked' : ''}>${esc(x.label)}</label>`).join('')}</div>`;
+                  else if (q.type === 'number')
+                    ctrl = `<input type="number" step="any" name="ans_${esc(q.id)}" value="${esc(current || '')}" ${q.required ? 'required' : ''}>`;
+                  else
+                    ctrl = `<textarea name="ans_${esc(q.id)}" rows="3" maxlength="2000" ${q.required ? 'required' : ''}>${esc(current || '')}</textarea>`;
+                  return `<div class="panel"><label class="field"><span>${esc(q.label)} ${q.required ? '*' : ''}</span>${ctrl}</label>${q.otherAllowed && opts.some((x) => x.id === 'other') ? input('في حال أخرى، وضّح', 'other_' + q.id, data[q.id + '__other'] || '', 'text', 'minlength="3" maxlength="500"') : ''}</div>`;
+                })
+                .join('')
+            : ''
+        }${act ? `<div class="panel"><h3>ترشيحات مرتبطة بالإجابات الحالية</h3>${recommendations.length ? recommendations.map((x) => `<p><strong>${esc(x.title)}</strong> · ${esc(x.reasons.join('، '))}</p>`).join('') : '<p class="muted">اختر إجاباتك أولًا لمعرفة الترشيحات.</p>'}</div>` : ''}<button class="btn primary" type="submit">حفظ الإجابات والتحقق من اكتمالها</button></form>${db.answers.savedAt ? `<div class="alert success">آخر حفظ: ${esc(db.answers.savedAt)} · الإصدار ${esc(db.answers.revision)}</div>` : ''}`;
+      }
+      function render() {
+        const nav = $('#appnav');
+        nav.innerHTML = navItems
+          .map(
+            ([id, label]) =>
+              `<button class="nav ${route === id ? 'active' : ''}" data-route="${id}">${esc(label)}</button>`,
+          )
+          .join('');
+        const root = $('#root');
+        if (route === 'home')
+          root.innerHTML =
+            app === 'admin'
+              ? adminHome()
+              : `<h1>${app === 'rep' ? 'تطبيق المندوب' : 'تطبيق العميل'}</h1><p>الأنشطة والأسئلة والخدمات هي نفسها المعتمدة داخل الإدارة.</p><div class="cards"><button class="stat" data-route="survey"><span>استبيان الاحتياج ↗</span><strong>${db.config.questions.filter((x) => x.active).length}</strong></button><button class="stat" data-route="services"><span>الخدمات المتاحة ↗</span><strong>${db.catalog.filter((x) => x.active).length}</strong></button><button class="stat" data-route="home"><span>إصدار الأسئلة</span><strong>${db.config.revision}</strong></button></div>${panel('تغيير الإدارة يظهر هنا', `<p>يمكنك فتح الإدارة في نافذة أخرى وتعديل سؤال أو خدمة. ستقرأ التطبيقات الإعدادات نفسها في هذا المتصفح.</p>`)}`;
+        else if (route === 'questions') root.innerHTML = questions();
+        else if (route === 'activities') root.innerHTML = renderActivities();
+        else if (route === 'services') root.innerHTML = services();
+        else if (route === 'survey') root.innerHTML = renderSurvey();
+        else if (route.startsWith('q:')) root.innerHTML = editQuestion(route.slice(2));
+        else if (route.startsWith('a:')) root.innerHTML = editActivity(route.slice(2));
+        else if (route.startsWith('s:')) root.innerHTML = editService(route.slice(2));
+        else if (['projects', 'tasks', 'invoices'].includes(route)) root.innerHTML = currentList();
+        else root.innerHTML = adminHome();
+      }
+      function refresh() {
+        db = load();
+        render();
+      }
+      document.addEventListener('click', (e) => {
+        const target = e.target.closest('[data-route],[data-action]');
+        if (!target) return;
+        const cmd = target.dataset.route || target.dataset.action;
+        if (!cmd) return;
+        if (cmd.startsWith('toggleq:')) {
+          const q = db.config.questions.find((x) => x.id === cmd.split(':')[1]);
+          if (q) {
+            q.active = !q.active;
+            save();
+          }
+          return;
+        }
+        route = cmd;
+        render();
+      });
+      document.addEventListener('change', (e) => {
+        if (e.target.id === 'sector') {
+          selectedActivity = e.target.value;
+          db.answers = { activityId: selectedActivity, answers: {} };
+          render();
+        }
+      });
+      document.addEventListener('submit', (e) => {
+        const f = e.target;
+        if (f.id !== 'edit' && f.id !== 'survey') return;
+        e.preventDefault();
+        if (!f.reportValidity()) return;
+        if (f.id === 'edit') {
+          const values = Object.fromEntries(new FormData(f)),
+            kind = f.dataset.kind,
+            id = f.dataset.id;
+          const lines = (x) =>
+            String(x || '')
+              .split(/\r?\n/)
+              .map((y) => y.trim())
+              .filter(Boolean);
+          if (kind === 'q') {
+            const prev = db.config.questions.find((x) => x.id === id);
+            const existingIds = db.config.questions.map((x) => x.id);
+            let n = 1;
+            while (existingIds.includes('question-' + n)) n++;
+            const key = prev?.id || 'question-' + n;
+            const old = prev?.options || [];
+            const opts = lines(values.choices).map((label, i) => ({
+              id: old[i]?.id || `choice-${i + 1}`,
+              label,
+            }));
+            const next = {
+              id: key,
+              label: values.label,
+              section: values.section,
+              type: values.type,
+              required: values.required === 'true',
+              active: prev?.active !== false,
+              activityIds: [values.activity],
+              order: Number(values.order),
+              options: opts,
+              otherAllowed: opts.some((x) => x.label === 'أخرى' || x.id === 'other'),
+              min: null,
+              max: null,
+            };
+            if (prev) Object.assign(prev, next);
+            else db.config.questions.push(next);
+          }
+          if (kind === 'a') {
+            const old = db.config.activities.find((x) => x.id === id);
+            const next = {
+              id: old?.id || 'activity-' + (db.config.activities.length + 1),
+              label: values.label,
+              active: values.active === 'true',
+            };
+            if (old) Object.assign(old, next);
+            else db.config.activities.push(next);
+          }
+          if (kind === 's') {
+            const old = db.catalog.find((x) => x.id === id);
+            const next = {
+              id: old?.id || 'svc-' + (db.catalog.length + 1),
+              title: values.title,
+              short: values.short,
+              price: Number(values.price),
+              category: values.category,
+              active: values.active === 'true',
+              recommendationTags: lines(values.tags),
+              unit: 'للمشروع',
+              duration: 'حسب النطاق',
+              features: [],
+              deliverables: [],
+            };
+            if (old) Object.assign(old, next);
+            else db.catalog.push(next);
+          }
+          const issues = validateConfiguration(db.config, db.catalog);
+          if (issues.length) {
+            toast('لم يُحفظ التغيير: ' + issues[0]);
+            db = load();
+            return;
+          }
+          save();
+          route = kind === 'q' ? 'questions' : kind === 'a' ? 'activities' : 'services';
+          render();
+          toast('حُفظ التعديل وأصبح متاحًا في التطبيقات الثلاثة');
+          return;
+        }
+        const config = db.config,
+          a = f.elements.activityId?.value || selectedActivity;
+        if (!a) {
+          toast('اختر نوع النشاط أولًا');
+          return;
+        }
+        const answers = {};
+        const qs = ['challenge', 'goal', 'solution'].flatMap((sec) =>
+          visibleQuestions(config, a, sec),
+        );
+        for (const q of qs) {
+          const values = [...f.querySelectorAll(`[name="ans_${q.id}"]`)];
+          answers[q.id] =
+            q.type === 'multi'
+              ? values.filter((x) => x.checked).map((x) => x.value)
+              : values[0]?.value || '';
+          const other = f.elements.namedItem('other_' + q.id);
+          if (other && other.value.trim()) answers[q.id + '__other'] = other.value.trim();
+        }
+        const errors = validateAnswers(config, a, answers, db.catalog);
+        if (Object.values(errors).length) {
+          toast('أكمل المطلوب: ' + Object.values(errors)[0]);
+          return;
+        }
+        db.answers = {
+          activityId: a,
+          answers,
+          savedAt: new Date().toLocaleString('ar'),
+          revision: config.revision,
+        };
+        save();
+        toast('حُفظ الاستبيان الكامل بنجاح');
+      });
+      window.addEventListener('storage', (e) => {
+        if (e.key === STORE) {
+          db = load();
+          render();
+        }
+      });
+      render();
+    </script>
+  </body>
+</html>

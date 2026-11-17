@@ -1,4 +1,4 @@
-import type { ApiError as WireApiError } from '@atlas/contracts';
+import type { ApiError as WireApiError } from '@elvorance/contracts';
 
 export class ApiError extends Error {
   readonly status: number;

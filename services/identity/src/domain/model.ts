@@ -1,4 +1,4 @@
-import type { Entity, Role } from '@atlas/contracts';
+import type { Entity, Role } from '@elvorance/contracts';
 export interface TenantProfile extends Entity {
   name: string;
   locale: string;

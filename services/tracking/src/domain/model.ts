@@ -1,4 +1,4 @@
-import type { Entity } from '@atlas/contracts';
+import type { Entity } from '@elvorance/contracts';
 export interface LatestPoint {
   latitude: number;
   longitude: number;

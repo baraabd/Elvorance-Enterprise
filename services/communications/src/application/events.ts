@@ -1,5 +1,5 @@
-import type { EventEnvelope } from '@atlas/contracts';
-import { object, optionalText, type Transaction } from '@atlas/service-kit';
+import type { EventEnvelope } from '@elvorance/contracts';
+import { object, optionalText, type Transaction } from '@elvorance/service-kit';
 import type { Notification } from '../domain/model.ts';
 export const subscriptions = [
   'crm.customer_created.v1',

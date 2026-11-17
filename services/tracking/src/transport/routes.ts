@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { command, requireRole, routeId, type Repository } from '@atlas/service-kit';
+import { command, requireRole, routeId, type Repository } from '@elvorance/service-kit';
 import { viewSession, type TrackingSession } from '../domain/model.ts';
 import { changeState, createSession, getSession, recordPoint } from '../application/sessions.ts';
 export function registerRoutes(app: FastifyInstance, repository: Repository): void {

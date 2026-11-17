@@ -1,4 +1,4 @@
-import type { Entity } from '@atlas/contracts';
+import type { Entity } from '@elvorance/contracts';
 export interface Customer extends Entity {
   name: string;
   repId: string;

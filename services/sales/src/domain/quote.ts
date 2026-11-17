@@ -1,4 +1,4 @@
-import type { PaymentInstallment, ScopeItem } from '@atlas/contracts';
+import type { PaymentInstallment, ScopeItem } from '@elvorance/contracts';
 import {
   array,
   assert,
@@ -8,7 +8,7 @@ import {
   object,
   optionalText,
   text,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 export function quoteContent(input: unknown): {
   items: ScopeItem[];
   totalMinor: number;

@@ -8,7 +8,7 @@ import {
   requireRole,
   routeId,
   type Repository,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 import type { Contract, Fulfillment, Quote, Visit } from '../domain/model.ts';
 import type { CustomerDirectory } from '../application/ports.ts';
 import { completeVisit, createVisit, startVisit, visit } from '../application/visits.ts';

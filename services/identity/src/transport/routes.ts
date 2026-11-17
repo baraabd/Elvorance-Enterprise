@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { command, requireRole, type Repository } from '@atlas/service-kit';
+import { command, requireRole, type Repository } from '@elvorance/service-kit';
 import { createMembership, createTenant } from '../application/identity.ts';
 import type { Membership, TenantProfile } from '../domain/model.ts';
 export function registerRoutes(app: FastifyInstance, repository: Repository): void {

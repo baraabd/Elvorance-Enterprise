@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { command, isOwner, routeId, type Repository } from '@atlas/service-kit';
+import { command, isOwner, routeId, type Repository } from '@elvorance/service-kit';
 import type { Project } from '../domain/model.ts';
 import {
   addDeliverable,

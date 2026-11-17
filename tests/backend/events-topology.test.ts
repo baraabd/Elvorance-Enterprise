@@ -1,6 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { provisionTopology, serviceBindings, exchanges, type TopologyChannel } from '@atlas/events';
+import {
+  provisionTopology,
+  serviceBindings,
+  exchanges,
+  type TopologyChannel,
+} from '@elvorance/events';
 
 test('producer startup creates durable queues for all subscribers before publish, including a never-started delivery consumer', async () => {
   const queues = new Map<string, { durable: boolean; arguments: Record<string, unknown> }>();

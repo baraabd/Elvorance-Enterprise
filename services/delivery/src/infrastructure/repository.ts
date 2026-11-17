@@ -1,4 +1,4 @@
-import { PgRepository } from '@atlas/service-kit';
+import { PgRepository } from '@elvorance/service-kit';
 import { tables, migrations } from './migrations/001_initial.ts';
 export { tables, migrations };
 export function createRepository(databaseUrl: string): PgRepository {

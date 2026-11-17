@@ -1,5 +1,5 @@
 import { createHash, randomUUID } from 'node:crypto';
-import type { Entity, EventEnvelope } from '@atlas/contracts';
+import type { Entity, EventEnvelope } from '@elvorance/contracts';
 export type Filter = Record<string, string | number | boolean | null>;
 export interface OutboxRow {
   event: EventEnvelope;

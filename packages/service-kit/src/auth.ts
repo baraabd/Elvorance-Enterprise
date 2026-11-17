@@ -1,5 +1,5 @@
 import { createRemoteJWKSet, jwtVerify, type JWTPayload } from 'jose';
-import { roles, type Principal, type Role } from '@atlas/contracts';
+import { roles, type Principal, type Role } from '@elvorance/contracts';
 import { AppError, assert } from './errors.ts';
 export type AuthVerifier = (authorization: string | undefined) => Promise<Principal>;
 export function principalFromClaims(claims: JWTPayload): Principal {

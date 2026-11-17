@@ -1,4 +1,4 @@
-import type { Principal } from '@atlas/contracts';
+import type { Principal } from '@elvorance/contracts';
 import {
   assert,
   integer,
@@ -11,7 +11,7 @@ import {
   text,
   version,
   type Transaction,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 import type { ContractAccount, Invoice, Payment } from '../domain/model.ts';
 export async function invoice(tx: Transaction, principal: Principal, id: string): Promise<Invoice> {
   const value = (await tx.get<Invoice>('invoices', id)) ?? notFound('Invoice');

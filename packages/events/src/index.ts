@@ -1,7 +1,7 @@
 import amqp, { type ConfirmChannel, type ChannelModel, type ConsumeMessage } from 'amqplib';
 import { provisionTopology, serviceBindings } from './topology.ts';
 export { provisionTopology, serviceBindings, exchanges, type TopologyChannel } from './topology.ts';
-import type { EventEnvelope } from '@atlas/contracts';
+import type { EventEnvelope } from '@elvorance/contracts';
 import {
   AppError,
   assert,
@@ -10,7 +10,7 @@ import {
   integer,
   type Repository,
   type Transaction,
-} from '@atlas/service-kit';
+} from '@elvorance/service-kit';
 export type EventHandler = (tx: Transaction, event: EventEnvelope) => Promise<void>;
 export function parseEnvelope(input: unknown): EventEnvelope {
   const value = object(input);
@@ -161,7 +161,7 @@ export function startEventRuntime(options: RuntimeOptions): EventRuntime {
             );
             consumer.ack(message);
           } catch (error) {
-            const attempt = Number(message.properties.headers?.['x-atlas-retry'] ?? 0);
+            const attempt = Number(message.properties.headers?.['x-elvorance-retry'] ?? 0);
             const permanent =
               error instanceof SyntaxError || (error instanceof AppError && error.statusCode < 500);
             try {
@@ -174,8 +174,8 @@ export function startEventRuntime(options: RuntimeOptions): EventRuntime {
                 message.properties.messageId ?? 'unknown',
                 {
                   ...message.properties.headers,
-                  'x-atlas-retry': attempt + 1,
-                  'x-atlas-original-type': message.fields.routingKey,
+                  'x-elvorance-retry': attempt + 1,
+                  'x-elvorance-original-type': message.fields.routingKey,
                 },
               );
               consumer.ack(message);

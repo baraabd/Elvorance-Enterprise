@@ -1,5 +1,5 @@
 /** Test adapter. Runtime boot never silently falls back to this repository. */
-import type { Entity, EventEnvelope } from '@atlas/contracts';
+import type { Entity, EventEnvelope } from '@elvorance/contracts';
 import { assert } from './errors.ts';
 import {
   envelope,

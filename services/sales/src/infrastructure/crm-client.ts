@@ -1,5 +1,5 @@
-import type { CustomerContext } from '@atlas/contracts';
-import { AppError, assert, object, text, integer } from '@atlas/service-kit';
+import type { CustomerContext } from '@elvorance/contracts';
+import { AppError, assert, object, text, integer } from '@elvorance/service-kit';
 import type { CustomerDirectory } from '../application/ports.ts';
 export class HttpCustomerDirectory implements CustomerDirectory {
   constructor(private readonly origin: string) {

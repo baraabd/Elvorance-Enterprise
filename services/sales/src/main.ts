@@ -1,5 +1,5 @@
-import { authFromEnv, listen } from '@atlas/service-kit';
-import { startEventRuntime } from '@atlas/events';
+import { authFromEnv, listen } from '@elvorance/service-kit';
+import { startEventRuntime } from '@elvorance/events';
 import { createRepository } from './infrastructure/repository.ts';
 import { createApp } from './app.ts';
 import { HttpCustomerDirectory } from './infrastructure/crm-client.ts';
