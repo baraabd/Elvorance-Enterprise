@@ -28,7 +28,8 @@
     "apps/*/config.example.ts",
     "apps/types/**/*.d.ts",
     "infra/compose/init-env.mts",
-    "examples/instant-close/build.mts"
+    "examples/instant-close/build.mts",
+    "tooling/scripts/audit-migration.mts"
   ],
   "exclude": [
     "**/node_modules",
