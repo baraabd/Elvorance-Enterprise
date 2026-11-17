@@ -3,7 +3,10 @@
     "target": "ES2023",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["ES2023", "DOM"],
+    "lib": [
+      "ES2023",
+      "DOM"
+    ],
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
@@ -13,7 +16,9 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "services/**/*.ts",
@@ -25,7 +30,14 @@
     "examples/instant-close/build.mts",
     "tooling/scripts/audit-migration.mts",
     "tooling/scripts/copy-content.mts",
-    "packages/contracts/src/browser-window.d.ts"
+    "packages/contracts/src/browser-window.d.ts",
+    "tooling/scripts/workspace.mts",
+    "tooling/scripts/dev.mts"
   ],
-  "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
+  "exclude": [
+    "**/node_modules",
+    "**/dist",
+    "**/android",
+    "**/ios"
+  ]
 }

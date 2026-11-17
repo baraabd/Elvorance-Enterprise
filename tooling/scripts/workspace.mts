@@ -1,5 +1,3 @@
-// @ts-nocheck
-// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 

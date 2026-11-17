@@ -1,5 +1,3 @@
-// @ts-nocheck
-// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
@@ -7,15 +5,15 @@ import { root, apps } from './workspace.mts';
 
 await import('./build-apps.mts');
 const args = process.argv.slice(2);
-const flag = (name, fallback) => {
+const flag = (name: string, fallback: string): string => {
   const i = args.indexOf(name);
-  return i >= 0 ? args[i + 1] : fallback;
+  return i >= 0 ? (args[i + 1] ?? fallback) : fallback;
 };
 const app = apps.find((item) => args.includes(item.folder));
 const folder = resolve(root, app ? `apps/${app.folder}/dist` : 'dist');
 const port = Number(flag('--port', process.env.PORT || '4173'));
 const host = flag('--host', '127.0.0.1');
-const mime = {
+const mime: Record<string, string> = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
