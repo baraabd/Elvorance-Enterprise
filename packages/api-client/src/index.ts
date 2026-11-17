@@ -121,7 +121,7 @@ export function createApiClient(options: ClientOptions) {
     body: unknown,
     requestOptions: CommandOptions,
   ): Promise<T> {
-    if (!/^[\\w-]{8,128}$/.test(requestOptions.idempotencyKey))
+    if (!/^[\w-]{8,128}$/.test(requestOptions.idempotencyKey))
       throw new Error('A stable idempotency key (8–128 characters) is required.');
     return request<T>(method, path, body, requestOptions, requestOptions.idempotencyKey);
   }

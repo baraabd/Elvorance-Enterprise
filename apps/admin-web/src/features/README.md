@@ -24,4 +24,4 @@ The existing synchronous mutations and draft storage intentionally remain in `..
 
 The registration entry is `../app.js`: install the runtime, call `registerApp(runtime)`, then start the app. Import `../styles.css` exactly once **after shared runtime/design-system CSS**. The CSS text was extracted from the existing app without reordering its rules; per-render style tags were removed. Mobile wrapping does not change these templates.
 
-The app facade uses `@atlas/ui` (via a relative source import) for actual shared button, field, page heading and primitive implementations. The role-specific markup variants remain distinct so their DOM and CSS classes stay compatible.
+The app facade uses `@elvorance/ui` (via a relative source import) for actual shared button, field, page heading and primitive implementations. The role-specific markup variants remain distinct so their DOM and CSS classes stay compatible.

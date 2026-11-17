@@ -1,8 +1,8 @@
-# AtlasCRM — إعدادات الأسئلة والخدمات الديناميكية (مرجع الدمج 2.4)
+# Elvorance — إعدادات الأسئلة والخدمات الديناميكية (مرجع الدمج 2.4)
 
 ## مصدر النسخة
 
-هذا **تعديل مرجعي على المصدر المتاح للإصدار 2.0.1**، وليس إعادة بناء مثبتة فوق ملفات الإصدار 2.3 الحديثة. لا تستبدل نسختك الحالية بالمصدر المرجعي إذا كانت تحتوي تعديلات أحدث. استخدم ملف `AtlasCRM-Dynamic-Configuration-2.4.patch` مع `git apply --check` ثم ادمج التعارضات يدويًا.
+هذا **تعديل مرجعي على المصدر المتاح للإصدار 2.0.1**، وليس إعادة بناء مثبتة فوق ملفات الإصدار 2.3 الحديثة. لا تستبدل نسختك الحالية بالمصدر المرجعي إذا كانت تحتوي تعديلات أحدث. استخدم ملف `Elvorance-Dynamic-Configuration-2.4.patch` مع `git apply --check` ثم ادمج التعارضات يدويًا.
 
 ## التغيير المنفذ
 
@@ -39,19 +39,19 @@
 ## التشغيل على Windows (في نسخة مرجعية مستقلة)
 
 ```powershell
-Set-Location 'C:\Mobile_Apps\AtlasCRM-Enterprise'
+Set-Location 'C:\Mobile_Apps\Elvorance-Enterprise'
 node --version # >=24.15 <25
 npm.cmd ci
 npm.cmd run check:types
 npm.cmd run check:boundaries
 npm.cmd run build:apps
-node --test tests/questionnaire/dynamic-form.test.mjs tests/validation/numeric-fields.test.mjs
+node --test tests/questionnaire/dynamic-form.test.mts tests/validation/numeric-fields.test.mts
 npm.cmd run dev
 ```
 
 للدخول إلى صفحة الإدارة استخدم `http://localhost:4173/admin-web/` ثم المزيد → الاستبيانات والخدمات. في تطبيق المندوب افتح الزيارة الجارية ثم استبيان العميل؛ في تطبيق العميل افتح الخدمات ثم «احتياجات منشأتك».
 
-يمكن تجربة نموذج HTML المستقل دون تثبيت اعتماديات المشروع عبر فتح `AtlasCRM-Dynamic-Configuration-Preview.html`. في حال منع المتصفح التخزين عند `file://`، شغّله من خادم محلي:
+يمكن تجربة نموذج HTML المستقل دون تثبيت اعتماديات المشروع عبر فتح `Elvorance-Dynamic-Configuration-Preview.html`. في حال منع المتصفح التخزين عند `file://`، شغّله من خادم محلي:
 
 ```powershell
 python -m http.server 8765
@@ -59,7 +59,7 @@ python -m http.server 8765
 
 ## الاختبارات وحدود التحقق
 
-- `node --test tests/questionnaire/dynamic-form.test.mjs tests/validation/numeric-fields.test.mjs`: **20 حالة ناجحة / 0 فشل** في البيئة الحالية.
+- `node --test tests/questionnaire/dynamic-form.test.mts tests/validation/numeric-fields.test.mts`: **20 حالة ناجحة / 0 فشل** في البيئة الحالية.
 - فحص بناء الجملة في ملفات JS المتغيرة: نجح.
 - فحص صياغة TypeScript للخدمة والمهاجرة: نجح دون أخطاء parsing.
 - **لم يكتمل** `npm ci`, و`npm run verify`, واختبار PostgreSQL/Android/Chromium: البيئة تعمل على Node 22 لا Node 24 وذاكرة حزم npm غير مكتملة، كما يمنع المتصفح الوصول إلى الملفات والخادم المحلي. يجب إعادة الفحوص في جهازك باستخدام Node 24 وPostgreSQL.
@@ -67,13 +67,13 @@ python -m http.server 8765
 
 ## كيف تُدمج بأمان؟
 
-راجع الحزمة الجديدة و`AtlasCRM-Dynamic-Configuration-2.4.patch` قبل التطبيق. الأمر `git apply --check` لا يغيّر الملفات:
+راجع الحزمة الجديدة و`Elvorance-Dynamic-Configuration-2.4.patch` قبل التطبيق. الأمر `git apply --check` لا يغيّر الملفات:
 
 ```powershell
-Set-Location 'C:\Mobile_Apps\AtlasCRM-Enterprise'
-git apply --check 'C:\path\to\AtlasCRM-Dynamic-Configuration-2.4.patch'
+Set-Location 'C:\Mobile_Apps\Elvorance-Enterprise'
+git apply --check 'C:\path\to\Elvorance-Dynamic-Configuration-2.4.patch'
 # إذا نجح فقط:
-git apply 'C:\path\to\AtlasCRM-Dynamic-Configuration-2.4.patch'
+git apply 'C:\path\to\Elvorance-Dynamic-Configuration-2.4.patch'
 ```
 
 أُنشئ ملف التصحيح بالمقارنة مع 2.0.1، وقد يُظهر تعارضات على 2.3. إذا فشل الفحص فلا تستخدم `--force` ولا تستبدل ملفات التطبيقات؛ ادمج الوحدات المطلوبة يدويًا مع الحفاظ على إصدارك الأحدث والاختبارات الأصلية.
