@@ -52,6 +52,13 @@ jobs:
           node-version: 24.21.0
           cache: npm
       - run: npm.cmd install --global npm@11.19.0
+      - name: Validate Windows repair script syntax
+        shell: pwsh
+        run: |
+          $tokens = $null
+          $errors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile('tooling/windows/repair-npm-install.ps1', [ref]$tokens, [ref]$errors) | Out-Null
+          if ($errors.Count -gt 0) { $errors | ForEach-Object { Write-Error $_.Message }; exit 1 }
       - run: npm.cmd ci
       - run: npm.cmd run audit:migration:report
       - run: npm.cmd run verify
