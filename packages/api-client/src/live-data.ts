@@ -50,7 +50,7 @@ export interface CustomerChangeInput {
 export interface CreateTicketInput {
   subject: string;
   category: 'billing' | 'delivery' | 'account' | 'general';
-  body: string;
+  message: string;
   clientId?: string;
   repId?: string;
 }

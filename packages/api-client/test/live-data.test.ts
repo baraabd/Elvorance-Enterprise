@@ -101,3 +101,29 @@ test('malformed responses fail closed rather than fabricating demo records', asy
     return error instanceof ApiError && error.code === 'invalid_response';
   });
 });
+
+test('support ticket POST uses the backend message contract', async () => {
+  const api = createLiveDataApi({
+    baseUrl: 'https://api.example.com',
+    accessToken: async () => 'token',
+    fetch: async (url, init) => {
+      assert.equal(String(url), 'https://api.example.com/v1/communications/tickets');
+      assert.equal(init?.method, 'POST');
+      assert.deepEqual(JSON.parse(String(init?.body)), {
+        subject: 'Cannot open project',
+        category: 'delivery',
+        message: 'Project page returns an error',
+      });
+      return Response.json({ id: 'ticket-1', version: 1 });
+    },
+  });
+  const result = await api.communications.createTicket(
+    {
+      subject: 'Cannot open project',
+      category: 'delivery',
+      message: 'Project page returns an error',
+    },
+    { idempotencyKey: 'new-ticket-001' },
+  );
+  assert.equal(result.id, 'ticket-1');
+});
