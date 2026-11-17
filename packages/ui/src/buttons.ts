@@ -20,12 +20,24 @@ export function createClientButtons({ A, E }: { A: { icon: IconRenderer }; E: Es
     Object.entries(values)
       .map(([key, value]) => (value == null ? '' : ` data-${key}="${E(value)}"`))
       .join('');
-  const go = (text: string, route: string, params: Record<string, unknown> = {}, kind = 'btn-secondary', icon = 'arrow-left') =>
+  const go = (
+    text: string,
+    route: string,
+    params: Record<string, unknown> = {},
+    kind = 'btn-secondary',
+    icon = 'arrow-left',
+  ) =>
     `<button type="button" class="btn ${kind}"${attrs({
       go: route,
       ...params,
     })}>${icon ? A.icon(icon) : ''}<span>${E(text)}</span></button>`;
-  const act = (text: string, action: string, params: Record<string, unknown> = {}, kind = 'btn-primary', icon = '') =>
+  const act = (
+    text: string,
+    action: string,
+    params: Record<string, unknown> = {},
+    kind = 'btn-primary',
+    icon = '',
+  ) =>
     `<button type="button" class="btn ${kind}"${attrs({
       action,
       ...params,

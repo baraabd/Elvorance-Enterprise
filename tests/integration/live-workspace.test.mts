@@ -59,10 +59,11 @@ test('an unavailable API fails visibly instead of rendering seeded company recor
     url: 'http://127.0.0.1:4173',
   });
   const originalFetch = globalThis.fetch;
-  globalThis.fetch = async () => Response.json(
-    { error: { code: 'service_unavailable', message: 'Unavailable' } },
-    { status: 503 },
-  );
+  globalThis.fetch = async () =>
+    Response.json(
+      { error: { code: 'service_unavailable', message: 'Unavailable' } },
+      { status: 503 },
+    );
   try {
     const root = dom.window.document.getElementById('app');
     assert.ok(root);

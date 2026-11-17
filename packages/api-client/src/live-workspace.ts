@@ -39,10 +39,7 @@ export function sectionsForRole(
     { id: 'notifications', label: 'الإشعارات', load: api.communications.notifications },
   ];
   if (role === 'client') {
-    return [
-      { id: 'invoices', label: 'الفواتير', load: api.billing.invoices },
-      ...shared,
-    ];
+    return [{ id: 'invoices', label: 'الفواتير', load: api.billing.invoices }, ...shared];
   }
   const commercial: LiveSection[] = [
     { id: 'customers', label: 'العملاء', load: api.crm.customers },
@@ -66,8 +63,12 @@ function summaryRow(row: Entity): string {
   const status = Reflect.get(row, 'status') as unknown;
   return (
     '<article class="card">' +
-    '<strong>' + escapeHtml(title ?? row.id) + '</strong>' +
-    '<p class="small muted">رقم السجل: ' + escapeHtml(row.id) + '</p>' +
+    '<strong>' +
+    escapeHtml(title ?? row.id) +
+    '</strong>' +
+    '<p class="small muted">رقم السجل: ' +
+    escapeHtml(row.id) +
+    '</p>' +
     (typeof status === 'string' ? '<span class="badge">' + escapeHtml(status) + '</span>' : '') +
     '</article>'
   );
@@ -174,7 +175,11 @@ export async function mountLiveWorkspace(options: LiveWorkspaceOptions): Promise
             ? createTicketForm()
             : '';
       content.innerHTML =
-        '<h2>' + escapeHtml(section.label) + ' (' + rows.length + ')</h2>' +
+        '<h2>' +
+        escapeHtml(section.label) +
+        ' (' +
+        rows.length +
+        ')</h2>' +
         '<div class="grid-2">' +
         (rows.length ? rows.map(summaryRow).join('') : '<p>لا توجد سجلات لهذا الحساب.</p>') +
         '</div>' +

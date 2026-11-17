@@ -17,10 +17,7 @@ interface RuntimePrimitives {
 
 /** Shared v1.1 primitives used by the runtime and all three app facades. */
 export const esc = (value: unknown): string =>
-  String(value ?? '').replace(
-    /[&<>"']/g,
-    (ch) => entityMap[ch] ?? ch,
-  );
+  String(value ?? '').replace(/[&<>"']/g, (ch) => entityMap[ch] ?? ch);
 export const icon = (name: string): string =>
   `<svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconMap[name] || icons.grid}</svg>`;
 export const badge = (text: unknown, tone = 'neutral'): string =>
@@ -48,6 +45,7 @@ export function createPrimitives(A: RuntimePrimitives) {
     escapeString: (value: unknown) => A.esc(value == null ? '' : String(value)),
     icon: (name: string) => A.icon(name),
     badge: (text: unknown, tone: string) => A.badge(text, tone || 'neutral'),
-    empty: (title: unknown, detail: unknown, action: string) => A.empty(title, detail, action || ''),
+    empty: (title: unknown, detail: unknown, action: string) =>
+      A.empty(title, detail, action || ''),
   };
 }

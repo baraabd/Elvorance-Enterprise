@@ -56,7 +56,9 @@ export function createMobilePlatform() {
     async network() {
       return Network.getStatus();
     },
-    async onNetworkChange(callback: (status: Awaited<ReturnType<typeof Network.getStatus>>) => void) {
+    async onNetworkChange(
+      callback: (status: Awaited<ReturnType<typeof Network.getStatus>>) => void,
+    ) {
       const handle = await Network.addListener('networkStatusChange', callback);
       return () => handle.remove();
     },

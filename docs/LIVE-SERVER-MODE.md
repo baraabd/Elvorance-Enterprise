@@ -6,11 +6,11 @@ This is an **opt-in, API-backed integration slice**, not the complete replacemen
 
 All three frontends can initialize an authenticated workspace **without calling the demo data repository** when `ELVORANCE_CONFIG.dataMode === 'server'`. The server-only workspace uses `@elvorance/api-client/live-data` and routes all requests through the API Gateway:
 
-| Role | Read-only live views | Live mutations |
-| --- | --- | --- |
-| Representative | Customers, visits, quotes, contracts, projects, support tickets, notifications | Create customer, create support ticket |
-| Client | Invoices, quotes, contracts, projects, support tickets, notifications | Create support ticket |
-| Admin | Memberships, regions, customers, visits, quotes, contracts, projects, invoices, support tickets, notifications | Create customer (with assigned representative) |
+| Role           | Read-only live views                                                                                           | Live mutations                                 |
+| -------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| Representative | Customers, visits, quotes, contracts, projects, support tickets, notifications                                 | Create customer, create support ticket         |
+| Client         | Invoices, quotes, contracts, projects, support tickets, notifications                                          | Create support ticket                          |
+| Admin          | Memberships, regions, customers, visits, quotes, contracts, projects, invoices, support tickets, notifications | Create customer (with assigned representative) |
 
 The backend enforces authorization using verified bearer identity, tenant scoping and record ownership. The browser does not connect directly to PostgreSQL or RabbitMQ. The API client does not persist bearer tokens or fall back to demo records on a failed request.
 

@@ -12,31 +12,30 @@ if (config.dataMode !== 'demo' && config.dataMode !== 'server') {
 const runtime = config.dataMode === 'demo' ? installRuntime() : null;
 export const definition = runtime ? registerApp(runtime) : null;
 if (runtime) {
-installSiteTracking({ runtime, disabled: !config.siteTracking });
-runtime.start('rep');
-const syncBase = 'configurationApiBaseUrl' in config ? config.configurationApiBaseUrl || '' : '';
-if (syncBase)
-  window.ElvoranceConfigurationSync = (
-    installConfigurationSync as unknown as (
-      runtime: ReturnType<typeof installRuntime>,
-      options: {
-        baseUrl: string;
-        getAccessToken: () => string | null | undefined | Promise<string | null>;
-        onStatus: (status: { connected: boolean; error?: string }) => void;
+  installSiteTracking({ runtime, disabled: !config.siteTracking });
+  runtime.start('rep');
+  const syncBase = 'configurationApiBaseUrl' in config ? config.configurationApiBaseUrl || '' : '';
+  if (syncBase)
+    window.ElvoranceConfigurationSync = (
+      installConfigurationSync as unknown as (
+        runtime: ReturnType<typeof installRuntime>,
+        options: {
+          baseUrl: string;
+          getAccessToken: () => string | null | undefined | Promise<string | null>;
+          onStatus: (status: { connected: boolean; error?: string }) => void;
+        },
+      ) => unknown
+    )(runtime, {
+      baseUrl: syncBase,
+      getAccessToken: () => window.ELVORANCE_AUTH?.getAccessToken?.(),
+      onStatus: ({ connected, error }: { connected: boolean; error?: string }) => {
+        if (!connected) console.warn('Elvorance configuration sync unavailable:', error);
       },
-    ) => unknown
-  )(runtime, {
-    baseUrl: syncBase,
-    getAccessToken: () => window.ELVORANCE_AUTH?.getAccessToken?.(),
-    onStatus: ({ connected, error }: { connected: boolean; error?: string }) => {
-      if (!connected) console.warn('Elvorance configuration sync unavailable:', error);
-    },
-  });
+    });
 
-installMobileShell(runtime).catch((error: unknown) =>
-  console.error('Native shell initialization failed', error),
-);
-
+  installMobileShell(runtime).catch((error: unknown) =>
+    console.error('Native shell initialization failed', error),
+  );
 } else {
   const root = document.getElementById('app');
   if (!root) throw new Error('Elvorance application root does not exist.');

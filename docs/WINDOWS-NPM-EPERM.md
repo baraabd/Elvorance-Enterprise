@@ -12,7 +12,7 @@ The `npm ci` failure `EPERM unlink node_modules/@esbuild/win32-x64/esbuild.exe` 
 .\tooling\windows\repair-npm-install.ps1
 ```
 
-If the script reports project-owned processes, close those applications. To stop *only* those verified processes and retry a clean installation:
+If the script reports project-owned processes, close those applications. To stop _only_ those verified processes and retry a clean installation:
 
 ```powershell
 .\tooling\windows\repair-npm-install.ps1 -StopProjectProcesses -CleanNodeModules -Install
