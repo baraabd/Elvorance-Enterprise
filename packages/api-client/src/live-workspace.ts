@@ -99,10 +99,14 @@ export async function mountLiveWorkspace(options: LiveWorkspaceOptions): Promise
     '<main id="live-content" aria-busy="true"></main>' +
     '</div>';
 
-  const navigation = root.querySelector<HTMLElement>('#live-navigation');
-  const content = root.querySelector<HTMLElement>('#live-content');
-  const notice = root.querySelector<HTMLElement>('#live-notice');
-  if (!navigation || !content || !notice) throw new Error('Live workspace could not mount.');
+  const requireElement = (selector: string): HTMLElement => {
+    const element = root.querySelector<HTMLElement>(selector);
+    if (!element) throw new Error('Live workspace could not mount: ' + selector);
+    return element;
+  };
+  const navigation = requireElement('#live-navigation');
+  const content = requireElement('#live-content');
+  const notice = requireElement('#live-notice');
 
   const info = (message: string) => {
     notice.textContent = message;
