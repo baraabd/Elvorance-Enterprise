@@ -8,6 +8,9 @@
 
 ## بناء صورة مستقلة
 
+أسماء الصور والحسابات التي تستخدم البادئة `atlas-` محفوظة مؤقتًا للتوافق مع ملفات Compose الموجودة؛ تحديث العلامة التجارية لا يغيّر هذه المعرّفات التشغيلية تلقائيًا.
+
+
 ```bash
 docker build -f infra/docker/service.Dockerfile --build-arg SERVICE_NAME=sales -t atlas-sales:local .
 ```
@@ -45,7 +48,7 @@ docker compose --env-file infra/compose/.env.production -f infra/compose/compose
 
 ## المهاجرات والبيانات
 
-يشغل Compose الأمر `node dist/services/<name>/index.mjs --migrate-only` وينتظر الرمز 0 قبل تشغيل الخدمة. تبقى `AUTO_MIGRATE=false` حتى تكون الخطوة صريحة. الجداول والمهاجرات ملك للخدمة وتضمّن في حزمة البناء. لا تعمل مهاجرات خدمة بحساب خدمة أخرى.
+يشغل Compose الأمر `node dist/services/<name>/index.mts --migrate-only` وينتظر الرمز 0 قبل تشغيل الخدمة. تبقى `AUTO_MIGRATE=false` حتى تكون الخطوة صريحة. الجداول والمهاجرات ملك للخدمة وتضمّن في حزمة البناء. لا تعمل مهاجرات خدمة بحساب خدمة أخرى.
 
 يعمل init script الخاص بـPostgreSQL مرة واحدة مع volume جديدة. تغيير `.env` لاحقًا لا يغير كلمات مرور الأدوار. تدويرها إجراء منظم داخل قاعدة البيانات، يليه تحديث ملف الاتصال وإعادة تشغيل المستهلك. يحتفظ RabbitMQ بتهيئته في volume أيضًا؛ لا يستخدم حذفها حلًا تلقائيًا لاختلاف كلمة المرور.
 

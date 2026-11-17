@@ -1,6 +1,6 @@
-# تشخيص أخطاء Windows وتصحيح Atlas CRM Enterprise 2.0.1
+# تشخيص أخطاء Windows وتصحيح Elvorance Enterprise 2.0.1
 
-هذا التقرير يطابق سجلات التشغيل المرسلة والمرفقات الثلاثة مع مصدر المشروع. المسار الفعلي في جهاز المستخدم هو **`C:\Mobile_Apps\AtlasCRM-Enterprise`**. الأوامر أدناه تستخدم هذا المسار، ولا تفترض وجود المجلد التجريبي `C:\dev\AtlasCRM-Enterprise` أو وجود Java في مجلد يحمل اسمًا محددًا.
+هذا التقرير يوثق أخطاء تاريخية وأسماء صور قديمة؛ يلزم استخدام مسارات مشروع Elvorance الحالية عند إعادة الأوامر. يتطابق بقية التقرير مع سجلات التشغيل المرسلة والمرفقات الثلاثة ومصدر المشروع. المسار الفعلي في جهاز المستخدم هو **`C:\Mobile_Apps\Elvorance-Enterprise`**. الأوامر أدناه تستخدم هذا المسار، ولا تفترض وجود المجلد التجريبي `C:\dev\Elvorance-Enterprise` أو وجود Java في مجلد يحمل اسمًا محددًا.
 
 **الخلفية نجحت في الفحوص التي أرسلتها، بينما تعطل بناء الواجهات على Windows، وظهر عيب مستقل في فحص المسارات، ولم يبدأ بناء Android بسبب إعداد Java.** بعض الأخطاء اللاحقة نتائج مباشرة لهذه الأعطال، ولذلك لا تحتاج كل رسالة إلى إعادة تثبيت مستقلة.
 
@@ -14,7 +14,7 @@
 | `npm ci` انتهى بنجاح                                           | تثبيت الاعتماديات من القفل اكتمل                                       | تحذير الثغرة وتحذير install scripts يحتاجان معالجة منفصلة                           |
 | TypeScript و`check:boundaries` على المصدر الحالي ينجحان        | المصدر الحالي يجتاز الفحصين في ذلك التشغيل                             | فشل أحد اختبارات أداة فحص الحدود يكشف عيبًا في الأداة، حتى لو اجتازها المصدر الحالي |
 | `/health` يعيد `api-gateway alive`                             | عملية البوابة تستجيب                                                   | لا يختبر وحده جميع قواعد البيانات أو رحلة الطلب                                     |
-| `smoke.mjs`: تسعة ناجحة وصفر فشل                               | سلامة البوابة، رفض الطلب غير الموثق، والهوية وقراءات النطاقات          | لا ينفذ كتابة بيانات أو GPS حقيقيًا أو تحصيل دفعات                                  |
+| `smoke.mts`: تسعة ناجحة وصفر فشل                               | سلامة البوابة، رفض الطلب غير الموثق، والهوية وقراءات النطاقات          | لا ينفذ كتابة بيانات أو GPS حقيقيًا أو تحصيل دفعات                                  |
 | `/ready` يعيد 200 للخدمات السبع                                | جاهزية الخدمات وفق الفحوص المنفذة داخلها                               | لا يعادل اختبار كل وظيفة من واجهة الهاتف                                            |
 | `check-isolation.sh`: 49 ناجحة                                 | سبعة اتصالات مسموحة بقاعدة الخدمة المالكة و42 اتصالًا متقاطعًا مرفوضًا | هذا فحص اتصال حقيقي لدى المستخدم، وله نطاق مختلف عن اختبارات الواجهة                |
 | جميع حاويات `*-migrate` في المرفق الثاني `Exited (0)`          | انتهت عمليات ترحيل قاعدة البيانات بنجاح                                | خروج حاوية الخدمة الدائمة أو خروج المهاجر برمز غير صفر حالة مختلفة                  |
@@ -28,7 +28,7 @@
 
 ### 2.1. `EPERM: operation not permitted, chmod ...\dist\config.js`
 
-الموضع في الإصدار 2.0.0 هو استدعاء `fs.promises.cp` داخل `tooling/scripts/build-apps.mjs` لنسخ `config.example.js` إلى `dist/config.js`. عملية النسخ تضمنت تعديل صلاحيات الملف، ورفض Windows عملية `chmod`. السجل يحدد العملية المرفوضة؛ ولا يثبت أن تشغيل PowerShell كمسؤول أو تعطيل الحماية هو الحل.
+الموضع في الإصدار 2.0.0 هو استدعاء `fs.promises.cp` داخل `tooling/scripts/build-apps.mts` لنسخ `config.example.js` إلى `dist/config.js`. عملية النسخ تضمنت تعديل صلاحيات الملف، ورفض Windows عملية `chmod`. السجل يحدد العملية المرفوضة؛ ولا يثبت أن تشغيل PowerShell كمسؤول أو تعطيل الحماية هو الحل.
 
 هذا **خلل قابلية تشغيل في أداة البناء**. التصحيح يستخدم نسخ محتوى الملفات المولدة دون نقل صلاحيات POSIX إليها، ويعالج نسخ مخرجات التطبيقات والوثائق أيضًا. لا تتطلب معالجة هذا الخلل تغيير تصميم التطبيقات أو حذف قواعد البيانات.
 
@@ -92,9 +92,9 @@
 
 هذه نسخ HTML مولدة للمراجعة أضيفت إلى الحزمة القابلة للتنزيل. لم تكن `preview` مستثناة من فحص المصدر في 2.0.0. التصحيح يستثني المخرجات المولدة؛ لا يستثني كود المصدر من الفحص. لا تشغل إعادة تنسيق عامة على ملفات CSS المرجعية لمجرد إسكات هذا التحذير.
 
-### 2.11. `Set-Location ... C:\dev\AtlasCRM-Enterprise ... does not exist`
+### 2.11. `Set-Location ... C:\dev\Elvorance-Enterprise ... does not exist`
 
-هذا مسار مثال في الدليل السابق، وليس المسار الموجود لديك. استخدم `C:\Mobile_Apps\AtlasCRM-Enterprise`. لا تنشئ مشروعًا فارغًا تحت `C:\dev` ولا تنقل النسخة العاملة لمطابقة المثال.
+هذا مسار مثال في الدليل السابق، وليس المسار الموجود لديك. استخدم `C:\Mobile_Apps\Elvorance-Enterprise`. لا تنشئ مشروعًا فارغًا تحت `C:\dev` ولا تنقل النسخة العاملة لمطابقة المثال.
 
 ### 2.12. `1 moderate severity vulnerability`
 
@@ -120,26 +120,26 @@
 
 ## 3. تطبيق التصحيح مع الحفاظ على تعديلاتك وبياناتك
 
-نزّل **`AtlasCRM-Enterprise-2.0.1-Hotfix.zip`** إلى مجلد Downloads. الحزمة الكاملة **`AtlasCRM-Enterprise-2.0.1.zip`** مناسبة لنسخة جديدة؛ أما لتحديث نسختك الحالية فاستعمل حزمة التصحيح التالية. أغلق خادم `npm run dev` إن كان يعمل في نافذة أخرى، ثم نفذ:
+نزّل **`Elvorance-Enterprise-2.0.1-Hotfix.zip`** إلى مجلد Downloads. الحزمة الكاملة **`Elvorance-Enterprise-2.0.1.zip`** مناسبة لنسخة جديدة؛ أما لتحديث نسختك الحالية فاستعمل حزمة التصحيح التالية. أغلق خادم `npm run dev` إن كان يعمل في نافذة أخرى، ثم نفذ:
 
 ```powershell
 $ErrorActionPreference = 'Stop'
-$project = 'C:\Mobile_Apps\AtlasCRM-Enterprise'
+$project = 'C:\Mobile_Apps\Elvorance-Enterprise'
 if (-not (Test-Path -LiteralPath (Join-Path $project 'package.json'))) {
     throw 'Atlas Enterprise package.json was not found at the specified project path.'
 }
 Set-Location -LiteralPath $project
 
-$patchZip = Join-Path $env:USERPROFILE 'Downloads\AtlasCRM-Enterprise-2.0.1-Hotfix.zip'
+$patchZip = Join-Path $env:USERPROFILE 'Downloads\Elvorance-Enterprise-2.0.1-Hotfix.zip'
 if (-not (Test-Path -LiteralPath $patchZip)) {
-    throw 'Download AtlasCRM-Enterprise-2.0.1-Hotfix.zip to Downloads first.'
+    throw 'Download Elvorance-Enterprise-2.0.1-Hotfix.zip to Downloads first.'
 }
-$patchBase = Join-Path ([System.IO.Path]::GetTempPath()) ('AtlasCRM-Hotfix-' + [guid]::NewGuid().ToString('N'))
+$patchBase = Join-Path ([System.IO.Path]::GetTempPath()) ('Elvorance-Hotfix-' + [guid]::NewGuid().ToString('N'))
 Expand-Archive -LiteralPath $patchZip -DestinationPath $patchBase
-$patchFolder = Join-Path $patchBase 'AtlasCRM-Enterprise-2.0.1-Hotfix'
-$patchScript = Join-Path $patchFolder 'apply.mjs'
+$patchFolder = Join-Path $patchBase 'Elvorance-Enterprise-2.0.1-Hotfix'
+$patchScript = Join-Path $patchFolder 'apply.mts'
 if (-not (Test-Path -LiteralPath $patchScript)) {
-    throw 'The hotfix archive does not contain the expected apply.mjs.'
+    throw 'The hotfix archive does not contain the expected apply.mts.'
 }
 node $patchScript --project $project
 if ($LASTEXITCODE -ne 0) { throw 'Hotfix application failed; review the reported conflict before continuing.' }
@@ -232,7 +232,7 @@ foreach ($relativePath in $expectedOutputs) {
 
 ```powershell
 Set-Location -LiteralPath $project
-node .\infra\compose\init-env.mjs
+node .\infra\compose\init-env.mts
 if ($LASTEXITCODE -ne 0) { throw 'Environment preparation failed' }
 
 $composeArgs = @('--env-file', 'infra/compose/.env', '-f', 'infra/compose/compose.yaml')
@@ -249,7 +249,7 @@ docker compose @composeArgs ps -a
 if ($LASTEXITCODE -ne 0) { throw 'Could not inspect Compose services' }
 
 Invoke-RestMethod 'http://127.0.0.1:3000/health'
-node .\infra\compose\smoke.mjs
+node .\infra\compose\smoke.mts
 if ($LASTEXITCODE -ne 0) { throw 'API smoke failed' }
 ```
 
@@ -282,7 +282,7 @@ Test-NetConnection -ComputerName 127.0.0.1 -Port 3000
 في نافذة PowerShell مستقلة:
 
 ```powershell
-Set-Location 'C:\Mobile_Apps\AtlasCRM-Enterprise'
+Set-Location 'C:\Mobile_Apps\Elvorance-Enterprise'
 npm.cmd run dev
 ```
 
@@ -403,7 +403,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $env:ANDROID_HOME 'build-tools\35.0.
     throw 'Android SDK Build-Tools 35.0.0 are missing'
 }
 
-Set-Location 'C:\Mobile_Apps\AtlasCRM-Enterprise'
+Set-Location 'C:\Mobile_Apps\Elvorance-Enterprise'
 npm.cmd run build:apps
 if ($LASTEXITCODE -ne 0) { throw 'Web assets build failed; do not sync partial output.' }
 
@@ -419,7 +419,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Client Android sync failed' }
 ## 9. بناء APK وإرجاع مجلد العمل بأمان
 
 ```powershell
-$project = 'C:\Mobile_Apps\AtlasCRM-Enterprise'
+$project = 'C:\Mobile_Apps\Elvorance-Enterprise'
 foreach ($app in @('rep-mobile', 'client-mobile')) {
     Push-Location (Join-Path $project "apps\$app\android")
     try {

@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test tests/*.test.mjs",
-    "build": "node build.mjs",
-    "dev": "python -m http.server 8080"
+    "test": "node --test tests/*.test.mts",
+    "build": "node build.mts",
+    "dev": "npm run build && python -m http.server 8080 --directory dist"
   }
 }

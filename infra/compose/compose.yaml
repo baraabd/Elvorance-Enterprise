@@ -4,11 +4,11 @@ x-service-environment: &service-environment
   NODE_ENV: development
   HOST: 0.0.0.0
   AUTH_MODE: ${AUTH_MODE:-dev-hs256}
-  DEV_JWT_SECRET: ${DEV_JWT_SECRET:?Run node infra/compose/init-env.mjs}
+  DEV_JWT_SECRET: ${DEV_JWT_SECRET:?Run node infra/compose/init-env.mts}
   OIDC_ISSUER: ${OIDC_ISSUER:-https://atlas.local.invalid}
   OIDC_AUDIENCE: ${OIDC_AUDIENCE:-atlas-enterprise}
   OIDC_JWKS_URL: ${OIDC_JWKS_URL:-}
-  RABBITMQ_URL: amqp://${RABBITMQ_USER:-atlas}:${RABBITMQ_PASSWORD:?Run init-env.mjs}@rabbitmq:5672/atlas
+  RABBITMQ_URL: amqp://${RABBITMQ_USER:-atlas}:${RABBITMQ_PASSWORD:?Run init-env.mts}@rabbitmq:5672/atlas
   AUTO_MIGRATE: 'false'
 
 x-service: &service
@@ -39,14 +39,14 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
-      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Run init-env.mjs}
-      IDENTITY_DB_PASSWORD: ${IDENTITY_DB_PASSWORD:?Run init-env.mjs}
-      CRM_DB_PASSWORD: ${CRM_DB_PASSWORD:?Run init-env.mjs}
-      SALES_DB_PASSWORD: ${SALES_DB_PASSWORD:?Run init-env.mjs}
-      DELIVERY_DB_PASSWORD: ${DELIVERY_DB_PASSWORD:?Run init-env.mjs}
-      BILLING_DB_PASSWORD: ${BILLING_DB_PASSWORD:?Run init-env.mjs}
-      TRACKING_DB_PASSWORD: ${TRACKING_DB_PASSWORD:?Run init-env.mjs}
-      COMMUNICATIONS_DB_PASSWORD: ${COMMUNICATIONS_DB_PASSWORD:?Run init-env.mjs}
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Run init-env.mts}
+      IDENTITY_DB_PASSWORD: ${IDENTITY_DB_PASSWORD:?Run init-env.mts}
+      CRM_DB_PASSWORD: ${CRM_DB_PASSWORD:?Run init-env.mts}
+      SALES_DB_PASSWORD: ${SALES_DB_PASSWORD:?Run init-env.mts}
+      DELIVERY_DB_PASSWORD: ${DELIVERY_DB_PASSWORD:?Run init-env.mts}
+      BILLING_DB_PASSWORD: ${BILLING_DB_PASSWORD:?Run init-env.mts}
+      TRACKING_DB_PASSWORD: ${TRACKING_DB_PASSWORD:?Run init-env.mts}
+      COMMUNICATIONS_DB_PASSWORD: ${COMMUNICATIONS_DB_PASSWORD:?Run init-env.mts}
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./postgres/010-service-databases.sh:/docker-entrypoint-initdb.d/010-service-databases.sh:ro
@@ -63,7 +63,7 @@ services:
     restart: unless-stopped
     environment:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-atlas}
-      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:?Run init-env.mjs}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:?Run init-env.mts}
       RABBITMQ_DEFAULT_VHOST: atlas
     ports:
       - '${RABBITMQ_MANAGEMENT_BIND_HOST:-127.0.0.1}:${RABBITMQ_MANAGEMENT_PORT:-15672}:15672'
@@ -87,7 +87,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3001'
-      DATABASE_URL: postgresql://atlas_identity:${IDENTITY_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_identity
+      DATABASE_URL: postgresql://atlas_identity:${IDENTITY_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_identity
     depends_on:
       postgres:
         condition: service_healthy
@@ -104,7 +104,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3001'
-      DATABASE_URL: postgresql://atlas_identity:${IDENTITY_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_identity
+      DATABASE_URL: postgresql://atlas_identity:${IDENTITY_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_identity
     depends_on:
       identity-migrate:
         condition: service_completed_successfully
@@ -122,7 +122,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3002'
-      DATABASE_URL: postgresql://atlas_crm:${CRM_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_crm
+      DATABASE_URL: postgresql://atlas_crm:${CRM_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_crm
     depends_on:
       postgres:
         condition: service_healthy
@@ -139,7 +139,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3002'
-      DATABASE_URL: postgresql://atlas_crm:${CRM_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_crm
+      DATABASE_URL: postgresql://atlas_crm:${CRM_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_crm
     depends_on:
       crm-migrate:
         condition: service_completed_successfully
@@ -157,7 +157,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3003'
-      DATABASE_URL: postgresql://atlas_sales:${SALES_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_sales
+      DATABASE_URL: postgresql://atlas_sales:${SALES_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_sales
     depends_on:
       postgres:
         condition: service_healthy
@@ -174,7 +174,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3003'
-      DATABASE_URL: postgresql://atlas_sales:${SALES_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_sales
+      DATABASE_URL: postgresql://atlas_sales:${SALES_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_sales
       CRM_URL: http://crm:3002
     depends_on:
       sales-migrate:
@@ -193,7 +193,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3004'
-      DATABASE_URL: postgresql://atlas_delivery:${DELIVERY_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_delivery
+      DATABASE_URL: postgresql://atlas_delivery:${DELIVERY_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_delivery
     depends_on:
       postgres:
         condition: service_healthy
@@ -210,7 +210,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3004'
-      DATABASE_URL: postgresql://atlas_delivery:${DELIVERY_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_delivery
+      DATABASE_URL: postgresql://atlas_delivery:${DELIVERY_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_delivery
     depends_on:
       delivery-migrate:
         condition: service_completed_successfully
@@ -228,7 +228,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3005'
-      DATABASE_URL: postgresql://atlas_billing:${BILLING_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_billing
+      DATABASE_URL: postgresql://atlas_billing:${BILLING_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_billing
     depends_on:
       postgres:
         condition: service_healthy
@@ -245,7 +245,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3005'
-      DATABASE_URL: postgresql://atlas_billing:${BILLING_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_billing
+      DATABASE_URL: postgresql://atlas_billing:${BILLING_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_billing
     depends_on:
       billing-migrate:
         condition: service_completed_successfully
@@ -263,7 +263,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3006'
-      DATABASE_URL: postgresql://atlas_tracking:${TRACKING_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_tracking
+      DATABASE_URL: postgresql://atlas_tracking:${TRACKING_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_tracking
     depends_on:
       postgres:
         condition: service_healthy
@@ -280,7 +280,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3006'
-      DATABASE_URL: postgresql://atlas_tracking:${TRACKING_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_tracking
+      DATABASE_URL: postgresql://atlas_tracking:${TRACKING_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_tracking
     depends_on:
       tracking-migrate:
         condition: service_completed_successfully
@@ -298,7 +298,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3007'
-      DATABASE_URL: postgresql://atlas_communications:${COMMUNICATIONS_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_communications
+      DATABASE_URL: postgresql://atlas_communications:${COMMUNICATIONS_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_communications
     depends_on:
       postgres:
         condition: service_healthy
@@ -315,7 +315,7 @@ services:
     environment:
       <<: *service-environment
       PORT: '3007'
-      DATABASE_URL: postgresql://atlas_communications:${COMMUNICATIONS_DB_PASSWORD:?Run init-env.mjs}@postgres:5432/atlas_communications
+      DATABASE_URL: postgresql://atlas_communications:${COMMUNICATIONS_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_communications
     depends_on:
       communications-migrate:
         condition: service_completed_successfully
@@ -339,7 +339,7 @@ services:
       HOST: 0.0.0.0
       PORT: '3000'
       AUTH_MODE: ${AUTH_MODE:-dev-hs256}
-      DEV_JWT_SECRET: ${DEV_JWT_SECRET:?Run init-env.mjs}
+      DEV_JWT_SECRET: ${DEV_JWT_SECRET:?Run init-env.mts}
       OIDC_ISSUER: ${OIDC_ISSUER:-https://atlas.local.invalid}
       OIDC_AUDIENCE: ${OIDC_AUDIENCE:-atlas-enterprise}
       OIDC_JWKS_URL: ${OIDC_JWKS_URL:-}
