@@ -50,7 +50,7 @@ export function fieldProblem(input: FormField | null | undefined): string {
   return '';
 }
 export function validateFormFields(form: HTMLFormElement): boolean {
-  for (const field of form.querySelectorAll('input,textarea,select')) {
+  for (const field of Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>('input,textarea,select'))) {
     field.setCustomValidity?.('');
     const problem = fieldProblem(field);
     if (problem) {

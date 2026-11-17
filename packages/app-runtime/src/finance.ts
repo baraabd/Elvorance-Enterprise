@@ -56,7 +56,7 @@ export function suggestedPlan(totalCents: number): PaymentPart[] {
   const values = [first, second, totalCents - first - second];
   return values.map((n, i) => ({
     id: 'instalment-' + (i + 1),
-    label: ['دفعة أولى', 'اعتماد مرحلة التنفيذ', 'عند التسليم'][i],
+    label: ['دفعة أولى', 'اعتماد مرحلة التنفيذ', 'عند التسليم'][i] ?? '',
     amount: dollars(n),
     due: '',
   }));
