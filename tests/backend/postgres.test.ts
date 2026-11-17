@@ -44,6 +44,7 @@ import {
   handleEvent as billingEvent,
 } from '../../services/billing/src/app.ts';
 import { auth, call, principals } from './helpers.ts';
+import { createLiveDataApi } from '../../packages/api-client/src/live-data.ts';
 import type { EventEnvelope } from '@elvorance/contracts';
 
 const adminUrl = process.env.ELVORANCE_TEST_POSTGRES_URL;
@@ -206,6 +207,58 @@ test(
     const delivery = deliveryApp({ repository: byName('delivery').repository, auth });
     const billing = billingApp({ repository: byName('billing').repository, auth });
     apps.push(crm, sales, delivery, billing);
+
+    // Authenticate two independent API clients against real PostgreSQL.
+    const liveFetch: typeof fetch = async (url, init) => {
+      const response = await crm.inject({
+        method: init?.method ?? 'GET',
+        url: new URL(String(url)).pathname,
+        headers: Object.fromEntries(new Headers(init?.headers).entries()),
+        ...(init?.body ? { payload: String(init.body) } : {}),
+      });
+      return new Response(response.body, {
+        status: response.statusCode,
+        headers: { 'content-type': 'application/json' },
+      });
+    };
+    const repLive = createLiveDataApi({
+      baseUrl: 'http://localhost:3000',
+      accessToken: async () => 'rep',
+      fetch: liveFetch,
+    });
+    const adminLive = createLiveDataApi({
+      baseUrl: 'http://localhost:3000',
+      accessToken: async () => 'admin',
+      fetch: liveFetch,
+    });
+    const outsiderLive = createLiveDataApi({
+      baseUrl: 'http://localhost:3000',
+      accessToken: async () => 'outsider',
+      fetch: liveFetch,
+    });
+    const liveCreated = await repLive.crm.createCustomer(
+      { name: 'Live API PostgreSQL customer', phone: '+963900001234' },
+      { idempotencyKey: 'pg-live-customer-intent' },
+    );
+    assert.ok(liveCreated.version >= 1);
+    assert.equal(
+      (await adminLive.crm.customers()).find((item) => item.id === liveCreated.id)?.name,
+      'Live API PostgreSQL customer',
+    );
+    const liveUpdated = await adminLive.crm.changeCustomer(
+      liveCreated.id,
+      { expectedVersion: liveCreated.version, name: 'Updated by admin from live API' },
+      { idempotencyKey: 'pg-live-admin-update' },
+    );
+    assert.equal(
+      (await repLive.crm.customers()).find((item) => item.id === liveCreated.id)?.name,
+      'Updated by admin from live API',
+    );
+    assert.equal(liveUpdated.version, liveCreated.version + 1);
+    assert.equal(
+      (await outsiderLive.crm.customers()).some((item) => item.id === liveCreated.id),
+      false,
+    );
     const customer = (
       await call(crm, 'POST', '/v1/customers', 'rep', { name: 'PostgreSQL customer' })
     ).body;
