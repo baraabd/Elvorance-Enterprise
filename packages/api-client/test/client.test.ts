@@ -98,12 +98,20 @@ test('PATCH and PUT use the authenticated API with versioned payloads and stable
       return Response.json({ version: 2 });
     },
   });
-  await client.patch('/v1/crm/customers/c-1', { expectedVersion: 1, name: 'Updated' }, {
-    idempotencyKey: 'edit-customer-1',
-  });
-  await client.put('/v1/crm/configuration', { expectedVersion: 1, title: 'Current' }, {
-    idempotencyKey: 'publish-config-1',
-  });
+  await client.patch(
+    '/v1/crm/customers/c-1',
+    { expectedVersion: 1, name: 'Updated' },
+    {
+      idempotencyKey: 'edit-customer-1',
+    },
+  );
+  await client.put(
+    '/v1/crm/configuration',
+    { expectedVersion: 1, title: 'Current' },
+    {
+      idempotencyKey: 'publish-config-1',
+    },
+  );
   assert.deepEqual(requests, [
     {
       url: 'https://api.example.com/v1/crm/customers/c-1',

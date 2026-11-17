@@ -3,10 +3,7 @@
     "target": "ES2023",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": [
-      "ES2023",
-      "DOM"
-    ],
+    "lib": ["ES2023", "DOM"],
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
@@ -16,9 +13,7 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
-    "types": [
-      "node"
-    ]
+    "types": ["node"]
   },
   "include": [
     "services/**/*.ts",
@@ -32,10 +27,5 @@
     "tooling/scripts/copy-content.mts",
     "packages/contracts/src/browser-window.d.ts"
   ],
-  "exclude": [
-    "**/node_modules",
-    "**/dist",
-    "**/android",
-    "**/ios"
-  ]
+  "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
 }

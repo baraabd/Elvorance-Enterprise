@@ -3,7 +3,17 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
-const roots = ['apps', 'services', 'packages', 'infra', 'tooling', 'tests', 'docs', 'examples', 'prototype'];
+const roots = [
+  'apps',
+  'services',
+  'packages',
+  'infra',
+  'tooling',
+  'tests',
+  'docs',
+  'examples',
+  'prototype',
+];
 const excluded = new Set(['node_modules', 'dist', 'android', 'ios', '.git']);
 const codeExtensions = /\.(?:ts|tsx|mts|cts|js|mjs|cjs)$/i;
 const oldSourceExtensions = /\.(?:js|mjs|cjs)$/i;
@@ -33,7 +43,12 @@ for (const file of [...sourceFiles, ...markdownFiles]) {
   const content = await readFile(resolve(root, file), 'utf8');
   if (codeExtensions.test(file)) {
     if (content.includes(['@ts', '-nocheck'].join(''))) suppressions.push(file);
-    if (file !== 'tooling/scripts/audit-migration.mts' && /createDemoData|createDemoRepository|dataMode\s*[:!=]{1,3}\s*['"]demo|local-demo/.test(content))
+    if (
+      file !== 'tooling/scripts/audit-migration.mts' &&
+      /createDemoData|createDemoRepository|dataMode\s*[:!=]{1,3}\s*['"]demo|local-demo/.test(
+        content,
+      )
+    )
       previewDependencies.push(file);
   }
   if (markdownExtension.test(file) && oldBrand.test(content)) legacyBrand.push(file);
@@ -53,8 +68,12 @@ const output = {
 };
 console.log(JSON.stringify(output, null, 2));
 if (process.argv.includes('--strict') && !output.acceptanceComplete) {
-  console.error('Migration acceptance failed: remaining source, branding, typing or demo dependencies.');
+  console.error(
+    'Migration acceptance failed: remaining source, branding, typing or demo dependencies.',
+  );
   process.exitCode = 1;
 } else if (!output.acceptanceComplete) {
-  console.warn('Migration audit reports remaining work. This is NOT proof of complete API integration.');
+  console.warn(
+    'Migration audit reports remaining work. This is NOT proof of complete API integration.',
+  );
 }

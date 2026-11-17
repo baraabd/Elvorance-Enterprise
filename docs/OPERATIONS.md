@@ -10,7 +10,6 @@
 
 أسماء الصور والحسابات التي تستخدم البادئة `atlas-` محفوظة مؤقتًا للتوافق مع ملفات Compose الموجودة؛ تحديث العلامة التجارية لا يغيّر هذه المعرّفات التشغيلية تلقائيًا.
 
-
 ```bash
 docker build -f infra/docker/service.Dockerfile --build-arg SERVICE_NAME=sales -t atlas-sales:local .
 ```

@@ -15,14 +15,16 @@ installSiteTracking({ runtime, disabled: !config.siteTracking });
 runtime.start('admin');
 const syncBase = 'configurationApiBaseUrl' in config ? config.configurationApiBaseUrl || '' : '';
 if (syncBase)
-  window.ElvoranceConfigurationSync = (installConfigurationSync as unknown as (
-    runtime: ReturnType<typeof installRuntime>,
-    options: {
-      baseUrl: string;
-      getAccessToken: () => string | null | undefined | Promise<string | null>;
-      onStatus: (status: { connected: boolean; error?: string }) => void;
-    },
-  ) => unknown)(runtime, {
+  window.ElvoranceConfigurationSync = (
+    installConfigurationSync as unknown as (
+      runtime: ReturnType<typeof installRuntime>,
+      options: {
+        baseUrl: string;
+        getAccessToken: () => string | null | undefined | Promise<string | null>;
+        onStatus: (status: { connected: boolean; error?: string }) => void;
+      },
+    ) => unknown
+  )(runtime, {
     baseUrl: syncBase,
     getAccessToken: () => window.ELVORANCE_AUTH?.getAccessToken?.(),
     onStatus: ({ connected, error }: { connected: boolean; error?: string }) => {

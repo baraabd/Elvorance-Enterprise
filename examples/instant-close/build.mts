@@ -4,10 +4,7 @@ const html = await readFile(new URL('index.html', root), 'utf8');
 const css = await readFile(new URL('src/style.css', root), 'utf8');
 const domain = await readFile(new URL('src/domain.mts', root), 'utf8');
 const app = await readFile(new URL('src/app.mts', root), 'utf8');
-const cleanApp = app.replace(
-  /^import\s*\{[\s\S]*?\}\s*from\s*['"]\.\/domain\.mts['"];\r?\n/m,
-  '',
-);
+const cleanApp = app.replace(/^import\s*\{[\s\S]*?\}\s*from\s*['"]\.\/domain\.mts['"];\r?\n/m, '');
 if (cleanApp === app) throw new Error('Expected an import from domain.mts');
 const scriptTag = '<script type="module" src="./src/app.mts"></script>';
 if (!html.includes(scriptTag)) throw new Error('Expected the TypeScript template entrypoint');
