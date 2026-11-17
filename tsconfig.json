@@ -3,7 +3,10 @@
     "target": "ES2023",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["ES2023", "DOM"],
+    "lib": [
+      "ES2023",
+      "DOM"
+    ],
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
@@ -13,8 +16,24 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
-  "include": ["services/**/*.ts", "packages/**/*.ts", "tests/backend/**/*.ts"],
-  "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
+  "include": [
+    "services/**/*.ts",
+    "packages/**/*.ts",
+    "tests/backend/**/*.ts",
+    "apps/*/src/main.ts",
+    "apps/*/config.example.ts",
+    "apps/types/**/*.d.ts",
+    "infra/compose/init-env.mts",
+    "examples/instant-close/build.mts"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/dist",
+    "**/android",
+    "**/ios"
+  ]
 }
