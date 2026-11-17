@@ -210,10 +210,14 @@ test(
 
     // Authenticate two independent API clients against real PostgreSQL.
     const liveFetch: typeof fetch = async (url, init) => {
+      const headers: Record<string, string> = {};
+      new Headers(init?.headers).forEach((value, key) => {
+        headers[key] = value;
+      });
       const response = await crm.inject({
         method: init?.method ?? 'GET',
         url: new URL(String(url)).pathname,
-        headers: Object.fromEntries(new Headers(init?.headers).entries()),
+        headers,
         ...(init?.body ? { payload: String(init.body) } : {}),
       });
       return new Response(response.body, {
