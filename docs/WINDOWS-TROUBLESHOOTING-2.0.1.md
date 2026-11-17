@@ -104,7 +104,7 @@
 
 ### 2.13. تحذير `esbuild ... install scripts not yet covered by allowScripts`
 
-هذه سياسة npm لسكربتات تثبيت الاعتماديات. الإصدار 2.0.1 يحدد اعتماد سكربت `esbuild@0.28.2` بعينه في `package.json` الجذري، ويثبت التثبيت الاعتماديات من القفل. لا تُمنح موافقة عامة لكل السكربتات. هذا التحذير لا يفسر عملية `chmod` داخل كود بناء أطلس.
+هذه سياسة npm لسكربتات تثبيت الاعتماديات. الإصدار 2.0.1 يحدد اعتماد سكربت `esbuild@0.28.2` بعينه في `package.json` الجذري، ويثبت التثبيت الاعتماديات من القفل. لا تُمنح موافقة عامة لكل السكربتات. هذا التحذير لا يفسر عملية `chmod` داخل كود بناء إلفورانس.
 
 للمراجعة، يدعم npm 11.19.0 الأوامر `install-scripts ls` و`install-scripts approve esbuild` و`rebuild esbuild`. يكتب الاعتماد رقم الإصدار المثبت افتراضيًا، وفق [وثائق npm](https://docs.npmjs.com/cli/v11/commands/npm-install-scripts/).
 
@@ -126,7 +126,7 @@
 $ErrorActionPreference = 'Stop'
 $project = 'C:\Mobile_Apps\Elvorance-Enterprise'
 if (-not (Test-Path -LiteralPath (Join-Path $project 'package.json'))) {
-    throw 'Atlas Enterprise package.json was not found at the specified project path.'
+    throw 'Elvorance Enterprise package.json was not found at the specified project path.'
 }
 Set-Location -LiteralPath $project
 

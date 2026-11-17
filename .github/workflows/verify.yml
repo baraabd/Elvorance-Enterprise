@@ -33,6 +33,7 @@ jobs:
       - run: npm ci
       - run: npm run audit:migration:report
       - run: npm run verify
+      - run: node examples/instant-close/build.mts
       - run: npm run check:format
       - run: npm run package
       - uses: actions/upload-artifact@v4
@@ -54,6 +55,7 @@ jobs:
       - run: npm.cmd ci
       - run: npm.cmd run audit:migration:report
       - run: npm.cmd run verify
+      - run: node examples/instant-close/build.mts
       - run: npm.cmd run check:format
       - run: npm.cmd run package
       - uses: actions/upload-artifact@v4
