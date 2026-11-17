@@ -1,4 +1,4 @@
-# تشغيل أطلس Enterprise على Linux
+# تشغيل إلفورانس Enterprise على Linux
 
 ## نسخة نظيفة
 
@@ -9,11 +9,11 @@ node --version
 npm --version
 npm ci
 npm run verify
-node infra/compose/init-env.mjs
+node infra/compose/init-env.mts
 docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml config --quiet
 npm run infra:up
 docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml ps -a
-node infra/compose/smoke.mjs
+node infra/compose/smoke.mts
 ```
 
 يولد helper القيم الناقصة ويحافظ على القيم الموجودة دون طباعتها. لا تحذف lockfile أو تثبت الاعتماديات داخل كل workspace يدويًا. يحتوي Compose سبع خدمات أعمال، وبوابة، ومهاجرًا لكل خدمة، وPostgreSQL 16، وRabbitMQ 4. خروج المهاجرين بالرمز 0 نجاح متوقع.
@@ -67,7 +67,7 @@ docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml logs 
 npm run build:apps
 npm run mobile:sync -- rep-mobile android
 npm run mobile:sync -- client-mobile android
-node tooling/scripts/mobile.mjs open rep-mobile android
+node tooling/scripts/mobile.mts open rep-mobile android
 ```
 
 استخدم Gradle wrapper الموجود في كل مشروع بعد مراجعة متطلبات SDK. توليد المشروع ونسخ webDir لا يثبتان نجاح assembleDebug أو تشغيل GPS. يحتاج iOS إلى macOS وXcode. راجع خطوات الهاتف وعنوان API في دليل Windows؛ سياسات HTTPS والأذونات نفسها تنطبق هنا.

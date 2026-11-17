@@ -1,31 +1,55 @@
-// @ts-nocheck
-// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { installConfigurationSync } from '@elvorance/questionnaire/sync';
 import { installMobileShell } from '@elvorance/mobile-platform';
 import { installRuntime } from '@elvorance/app-runtime';
+import { mountLiveWorkspace } from '@elvorance/api-client/live-workspace';
 import { installSiteTracking } from '@elvorance/app-runtime/tracking';
 import { registerApp } from './app.ts';
 
-const config = window.ELVORANCE_CONFIG || { dataMode: 'demo', siteTracking: false };
-if (config.dataMode !== 'demo') {
-  throw new Error(
-    'This preserved UI uses the explicit local-demo adapter. Migrate feature commands to the API client before enabling server mode.',
-  );
+const config = window.ELVORANCE_CONFIG ?? { dataMode: 'demo' as const, siteTracking: false };
+if (config.dataMode !== 'demo' && config.dataMode !== 'server') {
+  throw new Error('Unsupported Elvorance dataMode.');
 }
-const runtime = installRuntime();
-export const definition = registerApp(runtime);
-installSiteTracking({ runtime, disabled: !config.siteTracking });
-runtime.start('rep');
-const syncBase = config.configurationApiBaseUrl || '';
-if (syncBase)
-  window.ElvoranceConfigurationSync = installConfigurationSync(runtime, {
-    baseUrl: syncBase,
-    getAccessToken: () => window.ELVORANCE_AUTH?.getAccessToken?.(),
-    onStatus: ({ connected, error }) => {
-      if (!connected) console.warn('Elvorance configuration sync unavailable:', error);
-    },
-  });
+const runtime = config.dataMode === 'demo' ? installRuntime() : null;
+export const definition = runtime ? registerApp(runtime) : null;
+if (runtime) {
+  installSiteTracking({ runtime, disabled: !config.siteTracking });
+  runtime.start('rep');
+  const syncBase = 'configurationApiBaseUrl' in config ? config.configurationApiBaseUrl || '' : '';
+  if (syncBase)
+    window.ElvoranceConfigurationSync = (
+      installConfigurationSync as unknown as (
+        runtime: ReturnType<typeof installRuntime>,
+        options: {
+          baseUrl: string;
+          getAccessToken: () => string | null | undefined | Promise<string | null>;
+          onStatus: (status: { connected: boolean; error?: string }) => void;
+        },
+      ) => unknown
+    )(runtime, {
+      baseUrl: syncBase,
+      getAccessToken: () => window.ELVORANCE_AUTH?.getAccessToken?.(),
+      onStatus: ({ connected, error }: { connected: boolean; error?: string }) => {
+        if (!connected) console.warn('Elvorance configuration sync unavailable:', error);
+      },
+    });
 
-installMobileShell(runtime).catch((error) =>
-  console.error('Native shell initialization failed', error),
-);
+  installMobileShell(runtime).catch((error: unknown) =>
+    console.error('Native shell initialization failed', error),
+  );
+} else {
+  const root = document.getElementById('app');
+  if (!root) throw new Error('Elvorance application root does not exist.');
+  const apiBaseUrl =
+    'apiBaseUrl' in config && typeof config.apiBaseUrl === 'string'
+      ? config.apiBaseUrl
+      : 'http://127.0.0.1:3000';
+  void mountLiveWorkspace({
+    root,
+    role: 'rep',
+    baseUrl: apiBaseUrl,
+    accessToken: async () => (await window.ELVORANCE_AUTH?.getAccessToken?.()) ?? null,
+  }).catch((error: unknown) => {
+    console.error('Elvorance authenticated API startup failed', error);
+    root.textContent = 'تعذّر بدء مساحة البيانات الحية. تحقق من إعدادات API.';
+  });
+}

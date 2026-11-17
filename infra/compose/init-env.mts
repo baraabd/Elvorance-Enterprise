@@ -1,5 +1,3 @@
-// @ts-nocheck
-// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { randomBytes } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -22,7 +20,7 @@ const required = [
 let changed = 0;
 for (const key of required) {
   const matcher = new RegExp(`^${key}=(.*)$`, 'm');
-  const current = source.match(matcher)?.[1].trim();
+  const current = source.match(matcher)?.[1]?.trim();
   if (current && current !== 'REPLACE_WITH_GENERATED_VALUE') continue;
   const line = `${key}=${randomBytes(32).toString('hex')}`;
   source = matcher.test(source)

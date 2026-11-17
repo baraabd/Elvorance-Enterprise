@@ -11,7 +11,7 @@
 | تطابق المسارات         | 64/64 ناجحة؛ المندوب 20، العميل 21، الإدارة 23          | `tests/design-parity/artifacts/latest-results.json`؛ مقارنة DOM ثابت مع v1.1، وليست 64 لقطة شاشة من جهاز أصلي |
 | أصول التصميم           | 9/9 ناجحة، وصفر أخطاء runtime في parity                 | CSS والخطوط والأيقونات أمام المرجع المجمد؛ نفس الملف يسجل بصمات المصدر                                        |
 | سلوك الوحدات المستخرجة | 137 حالة ناجحة                                          | `tests/regression` على الوحدات الحالية؛ لا يتضمن العدد اختبار خادم Worker القديم ذي 22 حالة                   |
-| بدء حزم التوزيع        | 3 اختبارات ناجحة                                        | `tests/build-output/bundles.test.mjs`؛ استعملت الحزم الفعلية وكشفت مشكلة بدء عولجت قبل اعتماد النتيجة         |
+| بدء حزم التوزيع        | 3 اختبارات ناجحة                                        | `tests/build-output/bundles.test.mts`؛ استعملت الحزم الفعلية وكشفت مشكلة بدء عولجت قبل اعتماد النتيجة         |
 | عينات مدقق الحدود      | 24 ناجحة، 0 فاشلة، 0 متخطاة                             | manifests و AST و aliases والمسارات النسبية و CommonJS و dynamic import و type imports و cycles و symlinks    |
 | مساعد البيئة و smoke   | 4 ناجحة، 0 فاشلة، 0 متخطاة                              | حفظ الإعدادات، توليد قيم مختلفة دون طباعتها، توقيع claims في stub، رفض وجهة غير loopback وفشل رد 503          |
 | رسم الاعتماديات الفعلي | 20 workspace، وصفر مخالفات                              | آخر لقطة لهذا الفحص: 161 ملف JS/TS و 155 edge؛ يتغير عدد الملفات مع اكتمال العمل                              |
@@ -26,19 +26,19 @@
 ## إعادة فحوص البنية
 
 ```bash
-node --test tests/architecture/boundaries.test.mjs tests/architecture/infra-helpers.test.mjs
-node tooling/scripts/check-boundaries.mjs
+node --test tests/architecture/boundaries.test.mts tests/architecture/infra-helpers.test.mts
+node tooling/scripts/check-boundaries.mts
 npm run test:parity
 npm run test:regression
 ```
 
-اختبار smoke داخل المجموعة يستعمل fetch stub. تشغيل `node infra/compose/smoke.mjs` ضد Gateway حقيقي بوابة مستقلة من 9 قراءات؛ لا يُحتسب اختبار stub دليل HTTP شبكي. تحليل Compose وسلامة Shell يثبتان صحة النص المفحوص، ولا يحلان محل `docker compose config` وبدء الحاويات.
+اختبار smoke داخل المجموعة يستعمل fetch stub. تشغيل `node infra/compose/smoke.mts` ضد Gateway حقيقي بوابة مستقلة من 9 قراءات؛ لا يُحتسب اختبار stub دليل HTTP شبكي. تحليل Compose وسلامة Shell يثبتان صحة النص المفحوص، ولا يحلان محل `docker compose config` وبدء الحاويات.
 
 ## معنى نتيجة PostgreSQL
 
 يختبر `tests/backend/postgres.test.ts` قواعد حقيقية مؤقتة، ومعاملات rollback، و FORCE RLS حتى على دور المالك، و outbox/inbox، ومنع إنشاء عقدين أو مشروعين أو فواتير مكررة، وتعارض دفعات متزامنة. يستعمل Fastify inject ومعالجة المستهلك داخل العملية؛ قاعدة البيانات حقيقية، لكن RabbitMQ والنقل بين العمليات ليسا جزءًا من هذا الإثبات.
 
-يقبل الفحص `ATLAS_TEST_POSTGRES_URL` لقاعدة اختبار إدارية مؤقتة؛ **لا تستخدم عنوان قاعدة تشغيل أو إنتاج**. عند غياب المتغير يُسجل الفحص متخطى في التشغيل العام؛ لا يتحول ذلك إلى نجاح قاعدة بيانات. يقدم `tests/backend/run-postgres.mjs` مسارًا اختياريًا عبر embedded-postgres مثبت خارج الاعتماديات المعتادة، أو من خلال `ATLAS_EMBEDDED_POSTGRES_MODULE`. سجل تشغيله يميز هذه النتيجة من تشغيل Compose. النتيجة المثبتة في `tests/backend/verification.json`، وعقد HTTP في `packages/contracts/openapi.json` مع حصر العمليات في `route-inventory.json`.
+يقبل الفحص `ELVORANCE_TEST_POSTGRES_URL` لقاعدة اختبار إدارية مؤقتة؛ **لا تستخدم عنوان قاعدة تشغيل أو إنتاج**. عند غياب المتغير يُسجل الفحص متخطى في التشغيل العام؛ لا يتحول ذلك إلى نجاح قاعدة بيانات. يقدم `tests/backend/run-postgres.mts` مسارًا اختياريًا عبر embedded-postgres مثبت خارج الاعتماديات المعتادة، أو من خلال `ELVORANCE_EMBEDDED_POSTGRES_MODULE`. سجل تشغيله يميز هذه النتيجة من تشغيل Compose. النتيجة المثبتة في `tests/backend/verification.json`، وعقد HTTP في `packages/contracts/openapi.json` مع حصر العمليات في `route-inventory.json`.
 
 ## بوابات تحتاج Docker وبيئة تشغيل فعلية
 

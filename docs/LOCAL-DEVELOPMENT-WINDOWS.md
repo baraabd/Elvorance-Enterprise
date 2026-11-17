@@ -1,4 +1,4 @@
-# تشغيل أطلس Enterprise على Windows
+# تشغيل إلفورانس Enterprise على Windows
 
 هذا الدليل لحزمة **2.0.1** التي تتضمن تصحيح البناء وفحص المسارات على Windows. إذا كانت نسختك 2.0.0 وظهر `EPERM ... chmod` أو فشل اختبار `tsconfig paths`، طبّق التحديث أولًا باتباع [تقرير الأخطاء وحلولها](WINDOWS-TROUBLESHOOTING-2.0.1.md). يحلل التقرير أيضًا تحذيرات npm وأخطاء Docker وJava الواردة في سجل التشغيل.
 
@@ -10,13 +10,13 @@
 
 ```powershell
 $ErrorActionPreference = 'Stop'
-$AtlasRoot = 'C:\Mobile_Apps\AtlasCRM-Enterprise'
-if (-not (Test-Path -LiteralPath $AtlasRoot -PathType Container)) {
-    throw "Project folder does not exist: $AtlasRoot"
+$ElvoranceRoot = 'C:\Mobile_Apps\Elvorance-Enterprise'
+if (-not (Test-Path -LiteralPath $ElvoranceRoot -PathType Container)) {
+    throw "Project folder does not exist: $ElvoranceRoot"
 }
-Set-Location -LiteralPath $AtlasRoot
+Set-Location -LiteralPath $ElvoranceRoot
 foreach ($item in @('package.json', 'package-lock.json', 'apps', 'services')) {
-    if (-not (Test-Path -LiteralPath (Join-Path $AtlasRoot $item))) {
+    if (-not (Test-Path -LiteralPath (Join-Path $ElvoranceRoot $item))) {
         throw "This is not the Enterprise project root: missing $item"
     }
 }
@@ -39,7 +39,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Verification failed; do not run mobile sync ye
 
 ينفذ `verify` فحص الأنواع والحدود المعمارية، وبناء التطبيقات والخدمات، والاختبارات، وفحص تطابق التصميم، واختبارات السلوك. **توقف عند أول فشل**؛ وجود بعض ملفات التطبيق لا يثبت اكتمال البناء. لا تحذف lockfile ولا تستخدم `npm audit fix --force` لعلاج خطأ البناء؛ راجع تفسير التحذيرات في التقرير المرتبط أعلاه.
 
-بعد النجاح توجد ملفات الواجهات داخل `apps/<app>/dist` و`dist/<app>`، ونسخ المراجعة المستقلة `dist/rep.html` و`dist/client.html` و`dist/admin.html`، وحزم الخدمات داخل `dist/services/<service>/index.mjs`. اختبار PostgreSQL المتكامل مشروط بإعداد قاعدة اختبار مستقلة؛ ظهوره `SKIP` دون هذا الإعداد ليس فشلًا ولا دليلًا على اختبار PostgreSQL.
+بعد النجاح توجد ملفات الواجهات داخل `apps/<app>/dist` و`dist/<app>`، ونسخ المراجعة المستقلة `dist/rep.html` و`dist/client.html` و`dist/admin.html`، وحزم الخدمات داخل `dist/services/<service>/index.mts`. اختبار PostgreSQL المتكامل مشروط بإعداد قاعدة اختبار مستقلة؛ ظهوره `SKIP` دون هذا الإعداد ليس فشلًا ولا دليلًا على اختبار PostgreSQL.
 
 ## 3. تهيئة البيئة وتشغيل الخدمات
 
@@ -50,7 +50,7 @@ docker version
 if ($LASTEXITCODE -ne 0) { throw 'Start Docker Desktop with Linux containers' }
 docker compose version
 if ($LASTEXITCODE -ne 0) { throw 'Docker Compose v2 is unavailable' }
-node .\infra\compose\init-env.mjs
+node .\infra\compose\init-env.mts
 if ($LASTEXITCODE -ne 0) { throw 'Environment initialization failed' }
 docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml config --quiet
 if ($LASTEXITCODE -ne 0) { throw 'Invalid Compose configuration' }
@@ -68,7 +68,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Could not inspect Compose services' }
 
 ```powershell
 Invoke-RestMethod 'http://127.0.0.1:3000/health'
-node .\infra\compose\smoke.mjs
+node .\infra\compose\smoke.mts
 if ($LASTEXITCODE -ne 0) { throw 'API smoke failed' }
 $domains = @('identity', 'crm', 'sales', 'delivery', 'billing', 'tracking', 'communications')
 foreach ($domain in $domains) {
@@ -86,11 +86,11 @@ if ($LASTEXITCODE -ne 0) { throw 'Database connection isolation failed' }
 في نافذة PowerShell ثانية، تحقق من وجود المجلد قبل الانتقال إليه:
 
 ```powershell
-$AtlasRoot = 'C:\Mobile_Apps\AtlasCRM-Enterprise'
-if (-not (Test-Path -LiteralPath $AtlasRoot -PathType Container)) {
-    throw "Project folder does not exist: $AtlasRoot"
+$ElvoranceRoot = 'C:\Mobile_Apps\Elvorance-Enterprise'
+if (-not (Test-Path -LiteralPath $ElvoranceRoot -PathType Container)) {
+    throw "Project folder does not exist: $ElvoranceRoot"
 }
-Set-Location -LiteralPath $AtlasRoot
+Set-Location -LiteralPath $ElvoranceRoot
 npm.cmd run dev
 if ($LASTEXITCODE -ne 0) { throw 'Development server failed' }
 ```
@@ -198,7 +198,7 @@ npm.cmd run mobile:sync -- client-mobile android
 if ($LASTEXITCODE -ne 0) { throw 'Client Android sync failed' }
 
 foreach ($app in @('rep-mobile', 'client-mobile')) {
-    Push-Location (Join-Path $AtlasRoot "apps\$app\android")
+    Push-Location (Join-Path $ElvoranceRoot "apps\$app\android")
     try {
         .\gradlew.bat --version
         if ($LASTEXITCODE -ne 0) { throw "Gradle could not start for $app" }
@@ -213,7 +213,7 @@ foreach ($app in @('rep-mobile', 'client-mobile')) {
 
 راجع مخرجات `gradlew --version`: ينبغي أن يستخدم Launcher JVM الإصدار 21. `try/finally` يعيدك إلى المجلد الأصلي مرة واحدة حتى عند الفشل. إذا لم يصل السكربت إلى نهاية حلقة البناء بنجاح، لا تعتبر التطبيقين مبنيين.
 
-ملفا debug الناتجان هما `apps/rep-mobile/android/app/build/outputs/apk/debug/app-debug.apk` و`apps/client-mobile/android/app/build/outputs/apk/debug/app-debug.apk`. يمكنك فتح مشروع التطبيق من Android Studio، أو استخدام `node .\tooling\scripts\mobile.mjs open rep-mobile android` من جذر المشروع. فتح IDE ونجاح Capacitor sync لا يثبتان نجاح Gradle أو تشغيل APK. اختبر التطبيق على AVD أو هاتف فعلي، بما يشمل الأذونات والتنقل ولوحة المفاتيح. iOS يحتاج macOS وXcode.
+ملفا debug الناتجان هما `apps/rep-mobile/android/app/build/outputs/apk/debug/app-debug.apk` و`apps/client-mobile/android/app/build/outputs/apk/debug/app-debug.apk`. يمكنك فتح مشروع التطبيق من Android Studio، أو استخدام `node .\tooling\scripts\mobile.mts open rep-mobile android` من جذر المشروع. فتح IDE ونجاح Capacitor sync لا يثبتان نجاح Gradle أو تشغيل APK. اختبر التطبيق على AVD أو هاتف فعلي، بما يشمل الأذونات والتنقل ولوحة المفاتيح. iOS يحتاج macOS وXcode.
 
 عند ربط API بالهاتف لاحقًا، `localhost` يعني الهاتف نفسه. استخدم بوابة HTTPS تصل إليها الأجهزة وشهادة موثوقة، مع عنوان `apiBaseUrl` وأصل CORS الصحيحين وتسجيل دخول فعلي. هذه خطوة تكامل منفصلة عن بناء العرض المحلي.
 

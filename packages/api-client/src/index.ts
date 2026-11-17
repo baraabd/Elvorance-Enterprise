@@ -115,14 +115,29 @@ export function createApiClient(options: ClientOptions) {
     }
   }
 
+  function mutation<T>(
+    method: 'POST' | 'PATCH' | 'PUT',
+    path: string,
+    body: unknown,
+    requestOptions: CommandOptions,
+  ): Promise<T> {
+    if (!/^[\w-]{8,128}$/.test(requestOptions.idempotencyKey))
+      throw new Error('A stable idempotency key (8–128 characters) is required.');
+    return request<T>(method, path, body, requestOptions, requestOptions.idempotencyKey);
+  }
+
   return {
     get<T>(path: string, requestOptions: RequestOptions = {}) {
       return request<T>('GET', path, undefined, requestOptions);
     },
     command<T>(path: string, body: unknown, requestOptions: CommandOptions) {
-      if (!/^[\w-]{8,128}$/.test(requestOptions.idempotencyKey))
-        throw new Error('A stable idempotency key (8–128 characters) is required.');
-      return request<T>('POST', path, body, requestOptions, requestOptions.idempotencyKey);
+      return mutation<T>('POST', path, body, requestOptions);
+    },
+    patch<T>(path: string, body: unknown, requestOptions: CommandOptions) {
+      return mutation<T>('PATCH', path, body, requestOptions);
+    },
+    put<T>(path: string, body: unknown, requestOptions: CommandOptions) {
+      return mutation<T>('PUT', path, body, requestOptions);
     },
   };
 }

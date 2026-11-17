@@ -1,5 +1,3 @@
-// @ts-nocheck
-// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { Capacitor } from '@capacitor/core';
 import { App } from '@capacitor/app';
 import { Geolocation } from '@capacitor/geolocation';
@@ -24,7 +22,15 @@ export function createMobilePlatform() {
         timeout: 12_000,
       });
     },
-    async watchLocation({ consent, onPosition, onError }) {
+    async watchLocation({
+      consent,
+      onPosition,
+      onError,
+    }: {
+      consent: boolean;
+      onPosition: (position: Awaited<ReturnType<typeof Geolocation.getCurrentPosition>>) => void;
+      onError: (error: unknown) => void;
+    }) {
       if (consent !== true) throw new Error('Explicit location consent is required.');
       let stopped = false;
       const watchId = await Geolocation.watchPosition(
@@ -50,11 +56,13 @@ export function createMobilePlatform() {
     async network() {
       return Network.getStatus();
     },
-    async onNetworkChange(callback) {
+    async onNetworkChange(
+      callback: (status: Awaited<ReturnType<typeof Network.getStatus>>) => void,
+    ) {
       const handle = await Network.addListener('networkStatusChange', callback);
       return () => handle.remove();
     },
-    async onActiveChange(callback) {
+    async onActiveChange(callback: (active: boolean) => void) {
       if (Capacitor.isNativePlatform()) {
         const handle = await App.addListener('appStateChange', (state) => callback(state.isActive));
         return () => handle.remove();
@@ -67,7 +75,7 @@ export function createMobilePlatform() {
 }
 
 /** Navigation/network integration does not request GPS or start tracking. */
-export async function installMobileShell(runtime) {
+export async function installMobileShell(runtime: { closeModal(): void }) {
   if (!Capacitor.isNativePlatform()) return () => {};
   const network = await Network.addListener('networkStatusChange', (state) =>
     window.dispatchEvent(new Event(state.connected ? 'online' : 'offline')),

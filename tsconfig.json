@@ -15,6 +15,19 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
-  "include": ["services/**/*.ts", "packages/**/*.ts", "tests/backend/**/*.ts"],
+  "include": [
+    "services/**/*.ts",
+    "packages/**/*.ts",
+    "tests/backend/**/*.ts",
+    "apps/*/src/main.ts",
+    "apps/*/config.example.ts",
+    "infra/compose/init-env.mts",
+    "examples/instant-close/build.mts",
+    "tooling/scripts/audit-migration.mts",
+    "tooling/scripts/copy-content.mts",
+    "packages/contracts/src/browser-window.d.ts",
+    "tooling/scripts/workspace.mts",
+    "tooling/scripts/dev.mts"
+  ],
   "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
 }
