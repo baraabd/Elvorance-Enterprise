@@ -5,7 +5,8 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./live-data": "./src/live-data.ts"
+    "./live-data": "./src/live-data.ts",
+    "./live-workspace": "./src/live-workspace.ts"
   },
   "dependencies": {
     "@elvorance/contracts": "2.0.0"
