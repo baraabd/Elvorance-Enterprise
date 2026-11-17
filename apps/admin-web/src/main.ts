@@ -16,7 +16,7 @@ runtime.start('admin');
 const syncBase = 'configurationApiBaseUrl' in config ? config.configurationApiBaseUrl || '' : '';
 if (syncBase)
   window.ElvoranceConfigurationSync = (installConfigurationSync as unknown as (
-    runtime: typeof runtime,
+    runtime: ReturnType<typeof installRuntime>,
     options: {
       baseUrl: string;
       getAccessToken: () => string | null | undefined | Promise<string | null>;
