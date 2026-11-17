@@ -118,5 +118,5 @@ test('PATCH and PUT use the authenticated API with versioned payloads and stable
       body: { expectedVersion: 1, title: 'Current' },
     },
   ]);
-  await assert.rejects(client.patch('/v1/crm/customers/c-1', {}, { idempotencyKey: 'invalid' }));
+  assert.throws(() => client.patch('/v1/crm/customers/c-1', {}, { idempotencyKey: 'invalid' }));
 });
