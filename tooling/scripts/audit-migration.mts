@@ -32,8 +32,8 @@ const legacySource = sourceFiles.filter((file) => oldSourceExtensions.test(file)
 for (const file of [...sourceFiles, ...markdownFiles]) {
   const content = await readFile(resolve(root, file), 'utf8');
   if (codeExtensions.test(file)) {
-    if (content.includes('@ts-nocheck')) suppressions.push(file);
-    if (/createDemoData|createDemoRepository|dataMode\s*[:!=]{1,3}\s*['"]demo|local-demo/.test(content))
+    if (content.includes(['@ts', '-nocheck'].join(''))) suppressions.push(file);
+    if (file !== 'tooling/scripts/audit-migration.mts' && /createDemoData|createDemoRepository|dataMode\s*[:!=]{1,3}\s*['"]demo|local-demo/.test(content))
       previewDependencies.push(file);
   }
   if (markdownExtension.test(file) && oldBrand.test(content)) legacyBrand.push(file);

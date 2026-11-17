@@ -1,11 +1,28 @@
-// @ts-nocheck
-// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Shared deterministic USD quote/instalment calculations. Amounts are stored in whole cents internally. */
-export const cents = (value) => Math.round(Number(value) * 100);
-export const dollars = (minor) => Math.round(minor) / 100;
-const finiteNonNegative = (n) => Number.isFinite(Number(n)) && Number(n) >= 0;
+export interface QuoteItem {
+  price: number | string;
+  qty: number | string;
+}
+export interface PaymentPart {
+  id?: string;
+  label?: string;
+  due?: string;
+  amount: number | string;
+}
+export interface QuoteFinancialInput {
+  items?: QuoteItem[];
+  discountMode?: string;
+  discountValue?: number | string;
+  discount?: number | string;
+  paymentPlanEdited?: boolean;
+  paymentPlan?: PaymentPart[];
+}
 
-export function quoteSubtotal(items = []) {
+export const cents = (value: unknown): number => Math.round(Number(value) * 100);
+export const dollars = (minor: number): number => Math.round(minor) / 100;
+const finiteNonNegative = (n: unknown): boolean => Number.isFinite(Number(n)) && Number(n) >= 0;
+
+export function quoteSubtotal(items: QuoteItem[] = []): number {
   if (
     !Array.isArray(items) ||
     items.some(
@@ -15,7 +32,11 @@ export function quoteSubtotal(items = []) {
     return NaN;
   return items.reduce((sum, row) => sum + Math.round(cents(row.price) * Number(row.qty)), 0);
 }
-export function quoteDiscount(subtotalCents, mode = 'amount', value = 0) {
+export function quoteDiscount(
+  subtotalCents: number,
+  mode: 'amount' | 'percent' = 'amount',
+  value: unknown = 0,
+): number {
   const n = Number(value);
   if (
     !Number.isFinite(subtotalCents) ||
@@ -28,7 +49,7 @@ export function quoteDiscount(subtotalCents, mode = 'amount', value = 0) {
   const discount = mode === 'percent' ? Math.round((subtotalCents * n) / 100) : cents(n);
   return discount <= subtotalCents ? discount : NaN;
 }
-export function suggestedPlan(totalCents) {
+export function suggestedPlan(totalCents: number): PaymentPart[] {
   if (!Number.isFinite(totalCents) || totalCents <= 0) return [];
   const first = Math.round(totalCents * 0.3),
     second = Math.round(totalCents * 0.4);
@@ -40,7 +61,7 @@ export function suggestedPlan(totalCents) {
     due: '',
   }));
 }
-export function planAudit(plan, totalCents, minFirst = 0.2) {
+export function planAudit(plan: PaymentPart[], totalCents: number, minFirst = 0.2) {
   if (!Array.isArray(plan) || !plan.length)
     return {
       valid: false,
@@ -61,9 +82,9 @@ export function planAudit(plan, totalCents, minFirst = 0.2) {
   const remainingCents = totalCents - sumCents;
   const minFirstCents = Math.ceil(totalCents * minFirst);
   return {
-    valid: remainingCents === 0 && cents(plan[0].amount) >= minFirstCents && totalCents > 0,
+    valid: remainingCents === 0 && cents(plan[0]!.amount) >= minFirstCents && totalCents > 0,
     kind:
-      cents(plan[0].amount) < minFirstCents
+      cents(plan[0]!.amount) < minFirstCents
         ? 'first_low'
         : remainingCents > 0
           ? 'short'
@@ -75,7 +96,7 @@ export function planAudit(plan, totalCents, minFirst = 0.2) {
     minFirstCents,
   };
 }
-export function normalizedFinancials(q) {
+export function normalizedFinancials(q: QuoteFinancialInput) {
   const subtotalCents = quoteSubtotal(q.items || []);
   const mode = q.discountMode === 'percent' ? 'percent' : 'amount';
   const value = q.discountValue ?? q.discount ?? 0;

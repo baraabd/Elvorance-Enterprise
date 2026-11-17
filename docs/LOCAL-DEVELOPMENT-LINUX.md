@@ -1,4 +1,4 @@
-# تشغيل أطلس Enterprise على Linux
+# تشغيل إلفورانس Enterprise على Linux
 
 ## نسخة نظيفة
 

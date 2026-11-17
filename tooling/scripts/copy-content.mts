@@ -1,10 +1,8 @@
-// @ts-nocheck
-// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 import { lstat, mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 
 /** Copy generated content without fs.cp's source-mode/chmod propagation. */
-export async function copyContent(source, destination) {
+export async function copyContent(source: string, destination: string): Promise<void> {
   const sourceInfo = await lstat(source);
   if (sourceInfo.isSymbolicLink()) {
     throw new Error(`Content copy refuses a symbolic link: ${source}`);
@@ -13,7 +11,9 @@ export async function copyContent(source, destination) {
   try {
     destinationInfo = await lstat(destination);
   } catch (error) {
-    if (error.code !== 'ENOENT') throw error;
+    if (!(error instanceof Error) || !('code' in error) || error.code !== 'ENOENT') {
+      throw error;
+    }
   }
   if (destinationInfo?.isSymbolicLink()) {
     throw new Error(`Content copy refuses a symbolic-link destination: ${destination}`);
