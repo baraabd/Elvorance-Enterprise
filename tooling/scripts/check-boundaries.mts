@@ -16,6 +16,7 @@ const frontendPackages = new Set([
   'demo-data',
   'api-client',
   'mobile-platform',
+  'mobile-auth',
   'questionnaire',
 ]);
 const backendPackages = new Set(['contracts', 'service-kit', 'events', 'questionnaire']);
@@ -30,6 +31,7 @@ const packageRules = {
   questionnaire: [],
   'api-client': ['contracts', 'mobile-platform'],
   'mobile-platform': ['contracts'],
+  'mobile-auth': [],
 };
 const relative = (root, file) => path.relative(root, file).split(path.sep).join('/');
 /** Compare native paths, including the forward slashes returned by TypeScript on Windows. */

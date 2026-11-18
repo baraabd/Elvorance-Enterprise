@@ -3,7 +3,7 @@
     "target": "ES2023",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["ES2023", "DOM"],
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
@@ -27,7 +27,14 @@
     "tooling/scripts/copy-content.mts",
     "packages/contracts/src/browser-window.d.ts",
     "tooling/scripts/workspace.mts",
-    "tooling/scripts/dev.mts"
+    "tooling/scripts/dev.mts",
+    "apps/rep-mobile/src/server/**/*.ts",
+    "apps/rep-mobile/src/server-main.ts",
+    "tooling/scripts/rep-release/**/*.mts",
+    "tooling/scripts/build-rep-server.mts",
+    "tooling/scripts/rep-native/**/*.mts",
+    "infra/identity/**/*.mts",
+    "infra/environments/**/*.mts"
   ],
   "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
 }

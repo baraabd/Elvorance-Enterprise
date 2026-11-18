@@ -1,16 +1,24 @@
 import type { FastifyInstance } from 'fastify';
-import { command, requireRole, type Repository } from '@elvorance/service-kit';
+import { command, pageOptions, requireRole, type Repository } from '@elvorance/service-kit';
 import { createMembership, createTenant } from '../application/identity.ts';
 import type { Membership, TenantProfile } from '../domain/model.ts';
+import { ownProfile, updateOwnProfile } from '../application/profile.ts';
 export function registerRoutes(app: FastifyInstance, repository: Repository): void {
   app.get('/v1/me', async (request) =>
     repository.transaction(request.principal.tenantId, async (tx) => ({
       principal: request.principal,
       profile:
-        (await tx.list<Membership>('memberships', { subject: request.principal.sub }))[0] ?? null,
+        (await ownProfile(tx, request.principal)) ??
+        (await tx.list<Membership>('memberships', { subject: request.principal.sub }))[0] ??
+        null,
       identitySource: 'verified-oidc-claims',
       note: 'Membership profile does not mint or override OIDC access claims',
     })),
+  );
+  app.patch('/v1/me/profile', async (request) =>
+    command(request, repository, 'identity.updateOwnProfile', (tx) =>
+      updateOwnProfile(tx, request.principal, request.body),
+    ),
   );
   app.get('/v1/tenant', async (request) =>
     repository.transaction(request.principal.tenantId, async (tx) => ({
@@ -24,9 +32,9 @@ export function registerRoutes(app: FastifyInstance, repository: Repository): vo
   );
   app.get('/v1/memberships', async (request) => {
     requireRole(request.principal, 'admin');
-    return repository.transaction(request.principal.tenantId, async (tx) => ({
-      items: await tx.list<Membership>('memberships'),
-    }));
+    return repository.transaction(request.principal.tenantId, (tx) =>
+      tx.page<Membership>('memberships', pageOptions(request.query, [{ equals: {} }])),
+    );
   });
   app.post('/v1/memberships', async (request) =>
     command(request, repository, 'identity.createMembership', (tx) =>

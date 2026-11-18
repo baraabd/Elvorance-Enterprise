@@ -7,7 +7,8 @@ on:
       - 'apps/rep-mobile/**'
       - 'packages/**'
       - 'tooling/**'
-      - '.github/workflows/rep-native-verification.yml'
+      - 'tests/**'
+      - '.github/workflows/rep-native-*.yml'
       - 'package*.json'
 permissions:
   contents: read
@@ -17,7 +18,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,19 +28,21 @@ jobs:
       - run: npm ci
       - run: npm run verify
       - name: Package reproducible diagnostic toolchain
+        if: always()
         run: |
           mkdir -p /tmp/elvorance-toolchain
           cp "$(command -v node)" /tmp/elvorance-toolchain/node
           tar -czf /tmp/elvorance-toolchain/dependencies.tar.gz node_modules
           printf '%s\n' "$GITHUB_SHA" > /tmp/elvorance-toolchain/source-sha.txt
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: rep-linux-verification-toolchain
           path: /tmp/elvorance-toolchain/
           retention-days: 1
   android:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -51,44 +54,53 @@ jobs:
           distribution: temurin
           java-version: '21'
       - run: npm ci
-      - run: npm run build:apps
-      - run: npm run mobile:sync -- rep-mobile android
-      - name: Compile Android without release signing
+      - name: Prepare native-only verification harness
+        run: node tooling/scripts/rep-native/prepare-verification.mts android
+      - name: Lint, unit-test and compile an unsigned verification bundle
         working-directory: apps/rep-mobile/android
         run: |
           chmod +x gradlew
-          ./gradlew --no-daemon lintRelease testDebugUnitTest bundleRelease
+          ./gradlew --no-daemon -PallowUnsignedRelease lintStagingRelease testStagingDebugUnitTest bundleStagingRelease
+      - name: Enable emulator acceleration
+        run: sudo chmod 666 /dev/kvm
+      - name: Test Keystore, tamper rejection and native startup on an emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          script: ./apps/rep-mobile/android/gradlew -p apps/rep-mobile/android --no-daemon connectedStagingDebugAndroidTest
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: rep-android-compile-reports
+          name: rep-android-unsigned-verification-only
           path: |
             apps/rep-mobile/android/app/build/reports/
-            apps/rep-mobile/android/app/build/outputs/bundle/release/
+            apps/rep-mobile/android/app/build/outputs/androidTest-results/
+            apps/rep-mobile/android/app/build/outputs/bundle/stagingRelease/
           retention-days: 7
   ios:
-    runs-on: macos-15
-    timeout-minutes: 35
+    runs-on: macos-26
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24.22.1
           cache: npm
-      - name: Require supported Xcode
-        run: |
-          xcodebuild -version
-          test "$(xcodebuild -version | head -1 | awk '{print $2}' | cut -d. -f1)" -ge 26
       - run: npm ci
-      - run: npm run build:apps
-      - run: npm run mobile:sync -- rep-mobile ios
-      - name: Compile iOS simulator without distribution credentials
+      - name: Prepare native-only verification harness
+        run: node tooling/scripts/rep-native/prepare-verification.mts ios
+      - name: Test redirect policy and Keychain on an iPhone simulator
         run: |
           set -o pipefail
-          xcodebuild -project apps/rep-mobile/ios/App/App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath dist/ios-derived CODE_SIGNING_ALLOWED=NO build | tee ios-build.log
+          node tooling/scripts/rep-native/ios-verification.mts | tee ios-verification.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: rep-ios-simulator-compile-report
-          path: ios-build.log
+          name: rep-ios-simulator-verification-only
+          path: |
+            ios-verification.log
+            dist/rep-native/ios-verification.xcresult/
           retention-days: 7

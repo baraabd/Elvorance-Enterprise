@@ -11,6 +11,9 @@ export const subscriptions = [
   'billing.invoices_created.v1',
   'billing.payment_recorded.v1',
   'communications.ticket_opened.v1',
+  'communications.message_created.v1',
+  'sales.discount_approval_requested.v1',
+  'sales.discount_approval_decided.v1',
 ];
 const titles: Record<string, string> = {
   'crm.customer_created.v1': 'New customer created',
@@ -22,6 +25,9 @@ const titles: Record<string, string> = {
   'billing.invoices_created.v1': 'Contract invoices are ready',
   'billing.payment_recorded.v1': 'A payment was recorded',
   'communications.ticket_opened.v1': 'Support ticket opened',
+  'communications.message_created.v1': 'A new conversation message is available',
+  'sales.discount_approval_requested.v1': 'A commercial exception needs administrative review',
+  'sales.discount_approval_decided.v1': 'A commercial exception has an administrative decision',
 };
 export async function handleEvent(tx: Transaction, event: EventEnvelope): Promise<void> {
   const title = titles[event.type];
@@ -29,7 +35,9 @@ export async function handleEvent(tx: Transaction, event: EventEnvelope): Promis
   const body = object(event.payload);
   await tx.insert<Notification>('notifications', {
     eventId: event.id,
-    clientId: optionalText(body.clientId, 'clientId', 100) || null,
+    clientId: event.type.startsWith('sales.discount_approval_')
+      ? null
+      : optionalText(body.clientId, 'clientId', 100) || null,
     repId: optionalText(body.repId, 'repId', 100) || null,
     type: event.type,
     title,

@@ -1,3 +1,4 @@
+import { catalogPrices } from './helpers.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import type { CustomerContext } from '@elvorance/contracts';
@@ -36,6 +37,7 @@ test('quote create/edit/revise and cached send all recheck current opt-out and a
     ]),
     auth,
     customerDirectory: {
+      ...catalogPrices({ web: 10000 }),
       async getCustomer(id, authorization) {
         const response = await crm.inject({
           method: 'GET',
@@ -208,6 +210,7 @@ test('retained rep_id/client_id claims never grant list, detail or ticket action
         repository: salesRepository,
         auth: formerAuth,
         customerDirectory: {
+          ...catalogPrices({ web: 10000 }),
           async getCustomer() {
             throw new Error('Not used by this test');
           },
@@ -411,6 +414,7 @@ test('dual-role identity sees a draft only through the representative who owns t
       clientId: 'client-a',
     }),
     customerDirectory: {
+      ...catalogPrices({ web: 10000 }),
       async getCustomer() {
         throw new Error('Not used');
       },
@@ -429,8 +433,17 @@ test('dual-role identity sees a draft only through the representative who owns t
       clientId: 'other-client',
     }),
     customerDirectory: {
+      ...catalogPrices({ web: 10000 }),
       async getCustomer() {
-        throw new Error('Not used');
+        return {
+          id: 'client-a',
+          name: 'Assigned customer',
+          repId: 'rep-a',
+          regionId: null,
+          doNotContact: false,
+          consentVersion: 1,
+          version: 1,
+        };
       },
     },
   });

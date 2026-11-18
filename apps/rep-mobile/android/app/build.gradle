@@ -1,5 +1,13 @@
 apply plugin: 'com.android.application'
 
+def releaseSigning = ['ANDROID_KEYSTORE_PATH', 'ANDROID_KEYSTORE_PASSWORD', 'ANDROID_KEY_ALIAS', 'ANDROID_KEY_PASSWORD']
+def hasReleaseSigning = releaseSigning.every { System.getenv(it) }
+if (releaseSigning.any { System.getenv(it) } && !hasReleaseSigning) {
+    throw new GradleException('All Android release signing variables must be provided together.')
+}
+def releaseCode = System.getenv('ELVORANCE_VERSION_CODE') ?: '1'
+if (!(releaseCode ==~ /[1-9][0-9]{0,8}/)) throw new GradleException('Invalid Android version code.')
+
 android {
     namespace = "com.elvorance.rep"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -7,8 +15,8 @@ android {
         applicationId "com.elvorance.rep"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode releaseCode.toInteger()
+        versionName System.getenv('ELVORANCE_VERSION_NAME') ?: "2.4.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -16,11 +24,50 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    flavorDimensions += "environment"
+    productFlavors {
+        staging {
+            dimension "environment"
+            applicationIdSuffix ".staging"
+        }
+        production { dimension "environment" }
+    }
+    signingConfigs {
+        if (hasReleaseSigning) {
+            distribution {
+                storeFile file(System.getenv('ANDROID_KEYSTORE_PATH'))
+                storePassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('ANDROID_KEY_ALIAS')
+                keyPassword System.getenv('ANDROID_KEY_PASSWORD')
+            }
+        }
+    }
     buildTypes {
         release {
+            if (hasReleaseSigning) signingConfig signingConfigs.distribution
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    // Refuse a production APK/AAB containing a staging callback or vice versa.
+    applicationVariants.all { variant ->
+        variant.preBuildProvider.configure {
+            doFirst {
+                def configFile = file('src/main/assets/capacitor.config.json')
+                if (!configFile.exists()) throw new GradleException('Run the rep-native preparation script first.')
+                def config = new groovy.json.JsonSlurper().parse(configFile)
+                if (config.appId != variant.applicationId) {
+                    throw new GradleException('Packaged Capacitor identity does not match the Android variant.')
+                }
+            }
+        }
+    }
+}
+
+gradle.taskGraph.whenReady { graph ->
+    def createsRelease = graph.allTasks.any { task -> task.path ==~ /:app:(bundle|assemble|package).*Release/ }
+    if (createsRelease && !hasReleaseSigning && !project.hasProperty('allowUnsignedRelease')) {
+        throw new GradleException('Release signing is required; verification-only builds may explicitly set -PallowUnsignedRelease.')
     }
 }
 
@@ -35,6 +82,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
     implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation "androidx.browser:browser:1.9.0"
     implementation project(':capacitor-android')
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"

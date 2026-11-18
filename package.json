@@ -40,7 +40,9 @@
     "infra:down": "docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml down",
     "test:merged": "node --test tests/questionnaire/dynamic-form.test.mts tests/validation/numeric-fields.test.mts tests/regression/dashboard-drilldown.integration.test.mts tests/regression/finance-2.3.test.mts tests/regression/quote-ui-consolidated.test.mts examples/instant-close/tests/flow.test.mts",
     "audit:migration:report": "node tooling/scripts/audit-migration.mts",
-    "audit:migration": "node tooling/scripts/audit-migration.mts --strict"
+    "audit:migration": "node tooling/scripts/audit-migration.mts --strict",
+    "build:rep:server": "node tooling/scripts/build-rep-server.mts",
+    "mobile:prepare:rep": "node tooling/scripts/rep-native/prepare.mts"
   },
   "devDependencies": {
     "@capacitor/cli": "8.6.2",

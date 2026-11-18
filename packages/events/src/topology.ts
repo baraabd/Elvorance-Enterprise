@@ -26,6 +26,9 @@ export const serviceBindings: Readonly<Record<string, readonly string[]>> = {
     'billing.invoices_created.v1',
     'billing.payment_recorded.v1',
     'communications.ticket_opened.v1',
+    'communications.message_created.v1',
+    'sales.discount_approval_requested.v1',
+    'sales.discount_approval_decided.v1',
   ],
 };
 export type TopologyChannel = Pick<Channel, 'assertExchange' | 'assertQueue' | 'bindQueue'>;

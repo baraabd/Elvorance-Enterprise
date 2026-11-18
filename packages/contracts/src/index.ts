@@ -70,8 +70,99 @@ export interface CustomerContext {
 export interface ApiError {
   error: { code: string; message: string; requestId?: string };
 }
+export interface CustomerDirectory {
+  getCustomer(id: string, authorization: string): Promise<CustomerContext>;
+}
+export interface CatalogPrice {
+  id: string;
+  title: string;
+  unitPriceMinor: number;
+}
+export interface CatalogSnapshot {
+  configured: boolean;
+  recordVersion: number;
+  currency: string;
+  items: CatalogPrice[];
+}
+export interface CatalogDirectory {
+  getCatalog(authorization: string): Promise<CatalogSnapshot>;
+}
+export type DiscoveryAnswer = string | number | string[];
+export interface DiscoveryRecord extends Entity {
+  clientId: string;
+  repId: string;
+  configurationRevision: number;
+  activityId: string;
+  answers: Record<string, DiscoveryAnswer>;
+  status: 'draft' | 'submitted';
+  notes: string;
+  savedBy: string;
+}
+export interface RepresentativeProfile extends Entity {
+  subject: string;
+  displayName: string;
+  phone: string;
+  locale: 'ar' | 'en';
+  timeZone: string;
+}
+export interface RepTask extends Entity {
+  repId: string;
+  clientId: string | null;
+  customerName: string | null;
+  title: string;
+  dueOn: string;
+  priority: 'low' | 'normal' | 'high';
+  status: 'open' | 'done' | 'cancelled';
+  notes: string;
+  completedAt: string | null;
+}
+export interface Opportunity extends Entity {
+  repId: string;
+  clientId: string;
+  customerName: string;
+  title: string;
+  stage: 'new' | 'qualified' | 'proposal' | 'negotiation' | 'won' | 'lost';
+  valueMinor: number;
+  currency: string;
+  expectedCloseOn: string | null;
+  notes: string;
+  contractId: string | null;
+}
+export interface VisitRoute extends Entity {
+  repId: string;
+  name: string;
+  date: string;
+  visitIds: string[];
+  status: 'planned' | 'active' | 'completed' | 'cancelled';
+}
+export interface Conversation extends Entity {
+  clientId: string;
+  customerName: string;
+  repId: string;
+  lastMessageId: string | null;
+  lastMessageAt: string | null;
+  messageCount: number;
+}
+export interface ConversationMessage extends Entity {
+  conversationId: string;
+  clientId: string;
+  repId: string;
+  senderId: string;
+  senderRole: 'rep' | 'client' | 'admin' | 'support';
+  body: string;
+  sequence: number;
+}
+export interface ConversationReadReceipt extends Entity {
+  conversationId: string;
+  subject: string;
+  lastMessageId: string;
+  lastReadSequence: number;
+  readAt: string;
+}
 export interface ListResult<T> {
   items: T[];
+  nextCursor?: string | null;
+  limit?: number;
 }
 export const eventTypes = {
   customerCreated: 'crm.customer_created.v1',
@@ -82,4 +173,7 @@ export const eventTypes = {
   invoicesCreated: 'billing.invoices_created.v1',
   paymentRecorded: 'billing.payment_recorded.v1',
   ticketOpened: 'communications.ticket_opened.v1',
+  messageCreated: 'communications.message_created.v1',
+  discountApprovalRequested: 'sales.discount_approval_requested.v1',
+  discountApprovalDecided: 'sales.discount_approval_decided.v1',
 } as const;

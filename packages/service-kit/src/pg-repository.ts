@@ -2,6 +2,7 @@ import pg from 'pg';
 import type { Entity, EventEnvelope } from '@elvorance/contracts';
 import { AppError, assert } from './errors.ts';
 import type { Migration } from './migrations.ts';
+import { pageResult, validatePage, type PageOptions } from './pagination.ts';
 import {
   envelope,
   fingerprint,
@@ -130,6 +131,55 @@ export class PgRepository implements Repository {
             [tenantId, raw.id ?? newId(), JSON.stringify(payload(input))],
           );
           return hydrate<T>(result.rows[0]!);
+        },
+        async sequencePage<T extends Entity & { sequence: number }>(
+          table: string,
+          filter: Filter,
+          after: number,
+          limit: number,
+        ) {
+          assert(
+            Number.isSafeInteger(after) &&
+              after >= 0 &&
+              Number.isSafeInteger(limit) &&
+              limit >= 1 &&
+              limit <= 201,
+            'INVALID_PAGE',
+            'Invalid pagination parameters',
+          );
+          const result = await client.query<Row>(
+            `SELECT * FROM ${tableName(table)} WHERE tenant_id=$1 AND data @> $2::jsonb AND (data->>'sequence')::bigint>$3 ORDER BY (data->>'sequence')::bigint LIMIT $4`,
+            [tenantId, JSON.stringify(filter), after, limit],
+          );
+          return result.rows.map((row) => hydrate<T>(row));
+        },
+        async page<T extends Entity>(table: string, options: PageOptions) {
+          validatePage(options);
+          if (!options.scopes.length) return { items: [], nextCursor: null, limit: options.limit };
+          const values: unknown[] = [tenantId, options.after, options.limit + 1];
+          const predicate = (filter: Filter) => {
+            const { id, ...data } = filter;
+            const terms: string[] = [];
+            if (id !== undefined) {
+              values.push(id);
+              terms.push(`id=$${values.length}`);
+            }
+            values.push(JSON.stringify(data));
+            terms.push(`data @> $${values.length}::jsonb`);
+            return `(${terms.join(' AND ')})`;
+          };
+          const scopes = options.scopes.map(
+            (scope) =>
+              `${predicate(scope.equals)}${scope.notEquals ? ` AND NOT ${predicate(scope.notEquals)}` : ''}`,
+          );
+          const result = await client.query<Row>(
+            `SELECT * FROM ${tableName(table)} WHERE tenant_id=$1 AND ($2::text IS NULL OR id COLLATE "C">$2::text COLLATE "C") AND (${scopes.map((scope) => `(${scope})`).join(' OR ')}) ORDER BY id COLLATE "C" LIMIT $3`,
+            values,
+          );
+          return pageResult(
+            result.rows.map((row) => hydrate<T>(row)),
+            options.limit,
+          );
         },
         async replace<T extends Entity>(table: string, value: T, expectedVersion: number) {
           const result = await client.query<Row>(

@@ -1,9 +1,9 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Atlas Enterprise Reference API",
-    "version": "2.0.0",
-    "description": "Runnable backend foundation with independent service databases. Public paths are Gateway prefixes. Authentication uses verified OIDC access tokens; tenant_id, roles, rep_id and client_id claims are authoritative. Mutation commands require Idempotency-Key; transitions require expectedVersion. Money is in integer minor units. Existing local-demo UI workflows are not represented as fully migrated API features. In-app notifications and payment records do not imply external email, SMS or payment-provider execution."
+    "title": "Elvorance Enterprise API",
+    "version": "2.5.0",
+    "description": "Independent domain services with database ownership, verified OIDC identity, tenant and actor scoping, explicit versioned commands and transactional outbox/inbox. Rep server workflows include customer/discovery, catalog-controlled quotations, visits/routes, tasks/opportunities, profile, conversations and location. Commands require Idempotency-Key; money uses integer minor units. List endpoints use bounded cursor pagination. In-app messages and payment records do not execute external communications or payments. Physical-device/store acceptance is a separate release gate."
   },
   "servers": [
     {
@@ -297,7 +297,7 @@
         "operationId": "identity_get_memberships",
         "tags": ["identity"],
         "summary": "List tenant membership profiles",
-        "description": "List tenant membership profiles",
+        "description": "List tenant membership profiles Authorization scopes are applied inside SQL before LIMIT; the response supplies nextCursor and limit. Default 100, maximum 200.",
         "x-roles": ["admin"],
         "responses": {
           "200": {
@@ -305,7 +305,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/PagedResult"
                 }
               }
             }
@@ -363,7 +363,15 @@
           "503": {
             "description": "Required upstream unavailable; command may be retried with the same key"
           }
-        }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
       },
       "post": {
         "operationId": "identity_post_memberships",
@@ -476,7 +484,7 @@
         "operationId": "crm_get_customers",
         "tags": ["crm"],
         "summary": "List scoped customers",
-        "description": "List scoped customers",
+        "description": "List scoped customers Authorization scopes are applied inside SQL before LIMIT; the response supplies nextCursor and limit. Default 100, maximum 200.",
         "x-roles": ["admin", "rep", "client", "finance", "delivery", "support"],
         "responses": {
           "200": {
@@ -484,7 +492,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/PagedResult"
                 }
               }
             }
@@ -542,7 +550,15 @@
           "503": {
             "description": "Required upstream unavailable; command may be retried with the same key"
           }
-        }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
       },
       "post": {
         "operationId": "crm_post_customers",
@@ -906,7 +922,7 @@
         "operationId": "crm_get_regions",
         "tags": ["crm"],
         "summary": "List tenant regions",
-        "description": "List tenant regions",
+        "description": "List tenant regions Authorization scopes are applied inside SQL before LIMIT; the response supplies nextCursor and limit. Default 100, maximum 200.",
         "x-roles": ["admin", "rep", "client", "finance", "delivery", "support"],
         "responses": {
           "200": {
@@ -914,7 +930,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/PagedResult"
                 }
               }
             }
@@ -972,7 +988,15 @@
           "503": {
             "description": "Required upstream unavailable; command may be retried with the same key"
           }
-        }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
       },
       "post": {
         "operationId": "crm_post_regions",
@@ -1080,7 +1104,7 @@
         "operationId": "sales_get_visits",
         "tags": ["sales"],
         "summary": "List assigned visits",
-        "description": "List assigned visits",
+        "description": "List assigned visits Authorization scopes are applied inside SQL before LIMIT; the response supplies nextCursor and limit. Default 100, maximum 200.",
         "x-roles": ["admin", "rep"],
         "responses": {
           "200": {
@@ -1088,7 +1112,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/PagedResult"
                 }
               }
             }
@@ -1146,7 +1170,15 @@
           "503": {
             "description": "Required upstream unavailable; command may be retried with the same key"
           }
-        }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
       },
       "post": {
         "operationId": "sales_post_visits",
@@ -1320,6 +1352,103 @@
             }
           }
         ]
+      },
+      "patch": {
+        "operationId": "sales_patch_visits_id",
+        "tags": ["sales"],
+        "summary": "Reschedule visit or edit active visit notes",
+        "description": "Only scheduled visits can change date/purpose. Active visits can update notes. Remove a stop from an open route before changing its UTC date.",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisitUpdate"
+              }
+            }
+          }
+        }
       }
     },
     "/v1/sales/visits/{id}/start": {
@@ -1525,7 +1654,7 @@
         "operationId": "sales_get_quotes",
         "tags": ["sales"],
         "summary": "List role-scoped quotes; client cannot read drafts",
-        "description": "List role-scoped quotes; client cannot read drafts",
+        "description": "List role-scoped quotes; client cannot read drafts Authorization scopes are applied inside SQL before LIMIT; the response supplies nextCursor and limit. Default 100, maximum 200.",
         "x-roles": ["admin", "rep", "client"],
         "responses": {
           "200": {
@@ -1533,7 +1662,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/PagedResult"
                 }
               }
             }
@@ -1591,13 +1720,21 @@
           "503": {
             "description": "Required upstream unavailable; command may be retried with the same key"
           }
-        }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
       },
       "post": {
         "operationId": "sales_post_quotes",
         "tags": ["sales"],
         "summary": "Prepare a draft snapshot during a started visit",
-        "description": "Total is computed from immutable line inputs in integer minor units; payment plan must sum exactly to total. Current CRM consent/assignment is checked.",
+        "description": "Requires published active service IDs, exact authoritative unit prices and tenant currency. Total=subtotal-discount in integer minor units; installments equal net total and first installment is at least 20%. Discounts over 15% and price-0 catalog custom pricing require admin approval before send. Current CRM ownership/consent is checked.",
         "x-roles": ["admin", "rep"],
         "responses": {
           "200": {
@@ -1896,6 +2033,11 @@
                   "expectedVersion": {
                     "type": "integer",
                     "minimum": 1
+                  },
+                  "discountMinor": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100000000000
                   }
                 },
                 "required": [
@@ -2016,7 +2158,7 @@
         "operationId": "sales_post_quotes_id_send",
         "tags": ["sales"],
         "summary": "Send a draft after rechecking CRM scope and expiry",
-        "description": "Send a draft after rechecking CRM scope and expiry",
+        "description": "Only a current-catalog draft with current customer ownership/consent can be sent. Over-15% discounts and custom pricing need approval matching the exact immutable content hash; changes invalidate approval.",
         "x-roles": ["admin", "rep"],
         "responses": {
           "200": {
@@ -2436,7 +2578,7 @@
         "operationId": "sales_get_contracts",
         "tags": ["sales"],
         "summary": "List scoped contracts",
-        "description": "List scoped contracts",
+        "description": "List scoped contracts Authorization scopes are applied inside SQL before LIMIT; the response supplies nextCursor and limit. Default 100, maximum 200.",
         "x-roles": ["admin", "rep", "client", "finance", "delivery"],
         "responses": {
           "200": {
@@ -2444,7 +2586,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/PagedResult"
                 }
               }
             }
@@ -2502,7 +2644,15 @@
           "503": {
             "description": "Required upstream unavailable; command may be retried with the same key"
           }
-        }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
       }
     },
     "/v1/sales/contracts/{id}": {
@@ -2781,7 +2931,7 @@
         "operationId": "delivery_get_projects",
         "tags": ["delivery"],
         "summary": "List role-scoped projects",
-        "description": "List role-scoped projects",
+        "description": "List role-scoped projects Authorization scopes are applied inside SQL before LIMIT; the response supplies nextCursor and limit. Default 100, maximum 200.",
         "x-roles": ["admin", "delivery", "rep", "client"],
         "responses": {
           "200": {
@@ -2789,7 +2939,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/PagedResult"
                 }
               }
             }
@@ -2847,7 +2997,15 @@
           "503": {
             "description": "Required upstream unavailable; command may be retried with the same key"
           }
-        }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
       }
     },
     "/v1/delivery/projects/{id}": {
@@ -3602,7 +3760,7 @@
         "operationId": "billing_get_invoices",
         "tags": ["billing"],
         "summary": "List scoped invoices",
-        "description": "List scoped invoices",
+        "description": "List scoped invoices Authorization scopes are applied inside SQL before LIMIT; the response supplies nextCursor and limit. Default 100, maximum 200.",
         "x-roles": ["admin", "finance", "rep", "client"],
         "responses": {
           "200": {
@@ -3610,7 +3768,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/PagedResult"
                 }
               }
             }
@@ -3668,7 +3826,15 @@
           "503": {
             "description": "Required upstream unavailable; command may be retried with the same key"
           }
-        }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
       }
     },
     "/v1/billing/invoices/{id}": {
@@ -3762,7 +3928,7 @@
         "operationId": "billing_get_invoices_id_payments",
         "tags": ["billing"],
         "summary": "Read payment ledger",
-        "description": "Read payment ledger",
+        "description": "Read payment ledger Authorization scopes are applied inside SQL before LIMIT; the response supplies nextCursor and limit. Default 100, maximum 200.",
         "x-roles": ["admin", "finance", "rep", "client"],
         "responses": {
           "200": {
@@ -3770,7 +3936,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/PagedResult"
                 }
               }
             }
@@ -3839,6 +4005,12 @@
               "minLength": 1,
               "maxLength": 100
             }
+          },
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
           }
         ]
       },
@@ -4552,7 +4724,7 @@
         "operationId": "communications_get_notifications",
         "tags": ["communications"],
         "summary": "Read scoped in-app notifications",
-        "description": "Read scoped in-app notifications",
+        "description": "Read scoped in-app notifications Authorization scopes are applied inside SQL before LIMIT; the response supplies nextCursor and limit. Default 100, maximum 200.",
         "x-roles": ["admin", "support", "rep", "client"],
         "responses": {
           "200": {
@@ -4560,7 +4732,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/PagedResult"
                 }
               }
             }
@@ -4618,7 +4790,15 @@
           "503": {
             "description": "Required upstream unavailable; command may be retried with the same key"
           }
-        }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
       }
     },
     "/v1/communications/notifications/{id}/read": {
@@ -4725,7 +4905,7 @@
         "operationId": "communications_get_tickets",
         "tags": ["communications"],
         "summary": "List own or support tickets",
-        "description": "List own or support tickets",
+        "description": "List own or support tickets Authorization scopes are applied inside SQL before LIMIT; the response supplies nextCursor and limit. Default 100, maximum 200.",
         "x-roles": ["admin", "support", "rep", "client"],
         "responses": {
           "200": {
@@ -4733,7 +4913,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/PagedResult"
                 }
               }
             }
@@ -4791,7 +4971,15 @@
           "503": {
             "description": "Required upstream unavailable; command may be retried with the same key"
           }
-        }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
       },
       "post": {
         "operationId": "communications_post_tickets",
@@ -5187,6 +5375,2557 @@
           }
         }
       }
+    },
+    "/v1/identity/me/profile": {
+      "patch": {
+        "operationId": "identity_patch_me_profile",
+        "tags": ["identity"],
+        "summary": "Update own display profile without changing access claims",
+        "description": "expectedVersion is 0 for first save. Only displayName, phone, locale and IANA timeZone can be edited. Email verification, credentials, roles and memberships remain with the identity provider.",
+        "x-roles": ["admin", "rep", "client", "finance", "delivery", "support"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/crm/configuration": {
+      "get": {
+        "operationId": "crm_get_configuration",
+        "tags": ["crm"],
+        "summary": "Read tenant questionnaire and catalog configuration",
+        "description": "source default is a template for administration. /catalog returns no priced items until a tenant configuration is published.",
+        "x-roles": ["admin", "rep", "client", "finance", "delivery", "support"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        }
+      },
+      "put": {
+        "operationId": "crm_put_configuration",
+        "tags": ["crm"],
+        "summary": "Publish validated tenant questionnaire and price catalog",
+        "description": "Publish validated tenant questionnaire and price catalog",
+        "x-roles": ["admin"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenantConfigurationInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/crm/catalog": {
+      "get": {
+        "operationId": "crm_get_catalog",
+        "tags": ["crm"],
+        "summary": "Read active published tenant prices",
+        "description": "Unconfigured tenant returns configured:false and items:[]. Positive published prices are authoritative. Price 0 denotes bespoke pricing which requires administrative approval of each exact quote.",
+        "x-roles": ["admin", "rep", "client", "finance", "delivery", "support"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "configured": {
+                      "type": "boolean"
+                    },
+                    "recordVersion": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 100000000000
+                    },
+                    "currency": {
+                      "type": "string",
+                      "pattern": "^[A-Z]{3}$"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/CatalogInput"
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "unitPriceMinor": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 100000000000
+                              }
+                            },
+                            "required": []
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "required": ["configured", "recordVersion", "currency", "items"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        }
+      }
+    },
+    "/v1/crm/customers/{id}/discovery": {
+      "get": {
+        "operationId": "crm_get_customers_id_discovery",
+        "tags": ["crm"],
+        "summary": "Read scoped customer discovery",
+        "description": "Read scoped customer discovery",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "record": {
+                      "type": ["object", "null"]
+                    }
+                  },
+                  "required": []
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "crm_put_customers_id_discovery",
+        "tags": ["crm"],
+        "summary": "Save versioned answers against published questionnaire",
+        "description": "A published tenant configuration and exact configurationRevision are required. Unknown or inapplicable answer keys are rejected. Submitted answers must satisfy every required question; drafts may omit required answers but cannot contain invalid values.",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiscoveryInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sales/tasks": {
+      "get": {
+        "operationId": "sales_get_tasks",
+        "tags": ["sales"],
+        "summary": "List scoped tasks",
+        "description": "List scoped tasks",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
+      },
+      "post": {
+        "operationId": "sales_post_tasks",
+        "tags": ["sales"],
+        "summary": "Create task",
+        "description": "Customer association and representative assignment are immutable after creation. Personal tasks may have no customer; admin creation then requires repId.",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sales/tasks/{id}": {
+      "get": {
+        "operationId": "sales_get_tasks_id",
+        "tags": ["sales"],
+        "summary": "Read scoped task",
+        "description": "Read scoped task",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "sales_patch_tasks_id",
+        "tags": ["sales"],
+        "summary": "Update task",
+        "description": "Customer association and representative assignment are immutable after creation. Personal tasks may have no customer; admin creation then requires repId.",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskUpdate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sales/opportunities": {
+      "get": {
+        "operationId": "sales_get_opportunities",
+        "tags": ["sales"],
+        "summary": "List scoped opportunities",
+        "description": "List scoped opportunities",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
+      },
+      "post": {
+        "operationId": "sales_post_opportunities",
+        "tags": ["sales"],
+        "summary": "Create opportunity",
+        "description": "All writes verify the current CRM customer assignment. A won opportunity needs an approved matching customer contract; amount/currency are copied from that contract.",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OpportunityInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sales/opportunities/{id}": {
+      "get": {
+        "operationId": "sales_get_opportunities_id",
+        "tags": ["sales"],
+        "summary": "Read scoped opportunity",
+        "description": "Read scoped opportunity",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "sales_patch_opportunities_id",
+        "tags": ["sales"],
+        "summary": "Update opportunity",
+        "description": "All writes verify the current CRM customer assignment. A won opportunity needs an approved matching customer contract; amount/currency are copied from that contract.",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OpportunityUpdate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sales/routes": {
+      "get": {
+        "operationId": "sales_get_routes",
+        "tags": ["sales"],
+        "summary": "List scoped routes",
+        "description": "List scoped routes",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
+      },
+      "post": {
+        "operationId": "sales_post_routes",
+        "tags": ["sales"],
+        "summary": "Create visit route",
+        "description": "Route date is a UTC calendar date. Every stop must belong to one representative and date. A visit may belong to one open route; completion requires all stops to be completed/cancelled.",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RouteInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sales/routes/{id}": {
+      "get": {
+        "operationId": "sales_get_routes_id",
+        "tags": ["sales"],
+        "summary": "Read scoped visit route",
+        "description": "Read scoped visit route",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "sales_patch_routes_id",
+        "tags": ["sales"],
+        "summary": "Update visit route",
+        "description": "Route date is a UTC calendar date. Every stop must belong to one representative and date. A visit may belong to one open route; completion requires all stops to be completed/cancelled.",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RouteUpdate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sales/visits/{id}/cancel": {
+      "post": {
+        "operationId": "sales_post_visits_id_cancel",
+        "tags": ["sales"],
+        "summary": "Cancel scheduled or active visit",
+        "description": "Cancel scheduled or active visit",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "expectedVersion": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 1000
+                  }
+                },
+                "required": ["expectedVersion", "reason"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sales/quote-discount-approvals": {
+      "get": {
+        "operationId": "sales_get_quote_discount_approvals",
+        "tags": ["sales"],
+        "summary": "List scoped commercial approvals",
+        "description": "List scoped commercial approvals",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
+      }
+    },
+    "/v1/sales/quotes/{id}/discount-approval": {
+      "post": {
+        "operationId": "sales_post_quotes_id_discount_approval",
+        "tags": ["sales"],
+        "summary": "Request administrative approval of exact quote content",
+        "description": "Request administrative approval of exact quote content",
+        "x-roles": ["admin", "rep"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "expectedVersion": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 2000
+                  }
+                },
+                "required": ["expectedVersion", "reason"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sales/quote-discount-approvals/{id}/decision": {
+      "post": {
+        "operationId": "sales_post_quote_discount_approvals_id_decision",
+        "tags": ["sales"],
+        "summary": "Approve or reject a pending commercial exception",
+        "description": "Approve or reject a pending commercial exception",
+        "x-roles": ["admin"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "expectedVersion": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  },
+                  "decision": {
+                    "type": "string",
+                    "enum": ["approved", "rejected"]
+                  },
+                  "note": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 2000
+                  }
+                },
+                "required": ["expectedVersion", "decision", "note"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/communications/conversations": {
+      "get": {
+        "operationId": "communications_get_conversations",
+        "tags": ["communications"],
+        "summary": "List current scoped customer conversations",
+        "description": "List current scoped customer conversations",
+        "x-roles": ["admin", "rep", "client", "support"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ListCursor"
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
+      },
+      "post": {
+        "operationId": "communications_post_conversations",
+        "tags": ["communications"],
+        "summary": "Open or return conversation for current assignment",
+        "description": "Open or return conversation for current assignment",
+        "x-roles": ["admin", "rep", "client", "support"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "clientId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  }
+                },
+                "required": ["clientId"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/communications/conversations/{id}/messages": {
+      "get": {
+        "operationId": "communications_get_conversations_id_messages",
+        "tags": ["communications"],
+        "summary": "Read ordered paginated conversation messages",
+        "description": "Read ordered paginated conversation messages",
+        "x-roles": ["admin", "rep", "client", "support"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "conversation": {
+                      "type": "object"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "nextCursor": {
+                      "type": ["string", "null"]
+                    },
+                    "receipt": {
+                      "type": ["object", "null"]
+                    }
+                  },
+                  "required": ["conversation", "items", "nextCursor", "receipt"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]{0,15})$"
+            },
+            "description": "Message sequence cursor from nextCursor, starting at 0."
+          },
+          {
+            "$ref": "#/components/parameters/ListLimit"
+          }
+        ]
+      },
+      "post": {
+        "operationId": "communications_post_conversations_id_messages",
+        "tags": ["communications"],
+        "summary": "Persist an in-app customer conversation message",
+        "description": "expectedVersion is the conversation version. Fresh CRM assignment/consent is checked; rep/staff outbound contact is blocked after opt-out. No email/SMS/WhatsApp delivery is implied.",
+        "x-roles": ["admin", "rep", "client", "support"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "conversation": {
+                      "type": "object"
+                    },
+                    "message": {
+                      "type": "object"
+                    }
+                  },
+                  "required": ["conversation", "message"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "expectedVersion": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  },
+                  "body": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  }
+                },
+                "required": ["expectedVersion", "body"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/communications/conversations/{id}/read": {
+      "post": {
+        "operationId": "communications_post_conversations_id_read",
+        "tags": ["communications"],
+        "summary": "Record this authenticated actor read position",
+        "description": "expectedVersion is the conversation version. The referenced message must belong to this conversation. Read positions never move backwards and do not mark other actors as read.",
+        "x-roles": ["admin", "rep", "client", "support"],
+        "responses": {
+          "200": {
+            "description": "Successful operation. Resource responses include current version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or missing explicit consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or invalid access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role cannot perform the action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource absent or outside the caller scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, idempotency, ownership, state, expiry or balance conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required upstream unavailable; command may be retried with the same key"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "expectedVersion": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  },
+                  "lastMessageId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  }
+                },
+                "required": ["expectedVersion", "lastMessageId"]
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -5209,6 +7948,28 @@
           "maxLength": 160
         },
         "description": "Stable for retries of the exact same command by the same verified principal; reuse for other input or changed claims returns409."
+      },
+      "ListCursor": {
+        "name": "cursor",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "description": "Opaque cursor returned as nextCursor. Ordering uses immutable resource IDs; restart traversal to include concurrent insertions before the cursor."
+      },
+      "ListLimit": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200,
+          "default": 100
+        }
       }
     },
     "schemas": {
@@ -5317,7 +8078,7 @@
           "unitPriceMinor": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 1000000000
+            "maximum": 10000000000
           },
           "deliverables": {
             "type": "array",
@@ -5395,6 +8156,11 @@
             },
             "minItems": 1,
             "maxItems": 24
+          },
+          "discountMinor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000000000
           }
         },
         "required": ["visitId", "currency", "items", "terms", "validUntil", "paymentPlan"]
@@ -5470,7 +8236,87 @@
           },
           "notes": {
             "type": "string",
+            "minLength": 0,
             "maxLength": 3000
+          },
+          "businessType": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 100
+          },
+          "contactName": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 150
+          },
+          "address": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 500
+          },
+          "city": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 150
+          },
+          "source": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 100
+          },
+          "decisionMaker": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 150
+          },
+          "preferredContact": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 100
+          },
+          "bestTime": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 150
+          },
+          "painPoints": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 3000
+          },
+          "wishes": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 3000
+          },
+          "status": {
+            "type": "string",
+            "enum": ["new", "qualified", "customer", "lost"]
+          },
+          "budgetMinor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000000000
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "maxItems": 40,
+            "uniqueItems": true
+          },
+          "needs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "maxItems": 40,
+            "uniqueItems": true
           }
         },
         "required": ["name"]
@@ -5505,6 +8351,90 @@
           },
           "doNotContact": {
             "type": "boolean"
+          },
+          "businessType": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 100
+          },
+          "contactName": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 150
+          },
+          "address": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 500
+          },
+          "city": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 150
+          },
+          "source": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 100
+          },
+          "decisionMaker": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 150
+          },
+          "preferredContact": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 100
+          },
+          "bestTime": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 150
+          },
+          "painPoints": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 3000
+          },
+          "wishes": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 3000
+          },
+          "notes": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 3000
+          },
+          "status": {
+            "type": "string",
+            "enum": ["new", "qualified", "customer", "lost"]
+          },
+          "budgetMinor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000000000
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "maxItems": 40,
+            "uniqueItems": true
+          },
+          "needs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "maxItems": 40,
+            "uniqueItems": true
           }
         },
         "required": ["expectedVersion"]
@@ -5594,7 +8524,23 @@
           },
           "outcome": {
             "type": "string",
-            "enum": ["interested", "follow_up", "not_interested", "no_contact", "agreement"]
+            "enum": [
+              "interested",
+              "follow_up",
+              "not_interested",
+              "no_contact",
+              "agreement",
+              "ready_to_contract",
+              "no_decision_maker",
+              "closed",
+              "reschedule",
+              "no_budget",
+              "competitor",
+              "wrong_contact",
+              "do_not_contact",
+              "remote_meeting",
+              "needs_approval"
+            ]
           },
           "notes": {
             "type": "string",
@@ -5808,6 +8754,461 @@
           }
         },
         "required": ["subject", "category", "message"]
+      },
+      "PagedResult": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "nextCursor": {
+            "type": ["string", "null"],
+            "description": "Pass unchanged as cursor; null means the current traversal has no next page."
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200
+          }
+        },
+        "required": ["items", "nextCursor", "limit"]
+      },
+      "ProfileInput": {
+        "type": "object",
+        "properties": {
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 150
+          },
+          "phone": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 40
+          },
+          "locale": {
+            "type": "string",
+            "enum": ["ar", "en"]
+          },
+          "timeZone": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": ["expectedVersion", "displayName"],
+        "additionalProperties": false
+      },
+      "CatalogInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{2,60}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 150
+          },
+          "price": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100000000,
+            "multipleOf": 0.01
+          },
+          "category": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{2,60}$"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "short": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 300
+          },
+          "duration": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 100
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 100
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 200
+            },
+            "maxItems": 30
+          },
+          "deliverables": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 200
+            },
+            "maxItems": 30
+          },
+          "recommendationTags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 200
+            },
+            "maxItems": 30
+          }
+        },
+        "required": ["id", "title", "price", "category"]
+      },
+      "TenantConfigurationInput": {
+        "type": "object",
+        "properties": {
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "default": "SAR"
+          },
+          "definition": {
+            "type": "object",
+            "description": "Questionnaire Configuration from @elvorance/questionnaire; server validates activities, questions, choices, required fields and bounds."
+          },
+          "catalog": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CatalogInput"
+            },
+            "maxItems": 250
+          }
+        },
+        "required": ["expectedVersion", "definition", "catalog"]
+      },
+      "DiscoveryInput": {
+        "type": "object",
+        "properties": {
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "configurationRevision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000000000
+          },
+          "activityId": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 50
+          },
+          "answers": {
+            "type": "object",
+            "maxProperties": 500,
+            "additionalProperties": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 2000
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  },
+                  "maxItems": 60,
+                  "uniqueItems": true
+                }
+              ]
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": ["draft", "submitted"]
+          },
+          "notes": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 3000
+          }
+        },
+        "required": ["expectedVersion", "configurationRevision", "activityId", "answers", "status"]
+      },
+      "TaskInput": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": ["string", "null"],
+            "maxLength": 100
+          },
+          "repId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "title": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 200
+          },
+          "dueOn": {
+            "type": "string",
+            "format": "date"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["low", "normal", "high"]
+          },
+          "notes": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 3000
+          }
+        },
+        "required": ["title", "dueOn"]
+      },
+      "TaskUpdate": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": ["string", "null"],
+            "maxLength": 100
+          },
+          "repId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "title": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 200
+          },
+          "dueOn": {
+            "type": "string",
+            "format": "date"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["low", "normal", "high"]
+          },
+          "notes": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 3000
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "status": {
+            "type": "string",
+            "enum": ["open", "done", "cancelled"]
+          }
+        },
+        "required": ["expectedVersion"]
+      },
+      "OpportunityInput": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "title": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 200
+          },
+          "stage": {
+            "type": "string",
+            "enum": ["new", "qualified", "proposal", "negotiation", "won", "lost"]
+          },
+          "valueMinor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000000000
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "expectedCloseOn": {
+            "type": ["string", "null"],
+            "format": "date"
+          },
+          "notes": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 3000
+          },
+          "contractId": {
+            "type": ["string", "null"],
+            "maxLength": 100
+          }
+        },
+        "required": ["clientId", "title"]
+      },
+      "OpportunityUpdate": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "title": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 200
+          },
+          "stage": {
+            "type": "string",
+            "enum": ["new", "qualified", "proposal", "negotiation", "won", "lost"]
+          },
+          "valueMinor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000000000
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "expectedCloseOn": {
+            "type": ["string", "null"],
+            "format": "date"
+          },
+          "notes": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 3000
+          },
+          "contractId": {
+            "type": ["string", "null"],
+            "maxLength": 100
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          }
+        },
+        "required": ["expectedVersion"]
+      },
+      "RouteInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 150
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "visitIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "minItems": 1,
+            "maxItems": 40,
+            "uniqueItems": true
+          }
+        },
+        "required": ["name", "date", "visitIds"]
+      },
+      "RouteUpdate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 150
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "visitIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "minItems": 1,
+            "maxItems": 40,
+            "uniqueItems": true
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "status": {
+            "type": "string",
+            "enum": ["planned", "active", "completed", "cancelled"]
+          }
+        },
+        "required": ["expectedVersion"]
+      },
+      "VisitUpdate": {
+        "type": "object",
+        "properties": {
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "scheduledAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 2000
+          },
+          "notes": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 5000
+          }
+        },
+        "required": ["expectedVersion"]
       }
     }
   }

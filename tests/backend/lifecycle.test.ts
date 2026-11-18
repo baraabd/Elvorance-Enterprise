@@ -1,3 +1,4 @@
+import { catalogPrices } from './helpers.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import type { CustomerContext, Entity, EventEnvelope } from '@elvorance/contracts';
@@ -35,6 +36,7 @@ test('visit → quote → customer acceptance → explicit contract approval →
     repository: salesRepo,
     auth,
     customerDirectory: {
+      ...catalogPrices({ web: 100001, brand: 49999 }),
       async getCustomer(id, authorization) {
         const response = await crm.inject({
           method: 'GET',

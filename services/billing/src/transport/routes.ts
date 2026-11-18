@@ -1,6 +1,8 @@
 import type { FastifyInstance } from 'fastify';
 import {
   command,
+  actorScopes,
+  pageOptions,
   isOwner,
   notFound,
   requireOwner,
@@ -11,11 +13,12 @@ import type { ContractAccount, Invoice, Payment } from '../domain/model.ts';
 import { invoice, recordPayment } from '../application/payments.ts';
 export function registerRoutes(app: FastifyInstance, repository: Repository): void {
   app.get('/v1/invoices', async (request) =>
-    repository.transaction(request.principal.tenantId, async (tx) => ({
-      items: (await tx.list<Invoice>('invoices')).filter((value) =>
-        isOwner(request.principal, value, ['admin', 'finance']),
+    repository.transaction(request.principal.tenantId, (tx) =>
+      tx.page<Invoice>(
+        'invoices',
+        pageOptions(request.query, actorScopes(request.principal, ['admin', 'finance'])),
       ),
-    })),
+    ),
   );
   app.get('/v1/invoices/:id', async (request) =>
     repository.transaction(request.principal.tenantId, (tx) =>
@@ -25,7 +28,10 @@ export function registerRoutes(app: FastifyInstance, repository: Repository): vo
   app.get('/v1/invoices/:id/payments', async (request) =>
     repository.transaction(request.principal.tenantId, async (tx) => {
       const value = await invoice(tx, request.principal, routeId(request));
-      return { items: await tx.list<Payment>('payments', { invoiceId: value.id }) };
+      return tx.page<Payment>(
+        'payments',
+        pageOptions(request.query, [{ equals: { invoiceId: value.id } }]),
+      );
     }),
   );
   app.post('/v1/invoices/:id/payments', async (request) =>
