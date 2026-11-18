@@ -4,7 +4,7 @@ import { button, card, detail, el, heading, words } from '../ui/dom.ts';
 import { commandForm } from '../ui/forms.ts';
 
 export async function account(context: ViewContext): Promise<void> {
-  const { profile } = await context.api.get<RepIdentity>('/v1/identity/me', {
+  const { profile, profileVersion } = await context.api.get<RepIdentity>('/v1/identity/me', {
     signal: context.signal,
   });
   if (context.signal.aborted) return;
@@ -46,7 +46,7 @@ export async function account(context: ViewContext): Promise<void> {
         await context.api.mutate(
           'PATCH',
           '/v1/identity/me/profile',
-          { ...values, expectedVersion: profile?.version ?? 0 },
+          { ...values, expectedVersion: profileVersion ?? 0 },
           context.signal,
         );
         context.notify('تم تحديث الحساب.');

@@ -1,5 +1,6 @@
 import { repReleaseConfig } from '../rep-release/release-config.mts';
 import { nativeIdentity, releaseVersion } from './config.mts';
+import { domains } from '../../../infra/environments/topology.mts';
 
 const config = repReleaseConfig();
 releaseVersion();
@@ -16,11 +17,22 @@ if (
 ) {
   throw new Error('OIDC discovery does not match the native authorization endpoint pin.');
 }
-const health = await fetch(`${config.apiBaseUrl}/health`, {
+const health = await fetch(`${config.apiBaseUrl}/ready`, {
   signal: AbortSignal.timeout(15000),
   redirect: 'error',
 });
-if (!health.ok) throw new Error('The selected gateway is not healthy.');
+if (!health.ok) throw new Error('The selected gateway and its services are not ready.');
+const readiness = (await health.json()) as {
+  service?: string;
+  status?: string;
+  dependencies?: Record<string, unknown>;
+};
+if (
+  readiness.service !== 'api-gateway' ||
+  readiness.status !== 'ready' ||
+  !domains.every((name) => readiness.dependencies?.[name] === true)
+)
+  throw new Error('The selected gateway did not verify readiness of all domain services.');
 console.log(
   `Release configuration and endpoint readiness checked for ${config.environment}. This is not device acceptance.`,
 );

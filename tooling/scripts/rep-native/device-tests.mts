@@ -1,4 +1,4 @@
-import { chmod, mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { repositoryRoot, sha256 } from '../rep-release/build-proof.mts';
 import { repReleaseConfig } from '../rep-release/release-config.mts';
@@ -28,10 +28,9 @@ if (platform === 'android') {
     throw new Error('The selected Android target is offline or is an emulator.');
   }
   const nativeRoot = resolve(repositoryRoot, 'apps/rep-mobile/android');
-  await chmod(resolve(nativeRoot, 'gradlew'), 0o755);
   run(
-    './gradlew',
-    ['--no-daemon', 'assembleStagingDebug', 'assembleStagingDebugAndroidTest'],
+    'sh',
+    ['./gradlew', '--no-daemon', 'assembleStagingDebug', 'assembleStagingDebugAndroidTest'],
     nativeRoot,
   );
   const apk = resolve(nativeRoot, 'app/build/outputs/apk/staging/debug/app-staging-debug.apk');

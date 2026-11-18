@@ -1,19 +1,20 @@
-import { resolve, isAbsolute } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
+import { environmentSourceRoot, privateSecretPath } from './private-path.mts';
+import { environmentSecretNames } from './secrets.mts';
 import {
   domains,
   services,
   ports,
   validateEnvironment,
+  validatedWebOrigins,
   type EnvironmentSpec,
   type ServiceName,
 } from './topology.mts';
 
-const root = fileURLToPath(new URL('../../', import.meta.url));
+const root = environmentSourceRoot;
 export function composeEnvironment(spec: EnvironmentSpec) {
   validateEnvironment(spec);
-  if (!isAbsolute(spec.secretsDirectory))
-    throw new Error('secretsDirectory must be an absolute directory outside the repository.');
+  privateSecretPath(spec.secretsDirectory);
   const name = `elvorance-${spec.environment}`;
   const common = {
     NODE_ENV: 'production',
@@ -25,14 +26,6 @@ export function composeEnvironment(spec: EnvironmentSpec) {
     OIDC_JWKS_URL: `${spec.issuer}/protocol/openid-connect/certs`,
     AUTO_MIGRATE: 'false',
   };
-  const secretNames = [
-    'postgres_admin_password',
-    'oidc_database_password',
-    'oidc_admin_password',
-    'rabbitmq_password',
-    'rabbitmq_url',
-    ...domains.flatMap((domain) => [`${domain}_db_password`, `${domain}_database_url`]),
-  ];
   const runtime = (service: ServiceName) => ({
     image: spec.images[service],
     init: true,
@@ -64,7 +57,11 @@ export function composeEnvironment(spec: EnvironmentSpec) {
       PORT: String(ports[service]),
       ...(service === 'api-gateway'
         ? {
-            CORS_ORIGINS: 'https://localhost,capacitor://localhost',
+            CORS_ORIGINS: [
+              'https://localhost',
+              'capacitor://localhost',
+              ...validatedWebOrigins(spec.webOrigins),
+            ].join(','),
             ...Object.fromEntries(
               domains.map((domain) => [
                 `${domain.toUpperCase()}_URL`,
@@ -88,6 +85,7 @@ export function composeEnvironment(spec: EnvironmentSpec) {
       restart: 'unless-stopped',
       networks: ['data'],
       environment: {
+        PGDATA: '/var/lib/postgresql/elvorance',
         POSTGRES_USER: 'postgres',
         POSTGRES_DB: 'postgres',
         POSTGRES_PASSWORD_FILE: '/run/secrets/postgres_admin_password',
@@ -100,12 +98,12 @@ export function composeEnvironment(spec: EnvironmentSpec) {
       },
       secrets: ['postgres_admin_password', ...domains.map((domain) => `${domain}_db_password`)],
       volumes: [
-        'domain-data:/var/lib/postgresql/data',
+        'domain-data:/var/lib/postgresql',
         `${resolve(root, 'infra/compose/postgres/010-service-databases.sh')}:/docker-entrypoint-initdb.d/010-service-databases.sh:ro`,
         `${resolve(root, 'infra/compose/postgres/check-isolation.sh')}:/opt/elvorance/check-isolation.sh:ro`,
       ],
       healthcheck: {
-        test: ['CMD-SHELL', 'pg_isready -U postgres -d postgres'],
+        test: ['CMD', 'pg_isready', '-h', '127.0.0.1', '-U', 'postgres', '-d', 'postgres'],
         interval: '5s',
         timeout: '5s',
         retries: 20,
@@ -116,14 +114,15 @@ export function composeEnvironment(spec: EnvironmentSpec) {
       restart: 'unless-stopped',
       networks: ['identity-data'],
       environment: {
+        PGDATA: '/var/lib/postgresql/elvorance',
         POSTGRES_USER: 'keycloak',
         POSTGRES_DB: 'keycloak',
         POSTGRES_PASSWORD_FILE: '/run/secrets/oidc_database_password',
       },
       secrets: ['oidc_database_password'],
-      volumes: ['identity-data:/var/lib/postgresql/data'],
+      volumes: ['identity-data:/var/lib/postgresql'],
       healthcheck: {
-        test: ['CMD-SHELL', 'pg_isready -U keycloak -d keycloak'],
+        test: ['CMD', 'pg_isready', '-h', '127.0.0.1', '-U', 'keycloak', '-d', 'keycloak'],
         interval: '5s',
         timeout: '5s',
         retries: 20,
@@ -131,6 +130,7 @@ export function composeEnvironment(spec: EnvironmentSpec) {
     },
     rabbitmq: {
       image: spec.images.rabbitmq,
+      hostname: `${name}-rabbitmq`,
       restart: 'unless-stopped',
       networks: ['mesh'],
       environment: {
@@ -217,7 +217,10 @@ export function composeEnvironment(spec: EnvironmentSpec) {
     name,
     services: entries,
     secrets: Object.fromEntries(
-      secretNames.map((secret) => [secret, { file: resolve(spec.secretsDirectory, secret) }]),
+      environmentSecretNames.map((secret) => [
+        secret,
+        { file: resolve(spec.secretsDirectory, secret) },
+      ]),
     ),
     volumes: Object.fromEntries(
       ['domain-data', 'identity-data', 'events-data', 'tls-data', 'tls-config'].map((volume) => [

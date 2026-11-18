@@ -11,6 +11,7 @@ export interface AdminClient {
   get(path: string): Promise<unknown>;
   exists(path: string): Promise<boolean>;
   write(method: 'POST' | 'PUT', path: string, body: unknown): Promise<void>;
+  remove(path: string): Promise<void>;
 }
 
 /** Admin tokens stay in the process and are never written into generated realm/app settings. */
@@ -29,7 +30,11 @@ export function createAdminClient(
     throw new Error('A dedicated HTTPS identity origin and valid admin token are required.');
   }
   async function request(method: string, path: string, body?: unknown): Promise<Response> {
-    if (!path.startsWith('/admin/realms') || path.includes('..') || path.startsWith('//')) {
+    if (
+      (!path.startsWith('/admin/realms') && !(path === '/admin/serverinfo' && method === 'GET')) ||
+      path.includes('..') ||
+      path.startsWith('//')
+    ) {
       throw new Error('Unsupported identity administration path.');
     }
     const url = new URL(path, base);
@@ -77,6 +82,11 @@ export function createAdminClient(
     },
     async write(method, path, body) {
       const response = await request(method, path, body);
+      success(response);
+      await response.body?.cancel();
+    },
+    async remove(path) {
+      const response = await request('DELETE', path);
       success(response);
       await response.body?.cancel();
     },

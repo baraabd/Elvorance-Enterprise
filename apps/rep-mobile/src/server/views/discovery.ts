@@ -9,10 +9,11 @@ export async function discoveryForm(
   customer: RecordValue,
 ): Promise<HTMLFormElement> {
   const [configuration, saved] = await Promise.all([
-    context.api.get<{ definition: Configuration; catalog: unknown[]; source: string }>(
-      '/v1/crm/configuration',
-      { signal: context.signal },
-    ),
+    context.api.get<{
+      definition: Configuration;
+      catalog: { id: string; title: string; active?: boolean }[];
+      source: string;
+    }>('/v1/crm/configuration', { signal: context.signal }),
     context.api.get<{ record: RecordValue | null }>(
       `/v1/crm/customers/${idPath(customer.id)}/discovery`,
       { signal: context.signal },
@@ -104,7 +105,12 @@ export async function discoveryForm(
                 : question.type === 'number'
                   ? 'number'
                   : 'textarea',
-          options: question.options.map((option) => ({ value: option.id, label: option.label })),
+          options:
+            question.id === 'solutions'
+              ? configuration.catalog
+                  .filter((service) => service.active !== false)
+                  .map((service) => ({ value: service.id, label: service.title }))
+              : question.options.map((option) => ({ value: option.id, label: option.label })),
           ...(question.min !== null ? { min: question.min } : {}),
           ...(question.max !== null ? { max: question.max } : {}),
           hint: question.required ? 'مطلوب عند اعتماد الإجابات' : '',

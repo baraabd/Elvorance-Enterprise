@@ -3,7 +3,6 @@ import {
   command,
   actorScopes,
   pageOptions,
-  isOwner,
   notFound,
   requireOwner,
   routeId,

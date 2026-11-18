@@ -1,6 +1,7 @@
-import { readFile, realpath } from 'node:fs/promises';
-import { resolve, relative, isAbsolute } from 'node:path';
+import { readFile, realpath, stat } from 'node:fs/promises';
+import { resolve, relative, isAbsolute, extname, sep } from 'node:path';
 import { sha256 } from './build-proof.mts';
+import { imageNames, immutableImagePattern } from '../../../infra/environments/topology.mts';
 
 export const requiredScenarios = [
   'oidc-pkce-login',
@@ -65,16 +66,6 @@ export interface StagingAcceptance {
   devices: DeviceAcceptance[];
   evidence: EvidenceFile[];
 }
-const serviceNames = [
-  'api-gateway',
-  'identity',
-  'crm',
-  'sales',
-  'delivery',
-  'billing',
-  'tracking',
-  'communications',
-];
 function ensure(value: unknown, message: string): asserts value {
   if (!value) throw new Error('Staging acceptance rejected: ' + message);
 }
@@ -87,7 +78,7 @@ function secure(value: unknown): URL {
       !url.password &&
       !url.hash &&
       !url.search &&
-      !['localhost', '127.0.0.1'].includes(url.hostname),
+      !['localhost', '127.0.0.1', '[::1]'].includes(url.hostname),
     'invalid staging endpoint',
   );
   return url;
@@ -123,7 +114,9 @@ export function validateAcceptance(
   const gateway = secure(report.staging.gateway);
   const issuer = secure(report.staging.issuer);
   ensure(
-    gateway.pathname === '/' && issuer.pathname === '/realms/elvorance-staging',
+    gateway.pathname === '/' &&
+      issuer.pathname === '/realms/elvorance-staging' &&
+      gateway.hostname !== issuer.hostname,
     'staging gateway or realm mismatch',
   );
   ensure(
@@ -143,17 +136,28 @@ export function validateAcceptance(
   ] as const) {
     ensure(report.checks?.[check] === 'passed', `${check} did not pass`);
   }
-  for (const service of serviceNames)
+  for (const service of imageNames)
     ensure(
       typeof report.serviceImages?.[service] === 'string' &&
-        /^[a-zA-Z0-9./_-]+@sha256:[a-f0-9]{64}$/.test(report.serviceImages[service]!),
+        immutableImagePattern.test(report.serviceImages[service]!),
       `immutable image missing for ${service}`,
     );
   ensure(Array.isArray(report.devices), 'physical-device reports missing');
   for (const platform of ['android', 'ios'] as const) {
-    const device = report.devices.find((entry) => entry.platform === platform);
     ensure(
-      device && device.physical === true && device.model && device.osVersion,
+      report.devices.some((entry) => entry?.platform === platform),
+      `physical ${platform} evidence missing`,
+    );
+  }
+  for (const device of report.devices) {
+    ensure(device && ['android', 'ios'].includes(device.platform), 'unknown device platform');
+    const platform = device.platform;
+    ensure(
+      device.physical === true &&
+        typeof device.model === 'string' &&
+        device.model.trim().length > 0 &&
+        typeof device.osVersion === 'string' &&
+        device.osVersion.trim().length > 0,
       `physical ${platform} evidence missing`,
     );
     ensure(
@@ -167,6 +171,17 @@ export function validateAcceptance(
     ensure(
       Array.isArray(device.evidence) && device.evidence.length >= 1,
       `${platform} test files missing`,
+    );
+    const extension = platform === 'android' ? '.aab' : '.ipa';
+    ensure(
+      device.evidence.some(
+        (entry) =>
+          entry &&
+          typeof entry.path === 'string' &&
+          extname(entry.path).toLowerCase() === extension &&
+          entry.sha256 === device.signedArtifactSha256,
+      ),
+      `${platform} signed ${extension} must be included as matching evidence`,
     );
   }
   ensure(
@@ -182,15 +197,20 @@ export async function verifyEvidence(report: StagingAcceptance, directory: strin
     ...report.devices.flatMap((device) => device.evidence),
   ]) {
     ensure(
-      typeof evidence.path === 'string' && /^[a-f0-9]{64}$/.test(evidence.sha256),
+      evidence &&
+        typeof evidence.path === 'string' &&
+        !isAbsolute(evidence.path) &&
+        /^[a-f0-9]{64}$/.test(evidence.sha256),
       'invalid evidence reference',
     );
     const file = await realpath(resolve(base, evidence.path));
     const path = relative(base, file);
     ensure(
-      path && !path.startsWith('..') && !isAbsolute(path),
+      path && path !== '..' && !path.startsWith('..' + sep) && !isAbsolute(path),
       'evidence escapes the acceptance artifact',
     );
+    const details = await stat(file);
+    ensure(details.isFile() && details.size > 0, 'evidence must reference a nonempty regular file');
     ensure(
       sha256(await readFile(file)) === evidence.sha256,
       `evidence digest differs: ${evidence.path}`,

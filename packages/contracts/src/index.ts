@@ -1,4 +1,6 @@
 /** Wire contracts only. Business rules remain inside their owning service. */
+export type { ServiceCatalogItem } from './catalog.ts';
+
 export const roles = ['admin', 'rep', 'client', 'finance', 'delivery', 'support'] as const;
 export type Role = (typeof roles)[number];
 export interface Principal {

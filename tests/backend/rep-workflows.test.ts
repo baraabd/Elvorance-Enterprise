@@ -247,6 +247,23 @@ test('discovery validates published schema, answer types, version conflicts and 
 
 test('profile editing never grants access claims and private customer fields stay internal', async (t) => {
   const f = await repFixture(t);
+  assert.equal(
+    (
+      await call(f.identity, 'POST', '/v1/memberships', 'admin', {
+        subject: 'rep-user-a',
+        displayName: 'Legacy membership name',
+        roles: ['rep'],
+      })
+    ).status,
+    200,
+  );
+  const initialIdentity = (await call(f.identity, 'GET', '/v1/me', 'rep')).body;
+  assert.equal(initialIdentity.profile.version, 1);
+  assert.equal(
+    initialIdentity.profileVersion,
+    0,
+    'A membership version is never used as the personal profile version',
+  );
   const profile = await call(f.identity, 'PATCH', '/v1/me/profile', 'rep', {
     expectedVersion: 0,
     displayName: 'Representative Name',

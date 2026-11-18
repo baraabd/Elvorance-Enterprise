@@ -2,7 +2,7 @@ import type { ViewContext } from '../context.ts';
 import { amount, card, dateText, detail, el, heading, rows, statusText, words } from '../ui/dom.ts';
 import { editorButton, type Field } from '../ui/forms.ts';
 import { choices, editForm } from './common.ts';
-import type { Resource } from '../api.ts';
+import type { RecordValue, Resource } from '../api.ts';
 import { minorUnits } from '../ui/repeating-fields.ts';
 
 async function collection(
@@ -16,6 +16,7 @@ async function collection(
     value: Awaited<ReturnType<ViewContext['api']['list']>>[number],
   ) => void,
   transform: (values: Record<string, unknown>) => Record<string, unknown> = (values) => values,
+  editFields: (fields: Field[], value: RecordValue) => Field[] = (fields) => fields,
 ): Promise<void> {
   const items = await context.api.list(resource, context.signal);
   if (context.signal.aborted) return;
@@ -37,7 +38,15 @@ async function collection(
       editorButton(
         'تعديل',
         node,
-        () => editForm(context, resource, 'تعديل', [...fields, ...extra], value, transform),
+        () =>
+          editForm(
+            context,
+            resource,
+            'تعديل',
+            editFields([...fields, ...extra], value),
+            value,
+            transform,
+          ),
         context.signal,
       ),
     );
@@ -148,12 +157,26 @@ export async function opportunities(context: ViewContext): Promise<void> {
       expectedCloseOn: values.expectedCloseOn || null,
       ...(values.contractId ? {} : { contractId: undefined }),
     }),
+    (fields, value) =>
+      fields.map((field) =>
+        field.name === 'clientId'
+          ? {
+              ...field,
+              options: [{ value: String(value.clientId), label: words(value.customerName) }],
+            }
+          : field,
+      ),
   );
 }
 export async function routes(context: ViewContext): Promise<void> {
-  const visits = (await context.api.list('visits', context.signal)).filter(
-    (value) => value.status !== 'cancelled',
-  );
+  const visits = await context.api.list('visits', context.signal);
+  const visitChoices = (existingIds: unknown[] = []) =>
+    visits
+      .filter((value) => value.status !== 'cancelled' || existingIds.includes(value.id))
+      .map((value) => ({
+        value: value.id,
+        label: `${words(value.customerName)} · ${dateText(value.scheduledAt)} · ${statusText(value.status)}`,
+      }));
   await collection(
     context,
     'routes',
@@ -166,10 +189,7 @@ export async function routes(context: ViewContext): Promise<void> {
         label: 'زيارات الخطة',
         type: 'multiselect',
         required: true,
-        options: visits.map((value) => ({
-          value: value.id,
-          label: `${words(value.customerName)} · ${dateText(value.scheduledAt)}`,
-        })),
+        options: visitChoices(),
         hint: 'اختر زيارات مجدولة في يوم الخطة نفسه.',
       },
     ],
@@ -196,5 +216,12 @@ export async function routes(context: ViewContext): Promise<void> {
         );
       node.append(list);
     },
+    (values) => values,
+    (fields, value) =>
+      fields.map((field) =>
+        field.name === 'visitIds'
+          ? { ...field, options: visitChoices(Array.isArray(value.visitIds) ? value.visitIds : []) }
+          : field,
+      ),
   );
 }

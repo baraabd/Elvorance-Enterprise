@@ -102,14 +102,12 @@ export async function quoteEditor(
         };
       });
       const discountMinor = minorUnits(values.discount);
-      const paymentPlan = installments
-        .values()
-        .map((row) => ({
-          id: row.id,
-          label: row.label,
-          amountMinor: minorUnits(row.amount),
-          dueOn: row.dueOn || null,
-        }));
+      const paymentPlan = installments.values().map((row) => ({
+        id: row.id,
+        label: row.label,
+        amountMinor: minorUnits(row.amount),
+        dueOn: row.dueOn || null,
+      }));
       const subtotal = items.reduce(
         (total, item) => total + item.quantity * item.unitPriceMinor,
         0,

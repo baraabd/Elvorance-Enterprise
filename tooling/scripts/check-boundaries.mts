@@ -28,8 +28,8 @@ const packageRules = {
   'design-system': [],
   'app-runtime': [...frontendPackages, 'contracts'],
   'demo-data': ['contracts', 'questionnaire'],
-  questionnaire: [],
-  'api-client': ['contracts', 'mobile-platform'],
+  questionnaire: ['contracts'],
+  'api-client': ['contracts', 'mobile-platform', 'mobile-auth'],
   'mobile-platform': ['contracts'],
   'mobile-auth': [],
 };

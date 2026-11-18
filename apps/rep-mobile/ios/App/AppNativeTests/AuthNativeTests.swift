@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 @testable import App
 
 final class AuthNativeTests: XCTestCase {
@@ -16,6 +17,16 @@ final class AuthNativeTests: XCTestCase {
     override func tearDownWithError() throws {
         try store.remove("auth-session")
         try store.remove("auth-transaction")
+    }
+
+    @MainActor func testHostRegistersSecureAuthBridge() {
+        let controller = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .compactMap { $0.rootViewController as? RepBridgeViewController }
+            .first
+        XCTAssertNotNil(controller, "The application must use its native bridge controller")
+        XCTAssertNotNil(controller?.bridge?.plugin(withName: "ElvoranceAuthBridge"))
     }
 
     func testKeychainRoundTripIsolationAndRemoval() throws {

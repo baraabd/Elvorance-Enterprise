@@ -8,9 +8,31 @@ import {
 } from '../rep-release/build-proof.mts';
 import { nativeConfig } from './config.mts';
 import { packagedConfigHash } from './packaged-config.mts';
+import { capture } from './process.mts';
 
 export async function assertNativePrepared(platform: 'android' | 'ios'): Promise<RepBuildManifest> {
   const manifest = await assertRepBuild();
+  if (capture('git', ['rev-parse', 'HEAD']) !== manifest.sourceRevision) {
+    throw new Error(
+      'The release build was produced from a different source revision. Rebuild before signing or device tests.',
+    );
+  }
+  const nativeChanges = capture('git', [
+    'status',
+    '--porcelain',
+    '--untracked-files=normal',
+    '--',
+    'apps/rep-mobile/android',
+    'apps/rep-mobile/ios',
+    'apps/rep-mobile/capacitor.config.json',
+    'tooling/scripts/rep-native',
+    '.github/workflows/rep-native-release.yml',
+  ]);
+  if (nativeChanges) {
+    throw new Error(
+      'Native release source has uncommitted changes. Commit the reviewed native source before signing or physical-device tests.',
+    );
+  }
   const config = nativeConfig();
   const metadata = JSON.parse(
     await readFile(resolve(repositoryRoot, `dist/rep-native/${platform}-prepared.json`), 'utf8'),

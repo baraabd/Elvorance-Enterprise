@@ -5,6 +5,7 @@ export type RecordValue = Entity & Record<string, unknown>;
 export interface RepIdentity {
   principal: Principal;
   profile: RecordValue | null;
+  profileVersion: number;
 }
 export const resourcePaths = {
   customers: '/v1/crm/customers',

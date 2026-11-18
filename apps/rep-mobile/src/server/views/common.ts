@@ -9,12 +9,10 @@ export async function choices(
   label = 'name',
   filter: (item: RecordValue) => boolean = () => true,
 ): Promise<Choice[]> {
-  return (await context.api.list(resource, context.signal))
-    .filter(filter)
-    .map((item) => ({
-      value: item.id,
-      label: words(item[label], words(item.customerName, item.id)),
-    }));
+  return (await context.api.list(resource, context.signal)).filter(filter).map((item) => ({
+    value: item.id,
+    label: words(item[label], words(item.customerName, item.id)),
+  }));
 }
 export function editForm(
   context: ViewContext,

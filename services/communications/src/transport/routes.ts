@@ -12,7 +12,6 @@ import {
   replyTicket,
   statusTicket,
   ticket,
-  visible,
 } from '../application/tickets.ts';
 import type { Notification, Ticket } from '../domain/model.ts';
 export function registerRoutes(app: FastifyInstance, repository: Repository): void {

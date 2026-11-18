@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { call } from './helpers.ts';
 import { repFixture } from './rep-fixture.ts';
+import { createApp as communicationsApp } from '../../services/communications/src/app.ts';
 
 test('catalog authority prevents hiding discounts in unit prices and rejects foreign currencies', async (t) => {
   const f = await repFixture(t);
@@ -214,6 +215,36 @@ test('outbound messages respect contact withdrawal and stale rep replay cannot e
     })
   ).body;
   assert.equal(customer.doNotContact, true);
+  assert.equal(
+    (
+      await call(f.crm, 'PATCH', `/v1/customers/${f.customer.id}`, 'rep', {
+        expectedVersion: customer.version,
+        doNotContact: false,
+      })
+    ).status,
+    403,
+  );
+  const dualRole = communicationsApp({
+    repository: f.communicationsRepository,
+    customerDirectory: f.directory,
+    auth: async () => ({
+      sub: 'rep-user-a',
+      tenantId: 'tenant-a',
+      roles: ['rep', 'client'],
+      repId: 'rep-a',
+      clientId: 'unrelated-client',
+    }),
+  });
+  t.after(() => dualRole.close());
+  assert.equal(
+    (
+      await call(dualRole, 'POST', path, 'rep', {
+        expectedVersion: sent.body.conversation.version,
+        body: 'A client role from another customer cannot override opt-out',
+      })
+    ).status,
+    409,
+  );
   assert.equal(
     (
       await call(f.communications, 'POST', path, 'rep', {

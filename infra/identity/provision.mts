@@ -1,6 +1,7 @@
 import { object, type AdminClient } from './admin-client.mts';
 import { verifyClients, verifyRealm, verifyUserProfile } from './verify.mts';
 import type { IdentityDefinition } from './types.mts';
+import { assignInitialScopes } from './assign-scopes.mts';
 
 /** Import disabled, secure the user schema, verify policy, and only then enable the realm. */
 export async function bootstrapIdentity(
@@ -12,6 +13,7 @@ export async function bootstrapIdentity(
   if (!exists) await admin.write('POST', '/admin/realms', definition.realm);
   const realm = object(await admin.get(path), 'realm');
   verifyRealm(realm, definition);
+  if (realm.enabled === false) await assignInitialScopes(admin, definition);
   await verifyClients(admin, definition);
   if (realm.enabled === false) {
     await admin.write('PUT', `${path}/users/profile`, definition.userProfile);

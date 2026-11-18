@@ -483,7 +483,7 @@
     "service": "crm",
     "method": "GET",
     "gatewayPath": "/v1/crm/customers/{id}/discovery",
-    "servicePath": "/v1/customers/:id/discovery",
+    "servicePath": "/v1/customers/{id}/discovery",
     "roles": ["admin", "rep"],
     "summary": "Read scoped customer discovery"
   },
@@ -491,7 +491,7 @@
     "service": "crm",
     "method": "PUT",
     "gatewayPath": "/v1/crm/customers/{id}/discovery",
-    "servicePath": "/v1/customers/:id/discovery",
+    "servicePath": "/v1/customers/{id}/discovery",
     "roles": ["admin", "rep"],
     "summary": "Save versioned answers against published questionnaire"
   },
@@ -507,7 +507,7 @@
     "service": "sales",
     "method": "GET",
     "gatewayPath": "/v1/sales/tasks/{id}",
-    "servicePath": "/v1/tasks/:id",
+    "servicePath": "/v1/tasks/{id}",
     "roles": ["admin", "rep"],
     "summary": "Read scoped task"
   },
@@ -523,7 +523,7 @@
     "service": "sales",
     "method": "PATCH",
     "gatewayPath": "/v1/sales/tasks/{id}",
-    "servicePath": "/v1/tasks/:id",
+    "servicePath": "/v1/tasks/{id}",
     "roles": ["admin", "rep"],
     "summary": "Update task"
   },
@@ -539,7 +539,7 @@
     "service": "sales",
     "method": "GET",
     "gatewayPath": "/v1/sales/opportunities/{id}",
-    "servicePath": "/v1/opportunities/:id",
+    "servicePath": "/v1/opportunities/{id}",
     "roles": ["admin", "rep"],
     "summary": "Read scoped opportunity"
   },
@@ -555,7 +555,7 @@
     "service": "sales",
     "method": "PATCH",
     "gatewayPath": "/v1/sales/opportunities/{id}",
-    "servicePath": "/v1/opportunities/:id",
+    "servicePath": "/v1/opportunities/{id}",
     "roles": ["admin", "rep"],
     "summary": "Update opportunity"
   },
@@ -571,7 +571,7 @@
     "service": "sales",
     "method": "GET",
     "gatewayPath": "/v1/sales/routes/{id}",
-    "servicePath": "/v1/routes/:id",
+    "servicePath": "/v1/routes/{id}",
     "roles": ["admin", "rep"],
     "summary": "Read scoped visit route"
   },
@@ -587,7 +587,7 @@
     "service": "sales",
     "method": "PATCH",
     "gatewayPath": "/v1/sales/routes/{id}",
-    "servicePath": "/v1/routes/:id",
+    "servicePath": "/v1/routes/{id}",
     "roles": ["admin", "rep"],
     "summary": "Update visit route"
   },
@@ -595,7 +595,7 @@
     "service": "sales",
     "method": "PATCH",
     "gatewayPath": "/v1/sales/visits/{id}",
-    "servicePath": "/v1/visits/:id",
+    "servicePath": "/v1/visits/{id}",
     "roles": ["admin", "rep"],
     "summary": "Reschedule visit or edit active visit notes"
   },
@@ -603,7 +603,7 @@
     "service": "sales",
     "method": "POST",
     "gatewayPath": "/v1/sales/visits/{id}/cancel",
-    "servicePath": "/v1/visits/:id/cancel",
+    "servicePath": "/v1/visits/{id}/cancel",
     "roles": ["admin", "rep"],
     "summary": "Cancel scheduled or active visit"
   },
@@ -619,7 +619,7 @@
     "service": "sales",
     "method": "POST",
     "gatewayPath": "/v1/sales/quotes/{id}/discount-approval",
-    "servicePath": "/v1/quotes/:id/discount-approval",
+    "servicePath": "/v1/quotes/{id}/discount-approval",
     "roles": ["admin", "rep"],
     "summary": "Request administrative approval of exact quote content"
   },
@@ -627,7 +627,7 @@
     "service": "sales",
     "method": "POST",
     "gatewayPath": "/v1/sales/quote-discount-approvals/{id}/decision",
-    "servicePath": "/v1/quote-discount-approvals/:id/decision",
+    "servicePath": "/v1/quote-discount-approvals/{id}/decision",
     "roles": ["admin"],
     "summary": "Approve or reject a pending commercial exception"
   },
@@ -651,7 +651,7 @@
     "service": "communications",
     "method": "GET",
     "gatewayPath": "/v1/communications/conversations/{id}/messages",
-    "servicePath": "/v1/conversations/:id/messages",
+    "servicePath": "/v1/conversations/{id}/messages",
     "roles": ["admin", "rep", "client", "support"],
     "summary": "Read ordered paginated conversation messages"
   },
@@ -659,7 +659,7 @@
     "service": "communications",
     "method": "POST",
     "gatewayPath": "/v1/communications/conversations/{id}/messages",
-    "servicePath": "/v1/conversations/:id/messages",
+    "servicePath": "/v1/conversations/{id}/messages",
     "roles": ["admin", "rep", "client", "support"],
     "summary": "Persist an in-app customer conversation message"
   },
@@ -667,7 +667,7 @@
     "service": "communications",
     "method": "POST",
     "gatewayPath": "/v1/communications/conversations/{id}/read",
-    "servicePath": "/v1/conversations/:id/read",
+    "servicePath": "/v1/conversations/{id}/read",
     "roles": ["admin", "rep", "client", "support"],
     "summary": "Record this authenticated actor read position"
   }

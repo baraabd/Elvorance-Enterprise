@@ -34,7 +34,10 @@
     "tooling/scripts/build-rep-server.mts",
     "tooling/scripts/rep-native/**/*.mts",
     "infra/identity/**/*.mts",
-    "infra/environments/**/*.mts"
+    "infra/environments/**/*.mts",
+    "tests/runtime/**/*.mts",
+    "tests/identity/**/*.mts",
+    "tooling/scripts/test-local-identity.mts"
   ],
   "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
 }

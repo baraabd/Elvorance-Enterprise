@@ -35,14 +35,24 @@ function array(value: unknown, label: string): JsonRecord[] {
 export function verifyRealm(realm: unknown, definition: IdentityDefinition): void {
   const actual = object(realm, 'realm');
   for (const [key, value] of Object.entries(definition.realm)) {
-    if (!['enabled', 'clients', 'roles', 'clientScopeMappings'].includes(key))
+    if (
+      ![
+        'enabled',
+        'clients',
+        'roles',
+        'clientScopeMappings',
+        'defaultDefaultClientScopes',
+        'defaultOptionalClientScopes',
+        'clientScopes',
+      ].includes(key)
+    )
       assertPolicy(actual[key], value, `realm.${key}`);
   }
 }
 
 export function verifyUserProfile(profile: unknown, definition: IdentityDefinition): void {
   const actual = object(profile, 'user profile');
-  assertPolicy(actual.unmanagedAttributePolicy, 'DISABLED', 'profile.unmanagedAttributePolicy');
+  assertPolicy(actual.unmanagedAttributePolicy ?? null, null, 'profile.unmanagedAttributePolicy');
   const attributes = array(actual.attributes, 'profile.attributes');
   for (const expected of definition.userProfile.attributes) {
     assertPolicy(
@@ -58,6 +68,46 @@ export async function verifyClients(
   definition: IdentityDefinition,
 ): Promise<void> {
   const prefix = `/admin/realms/${encodeURIComponent(definition.realm.realm)}`;
+  const configuredScopes = array(
+    await admin.get(`${prefix}/client-scopes`),
+    'configured client scopes',
+  );
+  for (const expected of array(definition.realm.clientScopes, 'expected client scopes')) {
+    const actual = configuredScopes.find((scope) => scope.name === expected.name);
+    if (!actual || typeof actual.id !== 'string') mismatch(`scopes.${String(expected.name)}`);
+    const details = object(
+      await admin.get(`${prefix}/client-scopes/${encodeURIComponent(actual.id)}`),
+      'client scope details',
+    );
+    const { protocolMappers, ...settings } = expected;
+    assertPolicy(details, settings, `scopes.${String(expected.name)}`);
+    const mappers = array(
+      await admin.get(
+        `${prefix}/client-scopes/${encodeURIComponent(actual.id)}/protocol-mappers/models`,
+      ),
+      'scope mappers',
+    );
+    const expectedMappers = array(protocolMappers, 'expected scope mappers');
+    if (mappers.length !== expectedMappers.length)
+      mismatch(`scopes.${String(expected.name)}.mappers`);
+    for (const mapper of expectedMappers)
+      assertPolicy(
+        mappers.find((item) => item.name === mapper.name),
+        mapper,
+        `scopes.${String(expected.name)}.${String(mapper.name)}`,
+      );
+  }
+  for (const [endpoint, key] of [
+    ['default-default-client-scopes', 'defaultDefaultClientScopes'],
+    ['default-optional-client-scopes', 'defaultOptionalClientScopes'],
+  ] as const) {
+    const scopes = array(await admin.get(`${prefix}/${endpoint}`), 'realm client scopes');
+    assertPolicy(
+      scopes.map((scope) => scope.name),
+      definition.realm[key],
+      `realm.${key}`,
+    );
+  }
   const found = new Map<string, JsonRecord>();
   for (const expected of definition.realm.clients) {
     const results = array(
@@ -74,8 +124,22 @@ export async function verifyClients(
     if (typeof actual.id !== 'string' || actual.id !== match.id)
       mismatch(`clients.${expected.clientId}.id`);
     found.set(expected.clientId, actual);
-    const { protocolMappers, ...settings } = expected;
+    const { protocolMappers, defaultClientScopes, optionalClientScopes, ...settings } = expected;
     assertPolicy(actual, settings, `clients.${expected.clientId}`);
+    for (const [endpoint, expectedScopes] of [
+      ['default-client-scopes', defaultClientScopes],
+      ['optional-client-scopes', optionalClientScopes],
+    ] as const) {
+      const scopes = array(
+        await admin.get(`${prefix}/clients/${encodeURIComponent(match.id)}/${endpoint}`),
+        'client scopes',
+      );
+      assertPolicy(
+        scopes.map((scope) => scope.name),
+        expectedScopes,
+        `${expected.clientId}.${endpoint}`,
+      );
+    }
     const mappers = array(actual.protocolMappers ?? [], 'protocol mappers');
     if (mappers.length !== protocolMappers.length)
       mismatch(`clients.${expected.clientId}.protocolMappers`);
@@ -109,9 +173,17 @@ export async function verifyClients(
       ),
       'role scopes',
     );
+    const scopedClients = array(
+      object(definition.realm.clientScopeMappings, 'scope mappings')[
+        definition.publicConfig.audience
+      ],
+      'client scope mappings',
+    );
+    const expectedScope = scopedClients.find((item) => item.client === expected.clientId);
+    if (!expectedScope) mismatch(`${expected.clientId}.allowedRoles`);
     assertPolicy(
       scopes.map((role) => role.name),
-      ['rep'],
+      expectedScope.roles,
       `${expected.clientId}.allowedRoles`,
     );
   }

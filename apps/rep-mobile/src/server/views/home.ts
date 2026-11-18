@@ -1,4 +1,5 @@
 import type { ViewContext } from '../context.ts';
+import { localInputDate } from './common.ts';
 import { amount, button, card, dateText, el, heading, words } from '../ui/dom.ts';
 
 export async function home(context: ViewContext): Promise<void> {
@@ -15,7 +16,9 @@ export async function home(context: ViewContext): Promise<void> {
     [
       'زيارات اليوم',
       visits!.filter(
-        (v) => words(v.scheduledAt, '').slice(0, 10) === new Date().toISOString().slice(0, 10),
+        (v) =>
+          localInputDate(v.scheduledAt).slice(0, 10) ===
+          localInputDate(new Date().toISOString()).slice(0, 10),
       ).length,
     ],
     ['مهام مفتوحة', tasks!.filter((t) => t.status === 'open').length],
@@ -40,16 +43,13 @@ export async function home(context: ViewContext): Promise<void> {
     button('إدارة الزيارات', () => context.navigate('visits'), context.signal),
   );
   const sales = card('العروض المقبولة');
-  sales.append(
-    el(
-      'p',
-      amount(
-        quotes!
-          .filter((q) => q.status === 'accepted' && q.currency === 'SAR')
-          .reduce((sum, q) => sum + Number(q.totalMinor ?? 0), 0),
-      ),
-    ),
-    button('متابعة العروض والعقود', () => context.navigate('quotes'), context.signal),
-  );
+  const totals = new Map<string, number>();
+  for (const quote of quotes!.filter((value) => value.status === 'accepted')) {
+    const currency = words(quote.currency, 'SAR');
+    totals.set(currency, (totals.get(currency) ?? 0) + Number(quote.totalMinor ?? 0));
+  }
+  for (const [currency, total] of totals) sales.append(el('p', amount(total, currency)));
+  if (!totals.size) sales.append(el('p', 'لا توجد عروض مقبولة بعد.'));
+  sales.append(button('متابعة العروض والعقود', () => context.navigate('quotes'), context.signal));
   context.root.append(next, sales);
 }

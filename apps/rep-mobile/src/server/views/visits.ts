@@ -1,5 +1,6 @@
 import { createMobilePlatform } from '@elvorance/mobile-platform';
 import type { ViewContext } from '../context.ts';
+import { idPath, type RecordValue } from '../api.ts';
 import { card, dateText, detail, el, heading, rows, statusText, words } from '../ui/dom.ts';
 import { editorButton, type Field } from '../ui/forms.ts';
 import { actionForm, choices, editForm, localInputDate } from './common.ts';
@@ -145,23 +146,48 @@ export async function visits(context: ViewContext): Promise<void> {
             'إنهاء الزيارة',
             item,
             () =>
-              actionForm(context, 'visits', value, 'complete', 'نتيجة الزيارة', [
-                {
-                  name: 'outcome',
-                  label: 'النتيجة',
-                  type: 'select',
-                  required: true,
-                  options: [
-                    { value: 'interested', label: 'مهتم' },
-                    { value: 'follow_up', label: 'تحتاج متابعة' },
-                    { value: 'not_interested', label: 'غير مهتم' },
-                    { value: 'no_contact', label: 'طلب عدم التواصل' },
-                    { value: 'agreement', label: 'اتفاق بعرض مقبول من العميل' },
-                  ],
+              actionForm(
+                context,
+                'visits',
+                value,
+                'complete',
+                'نتيجة الزيارة',
+                [
+                  {
+                    name: 'outcome',
+                    label: 'النتيجة',
+                    type: 'select',
+                    required: true,
+                    options: [
+                      { value: 'interested', label: 'مهتم' },
+                      { value: 'follow_up', label: 'تحتاج متابعة' },
+                      { value: 'not_interested', label: 'غير مهتم' },
+                      { value: 'no_contact', label: 'طلب عدم التواصل' },
+                      { value: 'agreement', label: 'اتفاق بعرض مقبول من العميل' },
+                    ],
+                  },
+                  { name: 'notes', label: 'تقرير الزيارة', type: 'textarea', required: true },
+                  { name: 'nextStep', label: 'الخطوة التالية', type: 'textarea', max: 2000 },
+                ],
+                async (values) => {
+                  if (values.outcome === 'no_contact') {
+                    // Persist withdrawal at its CRM authority before completing the sales visit.
+                    // A failed second command leaves the customer's safer preference in force.
+                    const customer = await context.api.get<RecordValue>(
+                      `/v1/crm/customers/${idPath(String(value.clientId))}`,
+                      { signal: context.signal },
+                    );
+                    if (customer.doNotContact !== true)
+                      await context.api.mutate(
+                        'PATCH',
+                        `/v1/crm/customers/${idPath(customer.id)}`,
+                        { expectedVersion: customer.version, doNotContact: true },
+                        context.signal,
+                      );
+                  }
+                  return values;
                 },
-                { name: 'notes', label: 'تقرير الزيارة', type: 'textarea', required: true },
-                { name: 'nextStep', label: 'الخطوة التالية', type: 'textarea', max: 2000 },
-              ]),
+              ),
             context.signal,
           ),
         );

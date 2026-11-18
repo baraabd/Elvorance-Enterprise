@@ -1,5 +1,4 @@
 import { X509Certificate } from 'node:crypto';
-import { chmod } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { repReleaseConfig } from '../rep-release/release-config.mts';
 import { repositoryRoot } from '../rep-release/build-proof.mts';
@@ -21,10 +20,15 @@ for (const key of [
     throw new Error(`Missing ${key}. An unsigned bundle cannot satisfy a release build.`);
 }
 const directory = resolve(repositoryRoot, 'apps/rep-mobile/android');
-await chmod(resolve(directory, 'gradlew'), 0o755);
 run(
-  './gradlew',
-  ['--no-daemon', `lint${flavor}Release`, `test${flavor}DebugUnitTest`, `bundle${flavor}Release`],
+  'sh',
+  [
+    './gradlew',
+    '--no-daemon',
+    `lint${flavor}Release`,
+    `test${flavor}DebugUnitTest`,
+    `bundle${flavor}Release`,
+  ],
   directory,
 );
 const bundle = resolve(

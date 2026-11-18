@@ -4,6 +4,8 @@ import { createAuthSession } from './session.ts';
 import type { MobileAuth, MobileAuthConfig } from './types.ts';
 
 export { AuthError } from './errors.ts';
+export { attachAuthHost } from './host.ts';
+export type { AuthHost, AuthHostOptions } from './host.ts';
 export type { AuthErrorCode } from './errors.ts';
 export type {
   AuthEnvironment,

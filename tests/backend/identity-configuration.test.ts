@@ -8,7 +8,7 @@ import type { IdentityDefinition } from '../../infra/identity/types.mts';
 
 const input = { environment: 'staging' as const, baseUrl: 'https://identity.staging.example' };
 
-function mockAdmin(definition: IdentityDefinition) {
+function mockAdmin(definition: IdentityDefinition, unexpectedOptionalScope = false) {
   let imported = false;
   let enabled = false;
   let profile: unknown = {};
@@ -22,6 +22,24 @@ function mockAdmin(definition: IdentityDefinition) {
     async get(path) {
       if (path === prefix) return { ...definition.realm, enabled };
       if (path === `${prefix}/users/profile`) return profile;
+      const declaredScopes = definition.realm.clientScopes as Array<Record<string, unknown>>;
+      if (path === `${prefix}/client-scopes`)
+        return declaredScopes.map((scope) => ({ ...scope, id: scope.name }));
+      for (const scope of declaredScopes) {
+        if (path === `${prefix}/client-scopes/${scope.name}`) return { ...scope, id: scope.name };
+        if (path === `${prefix}/client-scopes/${scope.name}/protocol-mappers/models`)
+          return scope.protocolMappers;
+      }
+      if (path === `${prefix}/default-default-client-scopes`)
+        return ['basic', 'profile'].map((name) => ({ name, id: name }));
+      if (path === `${prefix}/default-optional-client-scopes`)
+        return unexpectedOptionalScope ? [{ id: 'offline_access', name: 'offline_access' }] : [];
+      for (const client of definition.realm.clients) {
+        if (path === `${prefix}/clients/${client.clientId}/default-client-scopes`)
+          return client.defaultClientScopes.map((name) => ({ name, id: name }));
+        if (path === `${prefix}/clients/${client.clientId}/optional-client-scopes`)
+          return client.optionalClientScopes.map((name) => ({ name, id: name }));
+      }
       const url = new URL(path, input.baseUrl);
       const id = url.searchParams.get('clientId');
       if (id) return [{ id, clientId: id }];
@@ -53,6 +71,16 @@ function mockAdmin(definition: IdentityDefinition) {
         assert.notDeepEqual(profile, {});
         enabled = (body as { enabled: boolean }).enabled;
       } else throw new Error('Unexpected test write.');
+    },
+    async remove(path) {
+      if (
+        path !== `${prefix}/default-optional-client-scopes/offline_access` ||
+        !unexpectedOptionalScope
+      )
+        throw new Error('Unexpected test scope deletion.');
+      assert.equal(enabled, false);
+      unexpectedOptionalScope = false;
+      calls.push({ method: 'DELETE', path, body: undefined });
     },
   };
   return {
@@ -140,10 +168,51 @@ test('authorization attributes cannot be self-assigned through Keycloak user pro
     assert.deepEqual(attribute.permissions, { view: ['admin'], edit: ['admin'] });
     assert.equal(attribute.multivalued, false);
   }
-  assert.equal(definition.userProfile.unmanagedAttributePolicy, 'DISABLED');
+  assert.equal(definition.userProfile.unmanagedAttributePolicy, null);
   const drift = structuredClone(definition.userProfile);
   drift.attributes.find((item) => item.name === 'tenant_id')!.permissions.edit.push('user');
   assert.throws(() => verifyUserProfile(drift, definition), /policy differs/);
+});
+
+test('administrative and customer web clients have distinct exact callbacks and least-privilege role scopes', () => {
+  const definition = createIdentityDefinition({
+    ...input,
+    adminWebRedirectUri: 'https://admin.staging.example/callback',
+    adminWebOrigin: 'https://admin.staging.example',
+    clientWebRedirectUri: 'https://client.staging.example/callback',
+    clientWebOrigin: 'https://client.staging.example',
+  });
+  const mappings = definition.realm.clientScopeMappings as Record<
+    string,
+    Array<{ client: string; roles: string[] }>
+  >;
+  const scopes = mappings[definition.publicConfig.audience]!;
+  assert.deepEqual(scopes.find((item) => item.client === definition.publicConfig.clientId)!.roles, [
+    'rep',
+  ]);
+  assert.deepEqual(
+    scopes.find((item) => item.client === definition.publicConfig.adminWebClientId)!.roles,
+    ['admin', 'support', 'finance', 'delivery'],
+  );
+  assert.deepEqual(
+    scopes.find((item) => item.client === definition.publicConfig.clientWebClientId)!.roles,
+    ['client'],
+  );
+  for (const client of definition.realm.clients.filter((item) => !item.bearerOnly)) {
+    assert.equal(client.publicClient, true);
+    assert.equal(client.fullScopeAllowed, false);
+    assert.equal(client.redirectUris.length, 1);
+  }
+  assert.throws(() =>
+    createIdentityDefinition({ ...input, adminWebOrigin: 'https://admin.staging.example' }),
+  );
+  assert.throws(() =>
+    createIdentityDefinition({
+      ...input,
+      clientWebRedirectUri: 'https://client.staging.example/*',
+      clientWebOrigin: 'https://client.staging.example',
+    }),
+  );
 });
 
 test('bootstrap enables only after verified client policy and administrator-owned profile are installed', async () => {
@@ -180,6 +249,19 @@ test('bootstrap refuses policy drift and keeps an incomplete realm disabled', as
   await assert.rejects(bootstrapIdentity(mock.admin, definition), /policy differs/);
   assert.equal(mock.isEnabled(), false);
   assert.equal(mock.calls.length, 1);
+});
+
+test('bootstrap removes the automatically assigned offline scope before enabling a new realm', async () => {
+  const definition = createIdentityDefinition(input);
+  const mock = mockAdmin(definition, true);
+  await bootstrapIdentity(mock.admin, definition);
+  assert.equal(mock.calls[1]!.method, 'DELETE');
+  assert.equal(
+    mock.calls[1]!.path,
+    '/admin/realms/elvorance-staging/default-optional-client-scopes/offline_access',
+  );
+  assert.equal(mock.calls.at(-1)!.path, '/admin/realms/elvorance-staging');
+  assert.equal(mock.isEnabled(), true);
 });
 
 test('admin transport pins HTTPS origin, denies redirects and redacts upstream responses', async () => {

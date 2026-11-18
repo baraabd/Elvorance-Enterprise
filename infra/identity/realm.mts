@@ -1,11 +1,8 @@
 import { roles } from '../../packages/contracts/src/index.ts';
 import { userProfile } from './user-profile.mts';
-import type {
-  IdentityClient,
-  IdentityDefinition,
-  IdentityInput,
-  ProtocolMapper,
-} from './types.mts';
+import { applicationClaims } from './mappers.mts';
+import { clientScopes } from './client-scopes.mts';
+import type { IdentityClient, IdentityDefinition, IdentityInput } from './types.mts';
 
 function secureUrl(value: string): URL {
   let url: URL;
@@ -27,43 +24,6 @@ function secureUrl(value: string): URL {
     );
   }
   return url;
-}
-
-function mapper(name: string, provider: string, config: Record<string, string>): ProtocolMapper {
-  return { name, protocol: 'openid-connect', protocolMapper: provider, config };
-}
-
-function applicationClaims(audience: string): ProtocolMapper[] {
-  const tokenFlags = {
-    'access.token.claim': 'true',
-    'id.token.claim': 'false',
-    'userinfo.token.claim': 'false',
-    'introspection.token.claim': 'true',
-  };
-  return [
-    ...['tenant_id', 'rep_id', 'client_id'].map((attribute) =>
-      mapper(`elvorance-${attribute}`, 'oidc-usermodel-attribute-mapper', {
-        ...tokenFlags,
-        'user.attribute': attribute,
-        'claim.name': attribute,
-        'jsonType.label': 'String',
-        multivalued: 'false',
-      }),
-    ),
-    mapper('elvorance-api-roles', 'oidc-usermodel-client-role-mapper', {
-      ...tokenFlags,
-      'usermodel.clientRoleMapping.clientId': audience,
-      'claim.name': 'roles',
-      'jsonType.label': 'String',
-      multivalued: 'true',
-    }),
-    mapper('elvorance-api-audience', 'oidc-audience-mapper', {
-      'included.client.audience': audience,
-      'access.token.claim': 'true',
-      'id.token.claim': 'false',
-      'introspection.token.claim': 'true',
-    }),
-  ];
 }
 
 function client(
@@ -115,9 +75,6 @@ export function createIdentityDefinition(input: IdentityInput): IdentityDefiniti
   if (base.pathname !== '/' || base.origin !== input.baseUrl.replace(/\/$/, '')) {
     throw new Error('Keycloak base URL must be a dedicated HTTPS origin.');
   }
-  if (Boolean(input.webRedirectUri) !== Boolean(input.webOrigin)) {
-    throw new Error('A web client requires both an exact redirect URI and an explicit origin.');
-  }
   const suffix = input.environment;
   const realmName = `elvorance-${suffix}`;
   const audience = `elvorance-api-${suffix}`;
@@ -131,22 +88,63 @@ export function createIdentityDefinition(input: IdentityInput): IdentityDefiniti
     client(audience, audience, [], [], true),
     client(nativeId, audience, [redirectUri], ['capacitor://localhost', 'https://localhost']),
   ];
-  let webConfig: Pick<IdentityDefinition['publicConfig'], 'webClientId' | 'webRedirectUri'> = {};
-  if (input.webRedirectUri && input.webOrigin) {
-    const redirect = secureUrl(input.webRedirectUri);
-    const origin = secureUrl(input.webOrigin);
+  const roleScopes = new Map<string, readonly string[]>([[nativeId, ['rep']]]);
+  const webConfig: Pick<
+    IdentityDefinition['publicConfig'],
+    | 'webClientId'
+    | 'webRedirectUri'
+    | 'adminWebClientId'
+    | 'adminWebRedirectUri'
+    | 'clientWebClientId'
+    | 'clientWebRedirectUri'
+  > = {};
+  const optionalWebClients = [
+    {
+      id: `elvorance-rep-web-${suffix}`,
+      redirect: input.webRedirectUri,
+      origin: input.webOrigin,
+      roles: ['rep'],
+      idKey: 'webClientId',
+      redirectKey: 'webRedirectUri',
+    },
+    {
+      id: `elvorance-admin-web-${suffix}`,
+      redirect: input.adminWebRedirectUri,
+      origin: input.adminWebOrigin,
+      roles: ['admin', 'support', 'finance', 'delivery'],
+      idKey: 'adminWebClientId',
+      redirectKey: 'adminWebRedirectUri',
+    },
+    {
+      id: `elvorance-client-web-${suffix}`,
+      redirect: input.clientWebRedirectUri,
+      origin: input.clientWebOrigin,
+      roles: ['client'],
+      idKey: 'clientWebClientId',
+      redirectKey: 'clientWebRedirectUri',
+    },
+  ] as const;
+  for (const web of optionalWebClients) {
+    if (Boolean(web.redirect) !== Boolean(web.origin))
+      throw new Error(
+        'Each web client requires both an exact redirect URI and an explicit origin.',
+      );
+    if (!web.redirect || !web.origin) continue;
+    const redirect = secureUrl(web.redirect);
+    const origin = secureUrl(web.origin);
     if (
-      origin.origin !== input.webOrigin ||
+      origin.origin !== web.origin ||
       origin.origin !== redirect.origin ||
-      redirect.href !== input.webRedirectUri
+      redirect.href !== web.redirect
     ) {
       throw new Error(
         'Web redirect URI must be canonical and belong to the supplied exact HTTPS origin.',
       );
     }
-    const webClientId = `elvorance-rep-web-${suffix}`;
-    clients.push(client(webClientId, audience, [redirect.href], [origin.origin]));
-    webConfig = { webClientId, webRedirectUri: redirect.href };
+    clients.push(client(web.id, audience, [redirect.href], [origin.origin]));
+    roleScopes.set(web.id, web.roles);
+    webConfig[web.idKey] = web.id;
+    webConfig[web.redirectKey] = redirect.href;
   }
   return {
     realm: {
@@ -188,6 +186,7 @@ export function createIdentityDefinition(input: IdentityInput): IdentityDefiniti
         'length(14) and notUsername(undefined) and notEmail(undefined) and passwordHistory(5)',
       defaultDefaultClientScopes: ['basic', 'profile'],
       defaultOptionalClientScopes: [],
+      clientScopes: clientScopes(),
       eventsEnabled: true,
       eventsExpiration: 604800,
       adminEventsEnabled: true,
@@ -212,7 +211,7 @@ export function createIdentityDefinition(input: IdentityInput): IdentityDefiniti
       clientScopeMappings: {
         [audience]: clients
           .filter((item) => !item.bearerOnly)
-          .map((item) => ({ client: item.clientId, roles: ['rep'] })),
+          .map((item) => ({ client: item.clientId, roles: [...roleScopes.get(item.clientId)!] })),
       },
     },
     userProfile: userProfile(),
@@ -242,5 +241,13 @@ export function identityInputFromEnv(env: NodeJS.ProcessEnv = process.env): Iden
       ? { webRedirectUri: env.KEYCLOAK_REP_WEB_REDIRECT_URI }
       : {}),
     ...(env.KEYCLOAK_REP_WEB_ORIGIN ? { webOrigin: env.KEYCLOAK_REP_WEB_ORIGIN } : {}),
+    ...(env.KEYCLOAK_ADMIN_WEB_REDIRECT_URI
+      ? { adminWebRedirectUri: env.KEYCLOAK_ADMIN_WEB_REDIRECT_URI }
+      : {}),
+    ...(env.KEYCLOAK_ADMIN_WEB_ORIGIN ? { adminWebOrigin: env.KEYCLOAK_ADMIN_WEB_ORIGIN } : {}),
+    ...(env.KEYCLOAK_CLIENT_WEB_REDIRECT_URI
+      ? { clientWebRedirectUri: env.KEYCLOAK_CLIENT_WEB_REDIRECT_URI }
+      : {}),
+    ...(env.KEYCLOAK_CLIENT_WEB_ORIGIN ? { clientWebOrigin: env.KEYCLOAK_CLIENT_WEB_ORIGIN } : {}),
   };
 }

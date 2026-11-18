@@ -4,8 +4,6 @@ import {
   actorScopes,
   pageOptions,
   assert,
-  hasRole,
-  isOwner,
   notFound,
   requireOwner,
   requireRole,
@@ -14,11 +12,10 @@ import {
 } from '@elvorance/service-kit';
 import type { Contract, Fulfillment, Quote, Visit } from '../domain/model.ts';
 import type { CustomerDirectory } from '../application/ports.ts';
-import { completeVisit, createVisit, startVisit, visit } from '../application/visits.ts';
+import { completeVisit, createVisit, startVisit } from '../application/visits.ts';
 import {
   approveContract,
   authorizeQuoteAssignment,
-  canReadQuote,
   contract,
   createQuote,
   quote,

@@ -1,8 +1,9 @@
 import {
   AuthError,
+  attachAuthHost,
   createMobileAuth,
+  type AuthHost,
   type MobileAuthConfig,
-  type AuthSessionSnapshot,
 } from '@elvorance/mobile-auth';
 import { createRepApi } from './api.ts';
 import { button, card, el, errorMessage } from './ui/dom.ts';
@@ -15,7 +16,6 @@ export interface ServerConfiguration {
   auth: MobileAuthConfig;
 }
 
-/** Explicit ports let lifecycle tests control deferred authentication and mounting. */
 export interface RepresentativeBootstrapPorts {
   createAuth: typeof createMobileAuth;
   createApi: typeof createRepApi;
@@ -46,25 +46,9 @@ export async function startRepresentative(
   });
   const mount = ports.mountWorkspace ?? mountRepWorkspace;
   const lifetime = new AbortController();
-  let screen = new AbortController();
-  let removeWorkspace: (() => Promise<void>) | null = null;
-  let subject: string | null = null;
-  let revision = 0;
-  let closed = false;
-  let latest: AuthSessionSnapshot = { status: 'signed-out', subject: null, expiresAt: null };
+  let host: AuthHost | null = null;
 
-  async function reset(): Promise<void> {
-    screen.abort();
-    screen = new AbortController();
-    subject = null;
-    const remove = removeWorkspace;
-    removeWorkspace = null;
-    // Clear account-scoped request keys synchronously, before another screen can start requests.
-    api.clear();
-    if (remove) await remove();
-  }
-
-  function login(message = ''): void {
+  function login(message: string, signal: AbortSignal): void {
     const panel = card(
       'إلفورانس الميداني',
       config.auth.environment === 'staging' ? 'بيئة اختبار مستقلة' : 'مساحة عمل المندوب',
@@ -84,7 +68,7 @@ export async function startRepresentative(
           signIn.disabled = false;
         }
       },
-      screen.signal,
+      signal,
       'button primary',
     );
     panel.append(status, signIn);
@@ -92,61 +76,39 @@ export async function startRepresentative(
     root.className = 'rep-root';
   }
 
-  async function renderSession(session: AuthSessionSnapshot): Promise<void> {
-    if (closed || session.status === 'signing-in' || session.status === 'refreshing') return;
-    if (session.status === 'authenticated' && session.subject && subject === session.subject)
-      return;
-    const requestedRevision = ++revision;
-    await reset();
-    // A newer logout/account change always wins, even if native cleanup resolved out of order.
-    if (closed || requestedRevision !== revision) return;
-    if (session.status !== 'authenticated' || !session.subject) {
+  root.replaceChildren(el('p', 'جارٍ تهيئة الاتصال الآمن…', 'empty'));
+  host = await attachAuthHost({
+    auth,
+    onReset: () => api.clear(),
+    signedOut(session, signal) {
       login(
         session.status === 'unavailable'
           ? 'تعذّر تجديد الجلسة. تحقق من الشبكة ثم سجّل الدخول.'
           : '',
+        signal,
       );
-      return;
-    }
-    subject = session.subject;
-    const mountedSignal = AbortSignal.any([lifetime.signal, screen.signal]);
-    root.replaceChildren(el('p', 'جارٍ التحقق من صلاحيات الحساب…', 'empty'));
-    try {
-      const remove = await mount(root, api, auth, config.auth.environment, mountedSignal);
-      if (closed || mountedSignal.aborted || requestedRevision !== revision) await remove();
-      else removeWorkspace = remove;
-    } catch (error) {
-      if (mountedSignal.aborted || requestedRevision !== revision || closed) return;
-      const message = errorMessage(error);
-      await reset();
-      if (closed || requestedRevision !== revision) return;
+    },
+    async mount(_session, signal) {
+      root.replaceChildren(el('p', 'جارٍ التحقق من صلاحيات الحساب…', 'empty'));
+      return mount(root, api, auth, config.auth.environment, signal);
+    },
+    error(error, signal) {
       const panel = card('تعذّر فتح مساحة العمل');
-      panel.append(el('p', message, 'notice'));
       panel.append(
-        button('إعادة المحاولة', () => renderSession(latest), screen.signal),
+        el('p', error instanceof AuthError ? error.message : errorMessage(error), 'notice'),
+      );
+      panel.append(
+        button('إعادة المحاولة', () => host?.retry(), signal),
         button(
           'تغيير الحساب',
           async () => {
             await auth.signOut();
           },
-          screen.signal,
+          signal,
         ),
       );
       root.replaceChildren(panel);
-    }
-  }
-
-  root.replaceChildren(el('p', 'جارٍ تهيئة الاتصال الآمن…', 'empty'));
-  try {
-    await auth.initialize();
-  } catch (error) {
-    login(error instanceof AuthError ? error.message : errorMessage(error));
-  }
-  const unsubscribe = auth.onSessionChanged((session) => {
-    latest = session;
-    void renderSession(session).catch(() => {
-      if (!closed) login('تعذّر إغلاق موارد الجلسة السابقة بأمان. أغلق التطبيق وأعد المحاولة.');
-    });
+    },
   });
   window.addEventListener(
     'rep:logout-unconfirmed',
@@ -159,14 +121,10 @@ export async function startRepresentative(
     { signal: lifetime.signal },
   );
   return async () => {
-    closed = true;
-    ++revision;
     lifetime.abort();
-    unsubscribe();
     try {
-      await reset();
+      await host?.dispose();
     } finally {
-      await auth.dispose();
       root.replaceChildren();
     }
   };

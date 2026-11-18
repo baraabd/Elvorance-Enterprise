@@ -45,7 +45,7 @@
         "operationId": "identity_get_me",
         "tags": ["identity"],
         "summary": "Verified principal and optional membership profile",
-        "description": "Membership data does not mint or override signed OIDC claims.",
+        "description": "The optional display profile falls back to an externally provisioned membership. profileVersion identifies the independently editable personal profile and is 0 until first save. Membership data never mints or overrides signed OIDC claims.",
         "x-roles": ["admin", "rep", "client", "finance", "delivery", "support"],
         "responses": {
           "200": {

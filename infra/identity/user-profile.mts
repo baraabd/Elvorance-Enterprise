@@ -13,7 +13,7 @@ function managedAttribute(name: string): UserProfileAttribute {
 
 export function userProfile(): UserProfile {
   return {
-    unmanagedAttributePolicy: 'DISABLED',
+    unmanagedAttributePolicy: null,
     attributes: [
       {
         name: 'username',

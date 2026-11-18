@@ -2,6 +2,7 @@ import Fastify from 'fastify';
 import { AppError, type AuthVerifier } from '@elvorance/service-kit';
 import { registerRoutes } from './transport/routes.ts';
 import type { Upstreams } from './domain/routes.ts';
+import { readinessProbe } from './application/readiness.ts';
 export interface GatewayOptions {
   auth: AuthVerifier;
   upstreams: Upstreams;
@@ -18,6 +19,8 @@ export function createApp(options: GatewayOptions) {
   });
   app.decorateRequest('principal');
   app.addHook('onRequest', async (request, reply) => {
+    reply.header('cache-control', 'no-store');
+    reply.header('x-content-type-options', 'nosniff');
     const origin = request.headers.origin;
     if (origin && options.allowedOrigins?.includes(origin)) {
       reply.header('access-control-allow-origin', origin);
@@ -41,11 +44,14 @@ export function createApp(options: GatewayOptions) {
     });
   });
   app.get('/health', async () => ({ service: 'api-gateway', status: 'alive' }));
-  app.get('/ready', async () => ({
-    service: 'api-gateway',
-    status: 'ready',
-    note: 'Gateway readiness does not imply every upstream is ready; check upstream /ready endpoints',
-  }));
+  const probe = readinessProbe(options.upstreams, options.fetcher);
+  app.get('/ready', async (_request, reply) => {
+    const dependencies = await probe();
+    const ready = Object.values(dependencies).every(Boolean);
+    return reply
+      .code(ready ? 200 : 503)
+      .send({ service: 'api-gateway', status: ready ? 'ready' : 'degraded', dependencies });
+  });
   registerRoutes(app, options.upstreams, options.fetcher);
   return app;
 }

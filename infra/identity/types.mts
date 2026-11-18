@@ -7,6 +7,10 @@ export interface IdentityInput {
   baseUrl: string;
   webRedirectUri?: string;
   webOrigin?: string;
+  adminWebRedirectUri?: string;
+  adminWebOrigin?: string;
+  clientWebRedirectUri?: string;
+  clientWebOrigin?: string;
 }
 
 export interface ProtocolMapper {
@@ -46,7 +50,8 @@ export interface UserProfileAttribute {
 }
 
 export interface UserProfile {
-  unmanagedAttributePolicy: 'DISABLED';
+  /** Keycloak 26.8 represents disabled with null; DISABLED is not a valid API enum value. */
+  unmanagedAttributePolicy: null;
   attributes: UserProfileAttribute[];
   groups: never[];
 }
@@ -64,5 +69,9 @@ export interface IdentityDefinition {
     jwksUrl: string;
     webClientId?: string;
     webRedirectUri?: string;
+    adminWebClientId?: string;
+    adminWebRedirectUri?: string;
+    clientWebClientId?: string;
+    clientWebRedirectUri?: string;
   };
 }

@@ -9,7 +9,7 @@ import type { View, ViewContext } from '../../apps/rep-mobile/src/server/context
 import { TrackingController } from '../../apps/rep-mobile/src/server/tracking.ts';
 import { customers } from '../../apps/rep-mobile/src/server/views/customers.ts';
 import { visits } from '../../apps/rep-mobile/src/server/views/visits.ts';
-import { tasks } from '../../apps/rep-mobile/src/server/views/planning.ts';
+import { tasks, opportunities, routes } from '../../apps/rep-mobile/src/server/views/planning.ts';
 import { catalog } from '../../apps/rep-mobile/src/server/views/records.ts';
 import { quotes } from '../../apps/rep-mobile/src/server/views/quotes.ts';
 import { messages } from '../../apps/rep-mobile/src/server/views/messages.ts';
@@ -387,6 +387,59 @@ test('discovery UI validates and persists the published tenant questionnaire', a
   assert.equal(saved.answers.need, 'A maintainable website integrated with customer support');
 });
 
+test('discovery solution choices come from the active tenant catalog and round-trip through CRM', async (t) => {
+  const f = await fixture(t);
+  f.configurationInput.definition.questions.push({
+    id: 'solutions',
+    label: 'Select services requested by this customer',
+    section: 'solution',
+    type: 'multi',
+    required: true,
+    active: true,
+    activityIds: ['services'],
+    order: 20,
+    options: [],
+    otherAllowed: false,
+    min: null,
+    max: null,
+  });
+  f.configurationInput.catalog.push({
+    id: 'retired',
+    title: 'Retired service',
+    price: 20,
+    category: 'software',
+    active: false,
+  });
+  await f.publish();
+  await f.render(customers);
+  const form = await editor(article(f.root, f.customer.name), 'اكتشاف الاحتياج');
+  fill(form, {
+    activityId: 'services',
+    status: 'submitted',
+    need: 'A maintained customer website',
+  });
+  const solutions = form.elements.namedItem('solutions') as HTMLSelectElement;
+  assert.ok(solutions instanceof HTMLSelectElement);
+  assert.equal(solutions.multiple, true);
+  assert.deepEqual(
+    Array.from(solutions.options, (option) => option.value),
+    ['web', 'custom'],
+  );
+  assert.equal(await submit(form, { solutions: 'web' }), 'تم الحفظ.');
+  const saved = (await call(f.crm, 'GET', `/v1/customers/${f.customer.id}/discovery`, 'rep')).body
+    .record;
+  assert.equal(saved.status, 'submitted');
+  assert.deepEqual(saved.answers.solutions, ['web']);
+  const reopened = await editor(article(f.root, f.customer.name), 'اكتشاف الاحتياج');
+  assert.deepEqual(
+    Array.from(
+      (reopened.elements.namedItem('solutions') as HTMLSelectElement).selectedOptions,
+      (option) => option.value,
+    ),
+    ['web'],
+  );
+});
+
 test('task UI creates and completes assigned work and renders version conflicts without overwriting', async (t) => {
   const f = await fixture(t);
   await f.render(tasks);
@@ -418,6 +471,85 @@ test('task UI creates and completes assigned work and renders version conflicts 
     (await call(f.sales, 'GET', `/v1/tasks/${saved.id}`, 'rep')).body.notes,
     'Changed on another device',
   );
+});
+
+test('an existing opportunity can close lost after withdrawal while new sales remain blocked', async (t) => {
+  const f = await fixture(t);
+  await f.render(opportunities);
+  const create = await editor(f.root, 'إضافة');
+  assert.equal(
+    await submit(create, {
+      title: 'Customer website opportunity',
+      clientId: f.customer.id,
+      valueMinor: '100.00',
+    }),
+    'تم الحفظ.',
+  );
+  const saved = (await call(f.sales, 'GET', '/v1/opportunities', 'rep')).body.items[0];
+  const withdrawal = await call(f.crm, 'PATCH', `/v1/customers/${f.customer.id}`, 'rep', {
+    expectedVersion: f.customer.version,
+    doNotContact: true,
+  });
+  assert.equal(withdrawal.status, 200);
+  await f.render(opportunities);
+  const change = await editor(article(f.root, 'Customer website opportunity'), 'تعديل');
+  const client = change.elements.namedItem('clientId') as HTMLSelectElement;
+  assert.equal(
+    client.value,
+    f.customer.id,
+    'Editing must retain the immutable customer assignment.',
+  );
+  assert.equal(await submit(change, { stage: 'lost' }), 'تم الحفظ.');
+  const closed = (await call(f.sales, 'GET', `/v1/opportunities/${saved.id}`, 'rep')).body;
+  assert.equal(closed.stage, 'lost');
+  const newSale = await editor(f.root, 'إضافة');
+  assert.equal((newSale.elements.namedItem('clientId') as HTMLSelectElement).options.length, 0);
+  const denied = await call(f.sales, 'POST', '/v1/opportunities', 'rep', {
+    clientId: f.customer.id,
+    title: 'Forbidden new opportunity',
+    valueMinor: 10000,
+  });
+  assert.equal(denied.status, 409);
+  assert.equal(denied.body.error.code, 'DO_NOT_CONTACT');
+});
+
+test('route editing retains a cancelled stop for completion but creation excludes cancelled visits', async (t) => {
+  const f = await fixture(t);
+  const instant = new Date(Date.now() + 3600000).toISOString();
+  const visit = await f.schedule(instant);
+  await f.render(routes);
+  const create = await editor(f.root, 'إضافة');
+  assert.equal(
+    await submit(create, {
+      name: 'Customer route plan',
+      date: instant.slice(0, 10),
+      visitIds: visit.id,
+    }),
+    'تم الحفظ.',
+  );
+  const saved = (await call(f.sales, 'GET', '/v1/routes', 'rep')).body.items[0];
+  const cancelled = await call(f.sales, 'POST', `/v1/visits/${visit.id}/cancel`, 'rep', {
+    expectedVersion: visit.version,
+    reason: 'Customer requested cancellation of this visit',
+  });
+  assert.equal(cancelled.status, 200);
+  await f.render(routes);
+  const next = await editor(f.root, 'إضافة');
+  assert.equal((next.elements.namedItem('visitIds') as HTMLSelectElement).options.length, 0);
+  const change = await editor(article(f.root, 'Customer route plan'), 'تعديل');
+  const selected = Array.from(
+    (change.elements.namedItem('visitIds') as HTMLSelectElement).selectedOptions,
+    (option) => option.value,
+  );
+  assert.deepEqual(
+    selected,
+    [visit.id],
+    'The existing cancelled stop must not disappear from the edit payload.',
+  );
+  assert.equal(await submit(change, { status: 'completed' }), 'تم الحفظ.');
+  const completed = (await call(f.sales, 'GET', `/v1/routes/${saved.id}`, 'rep')).body;
+  assert.equal(completed.status, 'completed');
+  assert.deepEqual(completed.visitIds, [visit.id]);
 });
 
 test('messaging UI opens customer conversations, sends escaped content and persists explicit read receipts', async (t) => {
@@ -453,4 +585,88 @@ test('messaging UI opens customer conversations, sends escaped content and persi
   ).body.receipt;
   assert.equal(read.subject, principals.rep!.sub);
   assert.equal(read.lastMessageId, thread.items[0].id);
+});
+
+test('no-contact visit UI persists CRM withdrawal before sales completion without broker delivery', async (t) => {
+  for (const concurrentCompletion of [false, true]) {
+    await t.test(
+      concurrentCompletion
+        ? 'a failed second command keeps withdrawal in force'
+        : 'successful completion blocks further contact immediately',
+      async (scenario) => {
+        const f = await fixture(scenario);
+        await f.publish();
+        const active = await f.start();
+        const conversation = await call(f.communications, 'POST', '/v1/conversations', 'rep', {
+          clientId: f.customer.id,
+        });
+        assert.equal(conversation.status, 200);
+        await f.render(visits);
+        const form = await editor(article(f.root, f.customer.name), 'إنهاء الزيارة');
+
+        if (concurrentCompletion) {
+          // A second device commits a legitimate completion after this UI captured its version.
+          const competing = await call(f.sales, 'POST', `/v1/visits/${active.id}/complete`, 'rep', {
+            expectedVersion: active.version,
+            outcome: 'follow_up',
+            notes: 'Completed concurrently on another device',
+            nextStep: 'Review the customer preference',
+          });
+          assert.equal(competing.status, 200);
+        }
+
+        const status = await submit(form, {
+          outcome: 'no_contact',
+          notes: 'Customer expressly withdrew permission for further contact',
+          nextStep: 'Respect the withdrawal',
+        });
+        if (concurrentCompletion) assert.match(status, /تغيّر السجل/);
+        else assert.equal(status, 'تم الحفظ.');
+
+        const commands = f.requests.filter((request) => request.method !== 'GET');
+        assert.deepEqual(
+          commands.map(({ method, path, status }) => ({ method, path, status })),
+          [
+            { method: 'PATCH', path: `/v1/crm/customers/${f.customer.id}`, status: 200 },
+            {
+              method: 'POST',
+              path: `/v1/sales/visits/${active.id}/complete`,
+              status: concurrentCompletion ? 409 : 200,
+            },
+          ],
+        );
+        const customer = (await call(f.crm, 'GET', `/v1/customers/${f.customer.id}`, 'rep')).body;
+        assert.equal(customer.doNotContact, true);
+        const completed = (await call(f.sales, 'GET', `/v1/visits/${active.id}`, 'rep')).body;
+        assert.equal(completed.outcome, concurrentCompletion ? 'follow_up' : 'no_contact');
+
+        // This fixture has no broker consumer. Both services consult CRM's current authority.
+        const quote = await call(f.sales, 'POST', '/v1/quotes', 'rep', f.quoteInput(active.id));
+        assert.equal(quote.status, 409);
+        assert.equal(quote.body.error.code, 'DO_NOT_CONTACT');
+        const message = await call(
+          f.communications,
+          'POST',
+          `/v1/conversations/${conversation.body.id}/messages`,
+          'rep',
+          {
+            expectedVersion: conversation.body.version,
+            body: 'This outbound message must be rejected',
+          },
+        );
+        assert.equal(message.status, 409);
+        assert.equal(message.body.error.code, 'DO_NOT_CONTACT');
+        const thread = (
+          await call(
+            f.communications,
+            'GET',
+            `/v1/conversations/${conversation.body.id}/messages`,
+            'rep',
+          )
+        ).body;
+        assert.equal(thread.items.length, 0);
+        assert.deepEqual(f.errors, []);
+      },
+    );
+  }
 });
