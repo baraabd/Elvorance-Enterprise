@@ -49,7 +49,7 @@ test('a supplied production reference must itself be a valid HTTPS gateway origi
   ]) {
     assert.throws(
       () => repReleaseConfig({ ...staging, REP_PRODUCTION_API_BASE_URL: production }),
-      undefined,
+      Error,
       `Invalid production reference was accepted: ${production}`,
     );
   }
