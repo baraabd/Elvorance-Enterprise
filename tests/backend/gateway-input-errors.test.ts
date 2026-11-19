@@ -4,11 +4,15 @@ import { createApp } from '../../services/api-gateway/src/app.ts';
 import type { Upstreams } from '../../services/api-gateway/src/domain/routes.ts';
 import { auth } from './helpers.ts';
 
-const upstreams = Object.fromEntries(
-  ['identity', 'crm', 'sales', 'delivery', 'billing', 'tracking', 'communications'].map(
-    (name) => [name, `https://${name}.example.test`],
-  ),
-) as Upstreams;
+const upstreams: Upstreams = {
+  identity: 'https://identity.example.test',
+  crm: 'https://crm.example.test',
+  sales: 'https://sales.example.test',
+  delivery: 'https://delivery.example.test',
+  billing: 'https://billing.example.test',
+  tracking: 'https://tracking.example.test',
+  communications: 'https://communications.example.test',
+};
 
 for (const sample of [
   { name: 'malformed JSON', type: 'application/json', payload: '{', status: 400 },
