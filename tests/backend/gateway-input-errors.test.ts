@@ -51,5 +51,5 @@ test('gateway masks unexpected errors and bounds the inbound request timeout', a
   assert.equal(response.statusCode, 500);
   assert.equal(response.json().error.code, 'INTERNAL_ERROR');
   assert.doesNotMatch(response.body, /private-internal-detail|stack/);
-  assert.equal(app.initialConfig.requestTimeout, 30_000);
+  assert.equal(app.server.requestTimeout, 30_000);
 });
