@@ -1,0 +1,106 @@
+name: Rep native verification
+on:
+  push:
+    branches: [feat/rep-staging-mobile-20261117]
+  pull_request:
+    paths:
+      - 'apps/rep-mobile/**'
+      - 'packages/**'
+      - 'tooling/**'
+      - 'tests/**'
+      - '.github/workflows/rep-native-*.yml'
+      - 'package*.json'
+permissions:
+  contents: read
+concurrency:
+  group: rep-native-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - name: Package reproducible diagnostic toolchain
+        if: always()
+        run: |
+          mkdir -p /tmp/elvorance-toolchain
+          cp "$(command -v node)" /tmp/elvorance-toolchain/node
+          tar -czf /tmp/elvorance-toolchain/dependencies.tar.gz node_modules
+          printf '%s\n' "$GITHUB_SHA" > /tmp/elvorance-toolchain/source-sha.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rep-linux-verification-toolchain
+          path: /tmp/elvorance-toolchain/
+          retention-days: 1
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: npm ci
+      - name: Prepare native-only verification harness
+        run: node tooling/scripts/rep-native/prepare-verification.mts android
+      - name: Lint, unit-test and compile an unsigned verification bundle
+        working-directory: apps/rep-mobile/android
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon -PallowUnsignedRelease lintStagingRelease testStagingDebugUnitTest bundleStagingRelease
+      - name: Enable emulator acceleration
+        run: sudo chmod 666 /dev/kvm
+      - name: Test Keystore, tamper rejection and native startup on an emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          script: ./apps/rep-mobile/android/gradlew -p apps/rep-mobile/android --no-daemon connectedStagingDebugAndroidTest
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rep-android-unsigned-verification-only
+          path: |
+            apps/rep-mobile/android/app/build/reports/
+            apps/rep-mobile/android/app/build/outputs/androidTest-results/
+            apps/rep-mobile/android/app/build/outputs/bundle/stagingRelease/
+          retention-days: 7
+  ios:
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm ci
+      - name: Prepare native-only verification harness
+        run: node tooling/scripts/rep-native/prepare-verification.mts ios
+      - name: Test redirect policy and Keychain on an iPhone simulator
+        run: |
+          set -o pipefail
+          node tooling/scripts/rep-native/ios-verification.mts | tee ios-verification.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rep-ios-simulator-verification-only
+          path: |
+            ios-verification.log
+            dist/rep-native/ios-verification.xcresult/
+          retention-days: 7

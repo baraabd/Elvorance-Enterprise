@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import type { FastifyInstance } from 'fastify';
-import type { Principal } from '@elvorance/contracts';
+import type { CatalogDirectory, Principal } from '@elvorance/contracts';
 import { AppError, type AuthVerifier } from '@elvorance/service-kit';
 export const principals: Record<string, Principal> = {
   admin: { sub: 'admin-a', tenantId: 'tenant-a', roles: ['admin'] },
@@ -23,9 +23,25 @@ export const auth: AuthVerifier = async (authorization) => {
   if (!principal) throw new AppError(401, 'UNAUTHENTICATED', 'Test identity is missing');
   return structuredClone(principal);
 };
+export function catalogPrices(prices: Record<string, number>): CatalogDirectory {
+  return {
+    async getCatalog() {
+      return {
+        configured: true,
+        recordVersion: 1,
+        currency: 'SAR',
+        items: Object.entries(prices).map(([id, unitPriceMinor]) => ({
+          id,
+          title: `${id} service`,
+          unitPriceMinor,
+        })),
+      };
+    },
+  };
+}
 export async function call(
   app: FastifyInstance,
-  method: 'GET' | 'POST' | 'PATCH',
+  method: 'GET' | 'POST' | 'PATCH' | 'PUT',
   url: string,
   token: string,
   body?: unknown,

@@ -17,6 +17,7 @@ import {
 } from '@elvorance/service-kit';
 import type { Contract, Quote, Visit } from '../domain/model.ts';
 import type { CustomerDirectory } from './ports.ts';
+import { currentCustomer } from './assignment.ts';
 export async function visit(tx: Transaction, principal: Principal, id: string): Promise<Visit> {
   const result = (await tx.get<Visit>('visits', id)) ?? notFound('Visit');
   requireOwner(principal, result);
@@ -121,13 +122,34 @@ export async function completeVisit(
   assert(value.status === 'active', 'VISIT_STATE', 'Only an active visit can be completed', 409);
   const outcome = oneOf(
     body.outcome,
-    ['interested', 'follow_up', 'not_interested', 'no_contact', 'agreement'] as const,
+    [
+      'interested',
+      'follow_up',
+      'not_interested',
+      'no_contact',
+      'agreement',
+      'ready_to_contract',
+      'no_decision_maker',
+      'closed',
+      'reschedule',
+      'no_budget',
+      'competitor',
+      'wrong_contact',
+      'do_not_contact',
+      'remote_meeting',
+      'needs_approval',
+    ] as const,
     'outcome',
   );
-  const customerConsentVersion =
-    outcome === 'no_contact'
-      ? (await directory.getCustomer(value.clientId, authorization)).consentVersion
-      : null;
+  const customer = await currentCustomer(
+    principal,
+    value.clientId,
+    directory,
+    authorization,
+    value.repId,
+  );
+  const optedOut = outcome === 'no_contact' || outcome === 'do_not_contact';
+  const customerConsentVersion = optedOut ? customer.consentVersion : null;
   const quotes = await tx.list<Quote>('quotes', { visitId: id });
   const contracts = await tx.list<Contract>('contracts', { visitId: id });
   // Agreement evidence is always derived server-side. Client input cannot assert acceptance, approval or payment.
@@ -174,7 +196,7 @@ export async function completeVisit(
     },
     version(body),
   );
-  if (outcome === 'no_contact')
+  if (optedOut)
     for (const pending of await tx.list<Visit>('visits', {
       clientId: value.clientId,
       status: 'scheduled',
@@ -189,7 +211,7 @@ export async function completeVisit(
     clientId: result.clientId,
     repId: result.repId,
     outcome,
-    doNotContact: outcome === 'no_contact',
+    doNotContact: optedOut,
     customerConsentVersion,
     completedAt: result.completedAt,
   });

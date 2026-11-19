@@ -1,0 +1,19 @@
+{
+  "scope": "Isolated local Keycloak integration; not hosted Staging or physical devices",
+  "verifiedAt": "2026-11-18T07:52:12.782Z",
+  "keycloak": "26.8.2",
+  "imported": true,
+  "idempotentBootstrap": true,
+  "authorizationCodePkceS256": true,
+  "idTokenSignatureJwks": true,
+  "apiClaimsAndAudienceVerified": true,
+  "adminOnlyAttributeSchema": true,
+  "refreshRotationAndReplayRejection": true,
+  "logoutRevocation": true,
+  "transport": "HTTPS with explicitly trusted temporary loopback certificate; TLS verification enabled",
+  "database": "H2 in memory; no hosted environment used",
+  "authorizationUi": "Programmatic provider HTML login; native OS browser not exercised",
+  "temporaryFixtureRemoved": true,
+  "providerVersionVerifiedByAdminApi": true,
+  "reproduce": "node tooling/scripts/test-local-identity.mts (requires loopback Keycloak and explicit test environment variables)"
+}

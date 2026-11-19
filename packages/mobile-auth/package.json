@@ -1,0 +1,14 @@
+{
+  "name": "@elvorance/mobile-auth",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "8.6.2",
+    "oauth4webapi": "3.8.8"
+  }
+}

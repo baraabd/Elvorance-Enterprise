@@ -1,40 +1,88 @@
-# Authenticated server workspace — incremental integration
+# Authenticated server applications
 
-This is an **opt-in, API-backed integration slice**, not the complete replacement for the legacy 64 routes/122 handlers.
+The representative now has a dedicated API-backed application in
+`apps/rep-mobile/src/server/`, with a separate release entry point
+`apps/rep-mobile/src/server-main.ts`. It uses the gateway and verified OIDC identity.
+The release build rejects demo/runtime imports and has no fallback to local company
+data. This is a new server interface; the preserved legacy preview's 64 routes are
+not individually reclassified as migrated simply because a different interface exists.
 
-## What works in server mode
+## Implemented interfaces
 
-All three frontends can initialize an authenticated workspace **without calling the demo data repository** when `ELVORANCE_CONFIG.dataMode === 'server'`. The server-only workspace uses `@elvorance/api-client/live-data` and routes all requests through the API Gateway:
+| Role           | Live operations                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Representative | Dashboard; customer creation/editing and published discovery; visit scheduling, start, completion and cancellation; tasks, opportunities and ordered routes; catalog-priced quote drafting, revision, discount/custom-price approval requests and sending; contract/project/invoice/payment views; conversations, messages, read receipts, notifications and support; profile editing; explicit foreground location sharing. |
+| Client         | Live invoice, quote, contract, project, support and notification views; support ticket creation; explicit quote acceptance, rejection or change request; separate contract signature and approval.                                                                                                                                                                                                                           |
+| Admin          | Live membership, region, customer, visit, quote, contract, project, invoice, support, notification and commercial-approval views; customer creation with assignment; explicit approval or rejection of requested commercial exceptions.                                                                                                                                                                                      |
 
-| Role           | Read-only live views                                                                                           | Live mutations                                 |
-| -------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| Representative | Customers, visits, quotes, contracts, projects, support tickets, notifications                                 | Create customer, create support ticket         |
-| Client         | Invoices, quotes, contracts, projects, support tickets, notifications                                          | Create support ticket                          |
-| Admin          | Memberships, regions, customers, visits, quotes, contracts, projects, invoices, support tickets, notifications | Create customer (with assigned representative) |
+The client/admin workspaces implement the counterpart decisions required by the
+representative workflow. Their entire legacy preview feature sets are not migrated.
+Authoritative operations and business rules are documented in
+[the backend integration contract](REP-BACKEND-API.md) and
+`packages/contracts/openapi.json`.
 
-The backend enforces authorization using verified bearer identity, tenant scoping and record ownership. The browser does not connect directly to PostgreSQL or RabbitMQ. The API client does not persist bearer tokens or fall back to demo records on a failed request.
+## Authentication and environment setup
 
-## Prerequisites
+Use [the independent Staging operations guide](REP-STAGING-OPERATIONS.md),
+[the identity-provider bootstrap](../infra/identity/README.md) and
+[the native release guide](rep-native-release.md). The representative release needs
+real HTTPS gateway/issuer configuration, an environment-specific client and the
+corresponding authorized account. The configuration contains public connection
+metadata only; never put tokens, passwords or signing material in a bundle.
 
-- Run the backend services and PostgreSQL using the documented Docker Compose setup.
-- Configure `apiBaseUrl` to point to the reachable API Gateway (e.g. `http://127.0.0.1:3000` when testing in the same machine/browser).
-- Provide a real sign-in adapter at `window.ELVORANCE_AUTH.getAccessToken()` that resolves the current signed-in user's access token. Authentication must be completed through the configured OIDC provider. **Do not include bearer tokens or signing secrets in the checked-in `config.example.ts`, bundled JavaScript, or browser localStorage.**
-- Change the desired app's `config.example.ts` `dataMode` from `demo` to `server`, then rebuild the app. The bundled browser config file remains executable JavaScript; do not add TypeScript-only syntax to it.
+The preferred interactive path configures `ELVORANCE_CONFIG.auth` and the matching
+`environment`. Administrator and client web login use distinct role-restricted OIDC
+clients with exact approved HTTPS redirects. Access tokens stay in memory. Native
+refresh tokens use Android Keystore-backed encryption or iOS Keychain. Browser
+sessions use memory and do not persist tokens in localStorage.
 
-The server workspace intentionally shows an actionable sign-in error if the provider is unavailable and never inserts fabricated company data. The client and representative must use claims issued for their own roles.
+For existing integration development, the explicit
+`window.ELVORANCE_AUTH.getAccessToken()` adapter remains supported. HTTP is permitted
+only for local loopback development without a hosted environment; Staging and
+production use HTTPS. The adapter is a compatibility integration point, not a way to
+bypass authentication. A missing provider/configuration shows an error rather than
+inserting demo records. Replaced accounts dispose active requests, screen state and
+location listeners before initializing the new workspace.
 
-## Important release blockers
+`npm run build:apps` retains preview builds for development and regression checks.
+Use `npm run build:rep:server` for the representative release; it produces the
+server-only bundle, CSP and source/output integrity manifest. Native preparation
+verifies the manifest before copying web assets into the native projects.
 
-The **original feature routes and handlers are not migrated**. The separate server workspace displays only existing backend records and provides a small subset of commands. It does not provide the original design's full screens, dedicated CRUD views, quote workflow, payment flows, notifications UX, GPS collection, full authentication/login interface, or native-device acceptance.
+## Deliberate functional boundaries
 
-The PostgreSQL service contracts do not yet cover every legacy user action (for example workforce assignments, tasks, discounts and business analytics). These require explicit service-owned domain models, authorization, migrations, API schemas and tests.
+- Location sharing is foreground-only, explicitly consented and stopped on app
+  background, offline transitions or logout. No continuous background tracking is
+  claimed.
+- Notifications are in-app. This change does not register FCM/APNs devices or promise
+  delivery while the app is closed.
+- Billing shows server invoices and recorded payments. It does not charge a card or
+  replace a payment processor.
+- Route planning persists an ordered visit plan; no turn-by-turn navigation or
+  automatic route optimization is claimed.
+- Company catalog, questionnaire, accounts, roles and assignments must be configured
+  by the authorized tenant administrator. Unconfigured tenants do not receive fake
+  prices or synthetic customers.
+- Data list APIs are cursor-paginated and filter actor ownership before the SQL limit.
+  The current representative view adapter assembles pages for its list screens;
+  large production datasets still require measured UI and service load acceptance.
 
-Release acceptance requires:
+## Verification and remaining release gates
 
-1. Remove and typecheck every remaining `@ts-nocheck` under strict compiler options. A renamed file extension is not enough.
-2. Replace each preview-only feature action with an explicit server-side endpoint; avoid writing the entire browser state as an opaque JSON row to sidestep domain rules or tenant isolation.
-3. Implement signed-in OIDC sessions and role-specific navigation, loading/error/retry/conflict states.
-4. Verify cross-session persistence: write from one role, read from another, restart services, and confirm PostgreSQL data is unchanged.
-5. Exercise all original 64 routes and 122 handlers (or update the formally approved scope) on desktop/mobile and native devices.
+The repository includes domain/HTTP tests, DOM-to-service integration, a real
+PostgreSQL isolation/concurrency runner, a guarded real-Keycloak smoke runner,
+distributed Docker/RabbitMQ CI, and native Android/iOS verification workflows.
+Each proves only its stated scope. Emulator/simulator tests do not replace physical
+devices, a local identity test does not create a hosted Staging deployment, and a
+native verification harness is not a signed company release.
 
-Keep the PR in draft until these requirements have evidence. `npm run audit:migration` deliberately fails while suppressed types and preview dependencies remain.
+Production requires accepted evidence for the same source and image digests,
+isolated hosted Staging, business journeys, security review, load and restore tests,
+and signed candidates exercised on physical Android and iPhone devices. The
+acceptance validator rejects missing, failed, stale or simulator-only reports.
+
+`npm run audit:migration` continues to report the inherited preview/tooling files
+with disabled type checking. The new representative release graph excludes the
+legacy preview runtime; that does not make the entire repository a completed strict
+TypeScript migration. Keep the delivery in draft until its outstanding deployment,
+signing and device evidence is reviewed.

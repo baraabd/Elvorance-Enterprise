@@ -316,6 +316,7 @@ services:
       <<: *service-environment
       PORT: '3007'
       DATABASE_URL: postgresql://atlas_communications:${COMMUNICATIONS_DB_PASSWORD:?Run init-env.mts}@postgres:5432/atlas_communications
+      CRM_URL: http://crm:3002
     depends_on:
       communications-migrate:
         condition: service_completed_successfully

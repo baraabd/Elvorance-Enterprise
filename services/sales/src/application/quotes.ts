@@ -17,6 +17,8 @@ import type { Contract, Fulfillment, Quote } from '../domain/model.ts';
 import { toApprovedSnapshot } from '../domain/model.ts';
 import type { CustomerDirectory } from './ports.ts';
 import { visit } from './visits.ts';
+import { assertDiscountApproved, invalidatePendingApprovals } from './discounts.ts';
+import { verifyCatalogPricing } from './pricing.ts';
 export function canReadQuote(principal: Principal, value: Quote): boolean {
   return (
     hasRole(principal, 'admin') ||
@@ -80,6 +82,7 @@ export async function createQuote(
   );
   await authorizeQuoteAssignment(principal, source, directory, authorization);
   const content = quoteContent(body);
+  const pricing = await verifyCatalogPricing(directory, authorization, content);
   return tx.insert<Quote>('quotes', {
     visitId: source.id,
     clientId: source.clientId,
@@ -87,6 +90,7 @@ export async function createQuote(
     repId: source.repId,
     status: 'draft',
     ...content,
+    ...pricing,
     sentAt: null,
     acceptedAt: null,
     acceptedBy: null,
@@ -112,7 +116,16 @@ export async function updateQuote(
     'Only drafts can be edited; create a revision for a sent quote',
     409,
   );
-  return tx.replace<Quote>('quotes', { ...value, ...quoteContent(body) }, version(body));
+  const content = quoteContent(body);
+  const pricing = await verifyCatalogPricing(directory, authorization, content);
+  const result = await tx.replace<Quote>(
+    'quotes',
+    { ...value, ...content, ...pricing },
+    version(body),
+  );
+  if ((value.discountMinor ?? 0) > 0 || value.customPricing)
+    await invalidatePendingApprovals(tx, value);
+  return result;
 }
 export async function reviseQuote(
   tx: Transaction,
@@ -180,6 +193,15 @@ export async function sendQuote(
     409,
   );
   await authorizeQuoteAssignment(principal, value, directory, authorization);
+  await assertDiscountApproved(tx, value);
+  const pricing = await verifyCatalogPricing(directory, authorization, value);
+  assert(
+    value.catalogVersion === pricing.catalogVersion &&
+      value.customPricing === pricing.customPricing,
+    'CATALOG_CHANGED',
+    'Catalog changed; refresh and review this quote before sending',
+    409,
+  );
   const result = await tx.replace<Quote>(
     'quotes',
     { ...value, status: 'sent', sentAt: now() },

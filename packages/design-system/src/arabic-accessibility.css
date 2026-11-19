@@ -1,0 +1,97 @@
+/* Arabic UX foundation. Applied after app styles in ordinary and server-only builds.
+   Font names are local preferences, not bundled or remotely requested font files. */
+:root {
+  --font: 'Noto Sans Arabic', 'IBM Plex Sans Arabic', Tahoma, system-ui, sans-serif;
+  --muted: #526158;
+  --green: #176b55;
+  --accent: #176b55;
+  --warning: #875710;
+  --danger: #aa302d;
+  --info: #315c7d;
+  --control-border: #738078;
+  --focus-ring: #0b5d46;
+  font-family: var(--font);
+  font-size: 100%;
+  line-height: 1.75;
+}
+html[lang^='ar'] body {
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+:root :is(h1, h2, h3, h4, button, input, select, textarea) {
+  font-family: var(--font);
+  letter-spacing: normal;
+}
+:root :is(h1, h2, h3, h4) {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+:root :is(.small, .hint, .field-label, .form-label, .field > span) {
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+:root :is(.tiny, .micro, .badge, .bottom-nav-label, .nav-label) {
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+:root button {
+  min-block-size: 44px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+:root :is(.bottom-nav-item, .connection-pill) {
+  font-size: 0.75rem;
+}
+:root :is(.btn, .button, .btn-sm, .icon-btn, .nav-link) {
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  white-space: normal;
+}
+:root .nav-link {
+  white-space: nowrap;
+}
+:root input:not([type='checkbox'], [type='radio'], [type='range'], [type='hidden']),
+:root select,
+:root textarea {
+  font-size: 1rem;
+  line-height: 1.6;
+  min-block-size: 44px;
+  border-color: var(--control-border);
+}
+:root :is(input, textarea)::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+:root :is(input[type='email'], input[type='tel'], input[type='url']) {
+  direction: ltr;
+  text-align: start;
+}
+:root :is(button, a, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px #fff;
+}
+:root :is(.checkbox-row, .field:has(input[type='checkbox'])) {
+  min-block-size: 44px;
+  cursor: pointer;
+}
+:root .checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+:root .checkbox-row input {
+  flex: 0 0 auto;
+}
+:root .app-nav {
+  scroll-padding-inline: 1rem;
+}
+@media (forced-colors: active) {
+  :root :is(button, a, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline-color: Highlight;
+    box-shadow: none;
+  }
+}

@@ -6,9 +6,11 @@
   "exports": {
     ".": "./src/index.ts",
     "./live-data": "./src/live-data.ts",
-    "./live-workspace": "./src/live-workspace.ts"
+    "./live-workspace": "./src/live-workspace.ts",
+    "./authenticated-workspace": "./src/authenticated-workspace.ts"
   },
   "dependencies": {
-    "@elvorance/contracts": "2.0.0"
+    "@elvorance/contracts": "2.0.0",
+    "@elvorance/mobile-auth": "2.0.0"
   }
 }

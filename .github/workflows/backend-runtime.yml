@@ -1,0 +1,71 @@
+name: Backend distributed runtime
+on:
+  push:
+    branches: [feat/rep-staging-mobile-20261117]
+  pull_request:
+    paths:
+      - 'services/**'
+      - 'packages/**'
+      - 'infra/**'
+      - 'tests/runtime/**'
+      - 'tooling/**'
+      - 'package*.json'
+      - '.github/workflows/backend-runtime.yml'
+permissions:
+  contents: read
+concurrency:
+  group: backend-runtime-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  compose-journey:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CI: 'true'
+      COMPOSE_PROJECT_NAME: elvorance-runtime-${{ github.run_id }}-${{ github.run_attempt }}
+      IMAGE_TAG: ci-${{ github.run_id }}-${{ github.run_attempt }}
+      COMPOSE_PARALLEL_LIMIT: '2'
+      GATEWAY_BIND_HOST: 127.0.0.1
+      GATEWAY_PORT: '23000'
+      RUNTIME_GATEWAY_URL: http://127.0.0.1:23000
+      RABBITMQ_MANAGEMENT_BIND_HOST: 127.0.0.1
+      RABBITMQ_MANAGEMENT_PORT: '25672'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm ci
+      - name: Generate fresh isolated CI secrets without printing them
+        run: node infra/compose/init-env.mts
+      - name: Build and start the real gateway, seven services, PostgreSQL and RabbitMQ
+        run: npm run infra:up
+      - name: Verify separate database roles deny cross-service connections
+        run: docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml exec -T postgres sh /opt/atlas/check-isolation.sh
+      - name: Execute synthetic customer to approved contract and asynchronous fulfillment
+        run: node tests/runtime/compose-journey.mts
+      - name: Collect service state without secrets
+        if: always()
+        run: |
+          mkdir -p dist/runtime
+          if test -f infra/compose/.env; then
+            docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml ps --all --format json > dist/runtime/compose-state.json
+          fi
+      - name: Remove only this isolated CI Compose project and its disposable volumes
+        if: always()
+        run: |
+          if [[ ! "$COMPOSE_PROJECT_NAME" =~ ^elvorance-runtime-[0-9]+-[0-9]+$ ]]; then
+            echo 'Refusing cleanup outside an isolated runtime CI project.' >&2
+            exit 1
+          fi
+          if test -f infra/compose/.env; then
+            docker compose --project-name "$COMPOSE_PROJECT_NAME" --env-file infra/compose/.env -f infra/compose/compose.yaml down --volumes --remove-orphans
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backend-runtime-ci-evidence
+          path: dist/runtime/
+          if-no-files-found: warn
+          retention-days: 7
