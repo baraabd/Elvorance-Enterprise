@@ -1,7 +1,7 @@
 import type { Entity, Role } from '@elvorance/contracts';
 import { ApiError } from './index.ts';
 import { createLiveDataApi, type LiveDataApi, type ServerRecord } from './live-data.ts';
-import { escapeHtml } from './live-format.ts';
+import { escapeHtml, statusLabel } from './live-format.ts';
 import {
   commercialDetail,
   commercialReviewButton,
@@ -63,7 +63,9 @@ function summaryRow(row: Entity, section: string): string {
     '<p class="small muted">المرجع: ' +
     escapeHtml(row.id) +
     '</p>' +
-    (typeof status === 'string' ? '<span class="badge">' + escapeHtml(status) + '</span>' : '') +
+    (typeof status === 'string'
+      ? '<span class="badge">' + escapeHtml(statusLabel(status)) + '</span>'
+      : '') +
     commercialReviewButton(section, row) +
     '</article>'
   );
@@ -159,7 +161,9 @@ export async function mountLiveWorkspace(options: LiveWorkspaceOptions): Promise
         (item) =>
           '<button type="button" class="btn ' +
           (item.id === section.id ? 'btn-primary' : 'btn-secondary') +
-          '" data-live-section="' +
+          '"' +
+          (item.id === section.id ? ' aria-current="page"' : '') +
+          ' data-live-section="' +
           escapeHtml(item.id) +
           '">' +
           escapeHtml(item.label) +

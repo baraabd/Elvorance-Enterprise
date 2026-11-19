@@ -34,9 +34,12 @@ const forbidden = inputNames.filter((file) =>
 if (forbidden.length)
   throw new Error(`Demo code entered the release graph: ${forbidden.join(', ')}`);
 const cssInput = 'apps/rep-mobile/src/server/styles.css';
+const arabicCssInput = 'packages/design-system/src/arabic-accessibility.css';
 await writeFile(
   resolve(repOutput, 'assets/app.css'),
-  await readFile(resolve(repositoryRoot, cssInput)),
+  (await readFile(resolve(repositoryRoot, cssInput), 'utf8')) +
+    '\n' +
+    (await readFile(resolve(repositoryRoot, arabicCssInput), 'utf8')),
 );
 await writeFile(
   resolve(repOutput, 'config.js'),
@@ -54,6 +57,7 @@ for (const name of [
   ...new Set([
     ...inputNames,
     cssInput,
+    arabicCssInput,
     'package-lock.json',
     'tooling/scripts/build-rep-server.mts',
     'tooling/scripts/rep-release/release-config.mts',

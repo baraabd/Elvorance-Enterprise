@@ -1,6 +1,6 @@
 import type { Entity } from '@elvorance/contracts';
 import type { ServerRecord } from './live-data.ts';
-import { escapeHtml, lines, money, record } from './live-format.ts';
+import { escapeHtml, lines, money, record, statusLabel } from './live-format.ts';
 import { ApiError } from './index.ts';
 
 export type CommercialKind = 'quote' | 'contract' | 'approval';
@@ -114,7 +114,7 @@ function contractActions(value: ServerRecord): string {
 }
 function approvalActions(approval: ServerRecord, quote: ServerRecord): string {
   if (approval.status !== 'pending' || quote.status !== 'draft')
-    return `<p class="notice">حالة القرار: ${escapeHtml(approval.status)}. ${escapeHtml(approval.decisionNote)}</p>`;
+    return `<p class="notice">حالة القرار: ${escapeHtml(statusLabel(approval.status))}. ${escapeHtml(approval.decisionNote)}</p>`;
   return `<form class="card stack" data-live-form="discount-decision"><h3>قرار الإدارة</h3><label>القرار <select class="select" name="decision" required><option value="">اختر القرار بعد المراجعة</option><option value="approved">الموافقة على الاستثناء التجاري</option><option value="rejected">رفض الاستثناء التجاري</option></select></label><label>سبب القرار <textarea class="textarea" name="note" required minlength="3" maxlength="2000"></textarea></label>${consent('راجعت النطاق والقيمة والخصم والدفعات، وأثبت القرار المحدد لهذه النسخة من العرض.')}<button class="btn btn-primary" type="submit">حفظ القرار</button></form>`;
 }
 export function commercialDetail(

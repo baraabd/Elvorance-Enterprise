@@ -34,3 +34,38 @@ export function record(value: unknown): Record<string, unknown> {
 export function lines(value: unknown): string {
   return escapeHtml(value).replace(/\n/g, '<br>');
 }
+
+const statusLabels: Readonly<Record<string, string>> = Object.freeze({
+  new: 'جديد',
+  qualified: 'مؤهل',
+  customer: 'عميل',
+  lost: 'لم تكتمل الفرصة',
+  draft: 'مسودة',
+  pending: 'بانتظار الإجراء',
+  approved: 'تمت الموافقة',
+  rejected: 'مرفوض',
+  sent: 'تم الإرسال',
+  accepted: 'مقبول',
+  changes_requested: 'مطلوب تعديل',
+  cancelled: 'ملغي',
+  superseded: 'استُبدل بنسخة أحدث',
+  scheduled: 'مجدول',
+  active: 'نشط',
+  completed: 'مكتمل',
+  disabled: 'معطل',
+  paused: 'متوقف مؤقتاً',
+  stopped: 'متوقف',
+  open: 'مفتوح',
+  resolved: 'تم الحل',
+  part_paid: 'مسدد جزئياً',
+  paid: 'مسدد',
+  in_progress: 'قيد التنفيذ',
+  done: 'منجز',
+  planning: 'قيد التخطيط',
+});
+
+export function statusLabel(value: unknown): string {
+  return typeof value === 'string' && Object.hasOwn(statusLabels, value)
+    ? statusLabels[value]!
+    : 'حالة غير معروفة';
+}
