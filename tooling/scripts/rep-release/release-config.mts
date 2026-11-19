@@ -30,13 +30,18 @@ function secureUrl(value: string | undefined, name: string): URL {
   return url;
 }
 
+function gatewayUrl(value: string | undefined, name: string): URL {
+  const url = secureUrl(value, name);
+  if (url.pathname !== '/') throw new Error(`${name} must be the gateway HTTPS origin.`);
+  return url;
+}
+
 export function repReleaseConfig(env: NodeJS.ProcessEnv = process.env): RepReleaseConfig {
   const environment = env.APP_ENV;
   if (environment !== 'staging' && environment !== 'production') {
     throw new Error('APP_ENV must explicitly select staging or production.');
   }
-  const api = secureUrl(env.REP_API_BASE_URL, 'REP_API_BASE_URL');
-  if (api.pathname !== '/') throw new Error('REP_API_BASE_URL must be the gateway HTTPS origin.');
+  const api = gatewayUrl(env.REP_API_BASE_URL, 'REP_API_BASE_URL');
   const issuer = secureUrl(env.REP_OIDC_ISSUER, 'REP_OIDC_ISSUER');
   if (issuer.pathname !== `/realms/elvorance-${environment}`) {
     throw new Error('The OIDC realm must match the selected isolated environment.');
@@ -45,8 +50,15 @@ export function repReleaseConfig(env: NodeJS.ProcessEnv = process.env): RepRelea
   if (clientId !== `elvorance-rep-${environment}`) {
     throw new Error('REP_OIDC_CLIENT_ID must match the selected environment.');
   }
-  if (environment === 'staging' && env.REP_PRODUCTION_API_BASE_URL === api.origin) {
-    throw new Error('Staging and production must not share a gateway.');
+  if (environment === 'staging' && env.REP_PRODUCTION_API_BASE_URL) {
+    const productionApi = gatewayUrl(
+      env.REP_PRODUCTION_API_BASE_URL,
+      'REP_PRODUCTION_API_BASE_URL',
+    );
+    // Compare parsed origins: trailing slashes, host case and default ports are equivalent.
+    if (productionApi.origin === api.origin) {
+      throw new Error('Staging and production must not share a gateway.');
+    }
   }
   return {
     environment,
