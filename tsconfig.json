@@ -27,7 +27,8 @@
     "tooling/scripts/copy-content.mts",
     "packages/contracts/src/browser-window.d.ts",
     "tooling/scripts/workspace.mts",
-    "tooling/scripts/dev.mts"
+    "tooling/scripts/dev.mts",
+    "tooling/scripts/sprint01-inventory.mts"
   ],
   "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
 }

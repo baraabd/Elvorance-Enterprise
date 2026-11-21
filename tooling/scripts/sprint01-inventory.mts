@@ -1,0 +1,278 @@
+import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { resolve, relative, dirname } from 'node:path';
+import { createHash } from 'node:crypto';
+import ts from 'typescript';
+
+// Source-only inventory. Static registration is not end-to-end acceptance or a security proof.
+const root = resolve(process.argv[2] ?? '.');
+const output = resolve(process.argv[3] ?? 'sprint01-inventory.json');
+const revision = process.argv[4] ?? 'unverified-working-tree';
+const excluded = new Set(['node_modules', 'dist', '.git', 'android', 'ios', 'preview', 'baseline']);
+const walk = (directory: string): string[] =>
+  readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    if (excluded.has(entry.name) || entry.isSymbolicLink()) return [];
+    const path = resolve(directory, entry.name);
+    return entry.isDirectory() ? walk(path) : [path];
+  });
+const files = ['apps', 'packages', 'services', 'tests', 'tooling', 'infra', '.github']
+  .flatMap((name) => (existsSync(resolve(root, name)) ? walk(resolve(root, name)) : []))
+  .sort();
+const pathOf = (path: string): string => relative(root, path).replaceAll('\\', '/');
+const textOf = (path: string): string => readFileSync(path, 'utf8');
+const nameOf = (node: ts.PropertyName | ts.BindingName | undefined): string => {
+  if (!node) return '<anonymous>';
+  return ts.isIdentifier(node) || ts.isStringLiteral(node) || ts.isNumericLiteral(node)
+    ? node.text
+    : node.getText();
+};
+interface Evidence {
+  path: string;
+  line: number;
+  endLine: number;
+}
+interface SymbolRow extends Evidence {
+  name: string;
+  kind: string;
+  guards: string[];
+}
+interface RouteRow extends Evidence {
+  service: string;
+  method: string;
+  pattern: string;
+  calls: string[];
+}
+interface UiRow extends Evidence {
+  app: string;
+  kind: string;
+  key: string;
+  mode: string;
+  status: string;
+}
+const symbols: SymbolRow[] = [];
+const registrations: RouteRow[] = [];
+const ui: UiRow[] = [];
+const sources: Array<{
+  path: string;
+  sha256: string;
+  lines: number;
+  disabledTypeChecking: boolean;
+}> = [];
+const guards = /\b(requireRole|requireOwner|hasRole|isOwner|canReadQuote|authorize\w*)\s*\(/;
+for (const file of files.filter(
+  (path) => /\.(?:ts|mts|cts|tsx)$/.test(path) && !path.endsWith('.d.ts'),
+)) {
+  const text = textOf(file);
+  const path = pathOf(file);
+  const source = ts.createSourceFile(file, text, ts.ScriptTarget.Latest, true);
+  const location = (node: ts.Node): Evidence => ({
+    path,
+    line: source.getLineAndCharacterOfPosition(node.getStart(source)).line + 1,
+    endLine: source.getLineAndCharacterOfPosition(node.getEnd()).line + 1,
+  });
+  sources.push({
+    path,
+    sha256: createHash('sha256').update(text).digest('hex'),
+    lines: text.split('\n').length,
+    disabledTypeChecking: /^\s*\/\/\s*@ts\u002dnocheck\b/m.test(text),
+  });
+  const visit = (node: ts.Node): void => {
+    if (
+      ts.isFunctionDeclaration(node) ||
+      ts.isFunctionExpression(node) ||
+      ts.isArrowFunction(node) ||
+      ts.isMethodDeclaration(node) ||
+      ts.isGetAccessor(node) ||
+      ts.isSetAccessor(node) ||
+      ts.isConstructorDeclaration(node)
+    ) {
+      const ownName = 'name' in node ? node.name : undefined;
+      const parentName =
+        ts.isVariableDeclaration(node.parent) || ts.isPropertyAssignment(node.parent)
+          ? node.parent.name
+          : undefined;
+      symbols.push({
+        ...location(node),
+        name: nameOf(ownName ?? parentName),
+        kind: ts.SyntaxKind[node.kind],
+        guards: node
+          .getText(source)
+          .split('\n')
+          .filter((line) => guards.test(line))
+          .map((line) => line.trim()),
+      });
+    }
+    if (
+      path.startsWith('services/') &&
+      ts.isCallExpression(node) &&
+      ts.isPropertyAccessExpression(node.expression) &&
+      node.expression.expression.getText(source) === 'app' &&
+      /^(get|post|patch|put|delete|options|head|all)$/.test(node.expression.name.text)
+    ) {
+      const target = node.arguments[0];
+      if (target) {
+        let pattern = ts.isStringLiteralLike(target) ? target.text : target.getText(source);
+        if (ts.isTemplateExpression(target))
+          pattern = pattern.slice(1, -1).replace(/\$\{[^}]+\}/g, '*');
+        const calls = new Set<string>();
+        const collect = (child: ts.Node): void => {
+          if (ts.isCallExpression(child) && ts.isIdentifier(child.expression))
+            calls.add(child.expression.text);
+          ts.forEachChild(child, collect);
+        };
+        node.arguments.slice(1).forEach(collect);
+        registrations.push({
+          ...location(node),
+          service: path.split('/')[1]!,
+          method: node.expression.name.text.toUpperCase(),
+          pattern,
+          calls: [...calls].sort(),
+        });
+      }
+    }
+    if (
+      path.startsWith('apps/') &&
+      (path.includes('/src/features/') || path.endsWith('/src/state/local-demo.ts')) &&
+      ts.isPropertyAssignment(node) &&
+      ['routes', 'actions'].includes(nameOf(node.name)) &&
+      ts.isObjectLiteralExpression(node.initializer)
+    ) {
+      for (const property of node.initializer.properties) {
+        if (!property.name) continue;
+        ui.push({
+          ...location(property),
+          app: path.split('/')[1]!,
+          kind: nameOf(node.name),
+          key: nameOf(property.name),
+          mode: 'legacy-demo',
+          status:
+            path === 'apps/admin-web/src/features/configuration/index.ts'
+              ? 'partial-optional-configuration-api-sync'
+              : 'unconnected-to-server-workspace',
+        });
+      }
+    }
+    if (
+      path.endsWith('/server/workspace.ts') &&
+      ts.isVariableDeclaration(node) &&
+      nameOf(node.name) === 'pages' &&
+      node.initializer &&
+      ts.isObjectLiteralExpression(node.initializer)
+    ) {
+      for (const property of node.initializer.properties)
+        if (property.name)
+          ui.push({
+            ...location(property),
+            app: 'rep-mobile',
+            kind: 'server-page',
+            key: nameOf(property.name),
+            mode: 'server',
+            status: 'partial-hosted-acceptance-unverified',
+          });
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(source);
+}
+interface DeclaredRoute {
+  service: string;
+  method: string;
+  gatewayPath: string;
+  servicePath: string;
+  roles: string[];
+  summary: string;
+}
+const declared = JSON.parse(
+  textOf(resolve(root, 'packages/contracts/route-inventory.json')),
+) as DeclaredRoute[];
+const canonical = (path: string): string => path.replace(/\{([^}]+)\}/g, ':$1');
+const matches = (pattern: string, target: string): boolean =>
+  new RegExp(
+    '^' +
+      pattern
+        .split('*')
+        .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+        .join('[^/]+') +
+      '$',
+  ).test(target);
+const operations = declared.map((route) => {
+  const sourceRoutes = registrations.filter(
+    (row) =>
+      row.service === route.service &&
+      row.method === route.method &&
+      matches(row.pattern, canonical(route.servicePath)),
+  );
+  const refs = new Set(sourceRoutes.flatMap((row) => row.calls));
+  return {
+    ...route,
+    registrationVerified: sourceRoutes.length > 0,
+    sourceRoutes,
+    policyEvidence: symbols.filter(
+      (row) => row.path.startsWith(`services/${route.service}/src/`) && refs.has(row.name),
+    ),
+    accessEvidence:
+      'roles are declared contract; source locations and guards are static evidence, not an exhaustive authorization proof',
+    status: 'partial-end-to-end-acceptance-unverified',
+  };
+});
+const undocumentedRegistrations = registrations.filter(
+  (row) =>
+    row.path.includes('/transport/') &&
+    row.pattern.startsWith('/v1/') &&
+    !declared.some(
+      (route) =>
+        route.service === row.service &&
+        route.method === row.method &&
+        matches(row.pattern, canonical(route.servicePath)),
+    ),
+);
+const manifests = files
+  .filter((path) =>
+    /\/(apps|packages|services)\/[^/]+\/package\.json$/.test(path.replaceAll('\\', '/')),
+  )
+  .map((path) => ({
+    path: pathOf(path),
+    ...(JSON.parse(textOf(path)) as Record<string, unknown>),
+  }));
+const result = {
+  schemaVersion: 1,
+  revision,
+  scope: 'source snapshot; generated/native platform output excluded',
+  limitations: [
+    'No hosted staging or physical-device acceptance.',
+    'Anonymous functions are listed but not individually certified.',
+    'Dynamic routes match source templates; role declarations require behavioral tests.',
+    'Legacy demo actions are not server integration.',
+  ],
+  counts: {
+    workspaces: manifests.length,
+    sourceFiles: sources.length,
+    symbols: symbols.length,
+    legacyScreens: ui.filter((row) => row.kind === 'routes').length,
+    legacyActions: ui.filter((row) => row.kind === 'actions').length,
+    representativeServerPages: ui.filter((row) => row.kind === 'server-page').length,
+    documentedOperations: operations.length,
+    unmatchedOperations: operations.filter((row) => !row.registrationVerified).length,
+    undocumentedRegistrations: undocumentedRegistrations.length,
+  },
+  manifests,
+  sources,
+  ui,
+  operations,
+  registrations,
+  undocumentedRegistrations,
+  symbols,
+  migrations: files
+    .filter((path) => path.endsWith('.sql') || path.includes('/migrations/'))
+    .map(pathOf),
+  tests: files
+    .filter(
+      (path) =>
+        /\.(test|spec)\.(ts|mts|cts|tsx)$/.test(path) || path.includes('/tests/regression/'),
+    )
+    .map(pathOf),
+  workflows: files.filter((path) => path.includes('/.github/workflows/')).map(pathOf),
+};
+mkdirSync(dirname(output), { recursive: true });
+writeFileSync(output, JSON.stringify(result, null, 2) + '\n');
+console.log(JSON.stringify(result.counts, null, 2));
+if (result.counts.unmatchedOperations || undocumentedRegistrations.length) process.exitCode = 1;
