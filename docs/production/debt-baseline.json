@@ -1,0 +1,2147 @@
+{
+  "schemaVersion": 1,
+  "measurement": "static-source-not-runtime-coverage",
+  "totals": {
+    "ts-nocheck": 95,
+    "outside-tsconfig": 63,
+    "explicit-any": 20
+  },
+  "items": [
+    {
+      "id": "explicit-any.1cc29808e12d5b99f26e.1",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 120,
+        "column": 59,
+        "symbol": "option",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "o: any"
+    },
+    {
+      "id": "explicit-any.58e415e1e565cfdcc6d2.1",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/backend/lifecycle.test.ts",
+        "line": 297,
+        "column": 59,
+        "symbol": "module",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "Record<string, any>"
+    },
+    {
+      "id": "explicit-any.58e415e1e565cfdcc6d2.2",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/backend/lifecycle.test.ts",
+        "line": 300,
+        "column": 58,
+        "symbol": "module",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "Record<string, any>"
+    },
+    {
+      "id": "explicit-any.61c1116915dd729f5c22.1",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 184,
+        "column": 15,
+        "symbol": "quote",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "q: any"
+    },
+    {
+      "id": "explicit-any.762a84933a724495d28a.1",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/backend/postgres.test.ts",
+        "line": 409,
+        "column": 58,
+        "symbol": "module",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "Record<string, any>"
+    },
+    {
+      "id": "explicit-any.8956bcf38cc5405bf957.1",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 84,
+        "column": 49,
+        "symbol": "main",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "v: any"
+    },
+    {
+      "id": "explicit-any.8956bcf38cc5405bf957.2",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 91,
+        "column": 38,
+        "symbol": "main",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "v: any"
+    },
+    {
+      "id": "explicit-any.8956bcf38cc5405bf957.3",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 99,
+        "column": 50,
+        "symbol": "visit",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "v: any"
+    },
+    {
+      "id": "explicit-any.8956bcf38cc5405bf957.4",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 107,
+        "column": 47,
+        "symbol": "main",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "v: any"
+    },
+    {
+      "id": "explicit-any.8956bcf38cc5405bf957.5",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 134,
+        "column": 50,
+        "symbol": "visit",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "v: any"
+    },
+    {
+      "id": "explicit-any.8956bcf38cc5405bf957.6",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 144,
+        "column": 49,
+        "symbol": "before",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "v: any"
+    },
+    {
+      "id": "explicit-any.8956bcf38cc5405bf957.7",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 153,
+        "column": 48,
+        "symbol": "after",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "v: any"
+    },
+    {
+      "id": "explicit-any.9f41c0d81c3c0bf517e6.1",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/backend/helpers.ts",
+        "line": 65,
+        "column": 81,
+        "symbol": "call",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "Record<string, any>"
+    },
+    {
+      "id": "explicit-any.a669cbb8776a27851c8a.1",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 47,
+        "column": 21,
+        "symbol": "state",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "ctx: any"
+    },
+    {
+      "id": "explicit-any.a669cbb8776a27851c8a.2",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 50,
+        "column": 21,
+        "symbol": "field",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "ctx: any"
+    },
+    {
+      "id": "explicit-any.a669cbb8776a27851c8a.3",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 55,
+        "column": 22,
+        "symbol": "submit",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "ctx: any"
+    },
+    {
+      "id": "explicit-any.a669cbb8776a27851c8a.4",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 58,
+        "column": 24,
+        "symbol": "go",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "ctx: any"
+    },
+    {
+      "id": "explicit-any.cfb22c2c41f34a8ecce9.1",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/regression/rep-journey.cts",
+        "line": 55,
+        "column": 33,
+        "symbol": "submit",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "form: any"
+    },
+    {
+      "id": "explicit-any.f2e5afa327a3c87aad43.1",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/identity/local-keycloak-smoke.mts",
+        "line": 57,
+        "column": 7,
+        "symbol": "module",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "any[]"
+    },
+    {
+      "id": "explicit-any.f2e5afa327a3c87aad43.2",
+      "kind": "explicit-any",
+      "source": {
+        "path": "tests/identity/local-keycloak-smoke.mts",
+        "line": 62,
+        "column": 9,
+        "symbol": "module",
+        "sha256": "d6a7cd2a7371b1a15d543196979ff74fdb027023ebf187d5d329be11055c77fd"
+      },
+      "text": "any[]"
+    },
+    {
+      "id": "outside-tsconfig.0715c198807da45400e9.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "tooling/scripts/test-regression.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "ea002af42eeb6991db230446894f3995f25b1a80db7f43678d4d637d3d313583"
+      },
+      "text": "tooling/scripts/test-regression.mts"
+    },
+    {
+      "id": "outside-tsconfig.0baa6b2a65d2fe5d5d36.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/projects/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "a8835493467b25056fa706757b53d881b1a12058051318a1ee4d1f46a6d6938a"
+      },
+      "text": "apps/admin-web/src/features/projects/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.0e3e206f1ad788dc26c6.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/features/catalog/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "1f62109f8525f50a8068b16d6a32c468848c2465e8d9607458365f895194e88b"
+      },
+      "text": "apps/client-mobile/src/features/catalog/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.11338a89fec49be842cc.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "packages/ui/test/register-apps.test.cts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "f27dae37b9dafe17881ed624a3027dea6126b72ede850e21d0ae401ba1d07993"
+      },
+      "text": "packages/ui/test/register-apps.test.cts"
+    },
+    {
+      "id": "outside-tsconfig.11e726fada95142626c9.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/state/local-demo.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "d4c8abf839b3bb5d035f366ce42411de7136ffd2e7eecb5e90ae1c64b88ec47a"
+      },
+      "text": "apps/admin-web/src/state/local-demo.ts"
+    },
+    {
+      "id": "outside-tsconfig.206f786509e97a53de5e.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/app.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "16f6e3f405bbd13cca2bfda36e92f841163e6f217c795124a3489492e41c1deb"
+      },
+      "text": "apps/admin-web/src/app.ts"
+    },
+    {
+      "id": "outside-tsconfig.212b30c95b055b92eca9.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/app.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "ef930ba6ecc625b46e66b11125c45d2afe82f205f3ebeb3aa165498b7488de45"
+      },
+      "text": "apps/client-mobile/src/app.ts"
+    },
+    {
+      "id": "outside-tsconfig.2377b5c06ec1d109e5b0.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/settings/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "5044047acaafaea7dba4953aab5ea5e9e127fb52e892567de93d8e98b5782f14"
+      },
+      "text": "apps/admin-web/src/features/settings/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.2747ffce058e0ea5ca27.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/features/opportunities/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "dc34ee4a6750d407a3f2fa9af5defe856aa8fc0604de89707464362174ca568d"
+      },
+      "text": "apps/rep-mobile/src/features/opportunities/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.28c1cf8d0120a7382e17.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "tooling/scripts/app-build-proof.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "ef4f50047fed2f3199a241955cf449587daef99cd015e54ad48bd2c6868a1b94"
+      },
+      "text": "tooling/scripts/app-build-proof.mts"
+    },
+    {
+      "id": "outside-tsconfig.293452ae3332b32d5482.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "infra/compose/smoke.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "af4750682b62f19d45ced0054c4ee8c68df27e2742293d68d8e85b7ef82b82e8"
+      },
+      "text": "infra/compose/smoke.mts"
+    },
+    {
+      "id": "outside-tsconfig.297ff2e3524667b7d1c6.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "tooling/scripts/build-services.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "98a238d8e5b0853974daf681f2d882f33daf01781537aa3c61f094b28221edff"
+      },
+      "text": "tooling/scripts/build-services.mts"
+    },
+    {
+      "id": "outside-tsconfig.2aa22f5b57aed030baa1.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/context.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "32bb8aa1a52083cf14df0a63b8b42faa866e200501b1aa585795ae7b6da5f3b0"
+      },
+      "text": "apps/admin-web/src/context.ts"
+    },
+    {
+      "id": "outside-tsconfig.2d1af1344ce34573d38a.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/features/projects/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "3e90707ac154fe09b3b91df8d90b8f89b14f8adbae2b6d728c38ac974cec5e4f"
+      },
+      "text": "apps/client-mobile/src/features/projects/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.3601069c170a1a58ae82.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/context.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "19c83dcace8ea733717d73e80b648fc48371f2af155f15ae9b1817c6ec23d058"
+      },
+      "text": "apps/rep-mobile/src/context.ts"
+    },
+    {
+      "id": "outside-tsconfig.38fbfb52005c910f7bcd.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/features/messages/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "5e549f1c1aa19396b76972e9f1770710a82cc22378e022285ff74b86d6d24283"
+      },
+      "text": "apps/rep-mobile/src/features/messages/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.3c432e9c6aa161d1b469.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/pipeline/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "74e89fe9f148f28684fd0b99afd58827022581946d85cd37b745a622012264f9"
+      },
+      "text": "apps/admin-web/src/features/pipeline/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.3d4ece36bc5e59d5fa72.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/state/local-demo.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "fbd4bce76d9d64cac2601c8efecfd34da30ce436e6fe004163d34606336d5791"
+      },
+      "text": "apps/client-mobile/src/state/local-demo.ts"
+    },
+    {
+      "id": "outside-tsconfig.41d1d7fb4c19cad55adf.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/features/discovery/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "d2d45ebf4892d912551b5d2cb2ee17a3c45440e7870ab1b3d15ac9159faabbd2"
+      },
+      "text": "apps/rep-mobile/src/features/discovery/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.41ee4605b45a31a88328.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/context.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "1bd2a475d5497716725fe84b3370cb059f71bba972ab4db9f8f1fcd3a166f316"
+      },
+      "text": "apps/client-mobile/src/context.ts"
+    },
+    {
+      "id": "outside-tsconfig.489f6b61c2c148fcfa29.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/features/discovery/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "44d262272ac682863b98a7d4a28901875881f0ff9188ba18c60ebec5282f806b"
+      },
+      "text": "apps/client-mobile/src/features/discovery/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.49a71ba082634329a831.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/queries.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "5d3831d439eed1c05959fe1ecb4482a5dbc59e83c0d5514c04d8575edce7890a"
+      },
+      "text": "apps/admin-web/src/queries.ts"
+    },
+    {
+      "id": "outside-tsconfig.4aee34ecea1edfbae977.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/features/tasks/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "4f415f454b05904e360c4dd1cbdeb894d737efb2af8ff8b6777a58e0e9abc6ad"
+      },
+      "text": "apps/rep-mobile/src/features/tasks/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.4bc43a59020ba7ee138c.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/features/account/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "5b25da8fb21a752e716e8fd2d85665147a041f290fb197373367248e751923a9"
+      },
+      "text": "apps/rep-mobile/src/features/account/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.4be47ec5faff1482c222.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/lifecycle.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "8234346f0d1d5557538f29dcf195aacb4211c0243ebecb1794deff495b55d4b9"
+      },
+      "text": "apps/rep-mobile/src/lifecycle.ts"
+    },
+    {
+      "id": "outside-tsconfig.5023963391f7b4321f39.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/features/territory/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "481ffe6a59d94b14db990dffdecec541e7d208dfac94e34029e50b32b5534a7c"
+      },
+      "text": "apps/rep-mobile/src/features/territory/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.502e5a629a7cafee6e3e.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/messages/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "203c9966f2bb071f14d65e1e6386cd5456db3ed7f61fad6a4f8ea0c47536c404"
+      },
+      "text": "apps/admin-web/src/features/messages/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.51dd01bce31381c2abdb.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/features/quotes/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "d8cddc1ea4f6cb461efa26a84347efc4e895742ccc8b317ed9d2628d390bf7b7"
+      },
+      "text": "apps/rep-mobile/src/features/quotes/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.54d4a832213a9a357380.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/approvals/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "1753238acc7fb4927a5bef6658df5ec6e0eec8ed961a82dfb9a9e7635419480a"
+      },
+      "text": "apps/admin-web/src/features/approvals/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.5a2bb81329ea855b1e5c.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/features/catalog/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "27225a7468c372d68d758ad2e0372a0b2e5b378b098bf5f0d8c9f893d945910e"
+      },
+      "text": "apps/rep-mobile/src/features/catalog/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.5f3ec65796bcbc303755.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/features/messages/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "25d236c909c3df2ebbff73a6a80b801e85ca434aeb25d47860d91484ebce97ca"
+      },
+      "text": "apps/client-mobile/src/features/messages/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.601cf5fe82004889c480.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/features/dashboard/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "84af01eaa3fd9b829c3a4a0bcba4066af69e287b52137609d5a283cfee39fb4d"
+      },
+      "text": "apps/rep-mobile/src/features/dashboard/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.62e4221a43d6d4c50677.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/analytics/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "5b8d59c8a8d7fa3a9a0ddfd03e07e4ad49c52c9983d47a089aaaf1bf13957226"
+      },
+      "text": "apps/admin-web/src/features/analytics/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.66d8ab37f54eaf59d8e3.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "tooling/scripts/package.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "8d3204e7b0c7a36abb71f1de4d04c31e8e7c66033bc3f85262acb09a51208368"
+      },
+      "text": "tooling/scripts/package.mts"
+    },
+    {
+      "id": "outside-tsconfig.6761abec9959fc4a9148.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/app.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "f98749f0dec183dc1590b1dc4d1bc8a356537dc8a3996c6410992b4bb907bc94"
+      },
+      "text": "apps/rep-mobile/src/app.ts"
+    },
+    {
+      "id": "outside-tsconfig.6937c1fc1f13b7ad321c.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "tooling/scripts/build-apps.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "29b17814d235d2bcb1fb1cf27c709fe9a0fd985fef3775e72342ccb6fa557934"
+      },
+      "text": "tooling/scripts/build-apps.mts"
+    },
+    {
+      "id": "outside-tsconfig.6b4802c3e590bcadc76b.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/configuration/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "a27aad824a2b3f9f9bdcc860806a4e0558a028530ab4bb201e305b55873fcfad"
+      },
+      "text": "apps/admin-web/src/features/configuration/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.73241817dd090d799bdb.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/queries.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "a381f48fad4a7f61aedaafbd7070c8e92e6e7edf468b316e86255c2ca4c960ad"
+      },
+      "text": "apps/rep-mobile/src/queries.ts"
+    },
+    {
+      "id": "outside-tsconfig.7eed42a5e9400d9eb407.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/support/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "58736d0708cd29ba1ccdab26dc274b3f5acfa34a6e287691c5365cbde1b89c77"
+      },
+      "text": "apps/admin-web/src/features/support/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.89cfbdd9c59b18674f2e.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/queries.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "64ba4d9b50855ff46a096aa26d575e466707945613f6ef8a9e88c243b1c7f1ea"
+      },
+      "text": "apps/client-mobile/src/queries.ts"
+    },
+    {
+      "id": "outside-tsconfig.8fc95a40a1262c562ffd.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "tooling/scripts/package-hotfix.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "b9bcefc105d1e37e6a074550c478f9e36287ca3156585a7561e2c25743e490d2"
+      },
+      "text": "tooling/scripts/package-hotfix.mts"
+    },
+    {
+      "id": "outside-tsconfig.96a229a2212456e96e43.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/lifecycle.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "37436ef85ffe5f50db2b0f0387becca3d3327c6e1e34e151c6215d40a344aadd"
+      },
+      "text": "apps/client-mobile/src/lifecycle.ts"
+    },
+    {
+      "id": "outside-tsconfig.975ac866e71832838ee6.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/lifecycle.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "2ddf67344e9087efd53627af562e9a9aef57aea95ec407a5ffa225fa68583c69"
+      },
+      "text": "apps/admin-web/src/lifecycle.ts"
+    },
+    {
+      "id": "outside-tsconfig.99894b88a91981673e6f.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "tooling/scripts/mobile.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "e334d450943da8e39cff792a6ae0c0184d5e66d6fd3fda4030b06dafb514ee53"
+      },
+      "text": "tooling/scripts/mobile.mts"
+    },
+    {
+      "id": "outside-tsconfig.9a1aa3e83fd24516e3a4.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/features/billing/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "59b80ede270ffda91b076eb2b63bc2f68a915d8d7d70c3d3f49c98149e0a5d60"
+      },
+      "text": "apps/client-mobile/src/features/billing/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.a3f4453aba7082e2416a.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "tooling/patches/apply-hotfix.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "c1cf0a459f7315b97ba772c1891517a0c812c59bf226e6e30a37b21211d0d08c"
+      },
+      "text": "tooling/patches/apply-hotfix.mts"
+    },
+    {
+      "id": "outside-tsconfig.a428d695e5d9f3592efe.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/features/visits/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "07892a5f9feadae89886c3ac10609cc7bd065e1eab846897869de3baa32b29ec"
+      },
+      "text": "apps/rep-mobile/src/features/visits/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.a54974963607c7d24d74.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/workforce/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "13e70c6e15fa3d5ca8a027de81f309639b7f61d97d9c688bb4e11fbeb7db597a"
+      },
+      "text": "apps/admin-web/src/features/workforce/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.af0cb3783966bac3ca28.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/tasks/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "ba70b6a6786746e3b6eb7282b463abe6a7b8ad5dbf97d03def990501941cf4ef"
+      },
+      "text": "apps/admin-web/src/features/tasks/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.b05fc193f431a505e728.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "tooling/scripts/check-boundaries.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "4c3558e3249f01ea09c5925a2d919d5f359007a4027406e6ba39810fbaae30d1"
+      },
+      "text": "tooling/scripts/check-boundaries.mts"
+    },
+    {
+      "id": "outside-tsconfig.b554febc5264448827b3.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "tooling/scripts/test.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "b6a5b0d1c0644021b954d801a3655de5eec71bc3f2dd2a697c6e26108ea20bbc"
+      },
+      "text": "tooling/scripts/test.mts"
+    },
+    {
+      "id": "outside-tsconfig.b7951e3b9401f4824870.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/features/quotes/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "b6f41c42035d9ce757596615da47c25e5f9751d01ecfd0ad631a5473220b9678"
+      },
+      "text": "apps/client-mobile/src/features/quotes/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.b979a021eb9dadc22552.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/features/contracts/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "a84e36f4fe75211106cb7f58c4d58c62cfb3d86bd918c1335c0ad2d030215d5f"
+      },
+      "text": "apps/client-mobile/src/features/contracts/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.c98f7b4500880a2213a5.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/billing/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "167da7b6ed87af06f8def10674dba9b5c179221e5ead1b69dd3eb005c27fd6d0"
+      },
+      "text": "apps/admin-web/src/features/billing/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.cf991f47baf5031cc8d4.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/territories/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "92c8b020add58f41918ca2358436804fd8385b4c7a6703be8db5d7361b9975cb"
+      },
+      "text": "apps/admin-web/src/features/territories/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.d8d84358e693b2ea4453.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/dashboard/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "440a5971c792ffe01286f246c1ff9332158f0902ebf1df5b407689db12100e64"
+      },
+      "text": "apps/admin-web/src/features/dashboard/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.d8ecdafdb30f1c0c2d84.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/admin-web/src/features/customers/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "bfd506300071a3aa2412657824a2b88ba49776bb90936e1242aeba48c005630b"
+      },
+      "text": "apps/admin-web/src/features/customers/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.d93dbfdd21c9bca58a17.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/features/dashboard/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "b2f873fb15aef570ada56b031e8c285768d1cc5ad0bb3c20272589809dd20778"
+      },
+      "text": "apps/client-mobile/src/features/dashboard/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.e93e9707e8585ff0c7f6.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/features/support/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "ef03b7d17d1a0bf726574bdedbaf236f61df765de271b19f0eaebd16e8b6c75c"
+      },
+      "text": "apps/client-mobile/src/features/support/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.ed9c28d59db0555c2f39.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/state/local-demo.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "89c68f5d6a5b25a27e7ab7db3b93e203054804d08a2f220e67b63b0736c05af2"
+      },
+      "text": "apps/rep-mobile/src/state/local-demo.ts"
+    },
+    {
+      "id": "outside-tsconfig.f6244f6e993584115758.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "tooling/scripts/native-assets.mts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "cf157462cc39a1d1fd0147008e8f7c4ff96905432877487c929709c21cc4f34d"
+      },
+      "text": "tooling/scripts/native-assets.mts"
+    },
+    {
+      "id": "outside-tsconfig.f649decbde7aff67298f.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/client-mobile/src/features/account/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "c46245d13915338822464e632b3da46959e6c39e03dcbc44840983bf7c16446e"
+      },
+      "text": "apps/client-mobile/src/features/account/index.ts"
+    },
+    {
+      "id": "outside-tsconfig.fb5eac9b34a14b6a3c9e.1",
+      "kind": "outside-tsconfig",
+      "source": {
+        "path": "apps/rep-mobile/src/features/customers/index.ts",
+        "line": 1,
+        "column": 1,
+        "symbol": "module",
+        "sha256": "9f113b459f5550fd4c1d2f1525e71cce2ec211a668ddc440f1091fb3027828a2"
+      },
+      "text": "apps/rep-mobile/src/features/customers/index.ts"
+    },
+    {
+      "id": "ts-nocheck.06fa5e2640b95d4ac462.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/features/dashboard/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.0b5cbe1371a02b0687f4.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "infra/compose/smoke.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.0ce18146c41c5d662f80.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/app.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.118efb4cc75e6292fbfe.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tooling/scripts/test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.15057d5bc03b1f0f424b.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/regression/client-flows.cts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.15b42d16ec01535dfdfd.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/approvals/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.21156bb8a13b05eeb76a.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/build-output/hotfix.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.22aa96e7de9a432d31f9.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/validation/numeric-fields.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.2547c606385dc2e6d0e6.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/workforce/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.28c97ff5fe7113231ff7.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tooling/scripts/build-services.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.2a234019780f22e1d6b5.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/regression/rep-flows.cts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.2a55f5b64daac4e664cc.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/features/visits/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.2cd3d07ac3c09551816e.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/features/catalog/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.30443c959d2d8a2af587.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "packages/questionnaire/src/sync.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.32f7ad6e29cba7b9c765.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "prototype/app.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.35570da7ca284f49936b.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tooling/scripts/native-assets.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.357a8db5bad5f2a580d4.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/territories/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.3b2fda60d2611662d062.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/settings/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.3d13e5d9f24c175a58ee.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/regression/client-lifecycle.cts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.3df46317916bdc8de7ed.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/dashboard/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.40d72b494dcd0f8d9a70.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/features/discovery/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.41e69871433a90429aff.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/context.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.47ca1a5c9dfd50fc0f3f.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/features/messages/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.525532df3bd0ef5eea0f.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "examples/instant-close/src/domain.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.52c06c7f16b1445e433f.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "packages/ui/src/page-heads.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.53916a8bfaabe3e29d5d.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/regression/admin-flows.cts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.5418c23cfd5148b082a4.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/design-parity/parity.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.54ce47d3582f08bb0372.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/build-output/bundles.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.55cd8ccb46a68e4ec26e.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/lifecycle.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.57f22b4ed6a33383a36d.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/state/local-demo.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.5840796690743fb90134.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/context.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.5af4057e7cfd34765421.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tooling/scripts/test-regression.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.5d4eeb952d0b7151c097.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/customers/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.5ec3bcd03f00deea6082.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/state/local-demo.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.5eca8d8a68be5b31e1d1.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/regression/dashboard-drilldown.integration.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.62e75f6f69bc5188b64e.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/app.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.641a5f80d2dadca49b9d.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/queries.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.66080d73c6014f9e56a4.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tooling/scripts/mobile.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.6b2046504bd8cd366078.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "packages/ui/src/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.6bf72c4e6ac18b921f91.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "packages/ui/test/register-apps.test.cts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.6e91b6a9c7cf79602883.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/lifecycle.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.758bc95fa849fc2f0a2e.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/state/local-demo.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.7ca38bfe941bdd8f9a76.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/app.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.7cd76d02606209aaa86b.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/features/customers/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.7d29f75a73219dae2e85.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/tasks/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.7f7bfe1d2aeff89ce6fc.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/regression/tracking-client.cts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.828882ef704e5fb4efd1.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/billing/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.83e2cf6854cdfe2e5334.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/features/support/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.85add3f986bccd475ff6.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/analytics/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.86f3ec34abad485cf56c.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/support/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.8858c4167bb454e7f58e.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/queries.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.8ad782af58744401b325.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tooling/scripts/app-build-proof.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.90d9c6068cdafdde27e8.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/regression/finance-2.3.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.946706c08effb743d935.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/features/account/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.96a4557ae4b9b72c3e23.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "examples/instant-close/tests/flow.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.9c0f01a1c5d394731feb.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tooling/scripts/package.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.9d5673a2e200c776d54c.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/features/quotes/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.a1f255df294cbae98d48.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/context.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.a261cbc8fd5e20ed5930.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/build-output/mobile-command.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.a4d4f8a832bdc62ec659.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/lifecycle.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.a53369152d68c6b988d1.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/pipeline/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.a833412225758fd62187.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/features/contracts/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.a84a214b477f8a3bb9e0.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tooling/patches/apply-hotfix.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.a85ecd4353b79229d4be.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "packages/app-runtime/src/demo-workflows.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.ae40e1b1e44bb8cfd526.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/build-output/app-build-proof.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.b1d6daf1165374ad3906.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tooling/scripts/check-boundaries.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.b1fababa679a3701b201.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/features/messages/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.b2cadfd2608559ae6183.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "packages/app-runtime/src/tracking.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.b90f045acb6dbe9816d6.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/regression/workflow-audit.cts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.ba3dfa12a294825c643d.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/features/opportunities/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.ba87cbf15d2a88f5381a.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/projects/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.bc202b9b71ef9e0b91a8.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "packages/app-runtime/src/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.bf6aebee17b4051b991f.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/features/quotes/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.bffad4d1d846dbdfa520.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/design-parity/harness.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.c38c4263c26ae0967728.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/regression/quote-ui-consolidated.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.caf93bbd2eb295bd5ce6.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/configuration/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.cc69c6ff5051c4736a79.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/architecture/infra-helpers.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.d254ffa117612c363678.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tooling/scripts/build-apps.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.d67a334b3afb5f1a45fa.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tooling/scripts/package-hotfix.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.da0000f68d35b79c937c.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/features/dashboard/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.dcdb2ffbef01cca7e14e.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/features/tasks/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.dd870801c5a6b323012b.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/questionnaire/dynamic-form.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.e0c1065367830a364b65.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/queries.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.e414ff4c87611f847aba.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/features/catalog/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.ebddd8a9a79ed5a57196.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/features/account/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.ec410d66ae61633fda93.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/features/discovery/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.f021061cdb96eba81c3d.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/features/projects/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.f1ea2f4170577562cd23.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "examples/instant-close/src/app.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.f384806a90759e91d5ab.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/rep-mobile/src/features/territory/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.f851e0833f00efae7270.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/design-parity/generate-baseline.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.f978308f284778bc3747.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/admin-web/src/features/messages/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.fce147d3d204528a0acf.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "apps/client-mobile/src/features/billing/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.fd099c782dfb15904634.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/architecture/boundaries.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.fe959a82c5111993ae96.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "packages/demo-data/src/index.ts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    },
+    {
+      "id": "ts-nocheck.fea5986813613c1c0144.1",
+      "kind": "ts-nocheck",
+      "source": {
+        "path": "tests/build-output/copy-content.test.mts",
+        "line": 1,
+        "column": 4,
+        "symbol": "comment",
+        "sha256": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+      },
+      "text": "@ts-nocheck"
+    }
+  ]
+}

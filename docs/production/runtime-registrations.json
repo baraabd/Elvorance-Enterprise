@@ -1,0 +1,1568 @@
+{
+  "schemaVersion": 1,
+  "http": [
+    {
+      "service": "api-gateway",
+      "method": "OPTIONS",
+      "path": "/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "GET",
+      "path": "/health",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "HEAD",
+      "path": "/health",
+      "automaticHead": true
+    },
+    {
+      "service": "api-gateway",
+      "method": "GET",
+      "path": "/ready",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "HEAD",
+      "path": "/ready",
+      "automaticHead": true
+    },
+    {
+      "service": "api-gateway",
+      "method": "DELETE",
+      "path": "/v1/billing/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "GET",
+      "path": "/v1/billing/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "HEAD",
+      "path": "/v1/billing/*",
+      "automaticHead": true
+    },
+    {
+      "service": "api-gateway",
+      "method": "PATCH",
+      "path": "/v1/billing/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "POST",
+      "path": "/v1/billing/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "PUT",
+      "path": "/v1/billing/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "DELETE",
+      "path": "/v1/communications/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "GET",
+      "path": "/v1/communications/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "HEAD",
+      "path": "/v1/communications/*",
+      "automaticHead": true
+    },
+    {
+      "service": "api-gateway",
+      "method": "PATCH",
+      "path": "/v1/communications/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "POST",
+      "path": "/v1/communications/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "PUT",
+      "path": "/v1/communications/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "DELETE",
+      "path": "/v1/crm/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "GET",
+      "path": "/v1/crm/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "HEAD",
+      "path": "/v1/crm/*",
+      "automaticHead": true
+    },
+    {
+      "service": "api-gateway",
+      "method": "PATCH",
+      "path": "/v1/crm/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "POST",
+      "path": "/v1/crm/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "PUT",
+      "path": "/v1/crm/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "DELETE",
+      "path": "/v1/delivery/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "GET",
+      "path": "/v1/delivery/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "HEAD",
+      "path": "/v1/delivery/*",
+      "automaticHead": true
+    },
+    {
+      "service": "api-gateway",
+      "method": "PATCH",
+      "path": "/v1/delivery/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "POST",
+      "path": "/v1/delivery/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "PUT",
+      "path": "/v1/delivery/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "DELETE",
+      "path": "/v1/identity/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "GET",
+      "path": "/v1/identity/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "HEAD",
+      "path": "/v1/identity/*",
+      "automaticHead": true
+    },
+    {
+      "service": "api-gateway",
+      "method": "PATCH",
+      "path": "/v1/identity/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "POST",
+      "path": "/v1/identity/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "PUT",
+      "path": "/v1/identity/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "DELETE",
+      "path": "/v1/sales/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "GET",
+      "path": "/v1/sales/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "HEAD",
+      "path": "/v1/sales/*",
+      "automaticHead": true
+    },
+    {
+      "service": "api-gateway",
+      "method": "PATCH",
+      "path": "/v1/sales/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "POST",
+      "path": "/v1/sales/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "PUT",
+      "path": "/v1/sales/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "DELETE",
+      "path": "/v1/tracking/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "GET",
+      "path": "/v1/tracking/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "HEAD",
+      "path": "/v1/tracking/*",
+      "automaticHead": true
+    },
+    {
+      "service": "api-gateway",
+      "method": "PATCH",
+      "path": "/v1/tracking/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "POST",
+      "path": "/v1/tracking/*",
+      "automaticHead": false
+    },
+    {
+      "service": "api-gateway",
+      "method": "PUT",
+      "path": "/v1/tracking/*",
+      "automaticHead": false
+    },
+    {
+      "service": "billing",
+      "method": "GET",
+      "path": "/health",
+      "automaticHead": false
+    },
+    {
+      "service": "billing",
+      "method": "HEAD",
+      "path": "/health",
+      "automaticHead": true
+    },
+    {
+      "service": "billing",
+      "method": "GET",
+      "path": "/ready",
+      "automaticHead": false
+    },
+    {
+      "service": "billing",
+      "method": "HEAD",
+      "path": "/ready",
+      "automaticHead": true
+    },
+    {
+      "service": "billing",
+      "method": "GET",
+      "path": "/v1/contracts/:id/account",
+      "automaticHead": false
+    },
+    {
+      "service": "billing",
+      "method": "HEAD",
+      "path": "/v1/contracts/:id/account",
+      "automaticHead": true
+    },
+    {
+      "service": "billing",
+      "method": "GET",
+      "path": "/v1/invoices",
+      "automaticHead": false
+    },
+    {
+      "service": "billing",
+      "method": "HEAD",
+      "path": "/v1/invoices",
+      "automaticHead": true
+    },
+    {
+      "service": "billing",
+      "method": "GET",
+      "path": "/v1/invoices/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "billing",
+      "method": "HEAD",
+      "path": "/v1/invoices/:id",
+      "automaticHead": true
+    },
+    {
+      "service": "billing",
+      "method": "GET",
+      "path": "/v1/invoices/:id/payments",
+      "automaticHead": false
+    },
+    {
+      "service": "billing",
+      "method": "HEAD",
+      "path": "/v1/invoices/:id/payments",
+      "automaticHead": true
+    },
+    {
+      "service": "billing",
+      "method": "POST",
+      "path": "/v1/invoices/:id/payments",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "GET",
+      "path": "/health",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "HEAD",
+      "path": "/health",
+      "automaticHead": true
+    },
+    {
+      "service": "communications",
+      "method": "GET",
+      "path": "/ready",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "HEAD",
+      "path": "/ready",
+      "automaticHead": true
+    },
+    {
+      "service": "communications",
+      "method": "GET",
+      "path": "/v1/conversations",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "HEAD",
+      "path": "/v1/conversations",
+      "automaticHead": true
+    },
+    {
+      "service": "communications",
+      "method": "POST",
+      "path": "/v1/conversations",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "GET",
+      "path": "/v1/conversations/:id/messages",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "HEAD",
+      "path": "/v1/conversations/:id/messages",
+      "automaticHead": true
+    },
+    {
+      "service": "communications",
+      "method": "POST",
+      "path": "/v1/conversations/:id/messages",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "POST",
+      "path": "/v1/conversations/:id/read",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "GET",
+      "path": "/v1/notifications",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "HEAD",
+      "path": "/v1/notifications",
+      "automaticHead": true
+    },
+    {
+      "service": "communications",
+      "method": "POST",
+      "path": "/v1/notifications/:id/read",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "GET",
+      "path": "/v1/tickets",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "HEAD",
+      "path": "/v1/tickets",
+      "automaticHead": true
+    },
+    {
+      "service": "communications",
+      "method": "POST",
+      "path": "/v1/tickets",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "GET",
+      "path": "/v1/tickets/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "HEAD",
+      "path": "/v1/tickets/:id",
+      "automaticHead": true
+    },
+    {
+      "service": "communications",
+      "method": "POST",
+      "path": "/v1/tickets/:id/replies",
+      "automaticHead": false
+    },
+    {
+      "service": "communications",
+      "method": "POST",
+      "path": "/v1/tickets/:id/status",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "GET",
+      "path": "/health",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "HEAD",
+      "path": "/health",
+      "automaticHead": true
+    },
+    {
+      "service": "crm",
+      "method": "GET",
+      "path": "/ready",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "HEAD",
+      "path": "/ready",
+      "automaticHead": true
+    },
+    {
+      "service": "crm",
+      "method": "GET",
+      "path": "/v1/catalog",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "HEAD",
+      "path": "/v1/catalog",
+      "automaticHead": true
+    },
+    {
+      "service": "crm",
+      "method": "GET",
+      "path": "/v1/configuration",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "HEAD",
+      "path": "/v1/configuration",
+      "automaticHead": true
+    },
+    {
+      "service": "crm",
+      "method": "PUT",
+      "path": "/v1/configuration",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "GET",
+      "path": "/v1/customers",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "HEAD",
+      "path": "/v1/customers",
+      "automaticHead": true
+    },
+    {
+      "service": "crm",
+      "method": "POST",
+      "path": "/v1/customers",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "GET",
+      "path": "/v1/customers/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "HEAD",
+      "path": "/v1/customers/:id",
+      "automaticHead": true
+    },
+    {
+      "service": "crm",
+      "method": "PATCH",
+      "path": "/v1/customers/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "GET",
+      "path": "/v1/customers/:id/context",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "HEAD",
+      "path": "/v1/customers/:id/context",
+      "automaticHead": true
+    },
+    {
+      "service": "crm",
+      "method": "GET",
+      "path": "/v1/customers/:id/discovery",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "HEAD",
+      "path": "/v1/customers/:id/discovery",
+      "automaticHead": true
+    },
+    {
+      "service": "crm",
+      "method": "PUT",
+      "path": "/v1/customers/:id/discovery",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "GET",
+      "path": "/v1/regions",
+      "automaticHead": false
+    },
+    {
+      "service": "crm",
+      "method": "HEAD",
+      "path": "/v1/regions",
+      "automaticHead": true
+    },
+    {
+      "service": "crm",
+      "method": "POST",
+      "path": "/v1/regions",
+      "automaticHead": false
+    },
+    {
+      "service": "delivery",
+      "method": "GET",
+      "path": "/health",
+      "automaticHead": false
+    },
+    {
+      "service": "delivery",
+      "method": "HEAD",
+      "path": "/health",
+      "automaticHead": true
+    },
+    {
+      "service": "delivery",
+      "method": "GET",
+      "path": "/ready",
+      "automaticHead": false
+    },
+    {
+      "service": "delivery",
+      "method": "HEAD",
+      "path": "/ready",
+      "automaticHead": true
+    },
+    {
+      "service": "delivery",
+      "method": "GET",
+      "path": "/v1/projects",
+      "automaticHead": false
+    },
+    {
+      "service": "delivery",
+      "method": "HEAD",
+      "path": "/v1/projects",
+      "automaticHead": true
+    },
+    {
+      "service": "delivery",
+      "method": "GET",
+      "path": "/v1/projects/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "delivery",
+      "method": "HEAD",
+      "path": "/v1/projects/:id",
+      "automaticHead": true
+    },
+    {
+      "service": "delivery",
+      "method": "POST",
+      "path": "/v1/projects/:id/complete",
+      "automaticHead": false
+    },
+    {
+      "service": "delivery",
+      "method": "POST",
+      "path": "/v1/projects/:id/deliverables",
+      "automaticHead": false
+    },
+    {
+      "service": "delivery",
+      "method": "POST",
+      "path": "/v1/projects/:id/deliverables/:deliverableId/review",
+      "automaticHead": false
+    },
+    {
+      "service": "delivery",
+      "method": "POST",
+      "path": "/v1/projects/:id/deliverables/:deliverableId/revise",
+      "automaticHead": false
+    },
+    {
+      "service": "delivery",
+      "method": "POST",
+      "path": "/v1/projects/:id/milestones",
+      "automaticHead": false
+    },
+    {
+      "service": "delivery",
+      "method": "POST",
+      "path": "/v1/projects/:id/milestones/:milestoneId",
+      "automaticHead": false
+    },
+    {
+      "service": "identity",
+      "method": "GET",
+      "path": "/health",
+      "automaticHead": false
+    },
+    {
+      "service": "identity",
+      "method": "HEAD",
+      "path": "/health",
+      "automaticHead": true
+    },
+    {
+      "service": "identity",
+      "method": "GET",
+      "path": "/ready",
+      "automaticHead": false
+    },
+    {
+      "service": "identity",
+      "method": "HEAD",
+      "path": "/ready",
+      "automaticHead": true
+    },
+    {
+      "service": "identity",
+      "method": "GET",
+      "path": "/v1/me",
+      "automaticHead": false
+    },
+    {
+      "service": "identity",
+      "method": "HEAD",
+      "path": "/v1/me",
+      "automaticHead": true
+    },
+    {
+      "service": "identity",
+      "method": "PATCH",
+      "path": "/v1/me/profile",
+      "automaticHead": false
+    },
+    {
+      "service": "identity",
+      "method": "GET",
+      "path": "/v1/memberships",
+      "automaticHead": false
+    },
+    {
+      "service": "identity",
+      "method": "HEAD",
+      "path": "/v1/memberships",
+      "automaticHead": true
+    },
+    {
+      "service": "identity",
+      "method": "POST",
+      "path": "/v1/memberships",
+      "automaticHead": false
+    },
+    {
+      "service": "identity",
+      "method": "GET",
+      "path": "/v1/tenant",
+      "automaticHead": false
+    },
+    {
+      "service": "identity",
+      "method": "HEAD",
+      "path": "/v1/tenant",
+      "automaticHead": true
+    },
+    {
+      "service": "identity",
+      "method": "POST",
+      "path": "/v1/tenant",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/health",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/health",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/ready",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/ready",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/contracts",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/contracts",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/contracts/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/contracts/:id",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/contracts/:id/approve",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/contracts/:id/fulfillment",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/contracts/:id/fulfillment",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/opportunities",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/opportunities",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/opportunities",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/opportunities/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/opportunities/:id",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "PATCH",
+      "path": "/v1/opportunities/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/quote-discount-approvals",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/quote-discount-approvals",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/quote-discount-approvals/:id/decision",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/quotes",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/quotes",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/quotes",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/quotes/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/quotes/:id",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "PATCH",
+      "path": "/v1/quotes/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/quotes/:id/accept",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/quotes/:id/discount-approval",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/quotes/:id/reject",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/quotes/:id/request-changes",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/quotes/:id/revise",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/quotes/:id/send",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/routes",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/routes",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/routes",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/routes/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/routes/:id",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "PATCH",
+      "path": "/v1/routes/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/tasks",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/tasks",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/tasks",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/tasks/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/tasks/:id",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "PATCH",
+      "path": "/v1/tasks/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/visits",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/visits",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/visits",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "path": "/v1/visits/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "HEAD",
+      "path": "/v1/visits/:id",
+      "automaticHead": true
+    },
+    {
+      "service": "sales",
+      "method": "PATCH",
+      "path": "/v1/visits/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/visits/:id/cancel",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/visits/:id/complete",
+      "automaticHead": false
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "path": "/v1/visits/:id/start",
+      "automaticHead": false
+    },
+    {
+      "service": "tracking",
+      "method": "GET",
+      "path": "/health",
+      "automaticHead": false
+    },
+    {
+      "service": "tracking",
+      "method": "HEAD",
+      "path": "/health",
+      "automaticHead": true
+    },
+    {
+      "service": "tracking",
+      "method": "GET",
+      "path": "/ready",
+      "automaticHead": false
+    },
+    {
+      "service": "tracking",
+      "method": "HEAD",
+      "path": "/ready",
+      "automaticHead": true
+    },
+    {
+      "service": "tracking",
+      "method": "GET",
+      "path": "/v1/latest",
+      "automaticHead": false
+    },
+    {
+      "service": "tracking",
+      "method": "HEAD",
+      "path": "/v1/latest",
+      "automaticHead": true
+    },
+    {
+      "service": "tracking",
+      "method": "POST",
+      "path": "/v1/sessions",
+      "automaticHead": false
+    },
+    {
+      "service": "tracking",
+      "method": "GET",
+      "path": "/v1/sessions/:id",
+      "automaticHead": false
+    },
+    {
+      "service": "tracking",
+      "method": "HEAD",
+      "path": "/v1/sessions/:id",
+      "automaticHead": true
+    },
+    {
+      "service": "tracking",
+      "method": "POST",
+      "path": "/v1/sessions/:id/points",
+      "automaticHead": false
+    },
+    {
+      "service": "tracking",
+      "method": "POST",
+      "path": "/v1/sessions/:id/state",
+      "automaticHead": false
+    },
+    {
+      "service": "tracking",
+      "method": "GET",
+      "path": "/v1/sessions/current",
+      "automaticHead": false
+    },
+    {
+      "service": "tracking",
+      "method": "HEAD",
+      "path": "/v1/sessions/current",
+      "automaticHead": true
+    }
+  ],
+  "demo": [
+    {
+      "app": "admin-web",
+      "routes": [
+        "analytics",
+        "approvals",
+        "client-detail",
+        "clients",
+        "configuration",
+        "conversation",
+        "home",
+        "invoice-detail",
+        "invoices",
+        "live-tracking",
+        "messages",
+        "more",
+        "opportunity",
+        "pipeline",
+        "project-detail",
+        "projects",
+        "settings",
+        "support",
+        "tasks",
+        "team",
+        "team-member",
+        "territories",
+        "ticket-detail",
+        "visits-completed",
+        "zone-detail"
+      ],
+      "actions": [
+        "archive-question",
+        "assign-zone",
+        "change-stage",
+        "contact-client",
+        "decide-approval",
+        "edit-activity",
+        "edit-client",
+        "edit-member",
+        "edit-milestone",
+        "edit-opportunity",
+        "edit-project",
+        "edit-question",
+        "edit-service",
+        "edit-task",
+        "edit-zone",
+        "export-analytics",
+        "export-invoices",
+        "filter",
+        "lose-opportunity",
+        "new-activity",
+        "new-client",
+        "new-deliverable",
+        "new-member",
+        "new-opportunity",
+        "new-question",
+        "new-service",
+        "new-task",
+        "new-zone",
+        "open-conversation",
+        "print-invoice",
+        "record-payment",
+        "reply-ticket",
+        "respond-deliverable",
+        "review-approval",
+        "save-activity",
+        "save-client",
+        "save-deliverable",
+        "save-deliverable-response",
+        "save-member",
+        "save-milestone",
+        "save-opportunity",
+        "save-payment",
+        "save-project",
+        "save-question",
+        "save-service",
+        "save-settings",
+        "save-task",
+        "save-zone",
+        "save-zone-team",
+        "search-records",
+        "send-message",
+        "toggle-task",
+        "view-quote"
+      ]
+    },
+    {
+      "app": "client-mobile",
+      "routes": [
+        "account",
+        "contract-detail",
+        "contracts",
+        "decisions",
+        "deliverable-detail",
+        "home",
+        "invoice-detail",
+        "invoices",
+        "messages",
+        "needs-survey",
+        "new-ticket",
+        "preferences",
+        "profile",
+        "project-detail",
+        "projects",
+        "quote-detail",
+        "quotes",
+        "request-service",
+        "requests",
+        "service-detail",
+        "services",
+        "support",
+        "ticket-detail"
+      ],
+      "actions": [
+        "accept-quote",
+        "accept-quote-modal",
+        "approve-deliverable",
+        "attach-project",
+        "attach-project-modal",
+        "client-save-discovery",
+        "client-select-activity",
+        "client-survey-other-toggle",
+        "create-ticket",
+        "download-attachment",
+        "filter-services",
+        "open-messages",
+        "payment-modal",
+        "print-contract",
+        "print-deliverable",
+        "print-invoice",
+        "provision-contract",
+        "record-payment",
+        "reject-quote",
+        "reject-quote-modal",
+        "reply-ticket",
+        "revise-deliverable",
+        "revise-deliverable-modal",
+        "revise-quote",
+        "revise-quote-modal",
+        "save-preferences",
+        "save-profile",
+        "send-message",
+        "sign-contract",
+        "sign-contract-modal",
+        "submit-service-request"
+      ]
+    },
+    {
+      "app": "rep-mobile",
+      "routes": [
+        "catalog",
+        "client-detail",
+        "client-form",
+        "clients",
+        "home",
+        "messages",
+        "more",
+        "opportunities",
+        "opportunity-detail",
+        "profile",
+        "quote-builder",
+        "quote-detail",
+        "quotes",
+        "service-detail",
+        "tasks",
+        "territory",
+        "visit-active",
+        "visit-checkin",
+        "visit-detail",
+        "visit-outcome",
+        "visit-questionnaire"
+      ],
+      "actions": [
+        "back-to-summary",
+        "cancel-visit",
+        "choose-outcome",
+        "client-search",
+        "commit-visit-quote",
+        "complete-visit",
+        "contact-preference",
+        "copy-contact",
+        "discovery-next",
+        "discovery-other-toggle",
+        "duplicate-quote",
+        "exception-outcome",
+        "export-day",
+        "finish-review",
+        "link-existing-quote",
+        "lose-opportunity",
+        "open-conversation",
+        "opportunity-new",
+        "opportunity-stage",
+        "outcome-back",
+        "prepare-outcome",
+        "print-agreement",
+        "print-quote",
+        "proof-mode",
+        "quote-add",
+        "quote-discard",
+        "quote-discount",
+        "quote-discount-input",
+        "quote-discount-mode",
+        "quote-field",
+        "quote-new",
+        "quote-payment-add",
+        "quote-payment-amount",
+        "quote-payment-fill",
+        "quote-payment-suggest",
+        "quote-qty",
+        "quote-rebase",
+        "quote-remove",
+        "request-gps",
+        "review-followup",
+        "review-quote",
+        "save-client",
+        "save-contact-preference",
+        "save-link-quote",
+        "save-opportunity",
+        "save-profile",
+        "save-quote",
+        "save-schedule",
+        "save-send-quote",
+        "save-task",
+        "save-visit-draft",
+        "save-visit-notes",
+        "schedule-visit",
+        "send-message",
+        "send-quote",
+        "start-visit",
+        "task-new",
+        "task-toggle",
+        "territory-day"
+      ]
+    }
+  ],
+  "live": [
+    {
+      "app": "admin-web",
+      "role": "admin",
+      "name": "approvals",
+      "endpoint": ["/v1/sales/quote-discount-approvals"]
+    },
+    {
+      "app": "admin-web",
+      "role": "admin",
+      "name": "memberships",
+      "endpoint": ["/v1/identity/memberships"]
+    },
+    {
+      "app": "admin-web",
+      "role": "admin",
+      "name": "regions",
+      "endpoint": ["/v1/crm/regions"]
+    },
+    {
+      "app": "admin-web",
+      "role": "admin",
+      "name": "customers",
+      "endpoint": ["/v1/crm/customers"]
+    },
+    {
+      "app": "admin-web",
+      "role": "admin",
+      "name": "visits",
+      "endpoint": ["/v1/sales/visits"]
+    },
+    {
+      "app": "admin-web",
+      "role": "admin",
+      "name": "quotes",
+      "endpoint": ["/v1/sales/quotes"]
+    },
+    {
+      "app": "admin-web",
+      "role": "admin",
+      "name": "contracts",
+      "endpoint": ["/v1/sales/contracts"]
+    },
+    {
+      "app": "admin-web",
+      "role": "admin",
+      "name": "projects",
+      "endpoint": ["/v1/delivery/projects"]
+    },
+    {
+      "app": "admin-web",
+      "role": "admin",
+      "name": "tickets",
+      "endpoint": ["/v1/communications/tickets"]
+    },
+    {
+      "app": "admin-web",
+      "role": "admin",
+      "name": "notifications",
+      "endpoint": ["/v1/communications/notifications"]
+    },
+    {
+      "app": "admin-web",
+      "role": "admin",
+      "name": "invoices",
+      "endpoint": ["/v1/billing/invoices"]
+    },
+    {
+      "app": "client-mobile",
+      "role": "client",
+      "name": "invoices",
+      "endpoint": ["/v1/billing/invoices"]
+    },
+    {
+      "app": "client-mobile",
+      "role": "client",
+      "name": "quotes",
+      "endpoint": ["/v1/sales/quotes"]
+    },
+    {
+      "app": "client-mobile",
+      "role": "client",
+      "name": "contracts",
+      "endpoint": ["/v1/sales/contracts"]
+    },
+    {
+      "app": "client-mobile",
+      "role": "client",
+      "name": "projects",
+      "endpoint": ["/v1/delivery/projects"]
+    },
+    {
+      "app": "client-mobile",
+      "role": "client",
+      "name": "tickets",
+      "endpoint": ["/v1/communications/tickets"]
+    },
+    {
+      "app": "client-mobile",
+      "role": "client",
+      "name": "notifications",
+      "endpoint": ["/v1/communications/notifications"]
+    },
+    {
+      "app": "rep-mobile",
+      "role": "rep",
+      "name": "customers",
+      "endpoint": ["/v1/crm/customers"]
+    },
+    {
+      "app": "rep-mobile",
+      "role": "rep",
+      "name": "visits",
+      "endpoint": ["/v1/sales/visits"]
+    },
+    {
+      "app": "rep-mobile",
+      "role": "rep",
+      "name": "quotes",
+      "endpoint": ["/v1/sales/quotes"]
+    },
+    {
+      "app": "rep-mobile",
+      "role": "rep",
+      "name": "contracts",
+      "endpoint": ["/v1/sales/contracts"]
+    },
+    {
+      "app": "rep-mobile",
+      "role": "rep",
+      "name": "projects",
+      "endpoint": ["/v1/delivery/projects"]
+    },
+    {
+      "app": "rep-mobile",
+      "role": "rep",
+      "name": "tickets",
+      "endpoint": ["/v1/communications/tickets"]
+    },
+    {
+      "app": "rep-mobile",
+      "role": "rep",
+      "name": "notifications",
+      "endpoint": ["/v1/communications/notifications"]
+    }
+  ]
+}

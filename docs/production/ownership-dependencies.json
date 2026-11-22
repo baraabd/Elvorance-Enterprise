@@ -1,0 +1,3141 @@
+{
+  "schemaVersion": 1,
+  "accountableRepositoryOwner": "baraabd",
+  "domainTeamAssignments": "UNASSIGNED-proposals-not-existing-teams",
+  "imports": [
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./context.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./state/local-demo.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./lifecycle.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/dashboard/index.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/workforce/index.ts",
+      "line": 7,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/territories/index.ts",
+      "line": 8,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/customers/index.ts",
+      "line": 9,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/pipeline/index.ts",
+      "line": 10,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/tasks/index.ts",
+      "line": 11,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/approvals/index.ts",
+      "line": 12,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/projects/index.ts",
+      "line": 13,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/analytics/index.ts",
+      "line": 14,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/billing/index.ts",
+      "line": 15,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/support/index.ts",
+      "line": 16,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/messages/index.ts",
+      "line": 17,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/settings/index.ts",
+      "line": 18,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/app.ts",
+      "to": "./features/configuration/index.ts",
+      "line": 19,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/context.ts",
+      "to": "../../../packages/ui/src/index.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/context.ts",
+      "to": "./queries.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/features/configuration/index.ts",
+      "to": "@elvorance/questionnaire",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/main.ts",
+      "to": "@elvorance/questionnaire/sync",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/main.ts",
+      "to": "@elvorance/app-runtime",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/main.ts",
+      "to": "@elvorance/api-client/authenticated-workspace",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/main.ts",
+      "to": "@elvorance/app-runtime/tracking",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/admin-web/src/main.ts",
+      "to": "./app.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./context.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./state/local-demo.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./lifecycle.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./features/dashboard/index.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./features/catalog/index.ts",
+      "line": 7,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./features/discovery/index.ts",
+      "line": 8,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./features/quotes/index.ts",
+      "line": 9,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./features/contracts/index.ts",
+      "line": 10,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./features/projects/index.ts",
+      "line": 11,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./features/billing/index.ts",
+      "line": 12,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./features/support/index.ts",
+      "line": 13,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./features/messages/index.ts",
+      "line": 14,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/app.ts",
+      "to": "./features/account/index.ts",
+      "line": 15,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/context.ts",
+      "to": "../../../packages/ui/src/index.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/context.ts",
+      "to": "./queries.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/features/discovery/index.ts",
+      "to": "@elvorance/questionnaire",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/main.ts",
+      "to": "@elvorance/questionnaire/sync",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/main.ts",
+      "to": "@elvorance/mobile-platform",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/main.ts",
+      "to": "@elvorance/app-runtime",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/main.ts",
+      "to": "@elvorance/api-client/authenticated-workspace",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/main.ts",
+      "to": "@elvorance/app-runtime/tracking",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/client-mobile/src/main.ts",
+      "to": "./app.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./context.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./state/local-demo.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./lifecycle.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./features/dashboard/index.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./features/territory/index.ts",
+      "line": 7,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./features/customers/index.ts",
+      "line": 8,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./features/visits/index.ts",
+      "line": 9,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./features/discovery/index.ts",
+      "line": 10,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./features/catalog/index.ts",
+      "line": 11,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./features/opportunities/index.ts",
+      "line": 12,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./features/quotes/index.ts",
+      "line": 13,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./features/tasks/index.ts",
+      "line": 14,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./features/messages/index.ts",
+      "line": 15,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/app.ts",
+      "to": "./features/account/index.ts",
+      "line": 16,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/context.ts",
+      "to": "../../../packages/ui/src/index.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/context.ts",
+      "to": "./queries.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/features/discovery/index.ts",
+      "to": "@elvorance/questionnaire",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/features/quotes/index.ts",
+      "to": "@elvorance/app-runtime/finance",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/main.ts",
+      "to": "@elvorance/questionnaire/sync",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/main.ts",
+      "to": "@elvorance/mobile-platform",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/main.ts",
+      "to": "@elvorance/app-runtime",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/main.ts",
+      "to": "@elvorance/api-client/live-workspace",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/main.ts",
+      "to": "./server/bootstrap.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/main.ts",
+      "to": "@elvorance/app-runtime/tracking",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/main.ts",
+      "to": "./app.ts",
+      "line": 7,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server-main.ts",
+      "to": "./server/bootstrap.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/api.ts",
+      "to": "@elvorance/api-client",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/api.ts",
+      "to": "@elvorance/contracts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/bootstrap.ts",
+      "to": "@elvorance/mobile-auth",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/bootstrap.ts",
+      "to": "./api.ts",
+      "line": 8,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/bootstrap.ts",
+      "to": "./ui/dom.ts",
+      "line": 9,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/bootstrap.ts",
+      "to": "./workspace.ts",
+      "line": 10,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/context.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/context.ts",
+      "to": "./api.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/context.ts",
+      "to": "./tracking.ts",
+      "line": 3,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/tracking.ts",
+      "to": "@elvorance/mobile-platform",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/tracking.ts",
+      "to": "./api.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/tracking.ts",
+      "to": "./api.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/ui/dom.ts",
+      "to": "@elvorance/api-client",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/ui/dom.ts",
+      "to": "../api.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/ui/forms.ts",
+      "to": "./dom.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/ui/repeating-fields.ts",
+      "to": "./forms.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/ui/repeating-fields.ts",
+      "to": "./dom.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/account.ts",
+      "to": "../api.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/account.ts",
+      "to": "../context.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/account.ts",
+      "to": "../ui/dom.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/account.ts",
+      "to": "../ui/forms.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/common.ts",
+      "to": "../api.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/common.ts",
+      "to": "../context.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/common.ts",
+      "to": "../ui/forms.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/common.ts",
+      "to": "../ui/dom.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/customers.ts",
+      "to": "../context.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/customers.ts",
+      "to": "../api.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/customers.ts",
+      "to": "../ui/dom.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/customers.ts",
+      "to": "../ui/forms.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/customers.ts",
+      "to": "./common.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/customers.ts",
+      "to": "./discovery.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/customers.ts",
+      "to": "../ui/repeating-fields.ts",
+      "line": 7,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/discovery.ts",
+      "to": "@elvorance/questionnaire",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/discovery.ts",
+      "to": "../api.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/discovery.ts",
+      "to": "../context.ts",
+      "line": 3,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/discovery.ts",
+      "to": "../ui/forms.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/discovery.ts",
+      "to": "../ui/dom.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/home.ts",
+      "to": "../context.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/home.ts",
+      "to": "./common.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/home.ts",
+      "to": "../ui/dom.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/messages.ts",
+      "to": "../api.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/messages.ts",
+      "to": "../context.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/messages.ts",
+      "to": "../ui/dom.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/messages.ts",
+      "to": "../ui/forms.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/messages.ts",
+      "to": "./common.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/planning.ts",
+      "to": "../context.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/planning.ts",
+      "to": "../ui/dom.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/planning.ts",
+      "to": "../ui/forms.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/planning.ts",
+      "to": "./common.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/planning.ts",
+      "to": "../api.ts",
+      "line": 5,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/planning.ts",
+      "to": "../ui/repeating-fields.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/quote-editor.ts",
+      "to": "../context.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/quote-editor.ts",
+      "to": "../api.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/quote-editor.ts",
+      "to": "../ui/forms.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/quote-editor.ts",
+      "to": "../ui/dom.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/quote-editor.ts",
+      "to": "../ui/repeating-fields.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/quotes.ts",
+      "to": "../context.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/quotes.ts",
+      "to": "../ui/dom.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/quotes.ts",
+      "to": "../ui/forms.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/quotes.ts",
+      "to": "./common.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/quotes.ts",
+      "to": "./quote-editor.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/records.ts",
+      "to": "../context.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/records.ts",
+      "to": "../api.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/records.ts",
+      "to": "../ui/dom.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/records.ts",
+      "to": "./quote-editor.ts",
+      "line": 15,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/support.ts",
+      "to": "../context.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/support.ts",
+      "to": "../ui/dom.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/support.ts",
+      "to": "../ui/forms.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/support.ts",
+      "to": "./common.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/visits.ts",
+      "to": "@elvorance/mobile-platform",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/visits.ts",
+      "to": "../context.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/visits.ts",
+      "to": "../api.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/visits.ts",
+      "to": "../ui/dom.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/visits.ts",
+      "to": "../ui/forms.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/views/visits.ts",
+      "to": "./common.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "@elvorance/mobile-platform",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "@elvorance/mobile-auth",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./api.ts",
+      "line": 3,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./context.ts",
+      "line": 4,
+      "typeOnly": true
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./ui/dom.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./tracking.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./views/home.ts",
+      "line": 7,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./views/customers.ts",
+      "line": 8,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./views/visits.ts",
+      "line": 9,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./views/planning.ts",
+      "line": 10,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./views/quotes.ts",
+      "line": 11,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./views/messages.ts",
+      "line": 12,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./views/support.ts",
+      "line": 13,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./views/records.ts",
+      "line": 14,
+      "typeOnly": false
+    },
+    {
+      "from": "apps/rep-mobile/src/server/workspace.ts",
+      "to": "./views/account.ts",
+      "line": 15,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/api-client/src/authenticated-workspace.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/api-client/src/authenticated-workspace.ts",
+      "to": "@elvorance/mobile-auth",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/api-client/src/authenticated-workspace.ts",
+      "to": "./index.ts",
+      "line": 9,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/api-client/src/authenticated-workspace.ts",
+      "to": "./live-workspace.ts",
+      "line": 10,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/api-client/src/index.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/api-client/src/live-actions.ts",
+      "to": "./index.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/api-client/src/live-actions.ts",
+      "to": "./live-data.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/api-client/src/live-actions.ts",
+      "to": "./live-commercial.ts",
+      "line": 3,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/api-client/src/live-commercial.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/api-client/src/live-commercial.ts",
+      "to": "./live-data.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/api-client/src/live-commercial.ts",
+      "to": "./live-format.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/api-client/src/live-commercial.ts",
+      "to": "./index.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/api-client/src/live-data.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/api-client/src/live-data.ts",
+      "to": "./index.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/api-client/src/live-workspace.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/api-client/src/live-workspace.ts",
+      "to": "./index.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/api-client/src/live-workspace.ts",
+      "to": "./live-data.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/api-client/src/live-workspace.ts",
+      "to": "./live-format.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/api-client/src/live-workspace.ts",
+      "to": "./live-commercial.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/api-client/src/live-workspace.ts",
+      "to": "./live-actions.ts",
+      "line": 12,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/app-runtime/src/index.ts",
+      "to": "./form-validation.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/app-runtime/src/index.ts",
+      "to": "@elvorance/demo-data",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/app-runtime/src/index.ts",
+      "to": "@elvorance/demo-data/repository",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/app-runtime/src/index.ts",
+      "to": "@elvorance/design-system/icons",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/app-runtime/src/index.ts",
+      "to": "@elvorance/ui/primitives",
+      "line": 7,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/app-runtime/src/index.ts",
+      "to": "./utilities.ts",
+      "line": 8,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/app-runtime/src/index.ts",
+      "to": "./demo-workflows.ts",
+      "line": 9,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/demo-data/src/index.ts",
+      "to": "@elvorance/questionnaire",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/events/src/index.ts",
+      "to": "amqplib",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/events/src/index.ts",
+      "to": "./topology.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/events/src/index.ts",
+      "to": "@elvorance/contracts",
+      "line": 4,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/events/src/index.ts",
+      "to": "@elvorance/service-kit",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/events/src/topology.ts",
+      "to": "amqplib",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/mobile-auth/src/configuration.ts",
+      "to": "./errors.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/configuration.ts",
+      "to": "./types.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/mobile-auth/src/host.ts",
+      "to": "./types.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/mobile-auth/src/index.ts",
+      "to": "./configuration.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/index.ts",
+      "to": "./platform.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/index.ts",
+      "to": "./session.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/index.ts",
+      "to": "./types.ts",
+      "line": 4,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/mobile-auth/src/oidc.ts",
+      "to": "oauth4webapi",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/oidc.ts",
+      "to": "./configuration.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/oidc.ts",
+      "to": "./errors.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/oidc.ts",
+      "to": "./types.ts",
+      "line": 4,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/mobile-auth/src/platform.ts",
+      "to": "@capacitor/app",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/platform.ts",
+      "to": "@capacitor/core",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/platform.ts",
+      "to": "./configuration.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/platform.ts",
+      "to": "./errors.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/platform.ts",
+      "to": "./types.ts",
+      "line": 5,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/mobile-auth/src/session.ts",
+      "to": "./configuration.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/session.ts",
+      "to": "./errors.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/session.ts",
+      "to": "./oidc.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/session.ts",
+      "to": "./vault.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/session.ts",
+      "to": "./types.ts",
+      "line": 5,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/mobile-auth/src/vault.ts",
+      "to": "./errors.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-auth/src/vault.ts",
+      "to": "./configuration.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/mobile-auth/src/vault.ts",
+      "to": "./types.ts",
+      "line": 3,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/mobile-platform/src/index.ts",
+      "to": "@capacitor/core",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-platform/src/index.ts",
+      "to": "@capacitor/app",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-platform/src/index.ts",
+      "to": "@capacitor/geolocation",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/mobile-platform/src/index.ts",
+      "to": "@capacitor/network",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/questionnaire/src/answers.ts",
+      "to": "./configuration.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/questionnaire/src/answers.ts",
+      "to": "./types.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/questionnaire/src/answers.ts",
+      "to": "./validation-values.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/questionnaire/src/catalog-validation.ts",
+      "to": "./validation-values.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/questionnaire/src/configuration-validation.ts",
+      "to": "./catalog-validation.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/questionnaire/src/configuration-validation.ts",
+      "to": "./fields.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/questionnaire/src/configuration-validation.ts",
+      "to": "./validation-values.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/questionnaire/src/configuration.ts",
+      "to": "./default-questions.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/questionnaire/src/configuration.ts",
+      "to": "./types.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/questionnaire/src/default-catalog.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/questionnaire/src/default-questions.ts",
+      "to": "./types.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/questionnaire/src/fields.ts",
+      "to": "./types.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/questionnaire/src/recommendations.ts",
+      "to": "./types.ts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/questionnaire/src/sync.ts",
+      "to": "./index.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/questionnaire/src/types.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/service-kit/src/auth.ts",
+      "to": "jose",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/auth.ts",
+      "to": "@elvorance/contracts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/auth.ts",
+      "to": "./errors.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/customer-directory.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/service-kit/src/customer-directory.ts",
+      "to": "./errors.ts",
+      "line": 7,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/customer-directory.ts",
+      "to": "./validation.ts",
+      "line": 8,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/http.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/http.ts",
+      "to": "@elvorance/contracts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/service-kit/src/http.ts",
+      "to": "./auth.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/http.ts",
+      "to": "./errors.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/http.ts",
+      "to": "./repository.ts",
+      "line": 5,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/service-kit/src/http.ts",
+      "to": "./validation.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/memory-repository.ts",
+      "to": "@elvorance/contracts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/service-kit/src/memory-repository.ts",
+      "to": "./errors.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/memory-repository.ts",
+      "to": "./pagination.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/memory-repository.ts",
+      "to": "./repository.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/pagination.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/service-kit/src/pagination.ts",
+      "to": "./auth.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/pagination.ts",
+      "to": "./errors.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/pagination.ts",
+      "to": "./validation.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/pagination.ts",
+      "to": "./repository.ts",
+      "line": 5,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/service-kit/src/pg-repository.ts",
+      "to": "pg",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/pg-repository.ts",
+      "to": "@elvorance/contracts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/service-kit/src/pg-repository.ts",
+      "to": "./errors.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/pg-repository.ts",
+      "to": "./migrations.ts",
+      "line": 4,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/service-kit/src/pg-repository.ts",
+      "to": "./pagination.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/pg-repository.ts",
+      "to": "./repository.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/repository.ts",
+      "to": "node:crypto",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/service-kit/src/repository.ts",
+      "to": "@elvorance/contracts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/service-kit/src/repository.ts",
+      "to": "./pagination.ts",
+      "line": 3,
+      "typeOnly": true
+    },
+    {
+      "from": "packages/service-kit/src/validation.ts",
+      "to": "./errors.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/ui/src/index.ts",
+      "to": "./primitives.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/ui/src/index.ts",
+      "to": "./buttons.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/ui/src/index.ts",
+      "to": "./forms.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/ui/src/index.ts",
+      "to": "./page-heads.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "packages/ui/src/primitives.ts",
+      "to": "@elvorance/design-system/icons",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/app.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/app.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/app.ts",
+      "to": "./transport/routes.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/app.ts",
+      "to": "./domain/routes.ts",
+      "line": 4,
+      "typeOnly": true
+    },
+    {
+      "from": "services/api-gateway/src/app.ts",
+      "to": "./application/readiness.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/application/proxy.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/application/readiness.ts",
+      "to": "../domain/routes.ts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/infrastructure/config.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/infrastructure/config.ts",
+      "to": "../domain/routes.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/main.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/main.ts",
+      "to": "./app.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/main.ts",
+      "to": "./infrastructure/config.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/transport/routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/api-gateway/src/transport/routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/transport/routes.ts",
+      "to": "../application/proxy.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/api-gateway/src/transport/routes.ts",
+      "to": "../domain/routes.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/app.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/app.ts",
+      "to": "./transport/routes.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/application/events.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/billing/src/application/events.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/application/events.ts",
+      "to": "../domain/model.ts",
+      "line": 11,
+      "typeOnly": true
+    },
+    {
+      "from": "services/billing/src/application/payments.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/billing/src/application/payments.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/application/payments.ts",
+      "to": "../domain/model.ts",
+      "line": 15,
+      "typeOnly": true
+    },
+    {
+      "from": "services/billing/src/domain/model.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/billing/src/infrastructure/migrations/001_initial.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/infrastructure/repository.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/infrastructure/repository.ts",
+      "to": "./migrations/001_initial.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/main.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/main.ts",
+      "to": "@elvorance/events",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/main.ts",
+      "to": "./infrastructure/repository.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/main.ts",
+      "to": "./app.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/main.ts",
+      "to": "./application/events.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/transport/routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/billing/src/transport/routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/billing/src/transport/routes.ts",
+      "to": "../domain/model.ts",
+      "line": 11,
+      "typeOnly": true
+    },
+    {
+      "from": "services/billing/src/transport/routes.ts",
+      "to": "../application/payments.ts",
+      "line": 12,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/app.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/communications/src/app.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/app.ts",
+      "to": "./transport/routes.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/app.ts",
+      "to": "./transport/conversation-routes.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/application/conversations.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/communications/src/application/conversations.ts",
+      "to": "@elvorance/service-kit",
+      "line": 8,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/application/events.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/communications/src/application/events.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/application/events.ts",
+      "to": "../domain/model.ts",
+      "line": 3,
+      "typeOnly": true
+    },
+    {
+      "from": "services/communications/src/application/tickets.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/communications/src/application/tickets.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/application/tickets.ts",
+      "to": "../domain/model.ts",
+      "line": 16,
+      "typeOnly": true
+    },
+    {
+      "from": "services/communications/src/domain/model.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/communications/src/infrastructure/migrations/001_initial.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/infrastructure/repository.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/infrastructure/repository.ts",
+      "to": "./migrations/001_initial.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/main.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/main.ts",
+      "to": "@elvorance/events",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/main.ts",
+      "to": "./infrastructure/repository.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/main.ts",
+      "to": "./app.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/main.ts",
+      "to": "./application/events.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/transport/conversation-routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/communications/src/transport/conversation-routes.ts",
+      "to": "@elvorance/contracts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "services/communications/src/transport/conversation-routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/transport/conversation-routes.ts",
+      "to": "../application/conversations.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/transport/routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/communications/src/transport/routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/transport/routes.ts",
+      "to": "../application/tickets.ts",
+      "line": 9,
+      "typeOnly": false
+    },
+    {
+      "from": "services/communications/src/transport/routes.ts",
+      "to": "../domain/model.ts",
+      "line": 16,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/app.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/app.ts",
+      "to": "./transport/routes.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/application/configuration.ts",
+      "to": "@elvorance/questionnaire",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/application/configuration.ts",
+      "to": "@elvorance/contracts",
+      "line": 7,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/application/configuration.ts",
+      "to": "@elvorance/service-kit",
+      "line": 8,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/application/customers.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/application/customers.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/application/customers.ts",
+      "to": "../domain/model.ts",
+      "line": 15,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/application/customers.ts",
+      "to": "../domain/customer-details.ts",
+      "line": 16,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/application/discovery.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/application/discovery.ts",
+      "to": "@elvorance/questionnaire",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/application/discovery.ts",
+      "to": "@elvorance/service-kit",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/application/discovery.ts",
+      "to": "./customers.ts",
+      "line": 15,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/application/discovery.ts",
+      "to": "./configuration.ts",
+      "line": 16,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/application/events.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/application/events.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/application/events.ts",
+      "to": "../domain/model.ts",
+      "line": 3,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/application/events.ts",
+      "to": "./customers.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/domain/customer-details.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/domain/model.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/domain/model.ts",
+      "to": "./customer-details.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/infrastructure/migrations/001_initial.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/infrastructure/repository.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/infrastructure/repository.ts",
+      "to": "./migrations/001_initial.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/main.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/main.ts",
+      "to": "@elvorance/events",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/main.ts",
+      "to": "./infrastructure/repository.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/main.ts",
+      "to": "./app.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/main.ts",
+      "to": "./application/events.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/transport/discovery-routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/transport/discovery-routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/transport/discovery-routes.ts",
+      "to": "../application/discovery.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/transport/discovery-routes.ts",
+      "to": "../application/customers.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/transport/routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/transport/routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/transport/routes.ts",
+      "to": "../application/customers.ts",
+      "line": 9,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/transport/routes.ts",
+      "to": "../domain/model.ts",
+      "line": 17,
+      "typeOnly": true
+    },
+    {
+      "from": "services/crm/src/transport/routes.ts",
+      "to": "../application/configuration.ts",
+      "line": 18,
+      "typeOnly": false
+    },
+    {
+      "from": "services/crm/src/transport/routes.ts",
+      "to": "./discovery-routes.ts",
+      "line": 19,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/app.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/app.ts",
+      "to": "./transport/routes.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/application/events.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/delivery/src/application/events.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/application/events.ts",
+      "to": "../domain/model.ts",
+      "line": 3,
+      "typeOnly": true
+    },
+    {
+      "from": "services/delivery/src/application/projects.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/delivery/src/application/projects.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/application/projects.ts",
+      "to": "../domain/model.ts",
+      "line": 17,
+      "typeOnly": true
+    },
+    {
+      "from": "services/delivery/src/domain/model.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/delivery/src/infrastructure/migrations/001_initial.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/infrastructure/repository.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/infrastructure/repository.ts",
+      "to": "./migrations/001_initial.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/main.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/main.ts",
+      "to": "@elvorance/events",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/main.ts",
+      "to": "./infrastructure/repository.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/main.ts",
+      "to": "./app.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/main.ts",
+      "to": "./application/events.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/transport/routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/delivery/src/transport/routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/delivery/src/transport/routes.ts",
+      "to": "../domain/model.ts",
+      "line": 9,
+      "typeOnly": true
+    },
+    {
+      "from": "services/delivery/src/transport/routes.ts",
+      "to": "../application/projects.ts",
+      "line": 10,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/app.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/app.ts",
+      "to": "./transport/routes.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/application/identity.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/application/identity.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/application/identity.ts",
+      "to": "@elvorance/contracts",
+      "line": 3,
+      "typeOnly": true
+    },
+    {
+      "from": "services/identity/src/application/identity.ts",
+      "to": "../domain/model.ts",
+      "line": 4,
+      "typeOnly": true
+    },
+    {
+      "from": "services/identity/src/application/profile.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/identity/src/application/profile.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/domain/model.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/identity/src/infrastructure/migrations/001_initial.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/infrastructure/repository.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/infrastructure/repository.ts",
+      "to": "./migrations/001_initial.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/main.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/main.ts",
+      "to": "@elvorance/events",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/main.ts",
+      "to": "./infrastructure/repository.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/main.ts",
+      "to": "./app.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/transport/routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/identity/src/transport/routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/transport/routes.ts",
+      "to": "../application/identity.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/identity/src/transport/routes.ts",
+      "to": "../domain/model.ts",
+      "line": 4,
+      "typeOnly": true
+    },
+    {
+      "from": "services/identity/src/transport/routes.ts",
+      "to": "../application/profile.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/app.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/app.ts",
+      "to": "./application/ports.ts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/app.ts",
+      "to": "./transport/routes.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/assignment.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/assignment.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/discounts.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/discounts.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/discounts.ts",
+      "to": "../domain/model.ts",
+      "line": 14,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/discounts.ts",
+      "to": "./assignment.ts",
+      "line": 15,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/events.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/events.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/events.ts",
+      "to": "../domain/model.ts",
+      "line": 12,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/opportunities.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/opportunities.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/opportunities.ts",
+      "to": "../domain/model.ts",
+      "line": 13,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/opportunities.ts",
+      "to": "./assignment.ts",
+      "line": 14,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/ports.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/pricing.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/pricing.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/quotes.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/quotes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/quotes.ts",
+      "to": "../domain/quote.ts",
+      "line": 15,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/quotes.ts",
+      "to": "../domain/model.ts",
+      "line": 16,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/quotes.ts",
+      "to": "../domain/model.ts",
+      "line": 17,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/quotes.ts",
+      "to": "./ports.ts",
+      "line": 18,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/quotes.ts",
+      "to": "./visits.ts",
+      "line": 19,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/quotes.ts",
+      "to": "./discounts.ts",
+      "line": 20,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/quotes.ts",
+      "to": "./pricing.ts",
+      "line": 21,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/routes.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/routes.ts",
+      "to": "../domain/model.ts",
+      "line": 16,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/routes.ts",
+      "to": "./assignment.ts",
+      "line": 17,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/tasks.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/tasks.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/tasks.ts",
+      "to": "./assignment.ts",
+      "line": 15,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/visit-planning.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/visit-planning.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/visit-planning.ts",
+      "to": "../domain/model.ts",
+      "line": 12,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/visit-planning.ts",
+      "to": "./assignment.ts",
+      "line": 13,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/visits.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/visits.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/application/visits.ts",
+      "to": "../domain/model.ts",
+      "line": 18,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/visits.ts",
+      "to": "./ports.ts",
+      "line": 19,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/application/visits.ts",
+      "to": "./assignment.ts",
+      "line": 20,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/domain/model.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/domain/quote.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/domain/quote.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/infrastructure/migrations/001_initial.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/infrastructure/repository.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/infrastructure/repository.ts",
+      "to": "./migrations/001_initial.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/main.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/main.ts",
+      "to": "@elvorance/events",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/main.ts",
+      "to": "./infrastructure/repository.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/main.ts",
+      "to": "./app.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/main.ts",
+      "to": "./infrastructure/crm-client.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/main.ts",
+      "to": "./application/events.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/discount-routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/transport/discount-routes.ts",
+      "to": "@elvorance/contracts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/transport/discount-routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/discount-routes.ts",
+      "to": "../domain/model.ts",
+      "line": 4,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/transport/discount-routes.ts",
+      "to": "../application/assignment.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/discount-routes.ts",
+      "to": "../application/discounts.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/rep-work-routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/transport/rep-work-routes.ts",
+      "to": "@elvorance/contracts",
+      "line": 2,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/transport/rep-work-routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/rep-work-routes.ts",
+      "to": "../application/assignment.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/rep-work-routes.ts",
+      "to": "../application/tasks.ts",
+      "line": 5,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/rep-work-routes.ts",
+      "to": "../application/opportunities.ts",
+      "line": 6,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/rep-work-routes.ts",
+      "to": "../application/routes.ts",
+      "line": 7,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/transport/routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/routes.ts",
+      "to": "../domain/model.ts",
+      "line": 13,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/transport/routes.ts",
+      "to": "../application/ports.ts",
+      "line": 14,
+      "typeOnly": true
+    },
+    {
+      "from": "services/sales/src/transport/routes.ts",
+      "to": "../application/visits.ts",
+      "line": 15,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/routes.ts",
+      "to": "../application/quotes.ts",
+      "line": 16,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/routes.ts",
+      "to": "./rep-work-routes.ts",
+      "line": 27,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/routes.ts",
+      "to": "./discount-routes.ts",
+      "line": 28,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/routes.ts",
+      "to": "../application/visit-planning.ts",
+      "line": 29,
+      "typeOnly": false
+    },
+    {
+      "from": "services/sales/src/transport/routes.ts",
+      "to": "../application/assignment.ts",
+      "line": 30,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/app.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/app.ts",
+      "to": "./transport/routes.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/application/sessions.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/tracking/src/application/sessions.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/application/sessions.ts",
+      "to": "../domain/model.ts",
+      "line": 17,
+      "typeOnly": true
+    },
+    {
+      "from": "services/tracking/src/domain/model.ts",
+      "to": "@elvorance/contracts",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/tracking/src/infrastructure/migrations/001_initial.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/infrastructure/repository.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/infrastructure/repository.ts",
+      "to": "./migrations/001_initial.ts",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/main.ts",
+      "to": "@elvorance/service-kit",
+      "line": 1,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/main.ts",
+      "to": "@elvorance/events",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/main.ts",
+      "to": "./infrastructure/repository.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/main.ts",
+      "to": "./app.ts",
+      "line": 4,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/transport/routes.ts",
+      "to": "fastify",
+      "line": 1,
+      "typeOnly": true
+    },
+    {
+      "from": "services/tracking/src/transport/routes.ts",
+      "to": "@elvorance/service-kit",
+      "line": 2,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/transport/routes.ts",
+      "to": "../domain/model.ts",
+      "line": 3,
+      "typeOnly": false
+    },
+    {
+      "from": "services/tracking/src/transport/routes.ts",
+      "to": "../application/sessions.ts",
+      "line": 4,
+      "typeOnly": false
+    }
+  ],
+  "owners": [
+    "admin-web:local-demo",
+    "api-client:frontend-or-shared",
+    "api-gateway",
+    "app-runtime:frontend-or-shared",
+    "billing",
+    "client-mobile:local-demo",
+    "communications",
+    "communications+crm+identity+sales+billing",
+    "crm",
+    "crm+sales",
+    "delivery",
+    "demo-data:frontend-or-shared",
+    "events:frontend-or-shared",
+    "identity",
+    "mobile-auth:frontend-or-shared",
+    "mobile-platform:frontend-or-shared",
+    "questionnaire:frontend-or-shared",
+    "rep-mobile:frontend-or-shared",
+    "rep-mobile:local-demo",
+    "sales",
+    "sales+crm",
+    "service-kit:frontend-or-shared",
+    "tracking",
+    "ui:frontend-or-shared"
+  ]
+}

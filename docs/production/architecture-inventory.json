@@ -1,0 +1,1862 @@
+{
+  "schemaVersion": 1,
+  "sourceManifestSha256": "cfa9edcceccd201bd25fbc925f957f7b289cd39ddd9c4732d405f484104c41e6",
+  "sourceManifest": [
+    {
+      "path": "apps/admin-web/config.example.ts",
+      "sha256": "c3257c89a3422efa2001bd04b40d96b9882e902b453f8754d7db6a817b4dc620"
+    },
+    {
+      "path": "apps/admin-web/src/app.ts",
+      "sha256": "16f6e3f405bbd13cca2bfda36e92f841163e6f217c795124a3489492e41c1deb"
+    },
+    {
+      "path": "apps/admin-web/src/context.ts",
+      "sha256": "32bb8aa1a52083cf14df0a63b8b42faa866e200501b1aa585795ae7b6da5f3b0"
+    },
+    {
+      "path": "apps/admin-web/src/features/analytics/index.ts",
+      "sha256": "5b8d59c8a8d7fa3a9a0ddfd03e07e4ad49c52c9983d47a089aaaf1bf13957226"
+    },
+    {
+      "path": "apps/admin-web/src/features/approvals/index.ts",
+      "sha256": "1753238acc7fb4927a5bef6658df5ec6e0eec8ed961a82dfb9a9e7635419480a"
+    },
+    {
+      "path": "apps/admin-web/src/features/billing/index.ts",
+      "sha256": "167da7b6ed87af06f8def10674dba9b5c179221e5ead1b69dd3eb005c27fd6d0"
+    },
+    {
+      "path": "apps/admin-web/src/features/configuration/index.ts",
+      "sha256": "a27aad824a2b3f9f9bdcc860806a4e0558a028530ab4bb201e305b55873fcfad"
+    },
+    {
+      "path": "apps/admin-web/src/features/customers/index.ts",
+      "sha256": "bfd506300071a3aa2412657824a2b88ba49776bb90936e1242aeba48c005630b"
+    },
+    {
+      "path": "apps/admin-web/src/features/dashboard/index.ts",
+      "sha256": "440a5971c792ffe01286f246c1ff9332158f0902ebf1df5b407689db12100e64"
+    },
+    {
+      "path": "apps/admin-web/src/features/messages/index.ts",
+      "sha256": "203c9966f2bb071f14d65e1e6386cd5456db3ed7f61fad6a4f8ea0c47536c404"
+    },
+    {
+      "path": "apps/admin-web/src/features/pipeline/index.ts",
+      "sha256": "74e89fe9f148f28684fd0b99afd58827022581946d85cd37b745a622012264f9"
+    },
+    {
+      "path": "apps/admin-web/src/features/projects/index.ts",
+      "sha256": "a8835493467b25056fa706757b53d881b1a12058051318a1ee4d1f46a6d6938a"
+    },
+    {
+      "path": "apps/admin-web/src/features/settings/index.ts",
+      "sha256": "5044047acaafaea7dba4953aab5ea5e9e127fb52e892567de93d8e98b5782f14"
+    },
+    {
+      "path": "apps/admin-web/src/features/support/index.ts",
+      "sha256": "58736d0708cd29ba1ccdab26dc274b3f5acfa34a6e287691c5365cbde1b89c77"
+    },
+    {
+      "path": "apps/admin-web/src/features/tasks/index.ts",
+      "sha256": "ba70b6a6786746e3b6eb7282b463abe6a7b8ad5dbf97d03def990501941cf4ef"
+    },
+    {
+      "path": "apps/admin-web/src/features/territories/index.ts",
+      "sha256": "92c8b020add58f41918ca2358436804fd8385b4c7a6703be8db5d7361b9975cb"
+    },
+    {
+      "path": "apps/admin-web/src/features/workforce/index.ts",
+      "sha256": "13e70c6e15fa3d5ca8a027de81f309639b7f61d97d9c688bb4e11fbeb7db597a"
+    },
+    {
+      "path": "apps/admin-web/src/lifecycle.ts",
+      "sha256": "2ddf67344e9087efd53627af562e9a9aef57aea95ec407a5ffa225fa68583c69"
+    },
+    {
+      "path": "apps/admin-web/src/main.ts",
+      "sha256": "4255906925263e85b3ec9384a0b083755bdb1f0d4386ba17ed8741bb4afc7463"
+    },
+    {
+      "path": "apps/admin-web/src/queries.ts",
+      "sha256": "5d3831d439eed1c05959fe1ecb4482a5dbc59e83c0d5514c04d8575edce7890a"
+    },
+    {
+      "path": "apps/admin-web/src/state/local-demo.ts",
+      "sha256": "d4c8abf839b3bb5d035f366ce42411de7136ffd2e7eecb5e90ae1c64b88ec47a"
+    },
+    {
+      "path": "apps/client-mobile/config.example.ts",
+      "sha256": "c3257c89a3422efa2001bd04b40d96b9882e902b453f8754d7db6a817b4dc620"
+    },
+    {
+      "path": "apps/client-mobile/src/app.ts",
+      "sha256": "ef930ba6ecc625b46e66b11125c45d2afe82f205f3ebeb3aa165498b7488de45"
+    },
+    {
+      "path": "apps/client-mobile/src/context.ts",
+      "sha256": "1bd2a475d5497716725fe84b3370cb059f71bba972ab4db9f8f1fcd3a166f316"
+    },
+    {
+      "path": "apps/client-mobile/src/features/account/index.ts",
+      "sha256": "c46245d13915338822464e632b3da46959e6c39e03dcbc44840983bf7c16446e"
+    },
+    {
+      "path": "apps/client-mobile/src/features/billing/index.ts",
+      "sha256": "59b80ede270ffda91b076eb2b63bc2f68a915d8d7d70c3d3f49c98149e0a5d60"
+    },
+    {
+      "path": "apps/client-mobile/src/features/catalog/index.ts",
+      "sha256": "1f62109f8525f50a8068b16d6a32c468848c2465e8d9607458365f895194e88b"
+    },
+    {
+      "path": "apps/client-mobile/src/features/contracts/index.ts",
+      "sha256": "a84e36f4fe75211106cb7f58c4d58c62cfb3d86bd918c1335c0ad2d030215d5f"
+    },
+    {
+      "path": "apps/client-mobile/src/features/dashboard/index.ts",
+      "sha256": "b2f873fb15aef570ada56b031e8c285768d1cc5ad0bb3c20272589809dd20778"
+    },
+    {
+      "path": "apps/client-mobile/src/features/discovery/index.ts",
+      "sha256": "44d262272ac682863b98a7d4a28901875881f0ff9188ba18c60ebec5282f806b"
+    },
+    {
+      "path": "apps/client-mobile/src/features/messages/index.ts",
+      "sha256": "25d236c909c3df2ebbff73a6a80b801e85ca434aeb25d47860d91484ebce97ca"
+    },
+    {
+      "path": "apps/client-mobile/src/features/projects/index.ts",
+      "sha256": "3e90707ac154fe09b3b91df8d90b8f89b14f8adbae2b6d728c38ac974cec5e4f"
+    },
+    {
+      "path": "apps/client-mobile/src/features/quotes/index.ts",
+      "sha256": "b6f41c42035d9ce757596615da47c25e5f9751d01ecfd0ad631a5473220b9678"
+    },
+    {
+      "path": "apps/client-mobile/src/features/support/index.ts",
+      "sha256": "ef03b7d17d1a0bf726574bdedbaf236f61df765de271b19f0eaebd16e8b6c75c"
+    },
+    {
+      "path": "apps/client-mobile/src/lifecycle.ts",
+      "sha256": "37436ef85ffe5f50db2b0f0387becca3d3327c6e1e34e151c6215d40a344aadd"
+    },
+    {
+      "path": "apps/client-mobile/src/main.ts",
+      "sha256": "5f8ac3060a5c8e3baffca55c20f8597d9679de307fae881452e77d268a9e7d08"
+    },
+    {
+      "path": "apps/client-mobile/src/queries.ts",
+      "sha256": "64ba4d9b50855ff46a096aa26d575e466707945613f6ef8a9e88c243b1c7f1ea"
+    },
+    {
+      "path": "apps/client-mobile/src/state/local-demo.ts",
+      "sha256": "fbd4bce76d9d64cac2601c8efecfd34da30ce436e6fe004163d34606336d5791"
+    },
+    {
+      "path": "apps/rep-mobile/config.example.ts",
+      "sha256": "c3257c89a3422efa2001bd04b40d96b9882e902b453f8754d7db6a817b4dc620"
+    },
+    {
+      "path": "apps/rep-mobile/src/app.ts",
+      "sha256": "f98749f0dec183dc1590b1dc4d1bc8a356537dc8a3996c6410992b4bb907bc94"
+    },
+    {
+      "path": "apps/rep-mobile/src/context.ts",
+      "sha256": "19c83dcace8ea733717d73e80b648fc48371f2af155f15ae9b1817c6ec23d058"
+    },
+    {
+      "path": "apps/rep-mobile/src/features/account/index.ts",
+      "sha256": "5b25da8fb21a752e716e8fd2d85665147a041f290fb197373367248e751923a9"
+    },
+    {
+      "path": "apps/rep-mobile/src/features/catalog/index.ts",
+      "sha256": "27225a7468c372d68d758ad2e0372a0b2e5b378b098bf5f0d8c9f893d945910e"
+    },
+    {
+      "path": "apps/rep-mobile/src/features/customers/index.ts",
+      "sha256": "9f113b459f5550fd4c1d2f1525e71cce2ec211a668ddc440f1091fb3027828a2"
+    },
+    {
+      "path": "apps/rep-mobile/src/features/dashboard/index.ts",
+      "sha256": "84af01eaa3fd9b829c3a4a0bcba4066af69e287b52137609d5a283cfee39fb4d"
+    },
+    {
+      "path": "apps/rep-mobile/src/features/discovery/index.ts",
+      "sha256": "d2d45ebf4892d912551b5d2cb2ee17a3c45440e7870ab1b3d15ac9159faabbd2"
+    },
+    {
+      "path": "apps/rep-mobile/src/features/messages/index.ts",
+      "sha256": "5e549f1c1aa19396b76972e9f1770710a82cc22378e022285ff74b86d6d24283"
+    },
+    {
+      "path": "apps/rep-mobile/src/features/opportunities/index.ts",
+      "sha256": "dc34ee4a6750d407a3f2fa9af5defe856aa8fc0604de89707464362174ca568d"
+    },
+    {
+      "path": "apps/rep-mobile/src/features/quotes/index.ts",
+      "sha256": "d8cddc1ea4f6cb461efa26a84347efc4e895742ccc8b317ed9d2628d390bf7b7"
+    },
+    {
+      "path": "apps/rep-mobile/src/features/tasks/index.ts",
+      "sha256": "4f415f454b05904e360c4dd1cbdeb894d737efb2af8ff8b6777a58e0e9abc6ad"
+    },
+    {
+      "path": "apps/rep-mobile/src/features/territory/index.ts",
+      "sha256": "481ffe6a59d94b14db990dffdecec541e7d208dfac94e34029e50b32b5534a7c"
+    },
+    {
+      "path": "apps/rep-mobile/src/features/visits/index.ts",
+      "sha256": "07892a5f9feadae89886c3ac10609cc7bd065e1eab846897869de3baa32b29ec"
+    },
+    {
+      "path": "apps/rep-mobile/src/lifecycle.ts",
+      "sha256": "8234346f0d1d5557538f29dcf195aacb4211c0243ebecb1794deff495b55d4b9"
+    },
+    {
+      "path": "apps/rep-mobile/src/main.ts",
+      "sha256": "d20e1dda3841f2c9803cede0a4cc974a3fe866064319e2b8c3aca42c19bce8c7"
+    },
+    {
+      "path": "apps/rep-mobile/src/queries.ts",
+      "sha256": "a381f48fad4a7f61aedaafbd7070c8e92e6e7edf468b316e86255c2ca4c960ad"
+    },
+    {
+      "path": "apps/rep-mobile/src/server-main.ts",
+      "sha256": "b51327491334115420e7ba1c4358c8ca76d8e6bb4821184498f73d305f4c3fde"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/api.ts",
+      "sha256": "38554a18520cbd3e506f75f342fbe0a6d58bb9608a59ad240e1da28ce8ceabaf"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/bootstrap.ts",
+      "sha256": "0af022522b9391a4b96ec6865ae3a0b7144c8963db9a117b41e3700295365ed0"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/context.ts",
+      "sha256": "75dd57ad5badd665277e2d98e4d008e6363cc0d48f2d5653a0fe7a25c8a1d27c"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/tracking.ts",
+      "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/ui/dom.ts",
+      "sha256": "4ffab96ed39b01af839d90b635ca2e5ab9a4be02db22ef4363b3c0f1893deee1"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/ui/forms.ts",
+      "sha256": "0fdc08d0b8614acbc029a2c808557c75e433b8389734b7e3b4a2d34bc45cf72d"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/ui/repeating-fields.ts",
+      "sha256": "9c114f64b9885b12a18440d63e50d4cdf4bd61fa57d0e77d071c9777817fad23"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/account.ts",
+      "sha256": "d7c8ba2f078ea7fe294386fb2ac8558a7d697fbb3891418596ad76f3c34ffae8"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/common.ts",
+      "sha256": "e591f74d86a97ee9e0f8cc42488ad85aa112e931c8e886fda1473bee7e2d705d"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/customers.ts",
+      "sha256": "5223fe37754a2f23244de292913f109df7cad5dd10c96ecd0965536e50a0bc41"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/discovery.ts",
+      "sha256": "6648be4390a67bce28e697713bb719c7ad6d0f163525144aa83e260b93c3b68e"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/home.ts",
+      "sha256": "cfdaf3b31e2e87c080adf53850c257f5a50b80b88e31952bd0e6600ba9152cf6"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/messages.ts",
+      "sha256": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/planning.ts",
+      "sha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/quote-editor.ts",
+      "sha256": "deb4c12d25b4b6e6206c9456a27f2379a95bef4babdba198d384cfb84a248f0f"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/quotes.ts",
+      "sha256": "f3a22bd19a92b8f4b656576cc42d35563d07a34c93ceeb0a75b1aca4324ed860"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/records.ts",
+      "sha256": "39814ff41736c6ff652d4f33679820e80be44bd8d497cadacdae12a106505145"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/support.ts",
+      "sha256": "8a5d3a7db20fb470141162d1428089ea96203e886dfee2d935ebb155db3cf867"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/views/visits.ts",
+      "sha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96"
+    },
+    {
+      "path": "apps/rep-mobile/src/server/workspace.ts",
+      "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+    },
+    {
+      "path": "apps/rep-mobile/src/state/local-demo.ts",
+      "sha256": "89c68f5d6a5b25a27e7ab7db3b93e203054804d08a2f220e67b63b0736c05af2"
+    },
+    {
+      "path": "packages/api-client/src/authenticated-workspace.ts",
+      "sha256": "8ffc99cd6d4661e2888fc9ea080c47b53c007cec9b4dd1dda4b5dc6f93f232ed"
+    },
+    {
+      "path": "packages/api-client/src/index.ts",
+      "sha256": "c6b719abea86f267617b4e24cb7df558324411c935269b1f734a66d39b547163"
+    },
+    {
+      "path": "packages/api-client/src/live-actions.ts",
+      "sha256": "6bc9bb46609ce9361c0fce2f2e677f07eebd277542f135c90644a3d7334dca95"
+    },
+    {
+      "path": "packages/api-client/src/live-commercial.ts",
+      "sha256": "5521e7b6caa5755255b8f3f0ace661f95faa4f3884f13e623fccdabd77fa606b"
+    },
+    {
+      "path": "packages/api-client/src/live-data.ts",
+      "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+    },
+    {
+      "path": "packages/api-client/src/live-format.ts",
+      "sha256": "b328a8694284e40e754cee5bc382eb0ad81a7eb3b8ebf58f21fd6ecf6c0734fe"
+    },
+    {
+      "path": "packages/api-client/src/live-workspace.ts",
+      "sha256": "35eeb836e360ce4784f4991fda0ede8520ff96b5caf353b9ee3392e14fffd5b9"
+    },
+    {
+      "path": "packages/app-runtime/src/demo-workflows.ts",
+      "sha256": "e7bc854b554597dedf2a0f0a969a7cf1895021d2f8767bc57e6f0f00129787d9"
+    },
+    {
+      "path": "packages/app-runtime/src/finance.ts",
+      "sha256": "f56693e4dd7aac4b60ce2129e26afe256127457c9d51aff773efbc756ac12074"
+    },
+    {
+      "path": "packages/app-runtime/src/form-validation.ts",
+      "sha256": "bde5c661989beee0256ec3df8ccf92c3ca0fc7e715d158e71d102729662272c7"
+    },
+    {
+      "path": "packages/app-runtime/src/index.ts",
+      "sha256": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa"
+    },
+    {
+      "path": "packages/app-runtime/src/tracking.ts",
+      "sha256": "36ff1f13236a85c3cd503c220ab5f99dcc05f802fddbd7ef65ed98240f128d2e"
+    },
+    {
+      "path": "packages/app-runtime/src/utilities.ts",
+      "sha256": "b76e99ad31141de4c08ea8cebbc1483cb9e2a41880913b7e65e7f7daa7095d2e"
+    },
+    {
+      "path": "packages/contracts/src/browser-window.d.ts",
+      "sha256": "5f091b1015e1608500b7c82640a163efc895c3dcb9c57ad18296eddaa238d7a7"
+    },
+    {
+      "path": "packages/contracts/src/catalog.ts",
+      "sha256": "f596124d626ba2c8bfa2a096d29fc89ea6893dfadbd6a5a110870672af39ab2b"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "3845c24cfde5e6865d0708485b8fe2d0c687442c06416fa7d30402e957e3a72f"
+    },
+    {
+      "path": "packages/demo-data/src/index.ts",
+      "sha256": "c0db6ac2a4b88bdadd97eee35269ab007d656ff193033ae9ab469078b5fc1a71"
+    },
+    {
+      "path": "packages/demo-data/src/repository.ts",
+      "sha256": "d80d4eae529d0b6e01a9f0d23e2eafe01f601d37da94b91d2716e8c01d05b02d"
+    },
+    {
+      "path": "packages/design-system/src/icons.ts",
+      "sha256": "c18beac0a3cf9a09edca5d7aa933ad589d83a82976b60efd547611de70869823"
+    },
+    {
+      "path": "packages/events/src/index.ts",
+      "sha256": "15454a2263db9779ec772fc9d6f15c0b2bec4660ab0dc047dca6b257731e899e"
+    },
+    {
+      "path": "packages/events/src/topology.ts",
+      "sha256": "98df0592b1c0a187bca25db6326a5af481ae89aa08365d19e15871a5c4a143d6"
+    },
+    {
+      "path": "packages/mobile-auth/src/configuration.ts",
+      "sha256": "88b1444ec2d2077458cb4eb57a03f1e49d9108ae0dae82247c24f3ad70eafd93"
+    },
+    {
+      "path": "packages/mobile-auth/src/errors.ts",
+      "sha256": "a3df34c0ffab2ea6f9fdb7d7b6cff99106af70d4f224cff05e6e2ce298ff7310"
+    },
+    {
+      "path": "packages/mobile-auth/src/host.ts",
+      "sha256": "c1548594165939e531ac444a3e549de55fcc0162048e5c8d5247279ed8fd98f6"
+    },
+    {
+      "path": "packages/mobile-auth/src/index.ts",
+      "sha256": "627981a426935d8d00753e45d5d6232c7aba8ac640f25d0ba5a55bde86ccb012"
+    },
+    {
+      "path": "packages/mobile-auth/src/oidc.ts",
+      "sha256": "a3b2b5ccd14cd006fa43b7367fa8d4591746aab8510e2c765b3b79d7e85a3673"
+    },
+    {
+      "path": "packages/mobile-auth/src/platform.ts",
+      "sha256": "c079bd5e6ac47169f7a42366584b605cf4cc17409441b6d82bec320faca366a5"
+    },
+    {
+      "path": "packages/mobile-auth/src/session.ts",
+      "sha256": "ced4f3134d7a1b3ec10e0bc4059dfb2ced429c4585483401414fde0611219dea"
+    },
+    {
+      "path": "packages/mobile-auth/src/types.ts",
+      "sha256": "6ebcf85bd41b83587022eed3fc750a109e9c16c750d2e5c332b55f10e5ac70c3"
+    },
+    {
+      "path": "packages/mobile-auth/src/vault.ts",
+      "sha256": "e3eed1c22df53095c31652b7558cef3d84ee150f91cf15730cafb7e932efdebe"
+    },
+    {
+      "path": "packages/mobile-platform/src/index.ts",
+      "sha256": "7d7bc93e87fda8c39e7647c979df174d9ed490d393b40aa633ee5590d882cb47"
+    },
+    {
+      "path": "packages/questionnaire/src/answers.ts",
+      "sha256": "4119ce9019c80acd66b9cccc1f3cdb2e5f7f4d5ccdb994f569b526dab7d83d99"
+    },
+    {
+      "path": "packages/questionnaire/src/catalog-validation.ts",
+      "sha256": "97d8952974315a990a4158052f74baf58c2d20e3f99fab8cabad1b020a1070a8"
+    },
+    {
+      "path": "packages/questionnaire/src/configuration-validation.ts",
+      "sha256": "acb28d274d6ccec45b9ba3b31c349be77fe5fddbf06d8eef86f9e6e740b53e39"
+    },
+    {
+      "path": "packages/questionnaire/src/configuration.ts",
+      "sha256": "48f9f541e4d119f1fd377a235a259fbfac04931c75c80cb17e60ee0632ab1975"
+    },
+    {
+      "path": "packages/questionnaire/src/default-catalog.ts",
+      "sha256": "4f0e3b42eb64c24fb54eb38c5e48e60e2158c9c202d980ab065e1442cec54af3"
+    },
+    {
+      "path": "packages/questionnaire/src/default-questions.ts",
+      "sha256": "3727b1b42d381208914f637b517a83cdf735816497935be47c80c17c2537d7ff"
+    },
+    {
+      "path": "packages/questionnaire/src/fields.ts",
+      "sha256": "6e589c32ae9f455af9c60b9138d0ff2212664ce5cdf3654df58cfef6f995a410"
+    },
+    {
+      "path": "packages/questionnaire/src/index.ts",
+      "sha256": "db9c06bc4a1bfa197dd5f6927a6f083e3a208dd95c174f5c2da694a7a53a5957"
+    },
+    {
+      "path": "packages/questionnaire/src/recommendations.ts",
+      "sha256": "52c6716b1f58fca0a6da9ed6e19b42996101eb3db6ceedec59597521858e93ff"
+    },
+    {
+      "path": "packages/questionnaire/src/sync.ts",
+      "sha256": "fabecc407cfc4152d3c9c13de2304364bb88bc8c124337465dfa865d9f369024"
+    },
+    {
+      "path": "packages/questionnaire/src/types.ts",
+      "sha256": "b6bf1efa68a9d70206d74af5c98b77845ddcf8b48faa1cfa80831febcd0c1d53"
+    },
+    {
+      "path": "packages/questionnaire/src/validation-values.ts",
+      "sha256": "7fc566638801a6385ebd4ceee1f2510958ce92f47ebb72b29b1522ab1915f34d"
+    },
+    {
+      "path": "packages/service-kit/src/auth.ts",
+      "sha256": "2787ba1fbf0548f551a04264f3e5ea883af608a1ad6c93d90e115330845de15c"
+    },
+    {
+      "path": "packages/service-kit/src/customer-directory.ts",
+      "sha256": "ebf513ac623bb5c02c256567fb514f6a62be44b32a9589653aa78e7dde375549"
+    },
+    {
+      "path": "packages/service-kit/src/errors.ts",
+      "sha256": "cfd53fd2a32ea002b4540db07fa25fc71891bcbbd9ac064dfd51d083352b3179"
+    },
+    {
+      "path": "packages/service-kit/src/http.ts",
+      "sha256": "58a920a8a8b2695f94b7fcab20f5beb952f2a1407c661a9a80d1d01bc1ba26ec"
+    },
+    {
+      "path": "packages/service-kit/src/index.ts",
+      "sha256": "58d1fdc82a96c8b3426ce9606fd4c298746b82a85537fa03df0860a35bfd0be6"
+    },
+    {
+      "path": "packages/service-kit/src/memory-repository.ts",
+      "sha256": "f850fee4dd26c15e266fa57c140f143a0bc8a1ed0d10aa520c1be96d63907abf"
+    },
+    {
+      "path": "packages/service-kit/src/migrations.ts",
+      "sha256": "b4e86d13233b63efe7b0c031c786dae0d60b8ca1561fdb6f8ee8187ae48b7e6d"
+    },
+    {
+      "path": "packages/service-kit/src/pagination.ts",
+      "sha256": "742f412c924bbecca8a2f91b5e95b5204a63dd721982549e6f120213f694f566"
+    },
+    {
+      "path": "packages/service-kit/src/pg-repository.ts",
+      "sha256": "3219a49cd5a86fee0d7eb30fd09aba6973ecf5e6644a865b417dc02ab1d34877"
+    },
+    {
+      "path": "packages/service-kit/src/repository.ts",
+      "sha256": "5e5316144bfc4f869a0385819f5444ceeaefa4de4081684af06d02c3536888ed"
+    },
+    {
+      "path": "packages/service-kit/src/validation.ts",
+      "sha256": "ddd0ee350a2ed45688d7dc64d08284364fc3529d9dd9c21fe6ec795b1beecf27"
+    },
+    {
+      "path": "packages/ui/src/buttons.ts",
+      "sha256": "7c594265bd410123da62707c6930f83175e2eacfe74bd53b100e1a63fb0ff662"
+    },
+    {
+      "path": "packages/ui/src/forms.ts",
+      "sha256": "f3dbc05aeb377aaae2a972c9b3344a40ee58c5c622e8ee789fb9733cab49c28b"
+    },
+    {
+      "path": "packages/ui/src/index.ts",
+      "sha256": "87cde0a0221019e4f8a5a04e0fa2a1c57eb36a947b160e9d2568f8ce53e75b3a"
+    },
+    {
+      "path": "packages/ui/src/page-heads.ts",
+      "sha256": "1872e0f902a36c5c87f1b7659a2540de39f143b3e30c7add21d1a36c522b0558"
+    },
+    {
+      "path": "packages/ui/src/primitives.ts",
+      "sha256": "54392fa63a96de0557cb65f9e0bef0fb29c40301a772832eba0b76b61ba0969b"
+    },
+    {
+      "path": "services/api-gateway/src/app.ts",
+      "sha256": "f1d3298ce108a388c29d68acf3f2f60da43953ac097deb58da47a9a69055650a"
+    },
+    {
+      "path": "services/api-gateway/src/application/proxy.ts",
+      "sha256": "4ba6f256f72d5ee89c9bb09c747f6c26319f8a8f38cfe17bee787ada128cf931"
+    },
+    {
+      "path": "services/api-gateway/src/application/readiness.ts",
+      "sha256": "b5de8d84345d033f9476aafbad6fc55183cbb3981b82cb152a70ab0040db26c8"
+    },
+    {
+      "path": "services/api-gateway/src/domain/routes.ts",
+      "sha256": "1f5d04d2af03b3eecc1f9ac62cfafe3543fb286c3232e41ed05e78795f579a30"
+    },
+    {
+      "path": "services/api-gateway/src/infrastructure/config.ts",
+      "sha256": "4a5f5b12e4e317ed04e12d40e3725596d086ede965b58bf90e56a6c80b0baa88"
+    },
+    {
+      "path": "services/api-gateway/src/main.ts",
+      "sha256": "37e3bae4c3b137ba27a539dc5bad6ac1824bc2192be7d7f61c8229520a510050"
+    },
+    {
+      "path": "services/api-gateway/src/transport/routes.ts",
+      "sha256": "de34ac7d0a1e1e372761ad48943681f3172ee860b217c1b1789efa3f95682cdf"
+    },
+    {
+      "path": "services/billing/src/app.ts",
+      "sha256": "5ccc893bacaeaa738ac85fcefb278c969fd6cb3f75c9b8939fc8f393d8bd53e8"
+    },
+    {
+      "path": "services/billing/src/application/events.ts",
+      "sha256": "9f42b22bd7f99798e1cc96a66f7c536ff7250dd37252df45cda2940bfc6071f1"
+    },
+    {
+      "path": "services/billing/src/application/payments.ts",
+      "sha256": "31867bd3976e839e2d7616105c62cc759d7d00f7de555f499b36dc287d293a3c"
+    },
+    {
+      "path": "services/billing/src/domain/model.ts",
+      "sha256": "b76781f3f351a971a9a2cf5908e0d832030bc73103572e157a8f008dd4940250"
+    },
+    {
+      "path": "services/billing/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "4e39c2fd8aacce506e92c7426b87bb5940c185889b7143d8dc290db5d6f0665d"
+    },
+    {
+      "path": "services/billing/src/infrastructure/repository.ts",
+      "sha256": "37b9ce1fc85a6406434af51cc3bc7d4cc908d4b4f6712764cb0ccb4c87c9087e"
+    },
+    {
+      "path": "services/billing/src/main.ts",
+      "sha256": "fe3dce43472a47edc54ad538137f4768644622673cf4a30e4612f96bfd4e5848"
+    },
+    {
+      "path": "services/billing/src/transport/routes.ts",
+      "sha256": "fc276d7246a276958c654a43c123d2c15b4b504598d9eaa763cdec0575fb5790"
+    },
+    {
+      "path": "services/communications/src/app.ts",
+      "sha256": "5ac3e6404b61103f1012ba71d210c4f90cef336af3d875849473281e5858c593"
+    },
+    {
+      "path": "services/communications/src/application/conversations.ts",
+      "sha256": "3ea0129a8d3d7ac95ebfef4a60d450cc177eb5df1650a2721f4b6223c98841e6"
+    },
+    {
+      "path": "services/communications/src/application/events.ts",
+      "sha256": "df941a581a0f53aca369920a9efd3efac05b36e17c37d602bcb471929de24404"
+    },
+    {
+      "path": "services/communications/src/application/tickets.ts",
+      "sha256": "4a0f6a6450b8c6411e1392db14c4dbffda3e1ef97039248b5f69ed60fad27a96"
+    },
+    {
+      "path": "services/communications/src/domain/model.ts",
+      "sha256": "df51042e39a97c5cbc2e00fdb0e49d0eadce331732d37342f482bcc05eabedda"
+    },
+    {
+      "path": "services/communications/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "9a67a235af6b91e6ce82b85d81eb2d8547f53cbe3c452bf86b72874733fd9cd6"
+    },
+    {
+      "path": "services/communications/src/infrastructure/repository.ts",
+      "sha256": "55c6703eb76e8bdf1284452b0bc8867eee10ab8f9eee6d2db41acf50524795e3"
+    },
+    {
+      "path": "services/communications/src/main.ts",
+      "sha256": "f1d1e360d30a4dcb67e0efe3c69e0b665dba97e71272a06c121714adedb54b02"
+    },
+    {
+      "path": "services/communications/src/transport/conversation-routes.ts",
+      "sha256": "9942c9cbbf151b66fc4e1734aeacf87e8521e237c179e5fa2506af7a4c13a1fd"
+    },
+    {
+      "path": "services/communications/src/transport/routes.ts",
+      "sha256": "59f5f1a56e5b66eb4ecfc26f73e8ae13383ebf18e7e68e270951930955d258ab"
+    },
+    {
+      "path": "services/crm/src/app.ts",
+      "sha256": "de47220522b39e95854e5f5b986195e908abe1b12fb4a8070585503ce9957777"
+    },
+    {
+      "path": "services/crm/src/application/configuration.ts",
+      "sha256": "a3e5dbd687823c5e68d449f077e0ad73f46f63d7087f947db6df394b50c22920"
+    },
+    {
+      "path": "services/crm/src/application/customers.ts",
+      "sha256": "973e139192e7b6dbf99cef5041b25033b1199097b87569661998a8fef50535ee"
+    },
+    {
+      "path": "services/crm/src/application/discovery.ts",
+      "sha256": "80cf6c166b001422ec082c1b44962bed0067920bd60d6d67fee73b2f3e90fd41"
+    },
+    {
+      "path": "services/crm/src/application/events.ts",
+      "sha256": "b756b53a1f2020d44dffbd22650b2eaa2391d9a07523b1512f6898c659d74e53"
+    },
+    {
+      "path": "services/crm/src/domain/customer-details.ts",
+      "sha256": "2864ab69e3ea6479656427e9d1b748692f9f0bb3c948e952ce576887ec978539"
+    },
+    {
+      "path": "services/crm/src/domain/model.ts",
+      "sha256": "4450409cf77bdaa285ffb732ed207ca90d7253a7befe24333ad5130d5d9537c2"
+    },
+    {
+      "path": "services/crm/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "25783f3bb002afac0ab562e72afc50572c793ef19590cca9c185168946ff2ed0"
+    },
+    {
+      "path": "services/crm/src/infrastructure/repository.ts",
+      "sha256": "69ca3c5b90cca392d01b412cc2d8bea599bdd410001032537b05472d2e0063a0"
+    },
+    {
+      "path": "services/crm/src/main.ts",
+      "sha256": "bbb433a5e2e75f7f51b81a94a62425168728896ddfa69b70667353f23b1b37b1"
+    },
+    {
+      "path": "services/crm/src/transport/discovery-routes.ts",
+      "sha256": "54d17341ed376104ce7dcb34715a89fbac4b44601c45faea8cc405fda9423bb1"
+    },
+    {
+      "path": "services/crm/src/transport/routes.ts",
+      "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+    },
+    {
+      "path": "services/delivery/src/app.ts",
+      "sha256": "592bd977911d067582a4d85cd66462fefddf371141d29b6c7004fb13c332ac42"
+    },
+    {
+      "path": "services/delivery/src/application/events.ts",
+      "sha256": "df8db8f535be4fb87d7b9b32da74aa741cfa704febe7f3d6f8cd588eef49ad43"
+    },
+    {
+      "path": "services/delivery/src/application/projects.ts",
+      "sha256": "8354893a4c7b7a4697aa7820374ae848f9d64312ec52a9cf435c877e45f569ca"
+    },
+    {
+      "path": "services/delivery/src/domain/model.ts",
+      "sha256": "e3f540fa65443c918415185ced37380a4b4edb2c590d694379b4e136aa688fd9"
+    },
+    {
+      "path": "services/delivery/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "0eca64ba9a871b1dcef953075e29d7f4c988ba154a92f05d7b042bca55c85e6f"
+    },
+    {
+      "path": "services/delivery/src/infrastructure/repository.ts",
+      "sha256": "d226aece6042b3fccf82118a6ec599e7f91ccf4719c8d6828052dc00eb405004"
+    },
+    {
+      "path": "services/delivery/src/main.ts",
+      "sha256": "40393ae46d724159ba01f840b474ee3943d57aba0c595800bc2d57ce7fa712ae"
+    },
+    {
+      "path": "services/delivery/src/transport/routes.ts",
+      "sha256": "6e20c5cb3b7bea1459e3840fd64bd8b910bae7d799e08132f070986005c2363e"
+    },
+    {
+      "path": "services/identity/src/app.ts",
+      "sha256": "f34902f420baf7a22d395c0e894648d28c6d1d85b03fc8dac06f16f0e5422752"
+    },
+    {
+      "path": "services/identity/src/application/identity.ts",
+      "sha256": "a6f03a63b0a3f4e01c6624b258730650c1811b655851b635d13668ac659c7470"
+    },
+    {
+      "path": "services/identity/src/application/profile.ts",
+      "sha256": "4092148028fec6ce5954b95fa85fb579f0960b2f730268bb0b171bb3170c56e3"
+    },
+    {
+      "path": "services/identity/src/domain/model.ts",
+      "sha256": "c6a9ccdba2e39a6a8a085885e4a8b308da01721c219b4abcefb31fdb4bd10552"
+    },
+    {
+      "path": "services/identity/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "f822363d872e583b295fb78d0296026a225782e61676e3c1d7ae56759ab6e3c4"
+    },
+    {
+      "path": "services/identity/src/infrastructure/repository.ts",
+      "sha256": "74910e93f94e4d2ba7a3d2f91a7bb25d5ea4f6994c08fd32f5d1a8d37832536d"
+    },
+    {
+      "path": "services/identity/src/main.ts",
+      "sha256": "58a53ab8e1bf8bee812b61d5ea31547b703af2eceadfe9c971a4d1613762a09d"
+    },
+    {
+      "path": "services/identity/src/transport/routes.ts",
+      "sha256": "3edf9663a29f35f5e81866f36a86e441e25698e3b803fb9c1d58f0724545c8b4"
+    },
+    {
+      "path": "services/sales/src/app.ts",
+      "sha256": "b5b661efe17454bca3816ca68353e6587e88e1ad14d52d771d7b3245d070a8cd"
+    },
+    {
+      "path": "services/sales/src/application/assignment.ts",
+      "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+    },
+    {
+      "path": "services/sales/src/application/discounts.ts",
+      "sha256": "8f45e859baa206b4aaed50f392146ecd2ab623278dbcbac2df870c94fd6cd485"
+    },
+    {
+      "path": "services/sales/src/application/events.ts",
+      "sha256": "b6cb5e1d7d58b076a958d84fdea29a956f21f49353836d6f0f226d61771596c5"
+    },
+    {
+      "path": "services/sales/src/application/opportunities.ts",
+      "sha256": "e40e25cce0b8dc280b5ab41bc886f7ddb44a05f100544b6be6927ee6ca4e2f0c"
+    },
+    {
+      "path": "services/sales/src/application/ports.ts",
+      "sha256": "8c1c0b0bf9ac0a50cdff980703f961fdc141b42c3327f34b0c0d76369f195300"
+    },
+    {
+      "path": "services/sales/src/application/pricing.ts",
+      "sha256": "5af1587e2bfb6493d2fb1c0dcffec276b678935fd645a556590e48b7e54be01c"
+    },
+    {
+      "path": "services/sales/src/application/quotes.ts",
+      "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+    },
+    {
+      "path": "services/sales/src/application/routes.ts",
+      "sha256": "d04bba1504ef79a18ca1f9b838b785766869576e876994b1dccdcd8658ae989a"
+    },
+    {
+      "path": "services/sales/src/application/tasks.ts",
+      "sha256": "16882812427e1e1bf6c63312efb7192e5e0af81291132b90db38dd3693b62c2f"
+    },
+    {
+      "path": "services/sales/src/application/visit-planning.ts",
+      "sha256": "40b2228547503b95acb1c6b410b2bd660a4bd6ec95c8f8d375614f718706d837"
+    },
+    {
+      "path": "services/sales/src/application/visits.ts",
+      "sha256": "eefc452e8fc79b3880a4aa2062fb2bb15b7fa631a98be5662ac46b10a697d144"
+    },
+    {
+      "path": "services/sales/src/domain/model.ts",
+      "sha256": "a84b55a39cac6fea8dbdf9b603d19f72d42df7eb79a861a4f0d027e9693d455a"
+    },
+    {
+      "path": "services/sales/src/domain/quote.ts",
+      "sha256": "5528caa413816aeb591c3ca323374b02b500c9795a67cf4321db53413b08f65c"
+    },
+    {
+      "path": "services/sales/src/infrastructure/crm-client.ts",
+      "sha256": "a6c5a0f9a150eccbca10219fcead669f09880a1d383ded4f07ec4c9951d82b10"
+    },
+    {
+      "path": "services/sales/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "2a17701e693d72442e0def22ddb15847d9cb18008d4787fae72a9ca2f78531cb"
+    },
+    {
+      "path": "services/sales/src/infrastructure/repository.ts",
+      "sha256": "0dbf5297422c2cf724ece67d5a235a079751b8924a150bf664fe92b88cc0673c"
+    },
+    {
+      "path": "services/sales/src/main.ts",
+      "sha256": "63f434c894d3f3573ae3cc17cdff80c2ba03c6f4125f7bcbcff0de9dee1be78d"
+    },
+    {
+      "path": "services/sales/src/transport/discount-routes.ts",
+      "sha256": "d38af9c98d8e327df81e540bcae4a8e717d77f04b66c0ef3166217877e4a3ad2"
+    },
+    {
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "sha256": "dd19fa27388169c367cc54b978b3cc19a6e26cc32fe96f089049010fd3128391"
+    },
+    {
+      "path": "services/sales/src/transport/routes.ts",
+      "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+    },
+    {
+      "path": "services/tracking/src/app.ts",
+      "sha256": "b5b26b8c3a85417959e0bbb444ece0be9aa7eb540a824fa5c0089ad3a834bd19"
+    },
+    {
+      "path": "services/tracking/src/application/sessions.ts",
+      "sha256": "35bc4c2364ae6892350c02316a66d307a647948939af88d085e329a31e3ee0ca"
+    },
+    {
+      "path": "services/tracking/src/domain/model.ts",
+      "sha256": "374e7e76b0d1b8d373f5c4c0ec37ba5d7060aca4d905002daf447d606184e314"
+    },
+    {
+      "path": "services/tracking/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "140442bcb695e03c057296281cbc46f0bddb6631452ea329081630a86a7fefda"
+    },
+    {
+      "path": "services/tracking/src/infrastructure/repository.ts",
+      "sha256": "54bedd2acc2a7c5ae3e60dabb9ee5af5c289b10907a975aa5af43d33156e591b"
+    },
+    {
+      "path": "services/tracking/src/main.ts",
+      "sha256": "4f7090b02b349482c9a0c7f455d47f73d21ffd33fe59e38f2090822a1905fa01"
+    },
+    {
+      "path": "services/tracking/src/transport/routes.ts",
+      "sha256": "b521ece511103019bd0c9d2d401d532c8eb0ee119b44e961cb387ae56b977974"
+    }
+  ],
+  "workspaces": [
+    {
+      "path": "package.json",
+      "manifest": {
+        "name": "elvorance-enterprise",
+        "version": "2.4.1",
+        "private": true,
+        "type": "module",
+        "description": "Elvorance Enterprise consolidated development source: dynamic configuration, KPI drilldowns, revised quote finances, visit readiness, microservices.",
+        "workspaces": ["apps/*", "packages/*", "services/*"],
+        "engines": {
+          "node": ">=24.15 <25",
+          "npm": ">=11 <12"
+        },
+        "packageManager": "npm@11.19.0",
+        "allowScripts": {
+          "esbuild@0.28.2": true
+        },
+        "scripts": {
+          "dev": "node tooling/scripts/dev.mts",
+          "dev:rep": "node tooling/scripts/dev.mts rep-mobile",
+          "dev:client": "node tooling/scripts/dev.mts client-mobile",
+          "dev:admin": "node tooling/scripts/dev.mts admin-web",
+          "build": "npm run build:apps && npm run build:services",
+          "build:apps": "node tooling/scripts/build-apps.mts",
+          "build:services": "node tooling/scripts/build-services.mts",
+          "check:types": "tsc --noEmit",
+          "check:boundaries": "node tooling/scripts/check-boundaries.mts",
+          "check:format": "prettier --check .",
+          "format": "prettier --write .",
+          "test": "node tooling/scripts/test.mts",
+          "test:parity": "node tests/design-parity/parity.mts",
+          "test:regression": "node tooling/scripts/test-regression.mts",
+          "verify": "npm run check:types && npm run check:boundaries && npm run build && npm test && npm run test:parity && npm run test:regression",
+          "mobile:sync": "node tooling/scripts/mobile.mts sync",
+          "mobile:add": "node tooling/scripts/mobile.mts add",
+          "package": "node tooling/scripts/package.mts",
+          "infra:up": "docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml build && docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml up --no-build -d --wait --wait-timeout 180",
+          "infra:down": "docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml down",
+          "test:merged": "node --test --test-reporter=tap tests/questionnaire/dynamic-form.test.mts tests/validation/numeric-fields.test.mts tests/regression/dashboard-drilldown.integration.test.mts tests/regression/finance-2.3.test.mts tests/regression/quote-ui-consolidated.test.mts examples/instant-close/tests/flow.test.mts",
+          "audit:migration:report": "node tooling/scripts/audit-migration.mts",
+          "audit:migration": "node tooling/scripts/audit-migration.mts --strict",
+          "build:rep:server": "node tooling/scripts/build-rep-server.mts",
+          "mobile:prepare:rep": "node tooling/scripts/rep-native/prepare.mts",
+          "inventory:write": "node tooling/production/inventory.mts",
+          "inventory:check": "node tooling/production/inventory.mts --check",
+          "test:production": "node --test --test-reporter=tap tests/production/*.test.mts",
+          "ci:quality": "node tooling/production/run-quality.mts",
+          "ci:gate": "node tooling/production/gate.mts",
+          "ci:security": "node tooling/production/security.mts"
+        },
+        "devDependencies": {
+          "@capacitor/cli": "8.6.2",
+          "@types/amqplib": "0.10.8",
+          "@types/jsdom": "30.0.0",
+          "@types/node": "24.10.1",
+          "@types/pg": "8.23.1",
+          "esbuild": "0.28.2",
+          "fflate": "0.8.3",
+          "jsdom": "31.0.0",
+          "prettier": "3.6.2",
+          "typescript": "5.9.3"
+        }
+      }
+    },
+    {
+      "path": "apps/admin-web/package.json",
+      "manifest": {
+        "name": "@elvorance/admin-web",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "scripts": {
+          "build": "node ../../tooling/scripts/build-apps.mts",
+          "dev": "node ../../tooling/scripts/dev.mts admin-web"
+        },
+        "dependencies": {
+          "@elvorance/app-runtime": "2.0.0",
+          "@elvorance/ui": "2.0.0",
+          "@elvorance/api-client": "2.0.0",
+          "@elvorance/design-system": "2.0.0",
+          "@elvorance/questionnaire": "2.4.0"
+        }
+      }
+    },
+    {
+      "path": "apps/client-mobile/package.json",
+      "manifest": {
+        "name": "@elvorance/client-mobile",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "scripts": {
+          "build": "node ../../tooling/scripts/build-apps.mts",
+          "dev": "node ../../tooling/scripts/dev.mts client-mobile"
+        },
+        "dependencies": {
+          "@elvorance/app-runtime": "2.0.0",
+          "@elvorance/ui": "2.0.0",
+          "@elvorance/api-client": "2.0.0",
+          "@elvorance/design-system": "2.0.0",
+          "@elvorance/mobile-platform": "2.0.0",
+          "@capacitor/core": "8.6.2",
+          "@capacitor/android": "8.6.2",
+          "@capacitor/ios": "8.6.2",
+          "@capacitor/app": "8.1.2",
+          "@capacitor/network": "8.0.1",
+          "@elvorance/questionnaire": "2.4.0"
+        }
+      }
+    },
+    {
+      "path": "apps/rep-mobile/package.json",
+      "manifest": {
+        "name": "@elvorance/rep-mobile",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "scripts": {
+          "build": "node ../../tooling/scripts/build-apps.mts",
+          "dev": "node ../../tooling/scripts/dev.mts rep-mobile"
+        },
+        "dependencies": {
+          "@elvorance/app-runtime": "2.0.0",
+          "@elvorance/ui": "2.0.0",
+          "@elvorance/api-client": "2.0.0",
+          "@elvorance/design-system": "2.0.0",
+          "@elvorance/mobile-platform": "2.0.0",
+          "@capacitor/core": "8.6.2",
+          "@capacitor/android": "8.6.2",
+          "@capacitor/ios": "8.6.2",
+          "@capacitor/app": "8.1.2",
+          "@capacitor/network": "8.0.1",
+          "@capacitor/geolocation": "8.2.4",
+          "@elvorance/questionnaire": "2.4.0",
+          "@elvorance/mobile-auth": "2.0.0",
+          "@elvorance/contracts": "2.0.0"
+        }
+      }
+    },
+    {
+      "path": "examples/instant-close/package.json",
+      "manifest": {
+        "name": "elvorance-instant-close-reference",
+        "version": "0.1.0",
+        "private": true,
+        "type": "module",
+        "scripts": {
+          "test": "node --test tests/*.test.mts",
+          "build": "node build.mts",
+          "dev": "npm run build && python -m http.server 8080 --directory dist"
+        }
+      }
+    },
+    {
+      "path": "packages/api-client/package.json",
+      "manifest": {
+        "name": "@elvorance/api-client",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/index.ts",
+          "./live-data": "./src/live-data.ts",
+          "./live-workspace": "./src/live-workspace.ts",
+          "./authenticated-workspace": "./src/authenticated-workspace.ts"
+        },
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0",
+          "@elvorance/mobile-auth": "2.0.0"
+        }
+      }
+    },
+    {
+      "path": "packages/app-runtime/package.json",
+      "manifest": {
+        "name": "@elvorance/app-runtime",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/index.ts",
+          "./tracking": "./src/tracking.ts",
+          "./finance": "./src/finance.ts"
+        },
+        "dependencies": {
+          "@elvorance/demo-data": "2.0.0",
+          "@elvorance/ui": "2.0.0",
+          "@elvorance/design-system": "2.0.0"
+        }
+      }
+    },
+    {
+      "path": "packages/contracts/package.json",
+      "manifest": {
+        "name": "@elvorance/contracts",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/index.ts",
+          "./openapi": "./openapi.json",
+          "./routes": "./route-inventory.json"
+        }
+      }
+    },
+    {
+      "path": "packages/demo-data/package.json",
+      "manifest": {
+        "name": "@elvorance/demo-data",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/index.ts",
+          "./repository": "./src/repository.ts"
+        },
+        "dependencies": {
+          "@elvorance/questionnaire": "2.4.0"
+        }
+      }
+    },
+    {
+      "path": "packages/design-system/package.json",
+      "manifest": {
+        "name": "@elvorance/design-system",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          "./icons": "./src/icons.ts",
+          "./styles.css": "./src/styles.css",
+          "./polish.css": "./src/polish.css",
+          "./tracking.css": "./src/tracking.css"
+        }
+      }
+    },
+    {
+      "path": "packages/events/package.json",
+      "manifest": {
+        "name": "@elvorance/events",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/index.ts"
+        },
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0",
+          "@elvorance/service-kit": "2.0.0",
+          "amqplib": "0.10.9"
+        }
+      }
+    },
+    {
+      "path": "packages/mobile-auth/package.json",
+      "manifest": {
+        "name": "@elvorance/mobile-auth",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/index.ts"
+        },
+        "dependencies": {
+          "@capacitor/app": "8.1.2",
+          "@capacitor/core": "8.6.2",
+          "oauth4webapi": "3.8.8"
+        }
+      }
+    },
+    {
+      "path": "packages/mobile-platform/package.json",
+      "manifest": {
+        "name": "@elvorance/mobile-platform",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/index.ts"
+        },
+        "dependencies": {
+          "@capacitor/core": "8.6.2",
+          "@capacitor/app": "8.1.2",
+          "@capacitor/geolocation": "8.2.4",
+          "@capacitor/network": "8.0.1"
+        }
+      }
+    },
+    {
+      "path": "packages/questionnaire/package.json",
+      "manifest": {
+        "name": "@elvorance/questionnaire",
+        "version": "2.4.0",
+        "private": true,
+        "type": "module",
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0"
+        },
+        "exports": {
+          ".": {
+            "types": "./src/index.ts",
+            "default": "./src/index.ts"
+          },
+          "./sync": {
+            "default": "./src/sync.ts"
+          }
+        }
+      }
+    },
+    {
+      "path": "packages/service-kit/package.json",
+      "manifest": {
+        "name": "@elvorance/service-kit",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/index.ts"
+        },
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0",
+          "fastify": "5.12.8",
+          "pg": "8.23.1",
+          "jose": "6.2.17"
+        }
+      }
+    },
+    {
+      "path": "packages/ui/package.json",
+      "manifest": {
+        "name": "@elvorance/ui",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/index.ts",
+          "./primitives": "./src/primitives.ts"
+        },
+        "dependencies": {
+          "@elvorance/design-system": "2.0.0"
+        },
+        "devDependencies": {
+          "esbuild": "0.28.2",
+          "jsdom": "31.0.0"
+        }
+      }
+    },
+    {
+      "path": "services/api-gateway/package.json",
+      "manifest": {
+        "name": "@elvorance/api-gateway",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/app.ts"
+        },
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0",
+          "@elvorance/service-kit": "2.0.0",
+          "fastify": "5.12.8"
+        }
+      }
+    },
+    {
+      "path": "services/billing/package.json",
+      "manifest": {
+        "name": "@elvorance/billing",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/app.ts",
+          "./domain": "./src/domain/model.ts"
+        },
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0",
+          "@elvorance/service-kit": "2.0.0",
+          "@elvorance/events": "2.0.0",
+          "fastify": "5.12.8"
+        }
+      }
+    },
+    {
+      "path": "services/communications/package.json",
+      "manifest": {
+        "name": "@elvorance/communications",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/app.ts",
+          "./domain": "./src/domain/model.ts"
+        },
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0",
+          "@elvorance/service-kit": "2.0.0",
+          "@elvorance/events": "2.0.0",
+          "fastify": "5.12.8"
+        }
+      }
+    },
+    {
+      "path": "services/crm/package.json",
+      "manifest": {
+        "name": "@elvorance/crm",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/app.ts",
+          "./domain": "./src/domain/model.ts"
+        },
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0",
+          "@elvorance/service-kit": "2.0.0",
+          "@elvorance/events": "2.0.0",
+          "fastify": "5.12.8",
+          "@elvorance/questionnaire": "2.4.0"
+        }
+      }
+    },
+    {
+      "path": "services/delivery/package.json",
+      "manifest": {
+        "name": "@elvorance/delivery",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/app.ts",
+          "./domain": "./src/domain/model.ts"
+        },
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0",
+          "@elvorance/service-kit": "2.0.0",
+          "@elvorance/events": "2.0.0",
+          "fastify": "5.12.8"
+        }
+      }
+    },
+    {
+      "path": "services/identity/package.json",
+      "manifest": {
+        "name": "@elvorance/identity",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/app.ts",
+          "./domain": "./src/domain/model.ts"
+        },
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0",
+          "@elvorance/service-kit": "2.0.0",
+          "@elvorance/events": "2.0.0",
+          "fastify": "5.12.8"
+        }
+      }
+    },
+    {
+      "path": "services/sales/package.json",
+      "manifest": {
+        "name": "@elvorance/sales",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/app.ts",
+          "./domain": "./src/domain/model.ts"
+        },
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0",
+          "@elvorance/service-kit": "2.0.0",
+          "@elvorance/events": "2.0.0",
+          "fastify": "5.12.8"
+        }
+      }
+    },
+    {
+      "path": "services/tracking/package.json",
+      "manifest": {
+        "name": "@elvorance/tracking",
+        "version": "2.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/app.ts",
+          "./domain": "./src/domain/model.ts"
+        },
+        "dependencies": {
+          "@elvorance/contracts": "2.0.0",
+          "@elvorance/service-kit": "2.0.0",
+          "@elvorance/events": "2.0.0",
+          "fastify": "5.12.8"
+        }
+      }
+    }
+  ],
+  "native": [
+    {
+      "path": "apps/client-mobile/android/app/build.gradle",
+      "sha256": "595e723fbeb48b9e07ac5b5699e2a05bba07bf1e280cc9175e1df93c4b8d59d4",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/capacitor.build.gradle",
+      "sha256": "eec1702d12d4600d2a3c93a169d5eae557bd81b996ea481eddcc533d19738b0d",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "sha256": "ff50b4c110a7434312f9af54171f9e8523b015836f707c9b387b76d4c38a97f8",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/main/AndroidManifest.xml",
+      "sha256": "806e6d0b0e3da66c9220173121672f6a54724189a679947902d126af37973beb",
+      "permissions": ["android.permission.INTERNET"]
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/main/java/com/elvorance/client/MainActivity.java",
+      "sha256": "3bb71b1326ca73c06e8d1313a2adb92f3ce7be0325fda8a5b90a0cba147d86bd",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "sha256": "a8514094f754b099d3e55ce1d6e0b2de79db418b2eeacb0fc2a6bb0bfadef221",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "sha256": "718ba51adf166bb55c3e9936bb8199a0148457f7f0191aaa2f37a94f3159d6ec",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/main/res/layout/activity_main.xml",
+      "sha256": "5d770feb791313b947020cbfc57e5c733c556dac5e9e49261a1190e527073253",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/main/res/values/ic_launcher_background.xml",
+      "sha256": "6735655e9838fea358e213dd297612c25294f24c5ec24b717d261a3ffabd39bb",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/main/res/values/strings.xml",
+      "sha256": "6bc5e9344568bdeaa229a18c70d7d30647b4363420ea09f20347fbadd5d1922b",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/main/res/values/styles.xml",
+      "sha256": "18ebba36575e9461347ee67361b23caf095f158ee85dbefe1b83a4669ba5bd6c",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/main/res/xml/file_paths.xml",
+      "sha256": "a46ed43ef65c90cb6778f4581decf3556e3f0055aad8f36d69dae16f9a0e99aa",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "sha256": "d4045ae8fac1f0807e6b24eb34e68409a9a235df9d1a3f896fb8c9a49424363d",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/build.gradle",
+      "sha256": "46ade7db7afeb8049ccea59fce83095dca736ceb8c9acd79cc944e988c3357d9",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/capacitor.settings.gradle",
+      "sha256": "2bf81904699afab4531ae51b1242b0dd513b636af3572793360f6267923d7e71",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/settings.gradle",
+      "sha256": "6ce098d15ebd69b44c4ecd786bca1bdc366340d2459b2af4d7bb0ab317aa9669",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/android/variables.gradle",
+      "sha256": "83d502c9ed8fcf1dd4791482067abeedbebae49fafe9cd14a8a1f5891deb0d88",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "sha256": "dfa0f9bb85b95ccba9c6811adadf8cb407fb5d52088e89db83ebc308ec448542",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/ios/App/App/AppDelegate.swift",
+      "sha256": "481e2ad8672b14acbd3e3df65acdc6d046526ae542b7bec903cf842fc68d9e49",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/ios/App/App/Info.plist",
+      "sha256": "49d3f3a034e89fc2f80a4e9bc11d19433583130c7e5c1c41bfff4565756630cc",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/ios/App/App/SceneDelegate.swift",
+      "sha256": "738b9b96bb71d34d80cd8c1183cf7f8f6f2e789c64e46fb5fe6777a35ae12dfd",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/ios/App/CapApp-SPM/Package.swift",
+      "sha256": "5f13ff4857d17313b79aba85b55d302db4dd3df9cbb08e3368e9daf477470e74",
+      "permissions": []
+    },
+    {
+      "path": "apps/client-mobile/ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift",
+      "sha256": "70bf9dafddc35e3877dfb133a996f5be7ccd1e132897a98fdbf4869ff605ece9",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/build.gradle",
+      "sha256": "e3279795d489f1c0a5947f8cd364a7206873eebd635a50525b4e1735226822f8",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/capacitor.build.gradle",
+      "sha256": "a5acf7198832948711aa0dd96cc8f3d1bd8b15d76af52a65bece90ede5751240",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/androidTest/java/com/elvorance/rep/auth/AuthSecureStoreTest.java",
+      "sha256": "f0265e835ee2fcc2fe75759342cbc587547144bde1ed46fac3271e5589df6096",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/androidTest/java/com/elvorance/rep/auth/NativeStartupTest.java",
+      "sha256": "eafa16e6237917d6ea688a939dfdf6f3da3c1da4fa08675f08367dfb21b95d29",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/AndroidManifest.xml",
+      "sha256": "1812094182af65e0cb3f5f5c0a2c147daeb86c448dffbf96bf784e5f0bc3ad74",
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/java/com/elvorance/rep/MainActivity.java",
+      "sha256": "ee3fe9a7cd27322132cd47efc9897a96d69d9bb42072e1ca246beabe56631c0b",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/java/com/elvorance/rep/auth/AuthBrowserSession.java",
+      "sha256": "b38539cd62ab62c5d808e8af015f7bb6d069ac632f979c4afb10e99be47d0651",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/java/com/elvorance/rep/auth/AuthRedirect.java",
+      "sha256": "2be91bf33dd3aee42f9714582960f2aa8c1a5bd5ea73baa2a55a80c4653fe1f7",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/java/com/elvorance/rep/auth/AuthSecureStore.java",
+      "sha256": "46a7484da2a6e128fe3e8819253fb15c4b402ccefb30158a118b12ddc93ff666",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/java/com/elvorance/rep/auth/ElvoranceAuthBridgePlugin.java",
+      "sha256": "7d5f6faefc6197ff7617c5c2bc4359c509a3de11be28ecde108dc30800dbd559",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "sha256": "a8514094f754b099d3e55ce1d6e0b2de79db418b2eeacb0fc2a6bb0bfadef221",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "sha256": "718ba51adf166bb55c3e9936bb8199a0148457f7f0191aaa2f37a94f3159d6ec",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/res/layout/activity_main.xml",
+      "sha256": "5d770feb791313b947020cbfc57e5c733c556dac5e9e49261a1190e527073253",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/res/values/ic_launcher_background.xml",
+      "sha256": "6735655e9838fea358e213dd297612c25294f24c5ec24b717d261a3ffabd39bb",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/res/values/strings.xml",
+      "sha256": "f81acafdd44bdce2b4d1790ed591e5888e0352f5b35161e257a950fd342622ba",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/res/values/styles.xml",
+      "sha256": "18ebba36575e9461347ee67361b23caf095f158ee85dbefe1b83a4669ba5bd6c",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/main/res/xml/file_paths.xml",
+      "sha256": "a46ed43ef65c90cb6778f4581decf3556e3f0055aad8f36d69dae16f9a0e99aa",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/staging/res/values/strings.xml",
+      "sha256": "e36681e25fbf85448db37c265976c1b2683595a568daeae90e69f995469fe983",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/app/src/test/java/com/elvorance/rep/auth/AuthRedirectTest.java",
+      "sha256": "66cf6cc94a6457b4fbaceddb03580564dfbbe712597f7bb67aa90aa67f712729",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/build.gradle",
+      "sha256": "46ade7db7afeb8049ccea59fce83095dca736ceb8c9acd79cc944e988c3357d9",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/capacitor.settings.gradle",
+      "sha256": "978afc7926ae80234dd61ea9ae61b41f8df815161f0a6ae3fd79b1606233968f",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/settings.gradle",
+      "sha256": "6ce098d15ebd69b44c4ecd786bca1bdc366340d2459b2af4d7bb0ab317aa9669",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/android/variables.gradle",
+      "sha256": "83d502c9ed8fcf1dd4791482067abeedbebae49fafe9cd14a8a1f5891deb0d88",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "sha256": "dfa0f9bb85b95ccba9c6811adadf8cb407fb5d52088e89db83ebc308ec448542",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/App/AppDelegate.swift",
+      "sha256": "481e2ad8672b14acbd3e3df65acdc6d046526ae542b7bec903cf842fc68d9e49",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/App/Auth/AuthBrowserSession.swift",
+      "sha256": "22334d35b5717829af800ea8ec8b732897e6ae01c52382cd450205b925b5bd41",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/App/Auth/AuthRedirect.swift",
+      "sha256": "85cc10ba079d6c501d57c568054f120b08af18020c709d3e71110f15570abfb0",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/App/Auth/AuthSecureStore.swift",
+      "sha256": "ca7908ff8f72549539896e45b6310a5db073aa69bcee274646b52db133b1f35d",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/App/Auth/ElvoranceAuthBridgePlugin.swift",
+      "sha256": "f3dac2f716c3858a860996f4650e457eaa9b670d8807a77fbc0b492a916f8bb6",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/App/Info.plist",
+      "sha256": "ada8b774f71f1e44e336117f13cf6e6130c7ce8c31ab366c6351cc888a543fe4",
+      "permissions": [
+        "NSLocationWhenInUseUsageDescription",
+        "NSLocationAlwaysAndWhenInUseUsageDescription"
+      ]
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/App/RepBridgeViewController.swift",
+      "sha256": "267a39046ac3cb50d8826eae8b3d1acb684bdbdaf450230e15d6ce7d52d6785e",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/App/SceneDelegate.swift",
+      "sha256": "cf3134a0d414d09431998cc50bbc8b619a651b14c8893606e7663e109a793e49",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/AppNativeTests/AuthNativeTests.swift",
+      "sha256": "6587059590058ea9dc4cfe44a46d1ebd5b443096a86f75450d00c6ccc425c918",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/CapApp-SPM/Package.swift",
+      "sha256": "e9f254c31be4139f8d1956e3b3b02abe3a49f8cb372bd1f23cf647464be5f29e",
+      "permissions": []
+    },
+    {
+      "path": "apps/rep-mobile/ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift",
+      "sha256": "70bf9dafddc35e3877dfb133a996f5be7ccd1e132897a98fdbf4869ff605ece9",
+      "permissions": []
+    }
+  ],
+  "migrations": [
+    {
+      "path": "services/billing/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "4e39c2fd8aacce506e92c7426b87bb5940c185889b7143d8dc290db5d6f0665d"
+    },
+    {
+      "path": "services/communications/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "9a67a235af6b91e6ce82b85d81eb2d8547f53cbe3c452bf86b72874733fd9cd6"
+    },
+    {
+      "path": "services/crm/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "25783f3bb002afac0ab562e72afc50572c793ef19590cca9c185168946ff2ed0"
+    },
+    {
+      "path": "services/delivery/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "0eca64ba9a871b1dcef953075e29d7f4c988ba154a92f05d7b042bca55c85e6f"
+    },
+    {
+      "path": "services/identity/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "f822363d872e583b295fb78d0296026a225782e61676e3c1d7ae56759ab6e3c4"
+    },
+    {
+      "path": "services/sales/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "2a17701e693d72442e0def22ddb15847d9cb18008d4787fae72a9ca2f78531cb"
+    },
+    {
+      "path": "services/tracking/src/infrastructure/migrations/001_initial.ts",
+      "sha256": "140442bcb695e03c057296281cbc46f0bddb6631452ea329081630a86a7fefda"
+    }
+  ],
+  "runtimeModes": {
+    "demo": "local state/localStorage; not production backend",
+    "adminAndClientServer": "OIDC authenticated shared live workspace",
+    "repServer": "dedicated server entry, foreground tracking, no offline write synchronization"
+  },
+  "infrastructureFiles": [
+    {
+      "path": "infra/compose/.env.example",
+      "sha256": "769e748ee4eddf0b660d22e17df1c636c2046361f355e0708cd5c7b1ea6a19b0"
+    },
+    {
+      "path": "infra/compose/compose.production.example.yaml",
+      "sha256": "63c6efcae8756c7d0fad82cdd082fcd3cf6f493090ef89911bebbb33e72e18e5"
+    },
+    {
+      "path": "infra/compose/compose.yaml",
+      "sha256": "52898ad0353e819f954fa614ce22be98011bf99efe054699b800b102fd7db869"
+    },
+    {
+      "path": "infra/compose/init-env.mts",
+      "sha256": "f17f8a352ae738d60c200bb90d98a0fa9ed603add87105a21a8f0ceec4f4b8b6"
+    },
+    {
+      "path": "infra/compose/postgres/010-service-databases.sh",
+      "sha256": "419cc017e48e73473f214a26bdb5dd8dd948e74a65b4abb3690cd90ab41b1c45"
+    },
+    {
+      "path": "infra/compose/postgres/check-isolation.sh",
+      "sha256": "6b8ccea18c230edf7a4458d9d13431240ff6742c74dd4a427db3dc906d6b6a82"
+    },
+    {
+      "path": "infra/compose/smoke.mts",
+      "sha256": "af4750682b62f19d45ced0054c4ee8c68df27e2742293d68d8e85b7ef82b82e8"
+    },
+    {
+      "path": "infra/docker/entrypoint.sh",
+      "sha256": "b288ad1fb7241d89e8359464edbb3fa135727f2e53386c579dca1dfd7c64df6c"
+    },
+    {
+      "path": "infra/docker/rabbitmq-secret-entrypoint.sh",
+      "sha256": "2bfbb547955618428434c487640fb9b98f3749a91f2e57e1074c6b0c5d3a5e7f"
+    },
+    {
+      "path": "infra/docker/service.Dockerfile",
+      "sha256": "c3b6f236037ead489c45f6aabd360e9f15dc535ca7195506f14a16ab310fd961"
+    },
+    {
+      "path": "infra/docker/service.Dockerfile.dockerignore",
+      "sha256": "ee953313f70c862a92d8afca684b8c57418a736e399c5b24329725757c0a6b34"
+    },
+    {
+      "path": "infra/environments/Caddyfile",
+      "sha256": "6d9ebe8a2cb385fcf2bcc9fca843fd04d1aee8bef6c3ee0bcbd52ce69c834fb7"
+    },
+    {
+      "path": "infra/environments/compose.mts",
+      "sha256": "01f4f484984b51b41bbf2991bea4effe684710a36675d9dd31e9844b239d98e5"
+    },
+    {
+      "path": "infra/environments/create-secrets.mts",
+      "sha256": "67fc430959facb3f9840f6edf2c6f0dc1f744ab52807e290f713ed504c2cf6ed"
+    },
+    {
+      "path": "infra/environments/keycloak-entrypoint.sh",
+      "sha256": "e0d3f3500645b37684c8d64388f5564f517dde156343233ac588e8efb7e0be53"
+    },
+    {
+      "path": "infra/environments/private-path.mts",
+      "sha256": "e9bed1352e76b6e05bd5a2f9c154e6724e550aa8432105f1703e196505b1767b"
+    },
+    {
+      "path": "infra/environments/render.mts",
+      "sha256": "9325fe42728a91cb3e3ac4c35b87db38aefb61a887f8e6676a08c60313aabce8"
+    },
+    {
+      "path": "infra/environments/secrets.mts",
+      "sha256": "bc08a20e65be61896b1b23cc8f7fe9c401632890649b35266803e43f8821a551"
+    },
+    {
+      "path": "infra/environments/topology.mts",
+      "sha256": "3a4085bad1fe59b614b734ce495bcf45af3307730c13b52a6175a7637f5e1d9c"
+    },
+    {
+      "path": "infra/identity/README.md",
+      "sha256": "e80ec54abce4c82ac3a3d728f8347eee3ce7d5a837672712dd123cf9cc588ae3"
+    },
+    {
+      "path": "infra/identity/admin-client.mts",
+      "sha256": "f403ffe95aca331c6f853d0570546fab428599e5f5cee53da55059fa4c2efb18"
+    },
+    {
+      "path": "infra/identity/assign-scopes.mts",
+      "sha256": "270a4000b4cfc70193adfb20fbf3423ab492ecf48a4f3c2511ae6d10528bad52"
+    },
+    {
+      "path": "infra/identity/bootstrap.mts",
+      "sha256": "119bb9b8e250b2afe342e6da5085178ce7e89ea9354bb98ef59ef9dc2407513a"
+    },
+    {
+      "path": "infra/identity/client-scopes.mts",
+      "sha256": "7feede26ebdc075284a9cd12cd370499efb2cdc8be89de690ca2a538e05cecc0"
+    },
+    {
+      "path": "infra/identity/generate.mts",
+      "sha256": "9c0b98b6a3c6f037e69058cb7f461cb9b58a6ac5c135e79415dee5f8507f87a4"
+    },
+    {
+      "path": "infra/identity/mappers.mts",
+      "sha256": "76440d046fe2784df41cc216d0aa654266122c2c074f538b76d73f53032c3229"
+    },
+    {
+      "path": "infra/identity/provision.mts",
+      "sha256": "b9b8fba99cc4a9ab16d863965c4b1d03caf7b5f87e23466950695e36a277df9b"
+    },
+    {
+      "path": "infra/identity/realm.mts",
+      "sha256": "b31136f6d2b50efea9548441e5cdcf973115c6b7e13464b75e68d20ff310f7e1"
+    },
+    {
+      "path": "infra/identity/types.mts",
+      "sha256": "e09114d1a833451467f12dd7733204e3c8dac4aa03e9298e27652b47b075c927"
+    },
+    {
+      "path": "infra/identity/user-profile.mts",
+      "sha256": "e487c4676a9018bde89505561bb0ea37e0b0cfa7053959965534ed7271292159"
+    },
+    {
+      "path": "infra/identity/verify.mts",
+      "sha256": "c10c0a96e0c128112b57347b16f6cfe5cb0d47749b7de8277dc79bcdda51a226"
+    },
+    {
+      "path": "infra/railway/domain-service.json",
+      "sha256": "fee6e9d0edc3e9963762705ce8a20fcb8e3a900a3245b5ef285329d1515247c8"
+    },
+    {
+      "path": "infra/railway/gateway.json",
+      "sha256": "c609f4347e38b82c0cb778147ebf1d45d8ef74494669fb24f3e37623dbc2efbe"
+    }
+  ]
+}

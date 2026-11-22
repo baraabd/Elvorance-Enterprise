@@ -1,0 +1,776 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "kind": "subscription",
+      "name": "contract.approved.v1",
+      "source": {
+        "path": "services/billing/src/application/events.ts",
+        "line": 12,
+        "column": 31,
+        "symbol": "subscriptions",
+        "sha256": "ecb48e5365b393d6279e06cbcfe0a2f60da29d13aa81674c3595e55d4a9ab9bb"
+      },
+      "owner": "billing"
+    },
+    {
+      "kind": "publication",
+      "name": "billing.invoices_created.v1",
+      "source": {
+        "path": "services/billing/src/application/events.ts",
+        "line": 70,
+        "column": 9,
+        "symbol": "handleEvent",
+        "sha256": "6cb9c25ed31175626bec5257808f20e9f508fedbd8613f203868049935bd3c58"
+      },
+      "owner": "billing"
+    },
+    {
+      "kind": "publication",
+      "name": "billing.payment_recorded.v1",
+      "source": {
+        "path": "services/billing/src/application/payments.ts",
+        "line": 73,
+        "column": 9,
+        "symbol": "recordPayment",
+        "sha256": "e1a2d022d7994c1ab965b2d811f5db33911e25d60297bd30a2d4b0ff2490a706"
+      },
+      "owner": "billing"
+    },
+    {
+      "kind": "publication",
+      "name": "communications.message_created.v1",
+      "source": {
+        "path": "services/communications/src/application/conversations.ts",
+        "line": 193,
+        "column": 9,
+        "symbol": "sendMessage",
+        "sha256": "3cf5d89a5ff58cfe226199a481be353f3011493810961a936ce34efeda918c8b"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "crm.customer_created.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 5,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "7fa01594f40fa30f85cfb092f8b1a5eda66f2d9eb6f3be2820508790575a6046"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "sales.quote_sent.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 6,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "e64ca38a8265e5ccfba01c8a975147502591ae7e5369b349ba8cf6068b6a6bb6"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "sales.quote_accepted.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 7,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "8da3a7d8c9a588bb85b0030139c1d30629eb9311fd5d383682554b88bb47a299"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "contract.approved.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 8,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "ecb48e5365b393d6279e06cbcfe0a2f60da29d13aa81674c3595e55d4a9ab9bb"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "delivery.project_created.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 9,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "b39055675fcbc72c4c74bf50cd9b95afb82fa16c57f56307b379e6405448bbc5"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "delivery.project_completed.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 10,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "650dde45113cfbc2fd9769acc60146646c50ad5f3202030aa1f61c5fa080d29f"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "billing.invoices_created.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 11,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "6c567abf0545b3cfa466360156895cb96681c7a72fd9c8a4b53ebfe8795a1226"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "billing.payment_recorded.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 12,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "a50efcea9ebcb15aa7a06f6e4ddfc95a455f0eaf6fe3dc2f417b77b4b0d0e030"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "communications.ticket_opened.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 13,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "7b84bd342197151cdbeede34798288ba00bd207648af64436f34cbe4dd9d85b7"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "communications.message_created.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 14,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "62309301c933a974003e3c893313e430e306e4cdc1ced5aab27d568c76157ddd"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "sales.discount_approval_requested.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 15,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "eb264eeae02cfc24332aaf33ff141a0abea792ee6928bc11fd226e5fa27fa323"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "subscription",
+      "name": "sales.discount_approval_decided.v1",
+      "source": {
+        "path": "services/communications/src/application/events.ts",
+        "line": 16,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "afa8cfc6c37fdd691ccd03e9ca55ebfc35e9c21d8c9c2887152de85ff10efa35"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "publication",
+      "name": "communications.ticket_opened.v1",
+      "source": {
+        "path": "services/communications/src/application/tickets.ts",
+        "line": 57,
+        "column": 9,
+        "symbol": "createTicket",
+        "sha256": "439f6aec696279f1966acdc8c7456390b3310d1dff22608f440beb28548c3392"
+      },
+      "owner": "communications"
+    },
+    {
+      "kind": "publication",
+      "name": "crm.configuration_published.v1",
+      "source": {
+        "path": "services/crm/src/application/configuration.ts",
+        "line": 158,
+        "column": 9,
+        "symbol": "publishConfiguration",
+        "sha256": "40c7e5d62f1457890f8eb8335da1f0f9ac51210a018d5f6253a27be3a6b66ac3"
+      },
+      "owner": "crm"
+    },
+    {
+      "kind": "publication",
+      "name": "crm.customer_created.v1",
+      "source": {
+        "path": "services/crm/src/application/customers.ts",
+        "line": 66,
+        "column": 9,
+        "symbol": "createCustomer",
+        "sha256": "61e3f556ce067e900f584b259076a694bd0c28a01a3e6de5257ab3bba18ebfb7"
+      },
+      "owner": "crm"
+    },
+    {
+      "kind": "publication",
+      "name": "crm.customer_updated.v1",
+      "source": {
+        "path": "services/crm/src/application/customers.ts",
+        "line": 115,
+        "column": 9,
+        "symbol": "updateCustomer",
+        "sha256": "ae17a0b1c6b6e380d0c7792031efebc1a49ab14d26fa3d63e9182fb6f1a0925c"
+      },
+      "owner": "crm"
+    },
+    {
+      "kind": "publication",
+      "name": "crm.discovery_saved.v1",
+      "source": {
+        "path": "services/crm/src/application/discovery.ts",
+        "line": 136,
+        "column": 9,
+        "symbol": "saveDiscovery",
+        "sha256": "c7aaa76d3d8cb70824ff607eef5986487d32567b039bdb48af7c084f3abd238a"
+      },
+      "owner": "crm"
+    },
+    {
+      "kind": "subscription",
+      "name": "sales.visit_completed.v1",
+      "source": {
+        "path": "services/crm/src/application/events.ts",
+        "line": 5,
+        "column": 31,
+        "symbol": "subscriptions",
+        "sha256": "1ea233d93fcc7b0c96f6b448083774ffd9058c4ac9c2b9ff64e38cd5aefa48dc"
+      },
+      "owner": "crm"
+    },
+    {
+      "kind": "publication",
+      "name": "crm.customer_updated.v1",
+      "source": {
+        "path": "services/crm/src/application/events.ts",
+        "line": 21,
+        "column": 9,
+        "symbol": "handleEvent",
+        "sha256": "aa59f3b7b1de85925d33af2c68cb99c4af540ba1dc8b759b8d87c9173438e6ad"
+      },
+      "owner": "crm"
+    },
+    {
+      "kind": "subscription",
+      "name": "contract.approved.v1",
+      "source": {
+        "path": "services/delivery/src/application/events.ts",
+        "line": 4,
+        "column": 31,
+        "symbol": "subscriptions",
+        "sha256": "ecb48e5365b393d6279e06cbcfe0a2f60da29d13aa81674c3595e55d4a9ab9bb"
+      },
+      "owner": "delivery"
+    },
+    {
+      "kind": "publication",
+      "name": "delivery.project_created.v1",
+      "source": {
+        "path": "services/delivery/src/application/events.ts",
+        "line": 29,
+        "column": 9,
+        "symbol": "handleEvent",
+        "sha256": "15913b5bd20b2002fe4963f460e675b17e0f09f235b79af48a6b522ed6a7927a"
+      },
+      "owner": "delivery"
+    },
+    {
+      "kind": "publication",
+      "name": "delivery.project_completed.v1",
+      "source": {
+        "path": "services/delivery/src/application/projects.ts",
+        "line": 292,
+        "column": 9,
+        "symbol": "completeProject",
+        "sha256": "712cb51135a19364bec186dbe3e3d389105cd32f2ebe97e432019b237ed14e33"
+      },
+      "owner": "delivery"
+    },
+    {
+      "kind": "publication",
+      "name": "sales.discount_approval_requested.v1",
+      "source": {
+        "path": "services/sales/src/application/discounts.ts",
+        "line": 114,
+        "column": 9,
+        "symbol": "requestDiscountApproval",
+        "sha256": "7bea9d7c5d32e63392080c53fa7c510adf20c518b2ed7bf1732b0aff703a2ab9"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "publication",
+      "name": "sales.discount_approval_decided.v1",
+      "source": {
+        "path": "services/sales/src/application/discounts.ts",
+        "line": 153,
+        "column": 9,
+        "symbol": "decideDiscountApproval",
+        "sha256": "a81e2dfc0644ca920d9df9ee7ab3404d854f76c75ffbcc8232eb57c7ac5355aa"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "subscription",
+      "name": "delivery.project_created.v1",
+      "source": {
+        "path": "services/sales/src/application/events.ts",
+        "line": 14,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "b39055675fcbc72c4c74bf50cd9b95afb82fa16c57f56307b379e6405448bbc5"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "subscription",
+      "name": "billing.invoices_created.v1",
+      "source": {
+        "path": "services/sales/src/application/events.ts",
+        "line": 15,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "6c567abf0545b3cfa466360156895cb96681c7a72fd9c8a4b53ebfe8795a1226"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "subscription",
+      "name": "crm.customer_updated.v1",
+      "source": {
+        "path": "services/sales/src/application/events.ts",
+        "line": 16,
+        "column": 3,
+        "symbol": "subscriptions",
+        "sha256": "076a444a3e9744333e2d19bd3eb917ceb2472b83b3445e9239f78373c847009a"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "publication",
+      "name": "sales.opportunity_updated.v1",
+      "source": {
+        "path": "services/sales/src/application/opportunities.ts",
+        "line": 140,
+        "column": 9,
+        "symbol": "updateOpportunity",
+        "sha256": "73208d1918d3d6fe0c88ca75e35e71b8414b96a14ab38bafa72fb9a8f20d51bd"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "publication",
+      "name": "sales.quote_sent.v1",
+      "source": {
+        "path": "services/sales/src/application/quotes.ts",
+        "line": 210,
+        "column": 9,
+        "symbol": "sendQuote",
+        "sha256": "637d87a6915b0bbaa5d0740dd9432c05b652e70108f7e5cea9a28266d472ef19"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "publication",
+      "name": "sales.quote_accepted.v1",
+      "source": {
+        "path": "services/sales/src/application/quotes.ts",
+        "line": 298,
+        "column": 9,
+        "symbol": "respondQuote",
+        "sha256": "d907370f649e04aa3af60d6e0d64995a068cb373dd301f43e452a8a8e2bc2bc7"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "publication",
+      "name": "contract.approved.v1",
+      "source": {
+        "path": "services/sales/src/application/quotes.ts",
+        "line": 339,
+        "column": 9,
+        "symbol": "approveContract",
+        "sha256": "d56e6600aa715d1087e0f4995ca6e6e11fd6746e164b4a188cad8f28ceb1e9ff"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "publication",
+      "name": "sales.task_updated.v1",
+      "source": {
+        "path": "services/sales/src/application/tasks.ts",
+        "line": 96,
+        "column": 9,
+        "symbol": "updateTask",
+        "sha256": "5b325fad4fc4cd32a7126f812c7ed762a78c2b6dd3d65d35c7bfb0817ff8adc9"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "publication",
+      "name": "sales.visit_rescheduled.v1",
+      "source": {
+        "path": "services/sales/src/application/visit-planning.ts",
+        "line": 75,
+        "column": 9,
+        "symbol": "updateVisit",
+        "sha256": "bbedf10d5b56d62cafa0eacc9a4d41d2afcf234aec42c0ee49f353bad10e0b7b"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "publication",
+      "name": "sales.visit_cancelled.v1",
+      "source": {
+        "path": "services/sales/src/application/visit-planning.ts",
+        "line": 110,
+        "column": 9,
+        "symbol": "cancelVisit",
+        "sha256": "2ad2b0f0371e19d3e04990a18bfe516dcae4906ecc3da77e5774e799a4aa8c6e"
+      },
+      "owner": "sales"
+    },
+    {
+      "kind": "publication",
+      "name": "sales.visit_completed.v1",
+      "source": {
+        "path": "services/sales/src/application/visits.ts",
+        "line": 209,
+        "column": 9,
+        "symbol": "completeVisit",
+        "sha256": "824af3cba69ca4b00a2326668fe1cc62c6c55b0fd0263586addce6c4417b1b7c"
+      },
+      "owner": "sales"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "api-client.shared.job.ccb4897e3a0f71f5.1",
+      "owner": "api-client:frontend-or-shared",
+      "source": {
+        "path": "packages/api-client/src/index.ts",
+        "line": 71,
+        "column": 19,
+        "symbol": "timer",
+        "sha256": "ac061ec5e892cab61d583897a86326824a0f91ea5580fd29fe462062c82ed103"
+      },
+      "name": "setTimeout"
+    },
+    {
+      "id": "app-runtime.shared.job.1f924d3380482127.1",
+      "owner": "app-runtime:frontend-or-shared",
+      "source": {
+        "path": "packages/app-runtime/src/tracking.ts",
+        "line": 777,
+        "column": 20,
+        "symbol": "syncAdminPolling",
+        "sha256": "9033fa5eaac68b930b46a8919bf8ee11567ec6758b789243ea195b965e0bcfd3"
+      },
+      "name": "setInterval"
+    },
+    {
+      "id": "app-runtime.shared.job.4e54e54963cc7567.1",
+      "owner": "app-runtime:frontend-or-shared",
+      "source": {
+        "path": "packages/app-runtime/src/tracking.ts",
+        "line": 132,
+        "column": 21,
+        "symbol": "timeout",
+        "sha256": "aabaaab0344eb9fc5fbad7110dca039d8a1b11150ef23325146bf07c7efac528"
+      },
+      "name": "setTimeout"
+    },
+    {
+      "id": "app-runtime.shared.job.7c4ad11a5b0fbec2.1",
+      "owner": "app-runtime:frontend-or-shared",
+      "source": {
+        "path": "packages/app-runtime/src/tracking.ts",
+        "line": 424,
+        "column": 21,
+        "symbol": "beginGps",
+        "sha256": "165e1984071c86a7730e574b5153cf101aa40bed7e0d0a783dd26c2b7e55f8df"
+      },
+      "name": "setInterval"
+    },
+    {
+      "id": "app-runtime.shared.job.7c4ad11a5b0fbec2.2",
+      "owner": "app-runtime:frontend-or-shared",
+      "source": {
+        "path": "packages/app-runtime/src/tracking.ts",
+        "line": 425,
+        "column": 22,
+        "symbol": "beginGps",
+        "sha256": "227d1e4f9ab446315546cdbd1c933167389447b7d422744d9ab60f1ac03b6b4f"
+      },
+      "name": "setInterval"
+    },
+    {
+      "id": "app-runtime.shared.job.7c4ad11a5b0fbec2.3",
+      "owner": "app-runtime:frontend-or-shared",
+      "source": {
+        "path": "packages/app-runtime/src/tracking.ts",
+        "line": 426,
+        "column": 20,
+        "symbol": "beginGps",
+        "sha256": "64a9591098c84e77965776803d35031745f7a4bc57c01a63052f29ce0657f70e"
+      },
+      "name": "setInterval"
+    },
+    {
+      "id": "app-runtime.shared.job.8fd7eb07210bb208.1",
+      "owner": "app-runtime:frontend-or-shared",
+      "source": {
+        "path": "packages/app-runtime/src/index.ts",
+        "line": 263,
+        "column": 5,
+        "symbol": "download",
+        "sha256": "c49d5f5fd8f39cbf1298774a279937f6d29876ac207d15349d7e6de7e87adefb"
+      },
+      "name": "setTimeout"
+    },
+    {
+      "id": "app-runtime.shared.job.c7cda6336edfceb1.1",
+      "owner": "app-runtime:frontend-or-shared",
+      "source": {
+        "path": "packages/app-runtime/src/index.ts",
+        "line": 254,
+        "column": 5,
+        "symbol": "toast",
+        "sha256": "c5c3358ad8d1a332ebd293b1be3efa6773381c14a402b331047c081b6e75ebb6"
+      },
+      "name": "setTimeout"
+    },
+    {
+      "id": "billing.backend.job.14a065656e973a06.1",
+      "owner": "billing",
+      "source": {
+        "path": "services/billing/src/main.ts",
+        "line": 14,
+        "column": 18,
+        "symbol": "events",
+        "sha256": "55ce3adf196843e440981c522c3195aa39273ae4ef645f50027b64c6ee517abd"
+      },
+      "name": "startEventRuntime"
+    },
+    {
+      "id": "communications.backend.job.0d4f003df4187315.1",
+      "owner": "communications",
+      "source": {
+        "path": "services/communications/src/main.ts",
+        "line": 14,
+        "column": 18,
+        "symbol": "events",
+        "sha256": "8c24f16ba2906c277a50928ca64430466d0cbfc0c2e708795aafc9f1ee8e4ef0"
+      },
+      "name": "startEventRuntime"
+    },
+    {
+      "id": "crm.backend.job.565409b989033dcb.1",
+      "owner": "crm",
+      "source": {
+        "path": "services/crm/src/main.ts",
+        "line": 14,
+        "column": 18,
+        "symbol": "events",
+        "sha256": "b898d28670266142f5bd59ee547d4f6bcf29a9ba369a47a99bb9fa4843545b5a"
+      },
+      "name": "startEventRuntime"
+    },
+    {
+      "id": "delivery.backend.job.f8abeb3be8b2a2e1.1",
+      "owner": "delivery",
+      "source": {
+        "path": "services/delivery/src/main.ts",
+        "line": 14,
+        "column": 18,
+        "symbol": "events",
+        "sha256": "67e9ce39462bd74bb14a437e83deea806c11493e669ec0df77b7f22d1178d46e"
+      },
+      "name": "startEventRuntime"
+    },
+    {
+      "id": "events.shared.job.0248298e82449019.1",
+      "owner": "events:frontend-or-shared",
+      "source": {
+        "path": "packages/events/src/index.ts",
+        "line": 75,
+        "column": 21,
+        "symbol": "timeout",
+        "sha256": "15ee5f0c90a26a05bc9ae5ecd7932ca04d42997a168393939a2969f4a85456c1"
+      },
+      "name": "setTimeout"
+    },
+    {
+      "id": "events.shared.job.03e188c835eb5111.1",
+      "owner": "events:frontend-or-shared",
+      "source": {
+        "path": "packages/events/src/index.ts",
+        "line": 105,
+        "column": 15,
+        "symbol": "schedule",
+        "sha256": "dfbcca4f4c33e7212ad78a07a7a5349b37000d921fa430460b6789755166b9d8"
+      },
+      "name": "setTimeout"
+    },
+    {
+      "id": "events.shared.job.74cbd1521cf0d4ce.1",
+      "owner": "events:frontend-or-shared",
+      "source": {
+        "path": "packages/events/src/index.ts",
+        "line": 226,
+        "column": 7,
+        "symbol": "tick",
+        "sha256": "8fc2666715694333391df2665c3f3bbff821314493fad40d1bb0acc137480cf9"
+      },
+      "name": "schedule"
+    },
+    {
+      "id": "events.shared.job.74cbd1521cf0d4ce.2",
+      "owner": "events:frontend-or-shared",
+      "source": {
+        "path": "packages/events/src/index.ts",
+        "line": 230,
+        "column": 7,
+        "symbol": "tick",
+        "sha256": "ea43c49b5f93dbde3f9b2e147bb97a4366b94a9eb59db8cdfd8cd30d8e1553cf"
+      },
+      "name": "schedule"
+    },
+    {
+      "id": "events.shared.job.956836df438ccacf.1",
+      "owner": "events:frontend-or-shared",
+      "source": {
+        "path": "packages/events/src/index.ts",
+        "line": 152,
+        "column": 13,
+        "symbol": "connect",
+        "sha256": "f3ab4a2c9f074194ae91ee210fc3aa56630936494c954d717c5407fbefa726ac"
+      },
+      "name": "consume"
+    },
+    {
+      "id": "events.shared.job.b9e4f264102b654a.1",
+      "owner": "events:frontend-or-shared",
+      "source": {
+        "path": "packages/events/src/index.ts",
+        "line": 233,
+        "column": 3,
+        "symbol": "startEventRuntime",
+        "sha256": "8114544d23514a1b4d3b4f37d5f2ce80e7c334017591d7cbf0c8234b7e91ba40"
+      },
+      "name": "schedule"
+    },
+    {
+      "id": "identity.backend.job.156b6ad7f6b87b74.1",
+      "owner": "identity",
+      "source": {
+        "path": "services/identity/src/main.ts",
+        "line": 15,
+        "column": 18,
+        "symbol": "events",
+        "sha256": "41304369a06895c91510b615107d84cfb95169701ac9139b35878ed68b5d4dbf"
+      },
+      "name": "startEventRuntime"
+    },
+    {
+      "id": "mobile-auth.shared.job.6fc0c537c76d5b61.1",
+      "owner": "mobile-auth:frontend-or-shared",
+      "source": {
+        "path": "packages/mobile-auth/src/oidc.ts",
+        "line": 40,
+        "column": 21,
+        "symbol": "timeout",
+        "sha256": "90d8de372d0e2b98d7b9337fab79da3581fba951071a52cc3a08c55594437bd6"
+      },
+      "name": "setTimeout"
+    },
+    {
+      "id": "questionnaire.shared.job.05a18965dc3be90b.1",
+      "owner": "questionnaire:frontend-or-shared",
+      "source": {
+        "path": "packages/questionnaire/src/sync.ts",
+        "line": 76,
+        "column": 13,
+        "symbol": "installConfigurationSync",
+        "sha256": "98fe48669e644b0f034d9ea5472376c55fad788f32157ba67aac81fb0dd0bbd5"
+      },
+      "name": "setInterval"
+    },
+    {
+      "id": "rep-mobile.demo.job.e6e6e7e92f625662.1",
+      "owner": "rep-mobile:local-demo",
+      "source": {
+        "path": "apps/rep-mobile/src/lifecycle.ts",
+        "line": 23,
+        "column": 18,
+        "symbol": "createLifecycle",
+        "sha256": "fd891d803b9cc9af05493ca20c03c9db2b9ab74a5bcb00b62bcfef2e09bfc0ef"
+      },
+      "name": "setInterval"
+    },
+    {
+      "id": "sales.backend.job.673d1b9353cec523.1",
+      "owner": "sales",
+      "source": {
+        "path": "services/sales/src/main.ts",
+        "line": 15,
+        "column": 18,
+        "symbol": "events",
+        "sha256": "5610f527f4154e9ed83fde01246f4db204b7e0bfc549b611c5a739043015d5a9"
+      },
+      "name": "startEventRuntime"
+    },
+    {
+      "id": "tracking.backend.job.e3a5627b47bc85ea.1",
+      "owner": "tracking",
+      "source": {
+        "path": "services/tracking/src/main.ts",
+        "line": 15,
+        "column": 18,
+        "symbol": "events",
+        "sha256": "c36b4f38d2cef92a8556a9cda14970a353f7dcd86817bb51e813eab44e74b442"
+      },
+      "name": "startEventRuntime"
+    }
+  ],
+  "eventTopology": {
+    "path": "packages/events/src/topology.ts",
+    "sha256": "98df0592b1c0a187bca25db6326a5af481ae89aa08365d19e15871a5c4a143d6",
+    "text": "import type { Channel } from 'amqplib';\n/** Deployment topology, not domain behavior. Declare all durable subscriber queues before any producer drains its outbox.\n * This keeps events for a service that has never started yet, not only temporarily disconnected consumers.\n * Adding a consumer is a topology migration: deploy its durable binding before producers emit the new event.\n */\nexport const exchanges = {\n  main: 'atlas.events',\n  retry: 'atlas.events.retry',\n  ready: 'atlas.events.retry.ready',\n  dead: 'atlas.events.dead',\n} as const;\nexport const serviceBindings: Readonly<Record<string, readonly string[]>> = {\n  identity: [],\n  crm: ['sales.visit_completed.v1'],\n  sales: ['delivery.project_created.v1', 'billing.invoices_created.v1', 'crm.customer_updated.v1'],\n  delivery: ['contract.approved.v1'],\n  billing: ['contract.approved.v1'],\n  tracking: [],\n  communications: [\n    'crm.customer_created.v1',\n    'sales.quote_sent.v1',\n    'sales.quote_accepted.v1',\n    'contract.approved.v1',\n    'delivery.project_created.v1',\n    'delivery.project_completed.v1',\n    'billing.invoices_created.v1',\n    'billing.payment_recorded.v1',\n    'communications.ticket_opened.v1',\n    'communications.message_created.v1',\n    'sales.discount_approval_requested.v1',\n    'sales.discount_approval_decided.v1',\n  ],\n};\nexport type TopologyChannel = Pick<Channel, 'assertExchange' | 'assertQueue' | 'bindQueue'>;\nexport async function provisionTopology(channel: TopologyChannel): Promise<void> {\n  await channel.assertExchange(exchanges.main, 'topic', { durable: true });\n  for (const name of [exchanges.retry, exchanges.ready, exchanges.dead])\n    await channel.assertExchange(name, 'direct', { durable: true });\n  for (const [service, bindings] of Object.entries(serviceBindings)) {\n    if (!bindings.length) continue;\n    const queue = `atlas.${service}.v1`;\n    await channel.assertQueue(queue, {\n      durable: true,\n      arguments: {\n        'x-queue-type': 'quorum',\n        'x-dead-letter-exchange': exchanges.dead,\n        'x-dead-letter-routing-key': queue,\n      },\n    });\n    await channel.assertQueue(`${queue}.retry`, {\n      durable: true,\n      arguments: {\n        'x-queue-type': 'quorum',\n        'x-message-ttl': 5000,\n        'x-dead-letter-exchange': exchanges.ready,\n        'x-dead-letter-routing-key': queue,\n      },\n    });\n    await channel.assertQueue(`${queue}.dead`, {\n      durable: true,\n      arguments: { 'x-queue-type': 'quorum' },\n    });\n    await channel.bindQueue(`${queue}.retry`, exchanges.retry, queue);\n    await channel.bindQueue(`${queue}.dead`, exchanges.dead, queue);\n    await channel.bindQueue(queue, exchanges.ready, queue);\n    for (const type of bindings) await channel.bindQueue(queue, exchanges.main, type);\n  }\n}\n"
+  },
+  "boundaries": [
+    "browser/native -> OIDC provider",
+    "browser/native -> HTTPS gateway -> independently authorizing service",
+    "service -> owned PostgreSQL transaction/RLS/outbox",
+    "outbox -> RabbitMQ -> consumer inbox -> owned transaction",
+    "sales/communications -> CRM ownership API"
+  ],
+  "caveat": "Static effects do not establish deployed network isolation, running workers, retention, delivery SLOs or recoverability."
+}

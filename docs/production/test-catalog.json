@@ -1,0 +1,2150 @@
+{
+  "schemaVersion": 1,
+  "note": "Declarations and IDs, not execution results. Dynamic subtests and native tests require runtime reports.",
+  "tests": [
+    {
+      "id": "test.003648641ee2e394.1",
+      "path": "tests/integration/rep-auth-lifecycle.test.mts",
+      "line": 338,
+      "title": "cleanup attempts every native listener even when one removal fails",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.008ae7e69e1a132b.1",
+      "path": "tests/build-output/arabic-accessibility.test.mts",
+      "line": 42,
+      "title": "controls and focus have distinguishable outlines and readable Arabic sizing",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.016d7cae55c171e3.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 301,
+      "title": "logout during sign-in initialization cancels the pending interactive operation",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.030e51c23f106d5b.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 208,
+      "title": "literal dynamic imports are checked",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.044c17c773a7dd4a.1",
+      "path": "tests/regression/finance-2.3.test.mts",
+      "line": 50,
+      "title": "rounding always sums to total cents",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.0498e54d13b5bfc2.1",
+      "path": "tests/native/release-config.test.mts",
+      "line": 27,
+      "title": "gateway comparison canonicalizes the staging endpoint as well",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.04cf730a90cc0c6b.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 107,
+      "title": "npm dependency alias cannot hide a sibling service",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.06066a4588911d4d.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 28,
+      "title": "initial quote sums and 20 percent installment valid",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.07d68816d7397073.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 50,
+      "title": "rejects altered state, duplicate state, callback issuer and callback path before exchanging code",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.0847f2b582af2f44.1",
+      "path": "tests/native/release-config.test.mts",
+      "line": 67,
+      "title": "an unconfigured production reference does not prevent initial staging setup",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.09aab96195eb7aa6.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 36,
+      "title": "cannot mark customer accepted from representative session",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.0aefb699d2370e17.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 66,
+      "title": "relative app-to-service import is rejected",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.0d2695ae01d5e6c8.1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "line": 367,
+      "title": "discovery UI validates and persists the published tenant questionnaire",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.0d8413cb4f4ce3bb.1",
+      "path": "tests/regression/finance-2.3.test.mts",
+      "line": 11,
+      "title": "amount discount and balanced 30/40/remainder",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.0fa5294087b02fe7.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 41,
+      "title": "valid answers pass validation",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.0fb496ddaddd6a36.1",
+      "path": "tests/native/release-config.test.mts",
+      "line": 58,
+      "title": "separate gateway origins preserve the staging native identity",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1041f41ce0db4057.1",
+      "path": "tests/build-output/bundles.test.mts",
+      "line": 11,
+      "title": "`actual portable ${app.id} output starts without external assets`",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.10cd7efdd1efab26.1",
+      "path": "packages/api-client/test/live-data.test.ts",
+      "line": 6,
+      "title": "live API reads server customer rows, not browser demo storage",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1266958ed42cffa9.1",
+      "path": "tests/backend/security-and-gateway.test.ts",
+      "line": 75,
+      "title": "production rejects development auth; missing ownership claims and unknown roles fail closed",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.13728e8409659f72.1",
+      "path": "tests/regression/finance-2.3.test.mts",
+      "line": 45,
+      "title": "remainder of 350 dollars after two instalments",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.138a9d66bf443c85.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 137,
+      "title": "S01 debt: fixture strings do not create suppressions, new suppressions and any types regress",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.14d42adbcae4b73e.1",
+      "path": "tests/backend/rep-workflows.test.ts",
+      "line": 54,
+      "title": "opportunities derive won value from an approved contract and reject fabricated sales",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1577b418f8d9bbef.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 259,
+      "title": "Android cold-start callback consumes the saved transaction exactly once",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.15801dd7b26a961d.1",
+      "path": "tests/production/workflow-policy.test.mts",
+      "line": 14,
+      "title": "S01 workflow policy: the mandatory aggregate runs even when a dependency fails or skips",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1710c968587012f9.1",
+      "path": "packages/api-client/test/live-data.test.ts",
+      "line": 131,
+      "title": "commercial decisions preserve exact consent, version and idempotency contracts",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.17805badba48c3c1.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 57,
+      "title": "unavailable service cannot be selected",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.17b768b4943d35ca.1",
+      "path": "tests/backend/security-and-gateway.test.ts",
+      "line": 98,
+      "title": "gateway revalidates auth and forwards only allowed headers to fixed service origins without following redirects",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1944bac62a7ebf03.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 62,
+      "title": "S01 inventory: unknown computed registrations and spreads are explicit blockers",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1a19cf9798c631a5.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 86,
+      "title": "visit may close while awaiting acceptance, but project remains not started",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1b0c2e19adf13a97.1",
+      "path": "tests/architecture/infra-helpers.test.mts",
+      "line": 81,
+      "title": "development smoke rejects non-loopback destinations before sending a token",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1b4c8656207b1f46.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 79,
+      "title": "S01 gate: missing or duplicate reports cannot pass",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1be776b981ee1988.1",
+      "path": "packages/api-client/test/live-data.test.ts",
+      "line": 56,
+      "title": "customer editing is a versioned PATCH with an idempotency key",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1cb46fd3745e9c7f.1",
+      "path": "tests/native/release-config.test.mts",
+      "line": 39,
+      "title": "a supplied production reference must itself be a valid HTTPS gateway origin",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1cf1288f8a606154.1",
+      "path": "tests/backend/ownership-regressions.test.ts",
+      "line": 10,
+      "title": "current assignment is checked even on cached customer creation; old rep cannot regain a transferred customer",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1fc13c040674d779.1",
+      "path": "tests/build-output/arabic-accessibility.test.mts",
+      "line": 52,
+      "title": "both build pipelines include and fingerprint the Arabic UX layer",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.1feb4b13c712eb49.1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "line": 96,
+      "title": "identity definitions isolate environments and permit only authorization code + S256",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.20f6b108c9586f97.1",
+      "path": "tests/backend/lifecycle.test.ts",
+      "line": 19,
+      "title": "visit → quote → customer acceptance → explicit contract approval → separate project and invoice consumers",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.21c15cac772bf23e.1",
+      "path": "tests/production/workflow-policy.test.mts",
+      "line": 42,
+      "title": "S01 workflow policy: quality execution retains all existing suites and source proof",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.22322ed4a139b799.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 218,
+      "title": "S01 inventory: frozen parity omissions remain explicit instead of treating old counts as exhaustive",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.229579574e0f7df8.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 39,
+      "title": "S01 inventory: adding a registration changes the inventory rather than relying on a frozen route count",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.232dff7aa97c65ee.1",
+      "path": "tests/architecture/infra-helpers.test.mts",
+      "line": 98,
+      "title": "development smoke fails on degraded domain responses",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.2395d619e843a7aa.1",
+      "path": "tests/backend/environment-secrets.test.ts",
+      "line": 99,
+      "title": "concurrent secret initializers cannot combine staging and production credentials",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.23b9fc0ef3643510.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 285,
+      "title": "external imports need declared dependencies",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.24bc781498e5113d.1",
+      "path": "packages/api-client/test/client.test.ts",
+      "line": 11,
+      "title": "commands preserve their idempotency key and never trust browser tenant/role headers",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.24f72c07be9ffc4d.1",
+      "path": "tests/production/workflow-policy.test.mts",
+      "line": 66,
+      "title": "S01 workflow policy: dependency-free aggregate does not need a successful package install",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.25c326946e7177cc.1",
+      "path": "tests/build-output/app-build-proof.test.mts",
+      "line": 49,
+      "title": "native sync proof requires the whole build to finish even when representative files exist",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.2bd64203e2356c8c.1",
+      "path": "tests/integration/rep-auth-lifecycle.test.mts",
+      "line": 271,
+      "title": "stop while a location permission prompt is pending prevents session creation and GPS collection",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.2cf0d88f592c9b8a.1",
+      "path": "tests/backend/security-and-gateway.test.ts",
+      "line": 35,
+      "title": "signed access claims establish tenant and role; spoofed headers cannot replace them",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.2cf1de9ec563661a.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 143,
+      "title": "S01 gate: native JUnit totals retain failures and skips",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.2d919aa5766a53de.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 292,
+      "title": "workspace dependency cycles are rejected",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.2e395c334b88afbe.1",
+      "path": "packages/questionnaire/test/validation.test.ts",
+      "line": 59,
+      "title": "identifier and enum validation never accepts prototype properties or coerces objects",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.2f6f274168dd199e.1",
+      "path": "tests/integration/rep-auth-lifecycle.test.mts",
+      "line": 239,
+      "title": "disposing during native listener registration removes the late handle without reading account data",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.2ffcdf764e6985a0.1",
+      "path": "tests/backend/rep-pricing-and-messaging.test.ts",
+      "line": 121,
+      "title": "custom-priced services require approval even with zero explicit discount",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.305ce6337ec829b2.1",
+      "path": "tests/build-output/mobile-command.test.mts",
+      "line": 7,
+      "title": "native sync does not copy partial or stale output after a failed build",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.34ebfac246dcd3d2.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 140,
+      "title": "archived services cannot be newly selected",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.35ae3993a77a061a.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 114,
+      "title": "tsconfig paths cannot hide an app-to-service edge",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.36486c45417d7007.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 28,
+      "title": "rejects insecure issuers, mixed environment schemes, embedded credentials and unsafe redirects",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.36beed8a99a521f0.1",
+      "path": "tests/backend/environment-topology.test.ts",
+      "line": 24,
+      "title": "environment topology isolates identity, domain data, event volumes and all network ingress",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.372894d8881f9e53.1",
+      "path": "tests/native/native-config.test.mts",
+      "line": 34,
+      "title": "release versions reject missing, prerelease and unsafe build identifiers",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.372f4b84d2aacc94.1",
+      "path": "packages/questionnaire/test/validation.test.ts",
+      "line": 128,
+      "title": "public defaults are isolated between consumers and retain all catalog data",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.3769a0cb13186b5c.1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "line": 351,
+      "title": "incomplete financial detail never exposes a client consent form",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.377a19828ca8c85e.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 113,
+      "title": "first payment cannot be below 20% when sending quote",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.390b76cf2f480c87.1",
+      "path": "tests/build-output/hotfix.test.mts",
+      "line": 48,
+      "title": "hotfix preflights CRLF sources, backs up originals and is idempotent without touching env",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.394c3cdb6a10aa6b.1",
+      "path": "tests/regression/dashboard-drilldown.integration.test.mts",
+      "line": 180,
+      "title": "sent quotes KPI lists exactly sent quotes with quote detail actions",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.3b57ac747fd59fd5.1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "line": 443,
+      "title": "task UI creates and completes assigned work and renders version conflicts without overwriting",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.3d02649a9563dca6.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 275,
+      "title": "unrelated string literals and comments are not imports",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.3d8afdbba0b33552.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 172,
+      "title": "a declared external package cannot conceal a tsconfig alias into a service",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.3dcc3d13fb31f5a5.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 324,
+      "title": "runtime code loaders fail rather than silently bypass the graph",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.3fcd5ce7ab763d38.1",
+      "path": "tests/validation/numeric-fields.test.mts",
+      "line": 17,
+      "title": "numeric field rejects out-of-range",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.40579bafdad63e98.1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "line": 116,
+      "title": "promotion requires tested infrastructure images, all device results and packaged artifact linkage",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.407b6efecd9839b9.1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "line": 216,
+      "title": "customer UI creates with defaults and preserves money, arrays and text safely when editing",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.40ba1e328ef82c2a.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 93,
+      "title": "service cannot depend on UI via a devDependency exception",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.40c06755dfa13d8f.1",
+      "path": "tests/regression/dashboard-drilldown.integration.test.mts",
+      "line": 126,
+      "title": "open tasks KPI matches filtered open tasks, displays original task actions and back navigation",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.40f156d4c5fba1a1.1",
+      "path": "tests/backend/rep-pricing-and-messaging.test.ts",
+      "line": 141,
+      "title": "conversation messages persist independently, paginate and maintain per-actor receipts",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.413e97d706857a56.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 21,
+      "title": "S01 inventory: actual route/action/form/control registrations receive stable IDs and locations",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.4201593f59d352d2.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 132,
+      "title": "Windows containment accepts TypeScript paths without admitting another directory or drive",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.436b99fd8f16b335.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 82,
+      "title": "service-kit cannot import a business service",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.43acf3109fab987a.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 45,
+      "title": "cannot verify payment before approved contract",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.441cab9c9856e953.1",
+      "path": "packages/questionnaire/test/validation.test.ts",
+      "line": 157,
+      "title": "other explanations require text and inherited answers do not satisfy required questions",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.4453f7b5e5261d98.1",
+      "path": "tests/backend/gateway-readiness.test.ts",
+      "line": 42,
+      "title": "gateway readiness rejects a successful response from the wrong application or unconfigured broker",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.46ba6726ab081819.1",
+      "path": "tests/backend/questionnaire-configuration.test.ts",
+      "line": 9,
+      "title": "CRM rejects malformed questionnaire entries with 400 and does not publish them",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.46d5c7861536a3bc.1",
+      "path": "tests/regression/finance-2.3.test.mts",
+      "line": 26,
+      "title": "percent discount converts to exact dollar amount",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.47157b741fffd24f.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 74,
+      "title": "S01 gate: missing mandatory dependency is BLOCKED",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.482194dad8d5d142.1",
+      "path": "tests/regression/dashboard-drilldown.integration.test.mts",
+      "line": 195,
+      "title": "dashboard counts and detail list dynamically reflect data changes (no hardcoded counts)",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.48d3d1c7893d05cc.1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "line": 218,
+      "title": "bootstrap enables only after verified client policy and administrator-owned profile are installed",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.49b0483a3d8ae7d6.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 120,
+      "title": "S01 inventory: a documented but unregistered operation cannot pass",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.49b4e8c25ab0fc41.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 26,
+      "title": "default questionnaire is valid and editable",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.4aea7d20e4aacebd.1",
+      "path": "tests/build-output/mobile-command.test.mts",
+      "line": 51,
+      "title": "native tooling requires an explicit mobile app and platform",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.4b40f735f643f6d2.1",
+      "path": "tests/backend/gateway-input-errors.test.ts",
+      "line": 48,
+      "title": "gateway masks unexpected errors and bounds the inbound request timeout",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.4c253ae9a44d62e5.1",
+      "path": "tests/integration/rep-auth-lifecycle.test.mts",
+      "line": 128,
+      "title": "a newer logout wins over an account switch waiting for native cleanup",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.4d64db25d9aa6430.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 166,
+      "title": "offline refresh never yields an expired access token and can recover after connectivity returns",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.4da9d2e5d967b18f.1",
+      "path": "tests/backend/postgres.test.ts",
+      "line": 63,
+      "title": "PostgreSQL: seven owned databases, 42 denied cross-service connections, forced tenant RLS, atomic outbox/inbox and full contract provisioning",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.4eb4c72df0b3e6f6.1",
+      "path": "tests/backend/events-topology.test.ts",
+      "line": 10,
+      "title": "producer startup creates durable queues for all subscribers before publish, including a never-started delivery consumer",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.4f880c7e80cecee2.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 93,
+      "title": "selecting ready-to-start does not claim quote was accepted or paid",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.50ab4aa01a2c5349.1",
+      "path": "packages/questionnaire/test/validation.test.ts",
+      "line": 29,
+      "title": "configuration validation rejects primitive values and malformed collection shapes",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.51807f726c5599ed.1",
+      "path": "tests/native/native-config.test.mts",
+      "line": 13,
+      "title": "native identities and endpoint pins follow the selected isolated realm",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.533c11d024347d1e.1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "line": 141,
+      "title": "admin approval → sent quote → explicit client acceptance → separate signature approval persists through real services",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.55b5bf149eed9952.1",
+      "path": "tests/backend/ownership-regressions.test.ts",
+      "line": 390,
+      "title": "dual-role identity sees a draft only through the representative who owns that quote",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.5652a34b751bb0a9.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 177,
+      "title": "logout during an in-flight refresh cannot resurrect tokens and revokes the late result",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.56754b83e07abb90.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 171,
+      "title": "S01 inventory: source manifest hashes expose changed source even outside recognized syntax",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.57f3fceb22586cbf.1",
+      "path": "tests/backend/gateway-readiness.test.ts",
+      "line": 7,
+      "title": "gateway deployment readiness fails on an unavailable domain and coalesces concurrent probes",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.5999738bc3f76e26.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 62,
+      "title": "question duplicate identifiers are rejected",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.5bbcd4882e24d9e8.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 131,
+      "title": "S01 gate: local results are not a GitHub FULL-CI attestation",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.5d7b344350d37faf.1",
+      "path": "tests/backend/tracking-and-communications.test.ts",
+      "line": 8,
+      "title": "tracking requires explicit consent, monotonic fresh GPS, isolated owner and clears coordinates on stop",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.5e2e9fb475197af5.1",
+      "path": "tests/build-output/arabic-accessibility.test.mts",
+      "line": 27,
+      "title": "Arabic text tokens meet 4.5:1 on the intended light surfaces",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.5eac9150eadc912f.1",
+      "path": "tests/runtime/target.test.mts",
+      "line": 12,
+      "title": "distributed fixture runner accepts only isolated loopback development context",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.5f1adedb90336886.1",
+      "path": "tests/regression/quote-ui-consolidated.test.mts",
+      "line": 38,
+      "title": "quote builder shows discount selector and instalment planner before final actions",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.617a8a3cc0a6f683.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 256,
+      "title": "TypeScript type-only imports remain architectural dependencies",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.651b7dfab89b43db.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 132,
+      "title": "restoring a stored session always obtains freshly verified tokens from the issuer",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.6525a32932e7f254.1",
+      "path": "packages/questionnaire/test/validation.test.ts",
+      "line": 146,
+      "title": "numeric answers reject objects, booleans, symbols and arrays without coercion",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.6571d98250999f84.1",
+      "path": "packages/api-client/test/live-data.test.ts",
+      "line": 94,
+      "title": "malformed responses fail closed rather than fabricating demo records",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.67e70a10b63b72b4.1",
+      "path": "tests/build-output/copy-content.test.mts",
+      "line": 19,
+      "title": "content copy preserves bytes from read-only sources without copying modes or calling chmod",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.69d527e3e99cc11e.1",
+      "path": "tests/native/ios-profile.test.mts",
+      "line": 54,
+      "title": "export options preserve the reviewed identity and do not upload automatically",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.6ac057ab1ec1f5be.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 183,
+      "title": "S01 debt: interpolated template text and regex literals cannot invent comment directives",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.6c92a4e8affa7ba2.1",
+      "path": "tests/integration/live-workspace.test.mts",
+      "line": 57,
+      "title": "an unavailable API fails visibly instead of rendering seeded company records",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.6ca6453413545f25.1",
+      "path": "tests/regression/finance-2.3.test.mts",
+      "line": 40,
+      "title": "first instalment below 20 percent rejected",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.6f5d8b9073dcae4c.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 245,
+      "title": "require variable alias cannot bypass the check",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.6fc08813df3b0c61.1",
+      "path": "tests/backend/security-and-gateway.test.ts",
+      "line": 153,
+      "title": "a cached command cannot be replayed after the same subject loses its signed roles",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.6fce759eac85f3e2.1",
+      "path": "tests/validation/numeric-fields.test.mts",
+      "line": 15,
+      "title": "numeric field accepts decimal values",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7065af83efd25bc1.1",
+      "path": "tests/integration/rep-auth-lifecycle.test.mts",
+      "line": 359,
+      "title": "web shells fail closed without OIDC or a valid explicit external provider",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.707488eb1450297c.1",
+      "path": "tests/native/native-config.test.mts",
+      "line": 51,
+      "title": "native provenance accounts for Capacitor-generated iOS registrations without weakening endpoint validation",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.70b2be8802fef068.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 66,
+      "title": "S01 inventory: global actions, background jobs, event publication and failure handlers are included",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.741a478679fbd299.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 216,
+      "title": "computed dynamic imports fail closed",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.74852abc1d425d45.1",
+      "path": "tests/native/release-config.test.mts",
+      "line": 75,
+      "title": "production builds may reference their own canonical production origin",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.74e8f81f2a728f0f.1",
+      "path": "tests/backend/rep-pricing-and-messaging.test.ts",
+      "line": 48,
+      "title": "large discounts need an administrator decision tied to exact content; later edits invalidate approval",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7622f558edeb2395.1",
+      "path": "tests/integration/arabic-status.test.mts",
+      "line": 12,
+      "title": "unknown or inherited status keys do not become misleading success labels",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.77457a36f0105d73.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 55,
+      "title": "unknown answer ID is rejected",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.79ddf0acf248f4c4.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 41,
+      "title": "client acceptance requires explicit confirmation",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7a59b90047797b55.1",
+      "path": "tests/regression/dashboard-drilldown.integration.test.mts",
+      "line": 219,
+      "title": "empty dashboard KPI still opens a filtered empty state rather than dead navigation",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7ad958816a70d84a.1",
+      "path": "tests/architecture/infra-helpers.test.mts",
+      "line": 13,
+      "title": "environment helper preserves unrelated settings and never prints generated credentials",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7b27ed400cf9048f.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 59,
+      "title": "app-to-app package dependency is rejected before any import",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7ba71af788c4e65e.1",
+      "path": "tests/regression/finance-2.3.test.mts",
+      "line": 35,
+      "title": "excess of 100 dollars rejected",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7ca032311494605e.1",
+      "path": "packages/questionnaire/test/validation.test.ts",
+      "line": 107,
+      "title": "catalog validation rejects malformed entries, duplicate IDs, metadata and prices",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7ca5362e3b7a1d3a.1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "line": 235,
+      "title": "mobile release configuration fails closed on demo defaults and cross-environment identity",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7cb8e2659b616b8f.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 100,
+      "title": "file dependency alias cannot hide a sibling service",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7d1d00cf4af2ccd7.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 116,
+      "title": "S01 gate: passing job status cannot mask failing test totals or new skips",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7d9760a1b0615933.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 305,
+      "title": "source symlink to another owner is rejected",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7dfa831f79695bbc.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 299,
+      "title": "unknown shared package requires explicit classification",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7f16e21f2f12857b.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 132,
+      "title": "S01 inventory: dynamic handler templates match only their actual URL structure",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7fb2ad7000b068bb.1",
+      "path": "packages/api-client/test/live-data.test.ts",
+      "line": 105,
+      "title": "support ticket POST uses the backend message contract",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.7fbe0d78f9678c27.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 142,
+      "title": "invalid_grant deletes the local session; rotated-token replay is not silently retried",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.830558eddd1b9bd3.1",
+      "path": "tests/backend/environment-topology.test.ts",
+      "line": 64,
+      "title": "persistent services use explicit PGDATA, completed bootstrap and stable broker identity",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.83b830105b10eb4c.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 122,
+      "title": "parallel API requests refresh exactly once and commit the rotated refresh credential",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.83cffc91722cfc1a.1",
+      "path": "tests/backend/rep-workflows.test.ts",
+      "line": 6,
+      "title": "rep tasks enforce tenant, assignment, idempotency, versions and current ownership on replay",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.84fcf7f6e77f3150.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 91,
+      "title": "S01 inventory: runtime/static equality detects an unextracted application action",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.858ce2b28b86eba9.1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "line": 135,
+      "title": "optional web client rejects wildcard origins, redirect mismatches and missing explicit origin",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.8688f54744a7f135.1",
+      "path": "tests/regression/dashboard-drilldown.integration.test.mts",
+      "line": 141,
+      "title": "working opportunities exclude both won and lost, with dedicated chip and details navigation",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.87e5f5ef67267dbe.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 152,
+      "title": "S01 gate: changed artifact bytes and path traversal are rejected",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.8849606b2fa99fd4.1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "line": 516,
+      "title": "route editing retains a cancelled stop for completion but creation excludes cancelled visits",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.88ff1669fce58119.1",
+      "path": "tests/production/workflow-policy.test.mts",
+      "line": 24,
+      "title": "S01 workflow policy: every required gate has attempt-qualified evidence and exact-head checkout",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.89e59ca985e30047.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 99,
+      "title": "prevent duplicate acceptance, payment and project creation",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.8cc986979d2afe9e.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 34,
+      "title": "cannot send quote without ready outcome",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.8d7e3259441c7af0.1",
+      "path": "packages/api-client/test/client.test.ts",
+      "line": 5,
+      "title": "rejects remote HTTP and credentials in base URL",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.8e99f24dd25fdf32.1",
+      "path": "tests/backend/api-contracts.test.ts",
+      "line": 17,
+      "title": "every documented service operation is registered and all OpenAPI references resolve",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.9085177ae534931e.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 63,
+      "title": "cannot mark payment with missing receipt reference",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.90c4d29a8f70d653.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 118,
+      "title": "client first payment intent is not payment confirmation",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.91206ba6e69a66e3.1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "line": 555,
+      "title": "messaging UI opens customer conversations, sends escaped content and persists explicit read receipts",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.93cb8822c3bfa654.1",
+      "path": "tests/build-output/hotfix.test.mts",
+      "line": 65,
+      "title": "hotfix detects all local conflicts before changing any file",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.948c3668f81fab1a.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 50,
+      "title": "S01 inventory: editing a handler preserves its stable ID while changing its evidence hash",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.94db976b386b4edf.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 35,
+      "title": "empty required fields are rejected",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.9563b6389df54df7.1",
+      "path": "tests/regression/dashboard-drilldown.integration.test.mts",
+      "line": 104,
+      "title": "exactly four accessible dashboard KPI buttons, each pointing to its distinct filtered list",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.95b2c8d9f5096e60.1",
+      "path": "tests/build-output/mobile-command.test.mts",
+      "line": 24,
+      "title": "native sync validates the selected app before invoking Capacitor",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.9966b119afdc5ddf.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 199,
+      "title": "logout while secure storage commits removes the late write before completion",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.9b11305ee39b2110.1",
+      "path": "tests/backend/environment-secrets.test.ts",
+      "line": 25,
+      "title": "isolated secret initialization is private and never overwrites or reuses an environment",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.9be94cf2c4e5ec11.1",
+      "path": "tests/runtime/target.test.mts",
+      "line": 20,
+      "title": "distributed fixture runner refuses hosted targets and non-disposable contexts before signing",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.9c426226706421ad.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 10,
+      "title": "code + S256 + state + nonce verifies a real RS256 signature and stores refresh credentials only",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.9e90a8e1f953891c.1",
+      "path": "tests/backend/rep-workflows.test.ts",
+      "line": 248,
+      "title": "profile editing never grants access claims and private customer fields stay internal",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.9effea0a0fbf02e1.1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "line": 476,
+      "title": "an existing opportunity can close lost after withdrawal while new sales remain blocked",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.9f0f566bd1aa300e.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 237,
+      "title": "logout deletes local credentials when the revocation server is unavailable",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.9f9b3f2365d4c678.1",
+      "path": "tests/regression/dashboard-drilldown.integration.test.mts",
+      "line": 165,
+      "title": "won value card opens only won opportunities; listed values total the same as dashboard",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.a0b2dd657dcaa065.1",
+      "path": "packages/questionnaire/test/validation.test.ts",
+      "line": 166,
+      "title": "recommendations preserve the existing ranking, reasons and extended catalog fields",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.a0c43683d08224d3.1",
+      "path": "tests/backend/rep-pricing-and-messaging.test.ts",
+      "line": 202,
+      "title": "outbound messages respect contact withdrawal and stale rep replay cannot expose transferred conversations",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.a0c957e7f15091aa.1",
+      "path": "tests/backend/rep-workflows.test.ts",
+      "line": 128,
+      "title": "planned routes persist stop order and cannot complete while a visit remains open",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.a10daa068c7af1eb.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 53,
+      "title": "cannot mark payment by representative",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.a2ff030c3660c310.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 223,
+      "title": "CommonJS require and require.resolve are checked",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.a353990e8ebcf6e7.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 153,
+      "title": "refresh rejects missing rotation, changed subject and changed nonce",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.a465ba06bc7e89cd.1",
+      "path": "tests/integration/arabic-status.test.mts",
+      "line": 5,
+      "title": "commercial and billing states have readable Arabic labels",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.a83ea8aa3cfe539a.1",
+      "path": "tests/backend/environment-secrets.test.ts",
+      "line": 65,
+      "title": "secret generation rejects symlink ancestors and deployment rejects unsafe mounts",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.a9070e06344ad0a4.1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "line": 162,
+      "title": "production renderer fails closed without evidence, with untested images or reused staging hosts",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.a98e27c4a788f652.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 92,
+      "title": "recommendations are explainable and based on customer answers",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.aa958e071ef7a560.1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "line": 267,
+      "title": "admin transport pins HTTPS origin, denies redirects and redacts upstream responses",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.acd08bc2acac0be2.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 42,
+      "title": "permitted frontend and backend contract edges pass",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.ae4c139345faacfe.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 80,
+      "title": "rejects forged JWT signatures, wrong nonce/issuer/audience/azp, expired and future ID tokens",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.aea118781caa9e9a.1",
+      "path": "tests/backend/ownership-regressions.test.ts",
+      "line": 144,
+      "title": "retained rep_id/client_id claims never grant list, detail or ticket actions after role removal",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.aed3925205b526ed.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 69,
+      "title": "`S01 gate: ${result} is BLOCKED, never success`",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b1c65096d23032e8.1",
+      "path": "packages/questionnaire/test/validation.test.ts",
+      "line": 76,
+      "title": "question fields cannot carry malformed flags, ordering, scopes or numeric bounds",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b2a54ef720b46dfe.1",
+      "path": "tests/regression/quote-ui-consolidated.test.mts",
+      "line": 51,
+      "title": "new controls are handled by actual feature actions",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b2b94905374827e8.1",
+      "path": "packages/api-client/test/live-data.test.ts",
+      "line": 40,
+      "title": "no authenticated token means no request is made",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b354a3041c0ca9f6.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 331,
+      "title": "a parse error is reported and cannot produce a clean audit",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b4f8ab65a5e4c97f.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 267,
+      "title": "allowed internal import still requires its own workspace declaration",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b4fc505709687e3e.1",
+      "path": "tests/backend/lifecycle.test.ts",
+      "line": 504,
+      "title": "transaction rollback includes domain, outbox, idempotency and inbox",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b50de71e9fb4fcd4.1",
+      "path": "packages/api-client/test/live-data.test.ts",
+      "line": 194,
+      "title": "generic live lists follow every cursor and reject a repeated cursor rather than truncating",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b54493679ee8d1a2.1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "line": 229,
+      "title": "client can request changes or reject with a reason; a stale review cannot overwrite a newer decision",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b58c321a3f41346a.1",
+      "path": "packages/api-client/test/live-data.test.ts",
+      "line": 80,
+      "title": "an invalid record identifier fails before network access",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b70d6023933e77b9.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 97,
+      "title": "administration can add questions and activities without code change",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b845741303969f69.1",
+      "path": "tests/build-output/copy-content.test.mts",
+      "line": 48,
+      "title": "content copy refuses symbolic links and propagates real filesystem failures",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.b85d859acd603d7f.1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "line": 320,
+      "title": "published catalog feeds quote UI prices and a balanced payment plan before sending",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.bab3ef932fb693bb.1",
+      "path": "tests/regression/dashboard-drilldown.integration.test.mts",
+      "line": 242,
+      "title": "keyboard focus design and mobile tap style exist; source is module-based and safe to include",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.bd4fdf0254de46d1.1",
+      "path": "tests/validation/numeric-fields.test.mts",
+      "line": 19,
+      "title": "phone field rejects letters and accepts Syrian number",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.bda9f562b31ba2cc.1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "line": 310,
+      "title": "admin rejection records its reason, keeps the quote unsent and renders supplied terms as text",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.be3c5792184917c6.1",
+      "path": "tests/build-output/hotfix.test.mts",
+      "line": 75,
+      "title": "hotfix rejects damaged payloads and out-of-scope writes before applying",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.bebb58b8005c140a.1",
+      "path": "tests/validation/numeric-fields.test.mts",
+      "line": 13,
+      "title": "numeric field rejects alphabetic input",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.bfca97b0a1ae68f4.1",
+      "path": "tests/integration/rep-auth-lifecycle.test.mts",
+      "line": 390,
+      "title": "web shells preserve an explicit external provider and verify its customer role before mounting",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.c0016a7abb77fda7.1",
+      "path": "tests/integration/live-workspace.test.mts",
+      "line": 6,
+      "title": "server mode renders authenticated API records without a preview repository",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.c059b16fe83a5748.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 72,
+      "title": "question numeric values validate range and reject text",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.c205c4b4e84152da.1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "line": 390,
+      "title": "discovery solution choices come from the active tenant catalog and round-trip through CRM",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.c3029cc96299d51a.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 43,
+      "title": "cannot approve contract before quote acceptance",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.c4d8e4040058fd6e.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 65,
+      "title": "S01 gate: only complete matching source/run/attempt evidence passes",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.c669fbc0539e313e.1",
+      "path": "tests/backend/rep-workflows.test.ts",
+      "line": 176,
+      "title": "visits support scheduling and declared outcomes without inferring acceptance",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.c82d0cf14ae5a616.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 87,
+      "title": "S01 gate: evidence from an old commit, tree or attempt cannot pass",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.c8300d1cfe4da54b.1",
+      "path": "packages/questionnaire/test/validation.test.ts",
+      "line": 94,
+      "title": "configuration metadata is validated before CRM can persist it",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.c8bfba9db1165fb4.1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "line": 282,
+      "title": "visit UI schedules, records an explicit manual arrival, and completes with the service version",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.cb79dcbc82ccc3ac.1",
+      "path": "tests/build-output/rep-server-graph.test.mts",
+      "line": 6,
+      "title": "representative release entrypoint compiles independently without legacy demo/runtime modules",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.cba5c2918cdf810e.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 206,
+      "title": "S01 debt: new uncovered workflows or lost test kinds regress even if another gap is removed",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.cbaec6eeeebf3bd1.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 77,
+      "title": "end to end immediate close: roles and independent stage gates",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.cbb09f5233a4470b.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 153,
+      "title": "S01 inventory: committed entries have unique IDs, explicit test gaps and no invented production acceptance",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.ccb07be7df12f751.1",
+      "path": "tests/integration/rep-auth-lifecycle.test.mts",
+      "line": 159,
+      "title": "a workspace completing after logout is immediately disposed",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.cd0e24c161f3ab56.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 77,
+      "title": "S01 inventory: live forms and search/filter/export calls are not lost",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.cd9be226c1fdb5fa.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 246,
+      "title": "corrupt and cross-environment stored records never restore a session",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.ce604721baebfae5.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 121,
+      "title": "revised question wording keeps stable IDs and existing answers",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.cfc544930b58fb4a.1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "line": 262,
+      "title": "an ambiguous UI save retries the same idempotency key without losing input or creating duplicates",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d11147b3d178564f.1",
+      "path": "packages/questionnaire/test/validation.test.ts",
+      "line": 47,
+      "title": "malformed options are rejected for choice, text, number and catalog-backed questions",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d1c1ff2f6742332c.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 200,
+      "title": "package imports aliases cannot hide a service dependency",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d330579f92054908.1",
+      "path": "tests/backend/rep-workflows.test.ts",
+      "line": 201,
+      "title": "discovery validates published schema, answer types, version conflicts and customer scope",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d37dbaa4df4259dc.1",
+      "path": "tests/build-output/mobile-command.test.mts",
+      "line": 38,
+      "title": "native tooling reports spawn failures, nonzero exits and signals as failures",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d441e009f3d2d24e.1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "line": 164,
+      "title": "authorization attributes cannot be self-assigned through Keycloak user profile",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d4a9997b397e0253.1",
+      "path": "tests/backend/pagination.test.ts",
+      "line": 6,
+      "title": "authorization is applied before the page limit and later pages remain reachable beyond 1000 tenant records",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d66ce138d61e37ea.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 71,
+      "title": "cannot start project before verified first payment",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d6ee72bb37681eca.1",
+      "path": "tests/backend/rep-pricing-and-messaging.test.ts",
+      "line": 7,
+      "title": "catalog authority prevents hiding discounts in unit prices and rejects foreign currencies",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d6f3fdcd56c7867f.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 28,
+      "title": "questions vary by activity without losing common steps",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d7996f94fbf8bca7.1",
+      "path": "tests/validation/numeric-fields.test.mts",
+      "line": 23,
+      "title": "email field requires valid address",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d8379abe7f0dd5ea.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 221,
+      "title": "native storage failure is redacted and fails closed before exposing an access token",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d8a494f2bedc45dd.1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "line": 177,
+      "title": "administrative and customer web clients have distinct exact callbacks and least-privilege role scopes",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.d8b75f2b8cc8808a.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 279,
+      "title": "expired sign-in transactions and interrupted sign-in do not create sessions",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.da980bd56d8c5fe0.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 136,
+      "title": "S01 gate: absent TAP summary remains unknown, not zero tests passed",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.dbfb967026ce7f85.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 123,
+      "title": "wrong roles denied for each domain action",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.dd836a8d4cbb264d.1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "line": 75,
+      "title": "cannot start project without assigned team",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.df79e4625bd69a77.1",
+      "path": "tests/backend/gateway-input-errors.test.ts",
+      "line": 22,
+      "title": "`gateway preserves client status for ${sample.name}`",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e08fcd0b142abe19.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 169,
+      "title": "S01 gate: arbitrary or missing mandatory metric sections cannot satisfy a gate",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e09a16ba159653c8.1",
+      "path": "packages/api-client/test/client.test.ts",
+      "line": 84,
+      "title": "PATCH and PUT use the authenticated API with versioned payloads and stable keys",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e0b70d82fd36fef1.1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "line": 590,
+      "title": "no-contact visit UI persists CRM withdrawal before sales completion without broker delivery",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e189a98c6436dd63.1",
+      "path": "tests/backend/ownership-regressions.test.ts",
+      "line": 28,
+      "title": "quote create/edit/revise and cached send all recheck current opt-out and assignment",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e30511512ec74262.1",
+      "path": "tests/production/gate.test.mts",
+      "line": 96,
+      "title": "S01 gate: missing, expired, wrong-source or undigested artifacts cannot pass",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e38da8e66d6ca9e4.1",
+      "path": "packages/api-client/test/client.test.ts",
+      "line": 40,
+      "title": "does not make authenticated requests without a token or to an arbitrary origin",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e402a58733764eb9.1",
+      "path": "tests/backend/environment-secrets.test.ts",
+      "line": 20,
+      "title": "Windows secret generation fails explicitly rather than weakening confidentiality",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e50ec512ab216a4a.1",
+      "path": "tests/native/ios-profile.test.mts",
+      "line": 28,
+      "title": "export requires a distribution profile for the exact app identity, team and method",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e54e03922f9ed8e8.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 132,
+      "title": "edited service price and title become the dynamic customer and rep catalog",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e5e9beae5158f899.1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "line": 254,
+      "title": "bootstrap removes the automatically assigned offline scope before enabling a new realm",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e75998d3eb7ee5a4.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 67,
+      "title": "service price must be numeric",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.e7fb2ea3457c4f5a.1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "line": 102,
+      "title": "pins discovery issuer, S256, signed ID token algorithm and all endpoint origins",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.eb65b48a4508d26e.1",
+      "path": "tests/backend/tracking-and-communications.test.ts",
+      "line": 163,
+      "title": "support tickets are tenant and customer scoped; resolve/reopen/reply actions preserve version and history",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.ec113d95833dbae4.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 74,
+      "title": "service-to-service re-export is rejected",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.edd683e2eaaf6036.1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "line": 245,
+      "title": "bootstrap refuses policy drift and keeps an incomplete realm disabled",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.eedc7aeaf39ffe8c.1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 104,
+      "title": "S01 inventory: contract comparison is bidirectional and fails for an undocumented operation",
+      "category": "contract",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.efce38d7f991a0f3.1",
+      "path": "tests/native/release-config.test.mts",
+      "line": 19,
+      "title": "`staging rejects an equivalent production gateway: ${production.trim()}`",
+      "category": "journey-or-platform",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.efdd6337ae3cf26b.1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "line": 101,
+      "title": "production gate rejects simulator, unfinished scenario, stale source and missing review",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.f2334c4e57ad4086.1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "line": 133,
+      "title": "acceptance verifies packaged bytes and prevents evidence path escapes",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.f39fba317811cc02.1",
+      "path": "packages/api-client/test/client.test.ts",
+      "line": 58,
+      "title": "surfaces domain conflicts with request ID without retrying the mutation",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.f6710bc8e874473a.1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "line": 277,
+      "title": "disposing the workspace removes stale handlers and a late response cannot render another account data",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.f6a0c072bfb90486.1",
+      "path": "tests/backend/environment-topology.test.ts",
+      "line": 109,
+      "title": "gateway CORS includes only configured exact web origins and fixed native origins",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.f73de422426331bc.1",
+      "path": "tests/backend/ownership-regressions.test.ts",
+      "line": 280,
+      "title": "out-of-order consent events cannot cancel a new visit or overwrite a newer opt-in",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.f8d5866f9f6addf4.1",
+      "path": "tests/architecture/infra-helpers.test.mts",
+      "line": 41,
+      "title": "development smoke uses verified claims, GET requests and no persisted token",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.fa0484821c531ea7.1",
+      "path": "packages/questionnaire/test/validation.test.ts",
+      "line": 38,
+      "title": "null, primitive and sparse activity/question entries return errors instead of throwing",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.fad13fdb6af3cbcd.1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "line": 234,
+      "title": "createRequire alias cannot bypass the check",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.fcd2e92bc0e56c53.1",
+      "path": "tests/build-output/app-build-proof.test.mts",
+      "line": 67,
+      "title": "native sync proof rejects stale source and changed or missing assets",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.fea504e4188ba3f0.1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "line": 43,
+      "title": "other requires a meaningful explanation",
+      "category": "unit",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.fee27aedeb474ef6.1",
+      "path": "tests/integration/rep-auth-lifecycle.test.mts",
+      "line": 300,
+      "title": "stop waits for a pending GPS subscription handle and rejects readings delivered after cancellation",
+      "category": "integration",
+      "disposition": "declared"
+    },
+    {
+      "id": "test.ffb46e853d3a7c0a.1",
+      "path": "tests/build-output/app-build-proof.test.mts",
+      "line": 84,
+      "title": "native sync proof rejects truncated manifests and paths outside its workspace",
+      "category": "unit",
+      "disposition": "declared"
+    }
+  ]
+}
