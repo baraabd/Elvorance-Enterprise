@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1,
+  "note": "Reviewed real test IDs only, with per-feature rationale. Planned IDs never satisfy coverage. Initial mappings beyond generic API registration checks remain unresolved.",
+  "links": []
+}

@@ -1,0 +1,7 @@
+# Existing repository account; domain/on-call and independent-review assignments remain open.
+# CODEOWNERS does not enable required reviews or branch protection by itself.
+* @baraabd
+/.github/ @baraabd
+/docs/production/ @baraabd
+/tooling/production/ @baraabd
+/tests/production/ @baraabd

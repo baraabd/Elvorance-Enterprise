@@ -43,3 +43,6 @@ infra/compose/compose.db-gui.yaml
 # Local editor state
 .vscode/settings.json
 .idea/
+
+# Ephemeral isolated registration bundles (never source or evidence).
+.s01-census-*/

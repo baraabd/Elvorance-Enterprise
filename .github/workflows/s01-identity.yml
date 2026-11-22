@@ -1,0 +1,79 @@
+name: Isolated real identity lifecycle
+on:
+  workflow_call:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      IDENTITY_CONTAINER: elvorance-identity-${{ github.run_id }}-${{ github.run_attempt }}
+      ELVORANCE_IDENTITY_LOCAL_TEST: '1'
+      LOCAL_KEYCLOAK_BASE_URL: https://localhost:28443
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Start disposable loopback-only Keycloak with a trusted test certificate
+        shell: bash
+        run: |
+          set -euo pipefail
+          private="$RUNNER_TEMP/s01-identity-private"
+          tls="$RUNNER_TEMP/s01-identity-tls"
+          mkdir -m 700 -p "$private"
+          mkdir -m 755 -p "$tls"
+          openssl req -x509 -newkey rsa:2048 -nodes -keyout "$tls/server.key" -out "$tls/server.crt" -days 1 -subj '/CN=localhost' -addext 'subjectAltName=DNS:localhost,IP:127.0.0.1' 2>/dev/null
+          sudo chown 1000:0 "$tls/server.key"
+          sudo chmod 600 "$tls/server.key"
+          password="$(openssl rand -hex 32)"
+          umask 077
+          printf 'KC_BOOTSTRAP_ADMIN_USERNAME=s01-ci-admin\nKC_BOOTSTRAP_ADMIN_PASSWORD=%s\n' "$password" > "$private/server.env"
+          docker run -d --name "$IDENTITY_CONTAINER" --publish 127.0.0.1:28443:8443 --env-file "$private/server.env" --volume "$tls:/opt/keycloak/conf/ci:ro" quay.io/keycloak/keycloak:26.8.2 start-dev --http-enabled=false --hostname=https://localhost:28443 --https-certificate-file=/opt/keycloak/conf/ci/server.crt --https-certificate-key-file=/opt/keycloak/conf/ci/server.key
+          ready=0
+          for attempt in $(seq 1 90); do
+            if curl --silent --fail --cacert "$tls/server.crt" https://localhost:28443/realms/master/.well-known/openid-configuration > /dev/null; then ready=1; break; fi
+            sleep 2
+          done
+          test "$ready" = 1
+          curl --silent --show-error --fail --cacert "$tls/server.crt" -X POST https://localhost:28443/realms/master/protocol/openid-connect/token --data-urlencode grant_type=password --data-urlencode client_id=admin-cli --data-urlencode username=s01-ci-admin --data-urlencode "password=$password" > "$private/token-response.json"
+          python3 - "$private" <<'PY'
+          import json, os, pathlib, sys
+          root = pathlib.Path(sys.argv[1])
+          token = json.loads((root / 'token-response.json').read_text())['access_token']
+          (root / 'admin-token').write_text(token)
+          os.chmod(root / 'admin-token', 0o600)
+          (root / 'token-response.json').unlink()
+          PY
+          printf 'NODE_EXTRA_CA_CERTS=%s\nKEYCLOAK_ADMIN_TOKEN_FILE=%s\n' "$tls/server.crt" "$private/admin-token" >> "$GITHUB_ENV"
+      - name: Exercise the existing real OIDC PKCE, rotation, replay and logout suite
+        run: node tooling/scripts/test-local-identity.mts
+      - name: Remove only the disposable CI identity container and credentials
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$IDENTITY_CONTAINER" =~ ^elvorance-identity-[0-9]+-[0-9]+$ ]]
+          if docker container inspect "$IDENTITY_CONTAINER" > /dev/null 2>&1; then docker rm --force "$IDENTITY_CONTAINER"; fi
+          rm -rf "$RUNNER_TEMP/s01-identity-private"
+          # Keep the public test certificate until Node has written sanitized evidence.
+      - name: Capture measured identity evidence
+        if: always()
+        env:
+          S01_JOB_STATUS: ${{ job.status }}
+        run: node tooling/production/evidence.mts identity
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: s01-identity-a${{ github.run_attempt }}
+          path: dist/evidence-upload/identity/
+          if-no-files-found: error
+          retention-days: 14

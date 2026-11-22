@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "status": "PROPOSED-NOT-APPLIED",
+  "branch": "main",
+  "requiredCheckContexts": ["FULL-CI"],
+  "strictUpToDate": true,
+  "requiredApprovingReviews": 1,
+  "requireCodeOwnerReview": true,
+  "dismissStaleReviews": true,
+  "requireLastPushApproval": true,
+  "allowForcePushes": false,
+  "allowDeletions": false,
+  "independentReviewer": "UNASSIGNED",
+  "note": "A workflow or CODEOWNERS file does not enforce branch protection; administrator must apply and read back configuration. The repository owner cannot supply independent self-approval."
+}

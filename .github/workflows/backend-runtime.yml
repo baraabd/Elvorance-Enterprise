@@ -1,16 +1,7 @@
 name: Backend distributed runtime
 on:
-  push:
-    branches: [feat/rep-staging-mobile-20261117]
-  pull_request:
-    paths:
-      - 'services/**'
-      - 'packages/**'
-      - 'infra/**'
-      - 'tests/runtime/**'
-      - 'tooling/**'
-      - 'package*.json'
-      - '.github/workflows/backend-runtime.yml'
+  workflow_call:
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
@@ -22,6 +13,7 @@ jobs:
     timeout-minutes: 30
     env:
       CI: 'true'
+      S01_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
       COMPOSE_PROJECT_NAME: elvorance-runtime-${{ github.run_id }}-${{ github.run_attempt }}
       IMAGE_TAG: ci-${{ github.run_id }}-${{ github.run_attempt }}
       COMPOSE_PARALLEL_LIMIT: '2'
@@ -31,11 +23,15 @@ jobs:
       RABBITMQ_MANAGEMENT_BIND_HOST: 127.0.0.1
       RABBITMQ_MANAGEMENT_PORT: '25672'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24.22.1
           cache: npm
+      - run: npm install --global npm@11.19.0
       - run: npm ci
       - name: Generate fresh isolated CI secrets without printing them
         run: node infra/compose/init-env.mts
@@ -62,10 +58,15 @@ jobs:
           if test -f infra/compose/.env; then
             docker compose --project-name "$COMPOSE_PROJECT_NAME" --env-file infra/compose/.env -f infra/compose/compose.yaml down --volumes --remove-orphans
           fi
-      - uses: actions/upload-artifact@v4
+      - name: Link measured runtime evidence to the exact source
+        if: always()
+        env:
+          S01_JOB_STATUS: ${{ job.status }}
+        run: node tooling/production/evidence.mts runtime
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
-          name: backend-runtime-ci-evidence
-          path: dist/runtime/
-          if-no-files-found: warn
+          name: s01-runtime-a${{ github.run_attempt }}
+          path: dist/evidence-upload/runtime/
+          if-no-files-found: error
           retention-days: 7

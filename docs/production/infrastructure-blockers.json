@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-11-22",
+  "secretsAccessed": false,
+  "deploymentChangesApplied": false,
+  "platformObservations": [
+    {
+      "provider": "Railway",
+      "source": "list-projects + get-status (read-only connector)",
+      "projectId": "075e27d5-8edc-4ddd-8f27-a5eea3ef5d5a",
+      "projectName": "elvorance-staging",
+      "environmentId": "49c49479-0810-491c-99cb-fc52ca547c04",
+      "environmentName": "staging",
+      "liveServices": 0,
+      "liveBuckets": 0,
+      "stagedPatchId": "e1f211a3-9769-40f8-94ef-7aac138027c6",
+      "stagedChangeCount": 33,
+      "status": "BLOCKED",
+      "interpretation": "Staged Keycloak/PostgreSQL/volume settings are not a live backend."
+    },
+    {
+      "provider": "Vercel",
+      "source": "list_projects by owner/repo; list_teams; list_projects search elvorance scoped to discovered team",
+      "teamId": "team_LGL2uTTsmbGU72EMvonS1E5j",
+      "matchingProjects": 0,
+      "status": "BLOCKED",
+      "interpretation": "No matching project visible in connected team; do not claim global absence across inaccessible accounts."
+    },
+    {
+      "provider": "GitHub",
+      "source": "main branch API metadata",
+      "branch": "main",
+      "protected": false,
+      "requiredCheckConfigurationApplied": false,
+      "status": "BLOCKED"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "INF-01",
+      "area": "Hosted gateway, seven services, databases and broker",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "platform",
+      "assignedPerson": null,
+      "requiredEvidence": "Authorized deployment, health/readiness, actual network/data isolation and authenticated hosted E2E run",
+      "targetSprint": "S02"
+    },
+    {
+      "id": "INF-02",
+      "area": "Hosted identity and account lifecycle",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "identity",
+      "assignedPerson": null,
+      "requiredEvidence": "Real issuer/TLS/audience/client redirects, approved provisioning and complete hosted lifecycle tests",
+      "targetSprint": "S02"
+    },
+    {
+      "id": "INF-03",
+      "area": "Required CI checks and independent review",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "repository administrator",
+      "assignedPerson": null,
+      "requiredEvidence": "Read-back of enforced FULL-CI rule, review requirement and bypass controls",
+      "targetSprint": "S01"
+    },
+    {
+      "id": "INF-04",
+      "area": "Payments/provider callbacks",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "billing/integrations",
+      "assignedPerson": null,
+      "requiredEvidence": "Chosen provider, secure credential setup, signature/replay/idempotency tests and settlement/reconciliation acceptance",
+      "targetSprint": "S07"
+    },
+    {
+      "id": "INF-05",
+      "area": "External email/SMS/push delivery",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "communications/integrations",
+      "assignedPerson": null,
+      "requiredEvidence": "Provider contracts and approved credentials; verified delivery, failure, opt-out and webhook behavior",
+      "targetSprint": "S08"
+    },
+    {
+      "id": "INF-06",
+      "area": "Maps/geocoding/routing external services",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "CRM/tracking/mobile",
+      "assignedPerson": null,
+      "requiredEvidence": "Product/provider choice, credential restrictions, privacy and quota/failure tests where the workflow requires them",
+      "targetSprint": "S08"
+    },
+    {
+      "id": "INF-07",
+      "area": "Backup/restore and disaster recovery",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "platform",
+      "assignedPerson": null,
+      "requiredEvidence": "Actual restore drill with verified data integrity and measured RPO/RTO; approved retention policy",
+      "targetSprint": "S10"
+    },
+    {
+      "id": "INF-08",
+      "area": "Capacity and production observability",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "platform",
+      "assignedPerson": null,
+      "requiredEvidence": "Representative load/soak results, metrics/traces, real alert delivery and on-call ownership",
+      "targetSprint": "S10"
+    },
+    {
+      "id": "INF-09",
+      "area": "Native physical devices and signed release",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "mobile/release",
+      "assignedPerson": null,
+      "requiredEvidence": "Real device lifecycle and permission tests, approved signing credentials, store policy/materials and release evidence",
+      "targetSprint": "S09"
+    },
+    {
+      "id": "INF-10",
+      "area": "Long-term evidence retention",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "platform/security",
+      "assignedPerson": null,
+      "requiredEvidence": "Approved immutable retention store and recovery/access controls before GitHub artifact expiry",
+      "targetSprint": "S10"
+    },
+    {
+      "id": "INV-01",
+      "area": "Unresolved semantic effects and workflow-to-test linkage",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "frontend/backend/QA",
+      "assignedPerson": null,
+      "requiredEvidence": "Review matrix unresolvedEffects and planned test IDs; attach real scenarios and executed immutable evidence",
+      "targetSprint": "S02"
+    },
+    {
+      "id": "OWN-01",
+      "area": "Domain ownership and independent reviewers",
+      "status": "BLOCKED",
+      "technicalOwnerProposal": "repository owner",
+      "assignedPerson": null,
+      "requiredEvidence": "Named accountable service/on-call owners and independent reviewer assignments",
+      "targetSprint": "S02"
+    }
+  ]
+}

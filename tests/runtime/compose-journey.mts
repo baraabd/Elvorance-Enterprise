@@ -506,7 +506,7 @@ async function journey(env: NodeJS.ProcessEnv) {
     environment: 'isolated-compose-ci',
     authMode: 'dev-hs256',
     syntheticData: true,
-    sourceRevision: env.GITHUB_SHA ?? null,
+    sourceRevision: env.S01_SOURCE_SHA ?? env.GITHUB_SHA ?? null,
     composeProject: env.COMPOSE_PROJECT_NAME,
     tenantId,
     completedAt: new Date().toISOString(),

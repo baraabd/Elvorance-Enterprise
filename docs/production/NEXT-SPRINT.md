@@ -1,0 +1,26 @@
+# S02 handoff — identity, authorization and account lifecycle
+
+## Entry criteria
+
+Review S01's final exact-source FULL-CI artifact and inventory diff. Do not use historical PR checks. An administrator must enable required FULL-CI protection and review enforcement; CODEOWNERS alone is insufficient. Assign independent review and service/on-call owners. Any S01 red or missing mandatory gate stays a blocker, not an inherited pass.
+
+## Work packages and acceptance
+
+| Package                                                | Technical owner proposal                        | Acceptance evidence                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Reconcile symbolic inventory effects and test mappings | frontend + backend + QA, people unassigned      | Review all `unresolvedEffects`, route/action/form/job `tests.e2e: []` and runtime compatibility surfaces. Add real executable tests and exact catalog IDs, not fabricated mappings; regenerate inventory and preserve the debt ratchet.                                                                       |
+| Hosted identity and deployment topology                | identity + platform, people unassigned          | Apply only separately authorized/reviewed deployment changes; provision actual service/issuer/DNS/TLS/redirect configuration through approved secret storage. Current staged Railway changes are not live. Prove issuer/audience/PKCE/JWKS/rotation/logout against hosted staging and all three entry points. |
+| Role, tenant and ownership policy                      | identity + every domain owner                   | Explicit operation × role × tenant/owner decision matrix, default-deny enforcement in services, negative list/search/export/detail/mutation tests, no client-only authorization. Include gateway bypass attempts and direct service access.                                                                   |
+| Account lifecycle                                      | identity + admin/client/representative frontend | Named executable invite/register/verify/recover/lock/disable/delete/reactivate/logout/revoke scenarios where product policy permits; record missing product/provider decisions as blockers. Prove stale sessions lose authority and audit sensitive transitions.                                              |
+| Failure-state and configuration acceptance             | frontend + QA + security                        | Loading/empty/error/permission-denied/expired-session/network-failure/retry tests, safe validation messages, no success feedback for failed writes; settings/config changes persist with server-side authorization.                                                                                           |
+| CI/operations enforcement                              | repository administrator + platform             | Required FULL-CI and review rules read back from GitHub; immutable accepted evidence retained beyond expiry; no high/critical advisory regressions; new code under strict types and every mandatory gate run on final SHA.                                                                                    |
+
+## Proposed later sprint allocation
+
+Feature `targetSprint` values are backlog proposals, not a promise that a feature is already complete. S03: administration/dashboard/configuration parity. S04: CRM/discovery/customer workflows. S05: visits/tasks/opportunities/quotes/discounts. S06: delivery and event workflow integrity. S07: billing and external payment contracts. S08: communications, notifications and tracking/privacy. S09: native lifecycle, denied-permission/offline failures and physical-device acceptance. S10: operational hardening, load/recovery, signed releases and production approval. Product owners may change priorities through a reviewed matrix update without weakening the contract.
+
+## Reproduction and completion contract
+
+Use Node/npm versions pinned in CI and `npm ci`. Run `npm run inventory:check` before changes, `npm run inventory:write` after legitimate source changes, and inspect all generated diffs. Do not overwrite the debt baseline to permit new debt. Add explicit contract/integration/E2E test IDs to each completed workflow and evidence links to actual successful runs. A planned test is not coverage.
+
+After the final change, run the entire FULL-CI workflow, not only newly added tests. Record final head/tree SHA, run ID/attempt URL, every gate's measured totals/skips and artifact digests. Missing provider credentials or infrastructure block the affected integration; never substitute demo data or an invented secret. Keep signed release/production deployment approval separate from code CI.

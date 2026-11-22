@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "status": "PROPOSED-NOT-APPROVED-NOT-MEASURED",
+  "measurement": null,
+  "baselineWarning": "No load, restore or instrumented workflow-coverage result is asserted by these numbers.",
+  "targets": [
+    {
+      "id": "CAP-01",
+      "metric": "Concurrent authenticated users",
+      "target": 100,
+      "measurement": null,
+      "experiment": "30-minute representative mixed workload plus spike/soak; include all service dependencies",
+      "targetSprint": "S10"
+    },
+    {
+      "id": "CAP-02",
+      "metric": "Read/write latency p95 milliseconds",
+      "target": {
+        "read": 300,
+        "write": 800
+      },
+      "measurement": null,
+      "experiment": "Measure API latency under CAP-01 with realistic tenant/data distribution",
+      "targetSprint": "S10"
+    },
+    {
+      "id": "CAP-03",
+      "metric": "Unexpected request error rate percent",
+      "target": {
+        "lessThan": 1
+      },
+      "measurement": null,
+      "experiment": "Separate expected authorization/validation denials from server/dependency failures",
+      "targetSprint": "S10"
+    },
+    {
+      "id": "REC-01",
+      "metric": "Recovery point objective minutes",
+      "target": 15,
+      "measurement": null,
+      "experiment": "Restore production-shaped disposable backup and verify record/event consistency",
+      "targetSprint": "S10"
+    },
+    {
+      "id": "REC-02",
+      "metric": "Recovery time objective minutes",
+      "target": 60,
+      "measurement": null,
+      "experiment": "Time full service/data recovery including replay and health checks",
+      "targetSprint": "S10"
+    },
+    {
+      "id": "COV-01",
+      "metric": "Changed-code line coverage percent",
+      "target": 95,
+      "measurement": null,
+      "experiment": "Add instrumented coverage and compare actual changed executable lines; no test-count substitution",
+      "targetSprint": "S02"
+    },
+    {
+      "id": "COV-02",
+      "metric": "Domain line/branch coverage percent",
+      "target": {
+        "lines": 90,
+        "branches": 85
+      },
+      "measurement": null,
+      "experiment": "Collect instrumented domain coverage including denied/failure paths",
+      "targetSprint": "S02"
+    },
+    {
+      "id": "COV-03",
+      "metric": "Critical workflow E2E acceptance percent",
+      "target": 100,
+      "measurement": null,
+      "experiment": "Product-approved critical workflow list, linked test IDs, full role/failure cases and exact-source runtime evidence",
+      "targetSprint": "S10"
+    }
+  ]
+}

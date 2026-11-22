@@ -38,11 +38,17 @@
     "package": "node tooling/scripts/package.mts",
     "infra:up": "docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml build && docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml up --no-build -d --wait --wait-timeout 180",
     "infra:down": "docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml down",
-    "test:merged": "node --test tests/questionnaire/dynamic-form.test.mts tests/validation/numeric-fields.test.mts tests/regression/dashboard-drilldown.integration.test.mts tests/regression/finance-2.3.test.mts tests/regression/quote-ui-consolidated.test.mts examples/instant-close/tests/flow.test.mts",
+    "test:merged": "node --test --test-reporter=tap tests/questionnaire/dynamic-form.test.mts tests/validation/numeric-fields.test.mts tests/regression/dashboard-drilldown.integration.test.mts tests/regression/finance-2.3.test.mts tests/regression/quote-ui-consolidated.test.mts examples/instant-close/tests/flow.test.mts",
     "audit:migration:report": "node tooling/scripts/audit-migration.mts",
     "audit:migration": "node tooling/scripts/audit-migration.mts --strict",
     "build:rep:server": "node tooling/scripts/build-rep-server.mts",
-    "mobile:prepare:rep": "node tooling/scripts/rep-native/prepare.mts"
+    "mobile:prepare:rep": "node tooling/scripts/rep-native/prepare.mts",
+    "inventory:write": "node tooling/production/inventory.mts",
+    "inventory:check": "node tooling/production/inventory.mts --check",
+    "test:production": "node --test --test-reporter=tap tests/production/*.test.mts",
+    "ci:quality": "node tooling/production/run-quality.mts",
+    "ci:gate": "node tooling/production/gate.mts",
+    "ci:security": "node tooling/production/security.mts"
   },
   "devDependencies": {
     "@capacitor/cli": "8.6.2",
