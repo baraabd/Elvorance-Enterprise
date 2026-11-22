@@ -1,0 +1,67 @@
+name: S01 materialize source-bound closure
+on:
+  push:
+    branches: ['s01/closure-bootstrap-20261122b']
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - name: Verify immutable transport and apply reviewed source
+        run: python3 .s01-bootstrap/materialize.py
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Generate annotations against the actual fresh checkout
+        run: |
+          npm run inventory:write
+          python3 "$RUNNER_TEMP/s01-closure-input/binding-builder.py"
+          node node_modules/prettier/bin/prettier.cjs --write docs/production/semantic-bindings.json
+          echo 'fbc93d2ad319c441f7bfcc89d8b139adb5925f985b2b68903f37f156f3916954  docs/production/semantic-bindings.json' | sha256sum -c -
+          npm run inventory:write
+      - name: Extend only the test floor and retain all legacy debt
+        run: |
+          node --input-type=module <<'JS'
+          import { readFile, writeFile } from 'node:fs/promises';
+          import { canonical } from './tooling/production/inventory.mts';
+          const path = 'docs/production/quality-baseline.json';
+          const baseline = JSON.parse(await readFile(path, 'utf8'));
+          const inventory = JSON.parse(await readFile('docs/production/feature-matrix.json', 'utf8'));
+          baseline.testIds = [...new Set([...baseline.testIds, ...inventory.tests.map(row => row.id)])].sort();
+          await writeFile(path, await canonical(process.cwd(), baseline));
+          JS
+      - run: npm run check:types
+      - run: npm run test:production
+      - run: npm run inventory:check
+      - run: npm run check:format
+      - name: Verify exact reviewed tree before publishing normal source paths
+        run: |
+          export GIT_INDEX_FILE="$RUNNER_TEMP/s01-final-index"
+          git read-tree HEAD
+          git add -A
+          final_tree=$(git write-tree)
+          test "$final_tree" = '6534bc4e7c7475e54e855095f652236f672ed052'
+          unset GIT_INDEX_FILE
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/production tooling/production tests/production
+          git commit -m 'fix(s01): materialize reviewed source-bound semantic inventory and governance tooling'
+          git push origin HEAD:refs/heads/s01/closure-materialized-20261122b
+          mkdir -p dist/s01-closure-materialized
+          git rev-parse HEAD > dist/s01-closure-materialized/source-sha.txt
+          printf '%s\n' "$final_tree" > dist/s01-closure-materialized/final-tree.txt
+          git archive --format=tar.gz HEAD > dist/s01-closure-materialized/source.tar.gz
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: s01-closure-materialized-source
+          path: dist/s01-closure-materialized/
+          if-no-files-found: error
+          retention-days: 7
