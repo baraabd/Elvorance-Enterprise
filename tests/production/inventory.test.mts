@@ -195,3 +195,25 @@ test('source inventory includes every workflow regardless of bootstrap-like nami
     await f.dispose();
   }
 });
+
+test('literal endpoints in quality-tooling fixtures do not create business workflow test candidates', async () => {
+  const f = await fixture(`export function feature(context) {
+    context.button.addEventListener('click', () => context.api.mutate('POST', '/v1/crm/example', {}));
+  }`);
+  try {
+    await mkdir(resolve(f.root, 'tests/production'), { recursive: true });
+    await writeFile(
+      resolve(f.root, 'tests/production/fake-gate.test.mts'),
+      `test('a quality fixture quotes an endpoint', () => { expect('/v1/crm/example'); });`,
+    );
+    const inventory = await discover(await workspace(f.root), []);
+    assert.equal(inventory.tests.length, 1, 'quality test must remain in the test catalog');
+    assert.ok(inventory.features.some((row) => row.kind === 'handler'));
+    assert.ok(
+      inventory.features.every((row) => row.tests.related.length === 0),
+      'quoting an endpoint must not buy workflow coverage',
+    );
+  } finally {
+    await f.dispose();
+  }
+});

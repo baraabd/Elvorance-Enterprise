@@ -51,10 +51,10 @@
     {
       "id": "B05",
       "scope": "Semantic inventory completeness",
-      "status": "BLOCKED",
+      "status": "SOURCE_TRACED_TEST_DEBT_AND_INDEPENDENT_ACCEPTANCE_OPEN",
       "ownerRole": "All domain/mobile/web maintainers",
-      "evidence": "feature-matrix unresolved fields, native per-file observations and workflow-debt missing test mappings",
-      "nextAction": "Review dynamic dispatch and method-level native behavior; bind real endpoints/auth/persistence and implement required test IDs."
+      "evidence": "Source-bound semantic-bindings, original expressions, registered per-operation policies and native declaration/export anchors are validated; current semantic-review and workflow-debt retain missing test candidates and all planned test IDs.",
+      "nextAction": "Review the source-bound traceability and assign workflow test implementation to the recorded target sprints. Do not convert a static policy reference or planned test ID into executed acceptance."
     },
     {
       "id": "B06",
@@ -88,5 +88,6 @@
       "evidence": "No measured hosted load/restore/SLO evidence or approved long-term immutable evidence archive.",
       "nextAction": "Approve budgets, on-call ownership and retention; execute isolated load and seven-domain restore/event recovery."
     }
-  ]
+  ],
+  "scopeNote": "Sprint 1 inventories missing infrastructure and proposes budgets. B03/B04/B06/B07/B08/B09 remain actual release blockers, not claims of deployment or mandatory new production functionality implemented by S01. B01/B02 and independent S01 acceptance remain open."
 }

@@ -15,7 +15,16 @@ import {
 } from './source.mts';
 import { testCatalog, type DiscoveredTest } from './test-catalog.mts';
 import { applyDispositions } from './dispositions.mts';
+import { applySemanticBindings } from './semantic-bindings.mts';
 import type { Endpoint, Feature, Inventory, Kind, RuntimeRegistration } from './model.mts';
+import {
+  registeredSources,
+  liveSectionSources,
+  sourceString,
+  boundClosure,
+  type Bindings,
+  type RegisteredSource,
+} from './registration-source.mts';
 
 interface Observation {
   kind: Kind;
@@ -26,6 +35,7 @@ interface Observation {
   mode?: string;
   registration?: RuntimeRegistration;
   unresolved?: string[];
+  bindings?: Bindings;
 }
 const appFolders: Record<string, string> = {
   'admin-web': 'admin',
@@ -187,9 +197,12 @@ function linkedTests(
   const role = observation.registration?.owner;
   const registeredKey = observation.registration?.key;
   return tests
-    .filter(
-      (test) =>
-        test.references.includes(observation.source.path) ||
+    .filter((test) => {
+      if (test.references.includes(observation.source.path)) return true;
+      // Quality-tooling fixtures deliberately quote real endpoints to test the mapper.
+      // Those literals are not product-behavior tests or new workflow coverage candidates.
+      if (test.path.startsWith('tests/production/')) return false;
+      return (
         eps.some(
           (ep) =>
             ep.path.startsWith('/v1/') &&
@@ -198,8 +211,9 @@ function linkedTests(
         (observation.registration?.mode === 'demo' &&
           registeredKey &&
           test.literalValues.includes(registeredKey) &&
-          (test.path.includes(role ?? '__none__') || test.path.includes('workflow-audit'))),
-    )
+          (test.path.includes(role ?? '__none__') || test.path.includes('workflow-audit')))
+      );
+    })
     .map((test) => test.id);
 }
 function feature(
@@ -214,16 +228,18 @@ function feature(
     row.registration?.kind === 'api-route'
       ? row.registration.owner
       : (servicePattern.exec(row.source.path)?.[1] ?? null);
-  const nodes = ts.isSourceFile(row.node) ? [] : closure(ws, row.node);
+  const nodes = ts.isSourceFile(row.node)
+    ? []
+    : row.bindings
+      ? boundClosure(ws, row.node, row.bindings)
+      : closure(ws, row.node);
   const text = nodes.map((node) => node.getText()).join('\n');
   const literals = unique(nodes.flatMap(strings));
   let eps = endpoints(nodes, owningService, resources);
   if (row.registration?.kind === 'api-route') {
     const { method, path, owner } = row.registration;
     if (!method || !path) throw new Error('API registration without method/path');
-    eps = [
-      { method, path, service: owner, resolution: path.includes('*') ? 'dynamic' : 'literal' },
-    ];
+    eps = [{ method, path, service: owner, resolution: 'literal' }];
     if (owner !== 'api-gateway' && path.startsWith('/v1/'))
       eps.push({
         method,
@@ -265,7 +281,8 @@ function feature(
         )
       )
         return;
-      const table = literal(child.arguments[0]);
+      const table =
+        sourceString(ws, child.arguments[0], row.bindings) ?? literal(child.arguments[0]);
       if (table) tables.push(table);
     });
   const unresolved = [...(row.unresolved ?? [])];
@@ -293,13 +310,7 @@ function feature(
             'Declarative data-go navigation changes the selected client view; it does not itself perform a business mutation. Target views and their actions are separate inventory entries.',
           reviewedSourceFingerprint: place.fingerprint,
         }
-      : row.registration?.automatic
-        ? {
-            reason:
-              'Fastify-generated HEAD companion to a registered GET; no independent business mutation. Authentication and response parity remain required.',
-            reviewedSourceFingerprint: place.fingerprint,
-          }
-        : null;
+      : null;
   const targetService =
     owningService ??
     eps.find((ep) => ep.service)?.service ??
@@ -482,9 +493,49 @@ function syntaxObservations(ws: Workspace, resources: ReadonlyMap<string, string
   }
   return result;
 }
-function resolveRegistration(ws: Workspace, registration: RuntimeRegistration): Observation {
-  const matches: Array<{ source: Source; node: ts.Node }> = [];
+function resolveRegistration(
+  ws: Workspace,
+  registration: RuntimeRegistration,
+  backend: ReadonlyMap<string, RegisteredSource[]>,
+  live: ReadonlyMap<string, ts.ObjectLiteralExpression[]>,
+): Observation {
+  const matches: Array<{ source: Source; node: ts.Node; bindings?: Bindings }> = [];
+  if (registration.mode === 'backend') {
+    const records = backend.get(registration.owner) ?? [];
+    const exact = records.filter(
+      (row) => row.path === registration.path && row.method === registration.method,
+    );
+    const compatible = exact.length
+      ? exact
+      : registration.automatic
+        ? records.filter((row) => row.path === registration.path && row.method === 'GET')
+        : [];
+    const owned = compatible.filter((row) =>
+      row.source.path.startsWith(`services/${registration.owner}/`),
+    );
+    matches.push(...(owned.length ? owned : compatible));
+  }
+  if (registration.mode === 'server' && registration.owner !== 'rep') {
+    for (const node of live.get(registration.owner) ?? []) {
+      const id = node.properties.find(
+        (p) => ts.isPropertyAssignment(p) && literal(p.name) === 'id',
+      );
+      const source = sourceFor(ws, node);
+      if (
+        source &&
+        id &&
+        ts.isPropertyAssignment(id) &&
+        literal(id.initializer) === registration.key
+      )
+        matches.push({ source, node });
+    }
+  }
   for (const source of ws.sources.values()) {
+    if (
+      registration.mode === 'backend' ||
+      (registration.mode === 'server' && registration.owner !== 'rep')
+    )
+      continue;
     if (
       registration.mode === 'demo' &&
       !source.path.startsWith(
@@ -500,11 +551,7 @@ function resolveRegistration(ws: Workspace, registration: RuntimeRegistration): 
       continue;
     if (
       registration.mode === 'server' &&
-      !source.path.includes('packages/api-client/src/live-workspace.ts') &&
-      !(
-        registration.owner === 'rep' &&
-        source.path.includes('apps/rep-mobile/src/server/workspace.ts')
-      )
+      !source.path.includes('apps/rep-mobile/src/server/workspace.ts')
     )
       continue;
     visit(source.ast, (node) => {
@@ -537,19 +584,6 @@ function resolveRegistration(ws: Workspace, registration: RuntimeRegistration): 
         )
           matches.push({ source, node: node.parent });
       }
-      if (
-        registration.mode === 'backend' &&
-        ts.isCallExpression(node) &&
-        ts.isPropertyAccessExpression(node.expression)
-      ) {
-        const method = node.expression.name.text.toUpperCase();
-        if (
-          node.expression.expression.getText() === 'app' &&
-          (method === registration.method || (registration.automatic && method === 'GET')) &&
-          literal(node.arguments[0]) === registration.path
-        )
-          matches.push({ source, node });
-      }
     });
   }
   let matched = matches[0];
@@ -577,6 +611,7 @@ function resolveRegistration(ws: Workspace, registration: RuntimeRegistration): 
     key: registration.key,
     source: matched.source,
     node: matched.node,
+    ...(matched.bindings ? { bindings: matched.bindings } : {}),
     registration,
     mode: registration.mode,
     apps: registration.kind === 'api-route' ? [] : [registration.owner],
@@ -630,8 +665,14 @@ export async function discover(ws: Workspace, runtime: RuntimeRegistration[]): P
       }
     });
   const tests = testCatalog(ws);
+  const backend = new Map(
+    [...new Set(registrations.filter((row) => row.mode === 'backend').map((row) => row.owner))].map(
+      (owner) => [owner, registeredSources(ws, owner)],
+    ),
+  );
+  const live = new Map(['admin', 'client'].map((role) => [role, liveSectionSources(ws, role)]));
   const observations = [
-    ...registrations.map((registration) => resolveRegistration(ws, registration)),
+    ...registrations.map((registration) => resolveRegistration(ws, registration, backend, live)),
     ...syntaxObservations(ws, resources),
   ];
   const ordinals = new Map<string, number>();
@@ -704,6 +745,7 @@ export async function discover(ws: Workspace, runtime: RuntimeRegistration[]): P
     });
   }
   await applyDispositions(ws, features);
+  await applySemanticBindings(ws, features);
   features.sort((a, b) => a.id.localeCompare(b.id, 'en'));
   const sourceFiles = await Promise.all(
     ws.files
@@ -746,7 +788,7 @@ export async function discover(ws: Workspace, runtime: RuntimeRegistration[]): P
     totals,
     limitations: [
       'Runtime probes execute registration only in disposable fixtures. They do not execute a business journey or establish production authorization/persistence.',
-      'Dynamic strings, delegated handlers and indirect calls are explicitly unresolved where static analysis cannot establish a binding. Unresolved findings are blockers to exhaustive semantic acceptance, not silently excluded features.',
+      'Finite source loops are expanded without execution; registered wildcard/parameter paths are known route patterns, not concrete request URLs. Dynamic strings, delegated handlers and indirect calls are explicitly unresolved where static analysis cannot establish a binding. Unresolved findings are blockers to exhaustive semantic acceptance, not silently excluded features.',
       'Test links are source-reference candidates, not executed coverage. Planned IDs are not implemented tests. Real browser E2E and physical-device evidence are separate.',
       'Owning service is actual source ownership; targetService on frontend records is a proposed domain allocation, not proof that its backend endpoint exists.',
       'Authorization/persistence closure is bounded to six source call levels and may include shared helpers. Record-level RBAC/tenant/ownership tests must validate each operation.',

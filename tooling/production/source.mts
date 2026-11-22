@@ -108,6 +108,7 @@ export async function workspace(root: string): Promise<Workspace> {
     .map((entry) => entry.name);
   const inputs = [
     'docs/production/inventory-dispositions.json',
+    'docs/production/semantic-bindings.json',
     'docs/production/full-ci-contract.json',
   ];
   for (const path of inputs) {

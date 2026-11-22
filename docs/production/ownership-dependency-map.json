@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "15fd530faed7acfb0db3eafee75a4443d4ec8ac7e26298ce9fb29d2ccdeb2b43",
+  "sourceDigest": "85cb662eb1d305ee149781793b16c0cc2d0952dba141b51661eb187793a63c8b",
   "accountability": "Proposed roles only; named service/on-call owners are UNASSIGNED. CODEOWNERS routes review to the repository owner, not proof of independent approval.",
   "services": [
     {
@@ -2123,6 +2123,22 @@
       "source": "tests/native/release-config.test.mts",
       "specifier": "../../tooling/scripts/rep-release/release-config.mts"
     },
+    { "source": "tests/production/branch-protection.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/branch-protection.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/production/branch-protection.test.mts",
+      "specifier": "../../tooling/production/branch-protection.mts"
+    },
+    { "source": "tests/production/gap-report.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/gap-report.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/production/gap-report.test.mts",
+      "specifier": "../../tooling/production/gap-report.mts"
+    },
+    {
+      "source": "tests/production/gap-report.test.mts",
+      "specifier": "../../tooling/production/model.mts"
+    },
     { "source": "tests/production/gate.test.mts", "specifier": "node:test" },
     { "source": "tests/production/gate.test.mts", "specifier": "node:assert/strict" },
     { "source": "tests/production/gate.test.mts", "specifier": "fflate" },
@@ -2165,6 +2181,46 @@
     },
     {
       "source": "tests/production/inventory.test.mts",
+      "specifier": "../../tooling/production/model.mts"
+    },
+    { "source": "tests/production/registration-source.test.mts", "specifier": "node:test" },
+    {
+      "source": "tests/production/registration-source.test.mts",
+      "specifier": "node:assert/strict"
+    },
+    { "source": "tests/production/registration-source.test.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/production/registration-source.test.mts", "specifier": "node:os" },
+    { "source": "tests/production/registration-source.test.mts", "specifier": "node:path" },
+    {
+      "source": "tests/production/registration-source.test.mts",
+      "specifier": "../../tooling/production/source.mts"
+    },
+    {
+      "source": "tests/production/registration-source.test.mts",
+      "specifier": "../../tooling/production/registration-source.mts"
+    },
+    {
+      "source": "tests/production/registration-source.test.mts",
+      "specifier": "../../tooling/production/discover.mts"
+    },
+    { "source": "tests/production/registration-source.test.mts", "specifier": "typescript" },
+    { "source": "tests/production/semantic-bindings.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/semantic-bindings.test.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/production/semantic-bindings.test.mts", "specifier": "node:fs/promises" },
+    {
+      "source": "tests/production/semantic-bindings.test.mts",
+      "specifier": "../../tooling/production/semantic-bindings.mts"
+    },
+    {
+      "source": "tests/production/semantic-bindings.test.mts",
+      "specifier": "../../tooling/production/source.mts"
+    },
+    {
+      "source": "tests/production/semantic-bindings.test.mts",
+      "specifier": "../../tooling/production/gap-report.mts"
+    },
+    {
+      "source": "tests/production/semantic-bindings.test.mts",
       "specifier": "../../tooling/production/model.mts"
     },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:test" },
@@ -2275,7 +2331,9 @@
     { "source": "tooling/production/discover.mts", "specifier": "./source.mts" },
     { "source": "tooling/production/discover.mts", "specifier": "./test-catalog.mts" },
     { "source": "tooling/production/discover.mts", "specifier": "./dispositions.mts" },
+    { "source": "tooling/production/discover.mts", "specifier": "./semantic-bindings.mts" },
     { "source": "tooling/production/discover.mts", "specifier": "./model.mts" },
+    { "source": "tooling/production/discover.mts", "specifier": "./registration-source.mts" },
     { "source": "tooling/production/dispositions.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/production/dispositions.mts", "specifier": "node:path" },
     { "source": "tooling/production/dispositions.mts", "specifier": "./model.mts" },
@@ -2285,6 +2343,7 @@
     { "source": "tooling/production/evidence.mts", "specifier": "node:path" },
     { "source": "tooling/production/evidence.mts", "specifier": "node:crypto" },
     { "source": "tooling/production/evidence.mts", "specifier": "./gate.mts" },
+    { "source": "tooling/production/gap-report.mts", "specifier": "./model.mts" },
     { "source": "tooling/production/identity-fixture.mts", "specifier": "node:crypto" },
     { "source": "tooling/production/identity-fixture.mts", "specifier": "node:https" },
     { "source": "tooling/production/identity-fixture.mts", "specifier": "node:fs/promises" },
@@ -2301,6 +2360,7 @@
     { "source": "tooling/production/inventory.mts", "specifier": "./debt.mts" },
     { "source": "tooling/production/inventory.mts", "specifier": "./source.mts" },
     { "source": "tooling/production/inventory.mts", "specifier": "./model.mts" },
+    { "source": "tooling/production/inventory.mts", "specifier": "./gap-report.mts" },
     { "source": "tooling/production/model.mts", "specifier": "./source.mts" },
     { "source": "tooling/production/native-lane.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/production/native-lane.mts", "specifier": "node:path" },
@@ -2308,6 +2368,14 @@
     { "source": "tooling/production/native-lane.mts", "specifier": "jsdom" },
     { "source": "tooling/production/native-lane.mts", "specifier": "./evidence.mts" },
     { "source": "tooling/production/native-lane.mts", "specifier": "./gate.mts" },
+    { "source": "tooling/production/protect-main.mts", "specifier": "node:child_process" },
+    { "source": "tooling/production/protect-main.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/production/protect-main.mts", "specifier": "node:path" },
+    { "source": "tooling/production/protect-main.mts", "specifier": "node:url" },
+    { "source": "tooling/production/protect-main.mts", "specifier": "./branch-protection.mts" },
+    { "source": "tooling/production/protect-main.mts", "specifier": "./source.mts" },
+    { "source": "tooling/production/registration-source.mts", "specifier": "typescript" },
+    { "source": "tooling/production/registration-source.mts", "specifier": "./source.mts" },
     { "source": "tooling/production/run-lane.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/production/run-lane.mts", "specifier": "node:path" },
     { "source": "tooling/production/run-lane.mts", "specifier": "node:child_process" },
@@ -2323,6 +2391,10 @@
     { "source": "tooling/production/runtime.mts", "specifier": "./source.mts" },
     { "source": "tooling/production/security-source.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/production/security-source.mts", "specifier": "./evidence.mts" },
+    { "source": "tooling/production/semantic-bindings.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/production/semantic-bindings.mts", "specifier": "node:path" },
+    { "source": "tooling/production/semantic-bindings.mts", "specifier": "./source.mts" },
+    { "source": "tooling/production/semantic-bindings.mts", "specifier": "./model.mts" },
     { "source": "tooling/production/source.mts", "specifier": "node:crypto" },
     { "source": "tooling/production/source.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/production/source.mts", "specifier": "node:path" },

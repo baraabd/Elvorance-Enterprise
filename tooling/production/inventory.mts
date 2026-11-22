@@ -8,6 +8,7 @@ import { runtimeRegistrations } from './runtime.mts';
 import { measureDebt, debtRegressions, type Debt } from './debt.mts';
 import { workspace, sha256, strings, visit, type Workspace } from './source.mts';
 import { kinds, type Inventory } from './model.mts';
+import { gapReport } from './gap-report.mts';
 
 export function validateInventory(inventory: Inventory): string[] {
   const errors: string[] = [];
@@ -199,6 +200,7 @@ export function dataFlows(inventory: Inventory): Record<string, unknown> {
         authorization: row.authorization,
         tables: row.persistenceEvent.tables,
         events: row.persistenceEvent.events,
+        sourceTrace: row.sourceTrace ?? null,
         resolution: row.unresolved.length ? 'REVIEW_REQUIRED' : 'SOURCE_OBSERVED_NOT_EXECUTION',
       })),
     warnings: [
@@ -262,6 +264,7 @@ export async function generate(
       ],
       ['data-flow-inventory.json', dataFlows(inventory)],
       ['workflow-debt.json', workflowDebt(inventory)],
+      ['semantic-review.json', gapReport(inventory)],
     ]),
   };
 }
