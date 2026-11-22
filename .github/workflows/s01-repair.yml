@@ -1,0 +1,61 @@
+name: S01 materialize verified portability fixes
+on:
+  push:
+    branches: [s01/repair-20261122]
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - name: Verify and apply exact reviewed patch
+        run: |
+          echo '71c533bdffbde1e1670286ecf1d699bd4b0fb8ba856533ebac9df65ef3bc2276  .s01-bootstrap/fixes.patch' | sha256sum --check --strict
+          git apply --check .s01-bootstrap/fixes.patch
+          git apply .s01-bootstrap/fixes.patch
+          mv .github/workflows/s01-repair.yml /tmp/s01-repair.yml
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Regenerate final-source inventories without resetting existing debt baselines
+        run: node tooling/production/inventory.mts --write
+      - name: Extend the non-regression test floor without changing legacy debt
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFile,writeFile} from 'node:fs/promises';
+          import {canonical} from './tooling/production/inventory.mts';
+          const path='docs/production/quality-baseline.json';
+          const baseline=JSON.parse(await readFile(path,'utf8'));
+          const inventory=JSON.parse(await readFile('docs/production/feature-matrix.json','utf8'));
+          if (!Array.isArray(baseline.testIds)) throw new Error('Unexpected quality baseline schema');
+          baseline.testIds=[...new Set([...baseline.testIds,...inventory.tests.map(test=>test.id)])].sort();
+          await writeFile(path,await canonical(process.cwd(),baseline));
+          NODE
+      - run: npm run check:types
+      - run: npm run test:production
+      - run: npm run check:format
+      - name: Publish tested source on an isolated materialization branch
+        run: |
+          mv /tmp/s01-repair.yml .github/workflows/s01-repair.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c s01/repaired-20261122
+          git add docs/production tooling/production tests/production
+          git diff --cached --check
+          git commit -m 'fix(s01): portable registration probes and unprivileged identity fixture'
+          git push origin HEAD:refs/heads/s01/repaired-20261122
+          git archive --format=tar.gz -o /tmp/s01-repaired-source.tar.gz HEAD
+          git rev-parse HEAD > /tmp/s01-repaired-source-sha.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: s01-repaired-source
+          path: |
+            /tmp/s01-repaired-source.tar.gz
+            /tmp/s01-repaired-source-sha.txt
+          if-no-files-found: error
+          retention-days: 7

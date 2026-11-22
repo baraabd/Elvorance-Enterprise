@@ -1,0 +1,130 @@
+--- a/tooling/production/runtime.mts
++++ b/tooling/production/runtime.mts
+@@ -1,6 +1,7 @@
+ import { build, type Plugin } from 'esbuild';
+ import { mkdir, readFile } from 'node:fs/promises';
+ import { createRequire } from 'node:module';
++import { pathToFileURL } from 'node:url';
+ import { resolve } from 'node:path';
+ import { spawnSync } from 'node:child_process';
+ import type { RuntimeRegistration } from './model.mts';
+@@ -115,7 +116,9 @@
+   const fake = `const fake=new Proxy(function(){throw new Error('Inventory must not call an API')},{get(){return fake;}});`;
+   const live = `import {sectionsForRole} from './packages/api-client/src/live-workspace.ts';${fake}console.log(JSON.stringify(['admin','client'].flatMap(owner=>sectionsForRole(owner,fake).map(x=>({owner,mode:'server',kind:'route',key:x.id})))));`;
+   output.push(...validate(await run('live-sections', live)));
+-  const fastifyPath = createRequire(resolve(ws.root, 'package.json')).resolve('fastify');
++  const fastifyUrl = pathToFileURL(
++    createRequire(resolve(ws.root, 'package.json')).resolve('fastify'),
++  ).href;
+   const observer: Plugin = {
+     name: 'observe-real-fastify-registration',
+     setup(builder) {
+@@ -124,13 +127,13 @@
+         namespace: 'inventory',
+       }));
+       builder.onLoad({ filter: /.*/, namespace: 'inventory' }, () => ({
+-        contents: `import original from ${JSON.stringify(fastifyPath)};export default function(options){const owner=globalThis.__inventoryOwner;const app=original(options);app.addHook('onRoute',r=>{for(const method of Array.isArray(r.method)?r.method:[r.method])globalThis.__inventoryRoutes.push({owner,mode:'backend',kind:'api-route',key:method+' '+r.url,method,path:r.url,automatic:method==='HEAD'});});return app;}`,
++        contents: `import original from ${JSON.stringify(fastifyUrl)};export default function(options){const owner=globalThis.__inventoryOwner;const app=original(options);app.addHook('onRoute',r=>{for(const method of Array.isArray(r.method)?r.method:[r.method])globalThis.__inventoryRoutes.push({owner,mode:'backend',kind:'api-route',key:method+' '+r.url,method,path:r.url,automatic:method==='HEAD'});});return app;}`,
+         resolveDir: ws.root,
+       }));
+-      builder.onResolve({ filter: /\/node_modules\/fastify\/fastify\.js$/ }, (args) => ({
+-        path: args.path,
+-        external: true,
+-      }));
++      // File URLs preserve Windows drive letters/backslashes without bundling CommonJS internals.
++      builder.onResolve({ filter: /^file:\/\// }, (args) =>
++        args.path === fastifyUrl ? { path: args.path, external: true } : undefined,
++      );
+     },
+   };
+   const imports = services
+--- a/tooling/production/source.mts
++++ b/tooling/production/source.mts
+@@ -118,9 +118,7 @@
+       if (!(error instanceof Error && 'code' in error && error.code === 'ENOENT')) throw error;
+     }
+   }
+-  const files = [...rooted, ...rootFiles]
+-    .filter((path) => !path.startsWith('.github/workflows/s01-bootstrap'))
+-    .sort();
++  const files = [...rooted, ...rootFiles].sort();
+   const paths = files.filter((path) => codePattern.test(path));
+   const program = ts.createProgram(
+     paths.map((path) => resolve(root, path)),
+--- a/tests/production/inventory.test.mts
++++ b/tests/production/inventory.test.mts
+@@ -183,3 +183,15 @@
+   assert.ok(errors.some((value) => value.startsWith('New unmapped workflow')));
+   assert.deepEqual(qualityRegressions(baseline, baseline), []);
+ });
++
++test('source inventory includes every workflow regardless of bootstrap-like naming', async () => {
++  const f = await fixture('export const value = 1;');
++  try {
++    const path = '.github/workflows/s01-bootstrap-unexpected.yml';
++    await mkdir(resolve(f.root, '.github/workflows'), { recursive: true });
++    await writeFile(resolve(f.root, path), 'name: Unexpected workflow\n');
++    assert.ok((await workspace(f.root)).files.includes(path));
++  } finally {
++    await f.dispose();
++  }
++});
+--- a/tooling/production/identity-fixture.mts
++++ b/tooling/production/identity-fixture.mts
+@@ -12,6 +12,9 @@
+   throw new Error('Invalid isolated fixture identity');
+ const name = `elvorance-s01-identity-${runId}-${attempt}`,
+   base = 'https://127.0.0.1:18443';
++const uid = process.getuid?.();
++if (uid === undefined || uid <= 0)
++  throw new Error('Disposable identity verification requires a non-root POSIX runner.');
+ const directory = await mkdtemp(resolve(tmpdir(), 'elvorance-s01-identity-'));
+ const certificate = resolve(directory, 'localhost.crt'),
+   key = resolve(directory, 'localhost.key'),
+@@ -85,7 +88,8 @@
+     'basicConstraints=critical,CA:TRUE',
+   ]);
+   await chmod(key, 0o600);
+-  // Root is restricted to this disposable, unprivileged container; the key mount is read-only.
++  // Match the private bind-mount owner without root or DAC-override capabilities.
++  // The official image grants its application directories write access to group 0.
+   command(
+     'docker',
+     [
+@@ -94,7 +98,7 @@
+       '--name',
+       name,
+       '--user',
+-      '0:0',
++      `${uid}:0`,
+       '--cap-drop',
+       'ALL',
+       '--security-opt',
+@@ -124,6 +128,8 @@
+   created = true;
+   let ready = false;
+   for (let count = 0; count < 90; count++) {
++    if (command('docker', ['inspect', '--format', '{{.State.Status}}', name]) !== 'running')
++      throw new Error('Disposable identity container exited before TLS readiness');
+     try {
+       if ((await localRequest('/realms/master/.well-known/openid-configuration')).status === 200) {
+         ready = true;
+@@ -181,6 +187,18 @@
+       2,
+     ) + '\n',
+   );
++} catch (error) {
++  if (created) {
++    const diagnostic = spawnSync('docker', ['logs', '--tail', '80', name], {
++      encoding: 'utf8',
++      timeout: 10_000,
++      maxBuffer: 128 * 1024,
++    });
++    // Do not inspect environment variables or emit credential material.
++    const text = (diagnostic.stdout + diagnostic.stderr).replaceAll(password, '[redacted]');
++    process.stderr.write(text);
++  }
++  throw error;
+ } finally {
+   if (created) {
+     const cleanup = spawnSync('docker', ['rm', '--force', name], {
