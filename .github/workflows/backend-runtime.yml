@@ -1,25 +1,12 @@
 name: Backend distributed runtime
 on:
-  push:
-    branches: [feat/rep-staging-mobile-20261117]
-  pull_request:
-    paths:
-      - 'services/**'
-      - 'packages/**'
-      - 'infra/**'
-      - 'tests/runtime/**'
-      - 'tooling/**'
-      - 'package*.json'
-      - '.github/workflows/backend-runtime.yml'
+  workflow_call:
 permissions:
   contents: read
-concurrency:
-  group: backend-runtime-${{ github.head_ref || github.ref_name }}
-  cancel-in-progress: true
 jobs:
   compose-journey:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 35
     env:
       CI: 'true'
       COMPOSE_PROJECT_NAME: elvorance-runtime-${{ github.run_id }}-${{ github.run_attempt }}
@@ -31,20 +18,17 @@ jobs:
       RABBITMQ_MANAGEMENT_BIND_HOST: 127.0.0.1
       RABBITMQ_MANAGEMENT_PORT: '25672'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 24.22.1
           cache: npm
+      - run: npm install --global npm@11.19.0
       - run: npm ci
-      - name: Generate fresh isolated CI secrets without printing them
-        run: node infra/compose/init-env.mts
-      - name: Build and start the real gateway, seven services, PostgreSQL and RabbitMQ
-        run: npm run infra:up
-      - name: Verify separate database roles deny cross-service connections
-        run: docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml exec -T postgres sh /opt/atlas/check-isolation.sh
-      - name: Execute synthetic customer to approved contract and asynchronous fulfillment
-        run: node tests/runtime/compose-journey.mts
+      - name: Execute actual distributed runtime, database isolation and persisted journey
+        run: node tooling/production/run-lane.mts backend-runtime
       - name: Collect service state without secrets
         if: always()
         run: |
@@ -62,10 +46,18 @@ jobs:
           if test -f infra/compose/.env; then
             docker compose --project-name "$COMPOSE_PROJECT_NAME" --env-file infra/compose/.env -f infra/compose/compose.yaml down --volumes --remove-orphans
           fi
-      - uses: actions/upload-artifact@v4
+      - name: Upload immutable backend-runtime evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-ci-backend-runtime-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/full-ci/backend-runtime/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: backend-runtime-ci-evidence
           path: dist/runtime/
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 7

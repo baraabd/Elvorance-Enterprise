@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "observedDate": "2026-11-22",
+  "noDeploymentPerformed": true,
+  "items": [
+    {
+      "id": "B01",
+      "scope": "S01 acceptance",
+      "status": "BLOCKED",
+      "ownerRole": "Product/repository owner; named owner unassigned",
+      "evidence": "Visible prompt refers to an accompanying contract; matching repository and Project/Library searches did not provide a separate contract.",
+      "nextAction": "Reconcile the visible-request-derived QUALITY-CONTRACT with any additional approved contract."
+    },
+    {
+      "id": "B02",
+      "scope": "Merge enforcement",
+      "status": "BLOCKED",
+      "ownerRole": "Repository administrator",
+      "evidence": "Live main branch response: protected=false, required status checks enforcement off, contexts empty.",
+      "nextAction": "Require FULL-CI / required and reviewed code-owner/strict merge policy; attach live settings readback."
+    },
+    {
+      "id": "B03",
+      "scope": "Hosted staging",
+      "status": "BLOCKED",
+      "ownerRole": "Platform",
+      "evidence": {
+        "provider": "Railway",
+        "projectId": "075e27d5-8edc-4ddd-8f27-a5eea3ef5d5a",
+        "environmentId": "49c49479-0810-491c-99cb-fc52ca547c04",
+        "liveServices": 0,
+        "liveBuckets": 0,
+        "stagedChanges": 33
+      },
+      "nextAction": "Separately authorize and deploy reviewed isolated gateway/domain DB/broker/identity topology; test migrations/TLS/readiness/ownership."
+    },
+    {
+      "id": "B04",
+      "scope": "Web hosting",
+      "status": "BLOCKED",
+      "ownerRole": "Web/Platform",
+      "evidence": {
+        "provider": "Vercel",
+        "teamId": "team_LGL2uTTsmbGU72EMvonS1E5j",
+        "listedProjects": 5,
+        "elvoranceProjects": 0,
+        "scope": "Connected team only; no other accounts asserted"
+      },
+      "nextAction": "Approve admin/client server-only configuration and isolated hosted projects; verify actual production artifacts."
+    },
+    {
+      "id": "B05",
+      "scope": "Semantic inventory completeness",
+      "status": "BLOCKED",
+      "ownerRole": "All domain/mobile/web maintainers",
+      "evidence": "feature-matrix unresolved fields, native per-file observations and workflow-debt missing test mappings",
+      "nextAction": "Review dynamic dispatch and method-level native behavior; bind real endpoints/auth/persistence and implement required test IDs."
+    },
+    {
+      "id": "B06",
+      "scope": "External integration",
+      "status": "BLOCKED_WHEN_REQUIRED_BY_PRODUCT",
+      "ownerRole": "Product / Communications / Billing / Tracking",
+      "evidence": "Source supports in-app messages, payment records, ordered route plans and foreground location; no external push/email/SMS delivery, payment charge provider, route optimization or offline-write synchronization is claimed.",
+      "nextAction": "Approve scope/providers/contracts; provision secrets outside Git and validate sandbox-to-staging journeys. Never invent credentials or successful functionality."
+    },
+    {
+      "id": "B07",
+      "scope": "Identity and account lifecycle",
+      "status": "BLOCKED",
+      "ownerRole": "Identity / Product / Privacy",
+      "evidence": "Disposable CI Keycloak is not hosted company identity; deletion/recovery/retention acceptance is not supplied.",
+      "nextAction": "Provision approved company clients/accounts and test lifecycle/role/tenant/consent/revocation, including devices."
+    },
+    {
+      "id": "B08",
+      "scope": "Native distribution",
+      "status": "BLOCKED",
+      "ownerRole": "Mobile / Release",
+      "evidence": "Unsigned harness/emulator/simulator tooling exists; protected final signed AAB/IPA and physical-device acceptance are not supplied.",
+      "nextAction": "Protected signing, exact binary/source hashes, physical Android/iPhone acceptance and approved store/privacy preparation."
+    },
+    {
+      "id": "B09",
+      "scope": "Operations",
+      "status": "BLOCKED",
+      "ownerRole": "Platform / Domain on-call; named owners unassigned",
+      "evidence": "No measured hosted load/restore/SLO evidence or approved long-term immutable evidence archive.",
+      "nextAction": "Approve budgets, on-call ownership and retention; execute isolated load and seven-domain restore/event recovery."
+    }
+  ]
+}

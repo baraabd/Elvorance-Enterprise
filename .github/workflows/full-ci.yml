@@ -1,0 +1,99 @@
+name: FULL-CI
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'sprint/**'
+  merge_group:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: full-ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  project:
+    uses: ./.github/workflows/verify.yml
+  runtime:
+    uses: ./.github/workflows/backend-runtime.yml
+  native:
+    uses: ./.github/workflows/rep-native-verification.yml
+  identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Execute existing real Keycloak integration against disposable loopback TLS
+        run: node tooling/production/run-lane.mts identity
+      - name: Upload immutable identity evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-ci-identity-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/full-ci/identity/
+          if-no-files-found: error
+          retention-days: 30
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Audit installed dependencies and materialized secret patterns
+        run: node tooling/production/run-lane.mts security
+      - name: Upload immutable security evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-ci-security-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/full-ci/security/
+          if-no-files-found: error
+          retention-days: 30
+  required:
+    name: FULL-CI / required
+    if: ${{ always() }}
+    needs: [project, runtime, native, identity, security]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Verify every mandatory result, exact source and immutable artifact digest
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FULL_CI_NEEDS: ${{ toJSON(needs) }}
+        run: node tooling/production/aggregate.mts
+      - name: Publish exact-commit FULL-CI decision and artifact digests
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-ci-decision-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/full-ci-aggregate/
+          if-no-files-found: error
+          retention-days: 90
