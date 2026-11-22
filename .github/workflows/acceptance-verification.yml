@@ -1,0 +1,79 @@
+name: Isolated acceptance verification
+on:
+  pull_request:
+    paths:
+      - 'services/**'
+      - 'packages/**'
+      - 'infra/identity/**'
+      - 'tests/**'
+      - 'tooling/**'
+      - '.github/workflows/acceptance-verification.yml'
+permissions:
+  contents: read
+concurrency:
+  group: isolated-acceptance-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  authorization-recovery-load:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16-bookworm
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: acceptance-ci-only
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      CI: 'true'
+      ELVORANCE_DISPOSABLE_ACCEPTANCE: '1'
+      ELVORANCE_TEST_POSTGRES_URL: postgresql://postgres:acceptance-ci-only@localhost:5432/postgres
+      ELVORANCE_ACCEPTANCE_REPORT_DIR: dist/acceptance/evidence
+      ELVORANCE_ACCEPTANCE_POSTGRES_CONTAINER: ${{ job.services.postgres.id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm ci
+      - run: npm run check:types
+      - run: node tooling/scripts/run-acceptance.mts authorization
+      - run: node tooling/scripts/run-acceptance.mts postgres-recovery
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: isolated-authorization-recovery-load
+          path: dist/acceptance/evidence/
+          if-no-files-found: error
+          retention-days: 14
+  oidc-synthetic-account:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CI: 'true'
+      ELVORANCE_DISPOSABLE_ACCEPTANCE: '1'
+      ELVORANCE_ACCEPTANCE_REPORT_DIR: dist/acceptance/evidence
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm ci
+      - name: Real isolated Keycloak with TLS and synthetic-account Authorization Code PKCE
+        run: node tests/acceptance/keycloak-ci.mts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: isolated-oidc-synthetic-account
+          path: dist/acceptance/evidence/
+          if-no-files-found: warn
+          retention-days: 14
