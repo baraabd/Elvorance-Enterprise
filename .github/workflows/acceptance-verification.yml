@@ -36,7 +36,6 @@ jobs:
       ELVORANCE_DISPOSABLE_ACCEPTANCE: '1'
       ELVORANCE_TEST_POSTGRES_URL: postgresql://postgres:acceptance-ci-only@localhost:5432/postgres
       ELVORANCE_ACCEPTANCE_REPORT_DIR: dist/acceptance/evidence
-      ELVORANCE_ACCEPTANCE_POSTGRES_CONTAINER: ${{ job.services.postgres.id }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -47,6 +46,8 @@ jobs:
       - run: npm run check:types
       - run: node tooling/scripts/run-acceptance.mts authorization
       - run: node tooling/scripts/run-acceptance.mts postgres-recovery
+        env:
+          ELVORANCE_ACCEPTANCE_POSTGRES_CONTAINER: ${{ job.services.postgres.id }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
