@@ -183,3 +183,15 @@ test('quality baseline rejects deleted tests/routes and new uncovered workflows'
   assert.ok(errors.some((value) => value.startsWith('New unmapped workflow')));
   assert.deepEqual(qualityRegressions(baseline, baseline), []);
 });
+
+test('source inventory includes every workflow regardless of bootstrap-like naming', async () => {
+  const f = await fixture('export const value = 1;');
+  try {
+    const path = '.github/workflows/s01-bootstrap-unexpected.yml';
+    await mkdir(resolve(f.root, '.github/workflows'), { recursive: true });
+    await writeFile(resolve(f.root, path), 'name: Unexpected workflow\n');
+    assert.ok((await workspace(f.root)).files.includes(path));
+  } finally {
+    await f.dispose();
+  }
+});
