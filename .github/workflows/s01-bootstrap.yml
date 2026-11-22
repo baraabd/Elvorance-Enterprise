@@ -1,0 +1,61 @@
+name: S01 materialize reviewed source
+on:
+  push:
+    branches: [s01/bootstrap-20261122]
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - name: Verify and materialize the reviewed S01 payload
+        run: |
+          cat .s01-bootstrap/0*.bin > /tmp/s01-changes.tar.xz
+          echo 'e7cf92e97bd063103a188b4d3c1dae6c9fc7e9563b7e8d5834a542bc49949b22  /tmp/s01-changes.tar.xz' | sha256sum --check --strict
+          python3 - <<'PY'
+          import pathlib, tarfile
+          root = pathlib.Path.cwd().resolve()
+          with tarfile.open('/tmp/s01-changes.tar.xz', 'r:xz') as archive:
+              members = archive.getmembers()
+              assert len(members) == 33 and len({m.name for m in members}) == 33
+              assert sum(m.size for m in members) < 10000000
+              for m in members:
+                  p = pathlib.PurePosixPath(m.name)
+                  assert m.isfile() and not p.is_absolute() and '..' not in p.parts
+                  assert m.name in ['package.json', 'tsconfig.json', 'tooling/scripts/test.mts'] or m.name.startswith(('docs/production/', 'tests/production/', 'tooling/production/'))
+                  target = (root / p).resolve()
+                  assert target.is_relative_to(root)
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(archive.extractfile(m).read())
+          PY
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Generate actual-checkout inventory and immutable initial debt baselines
+        run: node tooling/production/inventory.mts --write --baseline
+      - run: npm run check:types
+      - run: npm run test:production
+      - name: Persist reviewable source without changing workflow definitions
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c s01/materialized-20261122
+          git add docs/production tests/production tooling/production tooling/scripts/test.mts package.json tsconfig.json
+          git diff --cached --check
+          git commit -m 'feat(s01): inventory, quality contract, evidence gates and non-regression baselines'
+          git push origin HEAD:refs/heads/s01/materialized-20261122
+          git archive --format=tar.gz -o /tmp/s01-source.tar.gz HEAD
+          git rev-parse HEAD > /tmp/s01-source-sha.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: s01-materialized-source
+          path: |
+            /tmp/s01-source.tar.gz
+            /tmp/s01-source-sha.txt
+          if-no-files-found: error
+          retention-days: 7
