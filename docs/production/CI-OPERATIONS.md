@@ -29,3 +29,22 @@ Docker/PostgreSQL/RabbitMQ, real loopback-TLS Keycloak, Android SDK/emulator and
 Fix the owning source or test; do not lower thresholds, remove suites, add broad skips or refresh a baseline to conceal a regression. Regenerate the inventory after a reviewed source change, run formatting, commit, then execute the **entire** FULL-CI again. Re-running only failed jobs is diagnostic; final acceptance requires one complete consistent run/attempt for the frozen candidate. The aggregator deliberately rejects mixed-attempt artifacts.
 
 S01 changes CI, tooling and documentation only; it does not deploy database migrations. Rollback is a reviewed revert of S01 changes on a new branch, preserving PR #4 implementation and PR #3 release restrictions. Reverting the gate must not be used to authorize a release with missing evidence. No `docker compose down -v` against a live environment is permitted; runtime CI cleanup addresses its unique disposable project only.
+
+## Live protection verifier and guarded administration helper
+
+`node tooling/production/protect-main.mts` performs **read-only** authenticated GitHub API reads through the operator's existing `gh` login. It writes a readback report to `dist/production/repository-protection.json`. It does not infer enforcement from this document, a proposed request body, CODEOWNERS or a successful workflow. A missing CLI, missing permission, malformed response or insufficient policy returns `BLOCKED` with a nonzero exit status.
+
+An authorized administrator can explicitly enable the reviewed minimum policy on an **unprotected** main branch:
+
+```sh
+# Inspect the live head; review it and any existing rulesets before proceeding.
+gh api repos/baraabd/Elvorance-Enterprise/branches/main --jq .commit.sha
+# Substitute that freshly reviewed 40-character SHA, not a historical document value.
+node tooling/production/protect-main.mts --apply --expected-main=<reviewed-main-sha>
+```
+
+The helper checks administrator permission and the expected main head, re-reads immediately before writing, and then verifies the effective branch-protection response. This preflight is not an atomic lock against concurrent administrators; coordinate the operation. Existing protection that is insufficient or cannot be fully read is **not overwritten**. An existing compliant or stronger policy is preserved without a PUT. Credentials must remain in the operator's normal CLI authentication mechanism, never source files or command arguments.
+
+The minimum requires `FULL-CI / required` from the observed GitHub Actions App ID `15368`, strict up-to-date checks, administrator enforcement, at least one independent approval, stale-review dismissal, code-owner review, last-push approval, resolved conversations, and disabled force pushes/deletions. Review bypass allowances are rejected. Unit tests validate the policy logic, **not actual repository administration**.
+
+PR #8 is stacked on PR #4. A protected-main integration must preserve that implementation and rerun FULL-CI against the actual final main-targeting candidate after stack/base changes. Do not bypass reviews, manufacture an independent approver, merge solely because a helper exits successfully, or treat a successful policy readback as completion of S01's semantic/contract requirements.

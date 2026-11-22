@@ -21,3 +21,9 @@ For each workflow, bind the real endpoint and owning service, DTO/schema/version
 Reduce the exact legacy suppression baseline incrementally; new code remains strict. Add instrumented coverage before claiming a percentage, using `budgets.json` as proposed targets. Establish actual load and recovery evidence on isolated staging before promotion. Update inventories, threat controls and ownership/dependency maps with each change.
 
 Final S02 output: scoped review branch, migration/rollback decisions, updated inventory and implemented test traceability, external blockers with named owners, then **complete FULL-CI on the last commit**, with exact SHA/tree/run/attempt/totals/skips/artifact digests. Missing or pending mandatory evidence remains BLOCKED. Do not merge or release based solely on a historical green run.
+
+## Source-trace continuation
+
+Before assigning an unresolved endpoint again, read `semantic-review.json.semanticStatus` and `semantic-bindings.json`. Hash-bound source decisions link parameterized HTTP requests and finite dispatch to registered domain policy; native members include declaration starts and bridge-export registrations, not a claim that empty stubs implement authentication. Original dynamic expressions remain in each feature sourceTrace.
+
+Missing workflow tests remain real debt: a static trace does not execute a contract, integration or E2E test. Preserve the planned IDs and the separate workflow-debt baseline. Any source change touching a binding's evidence requires explicit re-review and regeneration; do not refresh hashes mechanically to suppress drift. Required repository enforcement, separate-contract reconciliation and independent acceptance must still be established before an unconditional S01 completion declaration.
