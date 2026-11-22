@@ -37,7 +37,9 @@
     "infra/environments/**/*.mts",
     "tests/runtime/**/*.mts",
     "tests/identity/**/*.mts",
-    "tooling/scripts/test-local-identity.mts"
+    "tooling/scripts/test-local-identity.mts",
+    "tooling/production/**/*.mts",
+    "tests/production/**/*.mts"
   ],
   "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
 }

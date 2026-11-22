@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "status": "PROPOSED_TARGETS_NOT_MEASURED_OR_APPROVED",
+  "assumptions": [
+    "Initial planning envelope only; product/operations must approve workload and cost before use.",
+    "Synthetic CI is not a capacity measurement or hosted acceptance."
+  ],
+  "targets": [
+    {
+      "id": "CAP01",
+      "metric": "simultaneously active authenticated users",
+      "target": 100,
+      "unit": "users",
+      "verification": "Hosted staging mixed three-app workload, realistic tenant/data distribution",
+      "measured": null
+    },
+    {
+      "id": "CAP02",
+      "metric": "sustained / 60-second burst throughput",
+      "target": {
+        "sustained": 50,
+        "burst": 150
+      },
+      "unit": "requests/second",
+      "verification": "30-minute steady load plus controlled burst with DB/broker saturation metrics",
+      "measured": null
+    },
+    {
+      "id": "LAT01",
+      "metric": "p95 server response latency",
+      "target": {
+        "reads": 500,
+        "writes": 800
+      },
+      "unit": "milliseconds",
+      "verification": "Separate read/write endpoint distributions under approved load, excluding client network time",
+      "measured": null
+    },
+    {
+      "id": "REL01",
+      "metric": "unexpected server error ratio under target load",
+      "target": 0.1,
+      "unit": "percent",
+      "verification": "Exclude intentional validation/auth failures; retain request traces",
+      "measured": null
+    },
+    {
+      "id": "EVT01",
+      "metric": "committed outbox to consumer persistence delay",
+      "target": {
+        "p95": 10,
+        "p99": 30
+      },
+      "unit": "seconds",
+      "verification": "Healthy-load measurement plus crash/retry/poison-event recovery drill",
+      "measured": null
+    },
+    {
+      "id": "REC01",
+      "metric": "RPO / RTO",
+      "target": {
+        "RPO": 15,
+        "RTO": 60
+      },
+      "unit": "minutes",
+      "verification": "Isolated restore of all seven owned databases plus broker/event reconciliation; validate cross-app balances and ownership",
+      "measured": null
+    },
+    {
+      "id": "COV01",
+      "metric": "new/changed-code coverage",
+      "target": {
+        "lines": 90,
+        "branches": 85
+      },
+      "unit": "percent",
+      "verification": "Instrumented report with explicit included sources and exclusions, not source-reference test candidates",
+      "measured": null
+    },
+    {
+      "id": "COV02",
+      "metric": "release-scope registered business actions with contract/integration/E2E acceptance",
+      "target": 100,
+      "unit": "percent",
+      "verification": "Approved semantic matrix; all positive/negative authorization and persistence journeys executed on exact candidate",
+      "measured": null
+    },
+    {
+      "id": "AV01",
+      "metric": "monthly availability SLO",
+      "target": 99.9,
+      "unit": "percent",
+      "verification": "Approved service-level indicators and operating telemetry; no historical measurement supplied",
+      "measured": null
+    }
+  ]
+}

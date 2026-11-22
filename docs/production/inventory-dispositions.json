@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "reviewScope": "Source-level review of the listed modal-open actions only. Other actions are not exempted by name or by being local/demo.",
+  "presentationOnly": [
+    {
+      "featureId": "action:admin:demo:new-question",
+      "sourceFileSha256": "a27aad824a2b3f9f9bdcc860806a4e0558a028530ab4bb201e305b55873fcfad",
+      "reason": "Reviewed action opens the question editor modal and reads current demo values only; opening the editor does not persist a business change. The separately inventoried save handler is NOT presentation-only.",
+      "downstreamActionIds": ["action:admin:demo:save-question"]
+    },
+    {
+      "featureId": "action:admin:demo:edit-question",
+      "sourceFileSha256": "a27aad824a2b3f9f9bdcc860806a4e0558a028530ab4bb201e305b55873fcfad",
+      "reason": "Reviewed action opens the question editor modal and reads current demo values only; opening the editor does not persist a business change. The separately inventoried save handler is NOT presentation-only.",
+      "downstreamActionIds": ["action:admin:demo:save-question"]
+    },
+    {
+      "featureId": "action:admin:demo:new-activity",
+      "sourceFileSha256": "a27aad824a2b3f9f9bdcc860806a4e0558a028530ab4bb201e305b55873fcfad",
+      "reason": "Reviewed action opens the activity editor modal and reads current demo values only; opening the editor does not persist a business change. The separately inventoried save handler is NOT presentation-only.",
+      "downstreamActionIds": ["action:admin:demo:save-activity"]
+    },
+    {
+      "featureId": "action:admin:demo:edit-activity",
+      "sourceFileSha256": "a27aad824a2b3f9f9bdcc860806a4e0558a028530ab4bb201e305b55873fcfad",
+      "reason": "Reviewed action opens the activity editor modal and reads current demo values only; opening the editor does not persist a business change. The separately inventoried save handler is NOT presentation-only.",
+      "downstreamActionIds": ["action:admin:demo:save-activity"]
+    },
+    {
+      "featureId": "action:admin:demo:new-service",
+      "sourceFileSha256": "a27aad824a2b3f9f9bdcc860806a4e0558a028530ab4bb201e305b55873fcfad",
+      "reason": "Reviewed action opens the service editor modal and reads current demo values only; opening the editor does not persist a business change. The separately inventoried save handler is NOT presentation-only.",
+      "downstreamActionIds": ["action:admin:demo:save-service"]
+    },
+    {
+      "featureId": "action:admin:demo:edit-service",
+      "sourceFileSha256": "a27aad824a2b3f9f9bdcc860806a4e0558a028530ab4bb201e305b55873fcfad",
+      "reason": "Reviewed action opens the service editor modal and reads current demo values only; opening the editor does not persist a business change. The separately inventoried save handler is NOT presentation-only.",
+      "downstreamActionIds": ["action:admin:demo:save-service"]
+    }
+  ]
+}
