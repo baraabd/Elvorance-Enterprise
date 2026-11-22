@@ -161,7 +161,7 @@ test('a cached command cannot be replayed after the same subject loses its signe
   });
   t.after(() => app.close());
   const elevated = await token({ sub: 'same-user', roles: ['admin'], rep_id: undefined });
-  const downgraded = await token({ sub: 'same-user', roles: [], rep_id: undefined });
+  const downgraded = await token({ sub: 'same-user', roles: ['support'], rep_id: undefined });
   const command = {
     method: 'POST' as const,
     url: '/v1/tenant',
@@ -179,4 +179,12 @@ test('a cached command cannot be replayed after the same subject loses its signe
   assert.equal(denied.statusCode, 409);
   assert.equal(denied.json().name, undefined);
   assert.equal(denied.json().error.code, 'IDEMPOTENCY_CONFLICT');
+  const roleless = await token({ sub: 'same-user', roles: [], rep_id: undefined });
+  const rejected = await app.inject({
+    ...command,
+    headers: { authorization: `Bearer ${roleless}`, 'idempotency-key': 'role-replay-probe' },
+  });
+  assert.equal(rejected.statusCode, 401);
+  assert.equal(rejected.json().error.code, 'INVALID_TOKEN');
+  assert.equal(rejected.json().name, undefined);
 });

@@ -2,6 +2,7 @@ name: Isolated acceptance verification
 on:
   pull_request:
     paths:
+      - 'apps/client-mobile/**'
       - 'services/**'
       - 'packages/**'
       - 'infra/identity/**'
@@ -78,3 +79,65 @@ jobs:
           path: dist/acceptance/evidence/
           if-no-files-found: warn
           retention-days: 14
+  client-android-shell:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: npm ci
+      - name: Build and sync the client demo shell only
+        run: |
+          npm run build:apps
+          node tooling/scripts/mobile.mts sync client-mobile android
+      - name: Compile, lint and unit-test the debug client shell
+        run: |
+          chmod +x apps/client-mobile/android/gradlew
+          ./apps/client-mobile/android/gradlew -p apps/client-mobile/android --no-daemon lintDebug testDebugUnitTest assembleDebug
+      - run: sudo chmod 666 /dev/kvm
+      - name: Verify actual client package identity on emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          script: ./apps/client-mobile/android/gradlew -p apps/client-mobile/android --no-daemon connectedDebugAndroidTest
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: client-android-demo-shell-only
+          path: |
+            apps/client-mobile/android/app/build/reports/
+            apps/client-mobile/android/app/build/outputs/androidTest-results/
+          retention-days: 7
+  client-ios-shell:
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm ci
+      - name: Build and sync the client demo shell only
+        run: |
+          npm run build:apps
+          node tooling/scripts/mobile.mts sync client-mobile ios
+      - name: Build and launch the client shell on an iPhone simulator
+        run: node tests/acceptance/client-ios-shell.mts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: client-ios-demo-shell-only
+          path: dist/acceptance/client-ios-shell.json
+          if-no-files-found: warn
+          retention-days: 7
