@@ -118,9 +118,7 @@ export async function workspace(root: string): Promise<Workspace> {
       if (!(error instanceof Error && 'code' in error && error.code === 'ENOENT')) throw error;
     }
   }
-  const files = [...rooted, ...rootFiles]
-    .filter((path) => !path.startsWith('.github/workflows/s01-bootstrap'))
-    .sort();
+  const files = [...rooted, ...rootFiles].sort();
   const paths = files.filter((path) => codePattern.test(path));
   const program = ts.createProgram(
     paths.map((path) => resolve(root, path)),

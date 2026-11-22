@@ -1,6 +1,7 @@
 import { build, type Plugin } from 'esbuild';
 import { mkdir, readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
+import { pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import type { RuntimeRegistration } from './model.mts';
@@ -115,7 +116,9 @@ export async function runtimeRegistrations(ws: Workspace): Promise<RuntimeRegist
   const fake = `const fake=new Proxy(function(){throw new Error('Inventory must not call an API')},{get(){return fake;}});`;
   const live = `import {sectionsForRole} from './packages/api-client/src/live-workspace.ts';${fake}console.log(JSON.stringify(['admin','client'].flatMap(owner=>sectionsForRole(owner,fake).map(x=>({owner,mode:'server',kind:'route',key:x.id})))));`;
   output.push(...validate(await run('live-sections', live)));
-  const fastifyPath = createRequire(resolve(ws.root, 'package.json')).resolve('fastify');
+  const fastifyUrl = pathToFileURL(
+    createRequire(resolve(ws.root, 'package.json')).resolve('fastify'),
+  ).href;
   const observer: Plugin = {
     name: 'observe-real-fastify-registration',
     setup(builder) {
@@ -124,13 +127,13 @@ export async function runtimeRegistrations(ws: Workspace): Promise<RuntimeRegist
         namespace: 'inventory',
       }));
       builder.onLoad({ filter: /.*/, namespace: 'inventory' }, () => ({
-        contents: `import original from ${JSON.stringify(fastifyPath)};export default function(options){const owner=globalThis.__inventoryOwner;const app=original(options);app.addHook('onRoute',r=>{for(const method of Array.isArray(r.method)?r.method:[r.method])globalThis.__inventoryRoutes.push({owner,mode:'backend',kind:'api-route',key:method+' '+r.url,method,path:r.url,automatic:method==='HEAD'});});return app;}`,
+        contents: `import original from ${JSON.stringify(fastifyUrl)};export default function(options){const owner=globalThis.__inventoryOwner;const app=original(options);app.addHook('onRoute',r=>{for(const method of Array.isArray(r.method)?r.method:[r.method])globalThis.__inventoryRoutes.push({owner,mode:'backend',kind:'api-route',key:method+' '+r.url,method,path:r.url,automatic:method==='HEAD'});});return app;}`,
         resolveDir: ws.root,
       }));
-      builder.onResolve({ filter: /\/node_modules\/fastify\/fastify\.js$/ }, (args) => ({
-        path: args.path,
-        external: true,
-      }));
+      // File URLs preserve Windows drive letters/backslashes without bundling CommonJS internals.
+      builder.onResolve({ filter: /^file:\/\// }, (args) =>
+        args.path === fastifyUrl ? { path: args.path, external: true } : undefined,
+      );
     },
   };
   const imports = services

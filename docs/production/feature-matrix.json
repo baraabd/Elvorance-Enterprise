@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
-  "sourceDigest": "780e25abbf9ea5b5d7d5dd5245046c493223658c76c09b8bc727099d4c72999e",
+  "sourceDigest": "15fd530faed7acfb0db3eafee75a4443d4ec8ac7e26298ce9fb29d2ccdeb2b43",
   "sourceFiles": [
     {
       "path": ".gitattributes",
@@ -1749,7 +1749,7 @@
     },
     {
       "path": "tests/production/inventory.test.mts",
-      "sha256": "c443e4e01236d6c7b05fbde3449139d2cd1f3ba39288631322c5b1cc32ace1c7"
+      "sha256": "689fc2e9995ec1ab10805db858704054e5e57fc870b2079e173be2446ebfa75b"
     },
     {
       "path": "tests/production/workflow.test.mts",
@@ -1845,7 +1845,7 @@
     },
     {
       "path": "tooling/production/identity-fixture.mts",
-      "sha256": "6ecbe138d3fe1952fdb02e135937a9d580b82136e889632c9f4df8009b68a6b6"
+      "sha256": "085ba962cd44cbc18a7864d7b6fdb5a8bf6dfd201136963fd130c3d5d0d7f375"
     },
     {
       "path": "tooling/production/inventory.mts",
@@ -1865,7 +1865,7 @@
     },
     {
       "path": "tooling/production/runtime.mts",
-      "sha256": "d00e35f927f33d32a1ea01348dc017ec82855cd4701989e5614e46a98766cd13"
+      "sha256": "07b8af280116ea44df5d5400148ac67e2c01ff563b5fc93de1b9459dbd64c37d"
     },
     {
       "path": "tooling/production/security-source.mts",
@@ -1873,7 +1873,7 @@
     },
     {
       "path": "tooling/production/source.mts",
-      "sha256": "a68f6d5d5a31976936bb38d60242e8fc4300ddd266a3ef10bab96f72ba8f05fe"
+      "sha256": "52cb2429ce1b26bbccaa29d78305e533f41de6be7d913f26a6863cdd32c9a966"
     },
     {
       "path": "tooling/production/test-catalog.mts",
@@ -122453,6 +122453,14 @@
       "environment": "node"
     },
     {
+      "id": "T:tests/production/inventory.test.mts:fd9c0e39be23:1",
+      "path": "tests/production/inventory.test.mts",
+      "line": 187,
+      "title": "source inventory includes every workflow regardless of bootstrap-like naming",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
       "id": "T:tests/production/workflow.test.mts:2310e9d5449b:1",
       "path": "tests/production/workflow.test.mts",
       "line": 64,
@@ -123833,7 +123841,7 @@
     "features": 1837,
     "sourceFiles": 505,
     "runtimeRegistrations": 442,
-    "testCatalogEntries": 390,
+    "testCatalogEntries": 391,
     "unmappedWorkflows": 244,
     "unresolvedFeatures": 1373,
     "kind:account-lifecycle": 58,

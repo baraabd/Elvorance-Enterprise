@@ -12,6 +12,9 @@ if (!/^\d+$/.test(runId) || !/^\d+$/.test(attempt))
   throw new Error('Invalid isolated fixture identity');
 const name = `elvorance-s01-identity-${runId}-${attempt}`,
   base = 'https://127.0.0.1:18443';
+const uid = process.getuid?.();
+if (uid === undefined || uid <= 0)
+  throw new Error('Disposable identity verification requires a non-root POSIX runner.');
 const directory = await mkdtemp(resolve(tmpdir(), 'elvorance-s01-identity-'));
 const certificate = resolve(directory, 'localhost.crt'),
   key = resolve(directory, 'localhost.key'),
@@ -85,7 +88,8 @@ try {
     'basicConstraints=critical,CA:TRUE',
   ]);
   await chmod(key, 0o600);
-  // Root is restricted to this disposable, unprivileged container; the key mount is read-only.
+  // Match the private bind-mount owner without root or DAC-override capabilities.
+  // The official image grants its application directories write access to group 0.
   command(
     'docker',
     [
@@ -94,7 +98,7 @@ try {
       '--name',
       name,
       '--user',
-      '0:0',
+      `${uid}:0`,
       '--cap-drop',
       'ALL',
       '--security-opt',
@@ -124,6 +128,8 @@ try {
   created = true;
   let ready = false;
   for (let count = 0; count < 90; count++) {
+    if (command('docker', ['inspect', '--format', '{{.State.Status}}', name]) !== 'running')
+      throw new Error('Disposable identity container exited before TLS readiness');
     try {
       if ((await localRequest('/realms/master/.well-known/openid-configuration')).status === 200) {
         ready = true;
@@ -181,6 +187,18 @@ try {
       2,
     ) + '\n',
   );
+} catch (error) {
+  if (created) {
+    const diagnostic = spawnSync('docker', ['logs', '--tail', '80', name], {
+      encoding: 'utf8',
+      timeout: 10_000,
+      maxBuffer: 128 * 1024,
+    });
+    // Do not inspect environment variables or emit credential material.
+    const text = (diagnostic.stdout + diagnostic.stderr).replaceAll(password, '[redacted]');
+    process.stderr.write(text);
+  }
+  throw error;
 } finally {
   if (created) {
     const cleanup = spawnSync('docker', ['rm', '--force', name], {
