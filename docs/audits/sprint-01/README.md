@@ -1,3 +1,5 @@
+> Historical snapshot: the branch states, counts and results below belong to the explicitly identified 21 November revisions. See [23 November reconciliation](RECONCILIATION-20261123.md) and `docs/production/` for the current foundation.
+
 # Sprint 01 — تدقيق المصدر والتحقق والإصلاح المحدود
 
 التاريخ: 2026-11-21. النطاق: Admin Web وClient App وRepresentative App. هذه نتيجة فحص مصدر وتشغيل اختبارات، وليست موافقة إطلاق أو شهادة خلو من الثغرات.

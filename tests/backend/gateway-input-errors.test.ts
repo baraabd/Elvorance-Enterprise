@@ -40,6 +40,7 @@ for (const sample of [
     assert.equal(response.json().error.code, 'INVALID_REQUEST');
     assert.equal(response.json().error.message, 'The request could not be processed');
     assert.equal(typeof response.json().error.requestId, 'string');
+    assert.equal(response.headers['cache-control'], 'no-store');
     assert.equal(forwarded, false);
   });
 }

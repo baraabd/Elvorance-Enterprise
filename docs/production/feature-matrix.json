@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
-  "sourceDigest": "85cb662eb1d305ee149781793b16c0cc2d0952dba141b51661eb187793a63c8b",
+  "sourceDigest": "6bf0225b36b0247eec1de7fc1840361a55200b4c72eb91c3396b0483987e1413",
   "sourceFiles": [
     {
       "path": ".gitattributes",
@@ -1597,7 +1597,7 @@
     },
     {
       "path": "tests/backend/gateway-input-errors.test.ts",
-      "sha256": "4269f3960d7ec37f64cac521b2eea2cb3c566a2766b61c26d67317e16e833ced"
+      "sha256": "6a3e086fe52fd578085545255d8e9dffcfca74a26622f4f1181fbb890dcb6f40"
     },
     {
       "path": "tests/backend/gateway-readiness.test.ts",
@@ -1770,6 +1770,10 @@
     {
       "path": "tests/production/semantic-bindings.test.mts",
       "sha256": "55f1dc0223e500b1a15fb090c68056160f2a5aa7b589b8b8e4d4277a2c10852c"
+    },
+    {
+      "path": "tests/production/sprint01-inventory.test.mts",
+      "sha256": "6b84b399543129d5935d6503945af751fdfd5c7cc0e68472845c6e76f79ef6d4"
     },
     {
       "path": "tests/production/workflow.test.mts",
@@ -2044,6 +2048,10 @@
       "sha256": "3c98ec27901061500b6035c85e1002269816110f9e162e3643362a17c7ff59fb"
     },
     {
+      "path": "tooling/scripts/sprint01-inventory.mts",
+      "sha256": "3bf9ce7fb64cfbfbfe4c370f0e8e1fbdb31f9d6222e06e8fd012e2071abd11df"
+    },
+    {
       "path": "tooling/scripts/test-local-identity.mts",
       "sha256": "04b84498ecb12d88f6434d3e09d9713aad1ee01a0cf419cecda48d387d507815"
     },
@@ -2061,7 +2069,7 @@
     },
     {
       "path": "tsconfig.json",
-      "sha256": "c30f860e567f6693d358104ca68a0684b51025ea37696940778bba69aea3b76c"
+      "sha256": "4aac7c7183fea1c45eb2f8c0e0e3a6d94644293b9d4f0fcb38a9f7921682ded1"
     }
   ],
   "runtimeRegistrations": [
@@ -19318,6 +19326,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19325,6 +19334,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19450,6 +19460,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19457,6 +19468,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19518,6 +19530,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19525,6 +19538,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19586,6 +19600,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19593,6 +19608,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19718,6 +19734,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19725,6 +19742,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -28158,6 +28176,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -28174,6 +28193,7 @@
           "T:packages/api-client/test/live-data.test.ts:f1e30808fd87:1",
           "T:packages/api-client/test/live-data.test.ts:f9bc731774c2:1",
           "T:packages/api-client/test/live-data.test.ts:ffacf95f9b45:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -28782,6 +28802,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -28798,6 +28819,7 @@
           "T:packages/api-client/test/live-data.test.ts:f1e30808fd87:1",
           "T:packages/api-client/test/live-data.test.ts:f9bc731774c2:1",
           "T:packages/api-client/test/live-data.test.ts:ffacf95f9b45:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -31040,6 +31062,7 @@
         "contract": [],
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31048,6 +31071,7 @@
         "e2e": [],
         "related": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31111,6 +31135,7 @@
         "contract": [],
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31119,6 +31144,7 @@
         "e2e": [],
         "related": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31639,6 +31665,7 @@
         "contract": [],
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31647,6 +31674,7 @@
         "e2e": [],
         "related": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31710,6 +31738,7 @@
         "contract": [],
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31718,6 +31747,7 @@
         "e2e": [],
         "related": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -32238,6 +32268,7 @@
         "contract": [],
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -32246,6 +32277,7 @@
         "e2e": [],
         "related": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -36592,6 +36624,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
@@ -36604,6 +36637,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
@@ -37265,6 +37299,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
@@ -37277,6 +37312,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
@@ -37797,6 +37833,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
@@ -37809,6 +37846,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
@@ -82311,6 +82349,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -82318,6 +82357,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -93263,6 +93303,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -93270,6 +93311,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -112241,6 +112283,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-commercial.test.ts:03e613141013:1",
           "T:tests/integration/live-commercial.test.ts:fba8c3e58172:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
@@ -112251,6 +112294,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-commercial.test.ts:03e613141013:1",
           "T:tests/integration/live-commercial.test.ts:fba8c3e58172:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
@@ -116762,6 +116806,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1",
@@ -116771,6 +116816,7 @@
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
           "T:packages/api-client/test/client.test.ts:ef9b4a454056:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1",
@@ -136612,6 +136658,14 @@
       "environment": "node"
     },
     {
+      "id": "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
+      "path": "tests/backend/gateway-input-errors.test.ts",
+      "line": 62,
+      "title": "gateway preserves authentication errors without forwarding",
+      "scope": "integration",
+      "environment": "node"
+    },
+    {
       "id": "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
       "path": "tests/backend/gateway-input-errors.test.ts",
       "line": 22,
@@ -137912,6 +137966,38 @@
       "path": "tests/production/semantic-bindings.test.mts",
       "line": 149,
       "title": "unknown runtime URL expressions remain unresolved rather than canonicalized",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/production/sprint01-inventory.test.mts:5d631ecda2dd:1",
+      "path": "tests/production/sprint01-inventory.test.mts",
+      "line": 157,
+      "title": "supplementary inventory classifies ${namespace} gateway namespace without hiding unknown proxies",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/production/sprint01-inventory.test.mts:964256ea2e1d:1",
+      "path": "tests/production/sprint01-inventory.test.mts",
+      "line": 135,
+      "title": "supplementary inventory rejects malformed route contracts",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/production/sprint01-inventory.test.mts:e338e46dcced:1",
+      "path": "tests/production/sprint01-inventory.test.mts",
+      "line": 98,
+      "title": "supplementary inventory ${scenario.name}",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/production/sprint01-inventory.test.mts:f5d51ee40a0f:1",
+      "path": "tests/production/sprint01-inventory.test.mts",
+      "line": 9,
+      "title": "source inventory ${matched ? 'matches registered operations' : 'fails on a missing operation'}",
       "scope": "unit",
       "environment": "node"
     },
@@ -139294,9 +139380,9 @@
   ],
   "totals": {
     "features": 1837,
-    "sourceFiles": 515,
+    "sourceFiles": 517,
     "runtimeRegistrations": 442,
-    "testCatalogEntries": 435,
+    "testCatalogEntries": 440,
     "unmappedWorkflows": 244,
     "unresolvedFeatures": 1294,
     "kind:account-lifecycle": 58,
