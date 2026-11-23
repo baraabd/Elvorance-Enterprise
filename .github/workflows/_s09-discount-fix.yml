@@ -1,0 +1,90 @@
+name: Bind reviewed Sprint 09 financial regression fix
+on:
+  push:
+    branches: ['qa/sprint09-verification-20261123']
+permissions:
+  contents: read
+jobs:
+  prepare:
+    if: github.repository == 'baraabd/Elvorance-Enterprise' && github.ref == 'refs/heads/qa/sprint09-verification-20261123'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Apply exactly reviewed additive wire and billing validation changes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          def patch(path, digest, before, after):
+              file=Path(path); text=file.read_text()
+              assert hashlib.sha256(text.encode()).hexdigest()==digest, path
+              assert text.count(before)==1, path
+              file.write_text(text.replace(before,after))
+          patch('packages/contracts/src/index.ts', '3845c24cfde5e6865d0708485b8fe2d0c687442c06416fa7d30402e957e3a72f', 'export interface ContractSnapshot {', 'export interface ContractSnapshot {\n  /** Additive v1 fields. Both absent means a legacy undiscounted contract. */\n  subtotalMinor?: number;\n  discountMinor?: number;')
+          patch('services/sales/src/domain/model.ts', 'a84b55a39cac6fea8dbdf9b603d19f72d42df7eb79a861a4f0d027e9693d455a', '  items: structuredClone(value.items),\n  totalMinor: value.totalMinor,', '  items: structuredClone(value.items),\n  // Preserve the approved commercial evidence rather than inferring a discount downstream.\n  subtotalMinor: value.quoteSnapshot.subtotalMinor ?? value.totalMinor,\n  discountMinor: value.quoteSnapshot.discountMinor ?? 0,\n  totalMinor: value.totalMinor,')
+          patch('services/billing/src/application/events.ts', '9f42b22bd7f99798e1cc96a66f7c536ff7250dd37252df45cda2940bfc6071f1', "  assert(itemTotal === totalMinor, 'CONTRACT_TOTAL', 'Contract item total is inconsistent');", """  // v1 events without either field retain the original undiscounted invariant.
+            // A lower net amount is never treated as an implicit/unauthorized discount.
+            const hasSubtotal = Object.hasOwn(body, 'subtotalMinor');
+            const hasDiscount = Object.hasOwn(body, 'discountMinor');
+            assert(hasSubtotal === hasDiscount, 'CONTRACT_TOTAL', 'Contract pricing evidence is incomplete');
+            const subtotalMinor = hasSubtotal
+              ? integer(body.subtotalMinor, 'subtotalMinor', 1, 100_000_000_000)
+              : totalMinor;
+            const discountMinor = hasDiscount
+              ? integer(body.discountMinor, 'discountMinor', 0, subtotalMinor - 1)
+              : 0;
+            assert(
+              Number.isSafeInteger(itemTotal) && itemTotal === subtotalMinor &&
+                subtotalMinor - discountMinor === totalMinor,
+              'CONTRACT_TOTAL',
+              'Contract subtotal, discount and net total are inconsistent',
+            );""")
+          Path('.github/workflows/_s09-discount-fix.yml').unlink()
+          PY
+      - name: Format and regenerate traceability without any baseline waiver
+        run: |
+          npx prettier --write packages/contracts/src/index.ts services/sales/src/domain/model.ts services/billing/src/application/events.ts tests/backend/sprint09-discount-fulfillment.test.ts
+          npm run check:types
+          npm run inventory:write
+          node tooling/qa/sprint09-matrix.mts --write
+          git diff --exit-code -- docs/production/debt-baseline.json docs/production/quality-baseline.json docs/production/full-ci-contract.json
+          npm run inventory:check
+          npm run check:format
+      - name: Publish only the requested review branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = refs/heads/qa/sprint09-verification-20261123
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add packages/contracts/src/index.ts services/sales/src/domain/model.ts services/billing/src/application/events.ts tests/backend/sprint09-discount-fulfillment.test.ts docs/production docs/qa .github/workflows
+          git commit -m 'fix(s09): preserve approved discount evidence through billing fulfillment'
+          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" push origin HEAD:refs/heads/qa/sprint09-verification-20261123
+          unset auth GH_TOKEN
+      - name: Archive final review source
+        run: |
+          mkdir -p /tmp/sprint09-source
+          git archive --format=tar.gz HEAD > /tmp/sprint09-source/source.tar.gz
+          git rev-parse HEAD > /tmp/sprint09-source/sha.txt
+          git rev-parse HEAD^{tree} > /tmp/sprint09-source/tree.txt
+          git ls-tree -r HEAD > /tmp/sprint09-source/tree-manifest.txt
+          sha256sum /tmp/sprint09-source/source.tar.gz > /tmp/sprint09-source/source.sha256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sprint09-discount-fixed-source
+          path: /tmp/sprint09-source/
+          if-no-files-found: error
+          retention-days: 14
