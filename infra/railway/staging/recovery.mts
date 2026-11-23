@@ -1,3 +1,4 @@
+import { pgArguments, pgFailureCategory } from './pg-command.mts';
 import { Pool } from 'pg';
 import { PgRepository } from '../../../packages/service-kit/src/pg-repository.ts';
 import type { EventEnvelope, Principal } from '@elvorance/contracts';
@@ -16,19 +17,19 @@ import {
   privateDatabaseUrl,
   type Domain,
 } from './target.mts';
-function adminUrl(database?: string) {
+export function adminUrl(database?: string) {
   const url = privateDatabaseUrl(process.env.PGADMIN_URL ?? '');
   if (database) url.pathname = '/' + database;
   return url;
 }
-function ownerUrl(service: Domain, database = ownedName(service)) {
+export function ownerUrl(service: Domain, database = ownedName(service)) {
   const url = adminUrl(database);
   url.username = ownedName(service);
   url.password = process.env[service.toUpperCase() + '_DB_PASSWORD'] ?? '';
   ensure(/^[a-f0-9]{64}$/.test(url.password), 'Owned credential missing.');
   return url;
 }
-function pool(url: URL) {
+export function pool(url: URL) {
   return new Pool({
     connectionString: url.href,
     max: 1,
@@ -36,9 +37,10 @@ function pool(url: URL) {
     statement_timeout: 20000,
   });
 }
-async function command(program: string, args: string[], url: URL) {
+export async function command(program: string, args: string[], url: URL) {
   await new Promise<void>((resolve, reject) => {
-    const child = spawn(program, args, {
+    let diagnostic = '';
+    const child = spawn(program, pgArguments(program, args, url), {
       env: {
         PATH: process.env.PATH,
         HOME: process.env.HOME,
@@ -53,14 +55,23 @@ async function command(program: string, args: string[], url: URL) {
       timeout: 120000,
     });
     // Drain errors but never print SQL, connection details or dumped customer data.
-    child.stderr.on('data', () => {});
+    child.stderr.on('data', (chunk: Buffer) => {
+      if (diagnostic.length < 8192)
+        diagnostic += chunk.toString().slice(0, 8192 - diagnostic.length);
+    });
     child.on('error', () => reject(new Error(program + ' could not start.')));
     child.on('close', (code) =>
-      code === 0 ? resolve() : reject(new Error(program + ' failed with exit ' + code)),
+      code === 0
+        ? resolve()
+        : reject(
+            new Error(
+              program + ' failed with exit ' + code + ' (' + pgFailureCategory(diagnostic) + ')',
+            ),
+          ),
     );
   });
 }
-async function snapshot(db: Pool) {
+export async function snapshot(db: Pool) {
   const names = (
     await db.query<{ tablename: string }>(
       "SELECT tablename FROM pg_tables WHERE schemaname='public' ORDER BY tablename",
@@ -146,7 +157,7 @@ export async function recovery(tenantId: string, replay: RecoveryReplay) {
         await source.query('COMMIT');
         const backupMs = performance.now() - dumpStarted;
         await root.query(
-          `CREATE DATABASE ${identifier(restored)} OWNER ${identifier(ownedName(service))}`,
+          `CREATE DATABASE ${identifier(restored)} OWNER ${identifier(ownedName(service))} TEMPLATE template0`,
         );
         created.push({ service, database: restored });
         await root.query(`REVOKE ALL ON DATABASE ${identifier(restored)} FROM PUBLIC`);
