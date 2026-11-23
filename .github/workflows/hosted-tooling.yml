@@ -1,0 +1,28 @@
+name: Hosted staging tooling
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm ci
+      - run: npm run check:types
+      - run: node tooling/scripts/hosted/build-ops.mts
+      - run: node tooling/scripts/hosted/build-web.mts
+        env:
+          SOURCE_REVISION: ${{ github.sha }}
+      - name: Upload server-only source-bound build evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: hosted-web-build-provenance
+          path: dist/hosted-web/*/build.json
+          retention-days: 30
