@@ -53,7 +53,8 @@ export interface ContractSnapshot {
   customerName: string;
   currency: string;
   items: ScopeItem[];
-  /** Approved reduction from the immutable quote. Legacy events omit this only for zero discount. */
+  /** Additive v1 fields. Both absent is the legacy, undiscounted representation. */
+  subtotalMinor?: number;
   discountMinor?: number;
   totalMinor: number;
   terms: string;

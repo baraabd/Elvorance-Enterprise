@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
-  "sourceDigest": "8ce4b505e3a394ff07dc0d2370219ee2a64d6940468c746fccbb3982823038c7",
+  "sourceDigest": "2b5e6251fb208ffcb53510614004f62e14c406a893dd473b7878c442f6eed624",
   "sourceFiles": [
     {
       "path": ".gitattributes",
@@ -993,7 +993,7 @@
     },
     {
       "path": "packages/contracts/src/index.ts",
-      "sha256": "e4ec1ab0feac46b648baf2e7e43440e8f62eb2a186586a7ea15d4391fb36da7f"
+      "sha256": "a43d92b61a49585143211bc7bc283ee8edbe49bb88606cd641145f39f294c254"
     },
     {
       "path": "packages/demo-data/package.json",
@@ -1289,7 +1289,7 @@
     },
     {
       "path": "services/billing/src/application/events.ts",
-      "sha256": "37e866c21ebad5d7d52debdbe4a0b7fe6bfa4345f9ab73515bb539656b243a6b"
+      "sha256": "31ac34ab76840c393cd1f85e92e51047906ef978ff2ecbebcd0051ce5b6f6979"
     },
     {
       "path": "services/billing/src/application/payments.ts",
@@ -1537,7 +1537,7 @@
     },
     {
       "path": "services/sales/src/domain/model.ts",
-      "sha256": "398ddceb21bf196e7c3c646a74b714071e57d5e15de3b8f4ab4fed373325cbcb"
+      "sha256": "c54b8d5255650a0fcd2810b6186bd423e029f740cc3d5fb67b4d4a0edb23affa"
     },
     {
       "path": "services/sales/src/domain/quote.ts",
@@ -1613,15 +1613,15 @@
     },
     {
       "path": "tests/admin/chromium.mts",
-      "sha256": "3bcdf78f01134f5c72869358b782c417a95b216e9f1f210aae5cd03156c891d5"
+      "sha256": "1b51b25a9a5b8c4703e47436e5afbe3290765de417207a44a6bdffb9e3066ff3"
     },
     {
       "path": "tests/admin/ci.test.mts",
-      "sha256": "80f0941ad5f31cec18131ceb92aa6286f2d8ae316367c7bec3cff759c08a7234"
+      "sha256": "7cc159f5b7ac3a847c02fafa68743cbf3e77207e807d0db31ae100be02069e68"
     },
     {
       "path": "tests/admin/discount-event.test.ts",
-      "sha256": "79adeca708524d7f1be4c944bac016cca6ef21fca2d98176bda2d95ee596f8cf"
+      "sha256": "36004d7b27fd96d5cef1eb63c71f92cb7852db5cff20b6010c9aaf56e9b7cb0a"
     },
     {
       "path": "tests/admin/dom.mts",
@@ -47191,6 +47191,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -47258,6 +47260,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -47325,6 +47329,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -47392,6 +47398,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -47459,6 +47467,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -47526,6 +47536,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -47698,7 +47710,7 @@
         "evidence": [
           "packages/events/src/index.ts:34-46",
           "packages/events/src/index.ts:62-93",
-          "services/billing/src/application/events.ts:13-89"
+          "services/billing/src/application/events.ts:13-100"
         ]
       },
       "currentStatus": "IMPLEMENTATION_OBSERVED_REVIEW_BLOCKED",
@@ -48515,6 +48527,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -51746,6 +51760,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
@@ -73316,6 +73332,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -73383,6 +73401,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -73450,6 +73470,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -73517,6 +73539,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -73584,6 +73608,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -73651,6 +73677,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -73718,6 +73746,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -73785,6 +73815,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -109517,6 +109549,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
@@ -117323,6 +117357,8 @@
           "T:tests/admin/admin.test.ts:bc647c96d316:1",
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/admin/e2e.ts:377909911c33:1",
           "T:tests/admin/e2e.ts:a2a97a674cd0:1",
           "T:tests/regression/workflow-audit.cts:080a32750687:1",
@@ -143840,6 +143876,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -143907,6 +143945,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
@@ -144548,6 +144588,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
@@ -144623,6 +144665,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
@@ -144698,6 +144742,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
@@ -144773,6 +144819,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
@@ -144848,6 +144896,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
@@ -144923,6 +144973,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
@@ -144998,6 +145050,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
@@ -145130,6 +145184,8 @@
         "related": [
           "T:tests/admin/discount-event.test.ts:29390bdff4e8:1",
           "T:tests/admin/discount-event.test.ts:69027bb6484c:1",
+          "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+          "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
@@ -147819,7 +147875,7 @@
     {
       "id": "T:tests/admin/ci.test.mts:7018b53bf140:1",
       "path": "tests/admin/ci.test.mts",
-      "line": 6,
+      "line": 10,
       "title": "S05 browser lane is mandatory, counted, isolated and retains existing runtime gates",
       "scope": "unit",
       "environment": "node"
@@ -147827,8 +147883,16 @@
     {
       "id": "T:tests/admin/ci.test.mts:95794597e19c:1",
       "path": "tests/admin/ci.test.mts",
-      "line": 32,
+      "line": 36,
       "title": "S05 CI rejects ${storage}/${driver} as browser persistence acceptance",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/admin/ci.test.mts:cffe723c8ec0:1",
+      "path": "tests/admin/ci.test.mts",
+      "line": 53,
+      "title": "S05 browser cleanup waits for ${ignoreTerm ? 'forced' : 'normal'} termination and is idempotent",
       "scope": "unit",
       "environment": "node"
     },
@@ -147845,6 +147909,22 @@
       "path": "tests/admin/discount-event.test.ts",
       "line": 38,
       "title": "S05 billing accepts ${name} and delivers invoices exactly once",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/admin/discount-event.test.ts:7abba161c65c:1",
+      "path": "tests/admin/discount-event.test.ts",
+      "line": 83,
+      "title": "S05 billing rejects Sprint04 ${name} evidence atomically",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/admin/discount-event.test.ts:b5db2ebcd2aa:1",
+      "path": "tests/admin/discount-event.test.ts",
+      "line": 97,
+      "title": "S05 billing accepts the Sprint04 Sales unit-price ceiling",
       "scope": "unit",
       "environment": "node"
     },
@@ -150981,7 +151061,7 @@
     "features": 1944,
     "sourceFiles": 533,
     "runtimeRegistrations": 454,
-    "testCatalogEntries": 467,
+    "testCatalogEntries": 470,
     "unmappedWorkflows": 242,
     "unresolvedFeatures": 1291,
     "kind:account-lifecycle": 58,

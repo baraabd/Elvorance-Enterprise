@@ -1,10 +1,34 @@
 /** Minimal Chrome DevTools test driver; Chromium is an explicit test prerequisite. */
-import { spawn } from 'node:child_process';
+import { spawn, type ChildProcess } from 'node:child_process';
 import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 type Message = { id?: number; error?: { message: string }; result?: Record<string, unknown> };
+/** Wait for the owned process to close before removing its still-writable profile. */
+export function browserCleanup(child: ChildProcess, directory: string) {
+  const closed = new Promise<void>((resolve) => {
+    if (child.exitCode !== null || child.signalCode !== null) resolve();
+    else child.once('close', () => resolve());
+  });
+  let cleanup: Promise<void> | undefined;
+  return () => {
+    cleanup ??= (async () => {
+      child.kill('SIGTERM');
+      const wait = (milliseconds: number) =>
+        Promise.race([closed.then(() => true), delay(milliseconds).then(() => false)]);
+      if (!(await wait(2000))) {
+        child.kill('SIGKILL');
+        if (!(await wait(3000)))
+          throw new Error('Chromium did not close; its owned temporary profile was retained.');
+      }
+      // Chrome helper processes may briefly finish profile writes after the parent exits.
+      // Retry transient filesystem contention; do not suppress a persistent cleanup failure.
+      await rm(directory, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 });
+    })();
+    return cleanup;
+  };
+}
 export async function browser() {
   const executable = process.env.ELVORANCE_CHROMIUM;
   if (!executable)
@@ -26,16 +50,11 @@ export async function browser() {
     ],
     { stdio: ['ignore', 'ignore', 'pipe'] },
   );
+  const cleanup = browserCleanup(child, directory);
   let socket: WebSocket | undefined;
   async function close() {
     socket?.close();
-    child.kill();
-    await Promise.race([
-      new Promise<void>((resolve) => child.once('exit', () => resolve())),
-      delay(2000),
-    ]);
-    if (child.exitCode === null) child.kill('SIGKILL');
-    await rm(directory, { recursive: true, force: true });
+    await cleanup();
   }
   try {
     const endpoint = await new Promise<string>((resolve, reject) => {

@@ -14,7 +14,7 @@ const payload = (totalMinor: number, discountMinor?: number) => ({
   customerName: 'Isolated test',
   currency: 'SAR',
   totalMinor,
-  ...(discountMinor === undefined ? {} : { discountMinor }),
+  ...(discountMinor === undefined ? {} : { subtotalMinor: 10000, discountMinor }),
   items: [
     {
       serviceId: 'service-s05',
@@ -73,3 +73,38 @@ for (const discount of [undefined, -2000, 10001, 1999, 2000.5]) {
     );
   });
 }
+
+for (const [name, changes] of [
+  ['missing subtotal', { subtotalMinor: undefined }],
+  ['missing discount', { discountMinor: undefined }],
+  ['incorrect subtotal', { subtotalMinor: 9999 }],
+  ['fractional subtotal', { subtotalMinor: 10000.5 }],
+] as const) {
+  test(`S05 billing rejects Sprint04 ${name} evidence atomically`, async () => {
+    const repo = new MemoryRepository('billing', ['contract_accounts', 'invoices', 'payments']);
+    const event = envelope('sales', 'tenant-s05', 'contract.approved.v1', 'contract-s05', 2, {
+      ...payload(8000, 2000),
+      ...changes,
+    });
+    await assert.rejects(consumeEvent(repo, 'billing', event, handleEvent));
+    assert.equal((await repo.transaction('tenant-s05', (tx) => tx.list('invoices'))).length, 0);
+    assert.equal(
+      (await repo.transaction('tenant-s05', (tx) => tx.list('contract_accounts'))).length,
+      0,
+    );
+  });
+}
+test('S05 billing accepts the Sprint04 Sales unit-price ceiling', async () => {
+  const repo = new MemoryRepository('billing', ['contract_accounts', 'invoices', 'payments']);
+  const value = payload(2_000_000_000, 0);
+  value.subtotalMinor = 2_000_000_000;
+  const item = value.items[0];
+  assert.ok(item);
+  item.unitPriceMinor = 2_000_000_000;
+  const event = envelope('sales', 'tenant-s05', 'contract.approved.v1', 'contract-s05', 2, value);
+  assert.equal(await consumeEvent(repo, 'billing', event, handleEvent), 'processed');
+  const rows = await repo.transaction('tenant-s05', (tx) =>
+    tx.list<Entity & { amountMinor: number }>('invoices'),
+  );
+  assert.equal(rows[0]?.amountMinor, 2_000_000_000);
+});
