@@ -176,7 +176,7 @@ test('a cached command cannot be replayed after the same subject loses its signe
     ...command,
     headers: { authorization: `Bearer ${downgraded}`, 'idempotency-key': 'role-replay-probe' },
   });
-  assert.equal(denied.statusCode, 409);
+  assert.equal(denied.statusCode, 403);
   assert.equal(denied.json().name, undefined);
-  assert.equal(denied.json().error.code, 'IDEMPOTENCY_CONFLICT');
+  assert.equal(denied.json().error.code, 'FORBIDDEN');
 });

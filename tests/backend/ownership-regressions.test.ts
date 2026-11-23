@@ -244,9 +244,9 @@ test('retained rep_id/client_id claims never grant list, detail or ticket action
   for (const { app, paths } of apps)
     for (const [path, id] of paths) {
       const list = await call(app, 'GET', `/v1/${path}`, 'unused');
-      assert.equal(list.status, 200);
-      assert.deepEqual(list.body.items, []);
-      assert.equal((await call(app, 'GET', `/v1/${path}/${id}`, 'unused')).status, 404);
+      assert.equal(list.status, 403);
+      assert.equal(list.body.items, undefined);
+      assert.equal((await call(app, 'GET', `/v1/${path}/${id}`, 'unused')).status, 403);
     }
   const communications = apps.at(-1)!.app;
   assert.equal(
@@ -256,7 +256,7 @@ test('retained rep_id/client_id claims never grant list, detail or ticket action
         message: 'Unauthorized reply',
       })
     ).status,
-    404,
+    403,
   );
   assert.equal(
     (
@@ -265,7 +265,7 @@ test('retained rep_id/client_id claims never grant list, detail or ticket action
         status: 'resolved',
       })
     ).status,
-    404,
+    403,
   );
   assert.equal(
     (
@@ -273,7 +273,7 @@ test('retained rep_id/client_id claims never grant list, detail or ticket action
         expectedVersion: 1,
       })
     ).status,
-    404,
+    403,
   );
 });
 
