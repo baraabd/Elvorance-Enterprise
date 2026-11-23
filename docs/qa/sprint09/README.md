@@ -12,19 +12,19 @@ Reviewed PRs #1–#8, #10 and #11. PR #6 reached its feature branch after that b
 
 `test-matrix.json` enumerates every discovered feature across all three applications and services, with source, roles, persistence, candidate test IDs and unresolved gaps. Links are not executed per-feature acceptance or instrumented coverage. Regenerate with `node tooling/qa/sprint09-matrix.mts --write`; check without `--write`.
 
-| Area | Verification | Boundary |
-| --- | --- | --- |
-| Admin, Client, Representative | Existing unit/UI integration, parity and regression suites | Frozen 64-route subset is not every discovered screen or hosted browser journey |
-| Seven services and gateway | Type/build, API contract inventory, PostgreSQL/RabbitMQ Compose | Synthetic CI authentication, not hosted company accounts |
-| Cross-role workflow | Rep discounted quote; blocked send/self-review; admin review; client decision; separate contract consent; one project/two unpaid invoices | Real HTTP/database/events, not three-browser UI automation or payment processing |
-| Identity | Signed roleless regressions and existing real Keycloak lifecycle lane | Synthetic disposable account |
-| Roles/tenants/owners | 84-operation negative matrix with existing-record positive controls | In-process handlers and memory storage, not exhaustive business states |
-| Database isolation | Owned roles, RLS, outbox/inbox/idempotency and cross-database denials | Isolated CI PostgreSQL |
-| Recovery | Actual pg_dump/pg_restore to random new databases; exact rows, RLS, replay, outbox, cleanup | Not hosted backup/PITR/coordinated cross-service RTO/RPO |
-| Diagnostic load | 120 gateway/CRM/PostgreSQL reads per concurrency 1, 4, 8 | Not staging capacity/load/stress acceptance |
-| Security | npm audit, narrow source credential-pattern scan, CodeQL security-extended SARIF | Successful analysis is not zero findings; untriaged findings fail the SAST gate |
-| Native | Existing Android emulator and iOS simulator harness lanes | Physical Android/iPhone NOT EXECUTED; no connected devices; no signed final application |
-| FULL-CI | Existing eight lanes and fail-closed aggregate retained | No baseline reset, test deletion or missing-evidence waiver |
+| Area                          | Verification                                                                                                                              | Boundary                                                                                |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Admin, Client, Representative | Existing unit/UI integration, parity and regression suites                                                                                | Frozen 64-route subset is not every discovered screen or hosted browser journey         |
+| Seven services and gateway    | Type/build, API contract inventory, PostgreSQL/RabbitMQ Compose                                                                           | Synthetic CI authentication, not hosted company accounts                                |
+| Cross-role workflow           | Rep discounted quote; blocked send/self-review; admin review; client decision; separate contract consent; one project/two unpaid invoices | Real HTTP/database/events, not three-browser UI automation or payment processing        |
+| Identity                      | Signed roleless regressions and existing real Keycloak lifecycle lane                                                                     | Synthetic disposable account                                                            |
+| Roles/tenants/owners          | 84-operation negative matrix with existing-record positive controls                                                                       | In-process handlers and memory storage, not exhaustive business states                  |
+| Database isolation            | Owned roles, RLS, outbox/inbox/idempotency and cross-database denials                                                                     | Isolated CI PostgreSQL                                                                  |
+| Recovery                      | Actual pg_dump/pg_restore to random new databases; exact rows, RLS, replay, outbox, cleanup                                               | Not hosted backup/PITR/coordinated cross-service RTO/RPO                                |
+| Diagnostic load               | 120 gateway/CRM/PostgreSQL reads per concurrency 1, 4, 8                                                                                  | Not staging capacity/load/stress acceptance                                             |
+| Security                      | npm audit, narrow source credential-pattern scan, CodeQL security-extended SARIF                                                          | Successful analysis is not zero findings; untriaged findings fail the SAST gate         |
+| Native                        | Existing Android emulator and iOS simulator harness lanes                                                                                 | Physical Android/iPhone NOT EXECUTED; no connected devices; no signed final application |
+| FULL-CI                       | Existing eight lanes and fail-closed aggregate retained                                                                                   | No baseline reset, test deletion or missing-evidence waiver                             |
 
 ## Hosted blockers and remaining risks
 

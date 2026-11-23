@@ -72,7 +72,11 @@ test('S09: signed roleless tokens receive 401 at both service and gateway withou
   const headers = { authorization: `Bearer ${token}` };
   const direct = await identity.inject({ method: 'GET', url: '/v1/me', headers });
   const proxied = await gateway.inject({ method: 'GET', url: '/v1/identity/me', headers });
-  assert.equal(direct.statusCode, 401, 'A signed token without application roles must not read /me');
+  assert.equal(
+    direct.statusCode,
+    401,
+    'A signed token without application roles must not read /me',
+  );
   assert.equal(proxied.statusCode, 401);
   assert.equal(forwards, 0, 'Gateway must reject before invoking any upstream');
 });
@@ -86,20 +90,30 @@ test('S09: real RS256 OIDC verification rejects roleless claims and accepts an a
   });
   server.listen(0, '127.0.0.1');
   await once(server, 'listening');
-  t.after(() => new Promise<void>((resolve, reject) => {
-    server.close((error) => (error ? reject(error) : resolve()));
-    server.closeAllConnections();
-  }));
+  t.after(
+    () =>
+      new Promise<void>((resolve, reject) => {
+        server.close((error) => (error ? reject(error) : resolve()));
+        server.closeAllConnections();
+      }),
+  );
   const address = server.address();
   assert.ok(address && typeof address !== 'string');
   const auth = authFromEnv({
-    NODE_ENV: 'test', AUTH_MODE: 'oidc', OIDC_ISSUER: issuer, OIDC_AUDIENCE: audience,
+    NODE_ENV: 'test',
+    AUTH_MODE: 'oidc',
+    OIDC_ISSUER: issuer,
+    OIDC_AUDIENCE: audience,
     OIDC_JWKS_URL: `http://127.0.0.1:${address.port}/jwks`,
   });
   async function sign(roles: string[]): Promise<string> {
     return new SignJWT({ ...claims, roles })
       .setProtectedHeader({ alg: 'RS256', kid: jwk.kid })
-      .setIssuer(issuer).setAudience(audience).setIssuedAt().setExpirationTime('2m').sign(privateKey);
+      .setIssuer(issuer)
+      .setAudience(audience)
+      .setIssuedAt()
+      .setExpirationTime('2m')
+      .sign(privateKey);
   }
   assert.deepEqual((await auth(`Bearer ${await sign(['admin'])}`)).roles, ['admin']);
   await assert.rejects(auth(`Bearer ${await sign([])}`), unauthorized);

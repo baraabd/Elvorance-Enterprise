@@ -56,7 +56,7 @@
     "packages/mobile-auth/src/vault.ts": "e3eed1c22df53095c31652b7558cef3d84ee150f91cf15730cafb7e932efdebe",
     "packages/mobile-platform/src/index.ts": "7d7bc93e87fda8c39e7647c979df174d9ed490d393b40aa633ee5590d882cb47",
     "packages/questionnaire/src/sync.ts": "fabecc407cfc4152d3c9c13de2304364bb88bc8c124337465dfa865d9f369024",
-    "packages/service-kit/src/auth.ts": "2787ba1fbf0548f551a04264f3e5ea883af608a1ad6c93d90e115330845de15c",
+    "packages/service-kit/src/auth.ts": "3faf089205d313beb80034286bf426c09c6742d6ac6c17b1b3c96cee15f45470",
     "packages/service-kit/src/http.ts": "58a920a8a8b2695f94b7fcab20f5beb952f2a1407c661a9a80d1d01bc1ba26ec",
     "packages/service-kit/src/memory-repository.ts": "f850fee4dd26c15e266fa57c140f143a0bc8a1ed0d10aa520c1be96d63907abf",
     "packages/service-kit/src/pagination.ts": "742f412c924bbecca8a2f91b5e95b5204a63dd721982549e6f120213f694f566",

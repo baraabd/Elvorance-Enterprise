@@ -102,7 +102,7 @@ test('authorization matrix: all catalogued operations reject invalid identities 
   const apps: Record<string, FastifyInstance> = {};
   const directory: CustomerDirectory & CatalogDirectory = {
     async getCatalog(authorization): Promise<CatalogSnapshot> {
-      const response = await apps.crm!.inject({
+      const response = await requiredValue(apps.crm).inject({
         method: 'GET',
         url: '/v1/catalog',
         headers: { authorization },
@@ -112,7 +112,7 @@ test('authorization matrix: all catalogued operations reject invalid identities 
       return response.json() as CatalogSnapshot;
     },
     async getCustomer(id, authorization): Promise<CustomerContext> {
-      const response = await apps.crm!.inject({
+      const response = await requiredValue(apps.crm).inject({
         method: 'GET',
         url: '/v1/customers/' + encodeURIComponent(id) + '/context',
         headers: { authorization },
@@ -122,14 +122,18 @@ test('authorization matrix: all catalogued operations reject invalid identities 
       return response.json() as CustomerContext;
     },
   };
-  apps.identity = identityApp({ repository: repositories.identity!, auth });
-  apps.crm = crmApp({ repository: repositories.crm!, auth });
-  apps.sales = salesApp({ repository: repositories.sales!, auth, customerDirectory: directory });
-  apps.delivery = deliveryApp({ repository: repositories.delivery!, auth });
-  apps.billing = billingApp({ repository: repositories.billing!, auth });
-  apps.tracking = trackingApp({ repository: repositories.tracking!, auth });
+  apps.identity = identityApp({ repository: requiredValue(repositories.identity), auth });
+  apps.crm = crmApp({ repository: requiredValue(repositories.crm), auth });
+  apps.sales = salesApp({
+    repository: requiredValue(repositories.sales),
+    auth,
+    customerDirectory: directory,
+  });
+  apps.delivery = deliveryApp({ repository: requiredValue(repositories.delivery), auth });
+  apps.billing = billingApp({ repository: requiredValue(repositories.billing), auth });
+  apps.tracking = trackingApp({ repository: requiredValue(repositories.tracking), auth });
   apps.communications = communicationsApp({
-    repository: repositories.communications!,
+    repository: requiredValue(repositories.communications),
     auth,
     customerDirectory: directory,
   });
@@ -140,9 +144,9 @@ test('authorization matrix: all catalogued operations reject invalid identities 
   const fetcher: typeof fetch = async (input, init) => {
     forwards++;
     const u = new URL(String(input));
-    const name = u.hostname.split('.')[0]!;
+    const name = requiredValue(u.hostname.split('.')[0]);
     assert.ok(apps[name], 'Gateway must never forward outside this fixture');
-    const response = await apps[name]!.inject({
+    const response = await requiredValue(apps[name]).inject({
       method: (init?.method ?? 'GET') as HTTPMethods,
       url: u.pathname + u.search,
       headers: Object.fromEntries(new Headers(init?.headers)),
@@ -223,7 +227,7 @@ test('authorization matrix: all catalogued operations reject invalid identities 
     ['tracking', '/v1/sessions/', 'admin'],
     ['communications', '/v1/tickets/', 'support'],
   ] as const) {
-    const response = await apps[service]!.inject({
+    const response = await requiredValue(apps[service]).inject({
       method: 'GET',
       url: path + fixtureId,
       headers: { authorization: 'Bearer ' + (await token([role])) },
@@ -263,7 +267,7 @@ test('authorization matrix: all catalogued operations reject invalid identities 
     transport: 'service' | 'gateway',
     authorization: string | undefined,
   ) {
-    return (transport === 'gateway' ? gateway : apps[op.service]!).inject({
+    return (transport === 'gateway' ? gateway : requiredValue(apps[op.service])).inject({
       method: op.method,
       url: pathFor(transport === 'gateway' ? op.gatewayPath : op.servicePath),
       headers: {
@@ -416,3 +420,8 @@ test('authorization matrix: all catalogued operations reject invalid identities 
   assert.deepEqual(failures, [], JSON.stringify(failures.slice(0, 20), null, 2));
   assert.ok(unchanged, 'Denied requests must not change business records');
 });
+
+function requiredValue<T>(value: T | undefined): T {
+  if (value === undefined) throw new Error('Required test fixture is missing');
+  return value;
+}

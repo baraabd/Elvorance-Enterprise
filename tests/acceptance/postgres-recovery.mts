@@ -287,7 +287,9 @@ try {
     }
   // Bounded HTTP load on real PostgreSQL through the real gateway and CRM handler.
   // Same-runner measurements are diagnostic only; no hosted capacity/SLO claim.
-  const crm = allocated.find((row) => row.name === 'crm' && row.db.endsWith('_source'))!;
+  const crm = requiredValue(
+    allocated.find((row) => row.name === 'crm' && row.db.endsWith('_source')),
+  );
   const secret = randomBytes(48).toString('hex');
   const auth = authFromEnv({
     AUTH_MODE: 'dev-hs256',
@@ -397,3 +399,8 @@ try {
   console.log(JSON.stringify(report));
 }
 if (failure) throw failure;
+
+function requiredValue<T>(value: T | undefined): T {
+  if (value === undefined) throw new Error('Required test fixture is missing');
+  return value;
+}
