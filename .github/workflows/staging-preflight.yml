@@ -1,0 +1,70 @@
+name: Staging preflight
+on:
+  push:
+    branches: [feat/sprint-02-staging-20261123]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: staging-preflight-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Read-only public staging observation; no cloud credentials or mutations
+        run: |
+          mkdir -p dist/staging-preflight
+          node --input-type=module <<'JS'
+          import { writeFile } from 'node:fs/promises';
+          const origins = {
+            gateway: 'https://api-gateway-staging-46ce4994.up.railway.app',
+            identity: 'https://keycloak-staging-1abfa6e3.up.railway.app',
+            admin: 'https://admin-web-staging-61f0781c.up.railway.app',
+            client: 'https://client-web-staging-5c7b09cf.up.railway.app',
+            rep: 'https://rep-web-staging.up.railway.app',
+          };
+          const observations = [];
+          for (const [service, origin] of Object.entries(origins)) {
+            const paths = service === 'identity' ? ['/realms/elvorance-staging/.well-known/openid-configuration'] : service === 'gateway' ? ['/health', '/ready'] : ['/ready', '/build.json'];
+            for (const path of paths) {
+              const row = { service, url: origin + path, observedAt: new Date().toISOString() };
+              try {
+                const response = await fetch(row.url, { redirect: 'error', signal: AbortSignal.timeout(15000) });
+                row.httpStatus = response.status;
+                row.tlsVerified = true;
+                const body = await response.json();
+                for (const key of ['service','status','source','environment','dependencies','issuer']) if (key in body) row[key] = body[key];
+              } catch { row.error = 'HTTP_TLS_DNS_OR_JSON_FAILURE'; }
+              observations.push(row);
+            }
+          }
+          await writeFile('dist/staging-preflight/observations.json', JSON.stringify({source: process.env.GITHUB_SHA, observedAt: new Date().toISOString(), mode: 'read-only-baseline-not-acceptance', observations}, null, 2));
+          JS
+      - name: Export exact locked diagnostic toolchain for offline reproduction
+        run: |
+          mkdir -p /tmp/elvorance-toolchain/bin /tmp/elvorance-toolchain/lib/node_modules
+          cp "$(command -v node)" /tmp/elvorance-toolchain/bin/node
+          cp -a "$(npm root -g)/npm" /tmp/elvorance-toolchain/lib/node_modules/npm
+          ln -s ../lib/node_modules/npm/bin/npm-cli.js /tmp/elvorance-toolchain/bin/npm
+          sha256sum package-lock.json > dist/staging-preflight/lock.sha256
+          node --version > dist/staging-preflight/node-version.txt
+          npm --version > dist/staging-preflight/npm-version.txt
+          tar -czf dist/staging-preflight/locked-toolchain.tar.gz node_modules -C /tmp elvorance-toolchain
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: staging-preflight-${{ github.sha }}
+          path: dist/staging-preflight/
+          if-no-files-found: error
+          retention-days: 3
