@@ -45,6 +45,9 @@ export interface PaymentInstallment {
   dueOn: string | null;
 }
 export interface ContractSnapshot {
+  /** Additive v1 fields. Both absent means a legacy undiscounted contract. */
+  subtotalMinor?: number;
+  discountMinor?: number;
   contractId: string;
   quoteId: string;
   visitId: string;

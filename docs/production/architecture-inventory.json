@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "4a2862ce2b67dd0b45f71c70a7943c4f72e9f4b69e22b22c99f88624be4f9d0c",
+  "sourceDigest": "2cd05b16916624c7aae0221d737638d7f35340e2b8167059c9c95afb7766f19f",
   "workspaces": [
     {
       "name": "@elvorance/admin-web",
@@ -1783,6 +1783,40 @@
     {
       "source": "tests/backend/sprint09-auth-regression.test.ts",
       "specifier": "../../services/api-gateway/src/domain/routes.ts"
+    },
+    { "source": "tests/backend/sprint09-discount-fulfillment.test.ts", "specifier": "node:test" },
+    {
+      "source": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "specifier": "node:assert/strict"
+    },
+    { "source": "tests/backend/sprint09-discount-fulfillment.test.ts", "specifier": "node:crypto" },
+    {
+      "source": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "specifier": "@elvorance/contracts"
+    },
+    {
+      "source": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "specifier": "@elvorance/events"
+    },
+    {
+      "source": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "specifier": "../../services/billing/src/application/events.ts"
+    },
+    {
+      "source": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "specifier": "../../services/billing/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "specifier": "../../services/billing/src/domain/model.ts"
+    },
+    {
+      "source": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "specifier": "../../services/sales/src/domain/model.ts"
     },
     { "source": "tests/backend/tracking-and-communications.test.ts", "specifier": "node:test" },
     {

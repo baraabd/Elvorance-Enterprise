@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
-  "sourceDigest": "4a2862ce2b67dd0b45f71c70a7943c4f72e9f4b69e22b22c99f88624be4f9d0c",
+  "sourceDigest": "2cd05b16916624c7aae0221d737638d7f35340e2b8167059c9c95afb7766f19f",
   "sourceFiles": [
     {
       "path": ".gitattributes",
@@ -965,7 +965,7 @@
     },
     {
       "path": "packages/contracts/src/index.ts",
-      "sha256": "3845c24cfde5e6865d0708485b8fe2d0c687442c06416fa7d30402e957e3a72f"
+      "sha256": "95586c7285531d5988f35a368229a017ebc4eaaa4a9209ab01d2cc7815a13716"
     },
     {
       "path": "packages/demo-data/package.json",
@@ -1261,7 +1261,7 @@
     },
     {
       "path": "services/billing/src/application/events.ts",
-      "sha256": "9f42b22bd7f99798e1cc96a66f7c536ff7250dd37252df45cda2940bfc6071f1"
+      "sha256": "d580ad83516d35583b4ccc2f920d6740460f7cc63b6b14e0f8c6eafc3aabf8af"
     },
     {
       "path": "services/billing/src/application/payments.ts",
@@ -1509,7 +1509,7 @@
     },
     {
       "path": "services/sales/src/domain/model.ts",
-      "sha256": "a84b55a39cac6fea8dbdf9b603d19f72d42df7eb79a861a4f0d027e9693d455a"
+      "sha256": "b1e002feb7ff33978cf3f7915f502c260de26438caacda5f80ac6c2ff9c619c8"
     },
     {
       "path": "services/sales/src/domain/quote.ts",
@@ -1674,6 +1674,10 @@
     {
       "path": "tests/backend/sprint09-auth-regression.test.ts",
       "sha256": "9c59ded0b75ba72db1c086108f000b85ae44c92dc2072a755666b684e043a885"
+    },
+    {
+      "path": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "sha256": "92763ae4ddad9877d9ef76bca2277f474150921423a9085fec98e7c3a7912519"
     },
     {
       "path": "tests/backend/tracking-and-communications.test.ts",
@@ -46202,13 +46206,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -46267,13 +46279,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -46332,13 +46352,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -46397,13 +46425,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -46462,13 +46498,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -46527,13 +46571,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -46694,7 +46746,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": []
+        "evidence": ["services/billing/src/application/events.ts:13-101"]
       },
       "persistenceEvent": {
         "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
@@ -46703,7 +46755,7 @@
         "evidence": [
           "packages/events/src/index.ts:34-46",
           "packages/events/src/index.ts:62-93",
-          "services/billing/src/application/events.ts:13-84"
+          "services/billing/src/application/events.ts:13-101"
         ]
       },
       "currentStatus": "IMPLEMENTATION_OBSERVED_REVIEW_BLOCKED",
@@ -47514,13 +47566,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -50743,6 +50803,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -50754,6 +50816,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -69505,13 +69569,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -69570,13 +69642,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -69635,13 +69715,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -69700,13 +69788,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -69765,13 +69861,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -69830,13 +69934,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -69895,13 +70007,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -69960,13 +70080,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -103339,6 +103467,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -103350,6 +103480,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -132565,13 +132697,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -132630,13 +132770,21 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/lifecycle.test.ts:e1e8b15aa499:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -133269,6 +133417,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133280,6 +133430,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133344,6 +133496,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133355,6 +133509,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133419,6 +133575,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133430,6 +133588,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133494,6 +133654,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133505,6 +133667,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133569,6 +133733,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133580,6 +133746,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133644,6 +133812,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133655,6 +133825,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133719,6 +133891,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -133730,6 +133904,8 @@
           "T:tests/backend/ownership-regressions.test.ts:265a64b348b2:1",
           "T:tests/backend/ownership-regressions.test.ts:e960fa7ea6a7:1",
           "T:tests/backend/ownership-regressions.test.ts:fcf7b121bdc1:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+          "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
           "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
           "T:tests/backend/tracking-and-communications.test.ts:cb07300d318e:1"
         ],
@@ -137136,6 +137312,38 @@
       "environment": "jsdom-or-injected-api-not-browser-e2e"
     },
     {
+      "id": "T:tests/backend/sprint09-discount-fulfillment.test.ts:3776967528fe:1",
+      "path": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "line": 90,
+      "title": "S09: approved discount crosses the sales snapshot and billing inbox exactly once",
+      "scope": "integration",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/backend/sprint09-discount-fulfillment.test.ts:38047e7deecb:1",
+      "path": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "line": 109,
+      "title": "S09: explicit balanced discount is accepted by the billing consumer",
+      "scope": "integration",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/backend/sprint09-discount-fulfillment.test.ts:98ef90d6c0ca:1",
+      "path": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "line": 120,
+      "title": "S09: undiscounted historical v1 snapshots remain consumable",
+      "scope": "integration",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/backend/sprint09-discount-fulfillment.test.ts:e1d2c16c58ec:1",
+      "path": "tests/backend/sprint09-discount-fulfillment.test.ts",
+      "line": 133,
+      "title": "S09: missing, inconsistent, partial and invalid discount evidence never creates financial rows",
+      "scope": "integration",
+      "environment": "node"
+    },
+    {
       "id": "T:tests/backend/tracking-and-communications.test.ts:c631485790fd:1",
       "path": "tests/backend/tracking-and-communications.test.ts",
       "line": 8,
@@ -139498,9 +139706,9 @@
   ],
   "totals": {
     "features": 1837,
-    "sourceFiles": 521,
+    "sourceFiles": 522,
     "runtimeRegistrations": 442,
-    "testCatalogEntries": 441,
+    "testCatalogEntries": 445,
     "unmappedWorkflows": 244,
     "unresolvedFeatures": 1294,
     "kind:account-lifecycle": 58,

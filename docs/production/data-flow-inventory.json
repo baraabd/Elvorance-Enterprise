@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "4a2862ce2b67dd0b45f71c70a7943c4f72e9f4b69e22b22c99f88624be4f9d0c",
+  "sourceDigest": "2cd05b16916624c7aae0221d737638d7f35340e2b8167059c9c95afb7766f19f",
   "trustBoundaries": [
     {
       "id": "TB1",
@@ -14614,7 +14614,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": []
+        "evidence": ["services/billing/src/application/events.ts:13-101"]
       },
       "tables": ["contract_accounts", "invoices"],
       "events": ["billing.invoices_created.v1", "contract.approved.v1"],

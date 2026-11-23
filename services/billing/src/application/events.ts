@@ -40,7 +40,24 @@ export async function handleEvent(tx: Transaction, event: EventEnvelope): Promis
         integer(item.unitPriceMinor, 'unitPriceMinor', 1, 1_000_000_000)
     );
   }, 0);
-  assert(itemTotal === totalMinor, 'CONTRACT_TOTAL', 'Contract item total is inconsistent');
+  // v1 events without either field retain the original undiscounted invariant.
+  // A lower net amount is never treated as an implicit/unauthorized discount.
+  const hasSubtotal = Object.hasOwn(body, 'subtotalMinor');
+  const hasDiscount = Object.hasOwn(body, 'discountMinor');
+  assert(hasSubtotal === hasDiscount, 'CONTRACT_TOTAL', 'Contract pricing evidence is incomplete');
+  const subtotalMinor = hasSubtotal
+    ? integer(body.subtotalMinor, 'subtotalMinor', 1, 100_000_000_000)
+    : totalMinor;
+  const discountMinor = hasDiscount
+    ? integer(body.discountMinor, 'discountMinor', 0, subtotalMinor - 1)
+    : 0;
+  assert(
+    Number.isSafeInteger(itemTotal) &&
+      itemTotal === subtotalMinor &&
+      subtotalMinor - discountMinor === totalMinor,
+    'CONTRACT_TOTAL',
+    'Contract subtotal, discount and net total are inconsistent',
+  );
   const common = {
     contractId,
     clientId: text(body.clientId, 'clientId', 1, 100),
