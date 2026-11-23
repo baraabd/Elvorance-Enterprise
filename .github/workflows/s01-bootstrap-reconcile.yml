@@ -1,0 +1,80 @@
+name: Materialize reviewed PR reconciliation
+on:
+  push:
+    branches: [s01/reconcile-materialize-20261123]
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: source
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          path: transport
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 0aa4928f1e434d3c2df6f70bf6de2178aa48ac46
+          path: source
+          persist-credentials: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - name: Verify the bounded reviewed patch and apply to exact source
+        run: |
+          python3 - <<'PY'
+          import base64, gzip, hashlib, json, os, pathlib, subprocess
+          encoded = ''.join(pathlib.Path('../transport/.s01/payload-' + str(i) + '.b64').read_text() for i in range(5))
+          packed = base64.b64decode(encoded, validate=True)
+          assert hashlib.sha256(packed).hexdigest() == '97d73b7cde21e40b4336402d6b942f0200e5be356e72850f1cf143aced327ec2'
+          payload = json.loads(gzip.decompress(packed))
+          patch = payload['patch'].encode()
+          assert hashlib.sha256(patch).hexdigest() == '5767a489179f496d8ff76e0aa87d70dda7e4764779afa98107da9688d0059c11'
+          for name, digest in payload['expected'].items():
+              path = pathlib.PurePosixPath(name)
+              assert not path.is_absolute() and '..' not in path.parts and name.startswith(('docs/', 'tests/', 'tooling/', 'services/'))
+              assert len(digest) == 64
+          assert len(payload['expected']) == 23
+          temp = pathlib.Path(os.environ['RUNNER_TEMP'])
+          (temp / 'reviewed.patch').write_bytes(patch)
+          (temp / 'expected.json').write_text(json.dumps(payload['expected']))
+          subprocess.run(['git', 'apply', '--check', str(temp / 'reviewed.patch')], check=True)
+          subprocess.run(['git', 'apply', str(temp / 'reviewed.patch')], check=True)
+          PY
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Regenerate inventories without resetting debt baselines
+        run: npm run inventory:write
+      - run: npm run check:types
+      - run: npm run test:production
+      - run: npm run check:format
+      - name: Verify every reviewed file and publish isolated source only
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, subprocess
+          expected = json.loads((pathlib.Path(os.environ['RUNNER_TEMP']) / 'expected.json').read_text())
+          for name, digest in expected.items():
+              assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest() == digest, name
+          assert hashlib.sha256(pathlib.Path('docs/production/debt-baseline.json').read_bytes()).hexdigest() == 'd13559c349593a8dc2191cb06fd7e47e76fda6e312a42587eec6c5837e5c27ea'
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only', '-z']).decode().split('\0')) - {''}
+          untracked = set(subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard', '-z']).decode().split('\0')) - {''}
+          assert (changed | untracked) <= set(expected), sorted((changed | untracked) - set(expected))
+          subprocess.run(['git', 'switch', '-c', 's01/reconciled-source-20261123'], check=True)
+          subprocess.run(['git', 'config', 'user.name', 'github-actions[bot]'], check=True)
+          subprocess.run(['git', 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'], check=True)
+          subprocess.run(['git', 'add', '--', *sorted(expected)], check=True)
+          subprocess.run(['git', 'commit', '-m', 'fix(s01): reconcile audit, preserve archive proof and regenerate exact inventory'], check=True)
+          subprocess.run(['git', 'push', 'origin', 'HEAD:refs/heads/s01/reconciled-source-20261123'], check=True)
+          report = {'sourceSha': subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip(), 'treeSha': subprocess.check_output(['git', 'rev-parse', 'HEAD^{tree}']).decode().strip(), 'verifiedPaths': expected, 'fullCiStatus': 'NOT_EXECUTED_ON_FINAL_INTEGRATION_COMMIT'}
+          (pathlib.Path(os.environ['RUNNER_TEMP']) / 'materialized.json').write_text(json.dumps(report, indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: reviewed-reconciliation-tree
+          path: ${{ runner.temp }}/materialized.json
+          if-no-files-found: error
+          retention-days: 7
