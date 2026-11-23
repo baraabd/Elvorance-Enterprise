@@ -500,6 +500,103 @@ async function journey(env: NodeJS.ProcessEnv) {
   );
   passed('representative completes the approved agreement visit');
 
+  // Sprint 07: verify cross-role convergence through the real gateway, never local UI state.
+  const adminVisit = await http.request<Visit>('GET', `/v1/sales/visits/${visit.id}`, {
+    token: admin,
+  });
+  const clientQuote = await http.request<Quote>('GET', `/v1/sales/quotes/${quote.id}`, {
+    token: client,
+  });
+  const repContract = await http.request<Contract>('GET', `/v1/sales/contracts/${contract.id}`, {
+    token: rep,
+  });
+  ensure(
+    adminVisit.status === 'completed' && adminVisit.notes === visit.notes,
+    'Admin must observe the persisted field report.',
+  );
+  ensure(
+    clientQuote.status === 'accepted' && repContract.status === 'approved',
+    'Rep and client must observe the same authoritative commercial decisions.',
+  );
+  const task = await http.request<{ id: string; version: number }>('POST', '/v1/sales/tasks', {
+    token: rep,
+    body: {
+      clientId: customer.id,
+      title: 'CI field handover',
+      dueOn: new Date().toISOString().slice(0, 10),
+    },
+  });
+  await http.request('PATCH', `/v1/sales/tasks/${task.id}`, {
+    token: rep,
+    body: { expectedVersion: task.version, status: 'done' },
+  });
+  await http.request('PATCH', `/v1/sales/tasks/${task.id}`, {
+    token: rep,
+    body: { expectedVersion: task.version, status: 'cancelled' },
+    status: 409,
+  });
+  const adminTask = await http.request<{ status: string }>('GET', `/v1/sales/tasks/${task.id}`, {
+    token: admin,
+  });
+  ensure(
+    adminTask.status === 'done',
+    'A stale field update must not overwrite the completed task.',
+  );
+  await http.request('GET', `/v1/sales/tasks/${task.id}`, { token: otherRep, status: 404 });
+  passed(
+    'field completion and conflict-safe handover converge for Admin, Client and Representative',
+  );
+
+  const conversation = await http.request<{ id: string; version: number }>(
+    'POST',
+    '/v1/communications/conversations',
+    {
+      token: rep,
+      body: { clientId: customer.id },
+    },
+  );
+  const conversationPath = `/v1/communications/conversations/${conversation.id}`;
+  const sentMessage = await http.request<{
+    conversation: { version: number };
+    message: { id: string };
+  }>('POST', conversationPath + '/messages', {
+    token: rep,
+    body: { expectedVersion: conversation.version, body: 'CI synthetic field handover message' },
+  });
+  const clientMessages = await http.request<{ items: { id: string }[] }>(
+    'GET',
+    conversationPath + '/messages',
+    { token: client },
+  );
+  ensure(
+    clientMessages.items.some((row) => row.id === sentMessage.message.id),
+    'Client must receive the field message.',
+  );
+  await http.request('POST', conversationPath + '/read', {
+    token: client,
+    body: {
+      expectedVersion: sentMessage.conversation.version,
+      lastMessageId: sentMessage.message.id,
+    },
+  });
+  const clientRead = await http.request<{ receipt: { lastMessageId: string } | null }>(
+    'GET',
+    conversationPath + '/messages',
+    { token: client },
+  );
+  const repRead = await http.request<{ receipt: unknown }>('GET', conversationPath + '/messages', {
+    token: rep,
+  });
+  ensure(
+    clientRead.receipt?.lastMessageId === sentMessage.message.id && repRead.receipt === null,
+    'Read acknowledgements must belong to the actual actor, not be copied between accounts.',
+  );
+  await http.request('GET', conversationPath + '/messages', { token: otherRep, status: 404 });
+  await http.request('GET', conversationPath + '/messages', { token: outsider, status: 404 });
+  passed(
+    'field message delivery and actor-scoped read receipts persist across real service boundaries',
+  );
+
   return {
     schemaVersion: 1,
     passed: true,

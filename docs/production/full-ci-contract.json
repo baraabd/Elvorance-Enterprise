@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "requiredJobs": ["project", "runtime", "native", "identity", "security"],
+  "requiredJobs": ["project", "runtime", "native", "identity", "security", "browser"],
   "lanes": [
     {
       "name": "project-linux",
@@ -92,6 +92,13 @@
       "countedCommands": [],
       "allowedSkips": [],
       "scope": "Current npm advisory audit at high/critical threshold plus narrow materialized-secret scanning; no claim of comprehensive security review."
+    },
+    {
+      "name": "browser",
+      "commands": ["browser-field-journey"],
+      "countedCommands": ["browser-field-journey"],
+      "allowedSkips": [],
+      "scope": "Actual Chromium mobile-width RTL journey across Representative, Client and Admin UIs over loopback HTTP with real service handlers, synthetic identity and memory storage. Not hosted OIDC, PostgreSQL, native or physical-device proof."
     }
   ],
   "policy": {

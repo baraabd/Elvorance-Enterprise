@@ -450,3 +450,95 @@ test('web shells preserve an explicit external provider and verify its customer 
     view.close();
   }
 });
+
+test('native approximate location is accepted without escalating to precise GPS', async () => {
+  const view = dom();
+  const ports = trackingPorts();
+  ports.platform.native = true;
+  ports.platform.requestLocationPermission = async () => ({
+    location: 'denied',
+    coarseLocation: 'granted',
+  });
+  let capture;
+  ports.platform.watchLocation = async (options) => {
+    capture = options;
+    return async () => {};
+  };
+  const controller = new TrackingController(ports.api, () => {}, ports.platform);
+  try {
+    await controller.start(true, 'Representative');
+    assert.equal(capture.enableHighAccuracy, false);
+    capture.onPosition({
+      timestamp: Date.now(),
+      coords: { latitude: 25, longitude: 45, accuracy: 3000 },
+    });
+    await tick();
+    assert.match(controller.snapshot().status, /التقريبي/);
+    assert.equal(ports.mutations.filter((row) => row.path.endsWith('/points')).length, 1);
+    await controller.dispose();
+  } finally {
+    view.close();
+  }
+});
+
+test('consent refusal and unresolved native permission cannot create a tracking session', async () => {
+  const view = dom();
+  const ports = trackingPorts();
+  ports.platform.native = true;
+  let requests = 0;
+  ports.platform.requestLocationPermission = async () => {
+    requests++;
+    return { location: 'prompt' };
+  };
+  const controller = new TrackingController(ports.api, () => {}, ports.platform);
+  try {
+    await assert.rejects(controller.start(false, 'Representative'));
+    assert.equal(requests, 0);
+    await assert.rejects(controller.start(true, 'Representative'));
+    assert.equal(requests, 1);
+    assert.equal(ports.mutations.length, 0);
+    assert.equal(controller.snapshot().collecting, false);
+    await controller.dispose();
+  } finally {
+    view.close();
+  }
+});
+
+test('network loss clears GPS and reconnection neither resumes nor replays late readings', async () => {
+  const view = dom();
+  const ports = trackingPorts();
+  let networkChanged;
+  let position;
+  let watches = 0;
+  let removals = 0;
+  ports.platform.onNetworkChange = async (callback) => {
+    networkChanged = callback;
+    return async () => {};
+  };
+  ports.platform.watchLocation = async (options) => {
+    watches++;
+    position = options.onPosition;
+    return async () => {
+      removals++;
+    };
+  };
+  const controller = new TrackingController(ports.api, () => {}, ports.platform);
+  try {
+    await controller.start(true, 'Representative');
+    networkChanged({ connected: false });
+    position({ timestamp: Date.now(), coords: { latitude: 25, longitude: 45, accuracy: 5 } });
+    await tick();
+    networkChanged({ connected: true });
+    await tick();
+    assert.equal(controller.snapshot().collecting, false);
+    assert.equal(removals, 1);
+    assert.equal(watches, 1);
+    assert.equal(
+      ports.mutations.some((row) => row.path.endsWith('/points')),
+      false,
+    );
+    await controller.dispose();
+  } finally {
+    view.close();
+  }
+});

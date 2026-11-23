@@ -23,23 +23,25 @@
     "apps/rep-mobile/ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift": "70bf9dafddc35e3877dfb133a996f5be7ccd1e132897a98fdbf4869ff605ece9",
     "apps/rep-mobile/src/server/api.ts": "38554a18520cbd3e506f75f342fbe0a6d58bb9608a59ad240e1da28ce8ceabaf",
     "apps/rep-mobile/src/server/bootstrap.ts": "0af022522b9391a4b96ec6865ae3a0b7144c8963db9a117b41e3700295365ed0",
-    "apps/rep-mobile/src/server/tracking.ts": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
-    "apps/rep-mobile/src/server/ui/dom.ts": "4ffab96ed39b01af839d90b635ca2e5ab9a4be02db22ef4363b3c0f1893deee1",
-    "apps/rep-mobile/src/server/ui/forms.ts": "0fdc08d0b8614acbc029a2c808557c75e433b8389734b7e3b4a2d34bc45cf72d",
+    "apps/rep-mobile/src/server/tracking.ts": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
+    "apps/rep-mobile/src/server/ui/dom.ts": "b271f23314ea02d02286fdc4fcca29bb94cdbac3a54c0d92810ea8d82ee6d3e1",
+    "apps/rep-mobile/src/server/ui/forms.ts": "edc2dd5ace3ff74420db3b44183cb0e258fb9ff8d5410a9bc29ca3abf60290f6",
     "apps/rep-mobile/src/server/ui/repeating-fields.ts": "9c114f64b9885b12a18440d63e50d4cdf4bd61fa57d0e77d071c9777817fad23",
     "apps/rep-mobile/src/server/views/account.ts": "d7c8ba2f078ea7fe294386fb2ac8558a7d697fbb3891418596ad76f3c34ffae8",
     "apps/rep-mobile/src/server/views/common.ts": "e591f74d86a97ee9e0f8cc42488ad85aa112e931c8e886fda1473bee7e2d705d",
     "apps/rep-mobile/src/server/views/customers.ts": "5223fe37754a2f23244de292913f109df7cad5dd10c96ecd0965536e50a0bc41",
     "apps/rep-mobile/src/server/views/discovery.ts": "6648be4390a67bce28e697713bb719c7ad6d0f163525144aa83e260b93c3b68e",
-    "apps/rep-mobile/src/server/views/home.ts": "cfdaf3b31e2e87c080adf53850c257f5a50b80b88e31952bd0e6600ba9152cf6",
-    "apps/rep-mobile/src/server/views/messages.ts": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2",
-    "apps/rep-mobile/src/server/views/planning.ts": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5",
+    "apps/rep-mobile/src/server/views/home.ts": "cde1360f39eadb46b175433008db3fae8dc6130509d7d6383c25a0230a54bea2",
+    "apps/rep-mobile/src/server/views/messages.ts": "4e5a954acdc92db2a9645a2e4d59de10dd467b11a5b65f136139c0c4b6b00781",
+    "apps/rep-mobile/src/server/views/planning.ts": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa",
     "apps/rep-mobile/src/server/views/quote-editor.ts": "deb4c12d25b4b6e6206c9456a27f2379a95bef4babdba198d384cfb84a248f0f",
     "apps/rep-mobile/src/server/views/quotes.ts": "f3a22bd19a92b8f4b656576cc42d35563d07a34c93ceeb0a75b1aca4324ed860",
     "apps/rep-mobile/src/server/views/records.ts": "39814ff41736c6ff652d4f33679820e80be44bd8d497cadacdae12a106505145",
+    "apps/rep-mobile/src/server/views/schedule-model.ts": "fe7b95b15a6b88a1fd9a4dcfb6fc23814ce7a0865ee14d1d62e637d28084263b",
+    "apps/rep-mobile/src/server/views/schedule.ts": "ba17cc9fc85f9dc2b4b5c8c5b577ed1003595e6f025f9e28a73badf20156e4fa",
     "apps/rep-mobile/src/server/views/support.ts": "8a5d3a7db20fb470141162d1428089ea96203e886dfee2d935ebb155db3cf867",
-    "apps/rep-mobile/src/server/views/visits.ts": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96",
-    "apps/rep-mobile/src/server/workspace.ts": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+    "apps/rep-mobile/src/server/views/visits.ts": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242",
+    "apps/rep-mobile/src/server/workspace.ts": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
     "apps/rep-mobile/src/state/local-demo.ts": "89c68f5d6a5b25a27e7ab7db3b93e203054804d08a2f220e67b63b0736c05af2",
     "packages/api-client/src/authenticated-workspace.ts": "8ffc99cd6d4661e2888fc9ea080c47b53c007cec9b4dd1dda4b5dc6f93f232ed",
     "packages/api-client/src/live-actions.ts": "6bc9bb46609ce9361c0fce2f2e677f07eebd277542f135c90644a3d7334dca95",
@@ -54,7 +56,8 @@
     "packages/mobile-auth/src/platform.ts": "c079bd5e6ac47169f7a42366584b605cf4cc17409441b6d82bec320faca366a5",
     "packages/mobile-auth/src/session.ts": "ced4f3134d7a1b3ec10e0bc4059dfb2ced429c4585483401414fde0611219dea",
     "packages/mobile-auth/src/vault.ts": "e3eed1c22df53095c31652b7558cef3d84ee150f91cf15730cafb7e932efdebe",
-    "packages/mobile-platform/src/index.ts": "7d7bc93e87fda8c39e7647c979df174d9ed490d393b40aa633ee5590d882cb47",
+    "packages/mobile-platform/src/index.ts": "a6b14897e72a651343261d142b33a02d076d85b1579afc301aa924c15e94af30",
+    "packages/mobile-platform/src/location-permission.ts": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44",
     "packages/questionnaire/src/sync.ts": "fabecc407cfc4152d3c9c13de2304364bb88bc8c124337465dfa865d9f369024",
     "packages/service-kit/src/auth.ts": "2787ba1fbf0548f551a04264f3e5ea883af608a1ad6c93d90e115330845de15c",
     "packages/service-kit/src/http.ts": "58a920a8a8b2695f94b7fcab20f5beb952f2a1407c661a9a80d1d01bc1ba26ec",
@@ -93,7 +96,7 @@
     {
       "featureId": "account-lifecycle:apps/rep-mobile/src/server/tracking.ts:e30904e3f509:1",
       "sourceFingerprint": "2aad44830eef13a8f369185730201e509aa0101c8523d4b72b39b3f6c0dd95a8",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -106,6 +109,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -116,7 +120,7 @@
     {
       "featureId": "account-lifecycle:apps/rep-mobile/src/server/tracking.ts:e30904e3f509:2",
       "sourceFingerprint": "d830804ebee46435dbaa0c41dfb707ba07d6bd7cf3e420b26e36a361e45026c8",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -129,6 +133,32 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/tracking/src/application/sessions.ts",
+        "services/tracking/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:072e68e1b4f8:1",
+      "sourceFingerprint": "5867844ac88de46ed21d1cd25cde01df29b55e4831ee79e156f498a45e255ea2",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
+      "category": "parameterized-http",
+      "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches. Sprint 07 review: the watch callback now honors approximate permission; the three parameterized backend route bindings remain unchanged.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": [
+        "api-route:tracking:backend:GET /v1/sessions/:id",
+        "api-route:tracking:backend:POST /v1/sessions/:id/points",
+        "api-route:tracking:backend:POST /v1/sessions/:id/state"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/rep-mobile/src/server/api.ts",
+        "apps/rep-mobile/src/server/tracking.ts",
+        "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -139,7 +169,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:36db1baa2b6a:1",
       "sourceFingerprint": "944df5c78c05589c013921d17fc083f382b0a25fe99617c4ca976e8444726aa0",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -149,6 +179,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -159,7 +190,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:5765901e7757:1",
       "sourceFingerprint": "42f4ef5f16c5973a1593dd7128d3b0577c15d112edb505ea097701fcd681e945",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -169,6 +200,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "services/tracking/src/application/sessions.ts",
         "services/tracking/src/transport/routes.ts"
@@ -178,7 +210,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:5765901e7757:2",
       "sourceFingerprint": "cce9d221cc5688016686bf87d42708d13ed9f9367b5964a4db8677465a87f95d",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -188,6 +220,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "services/tracking/src/application/sessions.ts",
         "services/tracking/src/transport/routes.ts"
@@ -197,7 +230,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:5765901e7757:3",
       "sourceFingerprint": "cce9d221cc5688016686bf87d42708d13ed9f9367b5964a4db8677465a87f95d",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -207,6 +240,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "services/tracking/src/application/sessions.ts",
         "services/tracking/src/transport/routes.ts"
@@ -216,7 +250,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:64af7b1ebf0b:1",
       "sourceFingerprint": "f4f770b09b637391edb40592ca1f7c33b4a10932003c3a48d0908badc8f592f9",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -229,6 +263,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -239,7 +274,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:977ac854acca:1",
       "sourceFingerprint": "06d3367d0466bb41f036dbbcbd408dcbd7dc88a1440d759970e22c446b36a3af",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -249,6 +284,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -259,7 +295,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:9c99f6f99885:1",
       "sourceFingerprint": "0e729843974f245500b025c2bb850b0aa399e09f406fff5d0bb97c4340472eac",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -272,6 +308,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -282,7 +319,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:ae56819a1ce6:1",
       "sourceFingerprint": "e5b2da58443be8ef09a80c925c9ef8ec793e58daaba9d3bac8f3110ab0dded38",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -295,6 +332,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -304,8 +342,8 @@
     },
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:ae56819a1ce6:2",
-      "sourceFingerprint": "37386c579b075070d992a37149584c2225ca03b89679d57eb571dd39c4d9e49d",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFingerprint": "4b7eef10c903df4107ed196ee75cac208f986db6d80a0c78dc8ba33e20287488",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -315,6 +353,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -325,7 +364,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:ae56819a1ce6:3",
       "sourceFingerprint": "918788fda05ce017e2694caec2f5289a54122928390c396cf9cd4edfbfc92535",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -338,6 +377,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -348,7 +388,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:ae56819a1ce6:4",
       "sourceFingerprint": "e209d67df5c27775149b27ddd0a637dc6619d5357318793894573b7edb55b8f7",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -361,30 +401,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
-        "packages/service-kit/src/auth.ts",
-        "packages/service-kit/src/http.ts",
-        "services/tracking/src/application/sessions.ts",
-        "services/tracking/src/transport/routes.ts"
-      ],
-      "nativeMembers": []
-    },
-    {
-      "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:c9ebf8c20179:1",
-      "sourceFingerprint": "48ed7a0418bcce14e79bc29e6ab5a77f1e048d88f57c44c79a676c9731ec757d",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
-      "category": "parameterized-http",
-      "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
-      "resolves": ["Dynamic URL/method requires runtime contract validation."],
-      "backendRouteIds": [
-        "api-route:tracking:backend:GET /v1/sessions/:id",
-        "api-route:tracking:backend:POST /v1/sessions/:id/points",
-        "api-route:tracking:backend:POST /v1/sessions/:id/state"
-      ],
-      "delegateFeatureIds": [],
-      "evidencePaths": [
-        "apps/rep-mobile/src/server/api.ts",
-        "apps/rep-mobile/src/server/tracking.ts",
-        "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -394,8 +411,8 @@
     },
     {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:ccedd62d5d9c:1",
-      "sourceFingerprint": "b5532cdf2c22e9f8d4b01136c89c936bbb2e46ea45be07fb4b23b3cfdc285f4b",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFingerprint": "f416d71f630e134ab98510a8cea849dce15d2f0c3e7651c3cdd48b95dcd1a200",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -409,6 +426,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -807,7 +825,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/views/visits.ts:295d0ca84f1a:1",
       "sourceFingerprint": "30c8bf28293be1a07bc3d8f6d843924f828ff248615b174a6aa444bdc3ce8c9e",
-      "sourceFileSha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96",
+      "sourceFileSha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -820,6 +838,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/views/visits.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/crm/src/application/customers.ts",
@@ -830,7 +849,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/views/visits.ts:41cd30cf89df:1",
       "sourceFingerprint": "52af86fcb2b7fff3c6c833cd3fd3e766dde3661a6bc5e636231673654ff595de",
-      "sourceFileSha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96",
+      "sourceFileSha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -840,6 +859,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/views/visits.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/crm/src/application/customers.ts",
@@ -849,8 +869,8 @@
     },
     {
       "featureId": "api-call:apps/rep-mobile/src/server/views/visits.ts:58607e8328c8:1",
-      "sourceFingerprint": "04ebd9fcd0b91756780df4f60954a774c3c8755d9dd8e71f3a9337089c9c2c0e",
-      "sourceFileSha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96",
+      "sourceFingerprint": "4751dd27a694d1001dd241a3e37281d3bcd8384062f34704130fdd6c2b052687",
+      "sourceFileSha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -863,6 +883,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/views/visits.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/crm/src/application/customers.ts",
@@ -873,7 +894,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/views/visits.ts:7975039c5eb7:1",
       "sourceFingerprint": "d031e5e422a8444f1a1c65a0b2cb28f8c220972668f3b58f92bc6a841b255859",
-      "sourceFileSha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96",
+      "sourceFileSha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -886,6 +907,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/views/visits.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/crm/src/application/customers.ts",
@@ -896,7 +918,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/views/visits.ts:820b573b8a34:1",
       "sourceFingerprint": "a9f7c0c4d9830fe94c95eb5eb0f6374549a8ee987179b72f928f0df54918510a",
-      "sourceFileSha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96",
+      "sourceFileSha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -906,6 +928,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/views/visits.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "services/crm/src/application/customers.ts",
         "services/crm/src/transport/routes.ts"
@@ -915,7 +938,7 @@
     {
       "featureId": "api-call:apps/rep-mobile/src/server/views/visits.ts:dafb3781d648:4",
       "sourceFingerprint": "b5966cf0ec8bf2bc0469103ee80007adf330e4b73b73f0523f913b97daa152ed",
-      "sourceFileSha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96",
+      "sourceFileSha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -928,6 +951,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/views/visits.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/crm/src/application/customers.ts",
@@ -1125,7 +1149,7 @@
     {
       "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:61b2d0dcccc7:1",
       "sourceFingerprint": "0cf3125b0636abb81e1ed31c54c4a38c78fbc9100bca87358986f9d757ec9a4a",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -1138,6 +1162,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -1283,8 +1308,8 @@
     },
     {
       "featureId": "form:apps/rep-mobile/src/server/views/messages.ts:b5dba45b150c:1",
-      "sourceFingerprint": "e190206dbab635e1696556008ac80f730db41f41a43c9ec45cbc206eba856761",
-      "sourceFileSha256": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2",
+      "sourceFingerprint": "c4e89d92442e523cffb7de51a55b6397090151d785125a0033c69736625b87d1",
+      "sourceFileSha256": "4e5a954acdc92db2a9645a2e4d59de10dd467b11a5b65f136139c0c4b6b00781",
       "category": "form-submit",
       "rationale": "openThread binds the local path constant to a validated conversation ID. Submit posts the body and expected conversation version, then reads the thread again. The local path variable does not denote an unknown provider or an unimplemented endpoint.",
       "resolves": [
@@ -1308,7 +1333,7 @@
     {
       "featureId": "form:apps/rep-mobile/src/server/views/planning.ts:19613db0d9d0:1",
       "sourceFingerprint": "ca10f9f1047bc93605eee733460c546743fa5d81a6ef6c1cdcdb94ba3ecfa98b",
-      "sourceFileSha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5",
+      "sourceFileSha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa",
       "category": "finite-dispatch",
       "rationale": "The collection helper is called by tasks, opportunities and routes only in this source snapshot. Its create/edit control delegates to editForm with the selected resource; source-bound POST collection or PATCH entity operations are listed separately, with versioned updates. Opening the editor is not an accepted business mutation.",
       "resolves": [
@@ -1337,7 +1362,7 @@
     {
       "featureId": "form:apps/rep-mobile/src/server/views/planning.ts:19613db0d9d0:2",
       "sourceFingerprint": "24cb8e3332f38479377bdb819b3b04221b17af84b9be8bb08885b6a974837dcc",
-      "sourceFileSha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5",
+      "sourceFileSha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa",
       "category": "finite-dispatch",
       "rationale": "The collection helper is called by tasks, opportunities and routes only in this source snapshot. Its create/edit control delegates to editForm with the selected resource; source-bound POST collection or PATCH entity operations are listed separately, with versioned updates. Opening the editor is not an accepted business mutation.",
       "resolves": [
@@ -1391,7 +1416,7 @@
     {
       "featureId": "form:apps/rep-mobile/src/server/views/visits.ts:fe8edea907cb:3",
       "sourceFingerprint": "d031e5e422a8444f1a1c65a0b2cb28f8c220972668f3b58f92bc6a841b255859",
-      "sourceFileSha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96",
+      "sourceFileSha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -1404,6 +1429,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/views/visits.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/crm/src/application/customers.ts",
@@ -1833,7 +1859,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/tracking.ts:73aefaa415bf:1",
       "sourceFingerprint": "c3af4938fdeb59538edc326429d3108dfa16f7b693234e22dbdced49f21d3961",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -1846,6 +1872,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -1856,7 +1883,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/tracking.ts:f91c7ec58c3a:1",
       "sourceFingerprint": "ef8f844af93f9631d54e66e4f137830bbd8ed7ca1918f2af714b9aac727e0d9f",
-      "sourceFileSha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
+      "sourceFileSha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -1869,6 +1896,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/tracking.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/tracking/src/application/sessions.ts",
@@ -1878,8 +1906,8 @@
     },
     {
       "featureId": "handler:apps/rep-mobile/src/server/ui/dom.ts:f9db78ae399e:1",
-      "sourceFingerprint": "f84593199c8357e4d786909f302c5084a65ba9d94b7856e713a56bd02ba3235c",
-      "sourceFileSha256": "4ffab96ed39b01af839d90b635ca2e5ab9a4be02db22ef4363b3c0f1893deee1",
+      "sourceFingerprint": "22474dd9089003203e92221a7a25f3ea738c73630bfde6d02a2ca4fc19e5783c",
+      "sourceFileSha256": "b271f23314ea02d02286fdc4fcca29bb94cdbac3a54c0d92810ea8d82ee6d3e1",
       "category": "callback-adapter",
       "rationale": "The button factory attaches its supplied run callback, disables the button during work, catches errors and emits rep:error. It defines neither a business endpoint nor permission policy: each actual caller callback is separately inventoried. Source binding explains the generic mechanism without accepting any business operation.",
       "resolves": [
@@ -1892,8 +1920,8 @@
     },
     {
       "featureId": "handler:apps/rep-mobile/src/server/ui/forms.ts:37a436a0698f:1",
-      "sourceFingerprint": "f8f4385ec9d8cb7db8f4f0c12a3d694291a12aece5e90e453609cfae88bf05d4",
-      "sourceFileSha256": "0fdc08d0b8614acbc029a2c808557c75e433b8389734b7e3b4a2d34bc45cf72d",
+      "sourceFingerprint": "e696a87c8302993625b9f26429422f9065afeb7687d7cae83e5e10cfd5dbcbf5",
+      "sourceFileSha256": "edc2dd5ace3ff74420db3b44183cb0e258fb9ff8d5410a9bc29ca3abf60290f6",
       "category": "callback-adapter",
       "rationale": "editorButton invokes its supplied create callback to append a form/editor and catches rendering failures. The editor submit callback is separate. Opening an editor is not proof of successful saving and is not exempted from form workflow acceptance.",
       "resolves": [
@@ -1910,8 +1938,8 @@
     },
     {
       "featureId": "handler:apps/rep-mobile/src/server/ui/forms.ts:6be3c8ea5f69:1",
-      "sourceFingerprint": "2fe950764c43e4f7970933c14ef9f2ee88eaf02040c8db0b3b3436937ed4e90e",
-      "sourceFileSha256": "0fdc08d0b8614acbc029a2c808557c75e433b8389734b7e3b4a2d34bc45cf72d",
+      "sourceFingerprint": "1695447fd122dc4349bd6f325084a010d18d51762e0c0e656724d287e28363b5",
+      "sourceFileSha256": "edc2dd5ace3ff74420db3b44183cb0e258fb9ff8d5410a9bc29ca3abf60290f6",
       "category": "callback-adapter",
       "rationale": "commandForm validates and parses its declared fields, guards pending submission, disables controls, awaits the supplied options.submit callback and restores controls. The actual business operations are owned by the caller, not by a new form-library endpoint; callback forms are separately inventoried.",
       "resolves": [
@@ -2063,9 +2091,28 @@
       "nativeMembers": []
     },
     {
+      "featureId": "handler:apps/rep-mobile/src/server/views/home.ts:3ff34712993b:1",
+      "sourceFingerprint": "d027a41debe2fcea71213273340be224c27ab508d1e67f54612fcafbb689233b",
+      "sourceFileSha256": "cde1360f39eadb46b175433008db3fae8dc6130509d7d6383c25a0230a54bea2",
+      "category": "navigation-delegate",
+      "rationale": "Reviewed Sprint 07 shortcut delegates only to the registered schedule view; it does not write data or substitute client-side authorization for the target service policy.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": ["route:rep:server:schedule"],
+      "evidencePaths": [
+        "apps/rep-mobile/src/server/views/home.ts",
+        "apps/rep-mobile/src/server/views/schedule-model.ts",
+        "apps/rep-mobile/src/server/views/schedule.ts",
+        "apps/rep-mobile/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
       "featureId": "handler:apps/rep-mobile/src/server/views/home.ts:4c39995d72b0:1",
       "sourceFingerprint": "e39e6eb11b274a7e4fc6aa510ca040f12b0b062234b439ce61b98b26358c28c6",
-      "sourceFileSha256": "cfdaf3b31e2e87c080adf53850c257f5a50b80b88e31952bd0e6600ba9152cf6",
+      "sourceFileSha256": "cde1360f39eadb46b175433008db3fae8dc6130509d7d6383c25a0230a54bea2",
       "category": "navigation-delegate",
       "rationale": "This dashboard shortcut selects the named registered visits or quotes view. It has no separate mutation endpoint. The target view owns its data loads and business actions and is explicitly linked; navigation is not evidence those actions have passed acceptance.",
       "resolves": [
@@ -2079,7 +2126,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/views/home.ts:dc7cf3d33204:1",
       "sourceFingerprint": "a9cdd207af400a384345d5968e38253d1de24f74c21acf1269ce5bf46c26ae1c",
-      "sourceFileSha256": "cfdaf3b31e2e87c080adf53850c257f5a50b80b88e31952bd0e6600ba9152cf6",
+      "sourceFileSha256": "cde1360f39eadb46b175433008db3fae8dc6130509d7d6383c25a0230a54bea2",
       "category": "navigation-delegate",
       "rationale": "This dashboard shortcut selects the named registered visits or quotes view. It has no separate mutation endpoint. The target view owns its data loads and business actions and is explicitly linked; navigation is not evidence those actions have passed acceptance.",
       "resolves": [
@@ -2093,7 +2140,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/views/messages.ts:0b873393c43a:1",
       "sourceFingerprint": "978bfbce62a25869b0d6930364c4defce1cf1da590e7e49029a949a860da1f04",
-      "sourceFileSha256": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2",
+      "sourceFileSha256": "4e5a954acdc92db2a9645a2e4d59de10dd467b11a5b65f136139c0c4b6b00781",
       "category": "view-read",
       "rationale": "This open/reload/load-more control reads the selected conversation messages. The endpoint prefix is the local path constant in openThread; cursor pagination is a query parameter, not a different registered route. It is not presentation-only.",
       "resolves": [
@@ -2112,8 +2159,8 @@
     },
     {
       "featureId": "handler:apps/rep-mobile/src/server/views/messages.ts:6f28d2a2b0d3:1",
-      "sourceFingerprint": "e4e1e96b5225784032e0931bf25c6f4df1d39884e81e9f04b275f19c6e171697",
-      "sourceFileSha256": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2",
+      "sourceFingerprint": "aae1262df6676b013fcb98af050f4d1297069ad12ad1d135b35b0b0a4ae799fb",
+      "sourceFileSha256": "4e5a954acdc92db2a9645a2e4d59de10dd467b11a5b65f136139c0c4b6b00781",
       "category": "form-submit",
       "rationale": "The explicit read-receipt control sends expectedVersion and the last displayed message ID to the conversation read operation, then reloads the thread. It is not a presentation-only exemption.",
       "resolves": [
@@ -2137,7 +2184,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/views/messages.ts:812d1f74cef0:1",
       "sourceFingerprint": "b029c5633b11aa325db228e2a22fd7078a76458ac7b28b37ec13b79509f63f36",
-      "sourceFileSha256": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2",
+      "sourceFileSha256": "4e5a954acdc92db2a9645a2e4d59de10dd467b11a5b65f136139c0c4b6b00781",
       "category": "view-read",
       "rationale": "This open/reload/load-more control reads the selected conversation messages. The endpoint prefix is the local path constant in openThread; cursor pagination is a query parameter, not a different registered route. It is not presentation-only.",
       "resolves": [
@@ -2157,7 +2204,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/views/messages.ts:9943215fa245:1",
       "sourceFingerprint": "e5aab2f79bc0e9278926963306e5ff6150f53e64d8a2a1f6a45da484bdbe7e92",
-      "sourceFileSha256": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2",
+      "sourceFileSha256": "4e5a954acdc92db2a9645a2e4d59de10dd467b11a5b65f136139c0c4b6b00781",
       "category": "view-read",
       "rationale": "This open/reload/load-more control reads the selected conversation messages. The endpoint prefix is the local path constant in openThread; cursor pagination is a query parameter, not a different registered route. It is not presentation-only.",
       "resolves": [
@@ -2177,7 +2224,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/views/planning.ts:4576a5589b22:1",
       "sourceFingerprint": "870014529afb1c38f2e615478ec565077204396cab11fae8eb453a147a8ba2eb",
-      "sourceFileSha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5",
+      "sourceFileSha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa",
       "category": "finite-dispatch",
       "rationale": "The collection helper is called by tasks, opportunities and routes only in this source snapshot. Its create/edit control delegates to editForm with the selected resource; source-bound POST collection or PATCH entity operations are listed separately, with versioned updates. Opening the editor is not an accepted business mutation.",
       "resolves": [
@@ -2206,7 +2253,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/views/planning.ts:83b76ed3b285:1",
       "sourceFingerprint": "2d6382fc7ee6f8d9c6d47aad40c19538a8fab2e6b330e1191868f448f062df9d",
-      "sourceFileSha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5",
+      "sourceFileSha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa",
       "category": "finite-dispatch",
       "rationale": "The collection helper is called by tasks, opportunities and routes only in this source snapshot. Its create/edit control delegates to editForm with the selected resource; source-bound POST collection or PATCH entity operations are listed separately, with versioned updates. Opening the editor is not an accepted business mutation.",
       "resolves": [
@@ -2406,9 +2453,117 @@
       "nativeMembers": []
     },
     {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:1154275c3b61:1",
+      "sourceFingerprint": "8806f12fe7b1c54725e283b1fa85424340c02952dc4636b710135a796a307064",
+      "sourceFileSha256": "ba17cc9fc85f9dc2b4b5c8c5b577ed1003595e6f025f9e28a73badf20156e4fa",
+      "category": "local-form-state",
+      "rationale": "Reviewed Sprint 07 date control filters already authorized visit/task snapshots using explicit device timezone and calendar due dates. It changes local view selection only, issues no mutation, and does not perform route optimization or persist offline data.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/rep-mobile/src/server/views/schedule-model.ts",
+        "apps/rep-mobile/src/server/views/schedule.ts",
+        "apps/rep-mobile/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:28f4b9081ea0:1",
+      "sourceFingerprint": "8d478b01ac981e5a504adf682bf3c69d17f16b2e63d077e4b6f69ffe78101f0f",
+      "sourceFileSha256": "ba17cc9fc85f9dc2b4b5c8c5b577ed1003595e6f025f9e28a73badf20156e4fa",
+      "category": "local-form-state",
+      "rationale": "Reviewed Sprint 07 date control filters already authorized visit/task snapshots using explicit device timezone and calendar due dates. It changes local view selection only, issues no mutation, and does not perform route optimization or persist offline data.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/rep-mobile/src/server/views/schedule-model.ts",
+        "apps/rep-mobile/src/server/views/schedule.ts",
+        "apps/rep-mobile/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:76abdfc1a903:1",
+      "sourceFingerprint": "d1048c34ce7aab4ef54f720038c47de8c66b07dc870df38ed27afc465eb89df6",
+      "sourceFileSha256": "ba17cc9fc85f9dc2b4b5c8c5b577ed1003595e6f025f9e28a73badf20156e4fa",
+      "category": "local-form-state",
+      "rationale": "Reviewed Sprint 07 date control filters already authorized visit/task snapshots using explicit device timezone and calendar due dates. It changes local view selection only, issues no mutation, and does not perform route optimization or persist offline data.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/rep-mobile/src/server/views/schedule-model.ts",
+        "apps/rep-mobile/src/server/views/schedule.ts",
+        "apps/rep-mobile/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:90059b21db75:1",
+      "sourceFingerprint": "5972254a6553aea5e111acef4c92385da176b6826e299532dab2f8510ef30d5b",
+      "sourceFileSha256": "ba17cc9fc85f9dc2b4b5c8c5b577ed1003595e6f025f9e28a73badf20156e4fa",
+      "category": "navigation-delegate",
+      "rationale": "Reviewed Sprint 07 shortcut delegates only to the registered tasks view; it does not write data or substitute client-side authorization for the target service policy.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": ["route:rep:server:tasks"],
+      "evidencePaths": [
+        "apps/rep-mobile/src/server/views/schedule-model.ts",
+        "apps/rep-mobile/src/server/views/schedule.ts",
+        "apps/rep-mobile/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:dc7cf3d33204:1",
+      "sourceFingerprint": "a9cdd207af400a384345d5968e38253d1de24f74c21acf1269ce5bf46c26ae1c",
+      "sourceFileSha256": "ba17cc9fc85f9dc2b4b5c8c5b577ed1003595e6f025f9e28a73badf20156e4fa",
+      "category": "navigation-delegate",
+      "rationale": "Reviewed Sprint 07 shortcut delegates only to the registered visits view; it does not write data or substitute client-side authorization for the target service policy.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": ["route:rep:server:visits"],
+      "evidencePaths": [
+        "apps/rep-mobile/src/server/views/schedule-model.ts",
+        "apps/rep-mobile/src/server/views/schedule.ts",
+        "apps/rep-mobile/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:df4b40864787:1",
+      "sourceFingerprint": "444ec845c00bf259b4c7c645c751eb642faf7256804098b50c90b026a307b3ab",
+      "sourceFileSha256": "ba17cc9fc85f9dc2b4b5c8c5b577ed1003595e6f025f9e28a73badf20156e4fa",
+      "category": "local-form-state",
+      "rationale": "Reviewed Sprint 07 date control filters already authorized visit/task snapshots using explicit device timezone and calendar due dates. It changes local view selection only, issues no mutation, and does not perform route optimization or persist offline data.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/rep-mobile/src/server/views/schedule-model.ts",
+        "apps/rep-mobile/src/server/views/schedule.ts",
+        "apps/rep-mobile/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
       "featureId": "handler:apps/rep-mobile/src/server/views/visits.ts:25e0027de2b6:1",
       "sourceFingerprint": "30c8bf28293be1a07bc3d8f6d843924f828ff248615b174a6aa444bdc3ce8c9e",
-      "sourceFileSha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96",
+      "sourceFileSha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -2421,6 +2576,7 @@
         "apps/rep-mobile/src/server/api.ts",
         "apps/rep-mobile/src/server/views/visits.ts",
         "packages/api-client/src/live-data.ts",
+        "packages/mobile-platform/src/location-permission.ts",
         "packages/service-kit/src/auth.ts",
         "packages/service-kit/src/http.ts",
         "services/crm/src/application/customers.ts",
@@ -2431,7 +2587,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:1f9be067f4c4:1",
       "sourceFingerprint": "35ce26a394922d09b9df81c9662c2e3ab82eab600238afc4d4f27aaae3d375bd",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -2454,7 +2610,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:5fe95578c67f:1",
       "sourceFingerprint": "397b2db51c860e669a7c231429564b1b6acaa722d7b16925433b7390452dc274",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "navigation-delegate",
       "rationale": "This navigation, refresh, retry or history listener delegates to navigate for a key in the private pages registry. navigate aborts the previous view request, invokes the selected view loader and displays failure/retry state. There is no separate network operation at this event-registration point; the finite registered target views remain linked.",
       "resolves": [
@@ -2488,7 +2644,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:6ea370bf32b5:1",
       "sourceFingerprint": "5d524ddc5b65ee63132c05518ca8a76a7efdc359d6618351662007dd689896ad",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "navigation-delegate",
       "rationale": "This navigation, refresh, retry or history listener delegates to navigate for a key in the private pages registry. navigate aborts the previous view request, invokes the selected view loader and displays failure/retry state. There is no separate network operation at this event-registration point; the finite registered target views remain linked.",
       "resolves": [
@@ -2522,7 +2678,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:74d70aff092a:1",
       "sourceFingerprint": "c1cf04f7403feaea4e988da709d9105271609cab99efed477164a3cb819856e6",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "navigation-delegate",
       "rationale": "This navigation, refresh, retry or history listener delegates to navigate for a key in the private pages registry. navigate aborts the previous view request, invokes the selected view loader and displays failure/retry state. There is no separate network operation at this event-registration point; the finite registered target views remain linked.",
       "resolves": [
@@ -2556,7 +2712,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:783472c06c38:1",
       "sourceFingerprint": "f8bad342d9332d3a001fc15547ef49c88432ccf1afa12bffd64eb785dfcd4b7d",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "presentation",
       "rationale": "This listener displays a rep:error, offline or online notification. It does not submit, retry or persist a business command automatically and does not claim offline synchronization. The related network and business failure behavior remains separately inventoried.",
       "resolves": [
@@ -2572,8 +2728,8 @@
     },
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:b278c86df906:1",
-      "sourceFingerprint": "cb9056850d10d7a72500f05aa63d588c02b407bcb51489b26b176c5e8ee48374",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFingerprint": "b0e8a08c16142d341eadad877badf75b424134bebb4b38e021ef4618fdb2113e",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "presentation",
       "rationale": "This listener displays a rep:error, offline or online notification. It does not submit, retry or persist a business command automatically and does not claim offline synchronization. The related network and business failure behavior remains separately inventoried.",
       "resolves": [
@@ -2590,7 +2746,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:db85047714c0:1",
       "sourceFingerprint": "7c2e59a9617a8ba1d108d4c8bc802bc63f42c109a1c8f0e9d3351318b70d2a60",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "navigation-delegate",
       "rationale": "This navigation, refresh, retry or history listener delegates to navigate for a key in the private pages registry. navigate aborts the previous view request, invokes the selected view loader and displays failure/retry state. There is no separate network operation at this event-registration point; the finite registered target views remain linked.",
       "resolves": [
@@ -2624,7 +2780,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:e3be8ef6e3d9:1",
       "sourceFingerprint": "c381163aeaa42e4c3955af064289020b51a82f370d61b8cb72c52783aa5045ea",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "presentation",
       "rationale": "This listener displays a rep:error, offline or online notification. It does not submit, retry or persist a business command automatically and does not claim offline synchronization. The related network and business failure behavior remains separately inventoried.",
       "resolves": [
@@ -2641,7 +2797,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:e81b4ef8e460:1",
       "sourceFingerprint": "4568798f5eb1fa9195c29b7109e11e7da0e2b8526b0ae5535008f1353adbfc3a",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "resource-lifecycle",
       "rationale": "Abort delegates to the single shared remove promise, which aborts the current view and disposes location and native listeners. Location disposal remains owned by the linked tracking implementation; this listener does not create an independent endpoint or silently confirm remote shutdown.",
       "resolves": [
@@ -3046,7 +3202,7 @@
     {
       "featureId": "handler:packages/mobile-platform/src/index.ts:3c5b2fb70af2:1",
       "sourceFingerprint": "ce3cab4abbeb7852498ffd0f5d11a58bb67df366f1335a7fc4053902a32ef406",
-      "sourceFileSha256": "7d7bc93e87fda8c39e7647c979df174d9ed490d393b40aa633ee5590d882cb47",
+      "sourceFileSha256": "a6b14897e72a651343261d142b33a02d076d85b1579afc301aa924c15e94af30",
       "category": "callback-adapter",
       "rationale": "The platform wrapper forwards a location success/error or foreground-state change to its supplied consumer. It requests consented OS location and removes listeners during cleanup; it does not independently persist positions or implement background tracking. The representative tracking consumer owns any scoped session/point mutations.",
       "resolves": [
@@ -3056,14 +3212,15 @@
       "delegateFeatureIds": ["route:rep:server:tracking"],
       "evidencePaths": [
         "apps/rep-mobile/src/server/tracking.ts",
-        "packages/mobile-platform/src/index.ts"
+        "packages/mobile-platform/src/index.ts",
+        "packages/mobile-platform/src/location-permission.ts"
       ],
       "nativeMembers": []
     },
     {
       "featureId": "handler:packages/mobile-platform/src/index.ts:919bb0e0b52a:1",
       "sourceFingerprint": "83c851c7e710a8b79bddcf5bf56c511da6b2a330069416541c60c81a49085573",
-      "sourceFileSha256": "7d7bc93e87fda8c39e7647c979df174d9ed490d393b40aa633ee5590d882cb47",
+      "sourceFileSha256": "a6b14897e72a651343261d142b33a02d076d85b1579afc301aa924c15e94af30",
       "category": "callback-adapter",
       "rationale": "The platform wrapper forwards a location success/error or foreground-state change to its supplied consumer. It requests consented OS location and removes listeners during cleanup; it does not independently persist positions or implement background tracking. The representative tracking consumer owns any scoped session/point mutations.",
       "resolves": [
@@ -3073,14 +3230,15 @@
       "delegateFeatureIds": ["route:rep:server:tracking"],
       "evidencePaths": [
         "apps/rep-mobile/src/server/tracking.ts",
-        "packages/mobile-platform/src/index.ts"
+        "packages/mobile-platform/src/index.ts",
+        "packages/mobile-platform/src/location-permission.ts"
       ],
       "nativeMembers": []
     },
     {
       "featureId": "handler:packages/mobile-platform/src/index.ts:9955c446eb1a:1",
       "sourceFingerprint": "87d07c4467b0c851e6cb4ce733cdd259c086c107f05b98607a72d23e535728ef",
-      "sourceFileSha256": "7d7bc93e87fda8c39e7647c979df174d9ed490d393b40aa633ee5590d882cb47",
+      "sourceFileSha256": "a6b14897e72a651343261d142b33a02d076d85b1579afc301aa924c15e94af30",
       "category": "callback-adapter",
       "rationale": "The platform wrapper forwards a location success/error or foreground-state change to its supplied consumer. It requests consented OS location and removes listeners during cleanup; it does not independently persist positions or implement background tracking. The representative tracking consumer owns any scoped session/point mutations.",
       "resolves": [
@@ -3090,7 +3248,8 @@
       "delegateFeatureIds": ["route:rep:server:tracking"],
       "evidencePaths": [
         "apps/rep-mobile/src/server/tracking.ts",
-        "packages/mobile-platform/src/index.ts"
+        "packages/mobile-platform/src/index.ts",
+        "packages/mobile-platform/src/location-permission.ts"
       ],
       "nativeMembers": []
     },
@@ -3339,6 +3498,28 @@
         "apps/client-mobile/ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift"
       ],
       "nativeMembers": []
+    },
+    {
+      "featureId": "native-adapter:apps/rep-mobile/android/app/src/main/java/com/elvorance/rep/MainActivity.java",
+      "sourceFingerprint": "ee3fe9a7cd27322132cd47efc9897a96d69d9bb42072e1ca246beabe56631c0b",
+      "sourceFileSha256": "ee3fe9a7cd27322132cd47efc9897a96d69d9bb42072e1ca246beabe56631c0b",
+      "category": "native-adapter",
+      "rationale": "The representative MainActivity registers ElvoranceAuthBridgePlugin in onCreate and delegates activity initialization to Capacitor. The registered bridge owns auth/storage behavior; this entrypoint has no independent backend endpoint.",
+      "resolves": [
+        "Native source is inventoried per adapter; method-level platform/security review remains required."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/rep-mobile/android/app/src/main/java/com/elvorance/rep/MainActivity.java"
+      ],
+      "nativeMembers": [
+        {
+          "signature": "@Override public void onCreate(Bundle savedInstanceState) {",
+          "line": 8,
+          "sha256": "f6da60d6fe6d0461d8b201cf1d0046de1dc7cb97b6e3c3c9b508ebedfddefe3e"
+        }
+      ]
     },
     {
       "featureId": "native-adapter:apps/rep-mobile/android/app/src/main/java/com/elvorance/rep/auth/AuthBrowserSession.java",
@@ -3590,28 +3771,6 @@
           "signature": "@Override protected void handleOnDestroy() { browser.cancel(\"AUTH_CANCELLED\"); }",
           "line": 65,
           "sha256": "bb0d92563ecd631a3ac097aa8b61413e8c58f0d9f22bec3439012075686bd003"
-        }
-      ]
-    },
-    {
-      "featureId": "native-adapter:apps/rep-mobile/android/app/src/main/java/com/elvorance/rep/MainActivity.java",
-      "sourceFingerprint": "ee3fe9a7cd27322132cd47efc9897a96d69d9bb42072e1ca246beabe56631c0b",
-      "sourceFileSha256": "ee3fe9a7cd27322132cd47efc9897a96d69d9bb42072e1ca246beabe56631c0b",
-      "category": "native-adapter",
-      "rationale": "The representative MainActivity registers ElvoranceAuthBridgePlugin in onCreate and delegates activity initialization to Capacitor. The registered bridge owns auth/storage behavior; this entrypoint has no independent backend endpoint.",
-      "resolves": [
-        "Native source is inventoried per adapter; method-level platform/security review remains required."
-      ],
-      "backendRouteIds": [],
-      "delegateFeatureIds": [],
-      "evidencePaths": [
-        "apps/rep-mobile/android/app/src/main/java/com/elvorance/rep/MainActivity.java"
-      ],
-      "nativeMembers": [
-        {
-          "signature": "@Override public void onCreate(Bundle savedInstanceState) {",
-          "line": 8,
-          "sha256": "f6da60d6fe6d0461d8b201cf1d0046de1dc7cb97b6e3c3c9b508ebedfddefe3e"
         }
       ]
     },
@@ -3954,7 +4113,7 @@
     {
       "featureId": "route:rep:server:billing",
       "sourceFingerprint": "0fe2ebf812610c24bd7afccf48f46b7f8dfb257211c3275b3a8691281f19344b",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -3978,7 +4137,7 @@
     {
       "featureId": "route:rep:server:contracts",
       "sourceFingerprint": "19d25ee3ce3daa7d2d0d01113f4ae2ca7a2b40d7ae36c1ab8e85bdb90ae6ea0f",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -4001,7 +4160,7 @@
     {
       "featureId": "route:rep:server:customers",
       "sourceFingerprint": "874f0f3854be619b131e756690a87135b3abb79a76cb17fffd7fa0d5290e2783",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -4026,7 +4185,7 @@
     {
       "featureId": "route:rep:server:home",
       "sourceFingerprint": "fad645bea49f5477aa364703ce68e0a4be19235ed7830d98699b626c8128ed61",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "view-read",
       "rationale": "The home dashboard maps the finite literal resource list customers/visits/tasks/quotes through RepApi.list. It computes local aggregates from those scoped server records. The four registered GET operations are the actual data sources, not a historical dashboard route count.",
       "resolves": [
@@ -4056,7 +4215,7 @@
     {
       "featureId": "route:rep:server:notifications",
       "sourceFingerprint": "2fe888c849e674ec9a395cf3ab590a38909ad74b92eab35bfdff84b37dfca10a",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -4076,7 +4235,7 @@
     {
       "featureId": "route:rep:server:opportunities",
       "sourceFingerprint": "7e2bf6bc95f8560736a821deab6e563cacb09cd6624eab9121071182ba9e7d36",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "view-read",
       "rationale": "The opportunities view delegates to the collection helper with a literal resource key. It loads scoped records and customer choices, then creates or version-updates the selected resource through editForm. Opportunities additionally load approved-contract choices. Each operation is linked to its actual registered backend policy.",
       "resolves": [
@@ -4110,7 +4269,7 @@
     {
       "featureId": "route:rep:server:projects",
       "sourceFingerprint": "2cf7b18bf4f987295fbd16a5c6d063f8f7c76a719557e95048dd4b7b8ab2bcbf",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "view-read",
       "rationale": "The projects view calls readOnly with the projects resource literal; RepApi.list resolves it to the delivery project collection. It displays status, due date and progress only; no project mutation is implemented by this representative view.",
       "resolves": [
@@ -4131,7 +4290,7 @@
     {
       "featureId": "route:rep:server:quotes",
       "sourceFingerprint": "17037bc0826756ccf669dfc3c26e2bddaf15952b8c3ea3b34bf06913d79ecee8",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "finite-dispatch",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -4157,7 +4316,7 @@
     {
       "featureId": "route:rep:server:tasks",
       "sourceFingerprint": "9d60e6043c1e6534eb9a2b8a6410533464954a42e149baa95ad756508f56d58b",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "view-read",
       "rationale": "The tasks view delegates to the collection helper with a literal resource key. It loads scoped records and customer choices, then creates or version-updates the selected resource through editForm. Opportunities additionally load approved-contract choices. Each operation is linked to its actual registered backend policy.",
       "resolves": [
@@ -4189,7 +4348,7 @@
     {
       "featureId": "route:rep:server:tracking",
       "sourceFingerprint": "5fef5ee7a6c861029b70197f3d557306636d6361865f59f1e0f2e74a88665b82",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -4213,7 +4372,7 @@
     {
       "featureId": "route:rep:server:visits",
       "sourceFingerprint": "e02bfcfc286ac0f5b3459f0b5f471117fefc50b279630333ba0d20e61db7abd8",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],

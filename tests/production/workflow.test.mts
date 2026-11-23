@@ -15,6 +15,7 @@ test('FULL-CI retains every project suite and all mandatory native/runtime/ident
     'native-ios',
     'identity',
     'security',
+    'browser',
   ])
     assert.ok(
       contract.lanes.some((lane) => lane.name === name),

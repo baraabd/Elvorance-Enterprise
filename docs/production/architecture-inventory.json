@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "85cb662eb1d305ee149781793b16c0cc2d0952dba141b51661eb187793a63c8b",
+  "sourceDigest": "fc82f0924b36c3e5fb6735b4f71e2e70b763006ef69af32375111d97535f9e1f",
   "workspaces": [
     {
       "name": "@elvorance/admin-web",
@@ -389,6 +389,13 @@
     { "source": "apps/rep-mobile/src/server/views/records.ts", "specifier": "../api.ts" },
     { "source": "apps/rep-mobile/src/server/views/records.ts", "specifier": "../ui/dom.ts" },
     { "source": "apps/rep-mobile/src/server/views/records.ts", "specifier": "./quote-editor.ts" },
+    { "source": "apps/rep-mobile/src/server/views/schedule-model.ts", "specifier": "../api.ts" },
+    { "source": "apps/rep-mobile/src/server/views/schedule.ts", "specifier": "../context.ts" },
+    { "source": "apps/rep-mobile/src/server/views/schedule.ts", "specifier": "../ui/dom.ts" },
+    {
+      "source": "apps/rep-mobile/src/server/views/schedule.ts",
+      "specifier": "./schedule-model.ts"
+    },
     { "source": "apps/rep-mobile/src/server/views/support.ts", "specifier": "../context.ts" },
     { "source": "apps/rep-mobile/src/server/views/support.ts", "specifier": "../ui/dom.ts" },
     { "source": "apps/rep-mobile/src/server/views/support.ts", "specifier": "../ui/forms.ts" },
@@ -412,6 +419,7 @@
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./ui/dom.ts" },
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./tracking.ts" },
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./views/home.ts" },
+    { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./views/schedule.ts" },
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./views/customers.ts" },
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./views/visits.ts" },
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./views/planning.ts" },
@@ -587,6 +595,7 @@
     { "source": "packages/mobile-platform/src/index.ts", "specifier": "@capacitor/app" },
     { "source": "packages/mobile-platform/src/index.ts", "specifier": "@capacitor/geolocation" },
     { "source": "packages/mobile-platform/src/index.ts", "specifier": "@capacitor/network" },
+    { "source": "packages/mobile-platform/src/index.ts", "specifier": "./location-permission.ts" },
     { "source": "packages/questionnaire/src/answers.ts", "specifier": "./configuration.ts" },
     { "source": "packages/questionnaire/src/answers.ts", "specifier": "./types.ts" },
     { "source": "packages/questionnaire/src/answers.ts", "specifier": "./validation-values.ts" },
@@ -1647,6 +1656,60 @@
       "specifier": "../../services/communications/src/app.ts"
     },
     { "source": "tests/backend/tracking-and-communications.test.ts", "specifier": "./helpers.ts" },
+    {
+      "source": "tests/browser/rep-field-entry.ts",
+      "specifier": "../../apps/rep-mobile/src/server/workspace.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-entry.ts",
+      "specifier": "../../apps/rep-mobile/src/server/api.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-entry.ts",
+      "specifier": "../../packages/api-client/src/live-workspace.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-entry.ts",
+      "specifier": "../../packages/mobile-auth/src/types.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-entry.ts",
+      "specifier": "../../apps/rep-mobile/src/server/styles.css"
+    },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "node:test" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "node:http" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "fastify" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "../backend/rep-fixture.ts" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "../backend/helpers.ts" },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/tracking/src/app.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/billing/src/app.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/delivery/src/app.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/tracking/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/billing/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/delivery/src/infrastructure/migrations/001_initial.ts"
+    },
+    { "source": "tests/browser/run-rep-field.mts", "specifier": "esbuild" },
+    { "source": "tests/browser/run-rep-field.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/browser/run-rep-field.mts", "specifier": "node:child_process" },
     { "source": "tests/build-output/app-build-proof.test.mts", "specifier": "node:test" },
     { "source": "tests/build-output/app-build-proof.test.mts", "specifier": "node:assert/strict" },
     { "source": "tests/build-output/app-build-proof.test.mts", "specifier": "node:fs/promises" },
@@ -1781,6 +1844,16 @@
     { "source": "tests/integration/rep-auth-lifecycle.test.mts", "specifier": "node:url" },
     { "source": "tests/integration/rep-auth-lifecycle.test.mts", "specifier": "esbuild" },
     { "source": "tests/integration/rep-auth-lifecycle.test.mts", "specifier": "jsdom" },
+    { "source": "tests/integration/rep-schedule.test.mts", "specifier": "node:test" },
+    { "source": "tests/integration/rep-schedule.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/integration/rep-schedule.test.mts",
+      "specifier": "../../apps/rep-mobile/src/server/views/schedule-model.ts"
+    },
+    {
+      "source": "tests/integration/rep-schedule.test.mts",
+      "specifier": "../../packages/mobile-platform/src/location-permission.ts"
+    },
     { "source": "tests/integration/rep-server-views.test.ts", "specifier": "node:test" },
     { "source": "tests/integration/rep-server-views.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/integration/rep-server-views.test.ts", "specifier": "node:module" },
@@ -1828,6 +1901,18 @@
     {
       "source": "tests/integration/rep-server-views.test.ts",
       "specifier": "../../apps/rep-mobile/src/server/views/messages.ts"
+    },
+    {
+      "source": "tests/integration/rep-server-views.test.ts",
+      "specifier": "../../apps/rep-mobile/src/server/views/schedule.ts"
+    },
+    {
+      "source": "tests/integration/rep-server-views.test.ts",
+      "specifier": "../../apps/rep-mobile/src/server/ui/dom.ts"
+    },
+    {
+      "source": "tests/integration/rep-server-views.test.ts",
+      "specifier": "../../apps/rep-mobile/src/server/ui/forms.ts"
     },
     { "source": "tests/native/ios-profile.test.mts", "specifier": "node:test" },
     { "source": "tests/native/ios-profile.test.mts", "specifier": "node:assert/strict" },

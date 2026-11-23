@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "85cb662eb1d305ee149781793b16c0cc2d0952dba141b51661eb187793a63c8b",
+  "sourceDigest": "fc82f0924b36c3e5fb6735b4f71e2e70b763006ef69af32375111d97535f9e1f",
   "status": "BLOCKED",
   "semanticStatus": "SOURCE_TRACE_COMPLETE_NOT_RUNTIME_ACCEPTANCE",
-  "sourceBoundDecisions": 176,
+  "sourceBoundDecisions": 183,
   "scope": "Extractor warning classification, not completeness certification, test execution or workflow coverage.",
   "unknownWarningsFailClosed": true,
   "totals": {
-    "unresolvedRecords": 1294,
+    "unresolvedRecords": 1301,
     "recordsWithSemanticGaps": 0,
-    "recordsWithOnlyTestMappingDebt": 1294,
+    "recordsWithOnlyTestMappingDebt": 1301,
     "workflowsWithoutTestCandidates": 244
   },
-  "categoryCounts": { "test-mapping": 1294 },
+  "categoryCounts": { "test-mapping": 1301 },
   "byCategory": {
     "test-mapping": [
       "account-lifecycle:apps/admin-web/src/app.ts:c83e652f3ba1:1",
@@ -166,6 +166,7 @@
       "action:rep:demo:task-new",
       "action:rep:demo:task-toggle",
       "action:rep:demo:territory-day",
+      "api-call:apps/rep-mobile/src/server/tracking.ts:072e68e1b4f8:1",
       "api-call:apps/rep-mobile/src/server/tracking.ts:36db1baa2b6a:1",
       "api-call:apps/rep-mobile/src/server/tracking.ts:5765901e7757:1",
       "api-call:apps/rep-mobile/src/server/tracking.ts:5765901e7757:2",
@@ -178,7 +179,6 @@
       "api-call:apps/rep-mobile/src/server/tracking.ts:ae56819a1ce6:3",
       "api-call:apps/rep-mobile/src/server/tracking.ts:ae56819a1ce6:4",
       "api-call:apps/rep-mobile/src/server/tracking.ts:b7b49170eb60:1",
-      "api-call:apps/rep-mobile/src/server/tracking.ts:c9ebf8c20179:1",
       "api-call:apps/rep-mobile/src/server/tracking.ts:ccedd62d5d9c:1",
       "api-call:apps/rep-mobile/src/server/tracking.ts:eacbc9a94b9a:1",
       "api-call:apps/rep-mobile/src/server/views/account.ts:4a132ea10ead:1",
@@ -219,6 +219,7 @@
       "api-call:apps/rep-mobile/src/server/views/records.ts:f09030925270:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:f94d78701f4d:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:f9f97cd85588:1",
+      "api-call:apps/rep-mobile/src/server/views/schedule.ts:4dbbf74af3a9:1",
       "api-call:apps/rep-mobile/src/server/views/support.ts:49c829dc12c2:1",
       "api-call:apps/rep-mobile/src/server/views/support.ts:4f23e1faae51:1",
       "api-call:apps/rep-mobile/src/server/views/support.ts:6921c50f6b69:1",
@@ -434,11 +435,11 @@
       "failure-state:apps/rep-mobile/src/server/bootstrap.ts:e2f96d5f2320:1",
       "failure-state:apps/rep-mobile/src/server/tracking.ts:080e33d6e35a:1",
       "failure-state:apps/rep-mobile/src/server/tracking.ts:3f79db7ac1fe:1",
+      "failure-state:apps/rep-mobile/src/server/tracking.ts:4ef754755894:1",
       "failure-state:apps/rep-mobile/src/server/tracking.ts:61b2d0dcccc7:1",
       "failure-state:apps/rep-mobile/src/server/tracking.ts:68270d3fb371:1",
       "failure-state:apps/rep-mobile/src/server/tracking.ts:68270d3fb371:2",
       "failure-state:apps/rep-mobile/src/server/tracking.ts:69ae94dd7be9:1",
-      "failure-state:apps/rep-mobile/src/server/tracking.ts:850e8ae222eb:1",
       "failure-state:apps/rep-mobile/src/server/tracking.ts:86c4fb807a96:1",
       "failure-state:apps/rep-mobile/src/server/tracking.ts:a869ffb2f7e0:1",
       "failure-state:apps/rep-mobile/src/server/tracking.ts:a869ffb2f7e0:2",
@@ -447,14 +448,6 @@
       "failure-state:apps/rep-mobile/src/server/tracking.ts:bb9e560a3fc7:1",
       "failure-state:apps/rep-mobile/src/server/tracking.ts:f008936a3116:1",
       "failure-state:apps/rep-mobile/src/server/tracking.ts:f18f02b5be48:1",
-      "failure-state:apps/rep-mobile/src/server/ui/dom.ts:2e3227c24a17:1",
-      "failure-state:apps/rep-mobile/src/server/ui/dom.ts:453b9cef4aed:1",
-      "failure-state:apps/rep-mobile/src/server/ui/dom.ts:6fdcc2d7a749:1",
-      "failure-state:apps/rep-mobile/src/server/ui/dom.ts:aad91bbae37f:1",
-      "failure-state:apps/rep-mobile/src/server/ui/dom.ts:f1d041919c84:1",
-      "failure-state:apps/rep-mobile/src/server/ui/forms.ts:1f70e72f69a6:1",
-      "failure-state:apps/rep-mobile/src/server/ui/forms.ts:28b8bcc64a0d:1",
-      "failure-state:apps/rep-mobile/src/server/ui/forms.ts:28b8bcc64a0d:2",
       "failure-state:apps/rep-mobile/src/server/ui/repeating-fields.ts:5cf0b8a87fd7:1",
       "failure-state:apps/rep-mobile/src/server/ui/repeating-fields.ts:f928376d2264:1",
       "failure-state:apps/rep-mobile/src/server/views/account.ts:97f9f70b76ae:1",
@@ -480,10 +473,17 @@
       "failure-state:apps/rep-mobile/src/server/views/records.ts:97f9f70b76ae:4",
       "failure-state:apps/rep-mobile/src/server/views/records.ts:97f9f70b76ae:5",
       "failure-state:apps/rep-mobile/src/server/views/records.ts:fec1a1c2f94f:1",
+      "failure-state:apps/rep-mobile/src/server/views/schedule.ts:97f9f70b76ae:1",
       "failure-state:apps/rep-mobile/src/server/views/support.ts:97f9f70b76ae:1",
+      "failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:1",
+      "failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:2",
+      "failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:3",
+      "failure-state:apps/rep-mobile/src/server/views/visits.ts:4ef754755894:1",
       "failure-state:apps/rep-mobile/src/server/views/visits.ts:706bf9b561c2:1",
-      "failure-state:apps/rep-mobile/src/server/views/visits.ts:850e8ae222eb:1",
       "failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:1",
+      "failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:2",
+      "failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:3",
+      "failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:4",
       "failure-state:apps/rep-mobile/src/server/views/visits.ts:b32d1f4065f5:1",
       "failure-state:apps/rep-mobile/src/server/workspace.ts:1ee2af1a836d:1",
       "failure-state:apps/rep-mobile/src/server/workspace.ts:1f70e72f69a6:1",
@@ -645,7 +645,10 @@
       "failure-state:packages/mobile-auth/src/vault.ts:e6e967f04101:1",
       "failure-state:packages/mobile-auth/src/vault.ts:f070c8a23b8a:1",
       "failure-state:packages/mobile-auth/src/vault.ts:f070c8a23b8a:2",
+      "failure-state:packages/mobile-platform/src/index.ts:25394e960251:1",
+      "failure-state:packages/mobile-platform/src/index.ts:a869ffb2f7e0:1",
       "failure-state:packages/mobile-platform/src/index.ts:b17d31e7179a:1",
+      "failure-state:packages/mobile-platform/src/index.ts:f924dcdb05e9:1",
       "failure-state:packages/questionnaire/src/catalog-validation.ts:9272d0092104:1",
       "failure-state:packages/questionnaire/src/sync.ts:09d4b604e3b9:1",
       "failure-state:packages/questionnaire/src/sync.ts:1f43b69e6307:1",
@@ -851,15 +854,13 @@
       "handler:apps/rep-mobile/src/server/bootstrap.ts:c569ffc74355:1",
       "handler:apps/rep-mobile/src/server/tracking.ts:73aefaa415bf:1",
       "handler:apps/rep-mobile/src/server/tracking.ts:f91c7ec58c3a:1",
-      "handler:apps/rep-mobile/src/server/ui/dom.ts:f9db78ae399e:1",
-      "handler:apps/rep-mobile/src/server/ui/forms.ts:37a436a0698f:1",
-      "handler:apps/rep-mobile/src/server/ui/forms.ts:6be3c8ea5f69:1",
       "handler:apps/rep-mobile/src/server/ui/repeating-fields.ts:3be73e53c324:1",
       "handler:apps/rep-mobile/src/server/ui/repeating-fields.ts:eec6e3c371d7:1",
       "handler:apps/rep-mobile/src/server/views/account.ts:95a20ee4933b:1",
       "handler:apps/rep-mobile/src/server/views/account.ts:aa177efa48d1:1",
       "handler:apps/rep-mobile/src/server/views/customers.ts:0dfc7faa202e:1",
       "handler:apps/rep-mobile/src/server/views/discovery.ts:200f9df21a19:1",
+      "handler:apps/rep-mobile/src/server/views/home.ts:3ff34712993b:1",
       "handler:apps/rep-mobile/src/server/views/home.ts:4c39995d72b0:1",
       "handler:apps/rep-mobile/src/server/views/home.ts:dc7cf3d33204:1",
       "handler:apps/rep-mobile/src/server/views/messages.ts:0b873393c43a:1",
@@ -877,6 +878,12 @@
       "handler:apps/rep-mobile/src/server/views/records.ts:5416ab6b27ce:1",
       "handler:apps/rep-mobile/src/server/views/records.ts:bc1278426100:1",
       "handler:apps/rep-mobile/src/server/views/records.ts:f94d78701f4d:1",
+      "handler:apps/rep-mobile/src/server/views/schedule.ts:1154275c3b61:1",
+      "handler:apps/rep-mobile/src/server/views/schedule.ts:28f4b9081ea0:1",
+      "handler:apps/rep-mobile/src/server/views/schedule.ts:76abdfc1a903:1",
+      "handler:apps/rep-mobile/src/server/views/schedule.ts:90059b21db75:1",
+      "handler:apps/rep-mobile/src/server/views/schedule.ts:dc7cf3d33204:1",
+      "handler:apps/rep-mobile/src/server/views/schedule.ts:df4b40864787:1",
       "handler:apps/rep-mobile/src/server/views/support.ts:36123361faed:1",
       "handler:apps/rep-mobile/src/server/views/support.ts:a55a01b6b6aa:1",
       "handler:apps/rep-mobile/src/server/views/support.ts:bc069910321a:1",
@@ -2278,8 +2285,8 @@
       "featureId": "account-lifecycle:apps/rep-mobile/src/server/views/messages.ts:55837b94b81b:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 118,
-        "endLine": 118,
+        "line": 137,
+        "endLine": 137,
         "fingerprint": "ae024ea4afd375d4e08522154af0586d3b15f13ec15b911e89451ed94e6b884e"
       },
       "owningService": null,
@@ -2389,8 +2396,8 @@
       "featureId": "account-lifecycle:apps/rep-mobile/src/server/workspace.ts:4ca20c66ed5a:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 139,
-        "endLine": 139,
+        "line": 141,
+        "endLine": 141,
         "fingerprint": "0c58627f144d51b02d64542e0afc34c5e9fce1f419609efb77cf09a31f57264f"
       },
       "owningService": null,
@@ -6900,11 +6907,48 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:072e68e1b4f8:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/tracking.ts",
+        "line": 187,
+        "endLine": 233,
+        "fingerprint": "5867844ac88de46ed21d1cd25cde01df29b55e4831ee79e156f498a45e255ea2"
+      },
+      "owningService": null,
+      "targetService": "tracking",
+      "mode": "server",
+      "targetSprint": "S08",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:apps/rep-mobile/src/server/tracking.ts:072e68e1b4f8:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:apps/rep-mobile/src/server/tracking.ts:072e68e1b4f8:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:apps/rep-mobile/src/server/tracking.ts:072e68e1b4f8:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:36db1baa2b6a:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 277,
-        "endLine": 282,
+        "line": 283,
+        "endLine": 288,
         "fingerprint": "944df5c78c05589c013921d17fc083f382b0a25fe99617c4ca976e8444726aa0"
       },
       "owningService": null,
@@ -6940,8 +6984,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:5765901e7757:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 158,
-        "endLine": 161,
+        "line": 159,
+        "endLine": 162,
         "fingerprint": "42f4ef5f16c5973a1593dd7128d3b0577c15d112edb505ea097701fcd681e945"
       },
       "owningService": null,
@@ -6977,8 +7021,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:5765901e7757:2",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 295,
-        "endLine": 298,
+        "line": 301,
+        "endLine": 304,
         "fingerprint": "cce9d221cc5688016686bf87d42708d13ed9f9367b5964a4db8677465a87f95d"
       },
       "owningService": null,
@@ -7014,8 +7058,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:5765901e7757:3",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 310,
-        "endLine": 313,
+        "line": 316,
+        "endLine": 319,
         "fingerprint": "cce9d221cc5688016686bf87d42708d13ed9f9367b5964a4db8677465a87f95d"
       },
       "owningService": null,
@@ -7088,8 +7132,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:977ac854acca:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 202,
-        "endLine": 215,
+        "line": 204,
+        "endLine": 217,
         "fingerprint": "06d3367d0466bb41f036dbbcbd408dcbd7dc88a1440d759970e22c446b36a3af"
       },
       "owningService": null,
@@ -7162,8 +7206,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:ae56819a1ce6:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 155,
-        "endLine": 177,
+        "line": 156,
+        "endLine": 178,
         "fingerprint": "e5b2da58443be8ef09a80c925c9ef8ec793e58daaba9d3bac8f3110ab0dded38"
       },
       "owningService": null,
@@ -7199,9 +7243,9 @@
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:ae56819a1ce6:2",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 185,
-        "endLine": 220,
-        "fingerprint": "37386c579b075070d992a37149584c2225ca03b89679d57eb571dd39c4d9e49d"
+        "line": 187,
+        "endLine": 226,
+        "fingerprint": "4b7eef10c903df4107ed196ee75cac208f986db6d80a0c78dc8ba33e20287488"
       },
       "owningService": null,
       "targetService": "tracking",
@@ -7236,8 +7280,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:ae56819a1ce6:3",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 292,
-        "endLine": 300,
+        "line": 298,
+        "endLine": 306,
         "fingerprint": "918788fda05ce017e2694caec2f5289a54122928390c396cf9cd4edfbfc92535"
       },
       "owningService": null,
@@ -7273,8 +7317,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:ae56819a1ce6:4",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 307,
-        "endLine": 316,
+        "line": 313,
+        "endLine": 322,
         "fingerprint": "e209d67df5c27775149b27ddd0a637dc6619d5357318793894573b7edb55b8f7"
       },
       "owningService": null,
@@ -7344,49 +7388,12 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:c9ebf8c20179:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 185,
-        "endLine": 227,
-        "fingerprint": "48ed7a0418bcce14e79bc29e6ab5a77f1e048d88f57c44c79a676c9731ec757d"
-      },
-      "owningService": null,
-      "targetService": "tracking",
-      "mode": "server",
-      "targetSprint": "S08",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-call:apps/rep-mobile/src/server/tracking.ts:c9ebf8c20179:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-call:apps/rep-mobile/src/server/tracking.ts:c9ebf8c20179:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-call:apps/rep-mobile/src/server/tracking.ts:c9ebf8c20179:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:ccedd62d5d9c:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 181,
-        "endLine": 235,
-        "fingerprint": "b5532cdf2c22e9f8d4b01136c89c936bbb2e46ea45be07fb4b23b3cfdc285f4b"
+        "line": 182,
+        "endLine": 241,
+        "fingerprint": "f416d71f630e134ab98510a8cea849dce15d2f0c3e7651c3cdd48b95dcd1a200"
       },
       "owningService": null,
       "targetService": "tracking",
@@ -7421,8 +7428,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:eacbc9a94b9a:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 168,
-        "endLine": 173,
+        "line": 169,
+        "endLine": 174,
         "fingerprint": "a109210b4bf4304e10618f75297f7b1d2744f55b3b38b1a0bee1ccc77a29a542"
       },
       "owningService": null,
@@ -7680,8 +7687,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/views/messages.ts:64d17c938bcb:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 93,
-        "endLine": 96,
+        "line": 112,
+        "endLine": 115,
         "fingerprint": "ea921ac978d928d4493096878a5433c0ddee18ebc28d8d6afe86820dcbb9a73d"
       },
       "owningService": null,
@@ -7717,8 +7724,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/views/messages.ts:89c895f66bbb:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 101,
-        "endLine": 122,
+        "line": 120,
+        "endLine": 141,
         "fingerprint": "f750920d7b27ab1ef658624336ee708070f041a8cd0f021363268836fff9cd7e"
       },
       "owningService": null,
@@ -7754,8 +7761,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/views/messages.ts:9fdd2a85a821:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 105,
-        "endLine": 120,
+        "line": 124,
+        "endLine": 139,
         "fingerprint": "617d6560c6c9501ca3b7677f504a927d341780ea906738a1a1dec22f5f44a43c"
       },
       "owningService": null,
@@ -7791,8 +7798,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/views/messages.ts:a5a899b3c3fc:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 100,
-        "endLine": 123,
+        "line": 119,
+        "endLine": 142,
         "fingerprint": "2e04f7770a6c010cb79c079f26d49d6afd0ae492fadda8ead495abcf3ad0a1bf"
       },
       "owningService": null,
@@ -7828,8 +7835,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/views/messages.ts:b2c7612597a5:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 112,
-        "endLine": 117,
+        "line": 131,
+        "endLine": 136,
         "fingerprint": "a23745652d67d7cd2ab9a6cf1e8a75ceb2e4a2e1baefc95839cef0fe91de4a3c"
       },
       "owningService": null,
@@ -7865,8 +7872,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/views/messages.ts:c3b8f47f3e00:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 94,
-        "endLine": 94,
+        "line": 113,
+        "endLine": 113,
         "fingerprint": "c44b98520ad0c3dcf185696f91595d4150bcf04e42d86ece1c4887efca7f33b7"
       },
       "owningService": null,
@@ -8861,6 +8868,43 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "api-call:apps/rep-mobile/src/server/views/schedule.ts:4dbbf74af3a9:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/schedule.ts",
+        "line": 8,
+        "endLine": 8,
+        "fingerprint": "c69619e5f4cdad61a48006f681d057e4c4d3b44c277ae51847062d1f028283d7"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "server",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:apps/rep-mobile/src/server/views/schedule.ts:4dbbf74af3a9:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:apps/rep-mobile/src/server/views/schedule.ts:4dbbf74af3a9:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:apps/rep-mobile/src/server/views/schedule.ts:4dbbf74af3a9:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "api-call:apps/rep-mobile/src/server/views/support.ts:49c829dc12c2:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/support.ts",
@@ -9272,8 +9316,8 @@
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
         "line": 82,
-        "endLine": 127,
-        "fingerprint": "250bf8c7ceb557119f0ca0149a4e82143e08c85487e62c6cc3c75931994bf657"
+        "endLine": 134,
+        "fingerprint": "01ffa1bcbd3e3489d7f35d95deda4e1b7881636d3869c9f06cc0099a7467b3f9"
       },
       "owningService": null,
       "targetService": "sales",
@@ -9308,8 +9352,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/views/visits.ts:3a3878d39867:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
-        "line": 132,
-        "endLine": 140,
+        "line": 139,
+        "endLine": 147,
         "fingerprint": "e0d41335b1e080d166768be527beb656a515311f2bb525946d437f673ad363f2"
       },
       "owningService": null,
@@ -9345,8 +9389,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/views/visits.ts:4cb39b215eb2:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
-        "line": 136,
-        "endLine": 138,
+        "line": 143,
+        "endLine": 145,
         "fingerprint": "f91ec0f9979b3a21f739ca6cad504d6d90397b0571c72489293fb41371209c9d"
       },
       "owningService": null,
@@ -9383,8 +9427,8 @@
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
         "line": 78,
-        "endLine": 129,
-        "fingerprint": "2bfe1dd0f9aea4788352e9b83c021884f02bb28acc788f803ce0e32bc65d8ee4"
+        "endLine": 136,
+        "fingerprint": "c3e5f15c9678f6c6bf1ccb9e1c6f5030fa0dec71dbaf2036a66152052dea8996"
       },
       "owningService": null,
       "targetService": "sales",
@@ -9494,8 +9538,8 @@
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
         "line": 77,
-        "endLine": 130,
-        "fingerprint": "0ad4569dfb003f1c1cd7e9214831d711b9dcf404b4f4b08d0bdc35a05bed4128"
+        "endLine": 137,
+        "fingerprint": "19d5ead395a571d3e3ba42e5597c278e00b66495ff83815207780c0ee9628d8f"
       },
       "owningService": null,
       "targetService": "sales",
@@ -9530,8 +9574,8 @@
       "featureId": "api-call:apps/rep-mobile/src/server/views/visits.ts:dafb3781d648:3",
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
-        "line": 131,
-        "endLine": 141,
+        "line": 138,
+        "endLine": 148,
         "fingerprint": "f4699fb1fa9c50897da126f98fbe6e4c2fd8b2fd00d588a444657aef328e4de3"
       },
       "owningService": null,
@@ -16816,11 +16860,48 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:4ef754755894:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/tracking.ts",
+        "line": 154,
+        "endLine": 155,
+        "fingerprint": "bb8a982f9b63885ca731069b532305cdbee6b22e02ad41f81252dffd6d0abd10"
+      },
+      "owningService": null,
+      "targetService": "tracking",
+      "mode": "server",
+      "targetSprint": "S08",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/tracking.ts:4ef754755894:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/tracking.ts:4ef754755894:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/tracking.ts:4ef754755894:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:61b2d0dcccc7:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 241,
-        "endLine": 244,
+        "line": 247,
+        "endLine": 250,
         "fingerprint": "0cf3125b0636abb81e1ed31c54c4a38c78fbc9100bca87358986f9d757ec9a4a"
       },
       "owningService": null,
@@ -16856,8 +16937,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:68270d3fb371:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 291,
-        "endLine": 291,
+        "line": 297,
+        "endLine": 297,
         "fingerprint": "aa79a15222d407e8eff707bbbbe199eb607a6d49ef7898c3c3d91904585dd453"
       },
       "owningService": null,
@@ -16893,8 +16974,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:68270d3fb371:2",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 306,
-        "endLine": 306,
+        "line": 312,
+        "endLine": 312,
         "fingerprint": "aa79a15222d407e8eff707bbbbe199eb607a6d49ef7898c3c3d91904585dd453"
       },
       "owningService": null,
@@ -16930,8 +17011,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:69ae94dd7be9:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 154,
-        "endLine": 154,
+        "line": 155,
+        "endLine": 155,
         "fingerprint": "df44faa288973c21bbf5759501e90aa8a4bf917ea176d3274a46b9ec3702c13b"
       },
       "owningService": null,
@@ -16964,48 +17045,11 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:850e8ae222eb:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 153,
-        "endLine": 154,
-        "fingerprint": "62047063b6901af2886ee4e0cc8db0dda4f2ee64c9d18a28979cc8cd24240af7"
-      },
-      "owningService": null,
-      "targetService": "tracking",
-      "mode": "server",
-      "targetSprint": "S08",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/tracking.ts:850e8ae222eb:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/tracking.ts:850e8ae222eb:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/tracking.ts:850e8ae222eb:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:86c4fb807a96:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 283,
-        "endLine": 283,
+        "line": 289,
+        "endLine": 289,
         "fingerprint": "af313417ec79ea14d7369347b1413d6827a6665414244b41e0a861cee49489b5"
       },
       "owningService": null,
@@ -17078,8 +17122,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:a869ffb2f7e0:2",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 243,
-        "endLine": 243,
+        "line": 249,
+        "endLine": 249,
         "fingerprint": "8c468a57ba68bc74d4da2e446572891a3884d987edae85e551db81ebbee3f4d4"
       },
       "owningService": null,
@@ -17115,8 +17159,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:b7127a1e529a:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 269,
-        "endLine": 276,
+        "line": 275,
+        "endLine": 282,
         "fingerprint": "15455b50604a2bace5b37c3dcc48d9b9acacbad8206bf3048af2efab28f58b0d"
       },
       "owningService": null,
@@ -17189,8 +17233,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:bb9e560a3fc7:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 261,
-        "endLine": 261,
+        "line": 267,
+        "endLine": 267,
         "fingerprint": "dc4dec8dcd5d015ebb2e8ab95bfe585df5a2018fb637139d9fb3132f9a9be2ad"
       },
       "owningService": null,
@@ -17263,8 +17307,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/tracking.ts:f18f02b5be48:1",
       "source": {
         "path": "apps/rep-mobile/src/server/tracking.ts",
-        "line": 329,
-        "endLine": 329,
+        "line": 335,
+        "endLine": 335,
         "fingerprint": "faf39a3e5675ce220949fd4cddd7039bf42a23042c7e80b3abe256aa2f645a82"
       },
       "owningService": null,
@@ -17290,302 +17334,6 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/tracking.ts:f18f02b5be48:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:apps/rep-mobile/src/server/ui/dom.ts:2e3227c24a17:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 107,
-        "endLine": 110,
-        "fingerprint": "22ac51be287b1b98adf531b4b20e31a19711357b47507c35073c46fbe3210044"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/ui/dom.ts:2e3227c24a17:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/ui/dom.ts:2e3227c24a17:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/ui/dom.ts:2e3227c24a17:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:apps/rep-mobile/src/server/ui/dom.ts:453b9cef4aed:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 120,
-        "endLine": 121,
-        "fingerprint": "57e1b09eff815db32eb5494b157d87b51d3e4bea77b3cb3cf629f85b0bb7b563"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/ui/dom.ts:453b9cef4aed:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/ui/dom.ts:453b9cef4aed:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/ui/dom.ts:453b9cef4aed:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:apps/rep-mobile/src/server/ui/dom.ts:6fdcc2d7a749:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 23,
-        "endLine": 25,
-        "fingerprint": "c4caf91223055269ad7f06fe5bf08fc2de072ddfb708ca262c536858451d141c"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/ui/dom.ts:6fdcc2d7a749:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/ui/dom.ts:6fdcc2d7a749:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/ui/dom.ts:6fdcc2d7a749:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:apps/rep-mobile/src/server/ui/dom.ts:aad91bbae37f:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 117,
-        "endLine": 117,
-        "fingerprint": "ae3b27c6e7dc67212fe9437d23ef22a60f611ae0797ea8a778f04bac884b3522"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/ui/dom.ts:aad91bbae37f:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/ui/dom.ts:aad91bbae37f:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/ui/dom.ts:aad91bbae37f:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:apps/rep-mobile/src/server/ui/dom.ts:f1d041919c84:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 118,
-        "endLine": 119,
-        "fingerprint": "4a6d67b5e74a242d6abb22f3db60ba005be5116064e6d71a778e6e378a4742af"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/ui/dom.ts:f1d041919c84:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/ui/dom.ts:f1d041919c84:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/ui/dom.ts:f1d041919c84:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:apps/rep-mobile/src/server/ui/forms.ts:1f70e72f69a6:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 157,
-        "endLine": 157,
-        "fingerprint": "b6ed28a5150b6560f30c3f4659fc3cbc735212fbb680aa2a22cd3e44c18f8605"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/ui/forms.ts:1f70e72f69a6:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/ui/forms.ts:1f70e72f69a6:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/ui/forms.ts:1f70e72f69a6:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:apps/rep-mobile/src/server/ui/forms.ts:28b8bcc64a0d:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 124,
-        "endLine": 124,
-        "fingerprint": "cc903642f69b24f7052a777f1c821cf3c261da6ac9cd33423ce658234dc11143"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/ui/forms.ts:28b8bcc64a0d:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/ui/forms.ts:28b8bcc64a0d:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/ui/forms.ts:28b8bcc64a0d:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:apps/rep-mobile/src/server/ui/forms.ts:28b8bcc64a0d:2",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 127,
-        "endLine": 127,
-        "fingerprint": "4314811fd153fd25c9d971190b6937790aa12952a6bf1f4702253166cc856a75"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/ui/forms.ts:28b8bcc64a0d:2",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/ui/forms.ts:28b8bcc64a0d:2",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/ui/forms.ts:28b8bcc64a0d:2",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -17892,8 +17640,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/views/messages.ts:97f9f70b76ae:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 20,
-        "endLine": 20,
+        "line": 25,
+        "endLine": 25,
         "fingerprint": "e7b3b4767be6ec95ee3ca8d3636e1d02d0fe52dfa45ac014bb182c764b10b78f"
       },
       "owningService": null,
@@ -17929,8 +17677,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/views/messages.ts:97f9f70b76ae:2",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 45,
-        "endLine": 45,
+        "line": 64,
+        "endLine": 64,
         "fingerprint": "e7b3b4767be6ec95ee3ca8d3636e1d02d0fe52dfa45ac014bb182c764b10b78f"
       },
       "owningService": null,
@@ -17966,8 +17714,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/views/messages.ts:97f9f70b76ae:3",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 97,
-        "endLine": 97,
+        "line": 116,
+        "endLine": 116,
         "fingerprint": "e7b3b4767be6ec95ee3ca8d3636e1d02d0fe52dfa45ac014bb182c764b10b78f"
       },
       "owningService": null,
@@ -18518,6 +18266,43 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "failure-state:apps/rep-mobile/src/server/views/schedule.ts:97f9f70b76ae:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/schedule.ts",
+        "line": 10,
+        "endLine": 10,
+        "fingerprint": "e7b3b4767be6ec95ee3ca8d3636e1d02d0fe52dfa45ac014bb182c764b10b78f"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "server",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/views/schedule.ts:97f9f70b76ae:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/views/schedule.ts:97f9f70b76ae:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/views/schedule.ts:97f9f70b76ae:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "failure-state:apps/rep-mobile/src/server/views/support.ts:97f9f70b76ae:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/support.ts",
@@ -18548,6 +18333,154 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/views/support.ts:97f9f70b76ae:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/visits.ts",
+        "line": 114,
+        "endLine": 114,
+        "fingerprint": "af48c837677b23acfb2100879164c81687ccc3f0d679af19e7d937edb473e99c"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "server",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:2",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/visits.ts",
+        "line": 117,
+        "endLine": 117,
+        "fingerprint": "af48c837677b23acfb2100879164c81687ccc3f0d679af19e7d937edb473e99c"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "server",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:3",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/visits.ts",
+        "line": 123,
+        "endLine": 123,
+        "fingerprint": "af48c837677b23acfb2100879164c81687ccc3f0d679af19e7d937edb473e99c"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "server",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:3",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:3",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/views/visits.ts:290a574d51d8:3",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:apps/rep-mobile/src/server/views/visits.ts:4ef754755894:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/visits.ts",
+        "line": 119,
+        "endLine": 120,
+        "fingerprint": "d0684398959ac64996cee773b31d3b2c0e6c01acd94d2f1df1495c2c9f719d67"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "server",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/views/visits.ts:4ef754755894:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/views/visits.ts:4ef754755894:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/views/visits.ts:4ef754755894:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -18592,43 +18525,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "failure-state:apps/rep-mobile/src/server/views/visits.ts:850e8ae222eb:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/views/visits.ts",
-        "line": 114,
-        "endLine": 115,
-        "fingerprint": "ff041bd8ef78d870e21a4f4f8d52293be6e4d14ae9ecf877a188fb2efc1e4ab5"
-      },
-      "owningService": null,
-      "targetService": "sales",
-      "mode": "server",
-      "targetSprint": "S04",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/views/visits.ts:850e8ae222eb:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/views/visits.ts:850e8ae222eb:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/views/visits.ts:850e8ae222eb:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
@@ -18666,11 +18562,122 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:2",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/visits.ts",
+        "line": 113,
+        "endLine": 114,
+        "fingerprint": "ca0c2e388a8f40f72bd07427f494f34adcb2b55205a5da983c993103e8fc6a28"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "server",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:3",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/visits.ts",
+        "line": 116,
+        "endLine": 117,
+        "fingerprint": "ca0c2e388a8f40f72bd07427f494f34adcb2b55205a5da983c993103e8fc6a28"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "server",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:3",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:3",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:3",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:4",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/visits.ts",
+        "line": 122,
+        "endLine": 123,
+        "fingerprint": "ca0c2e388a8f40f72bd07427f494f34adcb2b55205a5da983c993103e8fc6a28"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "server",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:4",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:4",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:4",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "failure-state:apps/rep-mobile/src/server/views/visits.ts:b32d1f4065f5:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
-        "line": 115,
-        "endLine": 115,
+        "line": 120,
+        "endLine": 120,
         "fingerprint": "737e5f0cf28a55c9b87c35300678e3d65e73313c730adb273e2d4e56502c4c4d"
       },
       "owningService": null,
@@ -18706,8 +18713,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:1ee2af1a836d:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 105,
-        "endLine": 112,
+        "line": 107,
+        "endLine": 114,
         "fingerprint": "d80e642a9850c8b9fea98fd985403c5178124fbc5231420307fdcc1ccf8d5406"
       },
       "owningService": null,
@@ -18743,8 +18750,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:1f70e72f69a6:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 45,
-        "endLine": 45,
+        "line": 47,
+        "endLine": 47,
         "fingerprint": "16e401afd73345617d9051a0f6941fe45141c6914b78ff44998d26cc97e7ea68"
       },
       "owningService": null,
@@ -18780,8 +18787,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:1f70e72f69a6:2",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 193,
-        "endLine": 196,
+        "line": 202,
+        "endLine": 205,
         "fingerprint": "d7e9800159a5d919cb2541c51003ffc0d46e22f24151217e9b9b0a85d96de173"
       },
       "owningService": null,
@@ -18817,8 +18824,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:429242fdcc61:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 189,
-        "endLine": 189,
+        "line": 198,
+        "endLine": 198,
         "fingerprint": "015a878598ec83b9240393249ec374477e1bd35c893b3f04f571925f1b22ff25"
       },
       "owningService": null,
@@ -18854,8 +18861,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:60e6656fa14e:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 64,
-        "endLine": 64,
+        "line": 66,
+        "endLine": 66,
         "fingerprint": "eb65afb0a7d016175ddbf48502fb6688cea4cd26e1487cc24416679a044c15ea"
       },
       "owningService": null,
@@ -18891,8 +18898,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:60e6656fa14e:2",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 143,
-        "endLine": 146,
+        "line": 145,
+        "endLine": 148,
         "fingerprint": "a18f7dbb51e359a4697e0f425ed6712d9cb50f6b2c58f34f9e4a95f44d95aa54"
       },
       "owningService": null,
@@ -18928,8 +18935,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:a4c5914dc7c1:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 75,
-        "endLine": 75,
+        "line": 77,
+        "endLine": 77,
         "fingerprint": "1f69cbdeb914b634b11d51658ffc333cf7443737996645c3f9cb10c7bfd78828"
       },
       "owningService": null,
@@ -18965,8 +18972,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:c4ea8c4540d8:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 106,
-        "endLine": 106,
+        "line": 108,
+        "endLine": 108,
         "fingerprint": "663fa78bcb6abf695676ad58c3dcdf89488137c008446d5827b3205efb739311"
       },
       "owningService": null,
@@ -19002,8 +19009,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:cb62b681f624:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 44,
-        "endLine": 44,
+        "line": 46,
+        "endLine": 46,
         "fingerprint": "fa7b2624c766ad4b8e69a6e7e86ce58c15b15f4127102a7e347e3ec3a4a711a6"
       },
       "owningService": null,
@@ -19039,8 +19046,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:d25f57527b3a:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 101,
-        "endLine": 104,
+        "line": 103,
+        "endLine": 106,
         "fingerprint": "be18a036790621f7af432562f482984c493fe2384ff5ec764a754e01037009a5"
       },
       "owningService": null,
@@ -19076,8 +19083,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:f7298e236a6e:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 136,
-        "endLine": 138,
+        "line": 138,
+        "endLine": 140,
         "fingerprint": "8f6a7a517c9e8f71ddfa92bfdd9321c7b8c9c0d5f896d0965d37e264f4579668"
       },
       "owningService": null,
@@ -24623,11 +24630,85 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "failure-state:packages/mobile-platform/src/index.ts:25394e960251:1",
+      "source": {
+        "path": "packages/mobile-platform/src/index.ts",
+        "line": 100,
+        "endLine": 103,
+        "fingerprint": "ca5effca312862cf8cdfdffbb5aa897c4ccae2395d1a61b15afaed8e175c0388"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "shared",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:packages/mobile-platform/src/index.ts:25394e960251:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:packages/mobile-platform/src/index.ts:25394e960251:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:packages/mobile-platform/src/index.ts:25394e960251:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:packages/mobile-platform/src/index.ts:a869ffb2f7e0:1",
+      "source": {
+        "path": "packages/mobile-platform/src/index.ts",
+        "line": 102,
+        "endLine": 102,
+        "fingerprint": "8c468a57ba68bc74d4da2e446572891a3884d987edae85e551db81ebbee3f4d4"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "shared",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:packages/mobile-platform/src/index.ts:a869ffb2f7e0:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:packages/mobile-platform/src/index.ts:a869ffb2f7e0:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:packages/mobile-platform/src/index.ts:a869ffb2f7e0:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "failure-state:packages/mobile-platform/src/index.ts:b17d31e7179a:1",
       "source": {
         "path": "packages/mobile-platform/src/index.ts",
-        "line": 34,
-        "endLine": 34,
+        "line": 37,
+        "endLine": 37,
         "fingerprint": "7ba744122be3ba7f41b603a712e0f7841806a01bbe2dd0102dc894ca6abe7f41"
       },
       "owningService": null,
@@ -24653,6 +24734,43 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:packages/mobile-platform/src/index.ts:b17d31e7179a:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:packages/mobile-platform/src/index.ts:f924dcdb05e9:1",
+      "source": {
+        "path": "packages/mobile-platform/src/index.ts",
+        "line": 96,
+        "endLine": 96,
+        "fingerprint": "891161bcab9bcf5d4860fb56594e0f312e7c946c7f1a74c12e55f17074887985"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "shared",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:packages/mobile-platform/src/index.ts:f924dcdb05e9:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:packages/mobile-platform/src/index.ts:f924dcdb05e9:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:packages/mobile-platform/src/index.ts:f924dcdb05e9:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -28363,9 +28481,9 @@
       "featureId": "form:apps/rep-mobile/src/server/views/messages.ts:b5dba45b150c:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 58,
-        "endLine": 71,
-        "fingerprint": "e190206dbab635e1696556008ac80f730db41f41a43c9ec45cbc206eba856761"
+        "line": 77,
+        "endLine": 90,
+        "fingerprint": "c4e89d92442e523cffb7de51a55b6397090151d785125a0033c69736625b87d1"
       },
       "owningService": null,
       "targetService": "communications",
@@ -28400,8 +28518,8 @@
       "featureId": "form:apps/rep-mobile/src/server/views/messages.ts:b5dba45b150c:2",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 105,
-        "endLine": 120,
+        "line": 124,
+        "endLine": 139,
         "fingerprint": "617d6560c6c9501ca3b7677f504a927d341780ea906738a1a1dec22f5f44a43c"
       },
       "owningService": null,
@@ -28808,8 +28926,8 @@
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
         "line": 82,
-        "endLine": 127,
-        "fingerprint": "250bf8c7ceb557119f0ca0149a4e82143e08c85487e62c6cc3c75931994bf657"
+        "endLine": 134,
+        "fingerprint": "01ffa1bcbd3e3489d7f35d95deda4e1b7881636d3869c9f06cc0099a7467b3f9"
       },
       "owningService": null,
       "targetService": "sales",
@@ -28844,8 +28962,8 @@
       "featureId": "form:apps/rep-mobile/src/server/views/visits.ts:fe8edea907cb:2",
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
-        "line": 136,
-        "endLine": 138,
+        "line": 143,
+        "endLine": 145,
         "fingerprint": "f91ec0f9979b3a21f739ca6cad504d6d90397b0571c72489293fb41371209c9d"
       },
       "owningService": null,
@@ -32245,117 +32363,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "handler:apps/rep-mobile/src/server/ui/dom.ts:f9db78ae399e:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 72,
-        "endLine": 82,
-        "fingerprint": "f84593199c8357e4d786909f302c5084a65ba9d94b7856e713a56bd02ba3235c"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:handler:apps/rep-mobile/src/server/ui/dom.ts:f9db78ae399e:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:handler:apps/rep-mobile/src/server/ui/dom.ts:f9db78ae399e:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:handler:apps/rep-mobile/src/server/ui/dom.ts:f9db78ae399e:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "handler:apps/rep-mobile/src/server/ui/forms.ts:37a436a0698f:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 145,
-        "endLine": 163,
-        "fingerprint": "f8f4385ec9d8cb7db8f4f0c12a3d694291a12aece5e90e453609cfae88bf05d4"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:handler:apps/rep-mobile/src/server/ui/forms.ts:37a436a0698f:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:handler:apps/rep-mobile/src/server/ui/forms.ts:37a436a0698f:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:handler:apps/rep-mobile/src/server/ui/forms.ts:37a436a0698f:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "handler:apps/rep-mobile/src/server/ui/forms.ts:6be3c8ea5f69:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 110,
-        "endLine": 136,
-        "fingerprint": "2fe950764c43e4f7970933c14ef9f2ee88eaf02040c8db0b3b3436937ed4e90e"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:handler:apps/rep-mobile/src/server/ui/forms.ts:6be3c8ea5f69:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:handler:apps/rep-mobile/src/server/ui/forms.ts:6be3c8ea5f69:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:handler:apps/rep-mobile/src/server/ui/forms.ts:6be3c8ea5f69:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "handler:apps/rep-mobile/src/server/ui/repeating-fields.ts:3be73e53c324:1",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/repeating-fields.ts",
@@ -32578,11 +32585,48 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "handler:apps/rep-mobile/src/server/views/home.ts:3ff34712993b:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/home.ts",
+        "line": 33,
+        "endLine": 33,
+        "fingerprint": "d027a41debe2fcea71213273340be224c27ab508d1e67f54612fcafbb689233b"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "server",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:apps/rep-mobile/src/server/views/home.ts:3ff34712993b:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:apps/rep-mobile/src/server/views/home.ts:3ff34712993b:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:apps/rep-mobile/src/server/views/home.ts:3ff34712993b:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "handler:apps/rep-mobile/src/server/views/home.ts:4c39995d72b0:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/home.ts",
-        "line": 53,
-        "endLine": 53,
+        "line": 56,
+        "endLine": 56,
         "fingerprint": "e39e6eb11b274a7e4fc6aa510ca040f12b0b062234b439ce61b98b26358c28c6"
       },
       "owningService": null,
@@ -32618,8 +32662,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/views/home.ts:dc7cf3d33204:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/home.ts",
-        "line": 43,
-        "endLine": 43,
+        "line": 46,
+        "endLine": 46,
         "fingerprint": "a9cdd207af400a384345d5968e38253d1de24f74c21acf1269ce5bf46c26ae1c"
       },
       "owningService": null,
@@ -32655,8 +32699,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/views/messages.ts:0b873393c43a:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 130,
-        "endLine": 130,
+        "line": 154,
+        "endLine": 154,
         "fingerprint": "978bfbce62a25869b0d6930364c4defce1cf1da590e7e49029a949a860da1f04"
       },
       "owningService": null,
@@ -32692,8 +32736,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/views/messages.ts:6bce5ab5c4c2:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 101,
-        "endLine": 122,
+        "line": 120,
+        "endLine": 141,
         "fingerprint": "f750920d7b27ab1ef658624336ee708070f041a8cd0f021363268836fff9cd7e"
       },
       "owningService": null,
@@ -32729,9 +32773,9 @@
       "featureId": "handler:apps/rep-mobile/src/server/views/messages.ts:6f28d2a2b0d3:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 76,
-        "endLine": 89,
-        "fingerprint": "e4e1e96b5225784032e0931bf25c6f4df1d39884e81e9f04b275f19c6e171697"
+        "line": 95,
+        "endLine": 108,
+        "fingerprint": "aae1262df6676b013fcb98af050f4d1297069ad12ad1d135b35b0b0a4ae799fb"
       },
       "owningService": null,
       "targetService": "communications",
@@ -32766,8 +32810,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/views/messages.ts:812d1f74cef0:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 55,
-        "endLine": 55,
+        "line": 74,
+        "endLine": 74,
         "fingerprint": "b029c5633b11aa325db228e2a22fd7078a76458ac7b28b37ec13b79509f63f36"
       },
       "owningService": null,
@@ -32803,8 +32847,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/views/messages.ts:9943215fa245:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/messages.ts",
-        "line": 37,
-        "endLine": 51,
+        "line": 56,
+        "endLine": 70,
         "fingerprint": "e5aab2f79bc0e9278926963306e5ff6150f53e64d8a2a1f6a45da484bdbe7e92"
       },
       "owningService": null,
@@ -33207,6 +33251,228 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:1154275c3b61:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/schedule.ts",
+        "line": 64,
+        "endLine": 64,
+        "fingerprint": "8806f12fe7b1c54725e283b1fa85424340c02952dc4636b710135a796a307064"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "server",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:apps/rep-mobile/src/server/views/schedule.ts:1154275c3b61:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:apps/rep-mobile/src/server/views/schedule.ts:1154275c3b61:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:apps/rep-mobile/src/server/views/schedule.ts:1154275c3b61:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:28f4b9081ea0:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/schedule.ts",
+        "line": 58,
+        "endLine": 58,
+        "fingerprint": "8d478b01ac981e5a504adf682bf3c69d17f16b2e63d077e4b6f69ffe78101f0f"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "server",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:apps/rep-mobile/src/server/views/schedule.ts:28f4b9081ea0:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:apps/rep-mobile/src/server/views/schedule.ts:28f4b9081ea0:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:apps/rep-mobile/src/server/views/schedule.ts:28f4b9081ea0:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:76abdfc1a903:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/schedule.ts",
+        "line": 60,
+        "endLine": 60,
+        "fingerprint": "d1048c34ce7aab4ef54f720038c47de8c66b07dc870df38ed27afc465eb89df6"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "server",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:apps/rep-mobile/src/server/views/schedule.ts:76abdfc1a903:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:apps/rep-mobile/src/server/views/schedule.ts:76abdfc1a903:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:apps/rep-mobile/src/server/views/schedule.ts:76abdfc1a903:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:90059b21db75:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/schedule.ts",
+        "line": 62,
+        "endLine": 62,
+        "fingerprint": "5972254a6553aea5e111acef4c92385da176b6826e299532dab2f8510ef30d5b"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "server",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:apps/rep-mobile/src/server/views/schedule.ts:90059b21db75:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:apps/rep-mobile/src/server/views/schedule.ts:90059b21db75:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:apps/rep-mobile/src/server/views/schedule.ts:90059b21db75:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:dc7cf3d33204:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/schedule.ts",
+        "line": 61,
+        "endLine": 61,
+        "fingerprint": "a9cdd207af400a384345d5968e38253d1de24f74c21acf1269ce5bf46c26ae1c"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "server",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:apps/rep-mobile/src/server/views/schedule.ts:dc7cf3d33204:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:apps/rep-mobile/src/server/views/schedule.ts:dc7cf3d33204:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:apps/rep-mobile/src/server/views/schedule.ts:dc7cf3d33204:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "handler:apps/rep-mobile/src/server/views/schedule.ts:df4b40864787:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/views/schedule.ts",
+        "line": 59,
+        "endLine": 59,
+        "fingerprint": "444ec845c00bf259b4c7c645c751eb642faf7256804098b50c90b026a307b3ab"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "server",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:apps/rep-mobile/src/server/views/schedule.ts:df4b40864787:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:apps/rep-mobile/src/server/views/schedule.ts:df4b40864787:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:apps/rep-mobile/src/server/views/schedule.ts:df4b40864787:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "handler:apps/rep-mobile/src/server/views/support.ts:36123361faed:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/support.ts",
@@ -33322,8 +33588,8 @@
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
         "line": 78,
-        "endLine": 129,
-        "fingerprint": "2bfe1dd0f9aea4788352e9b83c021884f02bb28acc788f803ce0e32bc65d8ee4"
+        "endLine": 136,
+        "fingerprint": "c3e5f15c9678f6c6bf1ccb9e1c6f5030fa0dec71dbaf2036a66152052dea8996"
       },
       "owningService": null,
       "targetService": "sales",
@@ -33395,8 +33661,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/views/visits.ts:c72319346cc2:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/visits.ts",
-        "line": 132,
-        "endLine": 140,
+        "line": 139,
+        "endLine": 147,
         "fingerprint": "e0d41335b1e080d166768be527beb656a515311f2bb525946d437f673ad363f2"
       },
       "owningService": null,
@@ -33432,8 +33698,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:1f9be067f4c4:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 121,
-        "endLine": 151,
+        "line": 123,
+        "endLine": 153,
         "fingerprint": "35ce26a394922d09b9df81c9662c2e3ab82eab600238afc4d4f27aaae3d375bd"
       },
       "owningService": null,
@@ -33469,8 +33735,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:5fe95578c67f:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 115,
-        "endLine": 115,
+        "line": 117,
+        "endLine": 117,
         "fingerprint": "397b2db51c860e669a7c231429564b1b6acaa722d7b16925433b7390452dc274"
       },
       "owningService": null,
@@ -33506,8 +33772,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:6ea370bf32b5:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 168,
-        "endLine": 175,
+        "line": 173,
+        "endLine": 180,
         "fingerprint": "5d524ddc5b65ee63132c05518ca8a76a7efdc359d6618351662007dd689896ad"
       },
       "owningService": null,
@@ -33543,8 +33809,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:74d70aff092a:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 110,
-        "endLine": 110,
+        "line": 112,
+        "endLine": 112,
         "fingerprint": "c1cf04f7403feaea4e988da709d9105271609cab99efed477164a3cb819856e6"
       },
       "owningService": null,
@@ -33580,8 +33846,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:783472c06c38:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 153,
-        "endLine": 157,
+        "line": 155,
+        "endLine": 159,
         "fingerprint": "f8bad342d9332d3a001fc15547ef49c88432ccf1afa12bffd64eb785dfcd4b7d"
       },
       "owningService": null,
@@ -33617,9 +33883,9 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:b278c86df906:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 158,
-        "endLine": 162,
-        "fingerprint": "cb9056850d10d7a72500f05aa63d588c02b407bcb51489b26b176c5e8ee48374"
+        "line": 160,
+        "endLine": 167,
+        "fingerprint": "b0e8a08c16142d341eadad877badf75b424134bebb4b38e021ef4618fdb2113e"
       },
       "owningService": null,
       "targetService": null,
@@ -33654,8 +33920,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:db85047714c0:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 119,
-        "endLine": 119,
+        "line": 121,
+        "endLine": 121,
         "fingerprint": "7c2e59a9617a8ba1d108d4c8bc802bc63f42c109a1c8f0e9d3351318b70d2a60"
       },
       "owningService": null,
@@ -33691,8 +33957,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:e3be8ef6e3d9:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 163,
-        "endLine": 167,
+        "line": 168,
+        "endLine": 172,
         "fingerprint": "c381163aeaa42e4c3955af064289020b51a82f370d61b8cb72c52783aa5045ea"
       },
       "owningService": null,
@@ -33728,8 +33994,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:e81b4ef8e460:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 197,
-        "endLine": 204,
+        "line": 206,
+        "endLine": 213,
         "fingerprint": "4568798f5eb1fa9195c29b7109e11e7da0e2b8526b0ae5535008f1353adbfc3a"
       },
       "owningService": null,
@@ -35837,8 +36103,8 @@
       "featureId": "handler:packages/mobile-platform/src/index.ts:3c5b2fb70af2:1",
       "source": {
         "path": "packages/mobile-platform/src/index.ts",
-        "line": 47,
-        "endLine": 47,
+        "line": 50,
+        "endLine": 50,
         "fingerprint": "ce3cab4abbeb7852498ffd0f5d11a58bb67df366f1335a7fc4053902a32ef406"
       },
       "owningService": null,
@@ -35874,8 +36140,8 @@
       "featureId": "handler:packages/mobile-platform/src/index.ts:919bb0e0b52a:1",
       "source": {
         "path": "packages/mobile-platform/src/index.ts",
-        "line": 71,
-        "endLine": 71,
+        "line": 74,
+        "endLine": 74,
         "fingerprint": "83c851c7e710a8b79bddcf5bf56c511da6b2a330069416541c60c81a49085573"
       },
       "owningService": null,
@@ -35911,8 +36177,8 @@
       "featureId": "handler:packages/mobile-platform/src/index.ts:9955c446eb1a:1",
       "source": {
         "path": "packages/mobile-platform/src/index.ts",
-        "line": 46,
-        "endLine": 46,
+        "line": 49,
+        "endLine": 49,
         "fingerprint": "87d07c4467b0c851e6cb4ce733cdd259c086c107f05b98607a72d23e535728ef"
       },
       "owningService": null,
@@ -36170,8 +36436,8 @@
       "featureId": "permission:packages/mobile-platform/src/index.ts:1f8a6e3308c2:1",
       "source": {
         "path": "packages/mobile-platform/src/index.ts",
-        "line": 16,
-        "endLine": 16,
+        "line": 17,
+        "endLine": 17,
         "fingerprint": "4204de74ce78ac293214dddd19f517a3685fe0d124d5b6578c5c25a2c9e0fa4c"
       },
       "owningService": null,
@@ -39759,8 +40025,8 @@
       "featureId": "route:rep:server:billing",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 30,
-        "endLine": 30,
+        "line": 32,
+        "endLine": 32,
         "fingerprint": "0fe2ebf812610c24bd7afccf48f46b7f8dfb257211c3275b3a8691281f19344b"
       },
       "owningService": null,
@@ -39796,8 +40062,8 @@
       "featureId": "route:rep:server:catalog",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 24,
-        "endLine": 24,
+        "line": 26,
+        "endLine": 26,
         "fingerprint": "162c0554e87440342a24bfdf0115088c9e0c8316322a9c3a9cf8573e4cb9f3a2"
       },
       "owningService": null,
@@ -39833,8 +40099,8 @@
       "featureId": "route:rep:server:contracts",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 28,
-        "endLine": 28,
+        "line": 30,
+        "endLine": 30,
         "fingerprint": "19d25ee3ce3daa7d2d0d01113f4ae2ca7a2b40d7ae36c1ab8e85bdb90ae6ea0f"
       },
       "owningService": null,
@@ -39870,8 +40136,8 @@
       "featureId": "route:rep:server:home",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 18,
-        "endLine": 18,
+        "line": 19,
+        "endLine": 19,
         "fingerprint": "fad645bea49f5477aa364703ce68e0a4be19235ed7830d98699b626c8128ed61"
       },
       "owningService": null,
@@ -39907,8 +40173,8 @@
       "featureId": "route:rep:server:messages",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 26,
-        "endLine": 26,
+        "line": 28,
+        "endLine": 28,
         "fingerprint": "58c3e78e38e4a1f0e2529d513e26a7a8c5efbba3eed11b587b99fe96d9cd1a6e"
       },
       "owningService": null,
@@ -39944,8 +40210,8 @@
       "featureId": "route:rep:server:notifications",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 27,
-        "endLine": 27,
+        "line": 29,
+        "endLine": 29,
         "fingerprint": "2fe888c849e674ec9a395cf3ab590a38909ad74b92eab35bfdff84b37dfca10a"
       },
       "owningService": null,
@@ -39981,8 +40247,8 @@
       "featureId": "route:rep:server:opportunities",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 22,
-        "endLine": 22,
+        "line": 24,
+        "endLine": 24,
         "fingerprint": "7e2bf6bc95f8560736a821deab6e563cacb09cd6624eab9121071182ba9e7d36"
       },
       "owningService": null,
@@ -40018,8 +40284,8 @@
       "featureId": "route:rep:server:projects",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 29,
-        "endLine": 29,
+        "line": 31,
+        "endLine": 31,
         "fingerprint": "2cf7b18bf4f987295fbd16a5c6d063f8f7c76a719557e95048dd4b7b8ab2bcbf"
       },
       "owningService": null,
@@ -40055,8 +40321,8 @@
       "featureId": "route:rep:server:support",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 31,
-        "endLine": 31,
+        "line": 33,
+        "endLine": 33,
         "fingerprint": "b6e7c6be0f37958d7160cffb4fa0a069584918794c6603825e20d84e8db3046f"
       },
       "owningService": null,
@@ -40092,8 +40358,8 @@
       "featureId": "route:rep:server:tasks",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 25,
-        "endLine": 25,
+        "line": 27,
+        "endLine": 27,
         "fingerprint": "9d60e6043c1e6534eb9a2b8a6410533464954a42e149baa95ad756508f56d58b"
       },
       "owningService": null,
@@ -47270,8 +47536,8 @@
       "featureId": "search-filter:apps/rep-mobile/src/server/views/home.ts:4387d90cf487:2",
       "source": {
         "path": "apps/rep-mobile/src/server/views/home.ts",
-        "line": 47,
-        "endLine": 47,
+        "line": 50,
+        "endLine": 50,
         "fingerprint": "32a4523f847ad57bfc5dfcc8079053153d7142486916073db9361858b9fe8c24"
       },
       "owningService": null,
@@ -47344,8 +47610,8 @@
       "featureId": "search-filter:apps/rep-mobile/src/server/views/home.ts:a3ef7e528044:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/home.ts",
-        "line": 33,
-        "endLine": 34,
+        "line": 36,
+        "endLine": 37,
         "fingerprint": "e5cac138fed132a685634b19b612e275e15c633f158e72867850453710546a48"
       },
       "owningService": null,
@@ -47381,8 +47647,8 @@
       "featureId": "search-filter:apps/rep-mobile/src/server/views/home.ts:a99aadac48f0:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/home.ts",
-        "line": 33,
-        "endLine": 35,
+        "line": 36,
+        "endLine": 38,
         "fingerprint": "a5b611f573bb96a74bf275ce649d026d52ebe3f28a811eea0b5485dec5d81189"
       },
       "owningService": null,

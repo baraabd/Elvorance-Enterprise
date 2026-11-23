@@ -177,6 +177,13 @@ export async function routes(context: ViewContext): Promise<void> {
         value: value.id,
         label: `${words(value.customerName)} · ${dateText(value.scheduledAt)} · ${statusText(value.status)}`,
       }));
+  context.root.append(
+    el(
+      'p',
+      'هذه قائمة زيارات مخططة، وليست تحسينًا آليًا للمسار. لا تُحسب أوقات القيادة أو أفضل ترتيب للزيارات.',
+      'notice',
+    ),
+  );
   await collection(
     context,
     'routes',
