@@ -8,7 +8,7 @@ permissions:
 jobs:
   prepare:
     if: github.ref == 'refs/heads/feat/sprint07-representative-20261123'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     permissions:
       contents: write
@@ -22,47 +22,34 @@ jobs:
         with:
           node-version: 24.22.1
           cache: npm
-      - name: Verify and apply the locally tested source patch
-        run: |
-          cat .github/sprint07-change.part{1,2,3} | base64 --decode | xz --decompress > "$RUNNER_TEMP/sprint07.patch"
-          echo "44c54b9c50ffdd9ec36d58b44bb7dd4f8f9961824c51844fbf25a78186d35d8c  $RUNNER_TEMP/sprint07.patch" | sha256sum --check
-          git apply --check --index --unidiff-zero "$RUNNER_TEMP/sprint07.patch"
-          git apply --index --unidiff-zero "$RUNNER_TEMP/sprint07.patch"
-          if git diff --cached --name-only | grep -q '^.github/'; then exit 1; fi
-          rm .github/sprint07-change.part{1,2,3} .github/workflows/sprint07-toolchain.yml
-          python3 - <<'PY'
-          from pathlib import Path
-          p = Path('tests/browser/rep-field.py')
-          s = p.read_text().replace('expect(client.locator("#live-content")).to_contain_text("معتمد")', 'expect(client.locator("#live-content")).to_contain_text("تمت الموافقة")').replace('expect(admin.locator("#live-content")).to_contain_text("مكتملة")', 'expect(admin.locator("#live-content")).to_contain_text("مكتمل")')
-          p.write_text(s)
-          PY
-          git add tests/browser/rep-field.py
+      - name: Remove temporary transfer files from the measured working tree
+        run: rm .github/sprint07-change.part{1,2,3} .github/workflows/sprint07-toolchain.yml
       - run: npm install --global npm@11.19.0
       - run: npm ci
-      - name: Generate final-tree evidence without changing quality baselines
+      - name: Regenerate final-tree evidence without changing quality baselines
         run: |
           npm run inventory:write
           npm run check:types
           npm run check:format
           git add docs/production/
           git diff --exit-code HEAD -- docs/production/debt-baseline.json docs/production/quality-baseline.json
-      - name: Commit and fast-forward only the requested feature branch
+      - name: Commit only generated evidence to the requested feature branch
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'feat(rep): add daily schedule, consent-aware location and verified field workflow safeguards'
-          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w 0)
-          git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $AUTH" push origin HEAD:refs/heads/feat/sprint07-representative-20261123
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs(rep): refresh exact-source inventory for browser verification'
+            AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w 0)
+            git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $AUTH" push origin HEAD:refs/heads/feat/sprint07-representative-20261123
+          fi
       - name: Install isolated browser dependencies
         run: |
           python3 -m venv /tmp/elvorance-rep-browser
           "$PYTHON" -m pip install -r tests/browser/requirements.txt
           "$PYTHON" -m playwright install --with-deps chromium
-      - name: Preliminary actual-browser field journey, not final-SHA acceptance
-        env:
-          GITHUB_SHA: preflight-worktree-not-final-pr-sha
+      - name: Preliminary browser field journey, not final-SHA acceptance
         run: node tests/browser/run-rep-field.mts
       - name: Preserve preliminary browser evidence
         if: always()
