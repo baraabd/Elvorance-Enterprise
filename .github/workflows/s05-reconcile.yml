@@ -1,0 +1,44 @@
+name: Sprint05 source reconciliation (no deployment)
+on:
+  push:
+    branches: [chore/s05-reconcile-authoring-20261123]
+permissions:
+  contents: read
+concurrency:
+  group: sprint05-source-reconciliation
+  cancel-in-progress: false
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify and apply source on exact PR18 base
+        run: |
+          cp .github/s05-reconcile/apply.py "$RUNNER_TEMP/s05-reconcile.py"
+          python "$RUNNER_TEMP/s05-reconcile.py" apply
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Regenerate inventory without resetting any baseline
+        run: npm run inventory:write
+      - name: Check types, boundaries and source integrity
+        run: npm run check:types && npm run check:boundaries && npm run inventory:check
+      - name: Verify every digest and fast-forward development branch only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python "$RUNNER_TEMP/s05-reconcile.py" publish
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sprint05-reconcile-source-receipt
+          path: ${{ runner.temp }}/s05-reconcile-receipt.json
+          if-no-files-found: error
+          retention-days: 30
