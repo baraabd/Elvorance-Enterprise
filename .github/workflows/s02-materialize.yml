@@ -33,7 +33,7 @@ jobs:
           assert hashlib.sha256(patch).hexdigest()=='efc7aeeb93c510c98af10cbb577efaf829940277d726d14d4ceeb22cd402d487','PATCH_CONTENT_MISMATCH'
           pathlib.Path('/tmp/s02.patch').write_bytes(patch)
           PY
-      - name: Prepare final source tree without transport files
+      - name: Prepare application tree without workflow changes
         env:
           GIT_AUTHOR_NAME: github-actions[bot]
           GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
@@ -43,11 +43,16 @@ jobs:
           git checkout --detach da211a625426cd1d016306fb9c39adf76837b6b1
           git apply --index --whitespace=error-all /tmp/s02.patch
           git diff --cached --check
+          git diff --cached --name-only -z | xargs -0 sha256sum > /tmp/s02-publication/files.sha256
+          git write-tree > /tmp/s02-publication/reviewed-tree.txt
+          # Workflow changes are published separately by the authorized connector.
+          # The Actions token is not granted workflows permission.
+          git restore --source=153bab7248c7801f05c3340aee6a17ef9fb9d597 --staged --worktree .github/workflows
           TREE=$(git write-tree)
-          COMMIT=$(printf '%s\n' 'feat(s02): isolate staging, trace migrations, retain encrypted recovery and gate releases' | git commit-tree "$TREE" -p 153bab7248c7801f05c3340aee6a17ef9fb9d597)
+          COMMIT=$(printf '%s\n' 'feat(s02): isolate staging, trace migrations and retain encrypted recovery' | git commit-tree "$TREE" -p 153bab7248c7801f05c3340aee6a17ef9fb9d597)
           printf '%s\n' "$COMMIT" > /tmp/s02-publication/commit.txt
           printf '%s\n' "$TREE" > /tmp/s02-publication/tree.txt
-          git diff --cached --name-only -z | xargs -0 sha256sum > /tmp/s02-publication/files.sha256
+          git diff --exit-code 153bab7248c7801f05c3340aee6a17ef9fb9d597 "$COMMIT" -- .github/workflows
       - name: Publish only the isolated prepared-source ref
         env:
           GH_TOKEN: ${{ github.token }}
