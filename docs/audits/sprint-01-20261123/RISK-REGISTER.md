@@ -1,0 +1,22 @@
+# Risk Register
+
+التقديرات نوعية. المسؤولون أدوار مقترحة غير معتمدة، ولا يوجد إقرار نيابة عن أشخاص. الشدة تفصل الأثر عن وجود استغلال مثبت. S02..S10 تخصيص مقترح للمراجعة.
+
+| ID  | الشدة / الاحتمال     | الخطر والأثر                                      | الدليل                                                    | الحالة والإجراء / معيار الإغلاق                                           | مسؤول / هدف           |
+| --- | -------------------- | ------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------- | --------------------- |
+| R01 | عالية / عالٍ         | نشر build تجريبي بدل تطبيق مرتبط                  | apps/\*/config.example.ts؛ tooling/scripts/build-apps.mts | مفتوح؛ server-only build لكل تطبيق release مع إثبات عدم تضمين demo        | Frontend/Release؛ S02 |
+| R02 | عالية / عالٍ         | اعتبار demo ومرشحات الاختبارات قبول أعمال         | feature-matrix.json؛ 69 demo و244 unmapped workflows      | مفتوح؛ رحلة persisted لكل وظيفة ضمن نطاق إصدار معتمد                      | Product/QA؛ S03–S10   |
+| R03 | عالية / عالٍ         | main بلا فرض مراجعات/فحوص                         | قراءة branch main: protected=false                        | مفتوح؛ تمكين الحماية وقراءة الإعدادات واعتماد مستقل، خارج تعديل هذا الفرع | Maintainer؛ S01       |
+| R04 | متوسطة / مثبت        | أخطاء الخدمة تظهر status ناجحًا/غير صالح          | http.ts؛ 4 حالات red ثم green                             | مصحح في الفرع فقط؛ مراجعة وCI قبل أي دمج                                  | Backend؛ S01          |
+| R05 | متوسطة / مثبت        | Gateway HEAD يرجع 502 بدل حالة upstream           | proxy.ts؛ 3 حالات red ثم green                            | مصحح في الفرع؛ لا تخفيف للتحقق في GET أو المصادقة                         | Platform؛ S01         |
+| R06 | عالية / عالٍ         | نجاح tsc يخفي شيفرة غير مفحوصة                    | 95 ts-nocheck؛ strict audit FAIL                          | مفتوح؛ خفض الدين على شرائح دون any/تعطيل جديد                             | Frontend؛ S02–S10     |
+| R07 | متوسطة / محتمل       | قفل tenant يسلسل المعاملات والقراءات              | pg-repository.ts: pg_advisory_xact_lock                   | غير مقاس؛ benchmark ومنافسة قبل تعديل الأقفال                             | Backend؛ S09          |
+| R08 | متوسطة / محتمل       | list التقليدي يقتطع بعد 1000؛ JSONB قد يحد الأداء | pg-repository.ts list/page؛ migrations                    | مفتوح؛ جرد call-sites وبيانات حجم/EXPLAIN؛ لا تغيير تخميني                | Backend؛ S09          |
+| R09 | عالية / محتمل        | تأخر/تكرار أحداث وفشل استعادة تشغيلية             | events/index.ts؛ topology.ts؛ fulfillment                 | التصميم مقاوم للتكرار، التشغيل غير مثبت هنا؛ DLQ/replay/restore exercise  | Platform؛ S09         |
+| R10 | عالية / غير مقاس     | تغطية منع وصول غير شاملة                          | api-operations.csv؛ permissions.csv                       | مفتوح؛ role × tenant × owner × replay × reassignment مع توقعات مستقلة     | Security/QA؛ S02–S08  |
+| R11 | عالية / محتمل        | فقدان ادعاءات الحماية عند تسوية PRs القديمة       | #5 tsconfig diff؛ #7 gate؛ #8 base القديم                 | مفتوح؛ قارن الأشجار واحفظ جميع scopes/checks، لا دمج آلي                  | Maintainer؛ S01       |
+| R12 | عالية / غير متحقق    | native harness يُفهم كإصدار موقّع نهائي           | rep-native-verification/release.yml؛ client scaffold      | مفتوح؛ artifact نهائي بنفس المصدر وتوقيع محمي وأجهزة فعلية                | Mobile QA؛ S08/S10    |
+| R13 | متوسطة / محتمل       | انجراف بيئة CI وسلسلة التوريد                     | Actions tags وصور حاويات في workflows                     | مفتوح؛ سياسة pinning وتحديثات وأدلة audit حديثة؛ لا CVE مختلق             | Platform؛ S02         |
+| R14 | متوسطة / مثبت زمنيًا | أدلة Actions تنتهي صلاحيتها                       | full-ci.yml retention 30/90 days                          | مفتوح؛ أرشفة immutable معتمدة؛ ZIP التسليم ليس نظام احتفاظ مؤسسي          | Platform؛ S10         |
+| R15 | عالية / غير متحقق    | وصف #11 يشير لنشر لا تثبته هذه المهمة             | head da211a6؛ staging operations source                   | لم تُشغّل العمليات؛ قبول الاستضافة مستقل ومربوط بـSHA/بيئة                | Platform/QA؛ S09/S10  |
+| R16 | متوسطة / تصميم       | JWT صالحة حتى انتهاء عمرها رغم تغيّر الحساب       | service-kit/auth.ts؛ mobile-auth/session.ts               | مفتوح؛ سياسة إبطال/عمر token معتمدة واختبارات؛ لا ادعاء إبطال فوري        | Identity؛ S02         |

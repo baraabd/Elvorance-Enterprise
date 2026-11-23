@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "85cb662eb1d305ee149781793b16c0cc2d0952dba141b51661eb187793a63c8b",
+  "sourceDigest": "07da32aa68983d1b5ac8d001fc7042e1410f3850620891e4f97c6fe3d3b4c1bf",
   "workspaces": [
     {
       "name": "@elvorance/admin-web",
@@ -1383,6 +1383,28 @@
     { "source": "tests/backend/helpers.ts", "specifier": "fastify" },
     { "source": "tests/backend/helpers.ts", "specifier": "@elvorance/contracts" },
     { "source": "tests/backend/helpers.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/backend/http-response-semantics.test.ts", "specifier": "node:test" },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "node:assert/strict"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/app.ts"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/application/proxy.ts"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/domain/routes.ts"
+    },
+    { "source": "tests/backend/http-response-semantics.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/identity-configuration.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/identity-configuration.test.ts", "specifier": "node:assert/strict" },
     {

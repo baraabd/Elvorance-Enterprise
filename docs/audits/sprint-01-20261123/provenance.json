@@ -1,0 +1,14 @@
+{
+  "baselineSha": "453242e1256f6d876d170142b8ad235be9120344",
+  "baselineTree": "6534bc4e7c7475e54e855095f652236f672ed052",
+  "reconstructedTree": "6534bc4e7c7475e54e855095f652236f672ed052",
+  "archiveSourceSha": "04aec5b7fea1599c123623dd771a4010c7c69978",
+  "sourceArchiveId": 14762163424,
+  "sourceZipSha256": "a819aa2e4f10d86e9a6c26f1e56d6a694438475f83bfeb55927f3fbb386cef2e",
+  "toolchainArtifactId": 14762491912,
+  "toolchainZipSha256": "5ce6e4939b9fddab445659a2a75e950ced1987b7bced47ddbe7c5b24ba05883b",
+  "lockSha256": "e25889783eac39981f008e6e3eaa410ab5c527d416a6067d4a1ee5e043347da0",
+  "installedDependenciesMatched": 206,
+  "localNpmCiExecuted": false,
+  "reconstructionNote": "Excluded packaging-only preview from index; restored Git modes; restored original tracked parity-result timestamps read from exact main. Entire Git tree matches main."
+}
