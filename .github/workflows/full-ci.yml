@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      PYTHON: ${{ runner.temp }}/rep-browser/bin/python
+      PYTHON: /tmp/elvorance-rep-browser/bin/python
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -82,7 +82,7 @@ jobs:
       - run: npm ci
       - name: Install pinned isolated browser test dependencies
         run: |
-          python3 -m venv "${{ runner.temp }}/rep-browser"
+          python3 -m venv /tmp/elvorance-rep-browser
           "$PYTHON" -m pip install -r tests/browser/requirements.txt
           "$PYTHON" -m playwright install --with-deps chromium
       - name: Execute Representative to Client to Admin browser journey
