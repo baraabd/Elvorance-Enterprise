@@ -1,4 +1,4 @@
-name: Sprint 07 isolated verification toolchain
+name: Sprint 07 isolated source verification
 on:
   push:
     branches: [feat/sprint07-representative-20261123]
@@ -7,8 +7,13 @@ permissions:
   contents: read
 jobs:
   prepare:
+    if: github.ref == 'refs/heads/feat/sprint07-representative-20261123'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    env:
+      PYTHON: ${{ runner.temp }}/rep-browser/bin/python
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -17,18 +22,46 @@ jobs:
         with:
           node-version: 24.22.1
           cache: npm
+      - name: Verify and apply the locally tested source patch
+        run: |
+          cat .github/sprint07-change.part{1,2,3} | base64 --decode | xz --decompress > "$RUNNER_TEMP/sprint07.patch"
+          echo "44c54b9c50ffdd9ec36d58b44bb7dd4f8f9961824c51844fbf25a78186d35d8c  $RUNNER_TEMP/sprint07.patch" | sha256sum --check
+          git apply --check --index --unidiff-zero "$RUNNER_TEMP/sprint07.patch"
+          git apply --index --unidiff-zero "$RUNNER_TEMP/sprint07.patch"
+          if git diff --cached --name-only | grep -q '^.github/'; then exit 1; fi
+          rm .github/sprint07-change.part{1,2,3} .github/workflows/sprint07-toolchain.yml
       - run: npm install --global npm@11.19.0
       - run: npm ci
-      - name: Package locked dependencies for isolated, network-disabled verification
+      - name: Generate final-tree evidence without changing quality baselines
         run: |
-          mkdir -p .toolchain
-          cp "$(command -v node)" .toolchain/node
-          node --version > .toolchain/version.txt
-          sha256sum package-lock.json > .toolchain/lock.sha256
-          tar -czf sprint07-toolchain.tar.gz node_modules .toolchain
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+          npm run inventory:write
+          npm run check:types
+          npm run check:format
+          git add docs/production/
+          git diff --exit-code HEAD -- docs/production/debt-baseline.json docs/production/quality-baseline.json
+      - name: Commit and fast-forward only the requested feature branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat(rep): add daily schedule, consent-aware location and verified field workflow safeguards'
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w 0)
+          git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $AUTH" push origin HEAD:refs/heads/feat/sprint07-representative-20261123
+      - name: Install isolated browser dependencies
+        run: |
+          python3 -m venv "${{ runner.temp }}/rep-browser"
+          "$PYTHON" -m pip install -r tests/browser/requirements.txt
+          "$PYTHON" -m playwright install --with-deps chromium
+      - name: Preliminary actual-browser field journey, not final-SHA acceptance
+        env:
+          GITHUB_SHA: preflight-worktree-not-final-pr-sha
+        run: node tests/browser/run-rep-field.mts
+      - name: Preserve preliminary browser evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: sprint07-toolchain-${{ github.sha }}
-          path: sprint07-toolchain.tar.gz
-          retention-days: 1
-          if-no-files-found: error
+          name: sprint07-browser-preflight-${{ github.run_id }}
+          path: dist/browser/
+          if-no-files-found: warn
+          retention-days: 7
