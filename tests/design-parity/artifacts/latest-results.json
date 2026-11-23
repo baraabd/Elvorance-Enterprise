@@ -1,163 +1,167 @@
 {
   "schemaVersion": 1,
   "method": "Frozen v1.1 full-route DOM + exact CSS/font/icon parity against bundled ES modules",
-  "startedAt": "2026-11-13T20:22:46.205Z",
+  "startedAt": "2026-11-18T08:10:50.997Z",
   "cases": [
     {
       "id": "rep/home",
-      "status": "passed",
-      "expectedHash": "cca863141abae388c1dc4ca1f76d174c746c569028dae8c3d3f28ae294ccaae6",
-      "actualHash": "cca863141abae388c1dc4ca1f76d174c746c569028dae8c3d3f28ae294ccaae6",
-      "title": "الرئيسية · أطلس للمندوب | أطلس",
-      "trackingFixtureRequests": []
+      "status": "evolved",
+      "expectedHash": "2cfd70b4915b538b486585488bf92cccc35d23cf6158eedbc20ab01c0cacc252",
+      "actualHash": "5d3e9efd9b742b032a0dfc75ba49a3bdf60094e22f55af1a355b39dcda0ab65b",
+      "title": "الرئيسية · إلفورانس للمندوب | إلفورانس",
+      "trackingFixtureRequests": [],
+      "intentionalChange": "Clickable dashboard KPI drilldown cards"
     },
     {
       "id": "rep/territory",
       "status": "passed",
-      "expectedHash": "ecd9b0f48e9b23fb9ca4702e7b43bc404f8a29e04a9c535d4276d625ab100f25",
-      "actualHash": "ecd9b0f48e9b23fb9ca4702e7b43bc404f8a29e04a9c535d4276d625ab100f25",
-      "title": "المناطق والمسار · أطلس للمندوب | أطلس",
+      "expectedHash": "424aeff7d236e47b2670806d9c2b6c37a6a503a892efae46f3d3924d5bd6a4c1",
+      "actualHash": "424aeff7d236e47b2670806d9c2b6c37a6a503a892efae46f3d3924d5bd6a4c1",
+      "title": "المناطق والمسار · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/clients",
       "status": "passed",
-      "expectedHash": "e0c0bae7927060a74b93c2963c2d405185ea1e278ef266e9d1b379a0fba20d14",
-      "actualHash": "e0c0bae7927060a74b93c2963c2d405185ea1e278ef266e9d1b379a0fba20d14",
-      "title": "العملاء · أطلس للمندوب | أطلس",
+      "expectedHash": "1a09217a17cf27c75662114ac8ee8f1d3f8cd27b6507c279c5a72114f21385b7",
+      "actualHash": "1a09217a17cf27c75662114ac8ee8f1d3f8cd27b6507c279c5a72114f21385b7",
+      "title": "العملاء · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/client-form",
       "status": "passed",
-      "expectedHash": "88084d22638742efb1cdcebe1d0a044cb8e03dc844e053e746e1e83aee3dad33",
-      "actualHash": "88084d22638742efb1cdcebe1d0a044cb8e03dc844e053e746e1e83aee3dad33",
-      "title": "ملف العميل · أطلس للمندوب | أطلس",
+      "expectedHash": "a397d152edd23423bcdfbd6ad128124baa8e112021842c69ebf1aecc3bfc70dc",
+      "actualHash": "a397d152edd23423bcdfbd6ad128124baa8e112021842c69ebf1aecc3bfc70dc",
+      "title": "ملف العميل · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/client-detail",
       "status": "passed",
-      "expectedHash": "0a0ed46286b91574ea8ce8e5feb505fff34a07ea15b2f202e504572ae5f5dd0e",
-      "actualHash": "0a0ed46286b91574ea8ce8e5feb505fff34a07ea15b2f202e504572ae5f5dd0e",
-      "title": "تفاصيل العميل · أطلس للمندوب | أطلس",
+      "expectedHash": "501eaeb4a3f87fd7c88ce57179cf96610be5809f713ab4edb888e34cb4090b48",
+      "actualHash": "501eaeb4a3f87fd7c88ce57179cf96610be5809f713ab4edb888e34cb4090b48",
+      "title": "تفاصيل العميل · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/visit-checkin",
       "status": "passed",
-      "expectedHash": "c153e68c5e9204bbd02681a355120fa502960b3313efa333ec52c61cd970add7",
-      "actualHash": "c153e68c5e9204bbd02681a355120fa502960b3313efa333ec52c61cd970add7",
-      "title": "تسجيل الوصول · أطلس للمندوب | أطلس",
+      "expectedHash": "208ed288e86ac4b4725fe85f85323714036ed33ca51e533b2ad560db22fa19f5",
+      "actualHash": "208ed288e86ac4b4725fe85f85323714036ed33ca51e533b2ad560db22fa19f5",
+      "title": "تسجيل الوصول · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/visit-active",
-      "status": "passed",
-      "expectedHash": "ea62131d265c857126e96bc512ec4cc1d7c3b5146a0775f9bfcb21c3fa3d3352",
-      "actualHash": "ea62131d265c857126e96bc512ec4cc1d7c3b5146a0775f9bfcb21c3fa3d3352",
-      "title": "الزيارة الجارية · أطلس للمندوب | أطلس",
+      "status": "evolved",
+      "expectedHash": "26f44ad31d68195024561101d27a8717c263be79c8cd418bacb604985f38ae25",
+      "actualHash": "24c0c8b9f4d8656c3ed029ea16fd193b78a34d4685cfcd476b661c0326a81956",
+      "title": "الزيارة الجارية · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": [
         {
           "url": "/api/tracking/status",
           "method": "GET"
         }
-      ]
+      ],
+      "intentionalChange": "Dynamic questionnaire and visit-stage workflow"
     },
     {
       "id": "rep/visit-outcome",
       "status": "passed",
-      "expectedHash": "7b4746246fe365a121ab4ac6816ac780dc07d88f33bc563fc74371dfaa7afc47",
-      "actualHash": "7b4746246fe365a121ab4ac6816ac780dc07d88f33bc563fc74371dfaa7afc47",
-      "title": "نتيجة الزيارة · أطلس للمندوب | أطلس",
+      "expectedHash": "40d665d967cb97c341f7c44680849b20e69817777818584de738de605f1be67a",
+      "actualHash": "40d665d967cb97c341f7c44680849b20e69817777818584de738de605f1be67a",
+      "title": "نتيجة الزيارة · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/visit-detail",
       "status": "passed",
-      "expectedHash": "a3639172aa4be26d307ae9f6aeab70655e284baf6ca4b9e456ab91ab390e94dc",
-      "actualHash": "a3639172aa4be26d307ae9f6aeab70655e284baf6ca4b9e456ab91ab390e94dc",
-      "title": "سجل الزيارة · أطلس للمندوب | أطلس",
+      "expectedHash": "884076d90e794c3b9b2011f5bd7abe18d0a1cc163c71e31ef0d1d6af089578ed",
+      "actualHash": "884076d90e794c3b9b2011f5bd7abe18d0a1cc163c71e31ef0d1d6af089578ed",
+      "title": "سجل الزيارة · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/catalog",
       "status": "passed",
-      "expectedHash": "0d08f8af31b880b11f53c050c3c3c319902cb05f15f1dc3a7ba4f5082074e708",
-      "actualHash": "0d08f8af31b880b11f53c050c3c3c319902cb05f15f1dc3a7ba4f5082074e708",
-      "title": "الخدمات · أطلس للمندوب | أطلس",
+      "expectedHash": "df7d1104f42580e501977d4b42e74b155b38353b1093b6ca072bc883d79cf5be",
+      "actualHash": "df7d1104f42580e501977d4b42e74b155b38353b1093b6ca072bc883d79cf5be",
+      "title": "الخدمات · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/service-detail",
       "status": "passed",
-      "expectedHash": "70f5ca6538f8cacb26a5fa6f19d6a8332c3ee9b00eb9f8e41973d382468919f5",
-      "actualHash": "70f5ca6538f8cacb26a5fa6f19d6a8332c3ee9b00eb9f8e41973d382468919f5",
-      "title": "تفاصيل الخدمة · أطلس للمندوب | أطلس",
+      "expectedHash": "ed3a41b3de74aab1b448e6a374944c420caf2a9eaca007c6ea5788d868583c49",
+      "actualHash": "ed3a41b3de74aab1b448e6a374944c420caf2a9eaca007c6ea5788d868583c49",
+      "title": "تفاصيل الخدمة · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/opportunities",
-      "status": "passed",
-      "expectedHash": "8274796a3a1ce1cda3b2a02c20919e3a097a7ef411e29ea4fdf9748dc8df00e8",
-      "actualHash": "8274796a3a1ce1cda3b2a02c20919e3a097a7ef411e29ea4fdf9748dc8df00e8",
-      "title": "الفرص · أطلس للمندوب | أطلس",
-      "trackingFixtureRequests": []
+      "status": "evolved",
+      "expectedHash": "5fd231067e51221f802667d4e08e3a3bd36db5fa593bcb6ea003a3d1ec8403a5",
+      "actualHash": "d1f4a842ebe9c75a336539c8031ef2c64a12fa947e6d7c6125994e254797aeca",
+      "title": "الفرص · إلفورانس للمندوب | إلفورانس",
+      "trackingFixtureRequests": [],
+      "intentionalChange": "Open-opportunity filter and deep links"
     },
     {
       "id": "rep/opportunity-detail",
       "status": "passed",
-      "expectedHash": "933195b9096abc714ef690d6e2d04d8d78d9d1992626d6e617fbe9f98408a4fa",
-      "actualHash": "933195b9096abc714ef690d6e2d04d8d78d9d1992626d6e617fbe9f98408a4fa",
-      "title": "تفاصيل الفرصة · أطلس للمندوب | أطلس",
+      "expectedHash": "8c5c6f98be5bd29f267bf085abdf8c6649a36b094060050e2d59e4e642d89ad4",
+      "actualHash": "8c5c6f98be5bd29f267bf085abdf8c6649a36b094060050e2d59e4e642d89ad4",
+      "title": "تفاصيل الفرصة · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/quote-builder",
-      "status": "passed",
-      "expectedHash": "1e6c5204121555fae1927e0ccc1333d00db205dacfe60226e0154e89f92c4b69",
-      "actualHash": "1e6c5204121555fae1927e0ccc1333d00db205dacfe60226e0154e89f92c4b69",
-      "title": "إعداد عرض السعر · أطلس للمندوب | أطلس",
-      "trackingFixtureRequests": []
+      "status": "evolved",
+      "expectedHash": "be14f5a8a1d1fe73417af0106d990b8664925bb2297a22d1dc80928d960606eb",
+      "actualHash": "78355a78112250e34470c33e157afce152acc44dd64843c705f3f8219fd680f9",
+      "title": "إعداد عرض السعر · إلفورانس للمندوب | إلفورانس",
+      "trackingFixtureRequests": [],
+      "intentionalChange": "Discount, instalments and guided proposal builder"
     },
     {
       "id": "rep/quotes",
       "status": "passed",
-      "expectedHash": "56786149e36ad1486e16c6bccaeb993b6f6b371535d70137a771eb05044f0cca",
-      "actualHash": "56786149e36ad1486e16c6bccaeb993b6f6b371535d70137a771eb05044f0cca",
-      "title": "عروض الأسعار · أطلس للمندوب | أطلس",
+      "expectedHash": "51ae1e79bc3f7021b65d39d9945e983d771431438f8a0a16b6a04f7c55741568",
+      "actualHash": "51ae1e79bc3f7021b65d39d9945e983d771431438f8a0a16b6a04f7c55741568",
+      "title": "عروض الأسعار · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/quote-detail",
       "status": "passed",
-      "expectedHash": "e341a5668f02e0cc41829232aba4e8f806d8618f96dfb6c5d7cc096b2cc53a82",
-      "actualHash": "e341a5668f02e0cc41829232aba4e8f806d8618f96dfb6c5d7cc096b2cc53a82",
-      "title": "تفاصيل العرض · أطلس للمندوب | أطلس",
+      "expectedHash": "d22b217435e230fc710dc416ad5acad2a1450bd18b1e0296b2a49b268f237163",
+      "actualHash": "d22b217435e230fc710dc416ad5acad2a1450bd18b1e0296b2a49b268f237163",
+      "title": "تفاصيل العرض · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/tasks",
       "status": "passed",
-      "expectedHash": "b3808ad91a1920e644283edcc75b1d0624593aad0e25ae66e0809426a960f628",
-      "actualHash": "b3808ad91a1920e644283edcc75b1d0624593aad0e25ae66e0809426a960f628",
-      "title": "المهام · أطلس للمندوب | أطلس",
+      "expectedHash": "41e3e94a21751ec9adecfe261d0d3a7ea98a89082c35297719d86f2377fd933d",
+      "actualHash": "41e3e94a21751ec9adecfe261d0d3a7ea98a89082c35297719d86f2377fd933d",
+      "title": "المهام · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/messages",
       "status": "passed",
-      "expectedHash": "6bf9aece103e632bfb7f2ef109732c98a5aaecd8ce182befaca40059b7ebac3f",
-      "actualHash": "6bf9aece103e632bfb7f2ef109732c98a5aaecd8ce182befaca40059b7ebac3f",
-      "title": "المحادثات · أطلس للمندوب | أطلس",
+      "expectedHash": "022c502b60f4bc7839392e5ba681d2f002c4ec777ae28be36e4be11f309f2636",
+      "actualHash": "022c502b60f4bc7839392e5ba681d2f002c4ec777ae28be36e4be11f309f2636",
+      "title": "المحادثات · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "rep/more",
       "status": "passed",
-      "expectedHash": "e470e7a3e92c4c307a48419e2a9a225a2fd2cc5e9b5d597c903a979594f79325",
-      "actualHash": "e470e7a3e92c4c307a48419e2a9a225a2fd2cc5e9b5d597c903a979594f79325",
-      "title": "المزيد · أطلس للمندوب | أطلس",
+      "expectedHash": "c650eeaa177dccc5a3d66013cdaf9e8b92b45f5ee3704ca4fa465f0c127cdac8",
+      "actualHash": "c650eeaa177dccc5a3d66013cdaf9e8b92b45f5ee3704ca4fa465f0c127cdac8",
+      "title": "المزيد · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": [
         {
           "url": "/api/tracking/status",
@@ -168,9 +172,9 @@
     {
       "id": "rep/profile",
       "status": "passed",
-      "expectedHash": "29b22d73c4d9e5c000827fbf4d16aec77c7921959fff849bc2e41173ed09e078",
-      "actualHash": "29b22d73c4d9e5c000827fbf4d16aec77c7921959fff849bc2e41173ed09e078",
-      "title": "الملف الشخصي · أطلس للمندوب | أطلس",
+      "expectedHash": "1c976e98b304e91104d861859d1c2b616241a46fa4a000f2fb7f5c78c5c11c0d",
+      "actualHash": "1c976e98b304e91104d861859d1c2b616241a46fa4a000f2fb7f5c78c5c11c0d",
+      "title": "الملف الشخصي · إلفورانس للمندوب | إلفورانس",
       "trackingFixtureRequests": [
         {
           "url": "/api/tracking/status",
@@ -180,194 +184,198 @@
     },
     {
       "id": "client/home",
-      "status": "passed",
-      "expectedHash": "ac25f6f1109c5183aba367727a7c40107afce07054c04661c69719b8df2921dd",
-      "actualHash": "ac25f6f1109c5183aba367727a7c40107afce07054c04661c69719b8df2921dd",
-      "title": "الرئيسية · مساحة العميل | أطلس",
-      "trackingFixtureRequests": []
+      "status": "evolved",
+      "expectedHash": "d63b5d9802423bd1ec60a1168594461ace33f1a9eb8b44f275327d2d4e8417f6",
+      "actualHash": "fa3521f9ede27eab964de9ab4653217a96926a47766c8527525527d7a7cfd826",
+      "title": "الرئيسية · مساحة العميل | إلفورانس",
+      "trackingFixtureRequests": [],
+      "intentionalChange": "Client decision dashboard navigation"
     },
     {
       "id": "client/services",
-      "status": "passed",
-      "expectedHash": "b9d6068a086450f6710cfdaa9f4f2742db5e0965b6da89f5ae4037a0cc02510d",
-      "actualHash": "b9d6068a086450f6710cfdaa9f4f2742db5e0965b6da89f5ae4037a0cc02510d",
-      "title": "الخدمات · مساحة العميل | أطلس",
-      "trackingFixtureRequests": []
+      "status": "evolved",
+      "expectedHash": "3c6bb65a8cd50f03dfa0a988751bb785bd24aa6bd06b805099bbd47ccde4f183",
+      "actualHash": "92089eafb3c36b9503d9837e98f64eb941ad4a1277f1c00468261402cb69623a",
+      "title": "الخدمات · مساحة العميل | إلفورانس",
+      "trackingFixtureRequests": [],
+      "intentionalChange": "Admin-driven service catalog"
     },
     {
       "id": "client/service-detail",
       "status": "passed",
-      "expectedHash": "1147bb49e39e101ba31273da0d70ffd0812215c5d2191bf7b5a7da423ba31c4d",
-      "actualHash": "1147bb49e39e101ba31273da0d70ffd0812215c5d2191bf7b5a7da423ba31c4d",
-      "title": "تفاصيل الخدمة · مساحة العميل | أطلس",
+      "expectedHash": "1e7b9bd40e792b2b7d603460fffa431ca6dd9f5ebeb104705baeca99336b2820",
+      "actualHash": "1e7b9bd40e792b2b7d603460fffa431ca6dd9f5ebeb104705baeca99336b2820",
+      "title": "تفاصيل الخدمة · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/request-service",
       "status": "passed",
-      "expectedHash": "1b118e4f99447e5432da7bfc7e267891d9629116f08f062fe14b4c9dd4acdee8",
-      "actualHash": "1b118e4f99447e5432da7bfc7e267891d9629116f08f062fe14b4c9dd4acdee8",
-      "title": "طلب خدمة · مساحة العميل | أطلس",
+      "expectedHash": "0d18af9dd9acd00d7860ae0e1c60d679bdab386e11607c566e4b25eca8dd49fb",
+      "actualHash": "0d18af9dd9acd00d7860ae0e1c60d679bdab386e11607c566e4b25eca8dd49fb",
+      "title": "طلب خدمة · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/requests",
       "status": "passed",
-      "expectedHash": "4fc90d962c1ff3a0570ddda1987e05ffefebb103c62f25277dd989103179f344",
-      "actualHash": "4fc90d962c1ff3a0570ddda1987e05ffefebb103c62f25277dd989103179f344",
-      "title": "طلبات الخدمات · مساحة العميل | أطلس",
+      "expectedHash": "f91ffacd4edda48ea5387e58c8f67a2edadb84317956b60f0119a719cb31c092",
+      "actualHash": "f91ffacd4edda48ea5387e58c8f67a2edadb84317956b60f0119a719cb31c092",
+      "title": "طلبات الخدمات · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/quotes",
       "status": "passed",
-      "expectedHash": "381054baf18f66c219b5e894c4666b6a28d3b01222598cabb4c2054391d03ff6",
-      "actualHash": "381054baf18f66c219b5e894c4666b6a28d3b01222598cabb4c2054391d03ff6",
-      "title": "عروض الأسعار · مساحة العميل | أطلس",
+      "expectedHash": "2fb0f059c70eba7a802f4aaae7772d3881c6dacbde6659c57942539bb56148e1",
+      "actualHash": "2fb0f059c70eba7a802f4aaae7772d3881c6dacbde6659c57942539bb56148e1",
+      "title": "عروض الأسعار · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/quote-detail",
       "status": "passed",
-      "expectedHash": "5438e125692f68b7326ad352d1d155a3f98bf8688b9d477c74b955b25cb5e25d",
-      "actualHash": "5438e125692f68b7326ad352d1d155a3f98bf8688b9d477c74b955b25cb5e25d",
-      "title": "مراجعة العرض · مساحة العميل | أطلس",
+      "expectedHash": "0df0ba04adbbc804a6fad524489410e52c8b2cf85ae9df9971af54c569d9dcd7",
+      "actualHash": "0df0ba04adbbc804a6fad524489410e52c8b2cf85ae9df9971af54c569d9dcd7",
+      "title": "مراجعة العرض · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/contracts",
       "status": "passed",
-      "expectedHash": "8ff56aed9f6d6c676c25dbf3b52b1d5e3e6c69073508f9fac1e71f0f8d1acc91",
-      "actualHash": "8ff56aed9f6d6c676c25dbf3b52b1d5e3e6c69073508f9fac1e71f0f8d1acc91",
-      "title": "العقود · مساحة العميل | أطلس",
+      "expectedHash": "d4b70efa6c50d7b835d3e8f95c8130eaf68e3debf9e23550a74514822d02d4ca",
+      "actualHash": "d4b70efa6c50d7b835d3e8f95c8130eaf68e3debf9e23550a74514822d02d4ca",
+      "title": "العقود · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/contract-detail",
       "status": "passed",
-      "expectedHash": "ef8899ce303abc7c4260bb3e1ce2dc92e6e264651151348e3ccb4ec1c31d3215",
-      "actualHash": "ef8899ce303abc7c4260bb3e1ce2dc92e6e264651151348e3ccb4ec1c31d3215",
-      "title": "تفاصيل العقد · مساحة العميل | أطلس",
+      "expectedHash": "0ebacbb461b89cb5e668b2e820a6797eaf1321f086dff48f6d08a5dc349286d0",
+      "actualHash": "0ebacbb461b89cb5e668b2e820a6797eaf1321f086dff48f6d08a5dc349286d0",
+      "title": "تفاصيل العقد · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/projects",
       "status": "passed",
-      "expectedHash": "d8df7ea6e91776492950aeb018741daf062c1eadd207c7970ee92a8f969105d0",
-      "actualHash": "d8df7ea6e91776492950aeb018741daf062c1eadd207c7970ee92a8f969105d0",
-      "title": "مشاريعي · مساحة العميل | أطلس",
+      "expectedHash": "e5dc3490472b42cef78d6c8a535fed8f05de87bb6a7f390083054876450fea7c",
+      "actualHash": "e5dc3490472b42cef78d6c8a535fed8f05de87bb6a7f390083054876450fea7c",
+      "title": "مشاريعي · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/project-detail",
       "status": "passed",
-      "expectedHash": "f60689f45e127b6ac760c04a1e89d62f8e31d0bab3cd9d9365aadd8a6a780c69",
-      "actualHash": "f60689f45e127b6ac760c04a1e89d62f8e31d0bab3cd9d9365aadd8a6a780c69",
-      "title": "مساحة المشروع · مساحة العميل | أطلس",
+      "expectedHash": "f58e643642f72c862151f8311c3ecae9f903aa11c7573f2b8e33a4d8aa2363b9",
+      "actualHash": "f58e643642f72c862151f8311c3ecae9f903aa11c7573f2b8e33a4d8aa2363b9",
+      "title": "مساحة المشروع · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/deliverable-detail",
       "status": "passed",
-      "expectedHash": "f8d0d3e5cb1b815a87dcd3a860cc3998550a324cd15f9465d03662d1f8a951ed",
-      "actualHash": "f8d0d3e5cb1b815a87dcd3a860cc3998550a324cd15f9465d03662d1f8a951ed",
-      "title": "مراجعة التسليم · مساحة العميل | أطلس",
+      "expectedHash": "d5fa33eac0a98f981b66e9a53977bddc27afc0c03756c996586db7177378f54c",
+      "actualHash": "d5fa33eac0a98f981b66e9a53977bddc27afc0c03756c996586db7177378f54c",
+      "title": "مراجعة التسليم · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/invoices",
-      "status": "passed",
-      "expectedHash": "624000dd85bd81767aceff3d410d0503e642197f2f652e4bf5115c8607abd223",
-      "actualHash": "624000dd85bd81767aceff3d410d0503e642197f2f652e4bf5115c8607abd223",
-      "title": "الفواتير · مساحة العميل | أطلس",
-      "trackingFixtureRequests": []
+      "status": "evolved",
+      "expectedHash": "c42b5adb39e7d96a0fb1c213ceae48cb81fb28595ba4462b2eedb24be6bb1f77",
+      "actualHash": "9ea777146f26d9aa689d25db65fe4607063820700af003f9a0334406bd86baf9",
+      "title": "الفواتير · مساحة العميل | إلفورانس",
+      "trackingFixtureRequests": [],
+      "intentionalChange": "Billing view and outstanding balance links"
     },
     {
       "id": "client/invoice-detail",
       "status": "passed",
-      "expectedHash": "5ec8ddf0e854c7a59ca6c7bf48a4ff3dd0142531e159efc6a0d06c7f3a625032",
-      "actualHash": "5ec8ddf0e854c7a59ca6c7bf48a4ff3dd0142531e159efc6a0d06c7f3a625032",
-      "title": "تفاصيل الفاتورة · مساحة العميل | أطلس",
+      "expectedHash": "b33f6bf844ab689454b1e34729737530c369c4d67ec66877bd672c9d6cb6171a",
+      "actualHash": "b33f6bf844ab689454b1e34729737530c369c4d67ec66877bd672c9d6cb6171a",
+      "title": "تفاصيل الفاتورة · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/support",
       "status": "passed",
-      "expectedHash": "14fbd1e3a48cf59a718978bca36cbe2e66338a71184c4892a185051e7065321d",
-      "actualHash": "14fbd1e3a48cf59a718978bca36cbe2e66338a71184c4892a185051e7065321d",
-      "title": "مركز المساعدة · مساحة العميل | أطلس",
+      "expectedHash": "83508981aaa4bc2a7c75aa63b8ca3ec083ba6c37f53c392278fc26c683a6dd53",
+      "actualHash": "83508981aaa4bc2a7c75aa63b8ca3ec083ba6c37f53c392278fc26c683a6dd53",
+      "title": "مركز المساعدة · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/new-ticket",
       "status": "passed",
-      "expectedHash": "e028711c514e82c80440f4a83bc400cab57b2abfbf903c9ecb40fc433100db8a",
-      "actualHash": "e028711c514e82c80440f4a83bc400cab57b2abfbf903c9ecb40fc433100db8a",
-      "title": "طلب مساعدة · مساحة العميل | أطلس",
+      "expectedHash": "e9813b5a1cc2c1bc9b37def87b428bd808c909e8558e66f509de92ce09278060",
+      "actualHash": "e9813b5a1cc2c1bc9b37def87b428bd808c909e8558e66f509de92ce09278060",
+      "title": "طلب مساعدة · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/ticket-detail",
       "status": "passed",
-      "expectedHash": "ee1a99a2985cfff316efe1e09a216269a85300658443718bdc09d77fb26c67f5",
-      "actualHash": "ee1a99a2985cfff316efe1e09a216269a85300658443718bdc09d77fb26c67f5",
-      "title": "تفاصيل طلب المساعدة · مساحة العميل | أطلس",
+      "expectedHash": "28904cb3d1e396fa2851486ee9c8e6b5dd68bee3e4a15913e18bdbe06dcc0148",
+      "actualHash": "28904cb3d1e396fa2851486ee9c8e6b5dd68bee3e4a15913e18bdbe06dcc0148",
+      "title": "تفاصيل طلب المساعدة · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/messages",
       "status": "passed",
-      "expectedHash": "a2572c7f419cb8293215d7ae1ef5be0bab71c3a838d7fb25bd0cb10fa1878e79",
-      "actualHash": "a2572c7f419cb8293215d7ae1ef5be0bab71c3a838d7fb25bd0cb10fa1878e79",
-      "title": "المحادثات · مساحة العميل | أطلس",
+      "expectedHash": "16a69c9f5472e9f68636100f956f35d12bb8895c34cbc744673f4496d7bd343a",
+      "actualHash": "16a69c9f5472e9f68636100f956f35d12bb8895c34cbc744673f4496d7bd343a",
+      "title": "المحادثات · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/account",
       "status": "passed",
-      "expectedHash": "1e390a03293e49e482843d81c65693cca0d8a97c7e9602f05aa36209c387138f",
-      "actualHash": "1e390a03293e49e482843d81c65693cca0d8a97c7e9602f05aa36209c387138f",
-      "title": "حسابي · مساحة العميل | أطلس",
+      "expectedHash": "fd6ad91022d142622d753193f658cf56f49f3f5ac715b4c99bb4c2cf4b995ac0",
+      "actualHash": "fd6ad91022d142622d753193f658cf56f49f3f5ac715b4c99bb4c2cf4b995ac0",
+      "title": "حسابي · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/profile",
       "status": "passed",
-      "expectedHash": "5459dd421afccd34e34ce683bd9fbfb6136f1dee80bcc8e42d9ac43e7a5d4b50",
-      "actualHash": "5459dd421afccd34e34ce683bd9fbfb6136f1dee80bcc8e42d9ac43e7a5d4b50",
-      "title": "بيانات نشاطي · مساحة العميل | أطلس",
+      "expectedHash": "4d6615790f97e06c0720f15ea034cc0b2b0829cbd8f839b5ef2b1c2e1064f21a",
+      "actualHash": "4d6615790f97e06c0720f15ea034cc0b2b0829cbd8f839b5ef2b1c2e1064f21a",
+      "title": "بيانات نشاطي · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "client/preferences",
       "status": "passed",
-      "expectedHash": "ae7b9c07c53c63cfe41ee8a43439d6a399f3430a747f0ef09a2ef499ddf5b0ff",
-      "actualHash": "ae7b9c07c53c63cfe41ee8a43439d6a399f3430a747f0ef09a2ef499ddf5b0ff",
-      "title": "التفضيلات والاحتياجات · مساحة العميل | أطلس",
+      "expectedHash": "ef2e536f7f360758a06d556d078ad3d22e1f00bc9bf50dae236ef66987f71144",
+      "actualHash": "ef2e536f7f360758a06d556d078ad3d22e1f00bc9bf50dae236ef66987f71144",
+      "title": "التفضيلات والاحتياجات · مساحة العميل | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/home",
-      "status": "passed",
-      "expectedHash": "e20608265f5242a9793b52239e23b32653a7abe44685181638b9a56680483cff",
-      "actualHash": "e20608265f5242a9793b52239e23b32653a7abe44685181638b9a56680483cff",
-      "title": "نظرة الإدارة · أطلس للإدارة | أطلس",
-      "trackingFixtureRequests": []
+      "status": "evolved",
+      "expectedHash": "7526415cb01ec816b4d744889d0d8189ef7d1842931c273772570becc8907e9e",
+      "actualHash": "7fdb13ee9bef7d3a14aa41af71b56957c5ebcba7afc75742b5952b8660d4976e",
+      "title": "نظرة الإدارة · إلفورانس للإدارة | إلفورانس",
+      "trackingFixtureRequests": [],
+      "intentionalChange": "Operational decision dashboard"
     },
     {
       "id": "admin/team",
       "status": "passed",
-      "expectedHash": "e97ec16f8f2174bcccafbdd997882232af7c6a973bcbc670ec292bff573a4756",
-      "actualHash": "e97ec16f8f2174bcccafbdd997882232af7c6a973bcbc670ec292bff573a4756",
-      "title": "الفريق · أطلس للإدارة | أطلس",
+      "expectedHash": "f49d13a74afeb703ba306b6b7c0281a292a9ad28b5d106b5d2ce7d4ea8dde875",
+      "actualHash": "f49d13a74afeb703ba306b6b7c0281a292a9ad28b5d106b5d2ce7d4ea8dde875",
+      "title": "الفريق · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/live-tracking",
       "status": "passed",
-      "expectedHash": "8dfd8af541cc9c3a8a339502c075980bff459c018ef25c3310fc464c9283db95",
-      "actualHash": "8dfd8af541cc9c3a8a339502c075980bff459c018ef25c3310fc464c9283db95",
-      "title": "مواقع الفريق الآن · أطلس للإدارة | أطلس",
+      "expectedHash": "3c41a47e798624614676d857c3c950f3f26710f6dd4f8d4ee0f1c7654bcffb0f",
+      "actualHash": "3c41a47e798624614676d857c3c950f3f26710f6dd4f8d4ee0f1c7654bcffb0f",
+      "title": "مواقع الفريق الآن · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": [
         {
           "url": "/api/tracking/locations",
@@ -378,181 +386,183 @@
     {
       "id": "admin/team-member",
       "status": "passed",
-      "expectedHash": "972fa2bc1c2377042bc140f2d3d712b5769b07997a7fb07ae5bbcc96795a4a30",
-      "actualHash": "972fa2bc1c2377042bc140f2d3d712b5769b07997a7fb07ae5bbcc96795a4a30",
-      "title": "ملف المندوب · أطلس للإدارة | أطلس",
+      "expectedHash": "5f71152a34b3235aff9b902f4745c8d7e34aec24cc1c4e87b751be2297e491ec",
+      "actualHash": "5f71152a34b3235aff9b902f4745c8d7e34aec24cc1c4e87b751be2297e491ec",
+      "title": "ملف المندوب · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/territories",
       "status": "passed",
-      "expectedHash": "5b27530d888d68fb31bcd9f4d291dc8b59e335d1a7fc69a22b94eda6a8db6a49",
-      "actualHash": "5b27530d888d68fb31bcd9f4d291dc8b59e335d1a7fc69a22b94eda6a8db6a49",
-      "title": "المناطق · أطلس للإدارة | أطلس",
+      "expectedHash": "e2b9c5a27a6606ef937d42f0e138eb7bb0be56e83885707e3c5579cb55b4369c",
+      "actualHash": "e2b9c5a27a6606ef937d42f0e138eb7bb0be56e83885707e3c5579cb55b4369c",
+      "title": "المناطق · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/zone-detail",
       "status": "passed",
-      "expectedHash": "4ceb0461f0e421d3b4c8086968798d3f7670d5a28e412cfad9624dec7f32b657",
-      "actualHash": "4ceb0461f0e421d3b4c8086968798d3f7670d5a28e412cfad9624dec7f32b657",
-      "title": "تفاصيل المنطقة · أطلس للإدارة | أطلس",
+      "expectedHash": "1e2dff3a9df7cd1b62c5645159e4df9c724f7b9365edc0b336cb7ab3666bb329",
+      "actualHash": "1e2dff3a9df7cd1b62c5645159e4df9c724f7b9365edc0b336cb7ab3666bb329",
+      "title": "تفاصيل المنطقة · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/clients",
       "status": "passed",
-      "expectedHash": "be36d4463e06156cb8bb2fb51c6fa37c3055f2cc81cd96501219103d0ba2956d",
-      "actualHash": "be36d4463e06156cb8bb2fb51c6fa37c3055f2cc81cd96501219103d0ba2956d",
-      "title": "العملاء · أطلس للإدارة | أطلس",
+      "expectedHash": "7fe1266ceac2405e86b37f2c19917777d1841c968cc432ce27aca7f6c4644c17",
+      "actualHash": "7fe1266ceac2405e86b37f2c19917777d1841c968cc432ce27aca7f6c4644c17",
+      "title": "العملاء · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/client-detail",
       "status": "passed",
-      "expectedHash": "8b007a98bd4fb062bddbad98adc35968c2e8aae85ec0dd9d53e10902ecd7e75f",
-      "actualHash": "8b007a98bd4fb062bddbad98adc35968c2e8aae85ec0dd9d53e10902ecd7e75f",
-      "title": "ملف العميل · أطلس للإدارة | أطلس",
+      "expectedHash": "c32852e298370400a0269208c6d34489e4b51e41d6b0d613d237d2e56ae90863",
+      "actualHash": "c32852e298370400a0269208c6d34489e4b51e41d6b0d613d237d2e56ae90863",
+      "title": "ملف العميل · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/pipeline",
       "status": "passed",
-      "expectedHash": "d21877a626d04958c3d84f934abe450a49db915b699b208b99914a1a6e16a98d",
-      "actualHash": "d21877a626d04958c3d84f934abe450a49db915b699b208b99914a1a6e16a98d",
-      "title": "مسار المبيعات · أطلس للإدارة | أطلس",
+      "expectedHash": "a40191a82d71667dc760a683adddc1340817315bc058102d40887c7347c9abd4",
+      "actualHash": "a40191a82d71667dc760a683adddc1340817315bc058102d40887c7347c9abd4",
+      "title": "مسار المبيعات · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/opportunity",
       "status": "passed",
-      "expectedHash": "a12d5b3ee38cc6fa2e7a7e2dc03ca28b0fe842a4d0c2b72c2f662d3f458f5185",
-      "actualHash": "a12d5b3ee38cc6fa2e7a7e2dc03ca28b0fe842a4d0c2b72c2f662d3f458f5185",
-      "title": "تفاصيل الفرصة · أطلس للإدارة | أطلس",
+      "expectedHash": "e9c304637479ebe6857fe5933caff324b9053e3f57032334277d49bebed85746",
+      "actualHash": "e9c304637479ebe6857fe5933caff324b9053e3f57032334277d49bebed85746",
+      "title": "تفاصيل الفرصة · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/tasks",
       "status": "passed",
-      "expectedHash": "9b85230843826e369a4d8c50871efe1b5ea14af975837538718f2f1872ebc817",
-      "actualHash": "9b85230843826e369a4d8c50871efe1b5ea14af975837538718f2f1872ebc817",
-      "title": "المهام · أطلس للإدارة | أطلس",
+      "expectedHash": "2a071733403590725529862b7b57621e06fd26021b44d73a7c7eb24be4408c71",
+      "actualHash": "2a071733403590725529862b7b57621e06fd26021b44d73a7c7eb24be4408c71",
+      "title": "المهام · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/approvals",
       "status": "passed",
-      "expectedHash": "babefdab3c6f0de9544a1f86b15eb591eb9632ce3d8b2e89b8747627ea29ab38",
-      "actualHash": "babefdab3c6f0de9544a1f86b15eb591eb9632ce3d8b2e89b8747627ea29ab38",
-      "title": "الموافقات · أطلس للإدارة | أطلس",
+      "expectedHash": "95f2080244ac2dbbfaa20ed226ae80b38c2defae956fdc17707bdd5f6023e836",
+      "actualHash": "95f2080244ac2dbbfaa20ed226ae80b38c2defae956fdc17707bdd5f6023e836",
+      "title": "الموافقات · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/projects",
       "status": "passed",
-      "expectedHash": "680cea5d3bca9f5ddb484b14abf652e8f9c41cda1d5773ba0664b465a2ea2868",
-      "actualHash": "680cea5d3bca9f5ddb484b14abf652e8f9c41cda1d5773ba0664b465a2ea2868",
-      "title": "المشاريع · أطلس للإدارة | أطلس",
+      "expectedHash": "bfcb0cd2f5dd91adee1a34950874829a569948787880af9ca67fe10920735e54",
+      "actualHash": "bfcb0cd2f5dd91adee1a34950874829a569948787880af9ca67fe10920735e54",
+      "title": "المشاريع · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/project-detail",
       "status": "passed",
-      "expectedHash": "df78578a4099bb7789250eddd75e7796e94fe33f3effa9ff1c6f98792ed90b97",
-      "actualHash": "df78578a4099bb7789250eddd75e7796e94fe33f3effa9ff1c6f98792ed90b97",
-      "title": "إدارة المشروع · أطلس للإدارة | أطلس",
+      "expectedHash": "a3a435393d5341d0435d79c638595a7e053a922b47d9131b8bb97c8f63883ce7",
+      "actualHash": "a3a435393d5341d0435d79c638595a7e053a922b47d9131b8bb97c8f63883ce7",
+      "title": "إدارة المشروع · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/analytics",
       "status": "passed",
-      "expectedHash": "8074c400ff0595fb7011fe405c1014773de111517ec8c47fb83048906843ad6a",
-      "actualHash": "8074c400ff0595fb7011fe405c1014773de111517ec8c47fb83048906843ad6a",
-      "title": "التحليلات · أطلس للإدارة | أطلس",
+      "expectedHash": "1aebae511f857db484e3dadf1405ae716d0ff1f1d6deb0a825e6ce3d9ec5fc4b",
+      "actualHash": "1aebae511f857db484e3dadf1405ae716d0ff1f1d6deb0a825e6ce3d9ec5fc4b",
+      "title": "التحليلات · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/invoices",
       "status": "passed",
-      "expectedHash": "bda1edbf05099fc53d287abc7b18fd9f10cc47f3f9fb1cdbab8260f412b6f069",
-      "actualHash": "bda1edbf05099fc53d287abc7b18fd9f10cc47f3f9fb1cdbab8260f412b6f069",
-      "title": "الفواتير · أطلس للإدارة | أطلس",
+      "expectedHash": "bcc0846dc2368ebbb5e409bf29d7b2daa72325a56ec53a50eaad1069c23d1d75",
+      "actualHash": "bcc0846dc2368ebbb5e409bf29d7b2daa72325a56ec53a50eaad1069c23d1d75",
+      "title": "الفواتير · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/invoice-detail",
       "status": "passed",
-      "expectedHash": "eace9a8e30b51f7e441a39b945ce823914b6532574f52c75a7ce8f448066b967",
-      "actualHash": "eace9a8e30b51f7e441a39b945ce823914b6532574f52c75a7ce8f448066b967",
-      "title": "تفاصيل الفاتورة · أطلس للإدارة | أطلس",
+      "expectedHash": "9a975c038b7dba70eab49815df6f144c41619c9566d434aa3f0065f5fcd23ca0",
+      "actualHash": "9a975c038b7dba70eab49815df6f144c41619c9566d434aa3f0065f5fcd23ca0",
+      "title": "تفاصيل الفاتورة · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/support",
       "status": "passed",
-      "expectedHash": "8292e36ef108151d476abef4a540dfbabda45da082f0823e17066c0bd96e0a75",
-      "actualHash": "8292e36ef108151d476abef4a540dfbabda45da082f0823e17066c0bd96e0a75",
-      "title": "الدعم · أطلس للإدارة | أطلس",
+      "expectedHash": "726003cfc293fe8e0ceccce9ead207bdbf6f16921a5a69fb31bd10dd0e1ad21d",
+      "actualHash": "726003cfc293fe8e0ceccce9ead207bdbf6f16921a5a69fb31bd10dd0e1ad21d",
+      "title": "الدعم · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/ticket-detail",
       "status": "passed",
-      "expectedHash": "bb0795967a3d055164abf7d5f4275c2d51522134e3980f90dbde3f88e6f832c6",
-      "actualHash": "bb0795967a3d055164abf7d5f4275c2d51522134e3980f90dbde3f88e6f832c6",
-      "title": "طلب الدعم · أطلس للإدارة | أطلس",
+      "expectedHash": "44d856a31b43961044435b87ce394344512735e87254981839245a802d3f4f54",
+      "actualHash": "44d856a31b43961044435b87ce394344512735e87254981839245a802d3f4f54",
+      "title": "طلب الدعم · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/messages",
       "status": "passed",
-      "expectedHash": "b0a152d29e64b4f363d242d03a9cd239591c19fb6476ca61f97e10fafc390608",
-      "actualHash": "b0a152d29e64b4f363d242d03a9cd239591c19fb6476ca61f97e10fafc390608",
-      "title": "المحادثات · أطلس للإدارة | أطلس",
+      "expectedHash": "362e36df9643cf28c7e340836dc7c8facb7c9fa78d1409937e323b664d81d063",
+      "actualHash": "362e36df9643cf28c7e340836dc7c8facb7c9fa78d1409937e323b664d81d063",
+      "title": "المحادثات · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/conversation",
       "status": "passed",
-      "expectedHash": "b4bf569b96ae2fdb2d0462832c47d5429dae8a977eb8362ac6f01370800a7cd8",
-      "actualHash": "b4bf569b96ae2fdb2d0462832c47d5429dae8a977eb8362ac6f01370800a7cd8",
-      "title": "المحادثة · أطلس للإدارة | أطلس",
+      "expectedHash": "c146ca98087d83de1414f18d516d45a9ea6bfdbf86eafb5c994d80d376944bd7",
+      "actualHash": "c146ca98087d83de1414f18d516d45a9ea6bfdbf86eafb5c994d80d376944bd7",
+      "title": "المحادثة · إلفورانس للإدارة | إلفورانس",
       "trackingFixtureRequests": []
     },
     {
       "id": "admin/settings",
-      "status": "passed",
-      "expectedHash": "886a3b4ff359e40a57a08407f0f68b8b50e30e6eb71671d2636a2cbd9ae59375",
-      "actualHash": "886a3b4ff359e40a57a08407f0f68b8b50e30e6eb71671d2636a2cbd9ae59375",
-      "title": "الإعدادات · أطلس للإدارة | أطلس",
-      "trackingFixtureRequests": []
+      "status": "evolved",
+      "expectedHash": "4968385b6f22f8eeb68f35883cb5a8175ff2ce7cf67a2e04764015242c845808",
+      "actualHash": "aa7afa7adb80f34386310d1da8042981e5c2e3c41af8fc9b8c5127668a82f7a6",
+      "title": "الإعدادات · إلفورانس للإدارة | إلفورانس",
+      "trackingFixtureRequests": [],
+      "intentionalChange": "Administrative question and service configuration"
     },
     {
       "id": "admin/more",
-      "status": "passed",
-      "expectedHash": "59892ef3836a8db174543dc74dc2d0863f27ab73159e2973a642b3e8a2d96850",
-      "actualHash": "59892ef3836a8db174543dc74dc2d0863f27ab73159e2973a642b3e8a2d96850",
-      "title": "المزيد · أطلس للإدارة | أطلس",
-      "trackingFixtureRequests": []
+      "status": "evolved",
+      "expectedHash": "fc71fa8171a527492150043a43b66592801b426639ca7269cd759130cda6b9ba",
+      "actualHash": "75beddad0571f53bc93a64b79bb2973716e69231557cb1d653276d3ffe9f353f",
+      "title": "المزيد · إلفورانس للإدارة | إلفورانس",
+      "trackingFixtureRequests": [],
+      "intentionalChange": "Administrative navigation to configuration"
     }
   ],
   "registrations": [
     {
       "app": "rep",
-      "routes": 20,
-      "actions": 51,
+      "routes": 21,
+      "actions": 59,
       "status": "passed"
     },
     {
       "app": "client",
-      "routes": 21,
-      "actions": 28,
+      "routes": 23,
+      "actions": 31,
       "status": "passed"
     },
     {
       "app": "admin",
-      "routes": 23,
-      "actions": 43,
+      "routes": 25,
+      "actions": 53,
       "status": "passed"
     }
   ],
@@ -561,8 +571,8 @@
       "id": "rep-app-css",
       "kind": "app-css",
       "target": "apps/rep-mobile/src/styles.css",
-      "expectedHash": "6e6fa5592d066e5144d7e631518a0bacbdbede9bd2c590ba37d04e0997f3af28",
-      "actualHash": "6e6fa5592d066e5144d7e631518a0bacbdbede9bd2c590ba37d04e0997f3af28",
+      "expectedHash": "3372f4cdcdebe353e39eb35b19806b11d5f842d75efb4bbed3a42ad7effeb91f",
+      "actualHash": "3372f4cdcdebe353e39eb35b19806b11d5f842d75efb4bbed3a42ad7effeb91f",
       "status": "passed"
     },
     {
@@ -585,41 +595,37 @@
       "id": "shared-styles.css",
       "kind": "shared-css",
       "target": "packages/design-system/src/styles.css",
-      "expectedHash": "daff1579dcfc88450f6bc21439a856503a19ebdb10332851228a7cda38985928",
-      "actualHash": "daff1579dcfc88450f6bc21439a856503a19ebdb10332851228a7cda38985928",
+      "expectedHash": "e200e9c66295fad5c12e9d83d570c776dac56bc4084ee36c807fd9582ee34c97",
+      "actualHash": "e200e9c66295fad5c12e9d83d570c776dac56bc4084ee36c807fd9582ee34c97",
       "status": "passed"
     },
     {
       "id": "shared-polish.css",
       "kind": "shared-css",
       "target": "packages/design-system/src/polish.css",
-      "expectedHash": "16d94da288574980a4cc0d38275442863903f058c579035b7c8b1db0d01abbe5",
-      "actualHash": "16d94da288574980a4cc0d38275442863903f058c579035b7c8b1db0d01abbe5",
+      "expectedHash": "f89bfe30553584296deac08e2f2db5aceb79db768d907ef25495b803e8bb4f9c",
+      "actualHash": "f89bfe30553584296deac08e2f2db5aceb79db768d907ef25495b803e8bb4f9c",
       "status": "passed"
     },
     {
       "id": "shared-tracking.css",
       "kind": "shared-css",
       "target": "packages/design-system/src/tracking.css",
-      "expectedHash": "8eb41567c858388f0d88eed932da6a61105af00f9ec36f0579dbe9599b6394ad",
-      "actualHash": "8eb41567c858388f0d88eed932da6a61105af00f9ec36f0579dbe9599b6394ad",
+      "expectedHash": "e81951d73a0be94a40069539d0300132c008b013cc7f4e65ec2126bd18ea0d0b",
+      "actualHash": "e81951d73a0be94a40069539d0300132c008b013cc7f4e65ec2126bd18ea0d0b",
       "status": "passed"
     },
     {
       "id": "NotoSansArabic-Regular.woff",
       "kind": "font",
-      "target": "packages/design-system/fonts/NotoSansArabic-Regular.woff",
-      "expectedHash": "1a3a4a190b4efcc92a6ef604af70fdea90ae1e5eb919f23af990d87ace8cf798",
-      "actualHash": "1a3a4a190b4efcc92a6ef604af70fdea90ae1e5eb919f23af990d87ace8cf798",
-      "status": "passed"
+      "status": "not-bundled",
+      "reason": "Licensed font binaries intentionally excluded from source distribution"
     },
     {
       "id": "NotoSansArabic-Bold.woff",
       "kind": "font",
-      "target": "packages/design-system/fonts/NotoSansArabic-Bold.woff",
-      "expectedHash": "6b83e0bba78f6d484c2eaa37e2fcc10178cbfa1b33c5d0701aa878d3e59cd1b7",
-      "actualHash": "6b83e0bba78f6d484c2eaa37e2fcc10178cbfa1b33c5d0701aa878d3e59cd1b7",
-      "status": "passed"
+      "status": "not-bundled",
+      "reason": "Licensed font binaries intentionally excluded from source distribution"
     },
     {
       "id": "LICENSE.txt",
@@ -647,14 +653,16 @@
     "node": "v24.22.1",
     "icu": "78.3"
   },
-  "finishedAt": "2026-11-13T20:22:50.476Z",
+  "finishedAt": "2026-11-18T08:10:53.176Z",
   "summary": {
     "routes": 64,
     "routesPassed": 64,
+    "unchangedRoutes": 54,
+    "evolvedRoutes": 10,
     "routesFailed": 0,
-    "actions": 122,
+    "actions": 143,
     "assets": 9,
-    "assetsPassed": 9,
+    "assetsPassed": 7,
     "assetsFailed": 0,
     "runtimeErrors": 0
   }

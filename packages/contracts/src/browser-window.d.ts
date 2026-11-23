@@ -7,6 +7,14 @@ declare global {
       configurationApiBaseUrl?: string;
       apiBaseUrl?: string;
       siteTracking?: boolean;
+      environment?: 'development' | 'staging' | 'production';
+      auth?: Readonly<{
+        issuer: string;
+        clientId: string;
+        redirectUri: string;
+        environment: 'development' | 'staging' | 'production';
+        scopes?: string[];
+      }>;
     }>;
     ELVORANCE_AUTH?: {
       getAccessToken?: () => string | null | Promise<string | null>;

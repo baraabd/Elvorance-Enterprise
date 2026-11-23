@@ -1,20 +1,26 @@
 import type { FastifyInstance } from 'fastify';
-import { command, routeId, type Repository } from '@elvorance/service-kit';
+import {
+  actorScopes,
+  command,
+  pageOptions,
+  routeId,
+  type Repository,
+} from '@elvorance/service-kit';
 import {
   createTicket,
   readNotification,
   replyTicket,
   statusTicket,
   ticket,
-  visible,
 } from '../application/tickets.ts';
 import type { Notification, Ticket } from '../domain/model.ts';
 export function registerRoutes(app: FastifyInstance, repository: Repository): void {
   app.get('/v1/notifications', async (request) =>
     repository.transaction(request.principal.tenantId, async (tx) => ({
-      items: (await tx.list<Notification>('notifications')).filter((value) =>
-        visible(request.principal, value),
-      ),
+      ...(await tx.page<Notification>(
+        'notifications',
+        pageOptions(request.query, actorScopes(request.principal, ['admin', 'support'])),
+      )),
       delivery: 'in-app-only',
     })),
   );
@@ -24,11 +30,12 @@ export function registerRoutes(app: FastifyInstance, repository: Repository): vo
     ),
   );
   app.get('/v1/tickets', async (request) =>
-    repository.transaction(request.principal.tenantId, async (tx) => ({
-      items: (await tx.list<Ticket>('tickets')).filter((value) =>
-        visible(request.principal, value),
+    repository.transaction(request.principal.tenantId, (tx) =>
+      tx.page<Ticket>(
+        'tickets',
+        pageOptions(request.query, actorScopes(request.principal, ['admin', 'support'])),
       ),
-    })),
+    ),
   );
   app.get('/v1/tickets/:id', async (request) =>
     repository.transaction(request.principal.tenantId, (tx) =>

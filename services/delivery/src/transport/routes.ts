@@ -1,5 +1,11 @@
 import type { FastifyInstance } from 'fastify';
-import { command, isOwner, routeId, type Repository } from '@elvorance/service-kit';
+import {
+  actorScopes,
+  command,
+  pageOptions,
+  routeId,
+  type Repository,
+} from '@elvorance/service-kit';
 import type { Project } from '../domain/model.ts';
 import {
   addDeliverable,
@@ -12,11 +18,12 @@ import {
 } from '../application/projects.ts';
 export function registerRoutes(app: FastifyInstance, repository: Repository): void {
   app.get('/v1/projects', async (request) =>
-    repository.transaction(request.principal.tenantId, async (tx) => ({
-      items: (await tx.list<Project>('projects')).filter((value) =>
-        isOwner(request.principal, value, ['admin', 'delivery']),
+    repository.transaction(request.principal.tenantId, (tx) =>
+      tx.page<Project>(
+        'projects',
+        pageOptions(request.query, actorScopes(request.principal, ['admin', 'delivery'])),
       ),
-    })),
+    ),
   );
   app.get('/v1/projects/:id', async (request) =>
     repository.transaction(request.principal.tenantId, (tx) =>

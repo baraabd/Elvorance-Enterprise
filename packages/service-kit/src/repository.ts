@@ -1,5 +1,6 @@
 import { createHash, randomUUID } from 'node:crypto';
 import type { Entity, EventEnvelope } from '@elvorance/contracts';
+import type { PageOptions, PageResult } from './pagination.ts';
 export type Filter = Record<string, string | number | boolean | null>;
 export interface OutboxRow {
   event: EventEnvelope;
@@ -10,6 +11,13 @@ export interface Transaction {
   readonly tenantId: string;
   get<T extends Entity>(table: string, id: string): Promise<T | undefined>;
   list<T extends Entity>(table: string, filter?: Filter): Promise<T[]>;
+  sequencePage<T extends Entity & { sequence: number }>(
+    table: string,
+    filter: Filter,
+    after: number,
+    limit: number,
+  ): Promise<T[]>;
+  page<T extends Entity>(table: string, options: PageOptions): Promise<PageResult<T>>;
   insert<T extends Entity>(table: string, input: object): Promise<T>;
   replace<T extends Entity>(table: string, value: T, expectedVersion: number): Promise<T>;
   emit(

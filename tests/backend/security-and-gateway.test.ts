@@ -33,7 +33,11 @@ async function token(
     .sign(new TextEncoder().encode(signingSecret));
 }
 test('signed access claims establish tenant and role; spoofed headers cannot replace them', async (t) => {
-  const repository = new MemoryRepository('identity', ['tenant_profiles', 'memberships']);
+  const repository = new MemoryRepository('identity', [
+    'tenant_profiles',
+    'memberships',
+    'user_profiles',
+  ]);
   const app = createIdentity({ repository, auth: authFromEnv(env) });
   t.after(() => app.close());
   const valid = await token();
@@ -148,7 +152,11 @@ test('gateway revalidates auth and forwards only allowed headers to fixed servic
 
 test('a cached command cannot be replayed after the same subject loses its signed roles', async (t) => {
   const app = createIdentity({
-    repository: new MemoryRepository('identity', ['tenant_profiles', 'memberships']),
+    repository: new MemoryRepository('identity', [
+      'tenant_profiles',
+      'memberships',
+      'user_profiles',
+    ]),
     auth: authFromEnv(env),
   });
   t.after(() => app.close());

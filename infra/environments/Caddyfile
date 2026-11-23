@@ -1,0 +1,13 @@
+{$API_HOST} {
+  header {
+    Strict-Transport-Security "max-age=31536000"
+    X-Content-Type-Options "nosniff"
+    Cache-Control "no-store"
+  }
+  reverse_proxy api-gateway:3000
+}
+
+{$AUTH_HOST} {
+  header Strict-Transport-Security "max-age=31536000"
+  reverse_proxy keycloak:8080
+}

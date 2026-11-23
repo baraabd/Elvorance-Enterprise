@@ -1,0 +1,134 @@
+name: Rep native verification
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - run: node tooling/production/run-lane.mts native-verify
+      - name: Upload immutable native-verify evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-ci-native-verify-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/full-ci/native-verify/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Package reproducible diagnostic toolchain
+        if: always()
+        run: |
+          mkdir -p /tmp/elvorance-toolchain
+          cp "$(command -v node)" /tmp/elvorance-toolchain/node
+          tar -czf /tmp/elvorance-toolchain/dependencies.tar.gz node_modules
+          printf '%s\n' "$GITHUB_SHA" > /tmp/elvorance-toolchain/source-sha.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: rep-linux-verification-toolchain
+          path: /tmp/elvorance-toolchain/
+          retention-days: 1
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: node tooling/production/native-lane.mts begin android
+      - name: Prepare native-only verification harness
+        run: node tooling/production/native-lane.mts command android native-prepare -- node tooling/scripts/rep-native/prepare-verification.mts android
+      - name: Lint, unit-test and compile an unsigned verification bundle
+        run: |
+          chmod +x apps/rep-mobile/android/gradlew
+          node tooling/production/native-lane.mts command android android-build -- ./apps/rep-mobile/android/gradlew -p apps/rep-mobile/android --no-daemon -PallowUnsignedRelease lintStagingRelease testStagingDebugUnitTest bundleStagingRelease
+      - name: Enable emulator acceleration
+        run: sudo chmod 666 /dev/kvm
+      - name: Test Keystore, tamper rejection and native startup on an emulator
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          script: node tooling/production/native-lane.mts command android android-instrumented -- ./apps/rep-mobile/android/gradlew -p apps/rep-mobile/android --no-daemon connectedStagingDebugAndroidTest
+      - name: Bind exact native test totals and source identity
+        if: always()
+        run: node tooling/production/native-lane.mts finish android
+      - name: Upload immutable native-android evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-ci-native-android-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/full-ci/native-android/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: rep-android-unsigned-verification-only
+          path: |
+            apps/rep-mobile/android/app/build/reports/
+            apps/rep-mobile/android/app/build/outputs/androidTest-results/
+            apps/rep-mobile/android/app/build/outputs/bundle/stagingRelease/
+          if-no-files-found: error
+          retention-days: 7
+  ios:
+    runs-on: macos-26
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - run: node tooling/production/native-lane.mts begin ios
+      - name: Prepare native-only verification harness
+        run: node tooling/production/native-lane.mts command ios native-prepare -- node tooling/scripts/rep-native/prepare-verification.mts ios
+      - name: Test redirect policy and Keychain on an iPhone simulator
+        run: node tooling/production/native-lane.mts command ios ios-simulator -- node tooling/scripts/rep-native/ios-verification.mts
+      - name: Bind xcresult totals and exact source identity
+        if: always()
+        run: node tooling/production/native-lane.mts finish ios
+      - name: Upload immutable native-ios evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-ci-native-ios-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/full-ci/native-ios/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: rep-ios-simulator-verification-only
+          path: |
+            dist/full-ci/native-ios/logs/ios-simulator.log
+            dist/rep-native/ios-verification.xcresult/
+          if-no-files-found: error
+          retention-days: 7

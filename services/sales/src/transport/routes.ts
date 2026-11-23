@@ -1,8 +1,9 @@
 import type { FastifyInstance } from 'fastify';
 import {
   command,
-  hasRole,
-  isOwner,
+  actorScopes,
+  pageOptions,
+  assert,
   notFound,
   requireOwner,
   requireRole,
@@ -11,11 +12,10 @@ import {
 } from '@elvorance/service-kit';
 import type { Contract, Fulfillment, Quote, Visit } from '../domain/model.ts';
 import type { CustomerDirectory } from '../application/ports.ts';
-import { completeVisit, createVisit, startVisit, visit } from '../application/visits.ts';
+import { completeVisit, createVisit, startVisit } from '../application/visits.ts';
 import {
   approveContract,
   authorizeQuoteAssignment,
-  canReadQuote,
   contract,
   createQuote,
   quote,
@@ -24,65 +24,166 @@ import {
   sendQuote,
   updateQuote,
 } from '../application/quotes.ts';
+import { registerRepWorkRoutes } from './rep-work-routes.ts';
+import { registerDiscountRoutes } from './discount-routes.ts';
+import { cancelVisit, updateVisit } from '../application/visit-planning.ts';
+import {
+  authorizeOwned,
+  filterCurrentAssignments,
+  ownedRecords,
+  ownedRecord,
+} from '../application/assignment.ts';
 export function registerRoutes(
   app: FastifyInstance,
   repository: Repository,
   directory: CustomerDirectory,
 ): void {
+  registerRepWorkRoutes(app, repository, directory);
+  registerDiscountRoutes(app, repository, directory);
   app.get('/v1/visits', async (request) => {
     requireRole(request.principal, 'rep', 'admin');
-    return repository.transaction(request.principal.tenantId, async (tx) => ({
-      items: (await tx.list<Visit>('visits')).filter(
-        (value) => hasRole(request.principal, 'admin') || value.repId === request.principal.repId,
+    return repository.transaction(request.principal.tenantId, (tx) =>
+      ownedRecords<Visit>(
+        tx,
+        'visits',
+        request.principal,
+        directory,
+        request.headers.authorization!,
+        request.query,
       ),
-    }));
+    );
   });
   app.get('/v1/visits/:id', async (request) => {
     requireRole(request.principal, 'rep', 'admin');
     return repository.transaction(request.principal.tenantId, (tx) =>
-      visit(tx, request.principal, routeId(request)),
+      ownedRecord<Visit>(
+        tx,
+        'visits',
+        routeId(request),
+        request.principal,
+        directory,
+        request.headers.authorization!,
+      ),
     );
   });
   app.post('/v1/visits', async (request) =>
-    command(request, repository, 'sales.createVisit', (tx) =>
-      createVisit(tx, request.principal, request.body, directory, request.headers.authorization!),
+    command(
+      request,
+      repository,
+      'sales.createVisit',
+      (tx) =>
+        createVisit(tx, request.principal, request.body, directory, request.headers.authorization!),
+      async (_tx, result) =>
+        authorizeOwned(request.principal, result, directory, request.headers.authorization!),
     ),
   );
   app.post('/v1/visits/:id/start', async (request) =>
-    command(request, repository, 'sales.startVisit', (tx) =>
-      startVisit(
-        tx,
-        request.principal,
-        routeId(request),
-        request.body,
-        directory,
-        request.headers.authorization!,
-      ),
+    command(
+      request,
+      repository,
+      'sales.startVisit',
+      (tx) =>
+        startVisit(
+          tx,
+          request.principal,
+          routeId(request),
+          request.body,
+          directory,
+          request.headers.authorization!,
+        ),
+      async (_tx, result) =>
+        authorizeOwned(request.principal, result, directory, request.headers.authorization!),
     ),
   );
   app.post('/v1/visits/:id/complete', async (request) =>
-    command(request, repository, 'sales.completeVisit', (tx) =>
-      completeVisit(
-        tx,
-        request.principal,
-        routeId(request),
-        request.body,
-        directory,
-        request.headers.authorization!,
-      ),
+    command(
+      request,
+      repository,
+      'sales.completeVisit',
+      (tx) =>
+        completeVisit(
+          tx,
+          request.principal,
+          routeId(request),
+          request.body,
+          directory,
+          request.headers.authorization!,
+        ),
+      async (_tx, result) =>
+        authorizeOwned(request.principal, result, directory, request.headers.authorization!),
+    ),
+  );
+  app.patch('/v1/visits/:id', async (request) =>
+    command(
+      request,
+      repository,
+      'sales.updateVisit',
+      (tx) =>
+        updateVisit(
+          tx,
+          request.principal,
+          routeId(request),
+          request.body,
+          directory,
+          request.headers.authorization!,
+        ),
+      async (_tx, result) =>
+        authorizeOwned(request.principal, result, directory, request.headers.authorization!),
+    ),
+  );
+  app.post('/v1/visits/:id/cancel', async (request) =>
+    command(
+      request,
+      repository,
+      'sales.cancelVisit',
+      (tx) =>
+        cancelVisit(
+          tx,
+          request.principal,
+          routeId(request),
+          request.body,
+          directory,
+          request.headers.authorization!,
+        ),
+      async (_tx, result) =>
+        authorizeOwned(request.principal, result, directory, request.headers.authorization!),
     ),
   );
   app.get('/v1/quotes', async (request) =>
-    repository.transaction(request.principal.tenantId, async (tx) => ({
-      items: (await tx.list<Quote>('quotes')).filter((value) =>
-        canReadQuote(request.principal, value),
-      ),
-    })),
+    repository.transaction(request.principal.tenantId, async (tx) => {
+      const scopes = actorScopes(request.principal).map((scope) =>
+        scope.equals.clientId ? { ...scope, notEquals: { status: 'draft' } } : scope,
+      );
+      const page = await tx.page<Quote>('quotes', pageOptions(request.query, scopes));
+      return {
+        ...page,
+        items: await filterCurrentAssignments(
+          page.items,
+          request.principal,
+          directory,
+          request.headers.authorization!,
+        ),
+      };
+    }),
   );
   app.get('/v1/quotes/:id', async (request) =>
-    repository.transaction(request.principal.tenantId, (tx) =>
-      quote(tx, request.principal, routeId(request)),
-    ),
+    repository.transaction(request.principal.tenantId, async (tx) => {
+      const value = await quote(tx, request.principal, routeId(request));
+      assert(
+        (
+          await filterCurrentAssignments(
+            [value],
+            request.principal,
+            directory,
+            request.headers.authorization!,
+          )
+        ).length,
+        'NOT_FOUND',
+        'Quote was not found',
+        404,
+      );
+      return value;
+    }),
   );
   app.post('/v1/quotes', async (request) =>
     command(
@@ -176,11 +277,15 @@ export function registerRoutes(
       ),
     );
   app.get('/v1/contracts', async (request) =>
-    repository.transaction(request.principal.tenantId, async (tx) => ({
-      items: (await tx.list<Contract>('contracts')).filter((value) =>
-        isOwner(request.principal, value, ['admin', 'finance', 'delivery']),
+    repository.transaction(request.principal.tenantId, (tx) =>
+      tx.page<Contract>(
+        'contracts',
+        pageOptions(
+          request.query,
+          actorScopes(request.principal, ['admin', 'finance', 'delivery']),
+        ),
       ),
-    })),
+    ),
   );
   app.get('/v1/contracts/:id', async (request) =>
     repository.transaction(request.principal.tenantId, (tx) =>

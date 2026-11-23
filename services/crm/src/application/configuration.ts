@@ -4,33 +4,21 @@ import {
   validateConfiguration,
   type Configuration,
 } from '@elvorance/questionnaire';
-import type { Principal, Entity } from '@elvorance/contracts';
+import type { Principal, Entity, ServiceCatalogItem } from '@elvorance/contracts';
 import {
   assert,
-  hasRole,
   object,
   requireRole,
   integer,
+  text,
   type Transaction,
 } from '@elvorance/service-kit';
 
-type ServiceCatalogItem = {
-  id: string;
-  title: string;
-  price: number;
-  category: string;
-  active?: boolean;
-  short?: string;
-  duration?: string;
-  unit?: string;
-  features?: string[];
-  deliverables?: string[];
-  recommendationTags?: string[];
-};
 interface StoredConfiguration extends Entity {
   definition: Configuration;
   catalog: ServiceCatalogItem[];
   updatedBy: string;
+  currency: string;
 }
 const LOCKED_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
 function cleanCatalog(input: unknown): ServiceCatalogItem[] {
@@ -63,10 +51,11 @@ function cleanCatalog(input: unknown): ServiceCatalogItem[] {
     assert(
       typeof entry.price === 'number' &&
         Number.isFinite(entry.price) &&
+        Number(entry.price.toFixed(2)) === entry.price &&
         entry.price >= 0 &&
         entry.price <= 100000000,
       'INVALID_CATALOG',
-      'Invalid service price',
+      'Service price must be nonnegative and have at most two decimal places',
     );
     assert(
       typeof entry.category === 'string' && /^[a-z0-9_-]{2,60}$/i.test(entry.category),
@@ -105,6 +94,7 @@ export async function readConfiguration(tx: Transaction): Promise<{
   definition: Configuration;
   catalog: ServiceCatalogItem[];
   source: 'tenant' | 'default';
+  currency: string;
 }> {
   const rows = await tx.list<StoredConfiguration>('configuration');
   const current = rows[0];
@@ -114,12 +104,14 @@ export async function readConfiguration(tx: Transaction): Promise<{
       definition: current.definition,
       catalog: current.catalog,
       source: 'tenant',
+      currency: current.currency ?? 'SAR',
     };
   return {
     recordVersion: 0,
     definition: defaultConfiguration(),
     catalog: defaultCatalog(),
     source: 'default',
+    currency: 'SAR',
   };
 }
 export async function publishConfiguration(tx: Transaction, principal: Principal, input: unknown) {
@@ -146,6 +138,7 @@ export async function publishConfiguration(tx: Transaction, principal: Principal
     409,
   );
   const content = {
+    currency: text(body.currency ?? current?.currency ?? 'SAR', 'currency', 3, 3).toUpperCase(),
     definition: {
       ...sanitized,
       revision: (current?.definition?.revision || 0) + 1,
@@ -154,6 +147,11 @@ export async function publishConfiguration(tx: Transaction, principal: Principal
     catalog,
     updatedBy: principal.sub,
   };
+  assert(
+    /^[A-Z]{3}$/.test(content.currency),
+    'INVALID_CURRENCY',
+    'Currency must be a three-letter code',
+  );
   const record = current
     ? await tx.replace<StoredConfiguration>('configuration', { ...current, ...content }, expected)
     : await tx.insert<StoredConfiguration>('configuration', content);
@@ -166,5 +164,6 @@ export async function publishConfiguration(tx: Transaction, principal: Principal
     definition: record.definition,
     catalog: record.catalog,
     source: 'tenant',
+    currency: record.currency,
   };
 }

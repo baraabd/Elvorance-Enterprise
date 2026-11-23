@@ -1,5 +1,6 @@
 import type { Entity } from '@elvorance/contracts';
-export interface Customer extends Entity {
+import type { CustomerDetails } from './customer-details.ts';
+export interface Customer extends Entity, CustomerDetails {
   name: string;
   repId: string;
   regionId: string | null;

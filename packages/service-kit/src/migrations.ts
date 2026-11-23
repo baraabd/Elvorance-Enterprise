@@ -4,6 +4,41 @@ export interface Migration {
   name: string;
   sql: string;
 }
+/** Add domain-owned tables without replaying the original outbox/inbox migration. */
+export function addOwnedTablesMigration(
+  version: number,
+  name: string,
+  tables: readonly string[],
+  extraSql = '',
+): Migration {
+  if (!Number.isSafeInteger(version) || version < 2)
+    throw new Error('Additional migrations need a version above 1');
+  for (const table of tables)
+    if (!/^[a-z][a-z0-9_]*$/.test(table)) throw new Error('Unsafe table name');
+  return {
+    version,
+    name,
+    sql:
+      tables
+        .map(
+          (table) => `
+    CREATE TABLE ${table} (
+      tenant_id text NOT NULL, id text NOT NULL,
+      version integer NOT NULL CHECK (version > 0),
+      data jsonb NOT NULL CHECK (jsonb_typeof(data) = 'object'),
+      created_at timestamptz NOT NULL DEFAULT now(), updated_at timestamptz NOT NULL DEFAULT now(),
+      PRIMARY KEY (tenant_id, id)
+    );
+    ALTER TABLE ${table} ENABLE ROW LEVEL SECURITY;
+    ALTER TABLE ${table} FORCE ROW LEVEL SECURITY;
+    CREATE POLICY tenant_isolation ON ${table}
+      USING (tenant_id = current_setting('app.tenant_id', true))
+      WITH CHECK (tenant_id = current_setting('app.tenant_id', true));
+  `,
+        )
+        .join('\n') + extraSql,
+  };
+}
 export function storageMigration(tables: readonly string[], extraSql = ''): Migration {
   for (const table of tables)
     if (!/^[a-z][a-z0-9_]*$/.test(table)) throw new Error('Unsafe table name');

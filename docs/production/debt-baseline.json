@@ -1,0 +1,2289 @@
+{
+  "schemaVersion": 1,
+  "sourceFiles": 357,
+  "items": [
+    {
+      "id": "apps/admin-web/src/app.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/app.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/context.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/context.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/analytics/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/analytics/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/approvals/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/approvals/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/billing/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/billing/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/configuration/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/configuration/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/customers/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/customers/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/dashboard/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/dashboard/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/messages/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/messages/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/pipeline/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/pipeline/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/projects/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/projects/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/settings/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/settings/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/support/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/support/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/tasks/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/tasks/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/territories/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/territories/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/features/workforce/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/features/workforce/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/lifecycle.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/lifecycle.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/main.ts:non-null-assertion:3b1892ed668e5b30677e55e3bcf937643b6a55bc695b6aaedb743ec889053c52:1",
+      "path": "apps/admin-web/src/main.ts",
+      "kind": "non-null-assertion",
+      "line": 48,
+      "fingerprint": "3b1892ed668e5b30677e55e3bcf937643b6a55bc695b6aaedb743ec889053c52"
+    },
+    {
+      "id": "apps/admin-web/src/main.ts:non-null-assertion:851e41cede42f69f30d19388493e8cfc0c906e068cee56088375f68dd98769d2:1",
+      "path": "apps/admin-web/src/main.ts",
+      "kind": "non-null-assertion",
+      "line": 48,
+      "fingerprint": "851e41cede42f69f30d19388493e8cfc0c906e068cee56088375f68dd98769d2"
+    },
+    {
+      "id": "apps/admin-web/src/queries.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/queries.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/admin-web/src/state/local-demo.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/admin-web/src/state/local-demo.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/app.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/app.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/context.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/context.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/features/account/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/features/account/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/features/billing/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/features/billing/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/features/catalog/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/features/catalog/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/features/contracts/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/features/contracts/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/features/dashboard/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/features/dashboard/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/features/discovery/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/features/discovery/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/features/messages/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/features/messages/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/features/projects/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/features/projects/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/features/quotes/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/features/quotes/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/features/support/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/features/support/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/lifecycle.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/lifecycle.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/main.ts:non-null-assertion:3b1892ed668e5b30677e55e3bcf937643b6a55bc695b6aaedb743ec889053c52:1",
+      "path": "apps/client-mobile/src/main.ts",
+      "kind": "non-null-assertion",
+      "line": 53,
+      "fingerprint": "3b1892ed668e5b30677e55e3bcf937643b6a55bc695b6aaedb743ec889053c52"
+    },
+    {
+      "id": "apps/client-mobile/src/main.ts:non-null-assertion:851e41cede42f69f30d19388493e8cfc0c906e068cee56088375f68dd98769d2:1",
+      "path": "apps/client-mobile/src/main.ts",
+      "kind": "non-null-assertion",
+      "line": 53,
+      "fingerprint": "851e41cede42f69f30d19388493e8cfc0c906e068cee56088375f68dd98769d2"
+    },
+    {
+      "id": "apps/client-mobile/src/queries.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/queries.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/client-mobile/src/state/local-demo.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/client-mobile/src/state/local-demo.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/app.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/app.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/context.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/context.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/features/account/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/features/account/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/features/catalog/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/features/catalog/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/features/customers/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/features/customers/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/features/dashboard/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/features/dashboard/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/features/discovery/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/features/discovery/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/features/messages/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/features/messages/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/features/opportunities/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/features/opportunities/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/features/quotes/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/features/quotes/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/features/tasks/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/features/tasks/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/features/territory/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/features/territory/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/features/visits/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/features/visits/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/lifecycle.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/lifecycle.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/queries.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/queries.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "apps/rep-mobile/src/server/ui/repeating-fields.ts:non-null-assertion:6b7016d5e97a596822e54dbc51a39f64f9b30e9a005892f5d2c2464213c49318:1",
+      "path": "apps/rep-mobile/src/server/ui/repeating-fields.ts",
+      "kind": "non-null-assertion",
+      "line": 54,
+      "fingerprint": "6b7016d5e97a596822e54dbc51a39f64f9b30e9a005892f5d2c2464213c49318"
+    },
+    {
+      "id": "apps/rep-mobile/src/server/ui/repeating-fields.ts:non-null-assertion:6b7016d5e97a596822e54dbc51a39f64f9b30e9a005892f5d2c2464213c49318:2",
+      "path": "apps/rep-mobile/src/server/ui/repeating-fields.ts",
+      "kind": "non-null-assertion",
+      "line": 62,
+      "fingerprint": "6b7016d5e97a596822e54dbc51a39f64f9b30e9a005892f5d2c2464213c49318"
+    },
+    {
+      "id": "apps/rep-mobile/src/server/views/home.ts:non-null-assertion:35bc0754968dffcffb0660f8816d76bfe58914190f259686a0139e82855b5402:1",
+      "path": "apps/rep-mobile/src/server/views/home.ts",
+      "kind": "non-null-assertion",
+      "line": 25,
+      "fingerprint": "35bc0754968dffcffb0660f8816d76bfe58914190f259686a0139e82855b5402"
+    },
+    {
+      "id": "apps/rep-mobile/src/server/views/home.ts:non-null-assertion:35bc0754968dffcffb0660f8816d76bfe58914190f259686a0139e82855b5402:2",
+      "path": "apps/rep-mobile/src/server/views/home.ts",
+      "kind": "non-null-assertion",
+      "line": 47,
+      "fingerprint": "35bc0754968dffcffb0660f8816d76bfe58914190f259686a0139e82855b5402"
+    },
+    {
+      "id": "apps/rep-mobile/src/server/views/home.ts:non-null-assertion:cbf8bffcb73ecbb59afa9d5de1af3f77a3d2f5cb29b5c85a60e79d2bafe693b8:1",
+      "path": "apps/rep-mobile/src/server/views/home.ts",
+      "kind": "non-null-assertion",
+      "line": 24,
+      "fingerprint": "cbf8bffcb73ecbb59afa9d5de1af3f77a3d2f5cb29b5c85a60e79d2bafe693b8"
+    },
+    {
+      "id": "apps/rep-mobile/src/server/views/home.ts:non-null-assertion:d8663b6097814687eab60ed5c0dd8b5fe593a46106e41944f96f685a7f37f15e:1",
+      "path": "apps/rep-mobile/src/server/views/home.ts",
+      "kind": "non-null-assertion",
+      "line": 15,
+      "fingerprint": "d8663b6097814687eab60ed5c0dd8b5fe593a46106e41944f96f685a7f37f15e"
+    },
+    {
+      "id": "apps/rep-mobile/src/server/views/home.ts:non-null-assertion:e95125e9a123818d92c76ff2e94be259c8bc6d36b757cb11e4bbf03079c13972:1",
+      "path": "apps/rep-mobile/src/server/views/home.ts",
+      "kind": "non-null-assertion",
+      "line": 18,
+      "fingerprint": "e95125e9a123818d92c76ff2e94be259c8bc6d36b757cb11e4bbf03079c13972"
+    },
+    {
+      "id": "apps/rep-mobile/src/server/views/home.ts:non-null-assertion:e95125e9a123818d92c76ff2e94be259c8bc6d36b757cb11e4bbf03079c13972:2",
+      "path": "apps/rep-mobile/src/server/views/home.ts",
+      "kind": "non-null-assertion",
+      "line": 33,
+      "fingerprint": "e95125e9a123818d92c76ff2e94be259c8bc6d36b757cb11e4bbf03079c13972"
+    },
+    {
+      "id": "apps/rep-mobile/src/server/views/messages.ts:non-null-assertion:189b0db28ad8fd2f757af5cd91c896327151b08372b3665c611750e637f0d733:1",
+      "path": "apps/rep-mobile/src/server/views/messages.ts",
+      "kind": "non-null-assertion",
+      "line": 82,
+      "fingerprint": "189b0db28ad8fd2f757af5cd91c896327151b08372b3665c611750e637f0d733"
+    },
+    {
+      "id": "apps/rep-mobile/src/server/views/quote-editor.ts:non-null-assertion:f308dd4399cdb134cf8379ca805a08ca65369e45662abb7b86be9be597cd9604:1",
+      "path": "apps/rep-mobile/src/server/views/quote-editor.ts",
+      "kind": "non-null-assertion",
+      "line": 121,
+      "fingerprint": "f308dd4399cdb134cf8379ca805a08ca65369e45662abb7b86be9be597cd9604"
+    },
+    {
+      "id": "apps/rep-mobile/src/state/local-demo.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "apps/rep-mobile/src/state/local-demo.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "examples/instant-close/src/app.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "examples/instant-close/src/app.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "examples/instant-close/src/domain.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "examples/instant-close/src/domain.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "examples/instant-close/tests/flow.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "examples/instant-close/tests/flow.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "infra/compose/smoke.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "infra/compose/smoke.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "infra/identity/client-scopes.mts:non-null-assertion:5722539cc325ff5ec200127a829d77d2993b89a0e350705431d2b83986430f78:1",
+      "path": "infra/identity/client-scopes.mts",
+      "kind": "non-null-assertion",
+      "line": 43,
+      "fingerprint": "5722539cc325ff5ec200127a829d77d2993b89a0e350705431d2b83986430f78"
+    },
+    {
+      "id": "infra/identity/client-scopes.mts:non-null-assertion:9b16683fd3060274ffbd55a8512a42e1c5e81b194ec23e96bc5d4d9d4a394980:1",
+      "path": "infra/identity/client-scopes.mts",
+      "kind": "non-null-assertion",
+      "line": 44,
+      "fingerprint": "9b16683fd3060274ffbd55a8512a42e1c5e81b194ec23e96bc5d4d9d4a394980"
+    },
+    {
+      "id": "infra/identity/realm.mts:non-null-assertion:5db7be0508940a612a02e6a48c714396798088be2bc3b4482b026844914ef156:1",
+      "path": "infra/identity/realm.mts",
+      "kind": "non-null-assertion",
+      "line": 214,
+      "fingerprint": "5db7be0508940a612a02e6a48c714396798088be2bc3b4482b026844914ef156"
+    },
+    {
+      "id": "infra/identity/verify.mts:non-null-assertion:17fb25e5bee3750ca8ae7901c13e2a9936ab9a6ac370a5a94de301ab6f1a8635:1",
+      "path": "infra/identity/verify.mts",
+      "kind": "non-null-assertion",
+      "line": 154,
+      "fingerprint": "17fb25e5bee3750ca8ae7901c13e2a9936ab9a6ac370a5a94de301ab6f1a8635"
+    },
+    {
+      "id": "infra/identity/verify.mts:non-null-assertion:ecdc556caa852c5fd2ddb0702c8bfe8cc34a5f4c1216d4f5433d26265896f5fb:1",
+      "path": "infra/identity/verify.mts",
+      "kind": "non-null-assertion",
+      "line": 169,
+      "fingerprint": "ecdc556caa852c5fd2ddb0702c8bfe8cc34a5f4c1216d4f5433d26265896f5fb"
+    },
+    {
+      "id": "packages/api-client/src/authenticated-workspace.ts:non-null-assertion:aa3dda25e95923afc0bb80693b75681d2c1e92260e88c6c0f399501dba1c5d0f:1",
+      "path": "packages/api-client/src/authenticated-workspace.ts",
+      "kind": "non-null-assertion",
+      "line": 76,
+      "fingerprint": "aa3dda25e95923afc0bb80693b75681d2c1e92260e88c6c0f399501dba1c5d0f"
+    },
+    {
+      "id": "packages/api-client/src/live-format.ts:non-null-assertion:8fbcf359d59054b0837033375467b6f64533455e85c01d113da925c62c54ef6c:1",
+      "path": "packages/api-client/src/live-format.ts",
+      "kind": "non-null-assertion",
+      "line": 69,
+      "fingerprint": "8fbcf359d59054b0837033375467b6f64533455e85c01d113da925c62c54ef6c"
+    },
+    {
+      "id": "packages/api-client/src/live-workspace.ts:non-null-assertion:096e44d28bef663ec0d18388e3b01505230d5531861dc6c2845d8eb528411d6f:1",
+      "path": "packages/api-client/src/live-workspace.ts",
+      "kind": "non-null-assertion",
+      "line": 236,
+      "fingerprint": "096e44d28bef663ec0d18388e3b01505230d5531861dc6c2845d8eb528411d6f"
+    },
+    {
+      "id": "packages/api-client/src/live-workspace.ts:non-null-assertion:096e44d28bef663ec0d18388e3b01505230d5531861dc6c2845d8eb528411d6f:2",
+      "path": "packages/api-client/src/live-workspace.ts",
+      "kind": "non-null-assertion",
+      "line": 265,
+      "fingerprint": "096e44d28bef663ec0d18388e3b01505230d5531861dc6c2845d8eb528411d6f"
+    },
+    {
+      "id": "packages/api-client/src/live-workspace.ts:non-null-assertion:096e44d28bef663ec0d18388e3b01505230d5531861dc6c2845d8eb528411d6f:3",
+      "path": "packages/api-client/src/live-workspace.ts",
+      "kind": "non-null-assertion",
+      "line": 272,
+      "fingerprint": "096e44d28bef663ec0d18388e3b01505230d5531861dc6c2845d8eb528411d6f"
+    },
+    {
+      "id": "packages/api-client/src/live-workspace.ts:non-null-assertion:096e44d28bef663ec0d18388e3b01505230d5531861dc6c2845d8eb528411d6f:4",
+      "path": "packages/api-client/src/live-workspace.ts",
+      "kind": "non-null-assertion",
+      "line": 279,
+      "fingerprint": "096e44d28bef663ec0d18388e3b01505230d5531861dc6c2845d8eb528411d6f"
+    },
+    {
+      "id": "packages/api-client/src/live-workspace.ts:non-null-assertion:c3cc719d42017184171009e7d647d476468494e80db167be517b94dbda93fc73:1",
+      "path": "packages/api-client/src/live-workspace.ts",
+      "kind": "non-null-assertion",
+      "line": 252,
+      "fingerprint": "c3cc719d42017184171009e7d647d476468494e80db167be517b94dbda93fc73"
+    },
+    {
+      "id": "packages/api-client/test/live-data.test.ts:non-null-assertion:2cd7849d0e6e95ec90c01bf59797d42620bba4ba69925210474dbce08fdb777d:1",
+      "path": "packages/api-client/test/live-data.test.ts",
+      "kind": "non-null-assertion",
+      "line": 181,
+      "fingerprint": "2cd7849d0e6e95ec90c01bf59797d42620bba4ba69925210474dbce08fdb777d"
+    },
+    {
+      "id": "packages/api-client/test/live-data.test.ts:non-null-assertion:ef0e0f22a3cf1fdef9a62907fe5cb39e0284fc26ddc71250da42c1766a7bfb49:1",
+      "path": "packages/api-client/test/live-data.test.ts",
+      "kind": "non-null-assertion",
+      "line": 186,
+      "fingerprint": "ef0e0f22a3cf1fdef9a62907fe5cb39e0284fc26ddc71250da42c1766a7bfb49"
+    },
+    {
+      "id": "packages/app-runtime/src/demo-workflows.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "packages/app-runtime/src/demo-workflows.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "packages/app-runtime/src/finance.ts:non-null-assertion:07b577b633eaecc5941330b945fa4336b92a6362b82123b5bb40eefb7b509872:1",
+      "path": "packages/app-runtime/src/finance.ts",
+      "kind": "non-null-assertion",
+      "line": 85,
+      "fingerprint": "07b577b633eaecc5941330b945fa4336b92a6362b82123b5bb40eefb7b509872"
+    },
+    {
+      "id": "packages/app-runtime/src/finance.ts:non-null-assertion:07b577b633eaecc5941330b945fa4336b92a6362b82123b5bb40eefb7b509872:2",
+      "path": "packages/app-runtime/src/finance.ts",
+      "kind": "non-null-assertion",
+      "line": 87,
+      "fingerprint": "07b577b633eaecc5941330b945fa4336b92a6362b82123b5bb40eefb7b509872"
+    },
+    {
+      "id": "packages/app-runtime/src/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "packages/app-runtime/src/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "packages/app-runtime/src/tracking.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "packages/app-runtime/src/tracking.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "packages/demo-data/src/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "packages/demo-data/src/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "packages/events/src/index.ts:non-null-assertion:d70122d22eaea56b6d3e06dfaad3a98b72fbc4ab923918fb38364aec39e5cf32:1",
+      "path": "packages/events/src/index.ts",
+      "kind": "non-null-assertion",
+      "line": 206,
+      "fingerprint": "d70122d22eaea56b6d3e06dfaad3a98b72fbc4ab923918fb38364aec39e5cf32"
+    },
+    {
+      "id": "packages/mobile-auth/src/oidc.ts:non-null-assertion:f8af47d6bf98b476a1dddf165e0d1d3a45e90e54d947545f3b50a9b927c51d60:1",
+      "path": "packages/mobile-auth/src/oidc.ts",
+      "kind": "non-null-assertion",
+      "line": 119,
+      "fingerprint": "f8af47d6bf98b476a1dddf165e0d1d3a45e90e54d947545f3b50a9b927c51d60"
+    },
+    {
+      "id": "packages/mobile-auth/test/authentication.test.ts:non-null-assertion:f91a95742a66e252ef3ac5164360b91736c4d26f6675be40517bd5cf220dbf36:1",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "kind": "non-null-assertion",
+      "line": 18,
+      "fingerprint": "f91a95742a66e252ef3ac5164360b91736c4d26f6675be40517bd5cf220dbf36"
+    },
+    {
+      "id": "packages/mobile-auth/test/authentication.test.ts:non-null-assertion:f91a95742a66e252ef3ac5164360b91736c4d26f6675be40517bd5cf220dbf36:2",
+      "path": "packages/mobile-auth/test/authentication.test.ts",
+      "kind": "non-null-assertion",
+      "line": 129,
+      "fingerprint": "f91a95742a66e252ef3ac5164360b91736c4d26f6675be40517bd5cf220dbf36"
+    },
+    {
+      "id": "packages/mobile-auth/test/fixtures.ts:non-null-assertion:78e626a0d5e98f3f37db8de093795eb043861343678ce1146ca2dd0dc563c701:1",
+      "path": "packages/mobile-auth/test/fixtures.ts",
+      "kind": "non-null-assertion",
+      "line": 155,
+      "fingerprint": "78e626a0d5e98f3f37db8de093795eb043861343678ce1146ca2dd0dc563c701"
+    },
+    {
+      "id": "packages/mobile-auth/test/fixtures.ts:non-null-assertion:84194bde483385ff9bf21c6b13ba494a9c89605d7b30822b79b4aebb3229b1c1:1",
+      "path": "packages/mobile-auth/test/fixtures.ts",
+      "kind": "non-null-assertion",
+      "line": 135,
+      "fingerprint": "84194bde483385ff9bf21c6b13ba494a9c89605d7b30822b79b4aebb3229b1c1"
+    },
+    {
+      "id": "packages/mobile-auth/test/fixtures.ts:non-null-assertion:df18bb6687ba952c7b390cb79c42010ded644baecab91de34b4daee7e153956b:1",
+      "path": "packages/mobile-auth/test/fixtures.ts",
+      "kind": "non-null-assertion",
+      "line": 98,
+      "fingerprint": "df18bb6687ba952c7b390cb79c42010ded644baecab91de34b4daee7e153956b"
+    },
+    {
+      "id": "packages/questionnaire/src/sync.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "packages/questionnaire/src/sync.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "packages/service-kit/src/memory-repository.ts:non-null-assertion:191112459b87a0c8f4a3adffe37acd7a0bf74ff661824abd377b225ec4a3ddb3:1",
+      "path": "packages/service-kit/src/memory-repository.ts",
+      "kind": "non-null-assertion",
+      "line": 60,
+      "fingerprint": "191112459b87a0c8f4a3adffe37acd7a0bf74ff661824abd377b225ec4a3ddb3"
+    },
+    {
+      "id": "packages/service-kit/src/pagination.ts:non-null-assertion:11276b6ce6ac08e6aada92279466793f9c6c1ce5435241b84a8230efd1966295:1",
+      "path": "packages/service-kit/src/pagination.ts",
+      "kind": "non-null-assertion",
+      "line": 47,
+      "fingerprint": "11276b6ce6ac08e6aada92279466793f9c6c1ce5435241b84a8230efd1966295"
+    },
+    {
+      "id": "packages/service-kit/src/pg-repository.ts:non-null-assertion:8beca782faf608b225f5b38a684368e0ca2285d0f2011b7e055a9be0f164fb53:1",
+      "path": "packages/service-kit/src/pg-repository.ts",
+      "kind": "non-null-assertion",
+      "line": 133,
+      "fingerprint": "8beca782faf608b225f5b38a684368e0ca2285d0f2011b7e055a9be0f164fb53"
+    },
+    {
+      "id": "packages/service-kit/src/pg-repository.ts:non-null-assertion:8beca782faf608b225f5b38a684368e0ca2285d0f2011b7e055a9be0f164fb53:2",
+      "path": "packages/service-kit/src/pg-repository.ts",
+      "kind": "non-null-assertion",
+      "line": 242,
+      "fingerprint": "8beca782faf608b225f5b38a684368e0ca2285d0f2011b7e055a9be0f164fb53"
+    },
+    {
+      "id": "packages/ui/src/index.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "packages/ui/src/index.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "packages/ui/src/page-heads.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "packages/ui/src/page-heads.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "packages/ui/test/register-apps.test.cts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "packages/ui/test/register-apps.test.cts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "prototype/app.ts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "prototype/app.ts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "services/api-gateway/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:1",
+      "path": "services/api-gateway/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 31,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/communications/src/application/conversations.ts:non-null-assertion:11276b6ce6ac08e6aada92279466793f9c6c1ce5435241b84a8230efd1966295:1",
+      "path": "services/communications/src/application/conversations.ts",
+      "kind": "non-null-assertion",
+      "line": 237,
+      "fingerprint": "11276b6ce6ac08e6aada92279466793f9c6c1ce5435241b84a8230efd1966295"
+    },
+    {
+      "id": "services/communications/src/transport/conversation-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:1",
+      "path": "services/communications/src/transport/conversation-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 24,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/communications/src/transport/conversation-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:2",
+      "path": "services/communications/src/transport/conversation-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 40,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/communications/src/transport/conversation-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:3",
+      "path": "services/communications/src/transport/conversation-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 43,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/communications/src/transport/conversation-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:4",
+      "path": "services/communications/src/transport/conversation-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 54,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/communications/src/transport/conversation-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:5",
+      "path": "services/communications/src/transport/conversation-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 70,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/communications/src/transport/conversation-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:6",
+      "path": "services/communications/src/transport/conversation-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 77,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/communications/src/transport/conversation-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:7",
+      "path": "services/communications/src/transport/conversation-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 93,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/communications/src/transport/conversation-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:8",
+      "path": "services/communications/src/transport/conversation-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 101,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/crm/src/application/customers.ts:non-null-assertion:a12ad7662ca46de3bb74062ca88db24749dc2f7e521118142416790f49a08257:1",
+      "path": "services/crm/src/application/customers.ts",
+      "kind": "non-null-assertion",
+      "line": 49,
+      "fingerprint": "a12ad7662ca46de3bb74062ca88db24749dc2f7e521118142416790f49a08257"
+    },
+    {
+      "id": "services/crm/src/transport/routes.ts:non-null-assertion:95375270e2ddf7b296efcf620e924201fda157df9ea7b65ae1369af8d731e645:1",
+      "path": "services/crm/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 75,
+      "fingerprint": "95375270e2ddf7b296efcf620e924201fda157df9ea7b65ae1369af8d731e645"
+    },
+    {
+      "id": "services/delivery/src/application/projects.ts:non-null-assertion:14807bf3cea2cee8028eae1a6c40afd0cb961fec4ef872467b27251111e92b5b:1",
+      "path": "services/delivery/src/application/projects.ts",
+      "kind": "non-null-assertion",
+      "line": 74,
+      "fingerprint": "14807bf3cea2cee8028eae1a6c40afd0cb961fec4ef872467b27251111e92b5b"
+    },
+    {
+      "id": "services/sales/src/application/routes.ts:non-null-assertion:91e1a560d1956e50bbfacc7a71d06c7c59703dda799482c9b8199cb91c38bef5:1",
+      "path": "services/sales/src/application/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 70,
+      "fingerprint": "91e1a560d1956e50bbfacc7a71d06c7c59703dda799482c9b8199cb91c38bef5"
+    },
+    {
+      "id": "services/sales/src/application/tasks.ts:non-null-assertion:a12ad7662ca46de3bb74062ca88db24749dc2f7e521118142416790f49a08257:1",
+      "path": "services/sales/src/application/tasks.ts",
+      "kind": "non-null-assertion",
+      "line": 47,
+      "fingerprint": "a12ad7662ca46de3bb74062ca88db24749dc2f7e521118142416790f49a08257"
+    },
+    {
+      "id": "services/sales/src/domain/model.ts:non-null-assertion:1f4498fc96f76ee173e4003555a01ec1358843f837c92de39d2e149b7d72aa16:1",
+      "path": "services/sales/src/domain/model.ts",
+      "kind": "non-null-assertion",
+      "line": 97,
+      "fingerprint": "1f4498fc96f76ee173e4003555a01ec1358843f837c92de39d2e149b7d72aa16"
+    },
+    {
+      "id": "services/sales/src/domain/model.ts:non-null-assertion:7b8633f2e014f45f6d3cd9c3270cd21ca1863065e62f05502c9755558e426e24:1",
+      "path": "services/sales/src/domain/model.ts",
+      "kind": "non-null-assertion",
+      "line": 96,
+      "fingerprint": "7b8633f2e014f45f6d3cd9c3270cd21ca1863065e62f05502c9755558e426e24"
+    },
+    {
+      "id": "services/sales/src/domain/quote.ts:non-null-assertion:f308dd4399cdb134cf8379ca805a08ca65369e45662abb7b86be9be597cd9604:1",
+      "path": "services/sales/src/domain/quote.ts",
+      "kind": "non-null-assertion",
+      "line": 64,
+      "fingerprint": "f308dd4399cdb134cf8379ca805a08ca65369e45662abb7b86be9be597cd9604"
+    },
+    {
+      "id": "services/sales/src/transport/discount-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:1",
+      "path": "services/sales/src/transport/discount-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 19,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/discount-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:2",
+      "path": "services/sales/src/transport/discount-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 36,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/discount-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:3",
+      "path": "services/sales/src/transport/discount-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 39,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/rep-work-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:1",
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 36,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/rep-work-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:10",
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 129,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/rep-work-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:11",
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 137,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/rep-work-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:2",
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 49,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/rep-work-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:3",
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 64,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/rep-work-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:4",
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 67,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/rep-work-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:5",
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 82,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/rep-work-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:6",
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 85,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/rep-work-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:7",
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 96,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/rep-work-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:8",
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 105,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/rep-work-routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:9",
+      "path": "services/sales/src/transport/rep-work-routes.ts",
+      "kind": "non-null-assertion",
+      "line": 112,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:1",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 51,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:10",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 131,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:11",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 146,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:12",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 149,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:13",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 164,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:14",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 178,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:15",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 194,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:16",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 200,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:17",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 216,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:18",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 223,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:19",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 239,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:2",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 65,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:20",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 246,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:21",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 262,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:22",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 269,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:3",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 75,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:4",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 77,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:5",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 92,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:6",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 95,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:7",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 110,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:8",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 113,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/sales/src/transport/routes.ts:non-null-assertion:b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec:9",
+      "path": "services/sales/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 128,
+      "fingerprint": "b90bd57e251093d3520b7c014e29709bcb923c6f4895892ee73b11266200dcec"
+    },
+    {
+      "id": "services/tracking/src/application/sessions.ts:non-null-assertion:a12ad7662ca46de3bb74062ca88db24749dc2f7e521118142416790f49a08257:1",
+      "path": "services/tracking/src/application/sessions.ts",
+      "kind": "non-null-assertion",
+      "line": 30,
+      "fingerprint": "a12ad7662ca46de3bb74062ca88db24749dc2f7e521118142416790f49a08257"
+    },
+    {
+      "id": "services/tracking/src/application/sessions.ts:non-null-assertion:a12ad7662ca46de3bb74062ca88db24749dc2f7e521118142416790f49a08257:2",
+      "path": "services/tracking/src/application/sessions.ts",
+      "kind": "non-null-assertion",
+      "line": 38,
+      "fingerprint": "a12ad7662ca46de3bb74062ca88db24749dc2f7e521118142416790f49a08257"
+    },
+    {
+      "id": "services/tracking/src/domain/model.ts:non-null-assertion:58e11df18ec5a01c8507c4b62ef3c7129ddb3c224f3058a220ccf47472bbd680:1",
+      "path": "services/tracking/src/domain/model.ts",
+      "kind": "non-null-assertion",
+      "line": 32,
+      "fingerprint": "58e11df18ec5a01c8507c4b62ef3c7129ddb3c224f3058a220ccf47472bbd680"
+    },
+    {
+      "id": "services/tracking/src/transport/routes.ts:non-null-assertion:b6bc52473d6c70f2702197593265beffd1603f0ea48fc76cf50883dda7d3aeea:1",
+      "path": "services/tracking/src/transport/routes.ts",
+      "kind": "non-null-assertion",
+      "line": 15,
+      "fingerprint": "b6bc52473d6c70f2702197593265beffd1603f0ea48fc76cf50883dda7d3aeea"
+    },
+    {
+      "id": "tests/architecture/boundaries.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/architecture/boundaries.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/architecture/infra-helpers.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/architecture/infra-helpers.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/backend/api-contracts.test.ts:non-null-assertion:5663d7eef7d45a25f7e0fb6d13995bafd75be92dd0315332f8f7b65151e0dcbc:1",
+      "path": "tests/backend/api-contracts.test.ts",
+      "kind": "non-null-assertion",
+      "line": 77,
+      "fingerprint": "5663d7eef7d45a25f7e0fb6d13995bafd75be92dd0315332f8f7b65151e0dcbc"
+    },
+    {
+      "id": "tests/backend/environment-topology.test.ts:non-null-assertion:89e8530eda387bad7c42df1612feb044565fcd128c9943144d4bf7423b417131:1",
+      "path": "tests/backend/environment-topology.test.ts",
+      "kind": "non-null-assertion",
+      "line": 29,
+      "fingerprint": "89e8530eda387bad7c42df1612feb044565fcd128c9943144d4bf7423b417131"
+    },
+    {
+      "id": "tests/backend/environment-topology.test.ts:non-null-assertion:a2e28155a1e5c766718150bc7fd20b65589446b06594866155d57dccdc05346e:1",
+      "path": "tests/backend/environment-topology.test.ts",
+      "kind": "non-null-assertion",
+      "line": 83,
+      "fingerprint": "a2e28155a1e5c766718150bc7fd20b65589446b06594866155d57dccdc05346e"
+    },
+    {
+      "id": "tests/backend/environment-topology.test.ts:non-null-assertion:a8837a12a230bf5941efb800049d3d9baceb4b115adaa48f2ec66f9788152abc:1",
+      "path": "tests/backend/environment-topology.test.ts",
+      "kind": "non-null-assertion",
+      "line": 29,
+      "fingerprint": "a8837a12a230bf5941efb800049d3d9baceb4b115adaa48f2ec66f9788152abc"
+    },
+    {
+      "id": "tests/backend/events-topology.test.ts:non-null-assertion:8278cc0afa1eff5e320f7b365e25245e9317239478e1b9fa1053269b40eed0b3:1",
+      "path": "tests/backend/events-topology.test.ts",
+      "kind": "non-null-assertion",
+      "line": 52,
+      "fingerprint": "8278cc0afa1eff5e320f7b365e25245e9317239478e1b9fa1053269b40eed0b3"
+    },
+    {
+      "id": "tests/backend/helpers.ts:explicit-any:799ba53d5322e96f4f966bc9ada6c4682e82e1c23d66e764fc119d609e9cdd95:1",
+      "path": "tests/backend/helpers.ts",
+      "kind": "explicit-any",
+      "line": 65,
+      "fingerprint": "799ba53d5322e96f4f966bc9ada6c4682e82e1c23d66e764fc119d609e9cdd95"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:019252c6a88431cdf5c6cc9d7c32c360b10b62987a3353074b70549e0e514f12:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 132,
+      "fingerprint": "019252c6a88431cdf5c6cc9d7c32c360b10b62987a3353074b70549e0e514f12"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:12db2e8344dd4c88779b1375717dfdeb9a2d4307e6a7b3af4e318255824a7fbe:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 263,
+      "fingerprint": "12db2e8344dd4c88779b1375717dfdeb9a2d4307e6a7b3af4e318255824a7fbe"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:22685ca556469b0478712090a3c24fdcbf3babcd19d6c7a775a9690c8548c22a:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 173,
+      "fingerprint": "22685ca556469b0478712090a3c24fdcbf3babcd19d6c7a775a9690c8548c22a"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:28dca1d90f980591f30db06578617bf2df2c062de15a226b1c4df4e5308ecb48:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 198,
+      "fingerprint": "28dca1d90f980591f30db06578617bf2df2c062de15a226b1c4df4e5308ecb48"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:404af38c91fc34bb946d6eb2e29d9a97270ae88837efc743b530ad9c2258711c:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 190,
+      "fingerprint": "404af38c91fc34bb946d6eb2e29d9a97270ae88837efc743b530ad9c2258711c"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:452a1bf53095be3da23aa163f5967869476a2410016f5666caa7fcb8948dab21:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 52,
+      "fingerprint": "452a1bf53095be3da23aa163f5967869476a2410016f5666caa7fcb8948dab21"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:49ccdc915503e9d4e21ddb962c3deef03ada91029e283ed8c0a016fb8ffd540e:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 122,
+      "fingerprint": "49ccdc915503e9d4e21ddb962c3deef03ada91029e283ed8c0a016fb8ffd540e"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:49e14c7451680e503e9d1e8d0a2457cab0dcb9b08dff1befc10bc69021806424:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 189,
+      "fingerprint": "49e14c7451680e503e9d1e8d0a2457cab0dcb9b08dff1befc10bc69021806424"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:51ebd2611b3862c155cffe1ff17402b56f3cbaadacfda0b099cb6b13c071e521:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 158,
+      "fingerprint": "51ebd2611b3862c155cffe1ff17402b56f3cbaadacfda0b099cb6b13c071e521"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:77cf4956650322ea5abd6f4b954185977505b44e0aa5ee88a1055993c3d274f2:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 109,
+      "fingerprint": "77cf4956650322ea5abd6f4b954185977505b44e0aa5ee88a1055993c3d274f2"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:c03809114943a6d5bd38d925b929f8653234e7a70b9397496c030a8db684ed56:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 132,
+      "fingerprint": "c03809114943a6d5bd38d925b929f8653234e7a70b9397496c030a8db684ed56"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:c1e795c1c130b5388055efb59de73b68bfcdb05146e30ca47d9a0cf4da66c30f:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 194,
+      "fingerprint": "c1e795c1c130b5388055efb59de73b68bfcdb05146e30ca47d9a0cf4da66c30f"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:fef7ab6d518e752a765f111cda94107271242bd87f31175c4e1cc1d078cfd86d:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 258,
+      "fingerprint": "fef7ab6d518e752a765f111cda94107271242bd87f31175c4e1cc1d078cfd86d"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:fef7ab6d518e752a765f111cda94107271242bd87f31175c4e1cc1d078cfd86d:2",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 260,
+      "fingerprint": "fef7ab6d518e752a765f111cda94107271242bd87f31175c4e1cc1d078cfd86d"
+    },
+    {
+      "id": "tests/backend/identity-configuration.test.ts:non-null-assertion:fef890a6fbcbb851aa967621a8265db2223cc5429db43a71d042408161604326:1",
+      "path": "tests/backend/identity-configuration.test.ts",
+      "kind": "non-null-assertion",
+      "line": 167,
+      "fingerprint": "fef890a6fbcbb851aa967621a8265db2223cc5429db43a71d042408161604326"
+    },
+    {
+      "id": "tests/backend/lifecycle.test.ts:explicit-any:799ba53d5322e96f4f966bc9ada6c4682e82e1c23d66e764fc119d609e9cdd95:1",
+      "path": "tests/backend/lifecycle.test.ts",
+      "kind": "explicit-any",
+      "line": 297,
+      "fingerprint": "799ba53d5322e96f4f966bc9ada6c4682e82e1c23d66e764fc119d609e9cdd95"
+    },
+    {
+      "id": "tests/backend/lifecycle.test.ts:explicit-any:799ba53d5322e96f4f966bc9ada6c4682e82e1c23d66e764fc119d609e9cdd95:2",
+      "path": "tests/backend/lifecycle.test.ts",
+      "kind": "explicit-any",
+      "line": 300,
+      "fingerprint": "799ba53d5322e96f4f966bc9ada6c4682e82e1c23d66e764fc119d609e9cdd95"
+    },
+    {
+      "id": "tests/backend/lifecycle.test.ts:non-null-assertion:0a44331a59adb4914c09f92f1ea69dfbc88f151c04d8ef3da9bde63e57643fb3:1",
+      "path": "tests/backend/lifecycle.test.ts",
+      "kind": "non-null-assertion",
+      "line": 68,
+      "fingerprint": "0a44331a59adb4914c09f92f1ea69dfbc88f151c04d8ef3da9bde63e57643fb3"
+    },
+    {
+      "id": "tests/backend/lifecycle.test.ts:non-null-assertion:cdbc0ba73f4c9a64daa08dc4b16f17ca8c3fd131a7fd11ab7b1fb9baff545ac5:1",
+      "path": "tests/backend/lifecycle.test.ts",
+      "kind": "non-null-assertion",
+      "line": 263,
+      "fingerprint": "cdbc0ba73f4c9a64daa08dc4b16f17ca8c3fd131a7fd11ab7b1fb9baff545ac5"
+    },
+    {
+      "id": "tests/backend/ownership-regressions.test.ts:non-null-assertion:283ca704a25bb94453b8a6853fbe2dda2b3ea3b8405318093a299f72da8791cb:1",
+      "path": "tests/backend/ownership-regressions.test.ts",
+      "kind": "non-null-assertion",
+      "line": 251,
+      "fingerprint": "283ca704a25bb94453b8a6853fbe2dda2b3ea3b8405318093a299f72da8791cb"
+    },
+    {
+      "id": "tests/backend/postgres.test.ts:explicit-any:799ba53d5322e96f4f966bc9ada6c4682e82e1c23d66e764fc119d609e9cdd95:1",
+      "path": "tests/backend/postgres.test.ts",
+      "kind": "explicit-any",
+      "line": 409,
+      "fingerprint": "799ba53d5322e96f4f966bc9ada6c4682e82e1c23d66e764fc119d609e9cdd95"
+    },
+    {
+      "id": "tests/backend/postgres.test.ts:non-null-assertion:0a44331a59adb4914c09f92f1ea69dfbc88f151c04d8ef3da9bde63e57643fb3:1",
+      "path": "tests/backend/postgres.test.ts",
+      "kind": "non-null-assertion",
+      "line": 291,
+      "fingerprint": "0a44331a59adb4914c09f92f1ea69dfbc88f151c04d8ef3da9bde63e57643fb3"
+    },
+    {
+      "id": "tests/backend/postgres.test.ts:non-null-assertion:1776aaae88e0a447850fb94afeee449c1d2af9a5a7f3dbea6097901451768040:1",
+      "path": "tests/backend/postgres.test.ts",
+      "kind": "non-null-assertion",
+      "line": 343,
+      "fingerprint": "1776aaae88e0a447850fb94afeee449c1d2af9a5a7f3dbea6097901451768040"
+    },
+    {
+      "id": "tests/backend/postgres.test.ts:non-null-assertion:1e9ac2cc47e95ab4bdae629905503be04699d00be26f8dcd3ede036a08d8b516:1",
+      "path": "tests/backend/postgres.test.ts",
+      "kind": "non-null-assertion",
+      "line": 380,
+      "fingerprint": "1e9ac2cc47e95ab4bdae629905503be04699d00be26f8dcd3ede036a08d8b516"
+    },
+    {
+      "id": "tests/backend/postgres.test.ts:non-null-assertion:27ab9608d1db3942dbe2e1fb16ec2fa340f6bc593dbdf33553dced025e691cd8:1",
+      "path": "tests/backend/postgres.test.ts",
+      "kind": "non-null-assertion",
+      "line": 72,
+      "fingerprint": "27ab9608d1db3942dbe2e1fb16ec2fa340f6bc593dbdf33553dced025e691cd8"
+    },
+    {
+      "id": "tests/backend/postgres.test.ts:non-null-assertion:29b4cad8d6274be5e9bb3bf4272c36d999548056eacb7d44bfe31af6b54b028a:1",
+      "path": "tests/backend/postgres.test.ts",
+      "kind": "non-null-assertion",
+      "line": 432,
+      "fingerprint": "29b4cad8d6274be5e9bb3bf4272c36d999548056eacb7d44bfe31af6b54b028a"
+    },
+    {
+      "id": "tests/backend/postgres.test.ts:non-null-assertion:3228c9b3e0f7931bd679a26ad51f8db84d6d1da0830944bc68d3307146306b12:1",
+      "path": "tests/backend/postgres.test.ts",
+      "kind": "non-null-assertion",
+      "line": 68,
+      "fingerprint": "3228c9b3e0f7931bd679a26ad51f8db84d6d1da0830944bc68d3307146306b12"
+    },
+    {
+      "id": "tests/backend/postgres.test.ts:non-null-assertion:3228c9b3e0f7931bd679a26ad51f8db84d6d1da0830944bc68d3307146306b12:2",
+      "path": "tests/backend/postgres.test.ts",
+      "kind": "non-null-assertion",
+      "line": 110,
+      "fingerprint": "3228c9b3e0f7931bd679a26ad51f8db84d6d1da0830944bc68d3307146306b12"
+    },
+    {
+      "id": "tests/backend/postgres.test.ts:non-null-assertion:573cfa6c9878391784c09a52044fe40c4267187eef793f8714dfcede4a299651:1",
+      "path": "tests/backend/postgres.test.ts",
+      "kind": "non-null-assertion",
+      "line": 209,
+      "fingerprint": "573cfa6c9878391784c09a52044fe40c4267187eef793f8714dfcede4a299651"
+    },
+    {
+      "id": "tests/backend/postgres.test.ts:non-null-assertion:72a7db62cb770d0904d103f85846bea4581b2e72670bdf5e324efb79c5f255d1:1",
+      "path": "tests/backend/postgres.test.ts",
+      "kind": "non-null-assertion",
+      "line": 168,
+      "fingerprint": "72a7db62cb770d0904d103f85846bea4581b2e72670bdf5e324efb79c5f255d1"
+    },
+    {
+      "id": "tests/backend/release-acceptance.test.ts:non-null-assertion:47401a48436bba9fcc4b278ba17cdf1881c4accef5c9c5b64802607557e3e83a:1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "kind": "non-null-assertion",
+      "line": 98,
+      "fingerprint": "47401a48436bba9fcc4b278ba17cdf1881c4accef5c9c5b64802607557e3e83a"
+    },
+    {
+      "id": "tests/backend/release-acceptance.test.ts:non-null-assertion:51b767040125523346856427d4cb126d93041ff4f50f2e9a8830a06c3821cc1d:1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "kind": "non-null-assertion",
+      "line": 126,
+      "fingerprint": "51b767040125523346856427d4cb126d93041ff4f50f2e9a8830a06c3821cc1d"
+    },
+    {
+      "id": "tests/backend/release-acceptance.test.ts:non-null-assertion:5e17657873d7512343861f2f178c8367915c172fbdd78d04d32df069a9fc03bd:1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "kind": "non-null-assertion",
+      "line": 126,
+      "fingerprint": "5e17657873d7512343861f2f178c8367915c172fbdd78d04d32df069a9fc03bd"
+    },
+    {
+      "id": "tests/backend/release-acceptance.test.ts:non-null-assertion:670abff15edbe58a14d97263a2f1d6c3abeeb47265a0c4b4bf4509329132d0e2:1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "kind": "non-null-assertion",
+      "line": 123,
+      "fingerprint": "670abff15edbe58a14d97263a2f1d6c3abeeb47265a0c4b4bf4509329132d0e2"
+    },
+    {
+      "id": "tests/backend/release-acceptance.test.ts:non-null-assertion:8279503db99edfbfc2d6fcb0d0903561615c14ffaf25256932bc7e985cc87a02:1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "kind": "non-null-assertion",
+      "line": 104,
+      "fingerprint": "8279503db99edfbfc2d6fcb0d0903561615c14ffaf25256932bc7e985cc87a02"
+    },
+    {
+      "id": "tests/backend/release-acceptance.test.ts:non-null-assertion:a8cd603171e61a945a5532399f193c25e20356031d27d2c509d289e43b12e80f:1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "kind": "non-null-assertion",
+      "line": 149,
+      "fingerprint": "a8cd603171e61a945a5532399f193c25e20356031d27d2c509d289e43b12e80f"
+    },
+    {
+      "id": "tests/backend/release-acceptance.test.ts:non-null-assertion:a8cd603171e61a945a5532399f193c25e20356031d27d2c509d289e43b12e80f:2",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "kind": "non-null-assertion",
+      "line": 152,
+      "fingerprint": "a8cd603171e61a945a5532399f193c25e20356031d27d2c509d289e43b12e80f"
+    },
+    {
+      "id": "tests/backend/release-acceptance.test.ts:non-null-assertion:b44ed21cb6bd25253764a6008e5a922e16e0ff39176962658fd651e88afd2fac:1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "kind": "non-null-assertion",
+      "line": 107,
+      "fingerprint": "b44ed21cb6bd25253764a6008e5a922e16e0ff39176962658fd651e88afd2fac"
+    },
+    {
+      "id": "tests/backend/release-acceptance.test.ts:non-null-assertion:c3091c3464acb0eaebcf91bc4b355ff5fd67c10d6915293a8eccc570b46b1571:1",
+      "path": "tests/backend/release-acceptance.test.ts",
+      "kind": "non-null-assertion",
+      "line": 129,
+      "fingerprint": "c3091c3464acb0eaebcf91bc4b355ff5fd67c10d6915293a8eccc570b46b1571"
+    },
+    {
+      "id": "tests/backend/rep-postgres-scenarios.ts:non-null-assertion:08ea0e7018c840540bd5f528941a51c0303de5f1ad4c5806d5ca8c3e6f07ca2c:1",
+      "path": "tests/backend/rep-postgres-scenarios.ts",
+      "kind": "non-null-assertion",
+      "line": 93,
+      "fingerprint": "08ea0e7018c840540bd5f528941a51c0303de5f1ad4c5806d5ca8c3e6f07ca2c"
+    },
+    {
+      "id": "tests/backend/rep-postgres-scenarios.ts:non-null-assertion:2cd7849d0e6e95ec90c01bf59797d42620bba4ba69925210474dbce08fdb777d:1",
+      "path": "tests/backend/rep-postgres-scenarios.ts",
+      "kind": "non-null-assertion",
+      "line": 93,
+      "fingerprint": "2cd7849d0e6e95ec90c01bf59797d42620bba4ba69925210474dbce08fdb777d"
+    },
+    {
+      "id": "tests/backend/rep-postgres-scenarios.ts:non-null-assertion:2cd7849d0e6e95ec90c01bf59797d42620bba4ba69925210474dbce08fdb777d:2",
+      "path": "tests/backend/rep-postgres-scenarios.ts",
+      "kind": "non-null-assertion",
+      "line": 94,
+      "fingerprint": "2cd7849d0e6e95ec90c01bf59797d42620bba4ba69925210474dbce08fdb777d"
+    },
+    {
+      "id": "tests/backend/rep-postgres-scenarios.ts:non-null-assertion:3c55c211aa5a79a228c6715809ac623a82f8c8dcd8e4ebacaf434c661c35e1eb:1",
+      "path": "tests/backend/rep-postgres-scenarios.ts",
+      "kind": "non-null-assertion",
+      "line": 52,
+      "fingerprint": "3c55c211aa5a79a228c6715809ac623a82f8c8dcd8e4ebacaf434c661c35e1eb"
+    },
+    {
+      "id": "tests/backend/rep-postgres-scenarios.ts:non-null-assertion:3c55c211aa5a79a228c6715809ac623a82f8c8dcd8e4ebacaf434c661c35e1eb:2",
+      "path": "tests/backend/rep-postgres-scenarios.ts",
+      "kind": "non-null-assertion",
+      "line": 53,
+      "fingerprint": "3c55c211aa5a79a228c6715809ac623a82f8c8dcd8e4ebacaf434c661c35e1eb"
+    },
+    {
+      "id": "tests/backend/rep-postgres-scenarios.ts:non-null-assertion:8df957532dd474034ed9d90783fa64a99a4c39df547ba362adc2f4df718ce7db:1",
+      "path": "tests/backend/rep-postgres-scenarios.ts",
+      "kind": "non-null-assertion",
+      "line": 52,
+      "fingerprint": "8df957532dd474034ed9d90783fa64a99a4c39df547ba362adc2f4df718ce7db"
+    },
+    {
+      "id": "tests/backend/rep-postgres-scenarios.ts:non-null-assertion:dd15d0cf6e1f8519453ef4e515db01ce2c97e02f1341fb9f5610efc16cbbc546:1",
+      "path": "tests/backend/rep-postgres-scenarios.ts",
+      "kind": "non-null-assertion",
+      "line": 128,
+      "fingerprint": "dd15d0cf6e1f8519453ef4e515db01ce2c97e02f1341fb9f5610efc16cbbc546"
+    },
+    {
+      "id": "tests/backend/security-and-gateway.test.ts:non-null-assertion:401645128226da653a8b6f865d75d81ec7fb31c28bad4e30b7e067f9cc419142:1",
+      "path": "tests/backend/security-and-gateway.test.ts",
+      "kind": "non-null-assertion",
+      "line": 134,
+      "fingerprint": "401645128226da653a8b6f865d75d81ec7fb31c28bad4e30b7e067f9cc419142"
+    },
+    {
+      "id": "tests/backend/security-and-gateway.test.ts:non-null-assertion:725770c359e092916b476eee794e5948b161e2db2d1a0b41e510afaa5e02d423:1",
+      "path": "tests/backend/security-and-gateway.test.ts",
+      "kind": "non-null-assertion",
+      "line": 106,
+      "fingerprint": "725770c359e092916b476eee794e5948b161e2db2d1a0b41e510afaa5e02d423"
+    },
+    {
+      "id": "tests/backend/security-and-gateway.test.ts:non-null-assertion:878e9b88687211e6c979b9df3ae94dec6576d29c3592bed74e17b2fef1b818db:1",
+      "path": "tests/backend/security-and-gateway.test.ts",
+      "kind": "non-null-assertion",
+      "line": 150,
+      "fingerprint": "878e9b88687211e6c979b9df3ae94dec6576d29c3592bed74e17b2fef1b818db"
+    },
+    {
+      "id": "tests/backend/tracking-and-communications.test.ts:non-null-assertion:e5886ba3da932e9fbffe09cb2d1ac264ec9890361287d074dec3057dd2b0313b:1",
+      "path": "tests/backend/tracking-and-communications.test.ts",
+      "kind": "non-null-assertion",
+      "line": 225,
+      "fingerprint": "e5886ba3da932e9fbffe09cb2d1ac264ec9890361287d074dec3057dd2b0313b"
+    },
+    {
+      "id": "tests/build-output/app-build-proof.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/build-output/app-build-proof.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/build-output/arabic-accessibility.test.mts:non-null-assertion:31697e2069df6c0314b3a46b6936604675102d2e29a87c01d1622e253e7edf7c:1",
+      "path": "tests/build-output/arabic-accessibility.test.mts",
+      "kind": "non-null-assertion",
+      "line": 37,
+      "fingerprint": "31697e2069df6c0314b3a46b6936604675102d2e29a87c01d1622e253e7edf7c"
+    },
+    {
+      "id": "tests/build-output/arabic-accessibility.test.mts:non-null-assertion:37b5cbedc7099db827bfcc80a5a8b45b689f0e01452eb9852d8ea1fadb0cd3aa:1",
+      "path": "tests/build-output/arabic-accessibility.test.mts",
+      "kind": "non-null-assertion",
+      "line": 37,
+      "fingerprint": "37b5cbedc7099db827bfcc80a5a8b45b689f0e01452eb9852d8ea1fadb0cd3aa"
+    },
+    {
+      "id": "tests/build-output/arabic-accessibility.test.mts:non-null-assertion:3bdda96fd6374553b912f75cf2e9a155d3bcecfaed49cf33b691daebf94a4163:1",
+      "path": "tests/build-output/arabic-accessibility.test.mts",
+      "kind": "non-null-assertion",
+      "line": 19,
+      "fingerprint": "3bdda96fd6374553b912f75cf2e9a155d3bcecfaed49cf33b691daebf94a4163"
+    },
+    {
+      "id": "tests/build-output/arabic-accessibility.test.mts:non-null-assertion:5283902900a4d09682f980ae76fbba682811b220246f44624ea9a24d428ac6a0:1",
+      "path": "tests/build-output/arabic-accessibility.test.mts",
+      "kind": "non-null-assertion",
+      "line": 19,
+      "fingerprint": "5283902900a4d09682f980ae76fbba682811b220246f44624ea9a24d428ac6a0"
+    },
+    {
+      "id": "tests/build-output/arabic-accessibility.test.mts:non-null-assertion:565b3d8079fc4281c507f32371f1f17f88fe9f5bf77cc0b8546353d8fd5247fd:1",
+      "path": "tests/build-output/arabic-accessibility.test.mts",
+      "kind": "non-null-assertion",
+      "line": 19,
+      "fingerprint": "565b3d8079fc4281c507f32371f1f17f88fe9f5bf77cc0b8546353d8fd5247fd"
+    },
+    {
+      "id": "tests/build-output/arabic-accessibility.test.mts:non-null-assertion:b606359dac160069d678aacdaa9098910c8cf23752f27d7538c9a6d093eea96c:1",
+      "path": "tests/build-output/arabic-accessibility.test.mts",
+      "kind": "non-null-assertion",
+      "line": 12,
+      "fingerprint": "b606359dac160069d678aacdaa9098910c8cf23752f27d7538c9a6d093eea96c"
+    },
+    {
+      "id": "tests/build-output/bundles.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/build-output/bundles.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/build-output/copy-content.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/build-output/copy-content.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/build-output/hotfix.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/build-output/hotfix.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/build-output/mobile-command.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/build-output/mobile-command.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/build-output/rep-server-graph.test.mts:non-null-assertion:1432c0384660d16cb8e61906430c8726b467eb9cf628654474013cc0a86c93f7:1",
+      "path": "tests/build-output/rep-server-graph.test.mts",
+      "kind": "non-null-assertion",
+      "line": 18,
+      "fingerprint": "1432c0384660d16cb8e61906430c8726b467eb9cf628654474013cc0a86c93f7"
+    },
+    {
+      "id": "tests/build-output/rep-server-graph.test.mts:non-null-assertion:8523e24420163876c5c2474bfb9d659035b63041248eae594981768bec231c38:1",
+      "path": "tests/build-output/rep-server-graph.test.mts",
+      "kind": "non-null-assertion",
+      "line": 27,
+      "fingerprint": "8523e24420163876c5c2474bfb9d659035b63041248eae594981768bec231c38"
+    },
+    {
+      "id": "tests/design-parity/generate-baseline.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/design-parity/generate-baseline.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/design-parity/harness.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/design-parity/harness.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/design-parity/parity.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/design-parity/parity.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/identity/local-keycloak-smoke.mts:explicit-any:01b2548a36033f58a825e0592fba1787d4edbe66149249f8ba8ef5e7e0408d37:1",
+      "path": "tests/identity/local-keycloak-smoke.mts",
+      "kind": "explicit-any",
+      "line": 57,
+      "fingerprint": "01b2548a36033f58a825e0592fba1787d4edbe66149249f8ba8ef5e7e0408d37"
+    },
+    {
+      "id": "tests/identity/local-keycloak-smoke.mts:explicit-any:01b2548a36033f58a825e0592fba1787d4edbe66149249f8ba8ef5e7e0408d37:2",
+      "path": "tests/identity/local-keycloak-smoke.mts",
+      "kind": "explicit-any",
+      "line": 62,
+      "fingerprint": "01b2548a36033f58a825e0592fba1787d4edbe66149249f8ba8ef5e7e0408d37"
+    },
+    {
+      "id": "tests/identity/local-keycloak-smoke.mts:non-null-assertion:936dee2306b613384b3d4ede0dd396a4649e8fea262598c2927cb3fb73198651:1",
+      "path": "tests/identity/local-keycloak-smoke.mts",
+      "kind": "non-null-assertion",
+      "line": 79,
+      "fingerprint": "936dee2306b613384b3d4ede0dd396a4649e8fea262598c2927cb3fb73198651"
+    },
+    {
+      "id": "tests/identity/local-keycloak-smoke.mts:non-null-assertion:aa92f81b36050d7e822aa5bc907e1a3ddade39bbb0c098b8734c4cbb936ae43c:1",
+      "path": "tests/identity/local-keycloak-smoke.mts",
+      "kind": "non-null-assertion",
+      "line": 119,
+      "fingerprint": "aa92f81b36050d7e822aa5bc907e1a3ddade39bbb0c098b8734c4cbb936ae43c"
+    },
+    {
+      "id": "tests/identity/local-keycloak-smoke.mts:non-null-assertion:c98411047fa6c181a3046de9aca82fc0849c02c8279928eebc43d39092de5b01:1",
+      "path": "tests/identity/local-keycloak-smoke.mts",
+      "kind": "non-null-assertion",
+      "line": 161,
+      "fingerprint": "c98411047fa6c181a3046de9aca82fc0849c02c8279928eebc43d39092de5b01"
+    },
+    {
+      "id": "tests/identity/local-keycloak-smoke.mts:non-null-assertion:c98411047fa6c181a3046de9aca82fc0849c02c8279928eebc43d39092de5b01:2",
+      "path": "tests/identity/local-keycloak-smoke.mts",
+      "kind": "non-null-assertion",
+      "line": 166,
+      "fingerprint": "c98411047fa6c181a3046de9aca82fc0849c02c8279928eebc43d39092de5b01"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:0a92491a7a86aa96c646939f7e35b76dd073f492a04f68e34b0bd1f03b26d42c:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 253,
+      "fingerprint": "0a92491a7a86aa96c646939f7e35b76dd073f492a04f68e34b0bd1f03b26d42c"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:0a92491a7a86aa96c646939f7e35b76dd073f492a04f68e34b0bd1f03b26d42c:2",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 258,
+      "fingerprint": "0a92491a7a86aa96c646939f7e35b76dd073f492a04f68e34b0bd1f03b26d42c"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:694fb9d8b434194ec526a3bd734958d4bff116078f0fcd81b85d8e98ad6a8b26:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 25,
+      "fingerprint": "694fb9d8b434194ec526a3bd734958d4bff116078f0fcd81b85d8e98ad6a8b26"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:694fb9d8b434194ec526a3bd734958d4bff116078f0fcd81b85d8e98ad6a8b26:2",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 279,
+      "fingerprint": "694fb9d8b434194ec526a3bd734958d4bff116078f0fcd81b85d8e98ad6a8b26"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:694fb9d8b434194ec526a3bd734958d4bff116078f0fcd81b85d8e98ad6a8b26:3",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 353,
+      "fingerprint": "694fb9d8b434194ec526a3bd734958d4bff116078f0fcd81b85d8e98ad6a8b26"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:6f89c8e31709c893361a25ec43f97c7a66ed64de3cc73af879e7d4bc7d1d0293:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 200,
+      "fingerprint": "6f89c8e31709c893361a25ec43f97c7a66ed64de3cc73af879e7d4bc7d1d0293"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:70aa70e8c5ccbd663244072b7595d9b04f1d9ff512faebf7bd17d95675ed54ef:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 155,
+      "fingerprint": "70aa70e8c5ccbd663244072b7595d9b04f1d9ff512faebf7bd17d95675ed54ef"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:70aa70e8c5ccbd663244072b7595d9b04f1d9ff512faebf7bd17d95675ed54ef:2",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 330,
+      "fingerprint": "70aa70e8c5ccbd663244072b7595d9b04f1d9ff512faebf7bd17d95675ed54ef"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:76f20c287694a56f4b992da3921745dbf01e3a650e4f301fa2792e3a571dbfc7:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 223,
+      "fingerprint": "76f20c287694a56f4b992da3921745dbf01e3a650e4f301fa2792e3a571dbfc7"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:7dbcf436c9e551c281be08809e005073f06acf9c9a392283ef28f47b2b220548:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 122,
+      "fingerprint": "7dbcf436c9e551c281be08809e005073f06acf9c9a392283ef28f47b2b220548"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:7dbcf436c9e551c281be08809e005073f06acf9c9a392283ef28f47b2b220548:2",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 136,
+      "fingerprint": "7dbcf436c9e551c281be08809e005073f06acf9c9a392283ef28f47b2b220548"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:8aec10ce0852748b02b338d026d1ae696deb81e377d263d2d7705e885ab4970f:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 223,
+      "fingerprint": "8aec10ce0852748b02b338d026d1ae696deb81e377d263d2d7705e885ab4970f"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:a3ad6c7e64ba836dde61937cfcecba190a9c8cd67cc42a5cc85755fa9762c976:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 254,
+      "fingerprint": "a3ad6c7e64ba836dde61937cfcecba190a9c8cd67cc42a5cc85755fa9762c976"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:aedbdcee6a192f579665dfe44089dbdd33a55cc6372d7befedcf9af26575bb07:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 200,
+      "fingerprint": "aedbdcee6a192f579665dfe44089dbdd33a55cc6372d7befedcf9af26575bb07"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:aedbdcee6a192f579665dfe44089dbdd33a55cc6372d7befedcf9af26575bb07:2",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 201,
+      "fingerprint": "aedbdcee6a192f579665dfe44089dbdd33a55cc6372d7befedcf9af26575bb07"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:b7092672d239eec92868db6ac4010f03a7a90c7d372fc1efb777056cf5472c5e:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 181,
+      "fingerprint": "b7092672d239eec92868db6ac4010f03a7a90c7d372fc1efb777056cf5472c5e"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:b7092672d239eec92868db6ac4010f03a7a90c7d372fc1efb777056cf5472c5e:2",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 262,
+      "fingerprint": "b7092672d239eec92868db6ac4010f03a7a90c7d372fc1efb777056cf5472c5e"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:c69faae534e05d16a903f56dd69bc1a9080e6487b1e0df22b341b9896b2b205e:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 245,
+      "fingerprint": "c69faae534e05d16a903f56dd69bc1a9080e6487b1e0df22b341b9896b2b205e"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:c69faae534e05d16a903f56dd69bc1a9080e6487b1e0df22b341b9896b2b205e:2",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 250,
+      "fingerprint": "c69faae534e05d16a903f56dd69bc1a9080e6487b1e0df22b341b9896b2b205e"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:d374d120920894f1c5859c8f27989f2f954dd413f07d804e9498a61fae44f746:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 64,
+      "fingerprint": "d374d120920894f1c5859c8f27989f2f954dd413f07d804e9498a61fae44f746"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:de148ebc9bce2116ee9edfab8fe1bb16b8927660613f6d708ad343382a967779:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 208,
+      "fingerprint": "de148ebc9bce2116ee9edfab8fe1bb16b8927660613f6d708ad343382a967779"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:ded45fc73a323c2a9b0fb4eed9ce1afd19ee812614259eaf94e541613f0d9a71:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 261,
+      "fingerprint": "ded45fc73a323c2a9b0fb4eed9ce1afd19ee812614259eaf94e541613f0d9a71"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:ded45fc73a323c2a9b0fb4eed9ce1afd19ee812614259eaf94e541613f0d9a71:2",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 263,
+      "fingerprint": "ded45fc73a323c2a9b0fb4eed9ce1afd19ee812614259eaf94e541613f0d9a71"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:ded45fc73a323c2a9b0fb4eed9ce1afd19ee812614259eaf94e541613f0d9a71:3",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 264,
+      "fingerprint": "ded45fc73a323c2a9b0fb4eed9ce1afd19ee812614259eaf94e541613f0d9a71"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:ded45fc73a323c2a9b0fb4eed9ce1afd19ee812614259eaf94e541613f0d9a71:4",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 271,
+      "fingerprint": "ded45fc73a323c2a9b0fb4eed9ce1afd19ee812614259eaf94e541613f0d9a71"
+    },
+    {
+      "id": "tests/integration/live-commercial.test.ts:non-null-assertion:e66ae655359ee6ee9583d59646552a424a3feed4664f8c9bcd7b629f237664b2:1",
+      "path": "tests/integration/live-commercial.test.ts",
+      "kind": "non-null-assertion",
+      "line": 246,
+      "fingerprint": "e66ae655359ee6ee9583d59646552a424a3feed4664f8c9bcd7b629f237664b2"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:022330800d6f6656163fe3cb9ec7efca561553b0c0b5f30c2011ddc8f16fe319:1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 274,
+      "fingerprint": "022330800d6f6656163fe3cb9ec7efca561553b0c0b5f30c2011ddc8f16fe319"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:022330800d6f6656163fe3cb9ec7efca561553b0c0b5f30c2011ddc8f16fe319:2",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 275,
+      "fingerprint": "022330800d6f6656163fe3cb9ec7efca561553b0c0b5f30c2011ddc8f16fe319"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:59e00388b1884f5c4e793929acfd59c7a392d6431ffbf6ba9d7327f51ec35c2b:1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 335,
+      "fingerprint": "59e00388b1884f5c4e793929acfd59c7a392d6431ffbf6ba9d7327f51ec35c2b"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:694fb9d8b434194ec526a3bd734958d4bff116078f0fcd81b85d8e98ad6a8b26:1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 59,
+      "fingerprint": "694fb9d8b434194ec526a3bd734958d4bff116078f0fcd81b85d8e98ad6a8b26"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:878e9b88687211e6c979b9df3ae94dec6576d29c3592bed74e17b2fef1b818db:1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 118,
+      "fingerprint": "878e9b88687211e6c979b9df3ae94dec6576d29c3592bed74e17b2fef1b818db"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:878e9b88687211e6c979b9df3ae94dec6576d29c3592bed74e17b2fef1b818db:2",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 586,
+      "fingerprint": "878e9b88687211e6c979b9df3ae94dec6576d29c3592bed74e17b2fef1b818db"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:8e7997a0e147ac7adcd920f249dc96f60d3dd103cd742242524b0340ffe73a32:1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 275,
+      "fingerprint": "8e7997a0e147ac7adcd920f249dc96f60d3dd103cd742242524b0340ffe73a32"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:90b69ac8178523d01c2f2daff7a3f3ff23f9b363aacc01ba8b80c491e3961518:1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 340,
+      "fingerprint": "90b69ac8178523d01c2f2daff7a3f3ff23f9b363aacc01ba8b80c491e3961518"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:abc8b044ac560023f62f41a0ca8d5522a5a1d3153086c78f2492c7a76eadb8be:1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 567,
+      "fingerprint": "abc8b044ac560023f62f41a0ca8d5522a5a1d3153086c78f2492c7a76eadb8be"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:b0270e44b4476967ebf8bec03ee416641ea13b086d05b732dfc3e3e3dd20c60b:1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 178,
+      "fingerprint": "b0270e44b4476967ebf8bec03ee416641ea13b086d05b732dfc3e3e3dd20c60b"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:d320b7ad314ee79427e17d186112db64ef4e89c1738a0ce5aed884a6652fc17b:1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 343,
+      "fingerprint": "d320b7ad314ee79427e17d186112db64ef4e89c1738a0ce5aed884a6652fc17b"
+    },
+    {
+      "id": "tests/integration/rep-server-views.test.ts:non-null-assertion:d374d120920894f1c5859c8f27989f2f954dd413f07d804e9498a61fae44f746:1",
+      "path": "tests/integration/rep-server-views.test.ts",
+      "kind": "non-null-assertion",
+      "line": 81,
+      "fingerprint": "d374d120920894f1c5859c8f27989f2f954dd413f07d804e9498a61fae44f746"
+    },
+    {
+      "id": "tests/questionnaire/dynamic-form.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/questionnaire/dynamic-form.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/regression/admin-flows.cts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/regression/admin-flows.cts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/regression/client-flows.cts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/regression/client-flows.cts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/regression/client-lifecycle.cts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/regression/client-lifecycle.cts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/regression/dashboard-drilldown.integration.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/regression/dashboard-drilldown.integration.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/regression/finance-2.3.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/regression/finance-2.3.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/regression/quote-ui-consolidated.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/regression/quote-ui-consolidated.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/regression/rep-flows.cts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/regression/rep-flows.cts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:97cd1f2ccab10b1b5f6176a1dd66a3447cb9836da852935782395a4dc1b292ec:1",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 55,
+      "fingerprint": "97cd1f2ccab10b1b5f6176a1dd66a3447cb9836da852935782395a4dc1b292ec"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:c7f1dd16d63388db569be477cd6b96a48dba4267867b6bd67b4ade8e62a936ad:1",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 47,
+      "fingerprint": "c7f1dd16d63388db569be477cd6b96a48dba4267867b6bd67b4ade8e62a936ad"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:c7f1dd16d63388db569be477cd6b96a48dba4267867b6bd67b4ade8e62a936ad:2",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 50,
+      "fingerprint": "c7f1dd16d63388db569be477cd6b96a48dba4267867b6bd67b4ade8e62a936ad"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:c7f1dd16d63388db569be477cd6b96a48dba4267867b6bd67b4ade8e62a936ad:3",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 55,
+      "fingerprint": "c7f1dd16d63388db569be477cd6b96a48dba4267867b6bd67b4ade8e62a936ad"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:c7f1dd16d63388db569be477cd6b96a48dba4267867b6bd67b4ade8e62a936ad:4",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 58,
+      "fingerprint": "c7f1dd16d63388db569be477cd6b96a48dba4267867b6bd67b4ade8e62a936ad"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:e9cfe5374847d9e78e19dd07711aacccd8c4fe319b10ff9f25a206c807c43b01:1",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 120,
+      "fingerprint": "e9cfe5374847d9e78e19dd07711aacccd8c4fe319b10ff9f25a206c807c43b01"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:f2fe1e169ab2ff5cae492323b39712aa527c08fc65f100ec5eea6f6f65572a29:1",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 184,
+      "fingerprint": "f2fe1e169ab2ff5cae492323b39712aa527c08fc65f100ec5eea6f6f65572a29"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a:1",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 84,
+      "fingerprint": "f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a:2",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 91,
+      "fingerprint": "f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a:3",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 99,
+      "fingerprint": "f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a:4",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 107,
+      "fingerprint": "f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a:5",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 134,
+      "fingerprint": "f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a:6",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 144,
+      "fingerprint": "f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a"
+    },
+    {
+      "id": "tests/regression/rep-journey.cts:explicit-any:f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a:7",
+      "path": "tests/regression/rep-journey.cts",
+      "kind": "explicit-any",
+      "line": 153,
+      "fingerprint": "f4e442954b11548d4634efcb8fb058eb8af9f114ebfd9b3652b63b0bf75c3b8a"
+    },
+    {
+      "id": "tests/regression/tracking-client.cts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/regression/tracking-client.cts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/regression/workflow-audit.cts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/regression/workflow-audit.cts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tests/runtime/compose-journey.mts:non-null-assertion:625027379ce7a2c475cfc1886829661415954681056e89f44f33086f5832cc7e:1",
+      "path": "tests/runtime/compose-journey.mts",
+      "kind": "non-null-assertion",
+      "line": 480,
+      "fingerprint": "625027379ce7a2c475cfc1886829661415954681056e89f44f33086f5832cc7e"
+    },
+    {
+      "id": "tests/runtime/compose-journey.mts:non-null-assertion:ccfc2cc286349bad76ab62e7a09e865395f761291317ac180a560f13d9c344e3:1",
+      "path": "tests/runtime/compose-journey.mts",
+      "kind": "non-null-assertion",
+      "line": 481,
+      "fingerprint": "ccfc2cc286349bad76ab62e7a09e865395f761291317ac180a560f13d9c344e3"
+    },
+    {
+      "id": "tests/validation/numeric-fields.test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tests/validation/numeric-fields.test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tooling/patches/apply-hotfix.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tooling/patches/apply-hotfix.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tooling/scripts/app-build-proof.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tooling/scripts/app-build-proof.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tooling/scripts/build-apps.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tooling/scripts/build-apps.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tooling/scripts/build-services.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tooling/scripts/build-services.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tooling/scripts/check-boundaries.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tooling/scripts/check-boundaries.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tooling/scripts/mobile.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tooling/scripts/mobile.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tooling/scripts/native-assets.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tooling/scripts/native-assets.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tooling/scripts/package-hotfix.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tooling/scripts/package-hotfix.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tooling/scripts/package.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tooling/scripts/package.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tooling/scripts/rep-native/android-release.mts:non-null-assertion:28fdfa9af29ad5a309fb7bb265475c26deaaa278ca5a22820497649f20f59b73:1",
+      "path": "tooling/scripts/rep-native/android-release.mts",
+      "kind": "non-null-assertion",
+      "line": 46,
+      "fingerprint": "28fdfa9af29ad5a309fb7bb265475c26deaaa278ca5a22820497649f20f59b73"
+    },
+    {
+      "id": "tooling/scripts/rep-native/android-release.mts:non-null-assertion:7c35c78e8b20bf970c45c67a01fe655a737b850eb72027c8226f0af8339ec57d:1",
+      "path": "tooling/scripts/rep-native/android-release.mts",
+      "kind": "non-null-assertion",
+      "line": 48,
+      "fingerprint": "7c35c78e8b20bf970c45c67a01fe655a737b850eb72027c8226f0af8339ec57d"
+    },
+    {
+      "id": "tooling/scripts/rep-native/ios-profile.mts:non-null-assertion:246692c2cde43e3d4cb6a34cb849408f4dc5bd054b02261658b20d6e652737b8:1",
+      "path": "tooling/scripts/rep-native/ios-profile.mts",
+      "kind": "non-null-assertion",
+      "line": 72,
+      "fingerprint": "246692c2cde43e3d4cb6a34cb849408f4dc5bd054b02261658b20d6e652737b8"
+    },
+    {
+      "id": "tooling/scripts/rep-native/ios-profile.mts:non-null-assertion:ee6f68ed2f12029d3b94e688a13433728489eec3998f0ef632e7850cad3eb521:1",
+      "path": "tooling/scripts/rep-native/ios-profile.mts",
+      "kind": "non-null-assertion",
+      "line": 74,
+      "fingerprint": "ee6f68ed2f12029d3b94e688a13433728489eec3998f0ef632e7850cad3eb521"
+    },
+    {
+      "id": "tooling/scripts/rep-native/ios-release.mts:non-null-assertion:123b3fc3f47f2e7cdf06e85135eb7282badf8ac43db1b3b968ab9545cb571b9b:1",
+      "path": "tooling/scripts/rep-native/ios-release.mts",
+      "kind": "non-null-assertion",
+      "line": 61,
+      "fingerprint": "123b3fc3f47f2e7cdf06e85135eb7282badf8ac43db1b3b968ab9545cb571b9b"
+    },
+    {
+      "id": "tooling/scripts/rep-native/ios-release.mts:non-null-assertion:f20759aeaf0a8d196e395f5f78aa0b81f13485b77a3c0ef2bcb63f483b788eed:1",
+      "path": "tooling/scripts/rep-native/ios-release.mts",
+      "kind": "non-null-assertion",
+      "line": 69,
+      "fingerprint": "f20759aeaf0a8d196e395f5f78aa0b81f13485b77a3c0ef2bcb63f483b788eed"
+    },
+    {
+      "id": "tooling/scripts/rep-native/ios-release.mts:non-null-assertion:fb4de3a49b47ae03983674694c4c616d74ac2cb2b7fa11397aaf435e9e475d69:1",
+      "path": "tooling/scripts/rep-native/ios-release.mts",
+      "kind": "non-null-assertion",
+      "line": 43,
+      "fingerprint": "fb4de3a49b47ae03983674694c4c616d74ac2cb2b7fa11397aaf435e9e475d69"
+    },
+    {
+      "id": "tooling/scripts/rep-release/acceptance.mts:non-null-assertion:88adc4d67de32376a496c147a7ff8d9e73238340210b3aec1ce0b7482d7bb268:1",
+      "path": "tooling/scripts/rep-release/acceptance.mts",
+      "kind": "non-null-assertion",
+      "line": 142,
+      "fingerprint": "88adc4d67de32376a496c147a7ff8d9e73238340210b3aec1ce0b7482d7bb268"
+    },
+    {
+      "id": "tooling/scripts/test-regression.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tooling/scripts/test-regression.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    },
+    {
+      "id": "tooling/scripts/test.mts:@ts-nocheck:f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36:1",
+      "path": "tooling/scripts/test.mts",
+      "kind": "@ts-nocheck",
+      "line": 1,
+      "fingerprint": "f41fc2ab973675e013d5d5ee7d799ec073a2da86d8bed5b6070cc20029ff6a36"
+    }
+  ],
+  "counts": { "@ts-nocheck": 95, "non-null-assertion": 211, "explicit-any": 20 }
+}
