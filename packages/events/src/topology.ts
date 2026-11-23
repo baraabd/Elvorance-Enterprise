@@ -31,11 +31,34 @@ export const serviceBindings: Readonly<Record<string, readonly string[]>> = {
     'sales.discount_approval_decided.v1',
   ],
 };
+/** Explicit audit-only events have no business subscriber. Unknown events still fail mandatory publishing.
+ * Bounded seven-day retention, no consumers or application side effects. Capacity overflow rejects publication.
+ * Deploying this new queue is an infrastructure change requiring staging approval.
+ */
+export const auditBindings = [
+  'crm.configuration_published.v1',
+  'crm.discovery_saved.v1',
+  'sales.opportunity_updated.v1',
+  'sales.task_updated.v1',
+  'sales.visit_cancelled.v1',
+  'sales.visit_rescheduled.v1',
+] as const;
+export const auditQueue = 'atlas.audit-only.v1';
 export type TopologyChannel = Pick<Channel, 'assertExchange' | 'assertQueue' | 'bindQueue'>;
 export async function provisionTopology(channel: TopologyChannel): Promise<void> {
   await channel.assertExchange(exchanges.main, 'topic', { durable: true });
   for (const name of [exchanges.retry, exchanges.ready, exchanges.dead])
     await channel.assertExchange(name, 'direct', { durable: true });
+  await channel.assertQueue(auditQueue, {
+    durable: true,
+    arguments: {
+      'x-queue-type': 'quorum',
+      'x-message-ttl': 604800000,
+      'x-max-length': 10000,
+      'x-overflow': 'reject-publish',
+    },
+  });
+  for (const binding of auditBindings) await channel.bindQueue(auditQueue, exchanges.main, binding);
   for (const [service, bindings] of Object.entries(serviceBindings)) {
     if (!bindings.length) continue;
     const queue = `atlas.${service}.v1`;

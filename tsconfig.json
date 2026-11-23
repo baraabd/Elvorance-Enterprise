@@ -41,7 +41,8 @@
     "infra/railway/**/*.mts",
     "tooling/scripts/hosted/**/*.mts",
     "apps/admin-web/src/server-main.ts",
-    "apps/client-mobile/src/server-main.ts"
+    "apps/client-mobile/src/server-main.ts",
+    "tooling/scripts/staging/**/*.mts"
   ],
   "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
 }

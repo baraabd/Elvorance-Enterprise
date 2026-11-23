@@ -499,6 +499,22 @@ async function journey(env: NodeJS.ProcessEnv) {
     'Representative must be able to complete the accepted visit.',
   );
   passed('representative completes the approved agreement visit');
+  // Previously an unbound configuration event repeatedly disconnected CRM's publisher.
+  // Observe beyond the 5s reconnect interval, rather than accepting startup-only readiness.
+  for (let sample = 0; sample < 3; sample++) {
+    await delay(3000);
+    const stable = await http.request<{ status: string; dependencies: Record<string, boolean> }>(
+      'GET',
+      '/ready',
+    );
+    ensure(
+      stable.status === 'ready' && serviceNames.every((name) => stable.dependencies[name] === true),
+      'Readiness degraded after audit-only domain publication.',
+    );
+  }
+  passed(
+    'three post-publication readiness samples remain healthy beyond the broker reconnect interval',
+  );
 
   return {
     schemaVersion: 1,

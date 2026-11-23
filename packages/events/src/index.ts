@@ -1,6 +1,13 @@
 import amqp, { type ConfirmChannel, type ChannelModel, type ConsumeMessage } from 'amqplib';
 import { provisionTopology, serviceBindings } from './topology.ts';
-export { provisionTopology, serviceBindings, exchanges, type TopologyChannel } from './topology.ts';
+export {
+  provisionTopology,
+  serviceBindings,
+  exchanges,
+  auditBindings,
+  auditQueue,
+  type TopologyChannel,
+} from './topology.ts';
 import type { EventEnvelope } from '@elvorance/contracts';
 import {
   AppError,
@@ -54,6 +61,7 @@ interface RuntimeOptions {
   handler: EventHandler;
   url?: string;
   log?: (message: string) => void;
+  diagnostic?: (phase: string, error: unknown) => void;
 }
 const MAIN = 'atlas.events';
 const RETRY = 'atlas.events.retry';
@@ -74,7 +82,9 @@ async function confirmed(
     };
     const timeout = setTimeout(() => {
       channel.removeListener('return', onReturn);
-      reject(new Error('Publisher confirmation timed out'));
+      reject(
+        Object.assign(new Error('Publisher confirmation timed out'), { code: 'CONFIRM_TIMEOUT' }),
+      );
     }, 10_000);
     channel.on('return', onReturn);
     channel.publish(
@@ -85,7 +95,13 @@ async function confirmed(
       (error) => {
         clearTimeout(timeout);
         channel.removeListener('return', onReturn);
-        if (error || returned) reject(error ?? new Error('No bound consumer queue for event'));
+        if (error || returned)
+          reject(
+            error ??
+              Object.assign(new Error('No bound consumer queue for event'), {
+                code: 'UNROUTABLE_EVENT',
+              }),
+          );
         else resolve();
       },
     );
@@ -140,6 +156,12 @@ export function startEventRuntime(options: RuntimeOptions): EventRuntime {
     });
     publisher = await connection.createConfirmChannel();
     const consumer = await connection.createChannel();
+    publisher.on('close', () => {
+      ready = false;
+    });
+    consumer.on('close', () => {
+      ready = false;
+    });
     publisher.on('error', () => {
       ready = false;
     });
@@ -150,7 +172,11 @@ export function startEventRuntime(options: RuntimeOptions): EventRuntime {
     if (options.subscriptions.length) {
       await consumer.prefetch(10);
       await consumer.consume(queue, (message) => {
-        if (!message) return;
+        if (!message) {
+          ready = false;
+          options.diagnostic?.('consumer-cancelled', new Error('Consumer cancelled'));
+          return;
+        }
         void (async () => {
           try {
             await consumeEvent(
@@ -195,17 +221,19 @@ export function startEventRuntime(options: RuntimeOptions): EventRuntime {
         })();
       });
     }
-    ready = true;
   };
   const tick = async (): Promise<void> => {
+    let phase = 'connect-topology';
     try {
       if (!connection || !publisher || !ready) {
         await disconnect();
         await connect();
       }
+      phase = 'lease-outbox';
       const channel = publisher!;
       for (const row of await options.repository.leaseOutbox(50)) {
         try {
+          phase = 'publish-confirm';
           await confirmed(
             channel,
             MAIN,
@@ -213,8 +241,11 @@ export function startEventRuntime(options: RuntimeOptions): EventRuntime {
             Buffer.from(JSON.stringify(row.event)),
             row.event.id,
           );
+          phase = 'mark-published';
           await options.repository.markPublished(row.event.id, row.leaseToken);
-        } catch {
+        } catch (error) {
+          options.diagnostic?.(phase, error);
+          phase = 'release-outbox';
           await options.repository.releaseOutbox(
             row.event.id,
             row.leaseToken,
@@ -223,8 +254,10 @@ export function startEventRuntime(options: RuntimeOptions): EventRuntime {
           throw new Error('Outbox publish unavailable');
         }
       }
+      ready = true;
       schedule(1000);
-    } catch {
+    } catch (error) {
+      options.diagnostic?.(phase, error);
       log('Event transport unavailable; outbox remains persisted and will retry');
       await disconnect();
       schedule(5000);

@@ -1,0 +1,89 @@
+name: Sprint 02 staging gate
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: staging-gate-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:18-bookworm
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: staging-ci-disposable-only
+          POSTGRES_DB: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      ELVORANCE_TEST_POSTGRES_URL: postgresql://postgres:staging-ci-disposable-only@localhost:5432/postgres
+      SOURCE_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - run: npm run check:format
+      - run: npm run verify
+      - run: node tooling/scripts/hosted/build-ops.mts
+      - run: node tooling/scripts/hosted/build-web.mts
+      - run: node tooling/scripts/staging/migration-plan.mts
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sprint02-quality-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            dist/staging/
+            dist/hosted-web/*/build.json
+          if-no-files-found: error
+          retention-days: 30
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - run: node tooling/scripts/staging/secret-scan.mts
+      - name: Fail closed on high or critical dependency advisories
+        run: |
+          mkdir -p dist/staging
+          npm audit --audit-level=high --json > dist/staging/dependency-audit.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sprint02-security-${{ github.event.pull_request.head.sha || github.sha }}
+          path: dist/staging/dependency-audit.json
+          if-no-files-found: error
+          retention-days: 30
+  required:
+    name: Sprint 02 / required
+    if: ${{ always() }}
+    needs: [quality, security]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reject failed, cancelled or skipped mandatory jobs
+        env:
+          RESULTS: ${{ toJSON(needs) }}
+        run: |
+          node -e 'const jobs=JSON.parse(process.env.RESULTS); if(Object.values(jobs).some(job=>job.result!=="success"))process.exit(1)'

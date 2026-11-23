@@ -1,0 +1,97 @@
+{
+  "source": "153bab7248c7801f05c3340aee6a17ef9fb9d597",
+  "observedAt": "2026-11-23T10:03:41.072Z",
+  "mode": "read-only-baseline-not-acceptance",
+  "observations": [
+    {
+      "service": "api-gateway",
+      "url": "https://api-gateway-staging-46ce4994.up.railway.app/health",
+      "observedAt": "2026-11-23T10:03:37.686Z",
+      "httpStatus": 200,
+      "tlsVerified": true,
+      "status": "alive"
+    },
+    {
+      "service": "api-gateway",
+      "url": "https://api-gateway-staging-46ce4994.up.railway.app/ready",
+      "observedAt": "2026-11-23T10:03:38.073Z",
+      "httpStatus": 503,
+      "tlsVerified": true,
+      "status": "degraded",
+      "dependencies": {
+        "identity": true,
+        "crm": false,
+        "sales": true,
+        "delivery": true,
+        "billing": true,
+        "tracking": true,
+        "communications": true
+      }
+    },
+    {
+      "service": "identity",
+      "url": "https://keycloak-staging-1abfa6e3.up.railway.app/realms/elvorance-staging/.well-known/openid-configuration",
+      "observedAt": "2026-11-23T10:03:38.486Z",
+      "httpStatus": 200,
+      "tlsVerified": true,
+      "issuer": "https://keycloak-staging-1abfa6e3.up.railway.app/realms/elvorance-staging"
+    },
+    {
+      "service": "admin-web",
+      "url": "https://admin-web-staging-61f0781c.up.railway.app/ready",
+      "observedAt": "2026-11-23T10:03:38.862Z",
+      "httpStatus": 200,
+      "tlsVerified": true,
+      "status": "ready",
+      "source": "cc53eb633d86be5a17abc1ca955c8705477b9f74",
+      "environment": "staging"
+    },
+    {
+      "service": "admin",
+      "url": "https://admin-web-staging-61f0781c.up.railway.app/build.json",
+      "observedAt": "2026-11-23T10:03:39.226Z",
+      "httpStatus": 200,
+      "tlsVerified": true,
+      "source": "cc53eb633d86be5a17abc1ca955c8705477b9f74",
+      "environment": "staging"
+    },
+    {
+      "service": "client-web",
+      "url": "https://client-web-staging-5c7b09cf.up.railway.app/ready",
+      "observedAt": "2026-11-23T10:03:39.605Z",
+      "httpStatus": 200,
+      "tlsVerified": true,
+      "status": "ready",
+      "source": "cc53eb633d86be5a17abc1ca955c8705477b9f74",
+      "environment": "staging"
+    },
+    {
+      "service": "client",
+      "url": "https://client-web-staging-5c7b09cf.up.railway.app/build.json",
+      "observedAt": "2026-11-23T10:03:39.970Z",
+      "httpStatus": 200,
+      "tlsVerified": true,
+      "source": "cc53eb633d86be5a17abc1ca955c8705477b9f74",
+      "environment": "staging"
+    },
+    {
+      "service": "rep-web",
+      "url": "https://rep-web-staging.up.railway.app/ready",
+      "observedAt": "2026-11-23T10:03:40.319Z",
+      "httpStatus": 200,
+      "tlsVerified": true,
+      "status": "ready",
+      "source": "cc53eb633d86be5a17abc1ca955c8705477b9f74",
+      "environment": "staging"
+    },
+    {
+      "service": "rep",
+      "url": "https://rep-web-staging.up.railway.app/build.json",
+      "observedAt": "2026-11-23T10:03:40.712Z",
+      "httpStatus": 200,
+      "tlsVerified": true,
+      "source": "cc53eb633d86be5a17abc1ca955c8705477b9f74",
+      "environment": "staging"
+    }
+  ]
+}

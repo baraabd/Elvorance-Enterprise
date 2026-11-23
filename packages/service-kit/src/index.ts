@@ -8,3 +8,5 @@ export * from './auth.ts';
 export * from './http.ts';
 export * from './customer-directory.ts';
 export * from './pagination.ts';
+export * from './staging-boundary.ts';
+export * from './operations-log.ts';

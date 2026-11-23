@@ -1,15 +1,6 @@
 /** Exact, non-production deployment boundary. No secrets belong in this file. */
-export const stagingTarget = Object.freeze({
-  projectId: '075e27d5-8edc-4ddd-8f27-a5eea3ef5d5a',
-  environmentId: '49c49479-0810-491c-99cb-fc52ca547c04',
-  identityOrigin: 'https://keycloak-staging-1abfa6e3.up.railway.app',
-  gatewayOrigin: 'https://api-gateway-staging-46ce4994.up.railway.app',
-  web: {
-    admin: 'https://admin-web-staging-61f0781c.up.railway.app',
-    client: 'https://client-web-staging-5c7b09cf.up.railway.app',
-    rep: 'https://rep-web-staging.up.railway.app',
-  },
-});
+import { stagingTarget } from '../../../packages/service-kit/src/staging-boundary.ts';
+export { stagingTarget };
 export const domains = [
   'identity',
   'crm',
@@ -50,7 +41,7 @@ export function privateDatabaseUrl(value: string, expectedDatabase?: string): UR
   const url = new URL(value);
   ensure(
     ['postgres:', 'postgresql:'].includes(url.protocol) &&
-      url.hostname.endsWith('.railway.internal') &&
+      url.hostname === 'postgres.railway.internal' &&
       url.port === '5432',
     'Database operations require the private staging PostgreSQL endpoint.',
   );
