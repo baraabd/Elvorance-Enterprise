@@ -7,7 +7,8 @@ const initialTables = [
   'customer_contexts',
 ] as const;
 const workTables = ['tasks', 'opportunities', 'visit_routes', 'discount_approvals'] as const;
-export const tables = [...initialTables, ...workTables] as const;
+const requestTables = ['service_requests'] as const;
+export const tables = [...initialTables, ...workTables, ...requestTables] as const;
 export const migrations = [
   storageMigration(
     initialTables,
@@ -23,5 +24,12 @@ export const migrations = [
     CREATE INDEX routes_rep_date ON visit_routes (tenant_id, (data->>'repId'), (data->>'date'));
     CREATE UNIQUE INDEX one_pending_discount_approval ON discount_approvals (tenant_id, (data->>'quoteId')) WHERE data->>'status'='pending';
   `,
+  ),
+  addOwnedTablesMigration(
+    3,
+    'client_service_requests',
+    requestTables,
+    `CREATE INDEX service_requests_client ON service_requests (tenant_id, (data->>'clientId'), id);
+     CREATE INDEX service_requests_rep ON service_requests (tenant_id, (data->>'repId'), id);`,
   ),
 ];

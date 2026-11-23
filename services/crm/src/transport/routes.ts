@@ -14,6 +14,7 @@ import {
   customerView,
   updateCustomer,
 } from '../application/customers.ts';
+import { updateRegion } from '../application/regions.ts';
 import type { Customer, Region } from '../domain/model.ts';
 import { readConfiguration, publishConfiguration } from '../application/configuration.ts';
 import { registerDiscoveryRoutes } from './discovery-routes.ts';
@@ -79,6 +80,11 @@ export function registerRoutes(app: FastifyInstance, repository: Repository): vo
   app.get('/v1/regions', async (request) =>
     repository.transaction(request.principal.tenantId, (tx) =>
       tx.page<Region>('regions', pageOptions(request.query, [{ equals: {} }])),
+    ),
+  );
+  app.patch('/v1/regions/:id', async (request) =>
+    command(request, repository, 'crm.updateRegion', (tx) =>
+      updateRegion(tx, request.principal, routeId(request), request.body),
     ),
   );
   app.post('/v1/regions', async (request) =>

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "85cb662eb1d305ee149781793b16c0cc2d0952dba141b51661eb187793a63c8b",
+  "sourceDigest": "c393b554f3d315078bfcb4481e9a5cd9896971d621d805c332f22235d15126fc",
   "workspaces": [
     {
       "name": "@elvorance/admin-web",
@@ -905,6 +905,9 @@
     { "source": "services/crm/src/application/events.ts", "specifier": "@elvorance/service-kit" },
     { "source": "services/crm/src/application/events.ts", "specifier": "../domain/model.ts" },
     { "source": "services/crm/src/application/events.ts", "specifier": "./customers.ts" },
+    { "source": "services/crm/src/application/regions.ts", "specifier": "@elvorance/contracts" },
+    { "source": "services/crm/src/application/regions.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "services/crm/src/application/regions.ts", "specifier": "../domain/model.ts" },
     {
       "source": "services/crm/src/domain/customer-details.ts",
       "specifier": "@elvorance/service-kit"
@@ -947,6 +950,7 @@
       "source": "services/crm/src/transport/routes.ts",
       "specifier": "../application/customers.ts"
     },
+    { "source": "services/crm/src/transport/routes.ts", "specifier": "../application/regions.ts" },
     { "source": "services/crm/src/transport/routes.ts", "specifier": "../domain/model.ts" },
     {
       "source": "services/crm/src/transport/routes.ts",
@@ -965,6 +969,22 @@
       "specifier": "@elvorance/service-kit"
     },
     { "source": "services/delivery/src/application/events.ts", "specifier": "../domain/model.ts" },
+    {
+      "source": "services/delivery/src/application/project-metadata.ts",
+      "specifier": "@elvorance/contracts"
+    },
+    {
+      "source": "services/delivery/src/application/project-metadata.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "services/delivery/src/application/project-metadata.ts",
+      "specifier": "../domain/model.ts"
+    },
+    {
+      "source": "services/delivery/src/application/project-metadata.ts",
+      "specifier": "./projects.ts"
+    },
     {
       "source": "services/delivery/src/application/projects.ts",
       "specifier": "@elvorance/contracts"
@@ -999,6 +1019,10 @@
     {
       "source": "services/delivery/src/transport/routes.ts",
       "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "services/delivery/src/transport/routes.ts",
+      "specifier": "../application/project-metadata.ts"
     },
     { "source": "services/delivery/src/transport/routes.ts", "specifier": "../domain/model.ts" },
     {
@@ -1119,6 +1143,23 @@
     { "source": "services/sales/src/application/routes.ts", "specifier": "@elvorance/service-kit" },
     { "source": "services/sales/src/application/routes.ts", "specifier": "../domain/model.ts" },
     { "source": "services/sales/src/application/routes.ts", "specifier": "./assignment.ts" },
+    {
+      "source": "services/sales/src/application/service-requests.ts",
+      "specifier": "@elvorance/contracts"
+    },
+    {
+      "source": "services/sales/src/application/service-requests.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    { "source": "services/sales/src/application/service-requests.ts", "specifier": "./ports.ts" },
+    {
+      "source": "services/sales/src/application/service-requests.ts",
+      "specifier": "./assignment.ts"
+    },
+    {
+      "source": "services/sales/src/application/service-requests.ts",
+      "specifier": "./opportunities.ts"
+    },
     { "source": "services/sales/src/application/tasks.ts", "specifier": "@elvorance/contracts" },
     { "source": "services/sales/src/application/tasks.ts", "specifier": "@elvorance/service-kit" },
     { "source": "services/sales/src/application/tasks.ts", "specifier": "./assignment.ts" },
@@ -1220,6 +1261,10 @@
     { "source": "services/sales/src/transport/routes.ts", "specifier": "../application/ports.ts" },
     { "source": "services/sales/src/transport/routes.ts", "specifier": "../application/visits.ts" },
     { "source": "services/sales/src/transport/routes.ts", "specifier": "../application/quotes.ts" },
+    {
+      "source": "services/sales/src/transport/routes.ts",
+      "specifier": "./service-request-routes.ts"
+    },
     { "source": "services/sales/src/transport/routes.ts", "specifier": "./rep-work-routes.ts" },
     { "source": "services/sales/src/transport/routes.ts", "specifier": "./discount-routes.ts" },
     {
@@ -1229,6 +1274,19 @@
     {
       "source": "services/sales/src/transport/routes.ts",
       "specifier": "../application/assignment.ts"
+    },
+    { "source": "services/sales/src/transport/service-request-routes.ts", "specifier": "fastify" },
+    {
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "specifier": "../application/ports.ts"
+    },
+    {
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "specifier": "../application/service-requests.ts"
     },
     { "source": "services/tracking/src/app.ts", "specifier": "@elvorance/service-kit" },
     { "source": "services/tracking/src/app.ts", "specifier": "./transport/routes.ts" },
@@ -1328,6 +1386,25 @@
     },
     { "source": "tests/backend/api-contracts.test.ts", "specifier": "./rep-fixture.ts" },
     { "source": "tests/backend/api-contracts.test.ts", "specifier": "./helpers.ts" },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "node:crypto" },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "@elvorance/contracts" },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "@elvorance/events" },
+    {
+      "source": "tests/backend/discount-fulfillment.test.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "tests/backend/discount-fulfillment.test.ts",
+      "specifier": "../../services/billing/src/application/events.ts"
+    },
+    {
+      "source": "tests/backend/discount-fulfillment.test.ts",
+      "specifier": "../../services/billing/src/infrastructure/migrations/001_initial.ts"
+    },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "./rep-fixture.ts" },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/environment-secrets.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/environment-secrets.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/backend/environment-secrets.test.ts", "specifier": "node:fs/promises" },
@@ -1498,6 +1575,7 @@
       "specifier": "../../packages/api-client/src/live-data.ts"
     },
     { "source": "tests/backend/postgres.test.ts", "specifier": "@elvorance/contracts" },
+    { "source": "tests/backend/postgres.test.ts", "specifier": "./sprint04-scenarios.ts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./rep-postgres-scenarios.ts" },
     {
       "source": "tests/backend/questionnaire-configuration.test.ts",
@@ -1629,6 +1707,45 @@
       "source": "tests/backend/security-and-gateway.test.ts",
       "specifier": "../../services/api-gateway/src/domain/routes.ts"
     },
+    { "source": "tests/backend/sprint04-contracts.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint04-contracts.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint04-contracts.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/sprint04-contracts.test.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "node:crypto" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "node:path" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "@elvorance/contracts" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "@elvorance/events" },
+    {
+      "source": "tests/backend/sprint04-domains.test.ts",
+      "specifier": "../../services/delivery/src/app.ts"
+    },
+    {
+      "source": "tests/backend/sprint04-domains.test.ts",
+      "specifier": "../../services/delivery/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/backend/sprint04-domains.test.ts",
+      "specifier": "../../services/sales/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/backend/sprint04-domains.test.ts",
+      "specifier": "../../services/communications/src/application/events.ts"
+    },
+    {
+      "source": "tests/backend/sprint04-domains.test.ts",
+      "specifier": "../../services/communications/src/app.ts"
+    },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "./helpers.ts" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "./sprint04-scenarios.ts" },
+    { "source": "tests/backend/sprint04-scenarios.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint04-scenarios.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint04-scenarios.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/backend/sprint04-scenarios.ts", "specifier": "./rep-fixture.ts" },
+    { "source": "tests/backend/sprint04-scenarios.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/tracking-and-communications.test.ts", "specifier": "node:test" },
     {
       "source": "tests/backend/tracking-and-communications.test.ts",
@@ -2007,6 +2124,7 @@
       "source": "tests/regression/quote-ui-consolidated.test.mts",
       "specifier": "../../apps/rep-mobile/src/features/quotes/index.ts"
     },
+    { "source": "tests/runtime/compose-journey.mts", "specifier": "./sprint04-resilience.mts" },
     { "source": "tests/runtime/compose-journey.mts", "specifier": "node:crypto" },
     { "source": "tests/runtime/compose-journey.mts", "specifier": "node:fs/promises" },
     { "source": "tests/runtime/compose-journey.mts", "specifier": "node:path" },
@@ -2033,6 +2151,21 @@
     {
       "source": "tests/runtime/compose-journey.mts",
       "specifier": "../../services/communications/src/domain/model.ts"
+    },
+    { "source": "tests/runtime/sprint04-resilience.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/runtime/sprint04-resilience.mts", "specifier": "node:child_process" },
+    { "source": "tests/runtime/sprint04-resilience.mts", "specifier": "node:crypto" },
+    { "source": "tests/runtime/sprint04-resilience.mts", "specifier": "node:timers/promises" },
+    { "source": "tests/runtime/sprint04-resilience.mts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "tests/runtime/sprint04-resilience.mts",
+      "specifier": "../../services/sales/src/application/service-requests.ts"
+    },
+    { "source": "tests/runtime/sprint04-safety.test.mts", "specifier": "node:test" },
+    { "source": "tests/runtime/sprint04-safety.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/runtime/sprint04-safety.test.mts",
+      "specifier": "./sprint04-resilience.mts"
     },
     { "source": "tests/runtime/target.test.mts", "specifier": "node:test" },
     { "source": "tests/runtime/target.test.mts", "specifier": "node:assert/strict" },
@@ -2335,6 +2468,13 @@
       "source": "tooling/scripts/rep-release/check-acceptance.mts",
       "specifier": "./acceptance.mts"
     },
+    { "source": "tooling/scripts/sprint04-contracts.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/sprint04-contracts.mts", "specifier": "node:crypto" },
+    { "source": "tooling/scripts/sprint04-contracts.mts", "specifier": "node:assert/strict" },
+    { "source": "tooling/scripts/sprint04-contracts.mts", "specifier": "prettier" },
+    { "source": "tooling/scripts/sprint04-report.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/sprint04-report.mts", "specifier": "node:assert/strict" },
+    { "source": "tooling/scripts/sprint04-report.mts", "specifier": "prettier" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "esbuild" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "node:child_process" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "node:path" },
@@ -2487,6 +2627,7 @@
         "api-route:crm:backend:HEAD /v1/customers/:id/discovery",
         "api-route:crm:backend:HEAD /v1/regions",
         "api-route:crm:backend:PATCH /v1/customers/:id",
+        "api-route:crm:backend:PATCH /v1/regions/:id",
         "api-route:crm:backend:POST /v1/customers",
         "api-route:crm:backend:POST /v1/regions",
         "api-route:crm:backend:PUT /v1/configuration",
@@ -2508,6 +2649,8 @@
         "api-route:delivery:backend:HEAD /ready",
         "api-route:delivery:backend:HEAD /v1/projects",
         "api-route:delivery:backend:HEAD /v1/projects/:id",
+        "api-route:delivery:backend:PATCH /v1/projects/:id",
+        "api-route:delivery:backend:PATCH /v1/projects/:id/milestones/:milestoneId",
         "api-route:delivery:backend:POST /v1/projects/:id/complete",
         "api-route:delivery:backend:POST /v1/projects/:id/deliverables",
         "api-route:delivery:backend:POST /v1/projects/:id/deliverables/:deliverableId/review",
@@ -2557,6 +2700,8 @@
         "api-route:sales:backend:GET /v1/quotes/:id",
         "api-route:sales:backend:GET /v1/routes",
         "api-route:sales:backend:GET /v1/routes/:id",
+        "api-route:sales:backend:GET /v1/service-requests",
+        "api-route:sales:backend:GET /v1/service-requests/:id",
         "api-route:sales:backend:GET /v1/tasks",
         "api-route:sales:backend:GET /v1/tasks/:id",
         "api-route:sales:backend:GET /v1/visits",
@@ -2573,6 +2718,8 @@
         "api-route:sales:backend:HEAD /v1/quotes/:id",
         "api-route:sales:backend:HEAD /v1/routes",
         "api-route:sales:backend:HEAD /v1/routes/:id",
+        "api-route:sales:backend:HEAD /v1/service-requests",
+        "api-route:sales:backend:HEAD /v1/service-requests/:id",
         "api-route:sales:backend:HEAD /v1/tasks",
         "api-route:sales:backend:HEAD /v1/tasks/:id",
         "api-route:sales:backend:HEAD /v1/visits",
@@ -2593,6 +2740,9 @@
         "api-route:sales:backend:POST /v1/quotes/:id/revise",
         "api-route:sales:backend:POST /v1/quotes/:id/send",
         "api-route:sales:backend:POST /v1/routes",
+        "api-route:sales:backend:POST /v1/service-requests",
+        "api-route:sales:backend:POST /v1/service-requests/:id/cancel",
+        "api-route:sales:backend:POST /v1/service-requests/:id/review",
         "api-route:sales:backend:POST /v1/tasks",
         "api-route:sales:backend:POST /v1/visits",
         "api-route:sales:backend:POST /v1/visits/:id/cancel",
@@ -2631,15 +2781,23 @@
       "communications.message_created.v1",
       "communications.ticket_opened.v1",
       "contract.approved.v1",
+      "crm.configuration_published.v1",
       "crm.customer_created.v1",
       "crm.customer_updated.v1",
+      "crm.discovery_saved.v1",
       "delivery.project_completed.v1",
       "delivery.project_created.v1",
       "sales.discount_approval_decided.v1",
       "sales.discount_approval_requested.v1",
+      "sales.opportunity_updated.v1",
       "sales.quote_accepted.v1",
       "sales.quote_sent.v1",
-      "sales.visit_completed.v1"
+      "sales.service_request_created.v1",
+      "sales.service_request_updated.v1",
+      "sales.task_updated.v1",
+      "sales.visit_cancelled.v1",
+      "sales.visit_completed.v1",
+      "sales.visit_rescheduled.v1"
     ],
     "delivery": "transactional outbox/inbox + RabbitMQ; source design is not measured delivery reliability"
   },

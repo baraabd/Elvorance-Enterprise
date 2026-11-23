@@ -47,6 +47,7 @@ import {
 import { auth, call, principals } from './helpers.ts';
 import { createLiveDataApi } from '../../packages/api-client/src/live-data.ts';
 import type { EventEnvelope } from '@elvorance/contracts';
+import { verifySprint04 } from './sprint04-scenarios.ts';
 import { verifyRepPostgres } from './rep-postgres-scenarios.ts';
 
 const adminUrl = process.env.ELVORANCE_TEST_POSTGRES_URL;
@@ -114,8 +115,31 @@ test(
       const url = parsed.toString();
       const repository = new PgRepository(config.name, url, config.tables, config.migrations);
       provisioned.push({ name: config.name, db, role, password, url, repository });
+      if (config.name === 'sales') {
+        const previous = new PgRepository(
+          config.name,
+          url,
+          config.tables.filter((table) => table !== 'service_requests'),
+          config.migrations.filter((migration) => migration.version <= 2),
+        );
+        try {
+          await previous.migrate();
+          await previous.transaction('upgrade-retained', (tx) =>
+            tx.insert<Entity>('tasks', { id: 'previous-version-row', title: 'Keep existing data' }),
+          );
+        } finally {
+          await previous.close();
+        }
+      }
       await repository.migrate();
       await repository.migrate();
+      if (config.name === 'sales')
+        assert.ok(
+          await repository.transaction('upgrade-retained', (tx) =>
+            tx.get('tasks', 'previous-version-row'),
+          ),
+          'Forward migration retains previous-version data',
+        );
       await repository.ping();
       const owner = new pg.Client({ connectionString: url });
       rawClients.add(owner);
@@ -452,6 +476,12 @@ test(
     );
     await salesRaw.end();
     rawClients.delete(salesRaw);
+    await verifySprint04(t, {
+      crm: byName('crm').repository,
+      sales: byName('sales').repository,
+      communications: byName('communications').repository,
+      identity: byName('identity').repository,
+    });
     await verifyRepPostgres(t, {
       crm: byName('crm').repository,
       sales: byName('sales').repository,

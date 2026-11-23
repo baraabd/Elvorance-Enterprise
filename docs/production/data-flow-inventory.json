@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "85cb662eb1d305ee149781793b16c0cc2d0952dba141b51661eb187793a63c8b",
+  "sourceDigest": "c393b554f3d315078bfcb4481e9a5cd9896971d621d805c332f22235d15126fc",
   "trustBoundaries": [
     {
       "id": "TB1",
@@ -3488,7 +3488,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -3519,8 +3519,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 204,
-              "endLine": 226,
+              "line": 206,
+              "endLine": 228,
               "fingerprint": "b8f8b626a60f0b73fa9c0034e6e5a692597c85d0d3d284f2641c672b37fc6e20"
             },
             "authorization": {
@@ -3535,7 +3535,7 @@
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
                 "services/sales/src/application/quotes.ts:45-66",
-                "services/sales/src/transport/routes.ts:204-226"
+                "services/sales/src/transport/routes.ts:206-228"
               ]
             },
             "persistenceEvent": {
@@ -3555,8 +3555,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 188,
-              "endLine": 203,
+              "line": 190,
+              "endLine": 205,
               "fingerprint": "29c947de5c8e3a85129f67d834005db9d06757ec4779fab2692581a8ffa23cff"
             },
             "authorization": {
@@ -3572,7 +3572,7 @@
                 "services/sales/src/application/quotes.ts:45-66",
                 "services/sales/src/application/quotes.ts:67-100",
                 "services/sales/src/application/visits.ts:21-25",
-                "services/sales/src/transport/routes.ts:188-203"
+                "services/sales/src/transport/routes.ts:190-205"
               ]
             },
             "persistenceEvent": {
@@ -3697,7 +3697,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -3728,8 +3728,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 204,
-              "endLine": 226,
+              "line": 206,
+              "endLine": 228,
               "fingerprint": "b8f8b626a60f0b73fa9c0034e6e5a692597c85d0d3d284f2641c672b37fc6e20"
             },
             "authorization": {
@@ -3744,7 +3744,7 @@
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
                 "services/sales/src/application/quotes.ts:45-66",
-                "services/sales/src/transport/routes.ts:204-226"
+                "services/sales/src/transport/routes.ts:206-228"
               ]
             },
             "persistenceEvent": {
@@ -3764,8 +3764,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 188,
-              "endLine": 203,
+              "line": 190,
+              "endLine": 205,
               "fingerprint": "29c947de5c8e3a85129f67d834005db9d06757ec4779fab2692581a8ffa23cff"
             },
             "authorization": {
@@ -3781,7 +3781,7 @@
                 "services/sales/src/application/quotes.ts:45-66",
                 "services/sales/src/application/quotes.ts:67-100",
                 "services/sales/src/application/visits.ts:21-25",
-                "services/sales/src/transport/routes.ts:188-203"
+                "services/sales/src/transport/routes.ts:190-205"
               ]
             },
             "persistenceEvent": {
@@ -4060,7 +4060,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -4116,8 +4116,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 204,
-              "endLine": 226,
+              "line": 206,
+              "endLine": 228,
               "fingerprint": "b8f8b626a60f0b73fa9c0034e6e5a692597c85d0d3d284f2641c672b37fc6e20"
             },
             "authorization": {
@@ -4132,7 +4132,7 @@
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
                 "services/sales/src/application/quotes.ts:45-66",
-                "services/sales/src/transport/routes.ts:204-226"
+                "services/sales/src/transport/routes.ts:206-228"
               ]
             },
             "persistenceEvent": {
@@ -4152,8 +4152,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 188,
-              "endLine": 203,
+              "line": 190,
+              "endLine": 205,
               "fingerprint": "29c947de5c8e3a85129f67d834005db9d06757ec4779fab2692581a8ffa23cff"
             },
             "authorization": {
@@ -4169,7 +4169,7 @@
                 "services/sales/src/application/quotes.ts:45-66",
                 "services/sales/src/application/quotes.ts:67-100",
                 "services/sales/src/application/visits.ts:21-25",
-                "services/sales/src/transport/routes.ts:188-203"
+                "services/sales/src/transport/routes.ts:190-205"
               ]
             },
             "persistenceEvent": {
@@ -4330,7 +4330,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -4358,8 +4358,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 300,
-              "endLine": 312,
+              "line": 302,
+              "endLine": 314,
               "fingerprint": "c6eb0847c957e06e73754215e2faf8eec5bd11b33baa8c7810ff86ad07dd820b"
             },
             "authorization": {
@@ -4370,14 +4370,14 @@
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/auth.ts:139-151",
                 "packages/service-kit/src/auth.ts:152-158",
-                "services/sales/src/transport/routes.ts:300-312"
+                "services/sales/src/transport/routes.ts:302-314"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["fulfillments"],
               "events": [],
-              "evidence": ["services/sales/src/transport/routes.ts:300-312"]
+              "evidence": ["services/sales/src/transport/routes.ts:302-314"]
             }
           }
         ],
@@ -4431,7 +4431,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -4459,8 +4459,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 300,
-              "endLine": 312,
+              "line": 302,
+              "endLine": 314,
               "fingerprint": "c6eb0847c957e06e73754215e2faf8eec5bd11b33baa8c7810ff86ad07dd820b"
             },
             "authorization": {
@@ -4471,14 +4471,14 @@
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/auth.ts:139-151",
                 "packages/service-kit/src/auth.ts:152-158",
-                "services/sales/src/transport/routes.ts:300-312"
+                "services/sales/src/transport/routes.ts:302-314"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["fulfillments"],
               "events": [],
-              "evidence": ["services/sales/src/transport/routes.ts:300-312"]
+              "evidence": ["services/sales/src/transport/routes.ts:302-314"]
             }
           }
         ],
@@ -4532,7 +4532,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -4560,8 +4560,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 300,
-              "endLine": 312,
+              "line": 302,
+              "endLine": 314,
               "fingerprint": "c6eb0847c957e06e73754215e2faf8eec5bd11b33baa8c7810ff86ad07dd820b"
             },
             "authorization": {
@@ -4572,14 +4572,14 @@
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/auth.ts:139-151",
                 "packages/service-kit/src/auth.ts:152-158",
-                "services/sales/src/transport/routes.ts:300-312"
+                "services/sales/src/transport/routes.ts:302-314"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["fulfillments"],
               "events": [],
-              "evidence": ["services/sales/src/transport/routes.ts:300-312"]
+              "evidence": ["services/sales/src/transport/routes.ts:302-314"]
             }
           }
         ],
@@ -4633,7 +4633,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -4661,8 +4661,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 300,
-              "endLine": 312,
+              "line": 302,
+              "endLine": 314,
               "fingerprint": "c6eb0847c957e06e73754215e2faf8eec5bd11b33baa8c7810ff86ad07dd820b"
             },
             "authorization": {
@@ -4673,14 +4673,14 @@
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/auth.ts:139-151",
                 "packages/service-kit/src/auth.ts:152-158",
-                "services/sales/src/transport/routes.ts:300-312"
+                "services/sales/src/transport/routes.ts:302-314"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["fulfillments"],
               "events": [],
-              "evidence": ["services/sales/src/transport/routes.ts:300-312"]
+              "evidence": ["services/sales/src/transport/routes.ts:302-314"]
             }
           }
         ],
@@ -5959,7 +5959,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [
@@ -6008,8 +6008,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 43,
-              "endLine": 47,
+              "line": 44,
+              "endLine": 48,
               "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
             },
             "authorization": {
@@ -6022,7 +6022,7 @@
                 "packages/service-kit/src/auth.ts:152-158",
                 "services/crm/src/application/customers.ts:118-142",
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             },
             "persistenceEvent": {
@@ -6031,7 +6031,7 @@
               "events": [],
               "evidence": [
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             }
           },
@@ -6040,8 +6040,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 64,
-              "endLine": 78,
+              "line": 65,
+              "endLine": 79,
               "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
             },
             "authorization": {
@@ -6058,7 +6058,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:69-117",
-                "services/crm/src/transport/routes.ts:64-78"
+                "services/crm/src/transport/routes.ts:65-79"
               ]
             },
             "persistenceEvent": {
@@ -6155,7 +6155,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [
@@ -6183,8 +6183,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 64,
-              "endLine": 78,
+              "line": 65,
+              "endLine": 79,
               "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
             },
             "authorization": {
@@ -6201,7 +6201,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:69-117",
-                "services/crm/src/transport/routes.ts:64-78"
+                "services/crm/src/transport/routes.ts:65-79"
               ]
             },
             "persistenceEvent": {
@@ -6328,7 +6328,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [
@@ -6395,8 +6395,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 43,
-              "endLine": 47,
+              "line": 44,
+              "endLine": 48,
               "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
             },
             "authorization": {
@@ -6409,7 +6409,7 @@
                 "packages/service-kit/src/auth.ts:152-158",
                 "services/crm/src/application/customers.ts:118-142",
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             },
             "persistenceEvent": {
@@ -6418,7 +6418,7 @@
               "events": [],
               "evidence": [
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             }
           },
@@ -6427,8 +6427,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 64,
-              "endLine": 78,
+              "line": 65,
+              "endLine": 79,
               "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
             },
             "authorization": {
@@ -6445,7 +6445,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:69-117",
-                "services/crm/src/transport/routes.ts:64-78"
+                "services/crm/src/transport/routes.ts:65-79"
               ]
             },
             "persistenceEvent": {
@@ -6549,7 +6549,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [
@@ -6598,8 +6598,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 43,
-              "endLine": 47,
+              "line": 44,
+              "endLine": 48,
               "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
             },
             "authorization": {
@@ -6612,7 +6612,7 @@
                 "packages/service-kit/src/auth.ts:152-158",
                 "services/crm/src/application/customers.ts:118-142",
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             },
             "persistenceEvent": {
@@ -6621,7 +6621,7 @@
               "events": [],
               "evidence": [
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             }
           },
@@ -6630,8 +6630,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 64,
-              "endLine": 78,
+              "line": 65,
+              "endLine": 79,
               "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
             },
             "authorization": {
@@ -6648,7 +6648,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:69-117",
-                "services/crm/src/transport/routes.ts:64-78"
+                "services/crm/src/transport/routes.ts:65-79"
               ]
             },
             "persistenceEvent": {
@@ -6717,7 +6717,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [
@@ -6745,8 +6745,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 43,
-              "endLine": 47,
+              "line": 44,
+              "endLine": 48,
               "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
             },
             "authorization": {
@@ -6759,7 +6759,7 @@
                 "packages/service-kit/src/auth.ts:152-158",
                 "services/crm/src/application/customers.ts:118-142",
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             },
             "persistenceEvent": {
@@ -6768,7 +6768,7 @@
               "events": [],
               "evidence": [
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             }
           }
@@ -7006,7 +7006,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [
@@ -7055,8 +7055,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 43,
-              "endLine": 47,
+              "line": 44,
+              "endLine": 48,
               "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
             },
             "authorization": {
@@ -7069,7 +7069,7 @@
                 "packages/service-kit/src/auth.ts:152-158",
                 "services/crm/src/application/customers.ts:118-142",
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             },
             "persistenceEvent": {
@@ -7078,7 +7078,7 @@
               "events": [],
               "evidence": [
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             }
           },
@@ -7087,8 +7087,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 64,
-              "endLine": 78,
+              "line": 65,
+              "endLine": 79,
               "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
             },
             "authorization": {
@@ -7105,7 +7105,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:69-117",
-                "services/crm/src/transport/routes.ts:64-78"
+                "services/crm/src/transport/routes.ts:65-79"
               ]
             },
             "persistenceEvent": {
@@ -7318,7 +7318,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [
@@ -7346,8 +7346,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 64,
-              "endLine": 78,
+              "line": 65,
+              "endLine": 79,
               "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
             },
             "authorization": {
@@ -7364,7 +7364,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:69-117",
-                "services/crm/src/transport/routes.ts:64-78"
+                "services/crm/src/transport/routes.ts:65-79"
               ]
             },
             "persistenceEvent": {
@@ -7453,7 +7453,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -7481,8 +7481,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 290,
-              "endLine": 294,
+              "line": 292,
+              "endLine": 296,
               "fingerprint": "dafaf7d23520da942d1a7d73145106c3d6a99dff88aaf5b9b3cc91c98ff216fd"
             },
             "authorization": {
@@ -7494,7 +7494,7 @@
                 "packages/service-kit/src/auth.ts:139-151",
                 "packages/service-kit/src/auth.ts:152-158",
                 "services/sales/src/application/quotes.ts:36-44",
-                "services/sales/src/transport/routes.ts:290-294"
+                "services/sales/src/transport/routes.ts:292-296"
               ]
             },
             "persistenceEvent": {
@@ -7503,7 +7503,7 @@
               "events": [],
               "evidence": [
                 "services/sales/src/application/quotes.ts:36-44",
-                "services/sales/src/transport/routes.ts:290-294"
+                "services/sales/src/transport/routes.ts:292-296"
               ]
             }
           }
@@ -7668,7 +7668,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [
@@ -7696,8 +7696,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 43,
-              "endLine": 47,
+              "line": 44,
+              "endLine": 48,
               "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
             },
             "authorization": {
@@ -7710,7 +7710,7 @@
                 "packages/service-kit/src/auth.ts:152-158",
                 "services/crm/src/application/customers.ts:118-142",
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             },
             "persistenceEvent": {
@@ -7719,7 +7719,7 @@
               "events": [],
               "evidence": [
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             }
           }
@@ -7778,7 +7778,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -7806,8 +7806,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -7821,7 +7821,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -7933,7 +7933,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -7961,8 +7961,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 169,
-              "endLine": 187,
+              "line": 171,
+              "endLine": 189,
               "fingerprint": "e334f927e767bd29706464bac03774b72e3056afccc57d83360a27959a468146"
             },
             "authorization": {
@@ -7974,7 +7974,7 @@
                 "services/sales/src/application/assignment.ts:100-137",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:169-187"
+                "services/sales/src/transport/routes.ts:171-189"
               ]
             },
             "persistenceEvent": {
@@ -7983,7 +7983,7 @@
               "events": [],
               "evidence": [
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:169-187"
+                "services/sales/src/transport/routes.ts:171-189"
               ]
             }
           }
@@ -8066,7 +8066,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -8094,8 +8094,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 295,
-              "endLine": 299,
+              "line": 297,
+              "endLine": 301,
               "fingerprint": "d972a570b0b1b332f1171dc56dec3c2700f50bbe4cd04762f63aa526ed560135"
             },
             "authorization": {
@@ -8110,7 +8110,7 @@
                 "packages/service-kit/src/http.ts:82-108",
                 "services/sales/src/application/quotes.ts:307-341",
                 "services/sales/src/application/quotes.ts:36-44",
-                "services/sales/src/transport/routes.ts:295-299"
+                "services/sales/src/transport/routes.ts:297-301"
               ]
             },
             "persistenceEvent": {
@@ -8384,7 +8384,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -8412,8 +8412,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -8427,7 +8427,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -8639,7 +8639,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -8667,8 +8667,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -8682,7 +8682,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -10388,7 +10388,7 @@
       "tables": ["notifications"],
       "events": [],
       "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
       "featureId": "api-route:communications:backend:GET /v1/tickets",
@@ -10613,7 +10613,7 @@
       "tables": ["notifications"],
       "events": [],
       "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
       "featureId": "api-route:communications:backend:HEAD /v1/tickets",
@@ -11029,7 +11029,7 @@
         "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
         "controls": [],
         "roles": [],
-        "evidence": ["services/crm/src/transport/routes.ts:23-25"]
+        "evidence": ["services/crm/src/transport/routes.ts:24-26"]
       },
       "tables": ["configuration"],
       "events": [],
@@ -11053,7 +11053,7 @@
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/pagination.ts:32-44",
           "services/crm/src/application/customers.ts:118-142",
-          "services/crm/src/transport/routes.ts:31-42"
+          "services/crm/src/transport/routes.ts:32-43"
         ]
       },
       "tables": ["customers"],
@@ -11085,7 +11085,7 @@
           "packages/service-kit/src/auth.ts:152-158",
           "services/crm/src/application/customers.ts:118-142",
           "services/crm/src/application/customers.ts:17-30",
-          "services/crm/src/transport/routes.ts:43-47"
+          "services/crm/src/transport/routes.ts:44-48"
         ]
       },
       "tables": ["customers"],
@@ -11122,7 +11122,7 @@
           "packages/service-kit/src/auth.ts:152-158",
           "services/crm/src/application/customers.ts:17-30",
           "services/crm/src/application/customers.ts:31-41",
-          "services/crm/src/transport/routes.ts:48-52"
+          "services/crm/src/transport/routes.ts:49-53"
         ]
       },
       "tables": ["customers"],
@@ -11181,7 +11181,7 @@
         "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
         "controls": [],
         "roles": [],
-        "evidence": ["services/crm/src/transport/routes.ts:79-83"]
+        "evidence": ["services/crm/src/transport/routes.ts:80-84"]
       },
       "tables": ["regions"],
       "events": [],
@@ -11269,7 +11269,7 @@
         "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
         "controls": [],
         "roles": [],
-        "evidence": ["services/crm/src/transport/routes.ts:23-25"]
+        "evidence": ["services/crm/src/transport/routes.ts:24-26"]
       },
       "tables": ["configuration"],
       "events": [],
@@ -11293,7 +11293,7 @@
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/pagination.ts:32-44",
           "services/crm/src/application/customers.ts:118-142",
-          "services/crm/src/transport/routes.ts:31-42"
+          "services/crm/src/transport/routes.ts:32-43"
         ]
       },
       "tables": ["customers"],
@@ -11330,7 +11330,7 @@
           "packages/service-kit/src/auth.ts:152-158",
           "services/crm/src/application/customers.ts:118-142",
           "services/crm/src/application/customers.ts:17-30",
-          "services/crm/src/transport/routes.ts:43-47"
+          "services/crm/src/transport/routes.ts:44-48"
         ]
       },
       "tables": ["customers"],
@@ -11367,7 +11367,7 @@
           "packages/service-kit/src/auth.ts:152-158",
           "services/crm/src/application/customers.ts:17-30",
           "services/crm/src/application/customers.ts:31-41",
-          "services/crm/src/transport/routes.ts:48-52"
+          "services/crm/src/transport/routes.ts:49-53"
         ]
       },
       "tables": ["customers"],
@@ -11426,7 +11426,7 @@
         "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
         "controls": [],
         "roles": [],
-        "evidence": ["services/crm/src/transport/routes.ts:79-83"]
+        "evidence": ["services/crm/src/transport/routes.ts:80-84"]
       },
       "tables": ["regions"],
       "events": [],
@@ -11466,13 +11466,44 @@
           "services/crm/src/application/customers.ts:17-30",
           "services/crm/src/application/customers.ts:31-41",
           "services/crm/src/application/customers.ts:69-117",
-          "services/crm/src/transport/routes.ts:64-78"
+          "services/crm/src/transport/routes.ts:65-79"
         ]
       },
       "tables": ["customers", "regions"],
       "events": ["crm.customer_updated.v1"],
       "sourceTrace": null,
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-route:crm:backend:PATCH /v1/regions/:id",
+      "source": "services/crm/src/transport/routes.ts",
+      "mode": "backend",
+      "owner": "crm",
+      "endpoints": [
+        { "method": "PATCH", "path": "/v1/regions/:id", "service": "crm", "resolution": "literal" },
+        {
+          "method": "PATCH",
+          "path": "/v1/crm/regions/:id",
+          "service": "crm",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+        "controls": ["requireRole"],
+        "roles": ["admin"],
+        "evidence": [
+          "packages/service-kit/src/auth.ts:129-130",
+          "packages/service-kit/src/auth.ts:131-138",
+          "packages/service-kit/src/http.ts:82-108",
+          "services/crm/src/application/regions.ts:13-42",
+          "services/crm/src/transport/routes.ts:85-89"
+        ]
+      },
+      "tables": ["regions"],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
     },
     {
       "featureId": "api-route:crm:backend:POST /v1/customers",
@@ -11496,7 +11527,7 @@
           "services/crm/src/application/customers.ts:17-30",
           "services/crm/src/application/customers.ts:31-41",
           "services/crm/src/application/customers.ts:42-68",
-          "services/crm/src/transport/routes.ts:53-63"
+          "services/crm/src/transport/routes.ts:54-64"
         ]
       },
       "tables": ["customers", "regions"],
@@ -11522,7 +11553,7 @@
           "packages/service-kit/src/auth.ts:131-138",
           "packages/service-kit/src/http.ts:82-108",
           "services/crm/src/application/customers.ts:143-155",
-          "services/crm/src/transport/routes.ts:84-88"
+          "services/crm/src/transport/routes.ts:90-94"
         ]
       },
       "tables": ["regions"],
@@ -11553,7 +11584,7 @@
           "packages/service-kit/src/auth.ts:131-138",
           "packages/service-kit/src/http.ts:82-108",
           "services/crm/src/application/configuration.ts:117-169",
-          "services/crm/src/transport/routes.ts:26-30"
+          "services/crm/src/transport/routes.ts:27-31"
         ]
       },
       "tables": ["configuration"],
@@ -11659,7 +11690,7 @@
         "evidence": [
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/pagination.ts:32-44",
-          "services/delivery/src/transport/routes.ts:20-27"
+          "services/delivery/src/transport/routes.ts:21-28"
         ]
       },
       "tables": ["projects"],
@@ -11695,13 +11726,13 @@
           "packages/service-kit/src/auth.ts:139-151",
           "packages/service-kit/src/auth.ts:152-158",
           "services/delivery/src/application/projects.ts:18-22",
-          "services/delivery/src/transport/routes.ts:28-32"
+          "services/delivery/src/transport/routes.ts:29-33"
         ]
       },
       "tables": ["projects"],
       "events": [],
       "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
       "featureId": "api-route:delivery:backend:HEAD /health",
@@ -11767,7 +11798,7 @@
         "evidence": [
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/pagination.ts:32-44",
-          "services/delivery/src/transport/routes.ts:20-27"
+          "services/delivery/src/transport/routes.ts:21-28"
         ]
       },
       "tables": ["projects"],
@@ -11803,13 +11834,91 @@
           "packages/service-kit/src/auth.ts:139-151",
           "packages/service-kit/src/auth.ts:152-158",
           "services/delivery/src/application/projects.ts:18-22",
-          "services/delivery/src/transport/routes.ts:28-32"
+          "services/delivery/src/transport/routes.ts:29-33"
         ]
       },
       "tables": ["projects"],
       "events": [],
       "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-route:delivery:backend:PATCH /v1/projects/:id",
+      "source": "services/delivery/src/transport/routes.ts",
+      "mode": "backend",
+      "owner": "delivery",
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/projects/:id",
+          "service": "delivery",
+          "resolution": "literal"
+        },
+        {
+          "method": "PATCH",
+          "path": "/v1/delivery/projects/:id",
+          "service": "delivery",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+        "controls": ["requireOwner", "requireRole"],
+        "roles": ["admin", "client", "delivery", "rep"],
+        "evidence": [
+          "packages/service-kit/src/auth.ts:129-130",
+          "packages/service-kit/src/auth.ts:131-138",
+          "packages/service-kit/src/auth.ts:139-151",
+          "packages/service-kit/src/auth.ts:152-158",
+          "packages/service-kit/src/http.ts:82-108",
+          "services/delivery/src/application/project-metadata.ts:13-69",
+          "services/delivery/src/application/projects.ts:18-22",
+          "services/delivery/src/transport/routes.ts:34-38"
+        ]
+      },
+      "tables": ["projects"],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-route:delivery:backend:PATCH /v1/projects/:id/milestones/:milestoneId",
+      "source": "services/delivery/src/transport/routes.ts",
+      "mode": "backend",
+      "owner": "delivery",
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/projects/:id/milestones/:milestoneId",
+          "service": "delivery",
+          "resolution": "literal"
+        },
+        {
+          "method": "PATCH",
+          "path": "/v1/delivery/projects/:id/milestones/:milestoneId",
+          "service": "delivery",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+        "controls": ["requireOwner", "requireRole"],
+        "roles": ["admin", "client", "delivery", "rep"],
+        "evidence": [
+          "packages/service-kit/src/auth.ts:129-130",
+          "packages/service-kit/src/auth.ts:131-138",
+          "packages/service-kit/src/auth.ts:139-151",
+          "packages/service-kit/src/auth.ts:152-158",
+          "packages/service-kit/src/http.ts:82-108",
+          "services/delivery/src/application/project-metadata.ts:13-69",
+          "services/delivery/src/application/projects.ts:18-22",
+          "services/delivery/src/transport/routes.ts:39-49"
+        ]
+      },
+      "tables": ["projects"],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
       "featureId": "api-route:delivery:backend:POST /v1/projects/:id/complete",
@@ -11842,7 +11951,7 @@
           "packages/service-kit/src/http.ts:82-108",
           "services/delivery/src/application/projects.ts:18-22",
           "services/delivery/src/application/projects.ts:264-299",
-          "services/delivery/src/transport/routes.ts:76-80"
+          "services/delivery/src/transport/routes.ts:93-97"
         ]
       },
       "tables": ["projects"],
@@ -11881,7 +11990,7 @@
           "packages/service-kit/src/http.ts:82-108",
           "services/delivery/src/application/projects.ts:132-170",
           "services/delivery/src/application/projects.ts:18-22",
-          "services/delivery/src/transport/routes.ts:49-53"
+          "services/delivery/src/transport/routes.ts:66-70"
         ]
       },
       "tables": ["projects"],
@@ -11920,7 +12029,7 @@
           "packages/service-kit/src/http.ts:82-108",
           "services/delivery/src/application/projects.ts:18-22",
           "services/delivery/src/application/projects.ts:220-263",
-          "services/delivery/src/transport/routes.ts:65-75"
+          "services/delivery/src/transport/routes.ts:82-92"
         ]
       },
       "tables": ["projects"],
@@ -11959,7 +12068,7 @@
           "packages/service-kit/src/http.ts:82-108",
           "services/delivery/src/application/projects.ts:171-219",
           "services/delivery/src/application/projects.ts:18-22",
-          "services/delivery/src/transport/routes.ts:54-64"
+          "services/delivery/src/transport/routes.ts:71-81"
         ]
       },
       "tables": ["projects"],
@@ -11998,7 +12107,7 @@
           "packages/service-kit/src/http.ts:82-108",
           "services/delivery/src/application/projects.ts:18-22",
           "services/delivery/src/application/projects.ts:23-55",
-          "services/delivery/src/transport/routes.ts:33-37"
+          "services/delivery/src/transport/routes.ts:50-54"
         ]
       },
       "tables": ["projects"],
@@ -12037,7 +12146,7 @@
           "packages/service-kit/src/http.ts:82-108",
           "services/delivery/src/application/projects.ts:18-22",
           "services/delivery/src/application/projects.ts:56-106",
-          "services/delivery/src/transport/routes.ts:38-48"
+          "services/delivery/src/transport/routes.ts:55-65"
         ]
       },
       "tables": ["projects"],
@@ -12456,7 +12565,7 @@
         "evidence": [
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/pagination.ts:32-44",
-          "services/sales/src/transport/routes.ts:279-289"
+          "services/sales/src/transport/routes.ts:281-291"
         ]
       },
       "tables": ["contracts"],
@@ -12492,7 +12601,7 @@
           "packages/service-kit/src/auth.ts:139-151",
           "packages/service-kit/src/auth.ts:152-158",
           "services/sales/src/application/quotes.ts:36-44",
-          "services/sales/src/transport/routes.ts:290-294"
+          "services/sales/src/transport/routes.ts:292-296"
         ]
       },
       "tables": ["contracts"],
@@ -12527,7 +12636,7 @@
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/auth.ts:139-151",
           "packages/service-kit/src/auth.ts:152-158",
-          "services/sales/src/transport/routes.ts:300-312"
+          "services/sales/src/transport/routes.ts:302-314"
         ]
       },
       "tables": ["fulfillments"],
@@ -12666,7 +12775,7 @@
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/pagination.ts:32-44",
           "services/sales/src/application/assignment.ts:100-137",
-          "services/sales/src/transport/routes.ts:152-168"
+          "services/sales/src/transport/routes.ts:154-170"
         ]
       },
       "tables": ["quotes"],
@@ -12697,7 +12806,7 @@
           "services/sales/src/application/assignment.ts:100-137",
           "services/sales/src/application/quotes.ts:22-30",
           "services/sales/src/application/quotes.ts:31-35",
-          "services/sales/src/transport/routes.ts:169-187"
+          "services/sales/src/transport/routes.ts:171-189"
         ]
       },
       "tables": ["quotes"],
@@ -12765,6 +12874,81 @@
       "events": [],
       "sourceTrace": null,
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-route:sales:backend:GET /v1/service-requests",
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "mode": "backend",
+      "owner": "sales",
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/service-requests",
+          "service": "sales",
+          "resolution": "literal"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/sales/service-requests",
+          "service": "sales",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+        "controls": ["actorScopes", "requireRole"],
+        "roles": ["admin", "client", "delivery", "finance", "rep"],
+        "evidence": [
+          "packages/service-kit/src/auth.ts:129-130",
+          "packages/service-kit/src/auth.ts:131-138",
+          "packages/service-kit/src/pagination.ts:32-44",
+          "services/sales/src/application/assignment.ts:100-137",
+          "services/sales/src/application/service-requests.ts:67-83",
+          "services/sales/src/transport/service-request-routes.ts:16-26"
+        ]
+      },
+      "tables": ["service_requests"],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-route:sales:backend:GET /v1/service-requests/:id",
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "mode": "backend",
+      "owner": "sales",
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/service-requests/:id",
+          "service": "sales",
+          "resolution": "literal"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/sales/service-requests/:id",
+          "service": "sales",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+        "controls": ["requireOwner", "requireRole"],
+        "roles": ["admin", "client", "rep"],
+        "evidence": [
+          "packages/service-kit/src/auth.ts:129-130",
+          "packages/service-kit/src/auth.ts:131-138",
+          "packages/service-kit/src/auth.ts:139-151",
+          "packages/service-kit/src/auth.ts:152-158",
+          "services/sales/src/application/assignment.ts:19-51",
+          "services/sales/src/application/service-requests.ts:49-66",
+          "services/sales/src/transport/service-request-routes.ts:27-37"
+        ]
+      },
+      "tables": ["service_requests"],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
     },
     {
       "featureId": "api-route:sales:backend:GET /v1/tasks",
@@ -12847,7 +13031,7 @@
           "packages/service-kit/src/pagination.ts:32-44",
           "services/sales/src/application/assignment.ts:100-137",
           "services/sales/src/application/assignment.ts:82-99",
-          "services/sales/src/transport/routes.ts:43-55"
+          "services/sales/src/transport/routes.ts:45-57"
         ]
       },
       "tables": ["table"],
@@ -12882,7 +13066,7 @@
           "services/sales/src/application/assignment.ts:19-51",
           "services/sales/src/application/assignment.ts:52-69",
           "services/sales/src/application/assignment.ts:70-81",
-          "services/sales/src/transport/routes.ts:56-68"
+          "services/sales/src/transport/routes.ts:58-70"
         ]
       },
       "tables": ["table"],
@@ -12949,7 +13133,7 @@
         "evidence": [
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/pagination.ts:32-44",
-          "services/sales/src/transport/routes.ts:279-289"
+          "services/sales/src/transport/routes.ts:281-291"
         ]
       },
       "tables": ["contracts"],
@@ -12985,7 +13169,7 @@
           "packages/service-kit/src/auth.ts:139-151",
           "packages/service-kit/src/auth.ts:152-158",
           "services/sales/src/application/quotes.ts:36-44",
-          "services/sales/src/transport/routes.ts:290-294"
+          "services/sales/src/transport/routes.ts:292-296"
         ]
       },
       "tables": ["contracts"],
@@ -13020,7 +13204,7 @@
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/auth.ts:139-151",
           "packages/service-kit/src/auth.ts:152-158",
-          "services/sales/src/transport/routes.ts:300-312"
+          "services/sales/src/transport/routes.ts:302-314"
         ]
       },
       "tables": ["fulfillments"],
@@ -13164,7 +13348,7 @@
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/pagination.ts:32-44",
           "services/sales/src/application/assignment.ts:100-137",
-          "services/sales/src/transport/routes.ts:152-168"
+          "services/sales/src/transport/routes.ts:154-170"
         ]
       },
       "tables": ["quotes"],
@@ -13195,7 +13379,7 @@
           "services/sales/src/application/assignment.ts:100-137",
           "services/sales/src/application/quotes.ts:22-30",
           "services/sales/src/application/quotes.ts:31-35",
-          "services/sales/src/transport/routes.ts:169-187"
+          "services/sales/src/transport/routes.ts:171-189"
         ]
       },
       "tables": ["quotes"],
@@ -13268,6 +13452,81 @@
       "events": [],
       "sourceTrace": null,
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-route:sales:backend:HEAD /v1/service-requests",
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "mode": "backend",
+      "owner": "sales",
+      "endpoints": [
+        {
+          "method": "HEAD",
+          "path": "/v1/service-requests",
+          "service": "sales",
+          "resolution": "literal"
+        },
+        {
+          "method": "HEAD",
+          "path": "/v1/sales/service-requests",
+          "service": "sales",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+        "controls": ["actorScopes", "requireRole"],
+        "roles": ["admin", "client", "delivery", "finance", "rep"],
+        "evidence": [
+          "packages/service-kit/src/auth.ts:129-130",
+          "packages/service-kit/src/auth.ts:131-138",
+          "packages/service-kit/src/pagination.ts:32-44",
+          "services/sales/src/application/assignment.ts:100-137",
+          "services/sales/src/application/service-requests.ts:67-83",
+          "services/sales/src/transport/service-request-routes.ts:16-26"
+        ]
+      },
+      "tables": ["service_requests"],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-route:sales:backend:HEAD /v1/service-requests/:id",
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "mode": "backend",
+      "owner": "sales",
+      "endpoints": [
+        {
+          "method": "HEAD",
+          "path": "/v1/service-requests/:id",
+          "service": "sales",
+          "resolution": "literal"
+        },
+        {
+          "method": "HEAD",
+          "path": "/v1/sales/service-requests/:id",
+          "service": "sales",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+        "controls": ["requireOwner", "requireRole"],
+        "roles": ["admin", "client", "rep"],
+        "evidence": [
+          "packages/service-kit/src/auth.ts:129-130",
+          "packages/service-kit/src/auth.ts:131-138",
+          "packages/service-kit/src/auth.ts:139-151",
+          "packages/service-kit/src/auth.ts:152-158",
+          "services/sales/src/application/assignment.ts:19-51",
+          "services/sales/src/application/service-requests.ts:49-66",
+          "services/sales/src/transport/service-request-routes.ts:27-37"
+        ]
+      },
+      "tables": ["service_requests"],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
     },
     {
       "featureId": "api-route:sales:backend:HEAD /v1/tasks",
@@ -13355,7 +13614,7 @@
           "packages/service-kit/src/pagination.ts:32-44",
           "services/sales/src/application/assignment.ts:100-137",
           "services/sales/src/application/assignment.ts:82-99",
-          "services/sales/src/transport/routes.ts:43-55"
+          "services/sales/src/transport/routes.ts:45-57"
         ]
       },
       "tables": ["table"],
@@ -13390,7 +13649,7 @@
           "services/sales/src/application/assignment.ts:19-51",
           "services/sales/src/application/assignment.ts:52-69",
           "services/sales/src/application/assignment.ts:70-81",
-          "services/sales/src/transport/routes.ts:56-68"
+          "services/sales/src/transport/routes.ts:58-70"
         ]
       },
       "tables": ["table"],
@@ -13471,7 +13730,7 @@
           "services/sales/src/application/quotes.ts:22-30",
           "services/sales/src/application/quotes.ts:31-35",
           "services/sales/src/application/quotes.ts:45-66",
-          "services/sales/src/transport/routes.ts:204-226"
+          "services/sales/src/transport/routes.ts:206-228"
         ]
       },
       "tables": ["discount_approvals", "quotes"],
@@ -13593,7 +13852,7 @@
           "services/sales/src/application/assignment.ts:52-69",
           "services/sales/src/application/assignment.ts:70-81",
           "services/sales/src/application/visit-planning.ts:15-82",
-          "services/sales/src/transport/routes.ts:116-133"
+          "services/sales/src/transport/routes.ts:118-135"
         ]
       },
       "tables": ["table", "visit_routes"],
@@ -13632,7 +13891,7 @@
           "packages/service-kit/src/http.ts:82-108",
           "services/sales/src/application/quotes.ts:307-341",
           "services/sales/src/application/quotes.ts:36-44",
-          "services/sales/src/transport/routes.ts:295-299"
+          "services/sales/src/transport/routes.ts:297-301"
         ]
       },
       "tables": ["contracts"],
@@ -13744,7 +14003,7 @@
           "services/sales/src/application/quotes.ts:45-66",
           "services/sales/src/application/quotes.ts:67-100",
           "services/sales/src/application/visits.ts:21-25",
-          "services/sales/src/transport/routes.ts:188-203"
+          "services/sales/src/transport/routes.ts:190-205"
         ]
       },
       "tables": ["quotes", "visits"],
@@ -13782,7 +14041,7 @@
           "services/sales/src/application/quotes.ts:219-306",
           "services/sales/src/application/quotes.ts:22-30",
           "services/sales/src/application/quotes.ts:31-35",
-          "services/sales/src/transport/routes.ts:274-278"
+          "services/sales/src/transport/routes.ts:276-280"
         ]
       },
       "tables": ["contracts", "fulfillments", "quotes"],
@@ -13862,7 +14121,7 @@
           "services/sales/src/application/quotes.ts:219-306",
           "services/sales/src/application/quotes.ts:22-30",
           "services/sales/src/application/quotes.ts:31-35",
-          "services/sales/src/transport/routes.ts:274-278"
+          "services/sales/src/transport/routes.ts:276-280"
         ]
       },
       "tables": ["contracts", "fulfillments", "quotes"],
@@ -13900,7 +14159,7 @@
           "services/sales/src/application/quotes.ts:219-306",
           "services/sales/src/application/quotes.ts:22-30",
           "services/sales/src/application/quotes.ts:31-35",
-          "services/sales/src/transport/routes.ts:274-278"
+          "services/sales/src/transport/routes.ts:276-280"
         ]
       },
       "tables": ["contracts", "fulfillments", "quotes"],
@@ -13939,7 +14198,7 @@
           "services/sales/src/application/quotes.ts:22-30",
           "services/sales/src/application/quotes.ts:31-35",
           "services/sales/src/application/quotes.ts:45-66",
-          "services/sales/src/transport/routes.ts:227-249"
+          "services/sales/src/transport/routes.ts:229-251"
         ]
       },
       "tables": ["quotes"],
@@ -13978,7 +14237,7 @@
           "services/sales/src/application/quotes.ts:22-30",
           "services/sales/src/application/quotes.ts:31-35",
           "services/sales/src/application/quotes.ts:45-66",
-          "services/sales/src/transport/routes.ts:250-272"
+          "services/sales/src/transport/routes.ts:252-274"
         ]
       },
       "tables": ["discount_approvals", "quotes"],
@@ -14022,6 +14281,127 @@
       "events": [],
       "sourceTrace": null,
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-route:sales:backend:POST /v1/service-requests",
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "mode": "backend",
+      "owner": "sales",
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/service-requests",
+          "service": "sales",
+          "resolution": "literal"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/sales/service-requests",
+          "service": "sales",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+        "controls": ["requireOwner", "requireRole"],
+        "roles": ["admin", "client", "rep"],
+        "evidence": [
+          "packages/service-kit/src/auth.ts:129-130",
+          "packages/service-kit/src/auth.ts:131-138",
+          "packages/service-kit/src/auth.ts:139-151",
+          "packages/service-kit/src/auth.ts:152-158",
+          "packages/service-kit/src/http.ts:82-108",
+          "services/sales/src/application/assignment.ts:19-51",
+          "services/sales/src/application/service-requests.ts:49-66",
+          "services/sales/src/application/service-requests.ts:84-158",
+          "services/sales/src/transport/service-request-routes.ts:38-61"
+        ]
+      },
+      "tables": ["service_requests"],
+      "events": ["sales.service_request_created.v1"],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-route:sales:backend:POST /v1/service-requests/:id/cancel",
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "mode": "backend",
+      "owner": "sales",
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/service-requests/:id/cancel",
+          "service": "sales",
+          "resolution": "literal"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/sales/service-requests/:id/cancel",
+          "service": "sales",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+        "controls": ["requireOwner", "requireRole"],
+        "roles": ["admin", "client", "rep"],
+        "evidence": [
+          "packages/service-kit/src/auth.ts:129-130",
+          "packages/service-kit/src/auth.ts:131-138",
+          "packages/service-kit/src/auth.ts:139-151",
+          "packages/service-kit/src/auth.ts:152-158",
+          "packages/service-kit/src/http.ts:82-108",
+          "services/sales/src/application/assignment.ts:19-51",
+          "services/sales/src/application/service-requests.ts:221-252",
+          "services/sales/src/application/service-requests.ts:49-66",
+          "services/sales/src/transport/service-request-routes.ts:87-111"
+        ]
+      },
+      "tables": ["service_requests"],
+      "events": ["sales.service_request_updated.v1"],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-route:sales:backend:POST /v1/service-requests/:id/review",
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "mode": "backend",
+      "owner": "sales",
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/service-requests/:id/review",
+          "service": "sales",
+          "resolution": "literal"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/sales/service-requests/:id/review",
+          "service": "sales",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+        "controls": ["requireOwner", "requireRole"],
+        "roles": ["admin", "client", "rep"],
+        "evidence": [
+          "packages/service-kit/src/auth.ts:129-130",
+          "packages/service-kit/src/auth.ts:131-138",
+          "packages/service-kit/src/auth.ts:139-151",
+          "packages/service-kit/src/auth.ts:152-158",
+          "packages/service-kit/src/http.ts:82-108",
+          "services/sales/src/application/assignment.ts:19-51",
+          "services/sales/src/application/opportunities.ts:81-103",
+          "services/sales/src/application/service-requests.ts:159-220",
+          "services/sales/src/application/service-requests.ts:49-66",
+          "services/sales/src/transport/service-request-routes.ts:62-86"
+        ]
+      },
+      "tables": ["contracts", "opportunities", "service_requests"],
+      "events": ["sales.service_request_updated.v1"],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
     },
     {
       "featureId": "api-route:sales:backend:POST /v1/tasks",
@@ -14082,7 +14462,7 @@
           "services/sales/src/application/assignment.ts:19-51",
           "services/sales/src/application/assignment.ts:52-69",
           "services/sales/src/application/visits.ts:26-62",
-          "services/sales/src/transport/routes.ts:69-79"
+          "services/sales/src/transport/routes.ts:71-81"
         ]
       },
       "tables": ["visits"],
@@ -14124,7 +14504,7 @@
           "services/sales/src/application/assignment.ts:52-69",
           "services/sales/src/application/assignment.ts:70-81",
           "services/sales/src/application/visit-planning.ts:83-116",
-          "services/sales/src/transport/routes.ts:134-151"
+          "services/sales/src/transport/routes.ts:136-153"
         ]
       },
       "tables": ["table"],
@@ -14166,7 +14546,7 @@
           "services/sales/src/application/assignment.ts:52-69",
           "services/sales/src/application/visits.ts:111-219",
           "services/sales/src/application/visits.ts:21-25",
-          "services/sales/src/transport/routes.ts:98-115"
+          "services/sales/src/transport/routes.ts:100-117"
         ]
       },
       "tables": ["contracts", "quotes", "visits"],
@@ -14208,7 +14588,7 @@
           "services/sales/src/application/assignment.ts:52-69",
           "services/sales/src/application/visits.ts:21-25",
           "services/sales/src/application/visits.ts:63-110",
-          "services/sales/src/transport/routes.ts:80-97"
+          "services/sales/src/transport/routes.ts:82-99"
         ]
       },
       "tables": ["visits"],
@@ -15279,7 +15659,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           },
           {
             "path": "services/sales/src/application/assignment.ts",
@@ -15311,7 +15691,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -15353,8 +15733,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 64,
-              "endLine": 78,
+              "line": 65,
+              "endLine": 79,
               "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
             },
             "authorization": {
@@ -15371,7 +15751,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:69-117",
-                "services/crm/src/transport/routes.ts:64-78"
+                "services/crm/src/transport/routes.ts:65-79"
               ]
             },
             "persistenceEvent": {
@@ -15390,8 +15770,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 53,
-              "endLine": 63,
+              "line": 54,
+              "endLine": 64,
               "fingerprint": "917585b676bdfce3a97a34d5e1b8ed773d77437d0fc945fc08bb0478389b10d8"
             },
             "authorization": {
@@ -15407,7 +15787,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:42-68",
-                "services/crm/src/transport/routes.ts:53-63"
+                "services/crm/src/transport/routes.ts:54-64"
               ]
             },
             "persistenceEvent": {
@@ -15544,8 +15924,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 116,
-              "endLine": 133,
+              "line": 118,
+              "endLine": 135,
               "fingerprint": "27589f84bf81cd19e4dce78ba49f6619609bd185d7b5d26251626d821e2d0bdd"
             },
             "authorization": {
@@ -15563,7 +15943,7 @@
                 "services/sales/src/application/assignment.ts:52-69",
                 "services/sales/src/application/assignment.ts:70-81",
                 "services/sales/src/application/visit-planning.ts:15-82",
-                "services/sales/src/transport/routes.ts:116-133"
+                "services/sales/src/transport/routes.ts:118-135"
               ]
             },
             "persistenceEvent": {
@@ -15694,8 +16074,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 69,
-              "endLine": 79,
+              "line": 71,
+              "endLine": 81,
               "fingerprint": "209b5b847aa19347ae1926e931fd83eb85e910969667e16fb78eb724ea574cc2"
             },
             "authorization": {
@@ -15712,7 +16092,7 @@
                 "services/sales/src/application/assignment.ts:19-51",
                 "services/sales/src/application/assignment.ts:52-69",
                 "services/sales/src/application/visits.ts:26-62",
-                "services/sales/src/transport/routes.ts:69-79"
+                "services/sales/src/transport/routes.ts:71-81"
               ]
             },
             "persistenceEvent": {
@@ -15870,7 +16250,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -15987,8 +16367,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 227,
-              "endLine": 249,
+              "line": 229,
+              "endLine": 251,
               "fingerprint": "fd8ea0fbe458f548bff4cab7c4fb5a041f6611a58c408d6c5b5a4f7e62e5778a"
             },
             "authorization": {
@@ -16003,7 +16383,7 @@
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
                 "services/sales/src/application/quotes.ts:45-66",
-                "services/sales/src/transport/routes.ts:227-249"
+                "services/sales/src/transport/routes.ts:229-251"
               ]
             },
             "persistenceEvent": {
@@ -16022,8 +16402,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 250,
-              "endLine": 272,
+              "line": 252,
+              "endLine": 274,
               "fingerprint": "b0235fd1f1cd775a4c31c0cfa079c8ba59decbde3c404a91f313d2db4e027933"
             },
             "authorization": {
@@ -16038,7 +16418,7 @@
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
                 "services/sales/src/application/quotes.ts:45-66",
-                "services/sales/src/transport/routes.ts:250-272"
+                "services/sales/src/transport/routes.ts:252-274"
               ]
             },
             "persistenceEvent": {
@@ -16058,8 +16438,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 134,
-              "endLine": 151,
+              "line": 136,
+              "endLine": 153,
               "fingerprint": "0fbdb228d38e1b77a36645a02a0b3757f18d8871b6d3755364ee21a33f934deb"
             },
             "authorization": {
@@ -16077,7 +16457,7 @@
                 "services/sales/src/application/assignment.ts:52-69",
                 "services/sales/src/application/assignment.ts:70-81",
                 "services/sales/src/application/visit-planning.ts:83-116",
-                "services/sales/src/transport/routes.ts:134-151"
+                "services/sales/src/transport/routes.ts:136-153"
               ]
             },
             "persistenceEvent": {
@@ -16096,8 +16476,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 98,
-              "endLine": 115,
+              "line": 100,
+              "endLine": 117,
               "fingerprint": "7f71f366f5be8344213889a296201630a9d9acf35f4a94e0be016d9c46c4d6f2"
             },
             "authorization": {
@@ -16115,7 +16495,7 @@
                 "services/sales/src/application/assignment.ts:52-69",
                 "services/sales/src/application/visits.ts:111-219",
                 "services/sales/src/application/visits.ts:21-25",
-                "services/sales/src/transport/routes.ts:98-115"
+                "services/sales/src/transport/routes.ts:100-117"
               ]
             },
             "persistenceEvent": {
@@ -16134,8 +16514,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 80,
-              "endLine": 97,
+              "line": 82,
+              "endLine": 99,
               "fingerprint": "2e517a37f57131ca1ee7d852f4d80ac6cc422c66e82f3c3e54ba808d08841399"
             },
             "authorization": {
@@ -16153,7 +16533,7 @@
                 "services/sales/src/application/assignment.ts:52-69",
                 "services/sales/src/application/visits.ts:21-25",
                 "services/sales/src/application/visits.ts:63-110",
-                "services/sales/src/transport/routes.ts:80-97"
+                "services/sales/src/transport/routes.ts:82-99"
               ]
             },
             "persistenceEvent": {
@@ -16982,7 +17362,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -17013,8 +17393,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 204,
-              "endLine": 226,
+              "line": 206,
+              "endLine": 228,
               "fingerprint": "b8f8b626a60f0b73fa9c0034e6e5a692597c85d0d3d284f2641c672b37fc6e20"
             },
             "authorization": {
@@ -17029,7 +17409,7 @@
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
                 "services/sales/src/application/quotes.ts:45-66",
-                "services/sales/src/transport/routes.ts:204-226"
+                "services/sales/src/transport/routes.ts:206-228"
               ]
             },
             "persistenceEvent": {
@@ -17049,8 +17429,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 188,
-              "endLine": 203,
+              "line": 190,
+              "endLine": 205,
               "fingerprint": "29c947de5c8e3a85129f67d834005db9d06757ec4779fab2692581a8ffa23cff"
             },
             "authorization": {
@@ -17066,7 +17446,7 @@
                 "services/sales/src/application/quotes.ts:45-66",
                 "services/sales/src/application/quotes.ts:67-100",
                 "services/sales/src/application/visits.ts:21-25",
-                "services/sales/src/transport/routes.ts:188-203"
+                "services/sales/src/transport/routes.ts:190-205"
               ]
             },
             "persistenceEvent": {
@@ -17391,7 +17771,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [
@@ -17440,8 +17820,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 43,
-              "endLine": 47,
+              "line": 44,
+              "endLine": 48,
               "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
             },
             "authorization": {
@@ -17454,7 +17834,7 @@
                 "packages/service-kit/src/auth.ts:152-158",
                 "services/crm/src/application/customers.ts:118-142",
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             },
             "persistenceEvent": {
@@ -17463,7 +17843,7 @@
               "events": [],
               "evidence": [
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             }
           },
@@ -17472,8 +17852,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 64,
-              "endLine": 78,
+              "line": 65,
+              "endLine": 79,
               "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
             },
             "authorization": {
@@ -17490,7 +17870,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:69-117",
-                "services/crm/src/transport/routes.ts:64-78"
+                "services/crm/src/transport/routes.ts:65-79"
               ]
             },
             "persistenceEvent": {
@@ -17567,7 +17947,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -17578,8 +17958,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 295,
-              "endLine": 299,
+              "line": 297,
+              "endLine": 301,
               "fingerprint": "d972a570b0b1b332f1171dc56dec3c2700f50bbe4cd04762f63aa526ed560135"
             },
             "authorization": {
@@ -17594,7 +17974,7 @@
                 "packages/service-kit/src/http.ts:82-108",
                 "services/sales/src/application/quotes.ts:307-341",
                 "services/sales/src/application/quotes.ts:36-44",
-                "services/sales/src/transport/routes.ts:295-299"
+                "services/sales/src/transport/routes.ts:297-301"
               ]
             },
             "persistenceEvent": {
@@ -17671,7 +18051,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -17682,8 +18062,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -17697,7 +18077,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -17774,7 +18154,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -17785,8 +18165,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -17800,7 +18180,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -17877,7 +18257,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -17888,8 +18268,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -17903,7 +18283,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -18080,7 +18460,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -18091,8 +18471,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -18106,7 +18486,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -18183,7 +18563,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -18194,8 +18574,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -18209,7 +18589,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -18386,7 +18766,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -18397,8 +18777,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -18412,7 +18792,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -18489,7 +18869,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -18500,8 +18880,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 295,
-              "endLine": 299,
+              "line": 297,
+              "endLine": 301,
               "fingerprint": "d972a570b0b1b332f1171dc56dec3c2700f50bbe4cd04762f63aa526ed560135"
             },
             "authorization": {
@@ -18516,7 +18896,7 @@
                 "packages/service-kit/src/http.ts:82-108",
                 "services/sales/src/application/quotes.ts:307-341",
                 "services/sales/src/application/quotes.ts:36-44",
-                "services/sales/src/transport/routes.ts:295-299"
+                "services/sales/src/transport/routes.ts:297-301"
               ]
             },
             "persistenceEvent": {
@@ -18593,7 +18973,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [],
@@ -18604,8 +18984,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 53,
-              "endLine": 63,
+              "line": 54,
+              "endLine": 64,
               "fingerprint": "917585b676bdfce3a97a34d5e1b8ed773d77437d0fc945fc08bb0478389b10d8"
             },
             "authorization": {
@@ -18621,7 +19001,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:42-68",
-                "services/crm/src/transport/routes.ts:53-63"
+                "services/crm/src/transport/routes.ts:54-64"
               ]
             },
             "persistenceEvent": {
@@ -18798,7 +19178,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [],
@@ -18809,8 +19189,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 53,
-              "endLine": 63,
+              "line": 54,
+              "endLine": 64,
               "fingerprint": "917585b676bdfce3a97a34d5e1b8ed773d77437d0fc945fc08bb0478389b10d8"
             },
             "authorization": {
@@ -18826,7 +19206,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:42-68",
-                "services/crm/src/transport/routes.ts:53-63"
+                "services/crm/src/transport/routes.ts:54-64"
               ]
             },
             "persistenceEvent": {
@@ -20791,7 +21171,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -20829,8 +21209,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 204,
-              "endLine": 226,
+              "line": 206,
+              "endLine": 228,
               "fingerprint": "b8f8b626a60f0b73fa9c0034e6e5a692597c85d0d3d284f2641c672b37fc6e20"
             },
             "authorization": {
@@ -20845,7 +21225,7 @@
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
                 "services/sales/src/application/quotes.ts:45-66",
-                "services/sales/src/transport/routes.ts:204-226"
+                "services/sales/src/transport/routes.ts:206-228"
               ]
             },
             "persistenceEvent": {
@@ -20865,8 +21245,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 188,
-              "endLine": 203,
+              "line": 190,
+              "endLine": 205,
               "fingerprint": "29c947de5c8e3a85129f67d834005db9d06757ec4779fab2692581a8ffa23cff"
             },
             "authorization": {
@@ -20882,7 +21262,7 @@
                 "services/sales/src/application/quotes.ts:45-66",
                 "services/sales/src/application/quotes.ts:67-100",
                 "services/sales/src/application/visits.ts:21-25",
-                "services/sales/src/transport/routes.ts:188-203"
+                "services/sales/src/transport/routes.ts:190-205"
               ]
             },
             "persistenceEvent": {
@@ -21004,7 +21384,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -21042,8 +21422,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 204,
-              "endLine": 226,
+              "line": 206,
+              "endLine": 228,
               "fingerprint": "b8f8b626a60f0b73fa9c0034e6e5a692597c85d0d3d284f2641c672b37fc6e20"
             },
             "authorization": {
@@ -21058,7 +21438,7 @@
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
                 "services/sales/src/application/quotes.ts:45-66",
-                "services/sales/src/transport/routes.ts:204-226"
+                "services/sales/src/transport/routes.ts:206-228"
               ]
             },
             "persistenceEvent": {
@@ -21078,8 +21458,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 188,
-              "endLine": 203,
+              "line": 190,
+              "endLine": 205,
               "fingerprint": "29c947de5c8e3a85129f67d834005db9d06757ec4779fab2692581a8ffa23cff"
             },
             "authorization": {
@@ -21095,7 +21475,7 @@
                 "services/sales/src/application/quotes.ts:45-66",
                 "services/sales/src/application/quotes.ts:67-100",
                 "services/sales/src/application/visits.ts:21-25",
-                "services/sales/src/transport/routes.ts:188-203"
+                "services/sales/src/transport/routes.ts:190-205"
               ]
             },
             "persistenceEvent": {
@@ -21241,7 +21621,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -21279,8 +21659,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 204,
-              "endLine": 226,
+              "line": 206,
+              "endLine": 228,
               "fingerprint": "b8f8b626a60f0b73fa9c0034e6e5a692597c85d0d3d284f2641c672b37fc6e20"
             },
             "authorization": {
@@ -21295,7 +21675,7 @@
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
                 "services/sales/src/application/quotes.ts:45-66",
-                "services/sales/src/transport/routes.ts:204-226"
+                "services/sales/src/transport/routes.ts:206-228"
               ]
             },
             "persistenceEvent": {
@@ -21315,8 +21695,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 188,
-              "endLine": 203,
+              "line": 190,
+              "endLine": 205,
               "fingerprint": "29c947de5c8e3a85129f67d834005db9d06757ec4779fab2692581a8ffa23cff"
             },
             "authorization": {
@@ -21332,7 +21712,7 @@
                 "services/sales/src/application/quotes.ts:45-66",
                 "services/sales/src/application/quotes.ts:67-100",
                 "services/sales/src/application/visits.ts:21-25",
-                "services/sales/src/transport/routes.ts:188-203"
+                "services/sales/src/transport/routes.ts:190-205"
               ]
             },
             "persistenceEvent": {
@@ -21397,7 +21777,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -21425,8 +21805,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 300,
-              "endLine": 312,
+              "line": 302,
+              "endLine": 314,
               "fingerprint": "c6eb0847c957e06e73754215e2faf8eec5bd11b33baa8c7810ff86ad07dd820b"
             },
             "authorization": {
@@ -21437,14 +21817,14 @@
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/auth.ts:139-151",
                 "packages/service-kit/src/auth.ts:152-158",
-                "services/sales/src/transport/routes.ts:300-312"
+                "services/sales/src/transport/routes.ts:302-314"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["fulfillments"],
               "events": [],
-              "evidence": ["services/sales/src/transport/routes.ts:300-312"]
+              "evidence": ["services/sales/src/transport/routes.ts:302-314"]
             }
           }
         ],
@@ -21813,7 +22193,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [
@@ -21862,8 +22242,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 43,
-              "endLine": 47,
+              "line": 44,
+              "endLine": 48,
               "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
             },
             "authorization": {
@@ -21876,7 +22256,7 @@
                 "packages/service-kit/src/auth.ts:152-158",
                 "services/crm/src/application/customers.ts:118-142",
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             },
             "persistenceEvent": {
@@ -21885,7 +22265,7 @@
               "events": [],
               "evidence": [
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             }
           },
@@ -21894,8 +22274,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 64,
-              "endLine": 78,
+              "line": 65,
+              "endLine": 79,
               "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
             },
             "authorization": {
@@ -21912,7 +22292,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:69-117",
-                "services/crm/src/transport/routes.ts:64-78"
+                "services/crm/src/transport/routes.ts:65-79"
               ]
             },
             "persistenceEvent": {
@@ -22298,7 +22678,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           },
           {
             "path": "services/sales/src/application/discounts.ts",
@@ -22314,7 +22694,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -22356,8 +22736,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 53,
-              "endLine": 63,
+              "line": 54,
+              "endLine": 64,
               "fingerprint": "917585b676bdfce3a97a34d5e1b8ed773d77437d0fc945fc08bb0478389b10d8"
             },
             "authorization": {
@@ -22373,7 +22753,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:42-68",
-                "services/crm/src/transport/routes.ts:53-63"
+                "services/crm/src/transport/routes.ts:54-64"
               ]
             },
             "persistenceEvent": {
@@ -22392,8 +22772,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 295,
-              "endLine": 299,
+              "line": 297,
+              "endLine": 301,
               "fingerprint": "d972a570b0b1b332f1171dc56dec3c2700f50bbe4cd04762f63aa526ed560135"
             },
             "authorization": {
@@ -22408,7 +22788,7 @@
                 "packages/service-kit/src/http.ts:82-108",
                 "services/sales/src/application/quotes.ts:307-341",
                 "services/sales/src/application/quotes.ts:36-44",
-                "services/sales/src/transport/routes.ts:295-299"
+                "services/sales/src/transport/routes.ts:297-301"
               ]
             },
             "persistenceEvent": {
@@ -22458,8 +22838,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -22473,7 +22853,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -22492,8 +22872,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -22507,7 +22887,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -22526,8 +22906,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 274,
-              "endLine": 278,
+              "line": 276,
+              "endLine": 280,
               "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
             },
             "authorization": {
@@ -22541,7 +22921,7 @@
                 "services/sales/src/application/quotes.ts:219-306",
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
-                "services/sales/src/transport/routes.ts:274-278"
+                "services/sales/src/transport/routes.ts:276-280"
               ]
             },
             "persistenceEvent": {
@@ -22598,7 +22978,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [],
@@ -22609,15 +22989,15 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 23,
-              "endLine": 25,
+              "line": 24,
+              "endLine": 26,
               "fingerprint": "753dfcd17f4aa19f1a33512e42ffa6a45eaededf016374b9ab4cd12a73839b5b"
             },
             "authorization": {
               "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
               "controls": [],
               "roles": [],
-              "evidence": ["services/crm/src/transport/routes.ts:23-25"]
+              "evidence": ["services/crm/src/transport/routes.ts:24-26"]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
@@ -22625,7 +23005,7 @@
               "events": [],
               "evidence": [
                 "services/crm/src/application/configuration.ts:92-116",
-                "services/crm/src/transport/routes.ts:23-25"
+                "services/crm/src/transport/routes.ts:24-26"
               ]
             }
           }
@@ -23275,7 +23655,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -23303,8 +23683,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 279,
-              "endLine": 289,
+              "line": 281,
+              "endLine": 291,
               "fingerprint": "5197daeadb1b1553163487ffbae65d7bbaf32d945dfdd409e5d52eabfdb9e4c6"
             },
             "authorization": {
@@ -23314,14 +23694,14 @@
               "evidence": [
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/pagination.ts:32-44",
-                "services/sales/src/transport/routes.ts:279-289"
+                "services/sales/src/transport/routes.ts:281-291"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["contracts"],
               "events": [],
-              "evidence": ["services/sales/src/transport/routes.ts:279-289"]
+              "evidence": ["services/sales/src/transport/routes.ts:281-291"]
             }
           },
           {
@@ -23329,8 +23709,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 300,
-              "endLine": 312,
+              "line": 302,
+              "endLine": 314,
               "fingerprint": "c6eb0847c957e06e73754215e2faf8eec5bd11b33baa8c7810ff86ad07dd820b"
             },
             "authorization": {
@@ -23341,14 +23721,14 @@
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/auth.ts:139-151",
                 "packages/service-kit/src/auth.ts:152-158",
-                "services/sales/src/transport/routes.ts:300-312"
+                "services/sales/src/transport/routes.ts:302-314"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["fulfillments"],
               "events": [],
-              "evidence": ["services/sales/src/transport/routes.ts:300-312"]
+              "evidence": ["services/sales/src/transport/routes.ts:302-314"]
             }
           }
         ],
@@ -23652,7 +24032,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           },
           {
             "path": "services/sales/src/application/assignment.ts",
@@ -23664,7 +24044,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -23675,8 +24055,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 31,
-              "endLine": 42,
+              "line": 32,
+              "endLine": 43,
               "fingerprint": "73690accbf04e222d25c5f29c1bf6eb2f06c913b9123da885879ef43100d5dc1"
             },
             "authorization": {
@@ -23687,14 +24067,14 @@
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/pagination.ts:32-44",
                 "services/crm/src/application/customers.ts:118-142",
-                "services/crm/src/transport/routes.ts:31-42"
+                "services/crm/src/transport/routes.ts:32-43"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["customers"],
               "events": [],
-              "evidence": ["services/crm/src/transport/routes.ts:31-42"]
+              "evidence": ["services/crm/src/transport/routes.ts:32-43"]
             }
           },
           {
@@ -23702,8 +24082,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 152,
-              "endLine": 168,
+              "line": 154,
+              "endLine": 170,
               "fingerprint": "5e75a03175320b1b02f405f2b4b2eadc6e379be357f474063da131e208edf1a9"
             },
             "authorization": {
@@ -23714,14 +24094,14 @@
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/pagination.ts:32-44",
                 "services/sales/src/application/assignment.ts:100-137",
-                "services/sales/src/transport/routes.ts:152-168"
+                "services/sales/src/transport/routes.ts:154-170"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["quotes"],
               "events": [],
-              "evidence": ["services/sales/src/transport/routes.ts:152-168"]
+              "evidence": ["services/sales/src/transport/routes.ts:154-170"]
             }
           },
           {
@@ -23761,8 +24141,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 43,
-              "endLine": 55,
+              "line": 45,
+              "endLine": 57,
               "fingerprint": "8ecd3c1cb60695bbd51db3ac4c4362f9cd6c0089f5797dc56bcb7000476dae2d"
             },
             "authorization": {
@@ -23775,7 +24155,7 @@
                 "packages/service-kit/src/pagination.ts:32-44",
                 "services/sales/src/application/assignment.ts:100-137",
                 "services/sales/src/application/assignment.ts:82-99",
-                "services/sales/src/transport/routes.ts:43-55"
+                "services/sales/src/transport/routes.ts:45-57"
               ]
             },
             "persistenceEvent": {
@@ -23784,7 +24164,7 @@
               "events": [],
               "evidence": [
                 "services/sales/src/application/assignment.ts:82-99",
-                "services/sales/src/transport/routes.ts:43-55"
+                "services/sales/src/transport/routes.ts:45-57"
               ]
             }
           }
@@ -24038,7 +24418,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           },
           {
             "path": "services/sales/src/application/assignment.ts",
@@ -24054,7 +24434,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [],
@@ -24065,8 +24445,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 31,
-              "endLine": 42,
+              "line": 32,
+              "endLine": 43,
               "fingerprint": "73690accbf04e222d25c5f29c1bf6eb2f06c913b9123da885879ef43100d5dc1"
             },
             "authorization": {
@@ -24077,14 +24457,14 @@
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/pagination.ts:32-44",
                 "services/crm/src/application/customers.ts:118-142",
-                "services/crm/src/transport/routes.ts:31-42"
+                "services/crm/src/transport/routes.ts:32-43"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["customers"],
               "events": [],
-              "evidence": ["services/crm/src/transport/routes.ts:31-42"]
+              "evidence": ["services/crm/src/transport/routes.ts:32-43"]
             }
           },
           {
@@ -24092,8 +24472,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 279,
-              "endLine": 289,
+              "line": 281,
+              "endLine": 291,
               "fingerprint": "5197daeadb1b1553163487ffbae65d7bbaf32d945dfdd409e5d52eabfdb9e4c6"
             },
             "authorization": {
@@ -24103,14 +24483,14 @@
               "evidence": [
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/pagination.ts:32-44",
-                "services/sales/src/transport/routes.ts:279-289"
+                "services/sales/src/transport/routes.ts:281-291"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["contracts"],
               "events": [],
-              "evidence": ["services/sales/src/transport/routes.ts:279-289"]
+              "evidence": ["services/sales/src/transport/routes.ts:281-291"]
             }
           },
           {
@@ -24276,7 +24656,7 @@
           },
           {
             "path": "services/delivery/src/transport/routes.ts",
-            "sha256": "6e20c5cb3b7bea1459e3840fd64bd8b910bae7d799e08132f070986005c2363e"
+            "sha256": "fd4c8e02b169c61b575fd63e0e9d64e640c6d078687192a998fd307828837b9a"
           }
         ],
         "originalEndpoints": [],
@@ -24287,8 +24667,8 @@
             "owningService": "delivery",
             "source": {
               "path": "services/delivery/src/transport/routes.ts",
-              "line": 20,
-              "endLine": 27,
+              "line": 21,
+              "endLine": 28,
               "fingerprint": "88127d3bbdcda74b165dcc66774994cb6d57b076f8ca9c63abdfcf4382844eff"
             },
             "authorization": {
@@ -24298,14 +24678,14 @@
               "evidence": [
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/pagination.ts:32-44",
-                "services/delivery/src/transport/routes.ts:20-27"
+                "services/delivery/src/transport/routes.ts:21-28"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["projects"],
               "events": [],
-              "evidence": ["services/delivery/src/transport/routes.ts:20-27"]
+              "evidence": ["services/delivery/src/transport/routes.ts:21-28"]
             }
           }
         ],
@@ -24416,7 +24796,7 @@
           },
           {
             "path": "services/sales/src/transport/routes.ts",
-            "sha256": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add"
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
           }
         ],
         "originalEndpoints": [
@@ -24478,8 +24858,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 204,
-              "endLine": 226,
+              "line": 206,
+              "endLine": 228,
               "fingerprint": "b8f8b626a60f0b73fa9c0034e6e5a692597c85d0d3d284f2641c672b37fc6e20"
             },
             "authorization": {
@@ -24494,7 +24874,7 @@
                 "services/sales/src/application/quotes.ts:22-30",
                 "services/sales/src/application/quotes.ts:31-35",
                 "services/sales/src/application/quotes.ts:45-66",
-                "services/sales/src/transport/routes.ts:204-226"
+                "services/sales/src/transport/routes.ts:206-228"
               ]
             },
             "persistenceEvent": {
@@ -24514,8 +24894,8 @@
             "owningService": "sales",
             "source": {
               "path": "services/sales/src/transport/routes.ts",
-              "line": 188,
-              "endLine": 203,
+              "line": 190,
+              "endLine": 205,
               "fingerprint": "29c947de5c8e3a85129f67d834005db9d06757ec4779fab2692581a8ffa23cff"
             },
             "authorization": {
@@ -24531,7 +24911,7 @@
                 "services/sales/src/application/quotes.ts:45-66",
                 "services/sales/src/application/quotes.ts:67-100",
                 "services/sales/src/application/visits.ts:21-25",
-                "services/sales/src/transport/routes.ts:188-203"
+                "services/sales/src/transport/routes.ts:190-205"
               ]
             },
             "persistenceEvent": {
@@ -24691,7 +25071,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           },
           {
             "path": "services/sales/src/application/assignment.ts",
@@ -24714,8 +25094,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 31,
-              "endLine": 42,
+              "line": 32,
+              "endLine": 43,
               "fingerprint": "73690accbf04e222d25c5f29c1bf6eb2f06c913b9123da885879ef43100d5dc1"
             },
             "authorization": {
@@ -24726,14 +25106,14 @@
                 "packages/service-kit/src/auth.ts:129-130",
                 "packages/service-kit/src/pagination.ts:32-44",
                 "services/crm/src/application/customers.ts:118-142",
-                "services/crm/src/transport/routes.ts:31-42"
+                "services/crm/src/transport/routes.ts:32-43"
               ]
             },
             "persistenceEvent": {
               "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
               "tables": ["customers"],
               "events": [],
-              "evidence": ["services/crm/src/transport/routes.ts:31-42"]
+              "evidence": ["services/crm/src/transport/routes.ts:32-43"]
             }
           },
           {
@@ -25209,7 +25589,7 @@
           },
           {
             "path": "services/crm/src/transport/routes.ts",
-            "sha256": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2"
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
           }
         ],
         "originalEndpoints": [
@@ -25288,8 +25668,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 43,
-              "endLine": 47,
+              "line": 44,
+              "endLine": 48,
               "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
             },
             "authorization": {
@@ -25302,7 +25682,7 @@
                 "packages/service-kit/src/auth.ts:152-158",
                 "services/crm/src/application/customers.ts:118-142",
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             },
             "persistenceEvent": {
@@ -25311,7 +25691,7 @@
               "events": [],
               "evidence": [
                 "services/crm/src/application/customers.ts:17-30",
-                "services/crm/src/transport/routes.ts:43-47"
+                "services/crm/src/transport/routes.ts:44-48"
               ]
             }
           },
@@ -25320,8 +25700,8 @@
             "owningService": "crm",
             "source": {
               "path": "services/crm/src/transport/routes.ts",
-              "line": 64,
-              "endLine": 78,
+              "line": 65,
+              "endLine": 79,
               "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
             },
             "authorization": {
@@ -25338,7 +25718,7 @@
                 "services/crm/src/application/customers.ts:17-30",
                 "services/crm/src/application/customers.ts:31-41",
                 "services/crm/src/application/customers.ts:69-117",
-                "services/crm/src/transport/routes.ts:64-78"
+                "services/crm/src/transport/routes.ts:65-79"
               ]
             },
             "persistenceEvent": {
@@ -25473,7 +25853,7 @@
         "evidence": [
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/pagination.ts:32-44",
-          "services/crm/src/transport/routes.ts:33-39"
+          "services/crm/src/transport/routes.ts:34-40"
         ]
       },
       "tables": ["customers"],
@@ -25511,7 +25891,7 @@
         "evidence": [
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/pagination.ts:32-44",
-          "services/delivery/src/transport/routes.ts:22-25"
+          "services/delivery/src/transport/routes.ts:23-26"
         ]
       },
       "tables": ["projects"],
@@ -25579,6 +25959,27 @@
       "resolution": "REVIEW_REQUIRED"
     },
     {
+      "featureId": "search-filter:services/sales/src/application/service-requests.ts:b218eb8cd8d0:1",
+      "source": "services/sales/src/application/service-requests.ts",
+      "mode": "backend",
+      "owner": "sales",
+      "endpoints": [],
+      "authorization": {
+        "status": "SOURCE_CONTROLS_OBSERVED_NOT_RUNTIME_PROOF",
+        "controls": ["actorScopes"],
+        "roles": [],
+        "evidence": [
+          "packages/service-kit/src/auth.ts:129-130",
+          "packages/service-kit/src/pagination.ts:32-44",
+          "services/sales/src/application/service-requests.ts:75-78"
+        ]
+      },
+      "tables": ["service_requests"],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
       "featureId": "search-filter:services/sales/src/transport/routes.ts:b218eb8cd8d0:1",
       "source": "services/sales/src/transport/routes.ts",
       "mode": "backend",
@@ -25608,7 +26009,7 @@
         "evidence": [
           "packages/service-kit/src/auth.ts:129-130",
           "packages/service-kit/src/pagination.ts:32-44",
-          "services/sales/src/transport/routes.ts:281-287"
+          "services/sales/src/transport/routes.ts:283-289"
         ]
       },
       "tables": ["contracts"],
