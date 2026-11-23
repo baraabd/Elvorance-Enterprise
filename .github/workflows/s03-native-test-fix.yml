@@ -1,0 +1,72 @@
+name: S03 reviewed native test identity fix
+on:
+  push:
+    branches: [work/s03-native-test-identity-20261123]
+permissions:
+  contents: read
+jobs:
+  apply:
+    if: github.repository == 'baraabd/Elvorance-Enterprise' && github.ref == 'refs/heads/work/s03-native-test-identity-20261123' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - name: Apply exact reviewed assertion repair
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = e8b029f20850fa49f261b94eccfb0ced2503626d
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path('apps/client-mobile/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java')
+          text=p.read_text()
+          old='assertEquals("com.getcapacitor.app", appContext.getPackageName());'
+          assert text.count(old)==1
+          p.write_text(text.replace(old, '// The CI harness installs the isolated staging flavor, never the production app.\n        assertEquals("com.elvorance.client.staging", appContext.getPackageName());'))
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='c577137de4fd9bac603dae5a7c8eefd4dc9896bdddc41c771f82fe2b37c34720'
+          Path('.github/workflows/s03-native-test-fix.yml').unlink()
+          PY
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - run: npm run inventory:write
+      - name: Match reviewed generated artifacts exactly
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          expected={
+            'architecture-inventory':'cf4ff4d36eb1acd2f244ea5a61b03aad7a03298771a9577679fd7fa28188fb01',
+            'feature-matrix':'4a6bd2c45789fb7119691b199edf53875f99ece3f66dd987761a5fe5be108e78',
+            'data-flow-inventory':'403a91fd5ebf3010ca81a2e96f4c41a039e3e3aba6574a140ce5d884229f82f3',
+            'semantic-review':'190636dcdac453d36371b3a712c11a2e2c5d3a539dc292bcbfdfed97089e4210',
+            'ownership-dependency-map':'8736c60687f88685351511cd920ce9990b31264f3a00bc5d0bd1b004578a1b53',
+            'workflow-debt':'3b8bb0712f2db19876ff19f0d262e897c946bd612b1464006c7f77d313075870'
+          }
+          for name,digest in expected.items():
+              assert hashlib.sha256(Path(f'docs/production/{name}.json').read_bytes()).hexdigest()==digest,name
+          PY
+          npm run inventory:check
+          git diff --check
+      - name: Commit only to isolated repair branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git restore --source=HEAD -- .github/workflows/s03-native-test-fix.yml
+          git add apps/client-mobile/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java docs/production/
+          test -z "$(git diff --cached --name-only -- .github)"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'test(android): assert isolated customer staging application identity'
+          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          echo "::add-mask::$auth"
+          git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $auth" push origin HEAD:refs/heads/work/s03-native-test-identity-20261123
+          git rev-parse HEAD
