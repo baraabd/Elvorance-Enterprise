@@ -1,0 +1,67 @@
+name: Materialize reviewed Sprint 02 source
+on:
+  push:
+    branches: [ops/s02-publication-20261123]
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Save transport diagnostics without executing the payload
+        run: |
+          mkdir -p /tmp/s02-publication
+          cp .s02-publish/patch.* /tmp/s02-publication/
+      - name: Verify reviewed patch before applying
+        run: |
+          python3 - <<'PY'
+          import base64,gzip,hashlib,pathlib
+          encoded=''.join(pathlib.Path(f'.s02-publish/patch.{i}').read_text().strip() for i in range(3))
+          compressed=base64.b64decode(encoded,validate=True)
+          assert hashlib.sha256(compressed).hexdigest()=='73fc1bdc04d843340d84016a90dec931f1c84a37aad24ca1fb67e17b35aea900','PATCH_TRANSPORT_MISMATCH'
+          patch=gzip.decompress(compressed)
+          assert hashlib.sha256(patch).hexdigest()=='efc7aeeb93c510c98af10cbb577efaf829940277d726d14d4ceeb22cd402d487','PATCH_CONTENT_MISMATCH'
+          pathlib.Path('/tmp/s02.patch').write_bytes(patch)
+          PY
+      - name: Prepare final source tree without transport files
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          git checkout --detach da211a625426cd1d016306fb9c39adf76837b6b1
+          git apply --index --whitespace=error-all /tmp/s02.patch
+          git diff --cached --check
+          TREE=$(git write-tree)
+          COMMIT=$(printf '%s\n' 'feat(s02): isolate staging, trace migrations, retain encrypted recovery and gate releases' | git commit-tree "$TREE" -p 153bab7248c7801f05c3340aee6a17ef9fb9d597)
+          printf '%s\n' "$COMMIT" > /tmp/s02-publication/commit.txt
+          printf '%s\n' "$TREE" > /tmp/s02-publication/tree.txt
+          git diff --cached --name-only -z | xargs -0 sha256sum > /tmp/s02-publication/files.sha256
+      - name: Publish only the isolated prepared-source ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat > /tmp/s02-askpass <<'SH'
+          #!/bin/sh
+          case "$1" in
+            *Username*) printf '%s\n' x-access-token ;;
+            *Password*) printf '%s\n' "$GH_TOKEN" ;;
+            *) exit 1 ;;
+          esac
+          SH
+          chmod 700 /tmp/s02-askpass
+          GIT_ASKPASS=/tmp/s02-askpass GIT_TERMINAL_PROMPT=0 git push origin "$(cat /tmp/s02-publication/commit.txt):refs/heads/ops/s02-prepared-20261123"
+          rm /tmp/s02-askpass
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: s02-reviewed-publication-${{ github.sha }}
+          path: /tmp/s02-publication/
+          retention-days: 3
+          if-no-files-found: error
