@@ -22,6 +22,11 @@ jobs:
           python3 - <<'PY'
           import base64,gzip,hashlib,pathlib
           encoded=''.join(pathlib.Path(f'.s02-publish/patch.{i}').read_text().strip() for i in range(3))
+          assert hashlib.sha256(encoded.encode()).hexdigest()=='4c9590d764df94e716a9f55074ad70e7bed41882fa3e6bd6479385fefccfaa4b','UNEXPECTED_TRANSPORT'
+          corrections=[[574,576,'st',''],[880,880,'','2pl'],[1724,1726,'yM','N'],[2010,2012,'ys',''],[2557,2560,'f0h','wTR'],[8487,8489,'Fr','']]
+          for start,end,old,new in reversed(corrections):
+              assert encoded[start:end]==old
+              encoded=encoded[:start]+new+encoded[end:]
           compressed=base64.b64decode(encoded,validate=True)
           assert hashlib.sha256(compressed).hexdigest()=='73fc1bdc04d843340d84016a90dec931f1c84a37aad24ca1fb67e17b35aea900','PATCH_TRANSPORT_MISMATCH'
           patch=gzip.decompress(compressed)
