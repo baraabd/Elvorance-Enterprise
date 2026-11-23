@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "85cb662eb1d305ee149781793b16c0cc2d0952dba141b51661eb187793a63c8b",
+  "sourceDigest": "469030ad43b3115704c7c7fcab42915b0263313ef0171666ee781ba67cf10af9",
   "accountability": "Proposed roles only; named service/on-call owners are UNASSIGNED. CODEOWNERS routes review to the repository owner, not proof of independent approval.",
   "services": [
     {
@@ -1901,6 +1901,12 @@
       "source": "tests/backend/security-and-gateway.test.ts",
       "specifier": "../../services/api-gateway/src/domain/routes.ts"
     },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:os" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:path" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:child_process" },
     { "source": "tests/backend/tracking-and-communications.test.ts", "specifier": "node:test" },
     {
       "source": "tests/backend/tracking-and-communications.test.ts",
@@ -2129,6 +2135,19 @@
       "source": "tests/production/branch-protection.test.mts",
       "specifier": "../../tooling/production/branch-protection.mts"
     },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:path" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:os" },
+    {
+      "source": "tests/production/debt-comments.test.mts",
+      "specifier": "../../tooling/production/source.mts"
+    },
+    {
+      "source": "tests/production/debt-comments.test.mts",
+      "specifier": "../../tooling/production/debt.mts"
+    },
     { "source": "tests/production/gap-report.test.mts", "specifier": "node:test" },
     { "source": "tests/production/gap-report.test.mts", "specifier": "node:assert/strict" },
     {
@@ -2222,6 +2241,12 @@
     {
       "source": "tests/production/semantic-bindings.test.mts",
       "specifier": "../../tooling/production/model.mts"
+    },
+    { "source": "tests/production/source-proof.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/source-proof.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/production/source-proof.test.mts",
+      "specifier": "../../tooling/production/source-proof.mts"
     },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:test" },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:assert/strict" },
@@ -2395,6 +2420,13 @@
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "node:path" },
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "./source.mts" },
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "./model.mts" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:child_process" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:crypto" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:path" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:url" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "fflate" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "./evidence.mts" },
     { "source": "tooling/production/source.mts", "specifier": "node:crypto" },
     { "source": "tooling/production/source.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/production/source.mts", "specifier": "node:path" },
@@ -2607,6 +2639,15 @@
       "source": "tooling/scripts/rep-release/check-acceptance.mts",
       "specifier": "./acceptance.mts"
     },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:fs" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:path" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:crypto" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "typescript" },
+    {
+      "source": "tooling/scripts/sprint01-inventory.mts",
+      "specifier": "../production/registration-source.mts"
+    },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "../production/source.mts" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "esbuild" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "node:child_process" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "node:path" },

@@ -1,5 +1,10 @@
 # Sprint 01 — تدقيق المصدر والتحقق والإصلاح المحدود
 
+> Historical audit of `main@12264edff0f8e5f1d241188aed65a0aa8e9992cb` and
+> PR #4 at `161e7fdb39c02e43c4761f6385a28b7dff832ecb` on 21 November 2026.
+> References to main and PR state below are NOT current status. For the 23 November
+> reconciliation, see [PR-RECONCILIATION](../../production/PR-RECONCILIATION.md).
+
 التاريخ: 2026-11-21. النطاق: Admin Web وClient App وRepresentative App. هذه نتيجة فحص مصدر وتشغيل اختبارات، وليست موافقة إطلاق أو شهادة خلو من الثغرات.
 
 ## النسخ ومصدر الأدلة

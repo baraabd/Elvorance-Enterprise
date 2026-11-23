@@ -31,7 +31,14 @@ test('FULL-CI retains every project suite and all mandatory native/runtime/ident
   for (const name of ['project-linux', 'project-windows']) {
     const lane = contract.lanes.find((row) => row.name === name);
     assert.ok(lane);
-    for (const id of ['inventory', 'merged', 'example-build', 'format', 'package'])
+    for (const id of [
+      'inventory',
+      'merged',
+      'example-build',
+      'format',
+      'package',
+      'source-package-integrity',
+    ])
       assert.ok(lane.commands.includes(id));
   }
   assert.equal(

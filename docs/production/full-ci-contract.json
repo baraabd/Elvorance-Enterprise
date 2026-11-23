@@ -16,7 +16,8 @@
         "merged",
         "example-build",
         "format",
-        "package"
+        "package",
+        "source-package-integrity"
       ],
       "countedCommands": ["tests", "parity", "regression", "merged"],
       "allowedSkips": [],
@@ -37,7 +38,8 @@
         "merged",
         "example-build",
         "format",
-        "package"
+        "package",
+        "source-package-integrity"
       ],
       "countedCommands": ["tests", "parity", "regression", "merged"],
       "allowedSkips": [

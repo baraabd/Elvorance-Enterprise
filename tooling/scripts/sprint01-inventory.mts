@@ -2,6 +2,8 @@ import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync } from 
 import { resolve, relative, dirname } from 'node:path';
 import { createHash } from 'node:crypto';
 import ts from 'typescript';
+import { registeredSources } from '../production/registration-source.mts';
+import type { Workspace } from '../production/source.mts';
 
 // Source-only inventory. Static registration is not end-to-end acceptance or a security proof.
 const root = resolve(process.argv[2] ?? '.');
@@ -18,6 +20,11 @@ const files = ['apps', 'packages', 'services', 'tests', 'tooling', 'infra', '.gi
   .flatMap((name) => (existsSync(resolve(root, name)) ? walk(resolve(root, name)) : []))
   .sort();
 const pathOf = (path: string): string => relative(root, path).replaceAll('\\', '/');
+const ownerOf = (path: string): string => {
+  const owner = path.split('/')[1];
+  if (!owner) throw new Error(`Missing workspace owner: ${path}`);
+  return owner;
+};
 const textOf = (path: string): string => readFileSync(path, 'utf8');
 const nameOf = (node: ts.PropertyName | ts.BindingName | undefined): string => {
   if (!node) return '<anonymous>';
@@ -58,12 +65,35 @@ const sources: Array<{
   disabledTypeChecking: boolean;
 }> = [];
 const guards = /\b(requireRole|requireOwner|hasRole|isOwner|canReadQuote|authorize\w*)\s*\(/;
-for (const file of files.filter(
+const codeFiles = files.filter(
   (path) => /\.(?:ts|mts|cts|tsx)$/.test(path) && !path.endsWith('.d.ts'),
-)) {
+);
+const program = ts.createProgram(codeFiles, {
+  target: ts.ScriptTarget.ESNext,
+  module: ts.ModuleKind.NodeNext,
+  moduleResolution: ts.ModuleResolutionKind.NodeNext,
+  allowImportingTsExtensions: true,
+  noEmit: true,
+  skipLibCheck: true,
+});
+const ws: Workspace = {
+  root,
+  files: files.map(pathOf),
+  sources: new Map(),
+  checker: program.getTypeChecker(),
+};
+const rawRegistrations: Array<{ node: ts.CallExpression; path: string; line: number }> = [];
+for (const file of codeFiles) {
   const text = textOf(file);
   const path = pathOf(file);
-  const source = ts.createSourceFile(file, text, ts.ScriptTarget.Latest, true);
+  const source = program.getSourceFile(file);
+  if (!source) throw new Error(`Unable to parse source: ${path}`);
+  ws.sources.set(path, {
+    path,
+    text,
+    ast: source,
+    digest: createHash('sha256').update(text).digest('hex'),
+  });
   const location = (node: ts.Node): Evidence => ({
     path,
     line: source.getLineAndCharacterOfPosition(node.getStart(source)).line + 1,
@@ -103,31 +133,13 @@ for (const file of files.filter(
     }
     if (
       path.startsWith('services/') &&
+      path.includes('/transport/') &&
       ts.isCallExpression(node) &&
       ts.isPropertyAccessExpression(node.expression) &&
       node.expression.expression.getText(source) === 'app' &&
-      /^(get|post|patch|put|delete|options|head|all)$/.test(node.expression.name.text)
+      /^(get|post|patch|put|delete|options|head|route)$/.test(node.expression.name.text)
     ) {
-      const target = node.arguments[0];
-      if (target) {
-        let pattern = ts.isStringLiteralLike(target) ? target.text : target.getText(source);
-        if (ts.isTemplateExpression(target))
-          pattern = pattern.slice(1, -1).replace(/\$\{[^}]+\}/g, '*');
-        const calls = new Set<string>();
-        const collect = (child: ts.Node): void => {
-          if (ts.isCallExpression(child) && ts.isIdentifier(child.expression))
-            calls.add(child.expression.text);
-          ts.forEachChild(child, collect);
-        };
-        node.arguments.slice(1).forEach(collect);
-        registrations.push({
-          ...location(node),
-          service: path.split('/')[1]!,
-          method: node.expression.name.text.toUpperCase(),
-          pattern,
-          calls: [...calls].sort(),
-        });
-      }
+      rawRegistrations.push({ node, path, line: location(node).line });
     }
     if (
       path.startsWith('apps/') &&
@@ -140,7 +152,7 @@ for (const file of files.filter(
         if (!property.name) continue;
         ui.push({
           ...location(property),
-          app: path.split('/')[1]!,
+          app: ownerOf(path),
           kind: nameOf(node.name),
           key: nameOf(property.name),
           mode: 'legacy-demo',
@@ -173,6 +185,40 @@ for (const file of files.filter(
   };
   visit(source);
 }
+const resolvedNodes = new Set<ts.Node>();
+const services = [
+  ...new Set([...ws.sources.keys()].filter((path) => path.startsWith('services/')).map(ownerOf)),
+];
+for (const service of services) {
+  for (const row of registeredSources(ws, service)) {
+    if (!row.source.path.startsWith(`services/${service}/`)) continue;
+    resolvedNodes.add(row.node);
+    const calls = new Set<string>();
+    const collect = (node: ts.Node): void => {
+      if (ts.isCallExpression(node) && ts.isIdentifier(node.expression))
+        calls.add(node.expression.text);
+      ts.forEachChild(node, collect);
+    };
+    row.node.arguments.slice(1).forEach(collect);
+    registrations.push({
+      service,
+      method: row.method,
+      pattern: row.path,
+      calls: [...calls].sort(),
+      path: row.source.path,
+      line: row.source.ast.getLineAndCharacterOfPosition(row.node.getStart()).line + 1,
+      endLine: row.source.ast.getLineAndCharacterOfPosition(row.node.getEnd()).line + 1,
+    });
+  }
+}
+const unresolvedRegistrations = rawRegistrations
+  .filter((row) => !resolvedNodes.has(row.node))
+  .map((row) => ({
+    path: row.path,
+    line: row.line,
+    expression: row.node.getText(),
+    status: 'UNRESOLVED_NOT_VERIFIED',
+  }));
 interface DeclaredRoute {
   service: string;
   method: string;
@@ -185,15 +231,7 @@ const declared = JSON.parse(
   textOf(resolve(root, 'packages/contracts/route-inventory.json')),
 ) as DeclaredRoute[];
 const canonical = (path: string): string => path.replace(/\{([^}]+)\}/g, ':$1');
-const matches = (pattern: string, target: string): boolean =>
-  new RegExp(
-    '^' +
-      pattern
-        .split('*')
-        .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-        .join('[^/]+') +
-      '$',
-  ).test(target);
+const matches = (pattern: string, target: string): boolean => pattern === target;
 const operations = declared.map((route) => {
   const sourceRoutes = registrations.filter(
     (row) =>
@@ -216,6 +254,7 @@ const operations = declared.map((route) => {
 });
 const undocumentedRegistrations = registrations.filter(
   (row) =>
+    row.service !== 'api-gateway' &&
     row.path.includes('/transport/') &&
     row.pattern.startsWith('/v1/') &&
     !declared.some(
@@ -240,8 +279,9 @@ const result = {
   limitations: [
     'No hosted staging or physical-device acceptance.',
     'Anonymous functions are listed but not individually certified.',
-    'Dynamic routes match source templates; role declarations require behavioral tests.',
+    'Only finite compiler-bound registrations match; unresolved dynamic calls fail closed. Role declarations require behavioral tests.',
     'Legacy demo actions are not server integration.',
+    'Gateway forwarding registrations are listed separately, not compared to domain-service operations.',
   ],
   counts: {
     workspaces: manifests.length,
@@ -251,8 +291,10 @@ const result = {
     legacyActions: ui.filter((row) => row.kind === 'actions').length,
     representativeServerPages: ui.filter((row) => row.kind === 'server-page').length,
     documentedOperations: operations.length,
+    gatewayProxyRegistrations: registrations.filter((row) => row.service === 'api-gateway').length,
     unmatchedOperations: operations.filter((row) => !row.registrationVerified).length,
     undocumentedRegistrations: undocumentedRegistrations.length,
+    unresolvedRegistrations: unresolvedRegistrations.length,
   },
   manifests,
   sources,
@@ -260,6 +302,7 @@ const result = {
   operations,
   registrations,
   undocumentedRegistrations,
+  unresolvedRegistrations,
   symbols,
   migrations: files
     .filter((path) => path.endsWith('.sql') || path.includes('/migrations/'))
@@ -275,4 +318,9 @@ const result = {
 mkdirSync(dirname(output), { recursive: true });
 writeFileSync(output, JSON.stringify(result, null, 2) + '\n');
 console.log(JSON.stringify(result.counts, null, 2));
-if (result.counts.unmatchedOperations || undocumentedRegistrations.length) process.exitCode = 1;
+if (
+  result.counts.unmatchedOperations ||
+  undocumentedRegistrations.length ||
+  unresolvedRegistrations.length
+)
+  process.exitCode = 1;
