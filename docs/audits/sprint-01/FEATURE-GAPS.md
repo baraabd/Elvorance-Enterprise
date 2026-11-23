@@ -1,5 +1,10 @@
 # Feature Gap Matrix — Sprint 01
 
+> Historical audit of `main@12264edff0f8e5f1d241188aed65a0aa8e9992cb` and
+> PR #4 at `161e7fdb39c02e43c4761f6385a28b7dff832ecb` on 21 November 2026.
+> References to main and PR state below are NOT current status. For the 23 November
+> reconciliation, see [PR-RECONCILIATION](../../production/PR-RECONCILIATION.md).
+
 «مكتمل» هنا يعني شريحة محددة ثبتت باختبار، وليس قبول منصة للإنتاج. «غير موجود» يعني عدم العثور على التنفيذ ضمن المصدر المفحوص. «غير مرتبط» يصف شاشات demo التي لا يستخدمها bootstrap الخادم، لا نفي أي مزامنة اختيارية للإعدادات.
 
 | الوظيفة                                                             | main                                                     | #4                                                 | الدليل والفجوة التالية                                                                        |

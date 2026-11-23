@@ -36,17 +36,18 @@ export function createApp(options: GatewayOptions) {
   app.options('/*', async (_request, reply) => reply.code(204).send());
   app.setErrorHandler((error, request, reply) => {
     const known = error instanceof AppError;
-    // Preserve parser/validation 4xx responses without disclosing framework internals.
     const candidate = (error as { statusCode?: unknown }).statusCode;
     let status = 500;
-    if (known) status = error.statusCode;
-    else if (
+    if (known) {
+      status = error.statusCode;
+    } else if (
       typeof candidate === 'number' &&
       Number.isInteger(candidate) &&
       candidate >= 400 &&
       candidate < 500
-    )
+    ) {
       status = candidate;
+    }
     if (status >= 500) request.log.error({ err: error }, 'Gateway request failed');
     reply.code(status).send({
       error: {

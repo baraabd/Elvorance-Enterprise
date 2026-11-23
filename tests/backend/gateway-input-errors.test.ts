@@ -40,6 +40,7 @@ for (const sample of [
     assert.equal(response.json().error.code, 'INVALID_REQUEST');
     assert.equal(response.json().error.message, 'The request could not be processed');
     assert.equal(typeof response.json().error.requestId, 'string');
+    assert.equal(response.headers['cache-control'], 'no-store');
     assert.equal(forwarded, false);
   });
 }
@@ -72,6 +73,7 @@ test('gateway preserves authentication errors without forwarding', async (t) => 
   const response = await app.inject({ method: 'GET', url: '/v1/crm/customers' });
   assert.equal(response.statusCode, 401);
   assert.equal(response.json().error.code, 'UNAUTHENTICATED');
+  assert.equal(response.headers['cache-control'], 'no-store');
   assert.equal(forwarded, false);
   assert.equal(typeof response.json().error.requestId, 'string');
 });
