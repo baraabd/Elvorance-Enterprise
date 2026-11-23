@@ -1,0 +1,44 @@
+name: Sprint05 source authoring (no deployment)
+on:
+  push:
+    branches: [chore/s05-admin-authoring-20261123]
+permissions:
+  contents: read
+concurrency:
+  group: sprint05-source-authoring
+  cancel-in-progress: false
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify compressed source digest and apply to exact base
+        run: |
+          cp .github/s05-authoring/author.py "$RUNNER_TEMP/s05-author.py"
+          python "$RUNNER_TEMP/s05-author.py" apply
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Regenerate deterministic inventory without resetting any baseline
+        run: npm run inventory:write
+      - name: Check transported source
+        run: npm run check:types && npm run check:boundaries && npm run inventory:check
+      - name: Verify all 45 digests and publish new feature branch only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python "$RUNNER_TEMP/s05-author.py" publish
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sprint05-source-authoring-receipt
+          path: ${{ runner.temp }}/s05-authoring-receipt.json
+          if-no-files-found: error
+          retention-days: 30
