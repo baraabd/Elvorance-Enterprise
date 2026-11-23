@@ -48,6 +48,7 @@ import { auth, call, principals } from './helpers.ts';
 import { createLiveDataApi } from '../../packages/api-client/src/live-data.ts';
 import type { EventEnvelope } from '@elvorance/contracts';
 import { verifyRepPostgres } from './rep-postgres-scenarios.ts';
+import { dropFixtureDatabases } from './postgres-cleanup.ts';
 
 const adminUrl = process.env.ELVORANCE_TEST_POSTGRES_URL;
 const configs: { name: string; tables: readonly string[]; migrations: Migration[] }[] = [
@@ -85,17 +86,17 @@ test(
     }[] = [];
     const apps: { close(): Promise<void> }[] = [];
     // Keep track of raw SQL clients so an early assertion cannot leave them connected
-    // while DROP DATABASE WITH (FORCE) is running in test cleanup.
+    // before the server-side disconnect barrier in test cleanup.
     const rawClients = new Set<pg.Client>();
     t.after(async () => {
-      await Promise.all([...rawClients].map((client) => client.end().catch(() => {})));
-      await Promise.all(apps.map((app) => app.close()));
-      for (const service of provisioned) await service.repository.close();
-      for (const service of provisioned) {
-        await administrator.query(`DROP DATABASE IF EXISTS ${service.db} WITH (FORCE)`);
-        await administrator.query(`DROP ROLE IF EXISTS ${service.role}`);
+      try {
+        await Promise.all([...rawClients].map((client) => client.end().catch(() => {})));
+        await Promise.all(apps.map((app) => app.close()));
+        for (const service of provisioned) await service.repository.close();
+        await dropFixtureDatabases((sql, values) => administrator.query(sql, values), provisioned);
+      } finally {
+        await administrator.end();
       }
-      await administrator.end();
     });
     for (const config of configs) {
       const role = `${prefix}_${config.name}`;

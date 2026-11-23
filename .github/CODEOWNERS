@@ -1,0 +1,9 @@
+# Review routing only; branch protection must enforce code-owner approval.
+# Named service and on-call ownership still requires explicit assignment.
+/.github/ @baraabd
+/docs/production/ @baraabd
+/tooling/production/ @baraabd
+/tests/production/ @baraabd
+/services/*/src/infrastructure/migrations/ @baraabd
+/packages/mobile-auth/ @baraabd
+/packages/service-kit/ @baraabd

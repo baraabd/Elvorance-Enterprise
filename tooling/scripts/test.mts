@@ -55,7 +55,7 @@ for (const file of files) {
   });
   runnable.push(outfile);
 }
-const result = spawnSync(process.execPath, ['--test', ...runnable], {
+const result = spawnSync(process.execPath, ['--test', '--test-reporter=tap', ...runnable], {
   cwd: root,
   stdio: 'inherit',
 });

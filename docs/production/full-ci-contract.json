@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "requiredJobs": ["project", "runtime", "native", "identity", "security"],
+  "lanes": [
+    {
+      "name": "project-linux",
+      "commands": [
+        "migration-report",
+        "types",
+        "boundaries",
+        "build",
+        "inventory",
+        "tests",
+        "parity",
+        "regression",
+        "merged",
+        "example-build",
+        "format",
+        "package",
+        "source-package-integrity"
+      ],
+      "countedCommands": ["tests", "parity", "regression", "merged"],
+      "allowedSkips": [],
+      "scope": "All existing Linux project suites plus inventory/gate tests; real PostgreSQL mandatory."
+    },
+    {
+      "name": "project-windows",
+      "commands": [
+        "windows-repair-syntax",
+        "migration-report",
+        "types",
+        "boundaries",
+        "build",
+        "inventory",
+        "tests",
+        "parity",
+        "regression",
+        "merged",
+        "example-build",
+        "format",
+        "package",
+        "source-package-integrity"
+      ],
+      "countedCommands": ["tests", "parity", "regression", "merged"],
+      "allowedSkips": [
+        "PostgreSQL: seven owned databases, 42 denied cross-service connections, forced tenant RLS, atomic outbox/inbox and full contract provisioning",
+        "isolated secret initialization is private and never overwrites or reuses an environment",
+        "secret generation rejects symlink ancestors and deployment rejects unsafe mounts",
+        "concurrent secret initializers cannot combine staging and production credentials",
+        "production renderer fails closed without evidence, with untested images or reused staging hosts"
+      ],
+      "scope": "Windows portability matrix. PostgreSQL and POSIX-only logical gates are mandatory in project-linux, not duplicated here."
+    },
+    {
+      "name": "native-verify",
+      "commands": ["types", "boundaries", "build", "tests", "parity", "regression"],
+      "countedCommands": ["tests", "parity", "regression"],
+      "allowedSkips": [
+        "PostgreSQL: seven owned databases, 42 denied cross-service connections, forced tenant RLS, atomic outbox/inbox and full contract provisioning"
+      ],
+      "scope": "Preserved native workflow project verification. PostgreSQL logical gate is mandatory in project-linux."
+    },
+    {
+      "name": "backend-runtime",
+      "commands": ["runtime-env", "runtime-build", "database-isolation", "runtime-journey"],
+      "countedCommands": ["runtime-journey"],
+      "allowedSkips": [],
+      "scope": "Actual isolated Docker/PostgreSQL/RabbitMQ journey with synthetic development authentication; not hosted OIDC."
+    },
+    {
+      "name": "native-android",
+      "commands": ["native-prepare", "android-build", "android-instrumented"],
+      "countedCommands": ["android-build", "android-instrumented"],
+      "allowedSkips": [],
+      "scope": "Unsigned native verification harness: Gradle lint/unit/build and emulator instrumentation, not signed release or physical device acceptance."
+    },
+    {
+      "name": "native-ios",
+      "commands": ["native-prepare", "ios-simulator"],
+      "countedCommands": ["ios-simulator"],
+      "allowedSkips": [],
+      "scope": "Xcode simulator native verification harness, not signed release or physical device acceptance."
+    },
+    {
+      "name": "identity",
+      "commands": ["identity-integration"],
+      "countedCommands": ["identity-integration"],
+      "allowedSkips": [],
+      "scope": "Existing real Keycloak 26.8.2 suite using disposable loopback TLS fixture; no hosted credentials."
+    },
+    {
+      "name": "security",
+      "commands": ["dependency-audit", "source-secrets"],
+      "countedCommands": [],
+      "allowedSkips": [],
+      "scope": "Current npm advisory audit at high/critical threshold plus narrow materialized-secret scanning; no claim of comprehensive security review."
+    }
+  ],
+  "policy": {
+    "missingPendingSkippedCancelledTimedOut": "BLOCKED",
+    "reportsFromOtherShaOrAttempt": "BLOCKED",
+    "mandatoryLinuxPostgresSkip": "BLOCKED",
+    "matrixExclusions": "Only the exact listed redundant platform skips are accepted. Their logical gates execute in Linux with no skips; totals remain reported.",
+    "signedRelease": "Separate protected manual release gate; credentials/hosted staging/physical devices not invented or treated as CI success.",
+    "coverage": "Instrumentation and exhaustive business workflow coverage remain unmeasured; targets are not achievements.",
+    "scopeChanges": "Any change to this contract requires CODEOWNERS review and a complete new FULL-CI run."
+  }
+}
