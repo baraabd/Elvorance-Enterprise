@@ -28,18 +28,17 @@ jobs:
           import assert from 'node:assert/strict';
           import { createHash } from 'node:crypto';
           import ts from 'typescript';
-          // Only the reviewed added length guard changes this shared authorization anchor.
-          // No binding rationale, route coverage, test gap, or baseline is waived.
-          const bindingsPath = 'docs/production/semantic-bindings.json';
-          const bindings = JSON.parse(fs.readFileSync(bindingsPath, 'utf8'));
-          const authPath = 'packages/service-kit/src/auth.ts';
-          assert.equal(bindings.evidenceFiles[authPath], '2787ba1fbf0548f551a04264f3e5ea883af608a1ad6c93d90e115330845de15c');
-          const auth = fs.readFileSync(authPath, 'utf8');
+          // Re-review only the exact added length guard, with no binding or baseline waiver.
+          const bp = 'docs/production/semantic-bindings.json';
+          const bindings = JSON.parse(fs.readFileSync(bp, 'utf8'));
+          const ap = 'packages/service-kit/src/auth.ts';
+          assert.equal(bindings.evidenceFiles[ap], '2787ba1fbf0548f551a04264f3e5ea883af608a1ad6c93d90e115330845de15c');
+          const auth = fs.readFileSync(ap, 'utf8');
           const original = auth.replace('      claims.roles.length > 0 &&\n', '');
           assert.notEqual(original, auth);
-          assert.equal(createHash('sha256').update(original).digest('hex'), bindings.evidenceFiles[authPath]);
-          bindings.evidenceFiles[authPath] = createHash('sha256').update(auth).digest('hex');
-          fs.writeFileSync(bindingsPath, JSON.stringify(bindings, null, 2)+'\n');
+          assert.equal(createHash('sha256').update(original).digest('hex'), bindings.evidenceFiles[ap]);
+          bindings.evidenceFiles[ap] = createHash('sha256').update(auth).digest('hex');
+          fs.writeFileSync(bp, JSON.stringify(bindings, null, 2)+'\n');
           for (const path of ['tests/backend/authorization-matrix.test.ts', 'tests/acceptance/postgres-recovery.mts']) {
             let text = fs.readFileSync(path, 'utf8');
             const source = ts.createSourceFile(path, text, ts.ScriptTarget.Latest, true);
@@ -75,9 +74,10 @@ jobs:
             "  await http.request('POST', `/v1/sales/quote-discount-approvals/${review.id}/decision`, { token: rep, body: reviewBody, status: 403 });",
             "  const reviewed = await http.request<{ status: string }>('POST', `/v1/sales/quote-discount-approvals/${review.id}/decision`, { token: admin, body: reviewBody });",
             "  ensure(reviewed.status === 'approved', 'A distinct administrator must approve the discounted content.');",
+            "  passed('representative discounted quote requires distinct administrator review through live CRM/sales boundaries');",
           ];
           replace(anchor, lines.join('\n')+'\n'+anchor);
-          replace("passed('manual visit and quote use live CRM/catalog service boundaries');", "passed('representative discounted quote requires distinct administrator review through live CRM/sales boundaries');");
+          // Keep all pre-existing passed(...) titles: test IDs are source-catalogued contracts.
           fs.writeFileSync(path,text);
           const config = JSON.parse(fs.readFileSync('tsconfig.json','utf8'));
           for (const item of ['tests/acceptance/**/*.mts', 'tooling/scripts/run-acceptance.mts', 'tooling/qa/**/*.mts']) if (!config.include.includes(item)) config.include.push(item);
