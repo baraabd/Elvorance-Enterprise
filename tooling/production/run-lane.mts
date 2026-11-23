@@ -45,6 +45,7 @@ const definitions: Record<string, string[]> = {
   format: run('check:format'),
   package: run('package'),
   'production-tests': run('test:production'),
+  'admin-e2e': run('test:admin:e2e'),
   'runtime-env': ['node', 'infra/compose/init-env.mts'],
   'runtime-build': run('infra:up'),
   'database-isolation': [
@@ -95,8 +96,31 @@ for (const id of spec.commands) {
       directory,
       id,
       argv,
-      ['tests', 'merged', 'production-tests'].includes(id) ? parseTap : undefined,
+      ['tests', 'merged', 'production-tests', 'admin-e2e'].includes(id) ? parseTap : undefined,
     );
+    if (id === 'admin-e2e' && command.exitCode === 0) {
+      const report = JSON.parse(await readFile('dist/admin-e2e/execution.json', 'utf8')) as Record<
+        string,
+        unknown
+      >;
+      if (
+        report.storage !== 'postgres' ||
+        report.driver !== 'chromium' ||
+        report.source !== context.sourceSha ||
+        report.exitCode !== 0
+      )
+        throw new Error(
+          'Admin E2E evidence must bind the current source, real browser and PostgreSQL.',
+        );
+      for (const name of [
+        'browser.tap',
+        'execution.json',
+        'admin-rtl-390.png',
+        'admin-rtl-768.png',
+        'admin-rtl-1440.png',
+      ])
+        await copyEvidence(directory, 'dist/admin-e2e/' + name, name);
+    }
     if (id === 'parity' && command.exitCode === 0) {
       const report = JSON.parse(
         await readFile('tests/design-parity/artifacts/latest-results.json', 'utf8'),

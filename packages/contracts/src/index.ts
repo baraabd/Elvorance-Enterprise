@@ -53,6 +53,8 @@ export interface ContractSnapshot {
   customerName: string;
   currency: string;
   items: ScopeItem[];
+  /** Approved reduction from the immutable quote. Legacy events omit this only for zero discount. */
+  discountMinor?: number;
   totalMinor: number;
   terms: string;
   paymentPlan: PaymentInstallment[];

@@ -12,6 +12,7 @@
     "@elvorance/ui": "2.0.0",
     "@elvorance/api-client": "2.0.0",
     "@elvorance/design-system": "2.0.0",
-    "@elvorance/questionnaire": "2.4.0"
+    "@elvorance/questionnaire": "2.4.0",
+    "@elvorance/contracts": "2.0.0"
   }
 }

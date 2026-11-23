@@ -114,7 +114,7 @@ export async function runtimeRegistrations(ws: Workspace): Promise<RuntimeRegist
     output.push(...validate(await run(`demo-${folder}`, code)));
   }
   const fake = `const fake=new Proxy(function(){throw new Error('Inventory must not call an API')},{get(){return fake;}});`;
-  const live = `import {sectionsForRole} from './packages/api-client/src/live-workspace.ts';${fake}console.log(JSON.stringify(['admin','client'].flatMap(owner=>sectionsForRole(owner,fake).map(x=>({owner,mode:'server',kind:'route',key:x.id})))));`;
+  const live = `import {sectionsForRole} from './packages/api-client/src/live-workspace.ts';import {adminRouteTargets} from './apps/admin-web/src/server/workspace.ts';${fake}console.log(JSON.stringify([...sectionsForRole('client',fake).map(x=>({owner:'client',mode:'server',kind:'route',key:x.id})),...Object.keys(adminRouteTargets).map(key=>({owner:'admin',mode:'server',kind:'route',key}))]));`;
   output.push(...validate(await run('live-sections', live)));
   const fastifyUrl = pathToFileURL(
     createRequire(resolve(ws.root, 'package.json')).resolve('fastify'),

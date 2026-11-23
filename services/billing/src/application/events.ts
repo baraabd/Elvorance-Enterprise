@@ -40,7 +40,12 @@ export async function handleEvent(tx: Transaction, event: EventEnvelope): Promis
         integer(item.unitPriceMinor, 'unitPriceMinor', 1, 1_000_000_000)
     );
   }, 0);
-  assert(itemTotal === totalMinor, 'CONTRACT_TOTAL', 'Contract item total is inconsistent');
+  const discountMinor = integer(body.discountMinor ?? 0, 'discountMinor', 0, 100_000_000_000);
+  assert(
+    Number.isSafeInteger(itemTotal) && itemTotal - discountMinor === totalMinor,
+    'CONTRACT_TOTAL',
+    'Contract item total less approved discount is inconsistent',
+  );
   const common = {
     contractId,
     clientId: text(body.clientId, 'clientId', 1, 100),

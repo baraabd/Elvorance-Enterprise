@@ -39,7 +39,12 @@
     "tests/identity/**/*.mts",
     "tooling/scripts/test-local-identity.mts",
     "tooling/production/**/*.mts",
-    "tests/production/**/*.mts"
+    "tests/production/**/*.mts",
+    "apps/admin-web/src/server/**/*.ts",
+    "apps/admin-web/src/server-main.ts",
+    "tests/admin/**/*.mts",
+    "tooling/scripts/build-admin-server.mts",
+    "tests/admin/**/*.ts"
   ],
   "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
 }
