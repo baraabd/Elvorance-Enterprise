@@ -1,3 +1,4 @@
+import { statePanel } from '@elvorance/ui/enterprise-ux';
 import { installMobileShell } from '@elvorance/mobile-platform';
 import type { MobileAuth } from '@elvorance/mobile-auth';
 import type { RepApi, RepIdentity } from './api.ts';
@@ -84,7 +85,7 @@ export async function mountRepWorkspace(
     for (const node of nav.querySelectorAll<HTMLElement>('[data-page]'))
       node.setAttribute('aria-current', node.dataset.page === page ? 'page' : 'false');
     if (push && window.location.hash !== '#' + page) history.pushState({ page }, '', '#' + page);
-    main.replaceChildren(el('p', 'جارٍ تحميل البيانات…', 'empty'));
+    main.replaceChildren(statePanel('loading', 'جارٍ تحميل البيانات…'));
     main.setAttribute('aria-busy', 'true');
     const container = el('div');
     try {
@@ -101,12 +102,13 @@ export async function mountRepWorkspace(
       if (!requestSignal.aborted) {
         main.replaceChildren(container);
         main.removeAttribute('aria-busy');
+        document.title = `${pages[page].label} · إلفورانس الميداني`;
       }
     } catch (error) {
       if (requestSignal.aborted) return;
       main.removeAttribute('aria-busy');
       main.replaceChildren(
-        el('p', errorMessage(error), 'notice'),
+        statePanel('error', errorMessage(error)),
         button('إعادة المحاولة', () => navigate(current, false), requestSignal),
       );
     }

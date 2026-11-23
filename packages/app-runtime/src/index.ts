@@ -231,7 +231,8 @@ export function installRuntime(options = {}) {
     if (el?.open) {
       if (typeof el.close === 'function') el.close();
       else el.removeAttribute('open');
-      modalTrigger?.focus?.();
+      if (modalTrigger?.isConnected && !modalTrigger.disabled) modalTrigger.focus?.();
+      else document.getElementById('main-content')?.focus();
     }
     confirmCallback = null;
   }
@@ -390,7 +391,10 @@ export function installRuntime(options = {}) {
       window.print();
     },
   };
+  const pendingActions = new WeakSet();
   function dispatch(name, event, el, form = null) {
+    const target = form || el;
+    if (pendingActions.has(target)) return;
     const handler = app.actions?.[name] || coreActions[name];
     if (!handler) {
       console.warn('Unknown Elvorance action', name);
@@ -398,13 +402,40 @@ export function installRuntime(options = {}) {
       return;
     }
     const data = form ? Object.fromEntries(new FormData(form)) : {};
+    // Capture before invoking handlers: attachment handlers also manage their own controls.
+    const previousBusy = target.getAttribute('aria-busy');
+    const controls = form
+      ? [
+          ...form.querySelectorAll(
+            'button:not([type]),button[type="submit"],input[type="submit"],input[type="image"]',
+          ),
+        ]
+      : 'disabled' in el
+        ? [el]
+        : [];
+    const disabled = controls.map((control) => control.disabled);
     try {
       const result = handler({ event, el, form, data, state, params: routeParams });
-      if (result?.catch)
-        result.catch((e) => {
-          console.error(e);
-          toast('تعذر إكمال الإجراء. حاول مجددًا.', 'error');
+      if (result?.then) {
+        pendingActions.add(target);
+        target.setAttribute('aria-busy', 'true');
+        controls.forEach((control) => {
+          control.disabled = true;
         });
+        Promise.resolve(result)
+          .catch((e) => {
+            console.error(e);
+            toast('تعذر إكمال الإجراء. حاول مجددًا.', 'error');
+          })
+          .finally(() => {
+            pendingActions.delete(target);
+            if (previousBusy === null) target.removeAttribute('aria-busy');
+            else target.setAttribute('aria-busy', previousBusy);
+            controls.forEach((control, index) => {
+              control.disabled = disabled[index];
+            });
+          });
+      }
     } catch (e) {
       console.error('Elvorance action failed', name, e);
       toast('تعذر إكمال الإجراء. راجع البيانات وحاول مجددًا.', 'error');
@@ -461,7 +492,14 @@ export function installRuntime(options = {}) {
       if (event.key === 'Tab' && dlg?.open) {
         const focus = [
           ...dlg.querySelectorAll('button,input,select,textarea,a[href],[tabindex="0"]'),
-        ].filter((x) => !x.disabled);
+        ].filter(
+          (x) =>
+            !x.disabled &&
+            x.type !== 'hidden' &&
+            !x.closest('[hidden],[inert],[aria-hidden="true"]') &&
+            getComputedStyle(x).display !== 'none' &&
+            getComputedStyle(x).visibility !== 'hidden',
+        );
         if (focus.length) {
           if (event.shiftKey && document.activeElement === focus[0]) {
             event.preventDefault();

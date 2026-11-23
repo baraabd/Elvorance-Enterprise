@@ -1,0 +1,81 @@
+{
+  "baselineSha": "453242e1256f6d876d170142b8ad235be9120344",
+  "scope": "Local executed candidate source; published SHA/hosted CI must be verified independently in the PR.",
+  "environment": {
+    "node": "24.22.1",
+    "chromium": "144.0.7559.96",
+    "playwright": "1.57.0",
+    "axeCore": "4.14.1",
+    "pillow": "12.3.0",
+    "viewportWidths": [320, 390, 768, 1440]
+  },
+  "sourceProvenance": {
+    "sourceArtifactId": 14794188546,
+    "sourceArtifactSha256": "2f809ea499aaddb3585d205f8cd9e710b9f916b1632ca6cd28f9680d195c6308",
+    "dependencyToolchainArtifactId": 14794617023,
+    "dependencyToolchainArtifactSha256": "0fda3b9b408e2c7a268036f3af2cde0cc311b707467f058ea7f91bc234be42ee",
+    "localNpmCi": "NOT_EXECUTED; direct network unavailable; dependencies from exact-main CI artifact",
+    "axeArtifactId": 14807601991,
+    "axeArtifactSha256": "2caed86bb37e83a3ce7332ae3f26c354f907410995e8b10bb7b1388b01e25f4f"
+  },
+  "screens": {
+    "primaryDemo": 69,
+    "primaryServer": 33,
+    "additionalRepCompatibility": 7
+  },
+  "browser": {
+    "demoCases": 276,
+    "serverCasesIncludingCompatibilityAndExtraStates": 240,
+    "total": 516,
+    "baselineRuleOccurrences": 214,
+    "afterRuleOccurrences": 0,
+    "baselineOverflow": 1,
+    "afterOverflow": 0,
+    "afterRuntimePageErrors": 0,
+    "unexpectedFixtureRequests": 0,
+    "baselineOverlappingNavLabelCases": 80,
+    "afterOverlappingNavLabelCases": 0,
+    "axeIncompleteCases": 47,
+    "axeIncompleteNodeOccurrences": 207
+  },
+  "visual": {
+    "beforeAfterPairs": 327,
+    "demoPairs": 207,
+    "serverPairs": 120,
+    "demoChangedPairs": 207,
+    "serverChangedPairs": 107,
+    "demoRepeatExact": 207,
+    "demoRepeatRasterOnly": 0,
+    "rasterObservation": "Final candidate repeat: 207/207 exact pixel matches. A prior run showed 6 one-level RGB pixels; retained gate tolerance is <=16 pixels, <=1 RGB level, unchanged geometry. Tolerance is not design approval.",
+    "designApproval": "REQUIRES_INDEPENDENT_REVIEW; not silently promoted to golden baseline"
+  },
+  "tests": {
+    "nodePassed": 315,
+    "nodeSkipped": 1,
+    "nodeFailed": 0,
+    "skipReason": "PostgreSQL integration requires ELVORANCE_TEST_POSTGRES_URL; no local hosted/database acceptance claim.",
+    "newNodeUxCasesIncludedIn315": 7,
+    "browserInteractions": 15,
+    "pythonPixelGateCases": 5,
+    "originalParityRoutes": 64,
+    "originalParityAssetChecks": 7,
+    "originalRegressionGroups": 7
+  },
+  "debt": {
+    "tsNocheck": 95,
+    "explicitAny": 20,
+    "nonNullAssertions": 211,
+    "newAcceptedDebt": 0,
+    "baselineReset": false
+  },
+  "limitations": [
+    "Manual NVDA/VoiceOver/TalkBack not executed.",
+    "Physical devices and Safari/Firefox not executed.",
+    "Server workspaces execute actual renderers/API adapters with explicit fixture transport; OIDC authentication shell and hosted API are not acceptance-tested here.",
+    "Viewport tests do not substitute for every 200% text-resize or 400% browser-zoom scenario.",
+    "All registered primary pages rendered; not every conditional dialog/data permutation or business transition audited.",
+    "Author inspected representative captures; independent approval of visual changes is pending.",
+    "Chromium set_content runs actual built code without bypassing container network/browser policy.",
+    "47 color-contrast incomplete cases (207 node occurrences) remain explicit manual-review work; zero automatic violations is not complete accessibility acceptance."
+  ]
+}

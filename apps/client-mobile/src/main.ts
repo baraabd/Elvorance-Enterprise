@@ -1,3 +1,5 @@
+import { installEnterpriseUx } from '@elvorance/ui/enterprise-ux';
+import { navigationGroups } from './navigation.ts';
 import { installConfigurationSync } from '@elvorance/questionnaire/sync';
 import { installMobileShell } from '@elvorance/mobile-platform';
 import { installRuntime } from '@elvorance/app-runtime';
@@ -56,3 +58,6 @@ if (runtime) {
     root.textContent = 'تعذّر بدء مساحة البيانات الحية. تحقق من إعدادات API وموفر المصادقة الآمن.';
   });
 }
+
+const uxRoot = document.getElementById('app');
+if (uxRoot) installEnterpriseUx(uxRoot, { mode: config.dataMode, groups: navigationGroups });
