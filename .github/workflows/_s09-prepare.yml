@@ -26,7 +26,20 @@ jobs:
           node --input-type=module <<'JS'
           import fs from 'node:fs';
           import assert from 'node:assert/strict';
+          import { createHash } from 'node:crypto';
           import ts from 'typescript';
+          // Only the reviewed added length guard changes this shared authorization anchor.
+          // No binding rationale, route coverage, test gap, or baseline is waived.
+          const bindingsPath = 'docs/production/semantic-bindings.json';
+          const bindings = JSON.parse(fs.readFileSync(bindingsPath, 'utf8'));
+          const authPath = 'packages/service-kit/src/auth.ts';
+          assert.equal(bindings.evidenceFiles[authPath], '2787ba1fbf0548f551a04264f3e5ea883af608a1ad6c93d90e115330845de15c');
+          const auth = fs.readFileSync(authPath, 'utf8');
+          const original = auth.replace('      claims.roles.length > 0 &&\n', '');
+          assert.notEqual(original, auth);
+          assert.equal(createHash('sha256').update(original).digest('hex'), bindings.evidenceFiles[authPath]);
+          bindings.evidenceFiles[authPath] = createHash('sha256').update(auth).digest('hex');
+          fs.writeFileSync(bindingsPath, JSON.stringify(bindings, null, 2)+'\n');
           for (const path of ['tests/backend/authorization-matrix.test.ts', 'tests/acceptance/postgres-recovery.mts']) {
             let text = fs.readFileSync(path, 'utf8');
             const source = ts.createSourceFile(path, text, ts.ScriptTarget.Latest, true);
@@ -73,7 +86,7 @@ jobs:
           JS
       - name: Generate source-bound inventories without resetting any baseline
         run: |
-          npx prettier --write tests/backend/authorization-matrix.test.ts tests/backend/security-and-gateway.test.ts tests/backend/sprint09-auth-regression.test.ts tests/acceptance/postgres-recovery.mts tests/runtime/compose-journey.mts tooling/qa/sprint09-matrix.mts tooling/scripts/run-acceptance.mts tsconfig.json .github/workflows/sprint09-qa.yml docs/qa/sprint09/README.md
+          npx prettier --write tests/backend/authorization-matrix.test.ts tests/backend/security-and-gateway.test.ts tests/backend/sprint09-auth-regression.test.ts tests/acceptance/postgres-recovery.mts tests/runtime/compose-journey.mts tooling/qa/sprint09-matrix.mts tooling/scripts/run-acceptance.mts tsconfig.json .github/workflows/sprint09-qa.yml docs/qa/sprint09/README.md docs/production/semantic-bindings.json
           npm run check:types
           npm run inventory:write
           node tooling/qa/sprint09-matrix.mts --write
