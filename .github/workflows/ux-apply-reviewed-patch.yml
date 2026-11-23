@@ -1,0 +1,105 @@
+name: Apply reviewed Sprint 08 patch
+on:
+  push:
+    branches: [ux/sprint08-enterprise-20261123]
+    paths: [.ux-sprint08/manifest.json]
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: github.repository == 'baraabd/Elvorance-Enterprise' && github.ref == 'refs/heads/ux/sprint08-enterprise-20261123'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - name: Verify exact reviewed bytes, apply and remove transport
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 453242e1256f6d876d170142b8ad235be9120344 HEAD
+          python3 - <<'PY'
+          import base64, hashlib, json, lzma, os, pathlib, shutil, subprocess
+          root = pathlib.Path.cwd()
+          manifest = json.loads((root / '.ux-sprint08/manifest.json').read_text())
+          assert manifest['baselineSha'] == '453242e1256f6d876d170142b8ad235be9120344'
+          assert len(manifest['files']) == 44 and manifest['parts'] == 9
+          parts = [(root / f'.ux-sprint08/{i:02}.b64').read_text().strip() for i in range(9)]
+          # Correct a verified two-character transcription duplication in transport only.
+          assert parts[6].count('J0ogogswqwT9') == 1
+          parts[6] = parts[6].replace('J0ogogswqwT9', 'J0ogswqwT9')
+          part = parts[6].encode()
+          assert hashlib.sha1(b'blob ' + str(len(part)).encode() + b'\0' + part).hexdigest() == 'b9ee21483ae85ef3bbfc2f4c6b0ecff08e754e4e'
+          packed = base64.b64decode(''.join(parts), validate=True)
+          assert len(packed) == 48468
+          assert hashlib.sha256(packed).hexdigest() == manifest['packedSha256'] == '7d0e471ab4ad64c15c85ce79c1f3c9368f759abc3a06de48c5c5f5ab080455b4'
+          decoder = lzma.LZMADecompressor(memlimit=128 * 1024 * 1024)
+          patch = decoder.decompress(packed, max_length=314512)
+          assert decoder.eof and not decoder.unused_data and len(patch) == 314511
+          assert hashlib.sha256(patch).hexdigest() == manifest['patchSha256'] == '26c1c14229c3826978138a88aadedfa9040246793f0e35a3b7ec405dcbce9e0e'
+          path = pathlib.Path(os.environ['RUNNER_TEMP']) / 'sprint08-reviewed.patch'
+          path.write_bytes(patch)
+          stats = subprocess.check_output(['git','apply','--numstat',str(path)], text=True)
+          paths = {line.split('\t', 2)[2] for line in stats.splitlines()}
+          assert paths == set(manifest['files'])
+          for name in paths:
+              p = pathlib.PurePosixPath(name)
+              assert not p.is_absolute() and '..' not in p.parts and not (root / p).is_symlink()
+              assert name.startswith(('apps/', 'packages/', 'tests/ux/', 'docs/audits/sprint-08/', 'tooling/scripts/')) or name in ('docs/production/semantic-bindings.json', 'tsconfig.json', '.github/workflows/enterprise-ux.yml')
+          subprocess.run(['git','apply','--check','--index',str(path)], check=True)
+          subprocess.run(['git','apply','--index',str(path)], check=True)
+          for name, digest in manifest['files'].items():
+              assert hashlib.sha256((root / name).read_bytes()).hexdigest() == digest, name
+          shutil.rmtree(root / '.ux-sprint08')
+          for name in ('ux-tooling-bootstrap.yml', 'ux-apply-reviewed-patch.yml'):
+              (root / '.github/workflows' / name).unlink()
+          (path.parent / 'sprint08-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
+          print('Verified and applied 44 reviewed files; temporary transport removed.')
+          PY
+      - name: Recompute canonical source inventories without baseline reset
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --global npm@11.19.0
+          npm ci
+          npm run inventory:write
+          npm run inventory:check
+          npm run check:types
+          npm run check:format
+      - name: Publish only to isolated UX branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -A
+          ! git ls-files | grep -E '^\.ux-sprint08/|ux-tooling-bootstrap\.yml$|ux-apply-reviewed-patch\.yml$'
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, subprocess
+          manifest = json.loads((pathlib.Path(os.environ['RUNNER_TEMP']) / 'sprint08-manifest.json').read_text())
+          for name, digest in manifest['files'].items():
+              assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest() == digest, name
+          generated = {'docs/production/' + name + '.json' for name in ('architecture-inventory','data-flow-inventory','feature-matrix','ownership-dependency-map','semantic-review','workflow-debt')}
+          changed = set(subprocess.check_output(['git','diff','--cached','--name-only'], text=True).splitlines())
+          permitted = set(manifest['files']) | generated | {'.github/workflows/ux-tooling-bootstrap.yml', '.github/workflows/ux-apply-reviewed-patch.yml'}
+          assert all(name in permitted or name.startswith('.ux-sprint08/') for name in changed), changed - permitted
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat(ux): apply verified Sprint 08 implementation and remove transport'
+          git push origin HEAD:refs/heads/ux/sprint08-enterprise-20261123
+          mkdir -p "$RUNNER_TEMP/sprint08-published"
+          git rev-parse HEAD > "$RUNNER_TEMP/sprint08-published/commit.txt"
+          git rev-parse 'HEAD^{tree}' > "$RUNNER_TEMP/sprint08-published/tree.txt"
+          git archive HEAD -o "$RUNNER_TEMP/sprint08-published/source.tar"
+          cp "$RUNNER_TEMP/sprint08-manifest.json" "$RUNNER_TEMP/sprint08-published/manifest.json"
+          sha256sum "$RUNNER_TEMP/sprint08-published/source.tar" > "$RUNNER_TEMP/sprint08-published/SHA256SUMS"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sprint08-published-source
+          retention-days: 3
+          if-no-files-found: error
+          path: ${{ runner.temp }}/sprint08-published/
