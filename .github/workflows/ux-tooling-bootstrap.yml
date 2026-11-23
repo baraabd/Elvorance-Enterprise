@@ -1,0 +1,35 @@
+name: UX tooling bootstrap
+on:
+  push:
+    branches: [ux/sprint08-enterprise-20261123]
+    paths: [.github/workflows/ux-tooling-bootstrap.yml]
+permissions:
+  contents: read
+jobs:
+  tooling:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - name: Obtain isolated accessibility test tooling
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/ux-tooling"
+          cd "$RUNNER_TEMP/ux-tooling"
+          npm init -y
+          npm install --save-exact --ignore-scripts --no-audit --no-fund axe-core@4.14.1
+          cp node_modules/axe-core/axe.min.js ./axe.min.js
+          cp node_modules/axe-core/LICENSE ./AXE-LICENSE
+          sha256sum axe.min.js > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sprint08-axe-tooling
+          retention-days: 3
+          path: |
+            ${{ runner.temp }}/ux-tooling/axe.min.js
+            ${{ runner.temp }}/ux-tooling/AXE-LICENSE
+            ${{ runner.temp }}/ux-tooling/package.json
+            ${{ runner.temp }}/ux-tooling/package-lock.json
+            ${{ runner.temp }}/ux-tooling/SHA256SUMS
