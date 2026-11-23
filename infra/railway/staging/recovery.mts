@@ -1,3 +1,4 @@
+import { retainAndReadBack } from './backup.mts';
 import { pgArguments, pgFailureCategory } from './pg-command.mts';
 import { Pool } from 'pg';
 import { PgRepository } from '../../../packages/service-kit/src/pg-repository.ts';
@@ -155,6 +156,10 @@ export async function recovery(tenantId: string, replay: RecoveryReplay) {
           adminUrl(original),
         );
         await source.query('COMMIT');
+        const retainedBackup =
+          process.env.BACKUP_RETENTION_MODE === 'retain-and-verify'
+            ? await retainAndReadBack(file, service, suffix + suffix)
+            : null;
         const backupMs = performance.now() - dumpStarted;
         await root.query(
           `CREATE DATABASE ${identifier(restored)} OWNER ${identifier(ownedName(service))} TEMPLATE template0`,
@@ -203,6 +208,7 @@ export async function recovery(tenantId: string, replay: RecoveryReplay) {
             backupMs: Math.round(backupMs),
             restoreMs: Math.round(restoreMs),
             dumpSha256: hash,
+            retainedBackup,
             tables: after,
             tenantRowsReadable: tenantRows,
             exactRowsMatched: true,

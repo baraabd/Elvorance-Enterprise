@@ -1,3 +1,4 @@
+import { operationLog } from '../../../packages/service-kit/src/operations-log.ts';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { bootstrapStaging } from './bootstrap.mts';
 import { runHostedAcceptance } from './acceptance.mts';
@@ -24,13 +25,13 @@ try {
   });
   console.log('ELVORANCE_EVIDENCE ' + JSON.stringify(evidence));
 } catch (error) {
-  // Never serialize driver errors, request bodies, credentials, tokens, SQL or connection strings.
-  const code =
-    error && typeof error === 'object' && 'code' in error ? String(error.code) : 'OPERATION_FAILED';
-  const message =
-    error instanceof Error && !('code' in error)
-      ? error.message
-      : 'Staging operation failed; inspect the operation phase and error code.';
-  console.error('ELVORANCE_FAILURE ' + JSON.stringify({ code, message }));
+  console.error(
+    operationLog(
+      'staging-ops',
+      'operation-failed',
+      process.env.STAGING_OPERATION ?? 'unknown',
+      error,
+    ),
+  );
   process.exitCode = 1;
 }

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "teamId": "team_LGL2uTTsmbGU72EMvonS1E5j",
+  "target": "preview",
+  "projects": [
+    {
+      "role": "admin",
+      "name": "elvorance-staging-admin",
+      "projectId": null,
+      "origin": null
+    },
+    {
+      "role": "client",
+      "name": "elvorance-staging-client",
+      "projectId": null,
+      "origin": null
+    },
+    {
+      "role": "rep",
+      "name": "elvorance-staging-rep",
+      "projectId": null,
+      "origin": null
+    }
+  ],
+  "status": "approval-required-not-provisioned"
+}

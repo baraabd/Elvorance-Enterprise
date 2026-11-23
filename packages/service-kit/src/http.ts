@@ -1,3 +1,4 @@
+import { safeErrorCode } from './operations-log.ts';
 import Fastify, { type FastifyInstance, type FastifyRequest } from 'fastify';
 import type { Principal } from '@elvorance/contracts';
 import { type AuthVerifier } from './auth.ts';
@@ -18,7 +19,15 @@ export interface AppOptions {
 export function createService(name: string, options: AppOptions): FastifyInstance {
   const app = Fastify({
     logger: options.logger
-      ? { redact: ['req.headers.authorization', 'req.headers.cookie', 'res.headers.set-cookie'] }
+      ? {
+          redact: ['req.headers.authorization', 'req.headers.cookie', 'res.headers.set-cookie'],
+          serializers: {
+            req: (request: { method: string; url: string }) => ({
+              method: request.method,
+              url: request.url.split('?')[0] ?? '/',
+            }),
+          },
+        }
       : false,
     bodyLimit: 256 * 1024,
     requestTimeout: 30_000,
@@ -39,7 +48,8 @@ export function createService(name: string, options: AppOptions): FastifyInstanc
       : typeof upstreamStatus === 'number' && upstreamStatus < 500
         ? upstreamStatus
         : 500;
-    if (status >= 500) request.log.error({ err: error, requestId: request.id }, 'Request failed');
+    if (status >= 500)
+      request.log.error({ code: safeErrorCode(error), requestId: request.id }, 'Request failed');
     reply.code(status).send({
       error: {
         code: known ? error.code : status >= 500 ? 'INTERNAL_ERROR' : 'INVALID_REQUEST',

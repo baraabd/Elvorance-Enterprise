@@ -1,0 +1,44 @@
+name: Staging release approval gate
+on:
+  workflow_dispatch:
+    inputs:
+      approved_sha:
+        description: Exact owner-approved source SHA; must already be integrated into protected main
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  gate:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: staging
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - name: Require independent approval, branch protection and all exact-source CI evidence
+        env:
+          GH_TOKEN: ${{ secrets.STAGING_RELEASE_AUDIT_TOKEN }}
+          APPROVED_SOURCE_SHA: ${{ inputs.approved_sha }}
+        run: |
+          test -n "$GH_TOKEN" || { echo "Read-only staging release audit credential is not configured."; exit 1; }
+          node tooling/scripts/staging/release-gate.mts
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: approved-staging-plan-${{ inputs.approved_sha }}
+          path: dist/staging/release-gate.json
+          if-no-files-found: error
+          retention-days: 90
+# Deliberately no provider token and no cloud mutator. Apply the reviewed plan with
+# the connected Railway/Vercel tools only after the owner's explicit approval.
+# STAGING_RELEASE_AUDIT_TOKEN must be an environment-scoped, expiring read-only
+# GitHub credential for this repository: Administration + Actions + Contents read.
+# It is not a provider credential and must not be printed or supplied in chat.

@@ -1,3 +1,4 @@
+import { assertRuntimeStaging, operationLog } from '@elvorance/service-kit';
 import { authFromEnv, listen } from '@elvorance/service-kit';
 import { startEventRuntime } from '@elvorance/events';
 import { createRepository } from './infrastructure/repository.ts';
@@ -5,6 +6,7 @@ import { createApp } from './app.ts';
 const subscriptions: string[] = [];
 const handleEvent = async () => {};
 
+assertRuntimeStaging('identity');
 const repository = createRepository(process.env.DATABASE_URL ?? '');
 if (process.argv.includes('--migrate-only')) {
   await repository.migrate();
@@ -16,7 +18,9 @@ if (process.argv.includes('--migrate-only')) {
     repository,
     subscriptions,
     handler: handleEvent,
-    log: (message) => console.warn('[identity]', message),
+    log: () => console.warn(operationLog('identity', 'event-retry', 'consumer')),
+    diagnostic: (phase, error) =>
+      console.warn(operationLog('identity', 'event-runtime', phase, error)),
   });
   const app = createApp({ repository, auth, logger: true, brokerReady: events.isReady });
   process.env.PORT ??= '3001';

@@ -1,6 +1,8 @@
+import { assertRuntimeStaging } from '@elvorance/service-kit';
 import { authFromEnv, listen } from '@elvorance/service-kit';
 import { createApp } from './app.ts';
 import { upstreamsFromEnv } from './infrastructure/config.ts';
+assertRuntimeStaging('api-gateway');
 const app = createApp({
   auth: authFromEnv(),
   upstreams: upstreamsFromEnv(),

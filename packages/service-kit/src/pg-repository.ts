@@ -1,3 +1,9 @@
+import {
+  migrationChecksum,
+  migrationManifest,
+  migrationDecision,
+  type AppliedMigration,
+} from './migration-ledger.ts';
 import pg from 'pg';
 import type { Entity, EventEnvelope } from '@elvorance/contracts';
 import { AppError, assert } from './errors.ts';
@@ -68,17 +74,48 @@ export class PgRepository implements Repository {
       await client.query(
         'CREATE TABLE IF NOT EXISTS schema_migrations (version integer PRIMARY KEY, name text NOT NULL, applied_at timestamptz NOT NULL DEFAULT now())',
       );
-      for (const migration of [...this.migrations].sort((a, b) => a.version - b.version)) {
-        const exists = await client.query(
-          'SELECT version FROM schema_migrations WHERE version=$1',
-          [migration.version],
+      const manifest = migrationManifest(this.migrations);
+      await client.query(
+        'ALTER TABLE schema_migrations ADD COLUMN IF NOT EXISTS checksum text, ADD COLUMN IF NOT EXISTS source_revision text, ADD COLUMN IF NOT EXISTS baseline_source_revision text',
+      );
+      const applied = await client.query<AppliedMigration>(
+        'SELECT version,name,checksum FROM schema_migrations ORDER BY version',
+      );
+      if (
+        applied.rows.some(
+          (row) => !this.migrations.some((migration) => migration.version === row.version),
+        )
+      )
+        throw new Error(
+          'Database contains a migration absent from this release; downgrade refused',
         );
-        if (!exists.rowCount) {
+      const source = process.env.RAILWAY_GIT_COMMIT_SHA ?? process.env.SOURCE_REVISION ?? '';
+      for (const migration of [...this.migrations].sort((a, b) => a.version - b.version)) {
+        const decision = migrationDecision(
+          migration,
+          applied.rows.find((row) => row.version === migration.version),
+          manifest,
+        );
+        if (decision === 'apply') {
           await client.query(migration.sql);
-          await client.query('INSERT INTO schema_migrations (version,name) VALUES ($1,$2)', [
-            migration.version,
-            migration.name,
-          ]);
+          await client.query(
+            'INSERT INTO schema_migrations (version,name,checksum,source_revision) VALUES ($1,$2,$3,$4)',
+            [
+              migration.version,
+              migration.name,
+              migrationChecksum(migration),
+              /^[a-f0-9]{40}$/.test(source) ? source : null,
+            ],
+          );
+        } else if (decision === 'baseline') {
+          await client.query(
+            'UPDATE schema_migrations SET checksum=$2,baseline_source_revision=$3 WHERE version=$1 AND checksum IS NULL',
+            [
+              migration.version,
+              migrationChecksum(migration),
+              process.env.MIGRATION_BASELINE_SOURCE_REVISION,
+            ],
+          );
         }
       }
       await client.query('COMMIT');
