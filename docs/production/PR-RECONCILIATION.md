@@ -57,6 +57,24 @@ Final commit, exact run/attempt, counts, skips and artifact digests must be link
 the PR after publication. Local diagnostics are not FULL-CI; pending or missing evidence
 is BLOCKED. This document cannot assert success for its own future commit.
 
+## PostgreSQL fixture cleanup race found by final CI
+
+The first reconciled head `e86e7d6317543a19f72ec7c42bb1a2111e20c912`
+passed its Linux lane, but PR-candidate run `45155092461` failed the existing
+PostgreSQL case with `terminating connection due to administrator command`.
+The failure was not converted to PASS or excluded: the fixture force-dropped its
+owned databases immediately after pool shutdown, which can resolve before all
+backend disconnects finish.
+
+The fixture now waits for zero connections to its exact generated database names,
+with a bounded timeout, before normal non-forced DROP. Unexpected connections,
+invalid count evidence, out-of-scope names and drop failures remain errors.
+The administrator connection closes in a finally block. Five regression tests
+cover ordering, timeout, malformed counts, scope/timing validation and propagation
+of drop failures. All original database isolation, transaction, RLS and domain
+assertions remain present. Production repository behavior is unchanged.
+The entire FULL-CI must run again for the resulting source, not just the failed job.
+
 ## Governance and release boundaries
 
 Prior owner adoption of the unchanged QUALITY-CONTRACT and interim backlog ownership

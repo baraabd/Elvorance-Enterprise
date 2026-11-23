@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
-  "sourceDigest": "469030ad43b3115704c7c7fcab42915b0263313ef0171666ee781ba67cf10af9",
+  "sourceDigest": "9dc2decb22472c2a45916bf3f53e571c90967f1a90f271323389ac0173aa1ffd",
   "sourceFiles": [
     {
       "path": ".gitattributes",
@@ -1624,8 +1624,16 @@
       "sha256": "ed98844b70c1f59a3687000efdf1b7220339a221d6a17daef5b07f32ca6ce287"
     },
     {
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "sha256": "8c9013029f99f10ce20dfb6d6ce42354282af11d2587c4401658f1ea6fd0958a"
+    },
+    {
+      "path": "tests/backend/postgres-cleanup.ts",
+      "sha256": "4a7966c55584fed639b13e3510a9d222f7c8829bc2230188c34f240d0446540d"
+    },
+    {
       "path": "tests/backend/postgres.test.ts",
-      "sha256": "b2c49607c9661581221beedb20d97fab4d9fd3b6cdd6f026b0c190c64a0f4dd4"
+      "sha256": "1bbbfe784d9cf437f14b809fe29a6b69e4c73ed8929af6784837cffd08cf4542"
     },
     {
       "path": "tests/backend/questionnaire-configuration.test.ts",
@@ -136836,9 +136844,49 @@
       "environment": "node"
     },
     {
+      "id": "T:tests/backend/postgres-cleanup.test.ts:1745853d5bdf:1",
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "line": 7,
+      "title": "PostgreSQL fixture cleanup waits for every closing backend before a non-forced drop",
+      "scope": "integration",
+      "environment": "postgres"
+    },
+    {
+      "id": "T:tests/backend/postgres-cleanup.test.ts:18639947a895:1",
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "line": 46,
+      "title": "PostgreSQL fixture cleanup rejects malformed connection evidence before dropping data",
+      "scope": "integration",
+      "environment": "postgres"
+    },
+    {
+      "id": "T:tests/backend/postgres-cleanup.test.ts:5af0b084305a:1",
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "line": 60,
+      "title": "PostgreSQL fixture cleanup rejects non-fixture names, mismatched roles and invalid timing",
+      "scope": "integration",
+      "environment": "postgres"
+    },
+    {
+      "id": "T:tests/backend/postgres-cleanup.test.ts:99a48e72d5d7:1",
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "line": 78,
+      "title": "PostgreSQL fixture cleanup preserves database drop errors instead of masking failed cleanup",
+      "scope": "integration",
+      "environment": "postgres"
+    },
+    {
+      "id": "T:tests/backend/postgres-cleanup.test.ts:adf1dcece845:1",
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "line": 29,
+      "title": "PostgreSQL fixture cleanup times out without force termination or destructive queries",
+      "scope": "integration",
+      "environment": "postgres"
+    },
+    {
       "id": "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
       "path": "tests/backend/postgres.test.ts",
-      "line": 63,
+      "line": 64,
       "title": "PostgreSQL: seven owned databases, 42 denied cross-service connections, forced tenant RLS, atomic outbox/inbox and full contract provisioning",
       "scope": "integration",
       "environment": "postgres"
@@ -139430,9 +139478,9 @@
   ],
   "totals": {
     "features": 1837,
-    "sourceFiles": 520,
+    "sourceFiles": 522,
     "runtimeRegistrations": 442,
-    "testCatalogEntries": 444,
+    "testCatalogEntries": 449,
     "unmappedWorkflows": 244,
     "unresolvedFeatures": 1294,
     "kind:account-lifecycle": 58,

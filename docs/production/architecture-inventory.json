@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "469030ad43b3115704c7c7fcab42915b0263313ef0171666ee781ba67cf10af9",
+  "sourceDigest": "9dc2decb22472c2a45916bf3f53e571c90967f1a90f271323389ac0173aa1ffd",
   "workspaces": [
     {
       "name": "@elvorance/admin-web",
@@ -1446,6 +1446,10 @@
     { "source": "tests/backend/pagination.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/backend/pagination.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/pagination.test.ts", "specifier": "./rep-fixture.ts" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "./postgres-cleanup.ts" },
+    { "source": "tests/backend/postgres-cleanup.ts", "specifier": "node:timers/promises" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "node:assert/strict" },
@@ -1499,6 +1503,7 @@
     },
     { "source": "tests/backend/postgres.test.ts", "specifier": "@elvorance/contracts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./rep-postgres-scenarios.ts" },
+    { "source": "tests/backend/postgres.test.ts", "specifier": "./postgres-cleanup.ts" },
     {
       "source": "tests/backend/questionnaire-configuration.test.ts",
       "specifier": "node:assert/strict"
