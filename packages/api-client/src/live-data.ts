@@ -1,5 +1,11 @@
 import type { Entity, ListResult, Principal } from '@elvorance/contracts';
-import { ApiError, createApiClient, type ClientOptions, type CommandOptions } from './index.ts';
+import {
+  ApiError,
+  createApiClient,
+  type ClientOptions,
+  type CommandOptions,
+  type RequestOptions,
+} from './index.ts';
 
 export interface CustomerRecord extends Entity {
   name: string;
@@ -26,6 +32,25 @@ export interface IdentityProfile {
   principal: Principal;
   profile: unknown | null;
   identitySource: string;
+  profileVersion?: number;
+}
+export interface LiveDataOptions extends ClientOptions {
+  signal?: AbortSignal;
+}
+export interface QuoteAcceptanceInput {
+  expectedVersion: number;
+  consent: true;
+  paymentWishes?: string;
+}
+export interface ContractApprovalInput {
+  expectedVersion: number;
+  consent: true;
+  signerName: string;
+}
+export interface CommercialDecisionInput {
+  expectedVersion: number;
+  decision: 'approved' | 'rejected';
+  note: string;
 }
 
 export interface CreateCustomerInput {
@@ -76,7 +101,9 @@ function recordArray<T extends Entity>(result: unknown): T[] {
         !('id' in item) ||
         typeof item.id !== 'string' ||
         !('version' in item) ||
-        typeof item.version !== 'number',
+        typeof item.version !== 'number' ||
+        !Number.isSafeInteger(item.version) ||
+        item.version < 1,
     )
   ) {
     throw new ApiError(200, 'invalid_response', 'Server records have an invalid shape.');
@@ -89,36 +116,102 @@ function recordArray<T extends Entity>(result: unknown): T[] {
  * It never reads demo seed data, localStorage, or another service's database.
  * The access token is provided by the host's OIDC implementation.
  */
-export function createLiveDataApi(options: ClientOptions) {
+export function createLiveDataApi(options: LiveDataOptions) {
   const http = createApiClient(options);
+  function requestOptions<T extends RequestOptions>(input: T): T & RequestOptions {
+    if (!options.signal) return input;
+    return {
+      ...input,
+      signal: input.signal ? AbortSignal.any([input.signal, options.signal]) : options.signal,
+    };
+  }
+  const get = <T>(path: string, input: RequestOptions = {}) =>
+    http.get<T>(path, requestOptions(input));
+  const command = <T>(path: string, input: unknown, intent: CommandOptions) =>
+    http.command<T>(path, input, requestOptions(intent));
+  const patch = <T>(path: string, input: unknown, intent: CommandOptions) =>
+    http.patch<T>(path, input, requestOptions(intent));
 
   async function list<T extends Entity>(path: string): Promise<T[]> {
-    const response = await http.get<ListResult<T>>(path);
-    return recordArray<T>(response);
+    const records: T[] = [];
+    const cursors = new Set<string>();
+    let cursor: string | undefined;
+    do {
+      const response = await get<ListResult<T>>(path, cursor ? { query: { cursor } } : {});
+      records.push(...recordArray<T>(response));
+      if (response.nextCursor == null) return records;
+      if (
+        typeof response.nextCursor !== 'string' ||
+        !/^[a-zA-Z0-9_:-]{1,100}$/.test(response.nextCursor) ||
+        cursors.has(response.nextCursor)
+      )
+        throw new ApiError(
+          200,
+          'invalid_response',
+          'The server returned an invalid or repeated list cursor.',
+        );
+      cursors.add(response.nextCursor);
+      if (cursors.size > 1000)
+        throw new ApiError(200, 'list_limit', 'The result is too large to review as one list.');
+      cursor = response.nextCursor;
+    } while (cursor);
+    return records;
   }
 
   return {
     identity: {
-      me: () => http.get<IdentityProfile>('/v1/identity/me'),
+      me: () => get<IdentityProfile>('/v1/identity/me'),
       memberships: () => list<ServerRecord>('/v1/identity/memberships'),
-      tenant: () => http.get<unknown>('/v1/identity/tenant'),
+      tenant: () => get<unknown>('/v1/identity/tenant'),
     },
     crm: {
       customers: () => list<CustomerRecord>('/v1/crm/customers'),
-      customer: (id: string) => http.get<CustomerRecord>('/v1/crm/customers/' + idSegment(id)),
+      customer: (id: string) => get<CustomerRecord>('/v1/crm/customers/' + idSegment(id)),
       regions: () => list<RegionRecord>('/v1/crm/regions'),
       createCustomer: (input: CreateCustomerInput, options: CommandOptions) =>
-        http.command<CustomerRecord>('/v1/crm/customers', input, options),
+        command<CustomerRecord>('/v1/crm/customers', input, options),
       changeCustomer: (id: string, change: CustomerChangeInput, options: CommandOptions) =>
-        http.patch<CustomerRecord>('/v1/crm/customers/' + idSegment(id), change, options),
+        patch<CustomerRecord>('/v1/crm/customers/' + idSegment(id), change, options),
       createRegion: (input: { name: string; code: string }, options: CommandOptions) =>
-        http.command<RegionRecord>('/v1/crm/regions', input, options),
-      configuration: () => http.get<unknown>('/v1/crm/configuration'),
+        command<RegionRecord>('/v1/crm/regions', input, options),
+      configuration: () => get<unknown>('/v1/crm/configuration'),
     },
     sales: {
       visits: () => list<ServerRecord>('/v1/sales/visits'),
       quotes: () => list<ServerRecord>('/v1/sales/quotes'),
       contracts: () => list<ServerRecord>('/v1/sales/contracts'),
+      quote: (id: string) => get<ServerRecord>('/v1/sales/quotes/' + idSegment(id)),
+      contract: (id: string) => get<ServerRecord>('/v1/sales/contracts/' + idSegment(id)),
+      discountApprovals: () => list<ServerRecord>('/v1/sales/quote-discount-approvals'),
+      decideDiscount: (id: string, input: CommercialDecisionInput, options: CommandOptions) =>
+        command<ServerRecord>(
+          '/v1/sales/quote-discount-approvals/' + idSegment(id) + '/decision',
+          input,
+          options,
+        ),
+      acceptQuote: (id: string, input: QuoteAcceptanceInput, options: CommandOptions) =>
+        command<{ quote: ServerRecord; contract: ServerRecord }>(
+          '/v1/sales/quotes/' + idSegment(id) + '/accept',
+          input,
+          options,
+        ),
+      rejectQuote: (
+        id: string,
+        input: { expectedVersion: number; reason: string },
+        options: CommandOptions,
+      ) => command<ServerRecord>('/v1/sales/quotes/' + idSegment(id) + '/reject', input, options),
+      requestQuoteChanges: (
+        id: string,
+        input: { expectedVersion: number; reason: string },
+        options: CommandOptions,
+      ) =>
+        command<ServerRecord>(
+          '/v1/sales/quotes/' + idSegment(id) + '/request-changes',
+          input,
+          options,
+        ),
+      approveContract: (id: string, input: ContractApprovalInput, options: CommandOptions) =>
+        command<ServerRecord>('/v1/sales/contracts/' + idSegment(id) + '/approve', input, options),
     },
     delivery: {
       projects: () => list<ServerRecord>('/v1/delivery/projects'),
@@ -132,11 +225,11 @@ export function createLiveDataApi(options: ClientOptions) {
       tickets: () => list<ServerRecord>('/v1/communications/tickets'),
       notifications: () => list<ServerRecord>('/v1/communications/notifications'),
       createTicket: (input: CreateTicketInput, options: CommandOptions) =>
-        http.command<ServerRecord>('/v1/communications/tickets', input, options),
+        command<ServerRecord>('/v1/communications/tickets', input, options),
     },
     tracking: {
-      latest: () => http.get<unknown>('/v1/tracking/latest'),
-      currentSession: () => http.get<unknown>('/v1/tracking/sessions/current'),
+      latest: () => get<unknown>('/v1/tracking/latest'),
+      currentSession: () => get<unknown>('/v1/tracking/sessions/current'),
     },
   };
 }

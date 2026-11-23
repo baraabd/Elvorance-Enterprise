@@ -1,6 +1,7 @@
 /** Test adapter. Runtime boot never silently falls back to this repository. */
 import type { Entity, EventEnvelope } from '@elvorance/contracts';
 import { assert } from './errors.ts';
+import { pageResult, validatePage, type PageOptions } from './pagination.ts';
 import {
   envelope,
   fingerprint,
@@ -90,6 +91,58 @@ export class MemoryRepository implements Repository {
         } as T;
         bucket(table)[scopedKey(id)] = value;
         return structuredClone(value);
+      },
+      async sequencePage<T extends Entity & { sequence: number }>(
+        table: string,
+        filter: Filter,
+        after: number,
+        limit: number,
+      ) {
+        assert(
+          Number.isSafeInteger(after) &&
+            after >= 0 &&
+            Number.isSafeInteger(limit) &&
+            limit >= 1 &&
+            limit <= 201,
+          'INVALID_PAGE',
+          'Invalid pagination parameters',
+        );
+        return structuredClone(
+          Object.values(bucket(table))
+            .filter(
+              (entry) =>
+                entry.tenantId === tenantId &&
+                Object.entries(filter).every(
+                  ([key, expected]) =>
+                    (entry as unknown as Record<string, unknown>)[key] === expected,
+                ),
+            )
+            .map((entry) => entry as T)
+            .filter((entry) => entry.sequence > after)
+            .sort((a, b) => a.sequence - b.sequence)
+            .slice(0, limit),
+        );
+      },
+      async page<T extends Entity>(table: string, options: PageOptions) {
+        validatePage(options);
+        const matches = (value: Entity, filter: Filter) =>
+          Object.entries(filter).every(
+            ([key, expected]) => (value as unknown as Record<string, unknown>)[key] === expected,
+          );
+        const rows = Object.values(bucket(table))
+          .filter(
+            (value) =>
+              value.tenantId === tenantId &&
+              (!options.after || value.id > options.after) &&
+              options.scopes.some(
+                (scope) =>
+                  matches(value, scope.equals) &&
+                  (!scope.notEquals || !matches(value, scope.notEquals)),
+              ),
+          )
+          .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))
+          .slice(0, options.limit + 1) as T[];
+        return structuredClone(pageResult(rows, options.limit));
       },
       async replace<T extends Entity>(table: string, value: T, expectedVersion: number) {
         const existing = bucket(table)[scopedKey(value.id)];

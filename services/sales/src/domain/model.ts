@@ -24,6 +24,10 @@ export interface Quote extends Entity {
   customerName: string;
   repId: string;
   status: 'draft' | 'sent' | 'accepted' | 'rejected' | 'changes_requested' | 'cancelled';
+  subtotalMinor: number;
+  discountMinor: number;
+  catalogVersion: number;
+  customPricing: boolean;
   currency: string;
   items: ScopeItem[];
   totalMinor: number;
@@ -35,6 +39,20 @@ export interface Quote extends Entity {
   acceptedBy: string | null;
   customerResponse: string;
   revisionOf: string | null;
+}
+export interface DiscountApproval extends Entity {
+  quoteId: string;
+  clientId: string;
+  repId: string;
+  contentHash: string;
+  subtotalMinor: number;
+  discountMinor: number;
+  status: 'pending' | 'approved' | 'rejected' | 'superseded';
+  requestedBy: string;
+  reason: string;
+  decidedBy: string | null;
+  decidedAt: string | null;
+  decisionNote: string;
 }
 export interface Contract extends Entity {
   quoteId: string;

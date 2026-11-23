@@ -19,6 +19,8 @@ const commonCss = (
     ['styles', 'polish', 'tracking'].map((name) => read(`packages/design-system/src/${name}.css`)),
   )
 ).join('\n');
+const arabicCssPath = 'packages/design-system/src/arabic-accessibility.css';
+const arabicCss = await read(arabicCssPath);
 await mkdir(resolve(root, 'dist'), { recursive: true });
 for (const app of apps) {
   const output = resolve(root, `apps/${app.folder}/dist`);
@@ -36,7 +38,9 @@ for (const app of apps) {
     sourcemap: true,
     metafile: true,
   });
-  const css = systemFontCss(commonCss + '\n' + (await read(`apps/${app.folder}/src/styles.css`)));
+  const css = systemFontCss(
+    commonCss + '\n' + (await read(`apps/${app.folder}/src/styles.css`)) + '\n' + arabicCss,
+  );
   await writeFile(resolve(output, 'assets/app.css'), css);
   const html = await read(`apps/${app.folder}/index.html`);
   await writeFile(resolve(output, 'index.html'), html);
@@ -68,12 +72,13 @@ for (const app of apps) {
       `apps/${app.folder}/index.html`,
       `apps/${app.folder}/config.example.ts`,
       `apps/${app.folder}/src/styles.css`,
+      arabicCssPath,
       ...['styles', 'polish', 'tracking'].map((name) => `packages/design-system/src/${name}.css`),
     ]),
   );
   console.log(`Built ${app.folder}: independent bundle and portable ${app.id}.html`);
 }
-const launcherCss = systemFontCss(commonCss);
+const launcherCss = systemFontCss(commonCss + '\n' + arabicCss);
 await writeFile(
   resolve(root, 'dist/index.html'),
   (await read('tooling/launcher.html')).replace('/* ELVORANCE_SHARED_CSS */', launcherCss),

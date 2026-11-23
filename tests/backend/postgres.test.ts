@@ -1,3 +1,4 @@
+import { catalogPrices } from './helpers.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomBytes, randomUUID } from 'node:crypto';
@@ -46,6 +47,7 @@ import {
 import { auth, call, principals } from './helpers.ts';
 import { createLiveDataApi } from '../../packages/api-client/src/live-data.ts';
 import type { EventEnvelope } from '@elvorance/contracts';
+import { verifyRepPostgres } from './rep-postgres-scenarios.ts';
 
 const adminUrl = process.env.ELVORANCE_TEST_POSTGRES_URL;
 const configs: { name: string; tables: readonly string[]; migrations: Migration[] }[] = [
@@ -115,6 +117,25 @@ test(
       await repository.migrate();
       await repository.migrate();
       await repository.ping();
+      const owner = new pg.Client({ connectionString: url });
+      rawClients.add(owner);
+      await owner.connect();
+      const flags = await owner.query<{
+        relname: string;
+        relrowsecurity: boolean;
+        relforcerowsecurity: boolean;
+      }>(
+        'SELECT relname,relrowsecurity,relforcerowsecurity FROM pg_class WHERE relname=ANY($1::text[])',
+        [config.tables],
+      );
+      assert.equal(flags.rows.length, config.tables.length);
+      for (const row of flags.rows)
+        assert.ok(
+          row.relrowsecurity && row.relforcerowsecurity,
+          `Forced row-level isolation: ${config.name}.${row.relname}`,
+        );
+      await owner.end();
+      rawClients.delete(owner);
     }
     let rejectedConnections = 0;
     for (const source of provisioned)
@@ -193,6 +214,7 @@ test(
       repository: byName('sales').repository,
       auth,
       customerDirectory: {
+        ...catalogPrices({ 'scope-1': 3333 }),
         async getCustomer(id, authorization) {
           const response = await crm.inject({
             method: 'GET',
@@ -430,6 +452,12 @@ test(
     );
     await salesRaw.end();
     rawClients.delete(salesRaw);
+    await verifyRepPostgres(t, {
+      crm: byName('crm').repository,
+      sales: byName('sales').repository,
+      communications: byName('communications').repository,
+      identity: byName('identity').repository,
+    });
     t.diagnostic(
       'Verified: tenant RLS, transaction rollback, concurrent accept/payment guards, atomic approval/outbox, inbox rollback/retry, unique project, balanced invoices, and lease ownership.',
     );

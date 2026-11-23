@@ -2,6 +2,7 @@ import { installConfigurationSync } from '@elvorance/questionnaire/sync';
 import { installMobileShell } from '@elvorance/mobile-platform';
 import { installRuntime } from '@elvorance/app-runtime';
 import { mountLiveWorkspace } from '@elvorance/api-client/live-workspace';
+import { startRepresentative } from './server/bootstrap.ts';
 import { installSiteTracking } from '@elvorance/app-runtime/tracking';
 import { registerApp } from './app.ts';
 
@@ -43,13 +44,19 @@ if (runtime) {
     'apiBaseUrl' in config && typeof config.apiBaseUrl === 'string'
       ? config.apiBaseUrl
       : 'http://127.0.0.1:3000';
-  void mountLiveWorkspace({
-    root,
-    role: 'rep',
-    baseUrl: apiBaseUrl,
-    accessToken: async () => (await window.ELVORANCE_AUTH?.getAccessToken?.()) ?? null,
-  }).catch((error: unknown) => {
-    console.error('Elvorance authenticated API startup failed', error);
-    root.textContent = 'تعذّر بدء مساحة البيانات الحية. تحقق من إعدادات API.';
-  });
+  const auth = 'auth' in config ? config.auth : undefined;
+  if (auth) {
+    void startRepresentative(root, { dataMode: 'server', apiBaseUrl, auth }).catch(() => {
+      root.textContent = 'تعذّر تهيئة تسجيل الدخول الآمن. راجع إعدادات الاتصال.';
+    });
+  } else
+    void mountLiveWorkspace({
+      root,
+      role: 'rep',
+      baseUrl: apiBaseUrl,
+      accessToken: async () => (await window.ELVORANCE_AUTH?.getAccessToken?.()) ?? null,
+    }).catch((error: unknown) => {
+      console.error('Elvorance authenticated API startup failed', error);
+      root.textContent = 'تعذّر بدء مساحة البيانات الحية. تحقق من إعدادات API.';
+    });
 }

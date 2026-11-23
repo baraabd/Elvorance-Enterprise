@@ -1,4 +1,4 @@
-import { authFromEnv, listen } from '@elvorance/service-kit';
+import { authFromEnv, HttpCustomerDirectory, listen } from '@elvorance/service-kit';
 import { startEventRuntime } from '@elvorance/events';
 import { createRepository } from './infrastructure/repository.ts';
 import { createApp } from './app.ts';
@@ -17,7 +17,13 @@ if (process.argv.includes('--migrate-only')) {
     handler: handleEvent,
     log: (message) => console.warn('[communications]', message),
   });
-  const app = createApp({ repository, auth, logger: true, brokerReady: events.isReady });
+  const app = createApp({
+    repository,
+    auth,
+    logger: true,
+    brokerReady: events.isReady,
+    customerDirectory: new HttpCustomerDirectory(process.env.CRM_URL ?? 'http://localhost:3002'),
+  });
   process.env.PORT ??= '3007';
   await listen(app, repository, events.close);
 }

@@ -12,6 +12,8 @@ import {
 export function quoteContent(input: unknown): {
   items: ScopeItem[];
   totalMinor: number;
+  subtotalMinor: number;
+  discountMinor: number;
   currency: string;
   terms: string;
   paymentPlan: PaymentInstallment[];
@@ -24,19 +26,21 @@ export function quoteContent(input: unknown): {
       serviceId: text(item.serviceId, 'serviceId', 1, 100),
       title: text(item.title, 'title', 2, 200),
       quantity: integer(item.quantity, 'quantity', 1, 1000),
-      unitPriceMinor: integer(item.unitPriceMinor, 'unitPriceMinor', 1, 1_000_000_000),
+      unitPriceMinor: integer(item.unitPriceMinor, 'unitPriceMinor', 1, 10_000_000_000),
       deliverables: array(item.deliverables ?? [], 'deliverables', 30).map((value) =>
         text(value, 'deliverable', 1, 1000),
       ),
       duration: optionalText(item.duration, 'duration', 200),
     };
   });
-  const totalMinor = items.reduce((sum, item) => sum + item.quantity * item.unitPriceMinor, 0);
+  const subtotalMinor = items.reduce((sum, item) => sum + item.quantity * item.unitPriceMinor, 0);
   assert(
-    Number.isSafeInteger(totalMinor) && totalMinor <= 100_000_000_000,
+    Number.isSafeInteger(subtotalMinor) && subtotalMinor <= 100_000_000_000,
     'INVALID_TOTAL',
     'Quote total is out of range',
   );
+  const discountMinor = integer(body.discountMinor ?? 0, 'discountMinor', 0, subtotalMinor - 1);
+  const totalMinor = subtotalMinor - discountMinor;
   const paymentPlan = array(body.paymentPlan, 'paymentPlan', 24, 1).map((input) => {
     const item = object(input);
     return {
@@ -56,6 +60,11 @@ export function quoteContent(input: unknown): {
     'PAYMENT_PLAN_TOTAL',
     'Payment installments must exactly equal the quote total',
   );
+  assert(
+    paymentPlan[0]!.amountMinor >= Math.ceil(totalMinor / 5),
+    'DOWN_PAYMENT_MINIMUM',
+    'The first installment must be at least 20% of the net quote total',
+  );
   const currency = text(body.currency, 'currency', 3, 3).toUpperCase();
   assert(/^[A-Z]{3}$/.test(currency), 'INVALID_CURRENCY', 'Currency must be a three-letter code');
   const validUntil = dateOnly(body.validUntil, 'validUntil');
@@ -67,6 +76,8 @@ export function quoteContent(input: unknown): {
   return {
     items,
     totalMinor,
+    subtotalMinor,
+    discountMinor,
     currency,
     paymentPlan,
     terms: text(body.terms, 'terms', 3, 10_000),

@@ -13,6 +13,7 @@ import {
   type Transaction,
 } from '@elvorance/service-kit';
 import type { Customer, Region } from '../domain/model.ts';
+import { customerDetails, internalCustomerFields } from '../domain/customer-details.ts';
 export async function customer(
   tx: Transaction,
   principal: Principal,
@@ -60,6 +61,7 @@ export async function createCustomer(
     doNotContact: false,
     consentVersion: 1,
     notes: optionalText(body.notes, 'notes', 3000),
+    ...customerDetails(body),
   });
   await tx.emit('crm.customer_created.v1', result.id, result.version, customerContext(result));
   return result;
@@ -73,20 +75,28 @@ export async function updateCustomer(
   requireRole(principal, 'admin', 'rep', 'client');
   const body = object(input);
   const value = await customer(tx, principal, id);
-  if (hasRole(principal, 'client') && !hasRole(principal, 'admin')) {
+  if (!hasRole(principal, 'rep', 'admin')) {
     assert(
       body.repId === undefined && body.regionId === undefined,
       'FORBIDDEN',
       'Customers cannot change their assignment',
       403,
     );
+    assert(
+      internalCustomerFields.every((field) => body[field] === undefined),
+      'FORBIDDEN',
+      'Internal customer information is maintained by the sales team',
+      403,
+    );
   }
-  const next = { ...value };
+  const next = { ...value, ...customerDetails(body, value) };
   if (body.name !== undefined) next.name = text(body.name, 'name', 2, 200);
   if (body.phone !== undefined) next.phone = optionalText(body.phone, 'phone', 40);
   if (body.email !== undefined) next.email = optionalText(body.email, 'email', 200);
+  if (body.notes !== undefined) next.notes = optionalText(body.notes, 'notes', 3000);
   if (body.doNotContact !== undefined) {
     next.doNotContact = bool(body.doNotContact, 'doNotContact');
+    if (value.doNotContact && !next.doNotContact) requireRole(principal, 'admin', 'client');
     next.consentVersion = value.consentVersion + 1;
   }
   if (body.repId !== undefined) {
@@ -96,11 +106,39 @@ export async function updateCustomer(
   if (body.regionId !== undefined) {
     requireRole(principal, 'admin');
     next.regionId = body.regionId ? text(body.regionId, 'regionId', 1, 100) : null;
-    if (next.regionId) (await tx.get<Region>('regions', next.regionId)) ?? notFound('Region');
+    if (next.regionId) {
+      const region = (await tx.get<Region>('regions', next.regionId)) ?? notFound('Region');
+      assert(region.active, 'REGION_DISABLED', 'Region is not active');
+    }
   }
   const result = await tx.replace('customers', next, version(body));
   await tx.emit('crm.customer_updated.v1', result.id, result.version, customerContext(result));
   return result;
+}
+export function customerView(principal: Principal, value: Customer): Partial<Customer> {
+  if (
+    !hasRole(principal, 'client') ||
+    hasRole(principal, 'rep', 'admin', 'support', 'finance', 'delivery')
+  )
+    return value;
+  return {
+    id: value.id,
+    tenantId: value.tenantId,
+    version: value.version,
+    createdAt: value.createdAt,
+    updatedAt: value.updatedAt,
+    name: value.name,
+    repId: value.repId,
+    regionId: value.regionId,
+    phone: value.phone,
+    email: value.email,
+    contactName: value.contactName,
+    businessType: value.businessType,
+    address: value.address,
+    city: value.city,
+    doNotContact: value.doNotContact,
+    consentVersion: value.consentVersion,
+  };
 }
 export async function createRegion(
   tx: Transaction,

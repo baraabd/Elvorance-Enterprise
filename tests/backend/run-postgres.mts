@@ -1,5 +1,3 @@
-// @ts-nocheck
-// Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
 /** Optional real database verifier. No production URL is used and no password is printed.
  * Install embedded-postgres separately, or set ELVORANCE_EMBEDDED_POSTGRES_MODULE to its JS entry point.
  * Standard CI can instead run npm test with ELVORANCE_TEST_POSTGRES_URL pointing at a disposable admin database.
@@ -12,16 +10,43 @@ import { randomBytes } from 'node:crypto';
 import { createServer } from 'node:net';
 import { spawn } from 'node:child_process';
 import { build } from 'esbuild';
+import assert from 'node:assert/strict';
+interface EmbeddedDatabase {
+  initialise(): Promise<void>;
+  start(): Promise<void>;
+  stop(): Promise<void>;
+}
+interface EmbeddedDatabaseOptions {
+  databaseDir: string;
+  user: string;
+  password: string;
+  port: number;
+  persistent: boolean;
+  authMethod: 'scram-sha-256';
+  postgresFlags: string[];
+  onLog(message: unknown): void;
+  onError(message: unknown): void;
+}
+interface EmbeddedModule {
+  default: new (options: EmbeddedDatabaseOptions) => EmbeddedDatabase;
+}
 const root = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const moduleId = process.env.ELVORANCE_EMBEDDED_POSTGRES_MODULE ?? 'embedded-postgres';
-const { default: EmbeddedPostgres } = await import(moduleId);
+const { default: EmbeddedPostgres } = (await import(moduleId)) as EmbeddedModule;
 const directory = await mkdtemp(join(tmpdir(), 'elvorance-postgres-test-'));
 const probe = createServer();
-await new Promise((resolve) => probe.listen(0, '127.0.0.1', resolve));
-const port = probe.address().port;
-await new Promise((resolve) => probe.close(resolve));
+await new Promise<void>((resolve, reject) => {
+  probe.once('error', reject);
+  probe.listen(0, '127.0.0.1', resolve);
+});
+const address = probe.address();
+assert(address && typeof address !== 'string', 'Expected a loopback TCP address');
+const port = address.port;
+await new Promise<void>((resolve, reject) =>
+  probe.close((error) => (error ? reject(error) : resolve())),
+);
 const password = randomBytes(32).toString('hex');
-const startupLogs = [];
+const startupLogs: string[] = [];
 const database = new EmbeddedPostgres({
   databaseDir: join(directory, 'db'),
   user: 'postgres',
@@ -64,7 +89,7 @@ try {
       ELVORANCE_TEST_POSTGRES_URL: `postgresql://postgres:${password}@127.0.0.1:${port}/postgres`,
     },
   });
-  process.exitCode = await new Promise((resolve, reject) => {
+  process.exitCode = await new Promise<number>((resolve, reject) => {
     child.once('error', reject);
     child.once('exit', (code) => resolve(code ?? 1));
   });

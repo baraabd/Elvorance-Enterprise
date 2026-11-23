@@ -19,6 +19,8 @@
     "@capacitor/app": "8.1.2",
     "@capacitor/network": "8.0.1",
     "@capacitor/geolocation": "8.2.4",
-    "@elvorance/questionnaire": "2.4.0"
+    "@elvorance/questionnaire": "2.4.0",
+    "@elvorance/mobile-auth": "2.0.0",
+    "@elvorance/contracts": "2.0.0"
   }
 }

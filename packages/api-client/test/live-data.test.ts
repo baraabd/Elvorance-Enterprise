@@ -127,3 +127,96 @@ test('support ticket POST uses the backend message contract', async () => {
   );
   assert.equal(result.id, 'ticket-1');
 });
+
+test('commercial decisions preserve exact consent, version and idempotency contracts', async () => {
+  const requests: { path: string; input: unknown; key: string | null }[] = [];
+  const api = createLiveDataApi({
+    baseUrl: 'https://api.example.com',
+    accessToken: async () => 'verified-client',
+    fetch: async (url, init) => {
+      assert.equal(init?.method, 'POST');
+      requests.push({
+        path: new URL(String(url)).pathname,
+        input: JSON.parse(String(init?.body)) as unknown,
+        key: new Headers(init?.headers).get('idempotency-key'),
+      });
+      return Response.json({ id: 'record', version: 4 });
+    },
+  });
+  await api.sales.acceptQuote(
+    'quote-1',
+    { expectedVersion: 2, consent: true, paymentWishes: 'Bank transfer preferred' },
+    { idempotencyKey: 'accept-user-intent-1' },
+  );
+  await api.sales.rejectQuote(
+    'quote-2',
+    { expectedVersion: 3, reason: 'Timing does not fit' },
+    { idempotencyKey: 'reject-user-intent-1' },
+  );
+  await api.sales.requestQuoteChanges(
+    'quote-3',
+    { expectedVersion: 4, reason: 'Please adjust the scope' },
+    { idempotencyKey: 'changes-user-intent-1' },
+  );
+  await api.sales.approveContract(
+    'contract-1',
+    { expectedVersion: 1, consent: true, signerName: 'Customer Signer' },
+    { idempotencyKey: 'approve-contract-intent' },
+  );
+  await api.sales.decideDiscount(
+    'approval-1',
+    { expectedVersion: 1, decision: 'rejected', note: 'Margin is insufficient' },
+    { idempotencyKey: 'discount-decision-intent' },
+  );
+  assert.deepEqual(
+    requests.map((request) => request.path),
+    [
+      '/v1/sales/quotes/quote-1/accept',
+      '/v1/sales/quotes/quote-2/reject',
+      '/v1/sales/quotes/quote-3/request-changes',
+      '/v1/sales/contracts/contract-1/approve',
+      '/v1/sales/quote-discount-approvals/approval-1/decision',
+    ],
+  );
+  assert.deepEqual(requests[0]!.input, {
+    expectedVersion: 2,
+    consent: true,
+    paymentWishes: 'Bank transfer preferred',
+  });
+  assert.deepEqual(requests[3]!.input, {
+    expectedVersion: 1,
+    consent: true,
+    signerName: 'Customer Signer',
+  });
+  assert.ok(requests.every((request) => request.key));
+});
+
+test('generic live lists follow every cursor and reject a repeated cursor rather than truncating', async () => {
+  let calls = 0;
+  const api = createLiveDataApi({
+    baseUrl: 'https://api.example.com',
+    accessToken: async () => 'verified-client',
+    fetch: async (url) => {
+      calls++;
+      const cursor = new URL(String(url)).searchParams.get('cursor');
+      return Response.json({
+        items: [{ id: cursor ? 'quote-2' : 'quote-1', version: 1 }],
+        nextCursor: cursor ? null : 'next-page',
+      });
+    },
+  });
+  assert.deepEqual(
+    (await api.sales.quotes()).map((quote) => quote.id),
+    ['quote-1', 'quote-2'],
+  );
+  assert.equal(calls, 2);
+  const invalid = createLiveDataApi({
+    baseUrl: 'https://api.example.com',
+    accessToken: async () => 'verified-client',
+    fetch: async () => Response.json({ items: [], nextCursor: 'same-page' }),
+  });
+  await assert.rejects(
+    invalid.sales.quotes(),
+    (error: unknown) => error instanceof ApiError && error.code === 'invalid_response',
+  );
+});

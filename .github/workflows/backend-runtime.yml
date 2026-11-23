@@ -1,0 +1,63 @@
+name: Backend distributed runtime
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  compose-journey:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      CI: 'true'
+      COMPOSE_PROJECT_NAME: elvorance-runtime-${{ github.run_id }}-${{ github.run_attempt }}
+      IMAGE_TAG: ci-${{ github.run_id }}-${{ github.run_attempt }}
+      COMPOSE_PARALLEL_LIMIT: '2'
+      GATEWAY_BIND_HOST: 127.0.0.1
+      GATEWAY_PORT: '23000'
+      RUNTIME_GATEWAY_URL: http://127.0.0.1:23000
+      RABBITMQ_MANAGEMENT_BIND_HOST: 127.0.0.1
+      RABBITMQ_MANAGEMENT_PORT: '25672'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Execute actual distributed runtime, database isolation and persisted journey
+        run: node tooling/production/run-lane.mts backend-runtime
+      - name: Collect service state without secrets
+        if: always()
+        run: |
+          mkdir -p dist/runtime
+          if test -f infra/compose/.env; then
+            docker compose --env-file infra/compose/.env -f infra/compose/compose.yaml ps --all --format json > dist/runtime/compose-state.json
+          fi
+      - name: Remove only this isolated CI Compose project and its disposable volumes
+        if: always()
+        run: |
+          if [[ ! "$COMPOSE_PROJECT_NAME" =~ ^elvorance-runtime-[0-9]+-[0-9]+$ ]]; then
+            echo 'Refusing cleanup outside an isolated runtime CI project.' >&2
+            exit 1
+          fi
+          if test -f infra/compose/.env; then
+            docker compose --project-name "$COMPOSE_PROJECT_NAME" --env-file infra/compose/.env -f infra/compose/compose.yaml down --volumes --remove-orphans
+          fi
+      - name: Upload immutable backend-runtime evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-ci-backend-runtime-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/full-ci/backend-runtime/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: backend-runtime-ci-evidence
+          path: dist/runtime/
+          if-no-files-found: error
+          retention-days: 7

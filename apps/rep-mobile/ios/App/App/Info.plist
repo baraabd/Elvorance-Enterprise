@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>أطلس الميداني</string>
+        <string>$(ELVORANCE_APP_DISPLAY_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,6 +22,13 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CFBundleURLTypes</key>
+	<array><dict>
+		<key>CFBundleURLName</key><string>$(PRODUCT_BUNDLE_IDENTIFIER).oauth</string>
+		<key>CFBundleURLSchemes</key><array><string>$(PRODUCT_BUNDLE_IDENTIFIER)</string></array>
+	</dict></array>
+	<key>NSAppTransportSecurity</key>
+	<dict><key>NSAllowsArbitraryLoads</key><false/></dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>
@@ -67,8 +74,8 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>يستخدم أطلس موقعك عند اختيار مشاركة الموقع أثناء العمل وتأكيد الوصول إلى زيارة.</string>
+	<string>يستخدم إلفورانس موقعك عند اختيار مشاركة الموقع أثناء العمل وتأكيد الوصول إلى زيارة.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>يستخدم أطلس موقعك عند اختيار مشاركة الموقع أثناء العمل وتأكيد الوصول إلى زيارة.</string>
+	<string>يستخدم إلفورانس موقعك عند اختيار مشاركة الموقع أثناء العمل وتأكيد الوصول إلى زيارة.</string>
 </dict>
 </plist>
