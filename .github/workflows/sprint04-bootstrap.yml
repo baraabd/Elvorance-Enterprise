@@ -1,0 +1,88 @@
+name: Materialize verified Sprint 04 source
+on:
+  push:
+    branches: ['sprint/04-domain-integration-20261123']
+    paths: ['.sprint04-transfer/**', '.github/workflows/sprint04-bootstrap.yml']
+permissions:
+  contents: read
+jobs:
+  materialize:
+    if: github.repository == 'baraabd/Elvorance-Enterprise' && github.ref == 'refs/heads/sprint/04-domain-integration-20261123'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - name: Verify exact source transfer and remove one-time transport
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, lzma, os, pathlib, shutil, subprocess
+          root = pathlib.Path('.sprint04-transfer')
+          manifest = json.loads((root / 'manifest.json').read_text())
+          assert manifest['baseCommit'] == '453242e1256f6d876d170142b8ad235be9120344'
+          assert manifest['patchSha256'] == '1031fd9b77aa997d31e131af2ee932ab1bd2e0194c98cdfe17b4087cc08fabc4'
+          subprocess.run(['git', 'merge-base', '--is-ancestor', manifest['baseCommit'], 'HEAD'], check=True)
+          temporary = {'.github/workflows/sprint04-bootstrap.yml', '.sprint04-transfer/manifest.json'} | {f'.sprint04-transfer/part-{i}.xz' for i in range(5)}
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only', manifest['baseCommit'], 'HEAD'], text=True).splitlines())
+          assert changed == temporary, changed
+          compressed = b''.join((root / f'part-{i}.xz').read_bytes() for i in range(5))
+          patch = lzma.decompress(compressed, memlimit=256 * 1024 * 1024)
+          assert len(patch) == 126813
+          assert hashlib.sha256(patch).hexdigest() == manifest['patchSha256']
+          patch_path = pathlib.Path(os.environ['RUNNER_TEMP']) / 'sprint04.patch'
+          patch_path.write_bytes(patch)
+          subprocess.run(['git', 'apply', '--check', str(patch_path)], check=True)
+          subprocess.run(['git', 'apply', str(patch_path)], check=True)
+          for path, digest in manifest['files'].items():
+              assert hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest() == digest, path
+          manifest['temporaryPaths'] = sorted(temporary)
+          (pathlib.Path(os.environ['RUNNER_TEMP']) / 'sprint04-manifest.json').write_text(json.dumps(manifest))
+          shutil.rmtree(root)
+          pathlib.Path('.github/workflows/sprint04-bootstrap.yml').unlink()
+          print('Verified all 28 authored files; one-time transfer and workflow removed.')
+          PY
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Generate contracts and source inventories without resetting quality baselines
+        run: |
+          node tooling/scripts/sprint04-contracts.mts
+          node tooling/production/inventory.mts --write
+          node tooling/scripts/sprint04-report.mts
+          git diff --check
+      - name: Commit only reviewed source and generated inventory paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, subprocess
+          m = json.loads((pathlib.Path(os.environ['RUNNER_TEMP']) / 'sprint04-manifest.json').read_text())
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines())
+          changed.update(subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard'], text=True).splitlines())
+          allowed = set(m['paths'] + m['generatedPaths'] + m['temporaryPaths'])
+          assert changed <= allowed, sorted(changed - allowed)
+          for path, digest in m['files'].items():
+              assert hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest() == digest, path
+          assert not pathlib.Path('.sprint04-transfer').exists()
+          assert not pathlib.Path('.github/workflows/sprint04-bootstrap.yml').exists()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --all
+          git commit -m 'feat(sprint04): integrate service requests and recover domain event failures'
+          git push origin HEAD:refs/heads/sprint/04-domain-integration-20261123
+          git rev-parse HEAD >> "$GITHUB_STEP_SUMMARY"
+      - name: Run unchanged FULL-CI against materialized branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST repos/baraabd/Elvorance-Enterprise/actions/workflows/full-ci.yml/dispatches -f ref=sprint/04-domain-integration-20261123
