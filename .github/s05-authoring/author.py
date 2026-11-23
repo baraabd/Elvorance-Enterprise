@@ -74,9 +74,14 @@ elif sys.argv[1] == 'publish':
     changed = set(git('diff', '--cached', '--name-only').splitlines())
     assert changed == set(hashes), f'Unexpected staged paths: {changed.symmetric_difference(hashes)}'
     assert not git('diff', '--name-only'), 'Unstaged tracked changes remain'
+    # GITHUB_TOKEN lacks workflows permission. Publish ordinary source only;
+    # the existing authorized connector must write the verified workflow next.
+    workflow = '.github/workflows/full-ci.yml'
+    git('restore', '--source=' + BASE, '--staged', '--worktree', '--', workflow)
+    assert set(git('diff', '--cached', '--name-only').splitlines()) == set(hashes) - {workflow}
     git('config', 'user.name', 'github-actions[bot]')
     git('config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com')
-    git('commit', '-m', 'feat(admin): add real API workspace and fail-closed browser acceptance')
+    git('commit', '-m', 'feat(admin): add real API workspace and browser acceptance source')
     commit = git('rev-parse', 'HEAD')
     assert git('rev-parse', 'HEAD^') == BASE
     assert not git('ls-tree', '-r', '--name-only', 'HEAD', '--', '.github/s05-authoring', '.github/workflows/s05-authoring.yml')
@@ -89,7 +94,7 @@ elif sys.argv[1] == 'publish':
     existing = subprocess.run(['git', 'ls-remote', '--exit-code', 'origin', ref], env=env, capture_output=True)
     assert existing.returncode == 2, 'Target branch must not exist; authentication failures also abort.'
     git('push', 'origin', 'HEAD:' + ref, env=env)
-    receipt = {'baseCommit': BASE, 'baseTree': TREE, 'commit': commit, 'tree': git('rev-parse', 'HEAD^{tree}'), 'branch': TARGET, 'sourceSha256': hashes, 'deploymentPerformed': False, 'ciAcceptance': 'NOT_ESTABLISHED_BY_AUTHORING_JOB'}
+    receipt = {'baseCommit': BASE, 'baseTree': TREE, 'commit': commit, 'tree': git('rev-parse', 'HEAD^{tree}'), 'branch': TARGET, 'sourceSha256': {k: v for k, v in hashes.items() if k != workflow}, 'pendingAuthorizedWorkflowWrite': {workflow: hashes[workflow]}, 'deploymentPerformed': False, 'ciAcceptance': 'NOT_ESTABLISHED_BY_AUTHORING_JOB'}
     (TEMP / 's05-authoring-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
     print(json.dumps({k: v for k, v in receipt.items() if k != 'sourceSha256'}, indent=2))
 else:
