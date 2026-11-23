@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "85cb662eb1d305ee149781793b16c0cc2d0952dba141b51661eb187793a63c8b",
+  "sourceDigest": "836e5a86aed5f5a67e3853a42111d05a2e9d424a2aee3d5fc400f7c6f51fcab7",
   "accountability": "Proposed roles only; named service/on-call owners are UNASSIGNED. CODEOWNERS routes review to the repository owner, not proof of independent approval.",
   "services": [
     {
@@ -504,6 +504,8 @@
       "source": "apps/admin-web/src/features/configuration/index.ts",
       "specifier": "@elvorance/questionnaire"
     },
+    { "source": "apps/admin-web/src/main.ts", "specifier": "@elvorance/ui/enterprise-ux" },
+    { "source": "apps/admin-web/src/main.ts", "specifier": "./navigation.ts" },
     { "source": "apps/admin-web/src/main.ts", "specifier": "@elvorance/questionnaire/sync" },
     { "source": "apps/admin-web/src/main.ts", "specifier": "@elvorance/app-runtime" },
     {
@@ -512,6 +514,7 @@
     },
     { "source": "apps/admin-web/src/main.ts", "specifier": "@elvorance/app-runtime/tracking" },
     { "source": "apps/admin-web/src/main.ts", "specifier": "./app.ts" },
+    { "source": "apps/admin-web/src/navigation.ts", "specifier": "@elvorance/ui/enterprise-ux" },
     { "source": "apps/client-mobile/src/app.ts", "specifier": "./context.ts" },
     { "source": "apps/client-mobile/src/app.ts", "specifier": "./state/local-demo.ts" },
     { "source": "apps/client-mobile/src/app.ts", "specifier": "./lifecycle.ts" },
@@ -534,6 +537,8 @@
       "source": "apps/client-mobile/src/features/discovery/index.ts",
       "specifier": "@elvorance/questionnaire"
     },
+    { "source": "apps/client-mobile/src/main.ts", "specifier": "@elvorance/ui/enterprise-ux" },
+    { "source": "apps/client-mobile/src/main.ts", "specifier": "./navigation.ts" },
     { "source": "apps/client-mobile/src/main.ts", "specifier": "@elvorance/questionnaire/sync" },
     { "source": "apps/client-mobile/src/main.ts", "specifier": "@elvorance/mobile-platform" },
     { "source": "apps/client-mobile/src/main.ts", "specifier": "@elvorance/app-runtime" },
@@ -543,6 +548,10 @@
     },
     { "source": "apps/client-mobile/src/main.ts", "specifier": "@elvorance/app-runtime/tracking" },
     { "source": "apps/client-mobile/src/main.ts", "specifier": "./app.ts" },
+    {
+      "source": "apps/client-mobile/src/navigation.ts",
+      "specifier": "@elvorance/ui/enterprise-ux"
+    },
     { "source": "apps/rep-mobile/src/app.ts", "specifier": "./context.ts" },
     { "source": "apps/rep-mobile/src/app.ts", "specifier": "./state/local-demo.ts" },
     { "source": "apps/rep-mobile/src/app.ts", "specifier": "./lifecycle.ts" },
@@ -570,6 +579,8 @@
       "source": "apps/rep-mobile/src/features/quotes/index.ts",
       "specifier": "@elvorance/app-runtime/finance"
     },
+    { "source": "apps/rep-mobile/src/main.ts", "specifier": "@elvorance/ui/enterprise-ux" },
+    { "source": "apps/rep-mobile/src/main.ts", "specifier": "./navigation.ts" },
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "@elvorance/questionnaire/sync" },
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "@elvorance/mobile-platform" },
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "@elvorance/app-runtime" },
@@ -580,6 +591,8 @@
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "./server/bootstrap.ts" },
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "@elvorance/app-runtime/tracking" },
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "./app.ts" },
+    { "source": "apps/rep-mobile/src/navigation.ts", "specifier": "@elvorance/ui/enterprise-ux" },
+    { "source": "apps/rep-mobile/src/server-main.ts", "specifier": "@elvorance/ui/enterprise-ux" },
     { "source": "apps/rep-mobile/src/server-main.ts", "specifier": "./server/bootstrap.ts" },
     { "source": "apps/rep-mobile/src/server/api.ts", "specifier": "@elvorance/api-client" },
     { "source": "apps/rep-mobile/src/server/api.ts", "specifier": "@elvorance/contracts" },
@@ -596,8 +609,16 @@
     },
     { "source": "apps/rep-mobile/src/server/tracking.ts", "specifier": "./api.ts" },
     { "source": "apps/rep-mobile/src/server/tracking.ts", "specifier": "./api.ts" },
+    {
+      "source": "apps/rep-mobile/src/server/ui/dom.ts",
+      "specifier": "@elvorance/ui/enterprise-ux"
+    },
     { "source": "apps/rep-mobile/src/server/ui/dom.ts", "specifier": "@elvorance/api-client" },
     { "source": "apps/rep-mobile/src/server/ui/dom.ts", "specifier": "../api.ts" },
+    {
+      "source": "apps/rep-mobile/src/server/ui/forms.ts",
+      "specifier": "@elvorance/ui/enterprise-ux"
+    },
     { "source": "apps/rep-mobile/src/server/ui/forms.ts", "specifier": "./dom.ts" },
     { "source": "apps/rep-mobile/src/server/ui/repeating-fields.ts", "specifier": "./forms.ts" },
     { "source": "apps/rep-mobile/src/server/ui/repeating-fields.ts", "specifier": "./dom.ts" },
@@ -674,6 +695,10 @@
     { "source": "apps/rep-mobile/src/server/views/visits.ts", "specifier": "../ui/dom.ts" },
     { "source": "apps/rep-mobile/src/server/views/visits.ts", "specifier": "../ui/forms.ts" },
     { "source": "apps/rep-mobile/src/server/views/visits.ts", "specifier": "./common.ts" },
+    {
+      "source": "apps/rep-mobile/src/server/workspace.ts",
+      "specifier": "@elvorance/ui/enterprise-ux"
+    },
     {
       "source": "apps/rep-mobile/src/server/workspace.ts",
       "specifier": "@elvorance/mobile-platform"
@@ -964,6 +989,10 @@
     { "source": "packages/ui/src/index.ts", "specifier": "./forms.ts" },
     { "source": "packages/ui/src/index.ts", "specifier": "./page-heads.ts" },
     { "source": "packages/ui/src/primitives.ts", "specifier": "@elvorance/design-system/icons" },
+    { "source": "packages/ui/test/enterprise-ux.test.ts", "specifier": "node:test" },
+    { "source": "packages/ui/test/enterprise-ux.test.ts", "specifier": "node:assert/strict" },
+    { "source": "packages/ui/test/enterprise-ux.test.ts", "specifier": "node:module" },
+    { "source": "packages/ui/test/enterprise-ux.test.ts", "specifier": "../src/enterprise-ux.ts" },
     { "source": "prototype/app.ts", "specifier": "../packages/questionnaire/src/index.ts" },
     { "source": "services/api-gateway/src/app.ts", "specifier": "fastify" },
     { "source": "services/api-gateway/src/app.ts", "specifier": "@elvorance/service-kit" },
@@ -2309,6 +2338,30 @@
     { "source": "tests/runtime/target.test.mts", "specifier": "node:test" },
     { "source": "tests/runtime/target.test.mts", "specifier": "node:assert/strict" },
     { "source": "tests/runtime/target.test.mts", "specifier": "./compose-journey.mts" },
+    { "source": "tests/ux/build-server-fixture.mts", "specifier": "esbuild" },
+    { "source": "tests/ux/build-server-fixture.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/ux/build-server-fixture.mts", "specifier": "node:path" },
+    { "source": "tests/ux/component_inventory.mts", "specifier": "typescript" },
+    { "source": "tests/ux/component_inventory.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/ux/component_inventory.mts", "specifier": "node:crypto" },
+    { "source": "tests/ux/component_inventory.mts", "specifier": "node:path" },
+    {
+      "source": "tests/ux/server-entry.ts",
+      "specifier": "../../packages/api-client/src/live-workspace.ts"
+    },
+    {
+      "source": "tests/ux/server-entry.ts",
+      "specifier": "../../apps/rep-mobile/src/server/api.ts"
+    },
+    {
+      "source": "tests/ux/server-entry.ts",
+      "specifier": "../../apps/rep-mobile/src/server/workspace.ts"
+    },
+    { "source": "tests/ux/server-entry.ts", "specifier": "../../packages/ui/src/enterprise-ux.ts" },
+    {
+      "source": "tests/ux/server-entry.ts",
+      "specifier": "../../packages/mobile-auth/src/index.ts"
+    },
     { "source": "tests/validation/numeric-fields.test.mts", "specifier": "node:test" },
     { "source": "tests/validation/numeric-fields.test.mts", "specifier": "node:assert/strict" },
     {

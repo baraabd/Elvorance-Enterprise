@@ -1,7 +1,9 @@
+import { installEnterpriseUx } from '@elvorance/ui/enterprise-ux';
 import { startRepresentative } from './server/bootstrap.ts';
 
 const root = document.getElementById('app');
 if (!root) throw new Error('Application root is missing.');
+installEnterpriseUx(root, { mode: 'server' });
 const config = window.ELVORANCE_CONFIG;
 if (!config || config.dataMode !== 'server' || !config.auth || !config.apiBaseUrl) {
   root.textContent = 'إعدادات التطبيق غير مكتملة. لا يمكن الاتصال ببيانات الشركة.';

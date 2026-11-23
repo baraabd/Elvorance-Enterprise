@@ -24,8 +24,8 @@
     "apps/rep-mobile/src/server/api.ts": "38554a18520cbd3e506f75f342fbe0a6d58bb9608a59ad240e1da28ce8ceabaf",
     "apps/rep-mobile/src/server/bootstrap.ts": "0af022522b9391a4b96ec6865ae3a0b7144c8963db9a117b41e3700295365ed0",
     "apps/rep-mobile/src/server/tracking.ts": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8",
-    "apps/rep-mobile/src/server/ui/dom.ts": "4ffab96ed39b01af839d90b635ca2e5ab9a4be02db22ef4363b3c0f1893deee1",
-    "apps/rep-mobile/src/server/ui/forms.ts": "0fdc08d0b8614acbc029a2c808557c75e433b8389734b7e3b4a2d34bc45cf72d",
+    "apps/rep-mobile/src/server/ui/dom.ts": "3e963c3a136ce7c25217573240d37f0c0152fb7f74a0335a490a5887672e10b9",
+    "apps/rep-mobile/src/server/ui/forms.ts": "6e6b5e00273a1a0a60dc225507b681847f2d5a857bdab746d7f5cbb6246e1986",
     "apps/rep-mobile/src/server/ui/repeating-fields.ts": "9c114f64b9885b12a18440d63e50d4cdf4bd61fa57d0e77d071c9777817fad23",
     "apps/rep-mobile/src/server/views/account.ts": "d7c8ba2f078ea7fe294386fb2ac8558a7d697fbb3891418596ad76f3c34ffae8",
     "apps/rep-mobile/src/server/views/common.ts": "e591f74d86a97ee9e0f8cc42488ad85aa112e931c8e886fda1473bee7e2d705d",
@@ -39,14 +39,14 @@
     "apps/rep-mobile/src/server/views/records.ts": "39814ff41736c6ff652d4f33679820e80be44bd8d497cadacdae12a106505145",
     "apps/rep-mobile/src/server/views/support.ts": "8a5d3a7db20fb470141162d1428089ea96203e886dfee2d935ebb155db3cf867",
     "apps/rep-mobile/src/server/views/visits.ts": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96",
-    "apps/rep-mobile/src/server/workspace.ts": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+    "apps/rep-mobile/src/server/workspace.ts": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
     "apps/rep-mobile/src/state/local-demo.ts": "89c68f5d6a5b25a27e7ab7db3b93e203054804d08a2f220e67b63b0736c05af2",
     "packages/api-client/src/authenticated-workspace.ts": "8ffc99cd6d4661e2888fc9ea080c47b53c007cec9b4dd1dda4b5dc6f93f232ed",
     "packages/api-client/src/live-actions.ts": "6bc9bb46609ce9361c0fce2f2e677f07eebd277542f135c90644a3d7334dca95",
     "packages/api-client/src/live-commercial.ts": "5521e7b6caa5755255b8f3f0ace661f95faa4f3884f13e623fccdabd77fa606b",
     "packages/api-client/src/live-data.ts": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7",
     "packages/api-client/src/live-workspace.ts": "35eeb836e360ce4784f4991fda0ede8520ff96b5caf353b9ee3392e14fffd5b9",
-    "packages/app-runtime/src/index.ts": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa",
+    "packages/app-runtime/src/index.ts": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc",
     "packages/demo-data/src/repository.ts": "d80d4eae529d0b6e01a9f0d23e2eafe01f601d37da94b91d2716e8c01d05b02d",
     "packages/mobile-auth/src/configuration.ts": "88b1444ec2d2077458cb4eb57a03f1e49d9108ae0dae82247c24f3ad70eafd93",
     "packages/mobile-auth/src/host.ts": "c1548594165939e531ac444a3e549de55fcc0162048e5c8d5247279ed8fd98f6",
@@ -87,7 +87,8 @@
     "services/sales/src/transport/rep-work-routes.ts": "dd19fa27388169c367cc54b978b3cc19a6e26cc32fe96f089049010fd3128391",
     "services/sales/src/transport/routes.ts": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add",
     "services/tracking/src/application/sessions.ts": "35bc4c2364ae6892350c02316a66d307a647948939af88d085e329a31e3ee0ca",
-    "services/tracking/src/transport/routes.ts": "b521ece511103019bd0c9d2d401d532c8eb0ee119b44e961cb387ae56b977974"
+    "services/tracking/src/transport/routes.ts": "b521ece511103019bd0c9d2d401d532c8eb0ee119b44e961cb387ae56b977974",
+    "packages/ui/src/enterprise-ux.ts": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c"
   },
   "bindings": [
     {
@@ -1878,8 +1879,8 @@
     },
     {
       "featureId": "handler:apps/rep-mobile/src/server/ui/dom.ts:f9db78ae399e:1",
-      "sourceFingerprint": "f84593199c8357e4d786909f302c5084a65ba9d94b7856e713a56bd02ba3235c",
-      "sourceFileSha256": "4ffab96ed39b01af839d90b635ca2e5ab9a4be02db22ef4363b3c0f1893deee1",
+      "sourceFingerprint": "bd2e8484b0665f17ed88d59de1e00b4eac4a8b00384d655d7f69876564d66d14",
+      "sourceFileSha256": "3e963c3a136ce7c25217573240d37f0c0152fb7f74a0335a490a5887672e10b9",
       "category": "callback-adapter",
       "rationale": "The button factory attaches its supplied run callback, disables the button during work, catches errors and emits rep:error. It defines neither a business endpoint nor permission policy: each actual caller callback is separately inventoried. Source binding explains the generic mechanism without accepting any business operation.",
       "resolves": [
@@ -1893,7 +1894,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/ui/forms.ts:37a436a0698f:1",
       "sourceFingerprint": "f8f4385ec9d8cb7db8f4f0c12a3d694291a12aece5e90e453609cfae88bf05d4",
-      "sourceFileSha256": "0fdc08d0b8614acbc029a2c808557c75e433b8389734b7e3b4a2d34bc45cf72d",
+      "sourceFileSha256": "6e6b5e00273a1a0a60dc225507b681847f2d5a857bdab746d7f5cbb6246e1986",
       "category": "callback-adapter",
       "rationale": "editorButton invokes its supplied create callback to append a form/editor and catches rendering failures. The editor submit callback is separate. Opening an editor is not proof of successful saving and is not exempted from form workflow acceptance.",
       "resolves": [
@@ -1910,8 +1911,8 @@
     },
     {
       "featureId": "handler:apps/rep-mobile/src/server/ui/forms.ts:6be3c8ea5f69:1",
-      "sourceFingerprint": "2fe950764c43e4f7970933c14ef9f2ee88eaf02040c8db0b3b3436937ed4e90e",
-      "sourceFileSha256": "0fdc08d0b8614acbc029a2c808557c75e433b8389734b7e3b4a2d34bc45cf72d",
+      "sourceFingerprint": "6aaa2ffde0d721798a891f69ca77b1ac202661f23abfdbe8fd5a6aa539551a8c",
+      "sourceFileSha256": "6e6b5e00273a1a0a60dc225507b681847f2d5a857bdab746d7f5cbb6246e1986",
       "category": "callback-adapter",
       "rationale": "commandForm validates and parses its declared fields, guards pending submission, disables controls, awaits the supplied options.submit callback and restores controls. The actual business operations are owned by the caller, not by a new form-library endpoint; callback forms are separately inventoried.",
       "resolves": [
@@ -2431,7 +2432,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:1f9be067f4c4:1",
       "sourceFingerprint": "35ce26a394922d09b9df81c9662c2e3ab82eab600238afc4d4f27aaae3d375bd",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -2454,7 +2455,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:5fe95578c67f:1",
       "sourceFingerprint": "397b2db51c860e669a7c231429564b1b6acaa722d7b16925433b7390452dc274",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "navigation-delegate",
       "rationale": "This navigation, refresh, retry or history listener delegates to navigate for a key in the private pages registry. navigate aborts the previous view request, invokes the selected view loader and displays failure/retry state. There is no separate network operation at this event-registration point; the finite registered target views remain linked.",
       "resolves": [
@@ -2488,7 +2489,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:6ea370bf32b5:1",
       "sourceFingerprint": "5d524ddc5b65ee63132c05518ca8a76a7efdc359d6618351662007dd689896ad",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "navigation-delegate",
       "rationale": "This navigation, refresh, retry or history listener delegates to navigate for a key in the private pages registry. navigate aborts the previous view request, invokes the selected view loader and displays failure/retry state. There is no separate network operation at this event-registration point; the finite registered target views remain linked.",
       "resolves": [
@@ -2522,7 +2523,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:74d70aff092a:1",
       "sourceFingerprint": "c1cf04f7403feaea4e988da709d9105271609cab99efed477164a3cb819856e6",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "navigation-delegate",
       "rationale": "This navigation, refresh, retry or history listener delegates to navigate for a key in the private pages registry. navigate aborts the previous view request, invokes the selected view loader and displays failure/retry state. There is no separate network operation at this event-registration point; the finite registered target views remain linked.",
       "resolves": [
@@ -2556,7 +2557,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:783472c06c38:1",
       "sourceFingerprint": "f8bad342d9332d3a001fc15547ef49c88432ccf1afa12bffd64eb785dfcd4b7d",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "presentation",
       "rationale": "This listener displays a rep:error, offline or online notification. It does not submit, retry or persist a business command automatically and does not claim offline synchronization. The related network and business failure behavior remains separately inventoried.",
       "resolves": [
@@ -2573,7 +2574,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:b278c86df906:1",
       "sourceFingerprint": "cb9056850d10d7a72500f05aa63d588c02b407bcb51489b26b176c5e8ee48374",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "presentation",
       "rationale": "This listener displays a rep:error, offline or online notification. It does not submit, retry or persist a business command automatically and does not claim offline synchronization. The related network and business failure behavior remains separately inventoried.",
       "resolves": [
@@ -2590,7 +2591,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:db85047714c0:1",
       "sourceFingerprint": "7c2e59a9617a8ba1d108d4c8bc802bc63f42c109a1c8f0e9d3351318b70d2a60",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "navigation-delegate",
       "rationale": "This navigation, refresh, retry or history listener delegates to navigate for a key in the private pages registry. navigate aborts the previous view request, invokes the selected view loader and displays failure/retry state. There is no separate network operation at this event-registration point; the finite registered target views remain linked.",
       "resolves": [
@@ -2624,7 +2625,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:e3be8ef6e3d9:1",
       "sourceFingerprint": "c381163aeaa42e4c3955af064289020b51a82f370d61b8cb72c52783aa5045ea",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "presentation",
       "rationale": "This listener displays a rep:error, offline or online notification. It does not submit, retry or persist a business command automatically and does not claim offline synchronization. The related network and business failure behavior remains separately inventoried.",
       "resolves": [
@@ -2641,7 +2642,7 @@
     {
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:e81b4ef8e460:1",
       "sourceFingerprint": "4568798f5eb1fa9195c29b7109e11e7da0e2b8526b0ae5535008f1353adbfc3a",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "resource-lifecycle",
       "rationale": "Abort delegates to the single shared remove promise, which aborts the current view and disposes location and native listeners. Location disposal remains owned by the linked tracking implementation; this listener does not create an independent endpoint or silently confirm remote shutdown.",
       "resolves": [
@@ -3954,7 +3955,7 @@
     {
       "featureId": "route:rep:server:billing",
       "sourceFingerprint": "0fe2ebf812610c24bd7afccf48f46b7f8dfb257211c3275b3a8691281f19344b",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -3978,7 +3979,7 @@
     {
       "featureId": "route:rep:server:contracts",
       "sourceFingerprint": "19d25ee3ce3daa7d2d0d01113f4ae2ca7a2b40d7ae36c1ab8e85bdb90ae6ea0f",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -4001,7 +4002,7 @@
     {
       "featureId": "route:rep:server:customers",
       "sourceFingerprint": "874f0f3854be619b131e756690a87135b3abb79a76cb17fffd7fa0d5290e2783",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -4026,7 +4027,7 @@
     {
       "featureId": "route:rep:server:home",
       "sourceFingerprint": "fad645bea49f5477aa364703ce68e0a4be19235ed7830d98699b626c8128ed61",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "view-read",
       "rationale": "The home dashboard maps the finite literal resource list customers/visits/tasks/quotes through RepApi.list. It computes local aggregates from those scoped server records. The four registered GET operations are the actual data sources, not a historical dashboard route count.",
       "resolves": [
@@ -4056,7 +4057,7 @@
     {
       "featureId": "route:rep:server:notifications",
       "sourceFingerprint": "2fe888c849e674ec9a395cf3ab590a38909ad74b92eab35bfdff84b37dfca10a",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -4076,7 +4077,7 @@
     {
       "featureId": "route:rep:server:opportunities",
       "sourceFingerprint": "7e2bf6bc95f8560736a821deab6e563cacb09cd6624eab9121071182ba9e7d36",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "view-read",
       "rationale": "The opportunities view delegates to the collection helper with a literal resource key. It loads scoped records and customer choices, then creates or version-updates the selected resource through editForm. Opportunities additionally load approved-contract choices. Each operation is linked to its actual registered backend policy.",
       "resolves": [
@@ -4110,7 +4111,7 @@
     {
       "featureId": "route:rep:server:projects",
       "sourceFingerprint": "2cf7b18bf4f987295fbd16a5c6d063f8f7c76a719557e95048dd4b7b8ab2bcbf",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "view-read",
       "rationale": "The projects view calls readOnly with the projects resource literal; RepApi.list resolves it to the delivery project collection. It displays status, due date and progress only; no project mutation is implemented by this representative view.",
       "resolves": [
@@ -4131,7 +4132,7 @@
     {
       "featureId": "route:rep:server:quotes",
       "sourceFingerprint": "17037bc0826756ccf669dfc3c26e2bddaf15952b8c3ea3b34bf06913d79ecee8",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "finite-dispatch",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -4157,7 +4158,7 @@
     {
       "featureId": "route:rep:server:tasks",
       "sourceFingerprint": "9d60e6043c1e6534eb9a2b8a6410533464954a42e149baa95ad756508f56d58b",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "view-read",
       "rationale": "The tasks view delegates to the collection helper with a literal resource key. It loads scoped records and customer choices, then creates or version-updates the selected resource through editForm. Opportunities additionally load approved-contract choices. Each operation is linked to its actual registered backend policy.",
       "resolves": [
@@ -4189,7 +4190,7 @@
     {
       "featureId": "route:rep:server:tracking",
       "sourceFingerprint": "5fef5ee7a6c861029b70197f3d557306636d6361865f59f1e0f2e74a88665b82",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -4213,7 +4214,7 @@
     {
       "featureId": "route:rep:server:visits",
       "sourceFingerprint": "e02bfcfc286ac0f5b3459f0b5f471117fefc50b279630333ba0d20e61db7abd8",
-      "sourceFileSha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "sourceFileSha256": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
       "category": "parameterized-http",
       "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
       "resolves": ["Dynamic URL/method requires runtime contract validation."],
@@ -4231,6 +4232,132 @@
         "services/crm/src/application/customers.ts",
         "services/crm/src/transport/routes.ts"
       ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:155122938a48:1",
+      "sourceFingerprint": "86191c887f952bf8077edc1448c2f2e45aacd146ffdfee0977e6c5c73fcc151a",
+      "sourceFileSha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c",
+      "category": "presentation",
+      "rationale": "Native invalid-event feedback: add an Arabic inline message, aria-invalid and form error summary. Does not submit the form or contact a backend.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": ["packages/ui/src/enterprise-ux.ts"],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:6e5e16f295c9:1",
+      "sourceFingerprint": "05e5a3eaa611a6e41ec00a017bc4f5320eece721355826de584c60e82b168343",
+      "sourceFileSha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c",
+      "category": "presentation",
+      "rationale": "Capture phase marks focus pending for existing live-navigation controls. It does not prevent events, change routes, submit forms or call APIs; the original workspace owns those actions.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": ["packages/ui/src/enterprise-ux.ts"],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:892d05803b53:1",
+      "sourceFingerprint": "170f4b681086122d9fbbe9314e8012426ab2315740c3611c7941c4cb5781a04e",
+      "sourceFileSha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c",
+      "category": "presentation",
+      "rationale": "Input feedback reconciles only this enhancement's validation message/described-by references. Existing application input dispatch and business data remain owned by the application.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": ["packages/ui/src/enterprise-ux.ts"],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:a176bf413c75:1",
+      "sourceFingerprint": "e8af8cf98e038b49806e643fd967ecc6be47635c242d1485d9cde64ab17be821",
+      "sourceFileSha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c",
+      "category": "presentation",
+      "rationale": "Skip-link handler focuses the existing main landmark without changing the application route, data or authorization.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": ["packages/ui/src/enterprise-ux.ts"],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:b278c86df906:1",
+      "sourceFingerprint": "7cb9fba1a2fc1756c733f0420a81346ad4112187951db98a2be45cf12b473167",
+      "sourceFileSha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c",
+      "category": "presentation",
+      "rationale": "Browser offline signal updates a status notice. It does not queue, send or replay mutations and does not establish backend reachability.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": ["packages/ui/src/enterprise-ux.ts"],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:bb0afabcc39e:1",
+      "sourceFingerprint": "00ab15ac72a218609cd90121bdfac0110f9e2bc22d62a783819f7181288567d0",
+      "sourceFileSha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c",
+      "category": "presentation",
+      "rationale": "Application render notification tracks distinct route changes for focus/navigation presentation. Existing router continues to own every route and data load.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": ["packages/ui/src/enterprise-ux.ts"],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:e2dfd67f3131:1",
+      "sourceFingerprint": "c2fdab259073f808c2ee70ed956909ce17ccd282b89cdee44e1fa03df5818af8",
+      "sourceFileSha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c",
+      "category": "presentation",
+      "rationale": "Error-summary link prevents hash navigation and focuses the existing invalid control. No form submission or network operation.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": ["packages/ui/src/enterprise-ux.ts"],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:e3be8ef6e3d9:1",
+      "sourceFingerprint": "149a44a121a5a216e031f905d624a41cab00600a82de667345abae8874f51fe2",
+      "sourceFileSha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c",
+      "category": "presentation",
+      "rationale": "Browser online signal updates a recovery notice, explicitly requiring manual retry. It does not queue, send or replay mutations.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": ["packages/ui/src/enterprise-ux.ts"],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:e75256f22362:1",
+      "sourceFingerprint": "c51145c10cdd6f9077b093bba22e7e3a0423d85df9765f2034cca4c2abb85bfa",
+      "sourceFileSha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c",
+      "category": "presentation",
+      "rationale": "Change feedback reconciles native validity and enhancement-owned errors. Does not persist, transmit or authorize any data.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": ["packages/ui/src/enterprise-ux.ts"],
       "nativeMembers": []
     }
   ]

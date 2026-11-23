@@ -1,0 +1,153 @@
+/* Additive enterprise tokens. Brand colors and original route markup remain intact. */
+:root {
+  --elv-space-1: .25rem;
+  --elv-space-2: .5rem;
+  --elv-space-3: .75rem;
+  --elv-space-4: 1rem;
+  --elv-space-6: 1.5rem;
+  --elv-space-8: 2rem;
+  --elv-radius-control: .75rem;
+  --elv-radius-panel: 1.25rem;
+  --elv-text: #17221b;
+  --elv-text-muted: #526158;
+  --elv-surface: #fff;
+  --elv-surface-subtle: #f3f6ef;
+  --elv-accent: #176b55;
+  --elv-error: #aa302d;
+  --elv-focus: #0b5d46;
+  --elv-border: #738078;
+  --elv-control-size: 2.75rem;
+  --elv-page-max: 100rem;
+  --elv-shadow: 0 4px 20px #17221b0a;
+}
+html { scroll-padding-block: 6rem; }
+body { color: var(--elv-text); }
+main, section, form, .workspace, .card, .row > *, .page-head > *, .hero > * {
+  min-inline-size: 0;
+}
+main { overflow-wrap: anywhere; }
+main:focus { outline: none; }
+main:focus-visible { outline: 3px solid var(--elv-focus); outline-offset: -3px; }
+input, textarea, select { max-inline-size: 100%; }
+input[dir="ltr"] { text-align: start; }
+textarea[dir="auto"], .message-bubble, .message { unicode-bidi: plaintext; }
+bdi, .num, input[dir="ltr"] { unicode-bidi: isolate; }
+.num { font-variant-numeric: tabular-nums; }
+button:disabled, input:disabled, textarea:disabled, select:disabled {
+  cursor: not-allowed;
+}
+[aria-busy="true"] button:disabled { cursor: progress; }
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--elv-focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px white;
+}
+:where(button, a, input, select, textarea, [tabindex]) {
+  scroll-margin-block: 6rem;
+}
+/* Native KPI buttons must not add a second rectangular browser-default frame. */
+button:has(> .stat) {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: var(--elv-radius-panel);
+  color: inherit;
+  font: inherit;
+  text-align: start;
+}
+button:has(> .stat) > .stat { block-size: 100%; }
+.elv-field-error {
+  color: var(--elv-error);
+  font-size: .875rem;
+  margin-block: var(--elv-space-1) var(--elv-space-3);
+}
+[aria-invalid="true"] { border-color: var(--elv-error); border-width: 2px; }
+.elv-error-summary {
+  padding: var(--elv-space-4);
+  margin-block-end: var(--elv-space-4);
+  border: 2px solid var(--elv-error);
+  border-radius: var(--elv-radius-control);
+  background: #fff8f7;
+  color: var(--elv-text);
+}
+.elv-error-summary ul { margin-block: var(--elv-space-2) 0; padding-inline-start: var(--elv-space-6); }
+.elv-error-summary a { color: var(--elv-error); display: inline-block; padding-block: var(--elv-space-2); text-decoration: underline; }
+.elv-secondary-nav { display: none; }
+.elv-nav-heading { color: #d3dfce; font-size: .75rem; padding-inline: 1rem; margin-block: 1.25rem .25rem; }
+.skip-link {
+  position: fixed;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  transform: translateY(-200%);
+  background: #fff;
+  color: var(--elv-text);
+  padding: .75rem 1rem;
+  z-index: 1000;
+}
+.skip-link:focus { transform: none; }
+.table-wrap, .table-responsive { max-inline-size: 100%; overflow-x: auto; }
+.elv-secondary-nav .side-nav-item { min-block-size: var(--elv-control-size); }
+@media (min-width: 1000px) {
+  .sidebar { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+  .elv-secondary-nav { display: block; }
+  .sidebar .side-promo { display: none; }
+  .sidebar-bottom { padding-block-start: var(--elv-space-4); }
+  .main-content { max-inline-size: var(--elv-page-max); margin-inline: auto; }
+}
+@media (max-width: 599px) {
+  .row, .page-head, .section-head, .form-actions, .bottom-action { flex-wrap: wrap; }
+  .page-head > .row, .form-actions > .btn { flex: 1 1 auto; }
+  .topbar { block-size: auto; min-block-size: 4.5rem; padding-block: .5rem; flex-wrap: wrap; }
+  .metric-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .stat-value { font-size: clamp(1.25rem,6vw,1.875rem); }
+  .modal-head, .modal-body, .modal-footer { padding-inline: 1rem; }
+  .modal-head h2 { overflow-wrap: anywhere; }
+  .modal-head .icon-btn { flex-shrink: 0; }
+  .bottom-nav { padding-block-end: max(.5rem,env(safe-area-inset-bottom)); }
+  .main-content { padding-block-end: 7rem; }
+  .card-grid { grid-template-columns: minmax(0,1fr); }
+  .toolbar { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+@media (forced-colors: active) {
+  [aria-invalid="true"], .elv-error-summary { border-color: LinkText; }
+  :focus-visible { outline-color: Highlight; }
+}
+
+/* Measured contrast corrections; colors are scoped to their actual backgrounds. */
+.badge:not(.badge-good):not(.badge-warn):not(.badge-bad):not(.badge-info) { color: #526158; }
+.bottom-nav-item { color: #526158; }
+.card-dark .eyebrow { color: #d3dfce; }
+.client-stage-dot { color: #526158; }
+.client-cafe-features strong { color: #735c35; }
+.client-message-list .message-bubble-own { color: #17221b; }
+.client-message-list .message-bubble-own .muted,
+.admin-thread .own small, .own > small { color: #526158; }
+.quick-action > span { max-inline-size: 100%; overflow-wrap: anywhere; white-space: normal; }
+button.stat { font-family: inherit; text-align: start; color: inherit; }
+
+.elv-state { padding: 1rem; border: 1px solid var(--elv-border); border-radius: var(--elv-radius-control); background: var(--elv-surface-subtle); color: var(--elv-text); margin-block: 1rem; }
+.elv-state[data-ui-state="error"] { border-color: var(--elv-error); background: #fff8f7; }
+.elv-state[data-ui-state="success"] { border-color: var(--elv-accent); }
+.elv-state[hidden] { display: none; }
+.rep-shell .detail bdi { overflow-wrap: anywhere; }
+#live-navigation { gap: .5rem; margin-block: 1.5rem; }
+#live-content { padding-block: 1rem; }
+
+.rep-shell .cards { grid-template-columns: repeat(auto-fit,minmax(min(100%,20rem),1fr)); }
+.rep-shell .app-header { flex-wrap: wrap; }
+/* Text-bearing icon buttons must not squeeze Arabic labels into a 44px square. */
+.btn.icon-btn:has(> span):not(.notification-btn) { inline-size: auto; padding-inline: .75rem; }
+.btn > span { min-inline-size: min-content; overflow-wrap: normal; }
+.row-between > * { min-inline-size: 0; }
+.row-between > .btn { flex-shrink: 0; }
+.num { direction: ltr; }
+/* Horizontal mobile navigation must scroll, never shrink Arabic labels into each other. */
+.rep-shell .app-nav .nav-link { flex-shrink: 0; }
+/* Empty auto-direction fields must not left-align their Arabic placeholder. */
+input[dir="auto"]:placeholder-shown, textarea[dir="auto"]:placeholder-shown {
+  direction: rtl;
+  text-align: start;
+}

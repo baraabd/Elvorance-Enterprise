@@ -1,0 +1,9 @@
+{
+  "name": "elvorance-ux-audit-tooling",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Isolated axe-core dependency for browser audit only.",
+  "dependencies": {
+    "axe-core": "4.14.1"
+  }
+}
