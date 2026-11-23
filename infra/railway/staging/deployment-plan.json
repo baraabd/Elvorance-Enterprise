@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "mode": "review-only-not-Railway-IaC-schema",
+  "approvalRequired": true,
+  "projectId": "075e27d5-8edc-4ddd-8f27-a5eea3ef5d5a",
+  "environmentId": "49c49479-0810-491c-99cb-fc52ca547c04",
+  "sourcePolicy": "exact independently reviewed SHA; never moving main or arbitrary latest",
+  "preserve": {
+    "region": "asia-southeast1-eqsg3a",
+    "allExistingServices": true,
+    "postgresVolume": "ca9481ad-aeeb-4803-8060-7377da88898c",
+    "rabbitmqVolume": "24d89908-569e-4c9b-972b-be42ecee762c",
+    "bucket": "9c37b12e-6fce-48cf-b782-4c1748f4baa3"
+  },
+  "forbidden": [
+    "production changes",
+    "delete existing resources",
+    "database major upgrade",
+    "public database or broker proxy",
+    "wildcard CORS or redirect URI",
+    "automatic schema downgrade",
+    "secret values in source/artifacts",
+    "Vercel production promotion"
+  ],
+  "orderedChanges": [
+    "Verify and pin actual service IDs, internal endpoints and identity DB ownership without exporting secrets",
+    "Import existing Railway config into project-level IaC; review drift and ownership before apply",
+    "Bind staging environment markers, exact OIDC/upstreams/DB roles; disable AUTO_MIGRATE",
+    "Record pre-change encrypted backup and PostgreSQL migration ledger manifests before schema baseline",
+    "Apply explicit legacy checksum baseline once per owned service DB after independent review",
+    "Roll out durable audit-only queue and event diagnostics with no queue deletion",
+    "Deploy domain services then gateway at the approved source; require stable ready=200 for all seven",
+    "Enable retained-backup read-back mode on one-shot ops and run isolated restore rehearsal",
+    "Provision three separate Vercel staging projects without auto-linking Git; record IDs and owned aliases in a reviewed commit",
+    "Enroll exact Vercel callback/CORS origins then build preview-only frontend artifacts; keep Railway frontend fallback",
+    "Enable opt-in read-only monitor only after alert receiver/test approval"
+  ],
+  "externalApprovalDecisions": [
+    "Budget for three Vercel projects and backup storage",
+    "Keycloak database ownership and full identity recovery scope",
+    "Internal application-level TLS versus platform-private encrypted networking",
+    "Backup lifecycle, RPO/RTO, off-region and key custody",
+    "Monitoring recipient and source-of-truth IaC import plan"
+  ]
+}

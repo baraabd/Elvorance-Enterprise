@@ -1,0 +1,123 @@
+{
+  "observedDateUTC": "2026-11-23",
+  "railway": {
+    "projectId": "075e27d5-8edc-4ddd-8f27-a5eea3ef5d5a",
+    "environmentId": "49c49479-0810-491c-99cb-fc52ca547c04",
+    "projectName": "elvorance-staging",
+    "environmentName": "staging",
+    "region": "asia-southeast1-eqsg3a",
+    "stagedChangeCount": 0,
+    "services": [
+      {
+        "name": "api-gateway",
+        "id": "ac7c3db1-330a-4446-b8bb-e87f44eb8c3f",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "identity",
+        "id": "c9360285-71ac-4273-a1cb-91c93154038f",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "crm",
+        "id": "5027c4d7-f4de-4ef0-a559-de2f0e90f9a4",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "sales",
+        "id": "ee337b97-fc50-483f-8242-0dbd94a2f121",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "delivery",
+        "id": "28dfcc60-2639-4ae8-9e8e-6b2310149b6c",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "billing",
+        "id": "b515de5b-0fb7-429e-90b1-3e64e9943f45",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "tracking",
+        "id": "a3a7e85c-2c1c-46b5-8f6d-b34fd41bfe37",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "communications",
+        "id": "6e4a1a7d-8991-4ce3-ad1b-a069ab513444",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "Postgres",
+        "id": "e7662908-4bfb-465b-9619-d0f8e1857722",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "rabbitmq",
+        "id": "726d9fcb-30fc-46b1-94dc-92ebbf939a33",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "keycloak",
+        "id": "a760bbfd-1cb5-4b5f-967a-77f932255479",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "admin-web",
+        "id": "3e204be8-5b88-491c-9833-77d9f28de145",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "client-web",
+        "id": "4861f637-fedc-4b7b-ad52-456f0e37dc5d",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "rep-web",
+        "id": "1b915e23-8876-4853-9c93-228162206b58",
+        "latestDeploymentStatus": "SUCCESS"
+      },
+      {
+        "name": "staging-ops",
+        "id": "775cc53b-d15a-45fc-8bce-c140cbf8d36a",
+        "latestDeploymentStatus": "CRASHED"
+      }
+    ],
+    "bucket": {
+      "id": "9c37b12e-6fce-48cf-b782-4c1748f4baa3",
+      "name": "staging-backups",
+      "s3Bucket": "staging-backups-djcep-toh",
+      "endpoint": "https://t3.storageapi.dev",
+      "region": "auto",
+      "urlStyle": "virtual-host",
+      "credentialValuesRead": false,
+      "retentionAndRestoreEvidence": false
+    },
+    "monitorInspection": "Railway Automations not enabled; monitoring not verified",
+    "postgresPublicTcpProxies": [],
+    "rabbitmqPublicTcpProxies": []
+  },
+  "vercel": {
+    "teamId": "team_LGL2uTTsmbGU72EMvonS1E5j",
+    "plan": "hobby",
+    "projectsReturned": 5,
+    "nextPage": null,
+    "elvoranceProjectsFound": 0,
+    "scope": "connected team only"
+  },
+  "github": {
+    "mainSha": "453242e1256f6d876d170142b8ad235be9120344",
+    "mainProtected": false,
+    "hostedBaseSha": "da211a625426cd1d016306fb9c39adf76837b6b1",
+    "hostedPR": 11,
+    "sprint02PR": 12,
+    "sprint02Branch": "feat/sprint-02-staging-20261123"
+  },
+  "limitations": [
+    "Resource state SUCCESS is not dependency readiness",
+    "Opaque secret values prevent attesting actual credential endpoints",
+    "Production inventory outside connected projects/accounts is not known",
+    "HTTP observations are a timestamped baseline, not acceptance of this PR"
+  ]
+}

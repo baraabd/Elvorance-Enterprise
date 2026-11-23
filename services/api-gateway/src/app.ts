@@ -1,3 +1,4 @@
+import { safeErrorCode } from '@elvorance/service-kit';
 import Fastify from 'fastify';
 import { AppError, type AuthVerifier } from '@elvorance/service-kit';
 import { registerRoutes } from './transport/routes.ts';
@@ -13,7 +14,15 @@ export interface GatewayOptions {
 export function createApp(options: GatewayOptions) {
   const app = Fastify({
     logger: options.logger
-      ? { redact: ['req.headers.authorization', 'req.headers.cookie'] }
+      ? {
+          redact: ['req.headers.authorization', 'req.headers.cookie', 'res.headers.set-cookie'],
+          serializers: {
+            req: (request: { method: string; url: string }) => ({
+              method: request.method,
+              url: request.url.split('?')[0] ?? '/',
+            }),
+          },
+        }
       : false,
     bodyLimit: 256 * 1024,
     requestTimeout: 30_000,
@@ -48,7 +57,7 @@ export function createApp(options: GatewayOptions) {
     ) {
       status = candidate;
     }
-    if (status >= 500) request.log.error({ err: error }, 'Gateway request failed');
+    if (status >= 500) request.log.error({ code: safeErrorCode(error) }, 'Gateway request failed');
     reply.code(status).send({
       error: {
         code: known ? error.code : status < 500 ? 'INVALID_REQUEST' : 'INTERNAL_ERROR',
