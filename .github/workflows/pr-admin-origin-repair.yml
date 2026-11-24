@@ -1,0 +1,82 @@
+name: Publish exact-origin Admin fixture repairs
+on:
+  push:
+    branches: [repair/pr-integration-publish-20261124]
+    paths: [.github/workflows/pr-admin-origin-repair.yml]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Reproduce the reviewed exact-origin fixture and negative regression
+        run: |
+          set -euo pipefail
+          git worktree add --detach "$RUNNER_TEMP/admin-origin" 16721a3a9fd0982afab871d4a43d43a4a54d6007
+          cd "$RUNNER_TEMP/admin-origin"
+          git config user.name 'Elvorance PR Repair'
+          git config user.email 'elvorance-pr-repair@users.noreply.github.com'
+          npm ci
+          python3 - <<'PY'
+          import pathlib,subprocess
+          def git(*args):return subprocess.check_output(['git',*args],text=True).strip()
+          plans=[(18,'16721a3a9fd0982afab871d4a43d43a4a54d6007','093690d5cadd0c1d8df1b28c9fa50b62462941c2'),(17,'1012b059a088edb3d7b651489aca42b229fb5f16','328c596beb6cd1ba4deb8e2865be5e99dd0e0e5d'),(19,'37a4e556a08c8e78f348d117bcd1ccde1d2d9af0','3eedd30f6b104dcf96ea24acb9ea84cc6539b15f')]
+          for number,source,expected in plans:
+              git('checkout','--detach',source)
+              path=pathlib.Path('tests/admin/fixture.mts');text=path.read_text()
+              old='    const app = gateway({\n      auth,'
+              new='    // Populate the exact ephemeral loopback origin before exposing this fixture.\n    // Keep the production default-deny Origin policy; never authorize arbitrary origins.\n    const allowedOrigins: string[] = [];\n    const app = gateway({\n      allowedOrigins,\n      auth,'
+              assert text.count(old)==1 and text.count('    const url = await listen(app);')==1
+              path.write_text(text.replace(old,new).replace('    const url = await listen(app);','    const url = await listen(app);\n    allowedOrigins.push(new URL(url).origin);'))
+              path=pathlib.Path('tests/admin/e2e.ts');text=path.read_text();marker="    let customerId = '';"
+              addition="""    await t.test(
+                'fixture permits only its exact browser origin and rejects foreign-origin writes',
+                async () => {
+                  const blocked = await fetch(stack.url + paths.customers, {
+                    method: 'POST',
+                    headers: {
+                      Origin: 'https://unapproved.example.invalid',
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name: 'must not be created' }),
+                  });
+                  assert.equal(blocked.status, 403);
+                  assert.equal((await blocked.json()).error.code, 'ORIGIN_DENIED');
+                  const allowed = await fetch(stack.url + paths.customers, {
+                    method: 'OPTIONS',
+                    headers: {
+                      Origin: new URL(stack.url).origin,
+                      'Access-Control-Request-Method': 'POST',
+                    },
+                  });
+                  assert.equal(allowed.status, 204);
+                  assert.equal(allowed.headers.get('access-control-allow-origin'), new URL(stack.url).origin);
+                },
+              );
+          """
+              assert text.count(marker)==1;path.write_text(text.replace(marker,addition+marker))
+              subprocess.run(['npx','prettier','--write','tests/admin/fixture.mts','tests/admin/e2e.ts'],check=True)
+              subprocess.run(['npm','run','inventory:write'],check=True)
+              git('add','-u');tree=git('write-tree')
+              if tree!=expected:raise RuntimeError(f'PR{number}: reviewed tree mismatch {tree} != {expected}')
+              git('commit','-m',f'test(pr{number}): authorize only the exact isolated browser origin')
+              git('branch',f'repair/pr{number}-origin-20261124')
+              print(number,git('rev-parse','HEAD'),tree)
+          PY
+      - name: Publish isolated refs without changing original PRs or main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/admin-origin"
+          gh auth setup-git
+          git push --atomic origin refs/heads/repair/pr18-origin-20261124 refs/heads/repair/pr17-origin-20261124 refs/heads/repair/pr19-origin-20261124
