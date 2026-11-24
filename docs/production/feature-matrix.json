@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
-  "sourceDigest": "0fcd41b1ae15b1d92d723d757ee6482e740f2d27f5bcc5be78c7de2473e36cdf",
+  "sourceDigest": "f2cb9194e0898ccc61ea721db6d7a3c081626b138dcba4d0643324bf79ec0958",
   "sourceFiles": [
     {
       "path": ".gitattributes",
@@ -921,7 +921,7 @@
     },
     {
       "path": "infra/environments/secrets.mts",
-      "sha256": "c82491227e26946e2113b51ab61056d275fa7aed7cc9b2f2eb5e1534c11d1c37"
+      "sha256": "8f0e13773efa7e4677fd34b29b8b0c628e75f3917e2797d1eaf22fd2bd018235"
     },
     {
       "path": "infra/environments/topology.mts",
@@ -2285,7 +2285,7 @@
     },
     {
       "path": "tooling/scripts/copy-content.mts",
-      "sha256": "5fc387705d28060138b3173a793e2f4e2f02e40a01a0b601c0135e3876d03d84"
+      "sha256": "a1847961e7874502bcaa87899ff4fad5a1db199b39c90e5fddd53c0025a29746"
     },
     {
       "path": "tooling/scripts/dev.mts",
@@ -66545,75 +66545,6 @@
       "unresolved": []
     },
     {
-      "id": "failure-state:infra/environments/secrets.mts:46531c47832f:2",
-      "key": "catch:3d7b28ab0d90",
-      "kind": "failure-state",
-      "apps": [],
-      "mode": "backend",
-      "source": {
-        "path": "infra/environments/secrets.mts",
-        "line": 107,
-        "endLine": 109,
-        "fingerprint": "15bd08aef7a5580cb4b1c23ee4276622d87776d7bcfb1a4cc074b2d22a1dc187"
-      },
-      "owningService": null,
-      "targetService": null,
-      "endpoints": [],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "persistenceEvent": {
-        "status": "UNRESOLVED_OR_NO_WRITE",
-        "tables": [],
-        "events": [],
-        "evidence": []
-      },
-      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
-      "targetSprint": "S10",
-      "categories": ["configuration", "failure-states"],
-      "tests": {
-        "contract": [],
-        "integration": [
-          "T:tests/backend/environment-secrets.test.ts:1fadb29e1e16:1",
-          "T:tests/backend/environment-secrets.test.ts:679d413c40a4:1",
-          "T:tests/backend/environment-secrets.test.ts:927ba676aa39:1",
-          "T:tests/backend/environment-secrets.test.ts:c4e90dde02f5:1",
-          "T:tests/backend/release-acceptance.test.ts:08b702656678:1"
-        ],
-        "e2e": [],
-        "related": [
-          "T:tests/backend/environment-secrets.test.ts:1fadb29e1e16:1",
-          "T:tests/backend/environment-secrets.test.ts:679d413c40a4:1",
-          "T:tests/backend/environment-secrets.test.ts:927ba676aa39:1",
-          "T:tests/backend/environment-secrets.test.ts:c4e90dde02f5:1",
-          "T:tests/backend/release-acceptance.test.ts:08b702656678:1"
-        ],
-        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
-      },
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:infra/environments/secrets.mts:46531c47832f:2",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:infra/environments/secrets.mts:46531c47832f:2",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:infra/environments/secrets.mts:46531c47832f:2",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "presentationOnly": null,
-      "unresolved": []
-    },
-    {
       "id": "failure-state:infra/environments/secrets.mts:472da28d5191:1",
       "key": "throw:045901794994",
       "kind": "failure-state",
@@ -66959,75 +66890,6 @@
       "unresolved": []
     },
     {
-      "id": "failure-state:infra/environments/secrets.mts:a869ffb2f7e0:2",
-      "key": "throw:8c468a57ba68",
-      "kind": "failure-state",
-      "apps": [],
-      "mode": "backend",
-      "source": {
-        "path": "infra/environments/secrets.mts",
-        "line": 108,
-        "endLine": 108,
-        "fingerprint": "8c468a57ba68bc74d4da2e446572891a3884d987edae85e551db81ebbee3f4d4"
-      },
-      "owningService": null,
-      "targetService": null,
-      "endpoints": [],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "persistenceEvent": {
-        "status": "UNRESOLVED_OR_NO_WRITE",
-        "tables": [],
-        "events": [],
-        "evidence": []
-      },
-      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
-      "targetSprint": "S10",
-      "categories": ["configuration"],
-      "tests": {
-        "contract": [],
-        "integration": [
-          "T:tests/backend/environment-secrets.test.ts:1fadb29e1e16:1",
-          "T:tests/backend/environment-secrets.test.ts:679d413c40a4:1",
-          "T:tests/backend/environment-secrets.test.ts:927ba676aa39:1",
-          "T:tests/backend/environment-secrets.test.ts:c4e90dde02f5:1",
-          "T:tests/backend/release-acceptance.test.ts:08b702656678:1"
-        ],
-        "e2e": [],
-        "related": [
-          "T:tests/backend/environment-secrets.test.ts:1fadb29e1e16:1",
-          "T:tests/backend/environment-secrets.test.ts:679d413c40a4:1",
-          "T:tests/backend/environment-secrets.test.ts:927ba676aa39:1",
-          "T:tests/backend/environment-secrets.test.ts:c4e90dde02f5:1",
-          "T:tests/backend/release-acceptance.test.ts:08b702656678:1"
-        ],
-        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
-      },
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:infra/environments/secrets.mts:a869ffb2f7e0:2",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:infra/environments/secrets.mts:a869ffb2f7e0:2",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:infra/environments/secrets.mts:a869ffb2f7e0:2",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "presentationOnly": null,
-      "unresolved": []
-    },
-    {
       "id": "failure-state:infra/environments/secrets.mts:ab0532a8029b:1",
       "key": "throw:c631732e7199",
       "kind": "failure-state",
@@ -67296,75 +67158,6 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:infra/environments/secrets.mts:e3723996fe0f:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "presentationOnly": null,
-      "unresolved": []
-    },
-    {
-      "id": "failure-state:infra/environments/secrets.mts:fd231a036656:1",
-      "key": "throw:dadaffabe262",
-      "kind": "failure-state",
-      "apps": [],
-      "mode": "backend",
-      "source": {
-        "path": "infra/environments/secrets.mts",
-        "line": 106,
-        "endLine": 106,
-        "fingerprint": "dadaffabe2629cba28140a9813c18c2b1491c12c9e688bb26b3541aa8b6ae34b"
-      },
-      "owningService": null,
-      "targetService": null,
-      "endpoints": [],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "persistenceEvent": {
-        "status": "UNRESOLVED_OR_NO_WRITE",
-        "tables": [],
-        "events": [],
-        "evidence": []
-      },
-      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
-      "targetSprint": "S10",
-      "categories": ["configuration"],
-      "tests": {
-        "contract": [],
-        "integration": [
-          "T:tests/backend/environment-secrets.test.ts:1fadb29e1e16:1",
-          "T:tests/backend/environment-secrets.test.ts:679d413c40a4:1",
-          "T:tests/backend/environment-secrets.test.ts:927ba676aa39:1",
-          "T:tests/backend/environment-secrets.test.ts:c4e90dde02f5:1",
-          "T:tests/backend/release-acceptance.test.ts:08b702656678:1"
-        ],
-        "e2e": [],
-        "related": [
-          "T:tests/backend/environment-secrets.test.ts:1fadb29e1e16:1",
-          "T:tests/backend/environment-secrets.test.ts:679d413c40a4:1",
-          "T:tests/backend/environment-secrets.test.ts:927ba676aa39:1",
-          "T:tests/backend/environment-secrets.test.ts:c4e90dde02f5:1",
-          "T:tests/backend/release-acceptance.test.ts:08b702656678:1"
-        ],
-        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
-      },
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:infra/environments/secrets.mts:fd231a036656:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:infra/environments/secrets.mts:fd231a036656:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:infra/environments/secrets.mts:fd231a036656:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -160296,7 +160089,7 @@
     }
   ],
   "totals": {
-    "features": 2036,
+    "features": 2033,
     "sourceFiles": 604,
     "runtimeRegistrations": 465,
     "testCatalogEntries": 552,
@@ -160309,7 +160102,7 @@
     "kind:background-job": 25,
     "kind:configuration": 34,
     "kind:export": 30,
-    "kind:failure-state": 514,
+    "kind:failure-state": 511,
     "kind:form": 99,
     "kind:handler": 254,
     "kind:native-adapter": 28,

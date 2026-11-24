@@ -101,12 +101,7 @@ export async function createEnvironmentSecrets(
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
   }
-  try {
-    await lstat(target);
-    throw new Error('Choose a new, empty secret directory.');
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
-  }
+  // Do not check existence separately: exclusive mkdir below is the authority.
   await mkdir(dirname(target), { recursive: true, mode: 0o700 });
   privateSecretPath(target);
   // The final mkdir is exclusive: concurrent initializers cannot mix environments.
