@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "69ae1af0a722224da87a84f756cc1a8c4b30928f792a9fc75a0e70b7f829f42f",
+  "sourceDigest": "e84a05361854c64b9012f6f8b697017553bca60f83abbb1c5171dc65362b405a",
   "status": "BLOCKED",
   "semanticStatus": "SOURCE_TRACE_COMPLETE_NOT_RUNTIME_ACCEPTANCE",
   "sourceBoundDecisions": 185,
   "scope": "Extractor warning classification, not completeness certification, test execution or workflow coverage.",
   "unknownWarningsFailClosed": true,
   "totals": {
-    "unresolvedRecords": 1258,
+    "unresolvedRecords": 1254,
     "recordsWithSemanticGaps": 0,
-    "recordsWithOnlyTestMappingDebt": 1258,
+    "recordsWithOnlyTestMappingDebt": 1254,
     "workflowsWithoutTestCandidates": 244
   },
-  "categoryCounts": { "test-mapping": 1258 },
+  "categoryCounts": { "test-mapping": 1254 },
   "byCategory": {
     "test-mapping": [
       "account-lifecycle:apps/admin-web/src/app.ts:c83e652f3ba1:1",
@@ -635,10 +635,6 @@
       "failure-state:packages/service-kit/src/migrations.ts:e4a2b0ca5246:1",
       "failure-state:packages/service-kit/src/security-audit.ts:db0d08f79ce2:1",
       "failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
-      "failure-state:services/api-gateway/src/application/proxy.ts:06546b873e13:1",
-      "failure-state:services/api-gateway/src/application/proxy.ts:37e8de3a0d56:1",
-      "failure-state:services/api-gateway/src/application/proxy.ts:72254eae5969:1",
-      "failure-state:services/api-gateway/src/application/proxy.ts:b8534469b82c:1",
       "failure-state:services/api-gateway/src/application/readiness.ts:a9e5adad5c85:1",
       "failure-state:services/communications/src/application/conversations.ts:313df5dfe161:1",
       "failure-state:services/communications/src/application/conversations.ts:a869ffb2f7e0:1",
@@ -24210,154 +24206,6 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:services/api-gateway/src/application/proxy.ts:06546b873e13:1",
-      "source": {
-        "path": "services/api-gateway/src/application/proxy.ts",
-        "line": 62,
-        "endLine": 64,
-        "fingerprint": "356b57a386016c37da05c23bb03711324fe66d036d2e2cbfd5adf3f70527237d"
-      },
-      "owningService": "api-gateway",
-      "targetService": "api-gateway",
-      "mode": "backend",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:services/api-gateway/src/application/proxy.ts:06546b873e13:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:services/api-gateway/src/application/proxy.ts:06546b873e13:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:services/api-gateway/src/application/proxy.ts:06546b873e13:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:services/api-gateway/src/application/proxy.ts:37e8de3a0d56:1",
-      "source": {
-        "path": "services/api-gateway/src/application/proxy.ts",
-        "line": 63,
-        "endLine": 63,
-        "fingerprint": "d66df9541530c5f5cf8420dd06d9fd29de1c0f4a524a8cd94dee7a7c6449ff78"
-      },
-      "owningService": "api-gateway",
-      "targetService": "api-gateway",
-      "mode": "backend",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:services/api-gateway/src/application/proxy.ts:37e8de3a0d56:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:services/api-gateway/src/application/proxy.ts:37e8de3a0d56:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:services/api-gateway/src/application/proxy.ts:37e8de3a0d56:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:services/api-gateway/src/application/proxy.ts:72254eae5969:1",
-      "source": {
-        "path": "services/api-gateway/src/application/proxy.ts",
-        "line": 44,
-        "endLine": 50,
-        "fingerprint": "78fad5220bba3899c0e060564044f04c3997d6f8bb3ca010a89abe98468e3403"
-      },
-      "owningService": "api-gateway",
-      "targetService": "api-gateway",
-      "mode": "backend",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:services/api-gateway/src/application/proxy.ts:72254eae5969:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:services/api-gateway/src/application/proxy.ts:72254eae5969:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:services/api-gateway/src/application/proxy.ts:72254eae5969:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:services/api-gateway/src/application/proxy.ts:b8534469b82c:1",
-      "source": {
-        "path": "services/api-gateway/src/application/proxy.ts",
-        "line": 45,
-        "endLine": 49,
-        "fingerprint": "8128cbb07816cd24450b7dd69426e9d728b1154cefd4c73cbaf74042a5e2c016"
-      },
-      "owningService": "api-gateway",
-      "targetService": "api-gateway",
-      "mode": "backend",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:services/api-gateway/src/application/proxy.ts:b8534469b82c:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:services/api-gateway/src/application/proxy.ts:b8534469b82c:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:services/api-gateway/src/application/proxy.ts:b8534469b82c:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }

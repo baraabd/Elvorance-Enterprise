@@ -50,7 +50,10 @@ export function createService(name: string, options: AppOptions): FastifyInstanc
         : undefined;
     const status = known
       ? error.statusCode
-      : typeof upstreamStatus === 'number' && upstreamStatus < 500
+      : typeof upstreamStatus === 'number' &&
+          Number.isInteger(upstreamStatus) &&
+          upstreamStatus >= 400 &&
+          upstreamStatus < 500
         ? upstreamStatus
         : 500;
     if (status >= 500) request.log.error({ requestId: request.id }, 'Request failed');

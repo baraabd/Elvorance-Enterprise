@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "69ae1af0a722224da87a84f756cc1a8c4b30928f792a9fc75a0e70b7f829f42f",
+  "sourceDigest": "e84a05361854c64b9012f6f8b697017553bca60f83abbb1c5171dc65362b405a",
   "workspaces": [
     {
       "name": "@elvorance/admin-web",
@@ -1445,6 +1445,28 @@
     { "source": "tests/backend/helpers.ts", "specifier": "fastify" },
     { "source": "tests/backend/helpers.ts", "specifier": "@elvorance/contracts" },
     { "source": "tests/backend/helpers.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/backend/http-response-semantics.test.ts", "specifier": "node:test" },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "node:assert/strict"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/app.ts"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/application/proxy.ts"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/domain/routes.ts"
+    },
+    { "source": "tests/backend/http-response-semantics.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/identity-configuration.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/identity-configuration.test.ts", "specifier": "node:assert/strict" },
     {
@@ -1508,6 +1530,10 @@
     { "source": "tests/backend/pagination.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/backend/pagination.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/pagination.test.ts", "specifier": "./rep-fixture.ts" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "./postgres-cleanup.ts" },
+    { "source": "tests/backend/postgres-cleanup.ts", "specifier": "node:timers/promises" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "node:assert/strict" },
@@ -1561,6 +1587,7 @@
     },
     { "source": "tests/backend/postgres.test.ts", "specifier": "@elvorance/contracts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./rep-postgres-scenarios.ts" },
+    { "source": "tests/backend/postgres.test.ts", "specifier": "./postgres-cleanup.ts" },
     {
       "source": "tests/backend/questionnaire-configuration.test.ts",
       "specifier": "node:assert/strict"
@@ -1691,6 +1718,12 @@
       "source": "tests/backend/security-and-gateway.test.ts",
       "specifier": "../../services/api-gateway/src/domain/routes.ts"
     },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:os" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:path" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:child_process" },
     { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "jose" },
@@ -1969,6 +2002,19 @@
       "source": "tests/production/branch-protection.test.mts",
       "specifier": "../../tooling/production/branch-protection.mts"
     },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:path" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:os" },
+    {
+      "source": "tests/production/debt-comments.test.mts",
+      "specifier": "../../tooling/production/source.mts"
+    },
+    {
+      "source": "tests/production/debt-comments.test.mts",
+      "specifier": "../../tooling/production/debt.mts"
+    },
     { "source": "tests/production/gap-report.test.mts", "specifier": "node:test" },
     { "source": "tests/production/gap-report.test.mts", "specifier": "node:assert/strict" },
     {
@@ -2062,6 +2108,12 @@
     {
       "source": "tests/production/semantic-bindings.test.mts",
       "specifier": "../../tooling/production/model.mts"
+    },
+    { "source": "tests/production/source-proof.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/source-proof.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/production/source-proof.test.mts",
+      "specifier": "../../tooling/production/source-proof.mts"
     },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:test" },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:assert/strict" },
@@ -2235,6 +2287,13 @@
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "node:path" },
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "./source.mts" },
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "./model.mts" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:child_process" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:crypto" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:path" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:url" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "fflate" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "./evidence.mts" },
     { "source": "tooling/production/source.mts", "specifier": "node:crypto" },
     { "source": "tooling/production/source.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/production/source.mts", "specifier": "node:path" },
@@ -2457,6 +2516,15 @@
       "source": "tooling/scripts/rep-release/check-acceptance.mts",
       "specifier": "./acceptance.mts"
     },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:fs" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:path" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:crypto" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "typescript" },
+    {
+      "source": "tooling/scripts/sprint01-inventory.mts",
+      "specifier": "../production/registration-source.mts"
+    },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "../production/source.mts" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "esbuild" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "node:child_process" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "node:path" },

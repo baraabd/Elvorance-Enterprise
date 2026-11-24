@@ -66,7 +66,7 @@
     "packages/mobile-platform/src/index.ts": "7d7bc93e87fda8c39e7647c979df174d9ed490d393b40aa633ee5590d882cb47",
     "packages/questionnaire/src/sync.ts": "fabecc407cfc4152d3c9c13de2304364bb88bc8c124337465dfa865d9f369024",
     "packages/service-kit/src/auth.ts": "d1f24b25255eec78ae6001ebd7c8ed47c81db95a728702ab356a3762dcd80c6f",
-    "packages/service-kit/src/http.ts": "84a0487e6dfa62a0ef16d90e184643f85caf04a8ce92539d95c9cea20591bb54",
+    "packages/service-kit/src/http.ts": "41fc5b5791737e886c6799ee2cab5709e6b966e56ed107bd2f0b1de55fe66093",
     "packages/service-kit/src/memory-repository.ts": "f850fee4dd26c15e266fa57c140f143a0bc8a1ed0d10aa520c1be96d63907abf",
     "packages/service-kit/src/pagination.ts": "742f412c924bbecca8a2f91b5e95b5204a63dd721982549e6f120213f694f566",
     "packages/service-kit/src/pg-repository.ts": "f0993f56e176445c6afa4e0dc03d569f7a104fd447271727fa3eadcfe9d61452",
@@ -3152,7 +3152,7 @@
     {
       "featureId": "handler:packages/service-kit/src/http.ts:3dee14649bff:1",
       "sourceFingerprint": "e7b05e5afb405524a89ec73f79eb601a2357de508966fe582eec6cc6d76bca63",
-      "sourceFileSha256": "84a0487e6dfa62a0ef16d90e184643f85caf04a8ce92539d95c9cea20591bb54",
+      "sourceFileSha256": "41fc5b5791737e886c6799ee2cab5709e6b966e56ed107bd2f0b1de55fe66093",
       "category": "infrastructure-callback",
       "rationale": "This action invocation is a repository/transaction or idempotency callback, not a user-interface action registration. The caller owns the domain operation; the helper supplies atomic execution and error/rollback behavior. Memory repository execution is not PostgreSQL evidence, and no independent HTTP endpoint is invented for the callback.",
       "resolves": [
