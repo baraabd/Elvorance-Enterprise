@@ -1,0 +1,163 @@
+name: Materialize reviewed domain and application repairs
+on:
+  push:
+    branches: [repair/pr-integration-publish-20261124]
+    paths: [.github/workflows/pr-integration-stage2.yml]
+permissions:
+  contents: write
+jobs:
+  materialize:
+    if: github.repository == 'baraabd/Elvorance-Enterprise'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Reproduce reviewed trees with exact hash assertions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/materialized"
+          git worktree add --detach "$RUNNER_TEMP/integration2" 69a8655c15570ae62f6b770e03006db5a890383f
+          cd "$RUNNER_TEMP/integration2"
+          git config user.name 'Elvorance PR Repair'
+          git config user.email 'elvorance-pr-repair@users.noreply.github.com'
+          export OUT="$RUNNER_TEMP/materialized"
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,re,subprocess
+          P=pathlib.Path
+          def git(*args,check=True):
+              p=subprocess.run(['git',*args],text=True,capture_output=True)
+              if check and p.returncode: raise RuntimeError(p.stdout+p.stderr)
+              return p.stdout.strip()
+          def show(ref,path): return subprocess.check_output(['git','show',f'{ref}:{path}'],text=True)
+          def edit(path,old,new):
+              p=P(path); text=p.read_text()
+              if old not in text: raise RuntimeError('Expected reviewed context missing: '+path)
+              p.write_text(text.replace(old,new))
+          missing=object()
+          def merge(b,l,r,path=''):
+              if l==r: return l
+              if l==b: return r
+              if r==b: return l
+              if isinstance(l,dict) and isinstance(r,dict) and (isinstance(b,dict) or b is missing):
+                  b={} if b is missing else b;out={}
+                  for k in dict.fromkeys([*l,*r]):
+                      val=merge(b.get(k,missing),l.get(k,missing),r.get(k,missing),path+'/'+k)
+                      if val is not missing: out[k]=val
+                  return out
+              if isinstance(l,list) and isinstance(r,list) and (isinstance(b,list) or b is missing):
+                  b=[] if b is missing else b
+                  if all(isinstance(x,dict) and 'featureId' in x for x in [*b,*l,*r]):
+                      bm,lm,rm=[{x['featureId']:x for x in xs} for xs in (b,l,r)];result=[]
+                      for k in dict.fromkeys([*lm,*rm]):
+                          val=merge(bm.get(k,missing),lm.get(k,missing),rm.get(k,missing),path+'/'+k)
+                          if val is not missing: result.append(val)
+                      return result
+                  if all(isinstance(x,str) for x in [*b,*l,*r]):
+                      return list(dict.fromkeys([x for x in [*l,*r] if x not in b or (x in l and x in r)]))
+              raise RuntimeError('Unreviewed semantic conflict: '+path)
+          previous='69a8655c15570ae62f6b770e03006db5a890383f'
+          plans=[(15,'e9cb217cdd3850fcac836ed211fc6c48a828b3df','34ecc8d92e558b0fefd8649a648b2c69156ed0bf'),(18,'377c46167cbc62a1a4286e20225c71bc2681ccb4','f7a7eb355037f82b71560a075250fad526c1557c'),(17,'e48f7ea163707e4ac5b9910e5f5d6f5421d1e013','5e500884500f43dc08aae49ee37c5a87d2138421')]
+          generated={'docs/production/'+x+'.json' for x in ['architecture-inventory','data-flow-inventory','feature-matrix','ownership-dependency-map','semantic-review','workflow-debt']}
+          special={15:{'services/sales/src/infrastructure/migrations/001_initial.ts'},18:{'docs/production/semantic-bindings.json','tsconfig.json'},17:{'.github/workflows/full-ci.yml','docs/production/full-ci-contract.json'}}
+          results=[]
+          for number,original,expected in plans:
+              git('checkout','--detach',original)
+              git('merge','--no-ff','--no-commit',previous,check=False)
+              conflicts=set(git('diff','--name-only','--diff-filter=U').splitlines())
+              if not conflicts <= generated|special[number]: raise RuntimeError('Unexpected conflicts: '+str(conflicts))
+              for path in conflicts & generated: git('checkout','--ours','--',path)
+              format_paths=[]
+              if number==15:
+                  path='services/sales/src/infrastructure/migrations/001_initial.ts'
+                  git('checkout','--ours','--',path)
+                  P(path).write_text("import { tenantSecurityMigration } from '@elvorance/service-kit';\n"+P(path).read_text())
+                  edit(path,'  addOwnedTablesMigration(\n    3,','  tenantSecurityMigration(3),\n  addOwnedTablesMigration(\n    4,')
+                  format_paths.append(path)
+                  path='tests/backend/sprint04-domains.test.ts'
+                  edit(path,"test('Sales migration 3 is additive, keeps old migration checksums and forces tenant RLS'","test('Sales migration 4 preserves prior security and data migrations and forces tenant RLS'")
+                  edit(path,'assert.equal(migrations.length, 3);',"assert.equal(migrations.length, 4);\n  assert.deepEqual(migrations.map((migration) => migration.version), [1, 2, 3, 4]);\n  assert.match(migrations[2]?.sql ?? '', /ALTER TABLE inbox FORCE ROW LEVEL SECURITY/);\n  assert.match(migrations[2]?.sql ?? '', /ALTER TABLE idempotency_keys FORCE ROW LEVEL SECURITY/);")
+                  edit(path,'const migration = migrations[2];','const migration = migrations[3];')
+                  edit(path,'assert.equal(migration.version, 3);','assert.equal(migration.version, 4);')
+                  format_paths.append(path)
+                  path='docs/sprint04/MIGRATION.md'
+                  edit(path,'Sales alone receives migration 3,','Sales receives migration 4,')
+                  edit(path,'migrations 1–2 retain their original SQL checksums.','migrations 1–2 retain their original SQL checksums. Migration 3 remains the Sprint 03 tenant-security migration for inbox and idempotency records; the two independently authored migration-3 additions were reconciled before merging. The ordered versions are 1, 2, 3, 4. A database on an experimental branch with the old service-request migration recorded as version 3 must not run this sequence blindly: stop on the checksum mismatch and use a separately reviewed ledger/schema reconciliation. Do not edit an applied migration or reset its checksum.')
+                  format_paths.append(path)
+                  path='tests/runtime/sprint04-resilience.mts'
+                  edit(path,"'PUT',\n      '/exchanges/atlas/atlas.events/publish'","'POST',\n      '/exchanges/atlas/atlas.events/publish'")
+                  edit(path,'`Isolated broker diagnostic failed (${response.status})`','`Isolated broker diagnostic failed (${method} ${path}: ${response.status})`')
+                  format_paths.append(path)
+                  path='tests/runtime/sprint04-safety.test.mts'
+                  edit(path,"import test from 'node:test';","import test from 'node:test';\nimport { readFileSync } from 'node:fs';")
+                  P(path).write_text(P(path).read_text()+r'''
+          // The real Compose journey still verifies routing, duplicate acknowledgements and DLQ delivery.
+          // This contract regression catches an unsupported HTTP method before spinning up Docker.
+          test('isolated broker publishing uses RabbitMQ management POST without a permissive fallback', () => {
+            const source = readFileSync(new URL('./sprint04-resilience.mts', import.meta.url), 'utf8');
+            assert.match(source, /broker<\{ routed: boolean \}>\(\s*'POST',\s*'\/exchanges\/atlas\/atlas\.events\/publish'/);
+            assert.match(source, /assert\.equal\(result\.routed, true\)/);
+          });
+          ''')
+                  format_paths.append(path)
+                  path='tests/backend/sprint03-security.test.ts'
+                  edit(path,'assert.equal(inventory.length, 84);',"// The immutable public-contract baseline separately proves all original operations remain.\n  // Iterate the complete current matrix, including additive domain operations.\n  assert.ok(inventory.length >= 84, 'the original operation matrix must not shrink');")
+                  edit(path,'assert.equal(decisions, 588);','assert.equal(decisions, inventory.length * (roles.length + 1));')
+                  format_paths.append(path)
+              elif number==18:
+                  path='docs/production/semantic-bindings.json'
+                  doc=merge(json.loads(show('453242e1256f6d876d170142b8ad235be9120344',path)),json.loads(show(original,path)),json.loads(show(previous,path)))
+                  P(path).write_text(json.dumps(doc,indent=2,ensure_ascii=False)+'\n');format_paths.append(path)
+                  path='tsconfig.json';left=json.loads(show(original,path));right=json.loads(show(previous,path))
+                  for k,v in right['compilerOptions'].items():
+                      if k in left['compilerOptions'] and left['compilerOptions'][k]!=v: raise RuntimeError('Compiler setting conflict')
+                      left['compilerOptions'][k]=v
+                  for key in ['include','exclude']: left[key]=list(dict.fromkeys(left[key]+right[key]))
+                  P(path).write_text(json.dumps(left,indent=2)+'\n');format_paths.append(path)
+              else:
+                  path='.github/workflows/full-ci.yml';left=show(previous,path);right=show(original,path)
+                  browser=right[right.index('  browser:\n'):right.index('  required:\n')]
+                  if '  browser:\n' in left: raise RuntimeError('Duplicate browser gate')
+                  left=left.replace('  admin-browser:\n',browser+'  admin-browser:\n').replace('needs: [project, runtime, native, identity, security, admin-browser]','needs: [project, runtime, native, identity, security, browser, admin-browser]')
+                  P(path).write_text(left);format_paths.append(path)
+                  path='docs/production/full-ci-contract.json';left=json.loads(show(previous,path));right=json.loads(show(original,path))
+                  left['requiredJobs'].insert(left['requiredJobs'].index('admin-browser'),'browser')
+                  left['lanes'].append(next(x for x in right['lanes'] if x['name']=='browser'))
+                  P(path).write_text(json.dumps(left,indent=2)+'\n');format_paths.append(path)
+              subprocess.run(['npm','ci'],check=True)
+              subprocess.run(['npx','prettier','--write',*format_paths],check=True)
+              subprocess.run(['npm','run','inventory:write'],check=True)
+              git('add','-u')
+              git('diff','--cached','--check','--','.',':!*.tsv')
+              tree=git('write-tree')
+              if tree!=expected: raise RuntimeError(f'PR{number}: tree mismatch {tree} != {expected}')
+              git('commit','-m',f'fix(pr{number}): reconcile tested predecessors and retain all required gates')
+              sha=git('rev-parse','HEAD');ref=f'repair/validated-pr{number}-20261124'
+              git('branch',ref,sha)
+              results.append({'pr':number,'original':original,'sha':sha,'tree':tree,'predecessor':previous,'ref':ref})
+              previous=sha
+          P(os.environ['OUT'],'manifest.json').write_text(json.dumps(results,indent=2)+'\n')
+          PY
+      - name: Publish exact reviewed trees only to temporary refs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/integration2"
+          gh auth setup-git
+          git push --atomic origin refs/heads/repair/validated-pr15-20261124 refs/heads/repair/validated-pr18-20261124 refs/heads/repair/validated-pr17-20261124
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: reviewed-stage2-manifest-${{ github.sha }}
+          path: ${{ runner.temp }}/materialized/
+          if-no-files-found: error
+          retention-days: 7
