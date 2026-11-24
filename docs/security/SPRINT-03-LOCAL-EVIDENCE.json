@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "baseSha": "453242e1256f6d876d170142b8ad235be9120344",
+  "scope": "Local execution; not hosted or physical-device acceptance",
+  "node": "24.22.1",
+  "tests": {
+    "total": 321,
+    "passed": 320,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "PostgreSQL server unavailable locally"
+  },
+  "regressionsBefore": {
+    "total": 5,
+    "passed": 0,
+    "failed": 5
+  },
+  "regressionsAfter": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "rolePolicyDecisions": 588,
+  "apiOperations": 84,
+  "checks": {
+    "types": "PASS",
+    "boundaries": "PASS",
+    "buildApps": 3,
+    "buildServices": 8,
+    "inventory": "PASS",
+    "format": "PASS",
+    "parityRoutes": 64,
+    "frontendRegressionSuites": 7,
+    "mergedTests": 53
+  },
+  "notExecutedLocally": [
+    "Real PostgreSQL",
+    "Real Keycloak",
+    "Android emulator",
+    "iOS simulator",
+    "Physical devices",
+    "Hosted Staging",
+    "Production"
+  ],
+  "claimsNotMade": [
+    "Zero vulnerabilities",
+    "Independent review approval",
+    "Production release readiness",
+    "Immutable durable audit",
+    "Immediate access-token invalidation"
+  ],
+  "logSha256": {
+    "before-regressions.log": "62b8bdc7574b2c7976a875d42daf2df1bf70a6e7cf404c914727723d95e81866",
+    "final-build.log": "aa72105c389ecefafb21f07ba0385c06e1ae352c6f2e4a0923fd7286a6af0e9e",
+    "parity.log": "13ff3aaca8f1e0f1a97b4dc0ea300688883ae69bc63fca303c6dc922f68a5395",
+    "all-types.log": "845cd3c2a23138519b94287da6a07cd36b398e1cce29db171ec840e6650de53b",
+    "merged.log": "d73d4055eddf41cd301923c01f7ca3a7a3830e19292c08c01cd8dfc0f7ef8457",
+    "regression.log": "07de613ba0823e8b8a970b1e89f139a0a949306575336902ff6fe690c18d2d49",
+    "final-local-tests.log": "4d28e5ea10d9f023b1aa272e37f4593b075c3375955e469b7b354f768fd0212e",
+    "final-format.log": "2829287ee7431693f1698c665eff4f7f01803cf1af49acad6b1699aca8ff1b80",
+    "after-regressions.log": "e1d1fd6943f47bb3cb4767dd24c55108c0d9c3c2607b53cbe0f7732f61d166db",
+    "inventory-final.log": "4edb8283b3a0f4cb7d39a6c9f319d612d8bd1d3fb22086040dd65a51600cc921"
+  },
+  "sourceDigest": "e5e6ad468ec4534d1789d4d708dcd2d184483331b107bf181ab29a26b609b07e"
+}

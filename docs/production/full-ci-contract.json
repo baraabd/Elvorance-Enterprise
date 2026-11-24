@@ -1,6 +1,14 @@
 {
   "schemaVersion": 1,
-  "requiredJobs": ["project", "runtime", "native", "identity", "security", "browser"],
+  "requiredJobs": [
+    "project",
+    "runtime",
+    "native",
+    "identity",
+    "security",
+    "browser",
+    "admin-browser"
+  ],
   "lanes": [
     {
       "name": "project-linux",
@@ -16,7 +24,8 @@
         "merged",
         "example-build",
         "format",
-        "package"
+        "package",
+        "source-package-integrity"
       ],
       "countedCommands": ["tests", "parity", "regression", "merged"],
       "allowedSkips": [],
@@ -37,7 +46,8 @@
         "merged",
         "example-build",
         "format",
-        "package"
+        "package",
+        "source-package-integrity"
       ],
       "countedCommands": ["tests", "parity", "regression", "merged"],
       "allowedSkips": [
@@ -92,6 +102,13 @@
       "countedCommands": [],
       "allowedSkips": [],
       "scope": "Current npm advisory audit at high/critical threshold plus narrow materialized-secret scanning; no claim of comprehensive security review."
+    },
+    {
+      "name": "admin-browser",
+      "commands": ["admin-e2e"],
+      "countedCommands": ["admin-e2e"],
+      "allowedSkips": [],
+      "scope": "Actual Chromium UI + isolated PostgreSQL databases + signed synthetic identities + actual HTTP service handlers. Test-only outbox dispatch exercises consumers, not RabbitMQ; existing backend-runtime lane retains real broker acceptance. Includes reload/service-recreation, RBAC, negative state, labels/keyboard and RTL/responsive checks. No hosted account or manual accessibility acceptance."
     },
     {
       "name": "browser",

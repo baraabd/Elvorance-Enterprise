@@ -46,7 +46,9 @@
     "inventory:check": "node tooling/production/inventory.mts",
     "inventory:write": "node tooling/production/inventory.mts --write",
     "test:production": "node --test --test-reporter=tap tests/production/*.test.mts",
-    "ci:project": "node tooling/production/run-lane.mts project-linux"
+    "ci:project": "node tooling/production/run-lane.mts project-linux",
+    "build:admin:server": "node tooling/scripts/build-admin-server.mts",
+    "test:admin:e2e": "node tests/admin/run-e2e.mts"
   },
   "devDependencies": {
     "@capacitor/cli": "8.6.2",

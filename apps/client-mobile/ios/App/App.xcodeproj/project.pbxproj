@@ -16,6 +16,12 @@
 		504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC3101FED79650016851F /* LaunchScreen.storyboard */; };
 		50B271D11FEDC1A000F3C39B /* public in Resources */ = {isa = PBXBuildFile; fileRef = 50B271D01FEDC1A000F3C39B /* public */; };
 		9582B6832FE993A70072D4E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582B6822FE993A50072D4E8 /* SceneDelegate.swift */; };
+		A61710000000000000000001 /* ClientBridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61700000000000000000001 /* ClientBridgeViewController.swift */; };
+		A61710000000000000000002 /* AuthRedirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61700000000000000000002 /* AuthRedirect.swift */; };
+		A61710000000000000000003 /* AuthSecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61700000000000000000003 /* AuthSecureStore.swift */; };
+		A61710000000000000000004 /* AuthBrowserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61700000000000000000004 /* AuthBrowserSession.swift */; };
+		A61710000000000000000005 /* ElvoranceAuthBridgePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61700000000000000000005 /* ElvoranceAuthBridgePlugin.swift */; };
+		A61720000000000000000001 /* AuthNativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61720000000000000000002 /* AuthNativeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,13 @@
 		50B271D01FEDC1A000F3C39B /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
 		9582B6822FE993A50072D4E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		958DCC722DB07C7200EA8C5F /* debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = debug.xcconfig; path = ../debug.xcconfig; sourceTree = SOURCE_ROOT; };
+		A61700000000000000000001 /* ClientBridgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientBridgeViewController.swift; sourceTree = "<group>"; };
+		A61700000000000000000002 /* AuthRedirect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth/AuthRedirect.swift; sourceTree = "<group>"; };
+		A61700000000000000000003 /* AuthSecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth/AuthSecureStore.swift; sourceTree = "<group>"; };
+		A61700000000000000000004 /* AuthBrowserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth/AuthBrowserSession.swift; sourceTree = "<group>"; };
+		A61700000000000000000005 /* ElvoranceAuthBridgePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth/ElvoranceAuthBridgePlugin.swift; sourceTree = "<group>"; };
+		A61720000000000000000002 /* AuthNativeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNativeTests/AuthNativeTests.swift; sourceTree = "<group>"; };
+		A61720000000000000000003 /* AppNativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AppNativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +54,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A61720000000000000000007 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -49,6 +63,7 @@
 			children = (
 				958DCC722DB07C7200EA8C5F /* debug.xcconfig */,
 				504EC3061FED79650016851F /* App */,
+				A61720000000000000000002 /* AuthNativeTests.swift */,
 				504EC3051FED79650016851F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				504EC3041FED79650016851F /* App.app */,
+				A61720000000000000000003 /* AppNativeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +80,11 @@
 		504EC3061FED79650016851F /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A61700000000000000000001 /* ClientBridgeViewController.swift */,
+				A61700000000000000000002 /* AuthRedirect.swift */,
+				A61700000000000000000003 /* AuthSecureStore.swift */,
+				A61700000000000000000004 /* AuthBrowserSession.swift */,
+				A61700000000000000000005 /* ElvoranceAuthBridgePlugin.swift */,
 				9582B6822FE993A50072D4E8 /* SceneDelegate.swift */,
 				50379B222058CBB4000EE86E /* capacitor.config.json */,
 				504EC3071FED79650016851F /* AppDelegate.swift */,
@@ -100,6 +121,17 @@
 			productReference = 504EC3041FED79650016851F /* App.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A61720000000000000000004 /* AppNativeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A61720000000000000000005;
+			buildPhases = (A61720000000000000000006, A61720000000000000000007, );
+			buildRules = ();
+			dependencies = (A61720000000000000000008, );
+			name = AppNativeTests;
+			productName = AppNativeTests;
+			productReference = A61720000000000000000003;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -133,6 +165,7 @@
 			projectRoot = "";
 			targets = (
 				504EC3031FED79650016851F /* App */,
+				A61720000000000000000004 /* AppNativeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -159,10 +192,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
+				A61710000000000000000001 /* ClientBridgeViewController.swift in Sources */,
+				A61710000000000000000002 /* AuthRedirect.swift in Sources */,
+				A61710000000000000000003 /* AuthSecureStore.swift in Sources */,
+				A61710000000000000000004 /* AuthBrowserSession.swift in Sources */,
+				A61710000000000000000005 /* ElvoranceAuthBridgePlugin.swift in Sources */,
 				9582B6832FE993A70072D4E8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A61720000000000000000006 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A61720000000000000000001, ); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -184,6 +223,12 @@
 		};
 /* End PBXVariantGroup section */
 
+/* Begin PBXContainerItemProxy section */
+		A61720000000000000000009 = {isa = PBXContainerItemProxy; containerPortal = 504EC2FC1FED79650016851F; proxyType = 1; remoteGlobalIDString = 504EC3031FED79650016851F; remoteInfo = App; };
+/* End PBXContainerItemProxy section */
+/* Begin PBXTargetDependency section */
+		A61720000000000000000008 = {isa = PBXTargetDependency; target = 504EC3031FED79650016851F; targetProxy = A61720000000000000000009; };
+/* End PBXTargetDependency section */
 /* Begin XCBuildConfiguration section */
 		504EC3141FED79650016851F /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -309,7 +354,9 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.elvorance.client;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ELVORANCE_BUNDLE_IDENTIFIER)";
+				ELVORANCE_BUNDLE_IDENTIFIER = com.elvorance.client;
+				ELVORANCE_APP_DISPLAY_NAME = "مساحتي مع أطلس";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
@@ -330,11 +377,45 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.elvorance.client;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ELVORANCE_BUNDLE_IDENTIFIER)";
+				ELVORANCE_BUNDLE_IDENTIFIER = com.elvorance.client;
+				ELVORANCE_APP_DISPLAY_NAME = "مساحتي مع أطلس";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A6172000000000000000000A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ELVORANCE_BUNDLE_IDENTIFIER).native-tests";
+				ELVORANCE_BUNDLE_IDENTIFIER = com.elvorance.client.staging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/App";
+			};
+			name = Debug;
+		};
+		A6172000000000000000000B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ELVORANCE_BUNDLE_IDENTIFIER).native-tests";
+				ELVORANCE_BUNDLE_IDENTIFIER = com.elvorance.client.staging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/App";
 			};
 			name = Release;
 		};
@@ -359,6 +440,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		A61720000000000000000005 = {isa = XCConfigurationList; buildConfigurations = (A6172000000000000000000A, A6172000000000000000000B, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */

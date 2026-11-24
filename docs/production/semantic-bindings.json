@@ -2,9 +2,15 @@
   "schemaVersion": 1,
   "scope": "Explicit source-analysis annotations for this snapshot. Not independent human approval, product completion, measured workflow coverage or release authorization. Test gaps and planned IDs are not cleared by these bindings. Any evidence-source edit requires re-review.",
   "evidenceFiles": {
-    "apps/client-mobile/android/app/src/main/java/com/elvorance/client/MainActivity.java": "3bb71b1326ca73c06e8d1313a2adb92f3ce7be0325fda8a5b90a0cba147d86bd",
+    "apps/admin-web/src/server/api.ts": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc",
+    "apps/admin-web/src/server/forms.ts": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b",
+    "apps/admin-web/src/server/operations.ts": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788",
+    "apps/admin-web/src/server/quote-editor.ts": "0546224d548a30ad76d2fd6d67b909b0d575641715f6098985c426bd46353481",
+    "apps/admin-web/src/server/reports.ts": "95d8fb07187da5b70b89cb91460a9019cfe26c9e5b7b1d195c1efc952d8fadf3",
+    "apps/admin-web/src/server/workspace.ts": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+    "apps/client-mobile/android/app/src/main/java/com/elvorance/client/MainActivity.java": "a8f5a75e6c8e45ffcbad4a55cae06720215c907723afc721feb4ddbcfc4e4f27",
     "apps/client-mobile/ios/App/App/AppDelegate.swift": "481e2ad8672b14acbd3e3df65acdc6d046526ae542b7bec903cf842fc68d9e49",
-    "apps/client-mobile/ios/App/App/SceneDelegate.swift": "738b9b96bb71d34d80cd8c1183cf7f8f6f2e789c64e46fb5fe6777a35ae12dfd",
+    "apps/client-mobile/ios/App/App/SceneDelegate.swift": "116b1e29e6a71ecbaa7eb7490afc9330e0f12a47814155d9ae7aa0f10b5bccfa",
     "apps/client-mobile/ios/App/CapApp-SPM/Package.swift": "5f13ff4857d17313b79aba85b55d302db4dd3df9cbb08e3368e9daf477470e74",
     "apps/client-mobile/ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift": "70bf9dafddc35e3877dfb133a996f5be7ccd1e132897a98fdbf4869ff605ece9",
     "apps/rep-mobile/android/app/src/main/java/com/elvorance/rep/MainActivity.java": "ee3fe9a7cd27322132cd47efc9897a96d69d9bb42072e1ca246beabe56631c0b",
@@ -43,27 +49,27 @@
     "apps/rep-mobile/src/server/views/visits.ts": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242",
     "apps/rep-mobile/src/server/workspace.ts": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833",
     "apps/rep-mobile/src/state/local-demo.ts": "89c68f5d6a5b25a27e7ab7db3b93e203054804d08a2f220e67b63b0736c05af2",
-    "packages/api-client/src/authenticated-workspace.ts": "8ffc99cd6d4661e2888fc9ea080c47b53c007cec9b4dd1dda4b5dc6f93f232ed",
+    "packages/api-client/src/authenticated-workspace.ts": "b84f2f3fa5f8bdb5cc21222e41a8f3b8849ab7612a212b59389f9189a5e6df47",
     "packages/api-client/src/live-actions.ts": "6bc9bb46609ce9361c0fce2f2e677f07eebd277542f135c90644a3d7334dca95",
     "packages/api-client/src/live-commercial.ts": "5521e7b6caa5755255b8f3f0ace661f95faa4f3884f13e623fccdabd77fa606b",
     "packages/api-client/src/live-data.ts": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7",
     "packages/api-client/src/live-workspace.ts": "35eeb836e360ce4784f4991fda0ede8520ff96b5caf353b9ee3392e14fffd5b9",
     "packages/app-runtime/src/index.ts": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa",
     "packages/demo-data/src/repository.ts": "d80d4eae529d0b6e01a9f0d23e2eafe01f601d37da94b91d2716e8c01d05b02d",
-    "packages/mobile-auth/src/configuration.ts": "88b1444ec2d2077458cb4eb57a03f1e49d9108ae0dae82247c24f3ad70eafd93",
+    "packages/mobile-auth/src/configuration.ts": "687d878bee667a8460541dab2da87053348802e1048c9add276f38900bd9dbdd",
     "packages/mobile-auth/src/host.ts": "c1548594165939e531ac444a3e549de55fcc0162048e5c8d5247279ed8fd98f6",
     "packages/mobile-auth/src/oidc.ts": "a3b2b5ccd14cd006fa43b7367fa8d4591746aab8510e2c765b3b79d7e85a3673",
-    "packages/mobile-auth/src/platform.ts": "c079bd5e6ac47169f7a42366584b605cf4cc17409441b6d82bec320faca366a5",
+    "packages/mobile-auth/src/platform.ts": "b3ea1e4ccd0e49b3bd4c0a62438e48fd9d8a281c4effd574465f63ea48f38710",
     "packages/mobile-auth/src/session.ts": "ced4f3134d7a1b3ec10e0bc4059dfb2ced429c4585483401414fde0611219dea",
     "packages/mobile-auth/src/vault.ts": "e3eed1c22df53095c31652b7558cef3d84ee150f91cf15730cafb7e932efdebe",
     "packages/mobile-platform/src/index.ts": "a6b14897e72a651343261d142b33a02d076d85b1579afc301aa924c15e94af30",
     "packages/mobile-platform/src/location-permission.ts": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44",
     "packages/questionnaire/src/sync.ts": "fabecc407cfc4152d3c9c13de2304364bb88bc8c124337465dfa865d9f369024",
-    "packages/service-kit/src/auth.ts": "2787ba1fbf0548f551a04264f3e5ea883af608a1ad6c93d90e115330845de15c",
-    "packages/service-kit/src/http.ts": "58a920a8a8b2695f94b7fcab20f5beb952f2a1407c661a9a80d1d01bc1ba26ec",
+    "packages/service-kit/src/auth.ts": "d1f24b25255eec78ae6001ebd7c8ed47c81db95a728702ab356a3762dcd80c6f",
+    "packages/service-kit/src/http.ts": "41fc5b5791737e886c6799ee2cab5709e6b966e56ed107bd2f0b1de55fe66093",
     "packages/service-kit/src/memory-repository.ts": "f850fee4dd26c15e266fa57c140f143a0bc8a1ed0d10aa520c1be96d63907abf",
     "packages/service-kit/src/pagination.ts": "742f412c924bbecca8a2f91b5e95b5204a63dd721982549e6f120213f694f566",
-    "packages/service-kit/src/pg-repository.ts": "3219a49cd5a86fee0d7eb30fd09aba6973ecf5e6644a865b417dc02ab1d34877",
+    "packages/service-kit/src/pg-repository.ts": "f0993f56e176445c6afa4e0dc03d569f7a104fd447271727fa3eadcfe9d61452",
     "packages/ui/src/forms.ts": "f3dbc05aeb377aaae2a972c9b3344a40ee58c5c622e8ee789fb9733cab49c28b",
     "packages/ui/src/page-heads.ts": "1872e0f902a36c5c87f1b7659a2540de39f143b3e30c7add21d1a36c522b0558",
     "services/billing/src/application/payments.ts": "31867bd3976e839e2d7616105c62cc759d7d00f7de555f499b36dc287d293a3c",
@@ -76,8 +82,9 @@
     "services/crm/src/application/customers.ts": "973e139192e7b6dbf99cef5041b25033b1199097b87569661998a8fef50535ee",
     "services/crm/src/application/discovery.ts": "80cf6c166b001422ec082c1b44962bed0067920bd60d6d67fee73b2f3e90fd41",
     "services/crm/src/transport/discovery-routes.ts": "54d17341ed376104ce7dcb34715a89fbac4b44601c45faea8cc405fda9423bb1",
-    "services/crm/src/transport/routes.ts": "efc5da93ecc1307dbc039f4d4b9300e680002339f82a319a7a0ca108841bf6d2",
-    "services/delivery/src/transport/routes.ts": "6e20c5cb3b7bea1459e3840fd64bd8b910bae7d799e08132f070986005c2363e",
+    "services/crm/src/transport/routes.ts": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d",
+    "services/delivery/src/transport/routes.ts": "fd4c8e02b169c61b575fd63e0e9d64e640c6d078687192a998fd307828837b9a",
+    "services/identity/src/transport/routes.ts": "3edf9663a29f35f5e81866f36a86e441e25698e3b803fb9c1d58f0724545c8b4",
     "services/sales/src/application/assignment.ts": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570",
     "services/sales/src/application/discounts.ts": "8f45e859baa206b4aaed50f392146ecd2ab623278dbcbac2df870c94fd6cd485",
     "services/sales/src/application/opportunities.ts": "e40e25cce0b8dc280b5ab41bc886f7ddb44a05f100544b6be6927ee6ca4e2f0c",
@@ -88,9 +95,18 @@
     "services/sales/src/application/visits.ts": "eefc452e8fc79b3880a4aa2062fb2bb15b7fa631a98be5662ac46b10a697d144",
     "services/sales/src/transport/discount-routes.ts": "d38af9c98d8e327df81e540bcae4a8e717d77f04b66c0ef3166217877e4a3ad2",
     "services/sales/src/transport/rep-work-routes.ts": "dd19fa27388169c367cc54b978b3cc19a6e26cc32fe96f089049010fd3128391",
-    "services/sales/src/transport/routes.ts": "4b9ef32896bbc63c14d6fdbf1ab8c71a05ebb1a6b6c0d5b3c1f428d4bba78add",
+    "services/sales/src/transport/routes.ts": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81",
     "services/tracking/src/application/sessions.ts": "35bc4c2364ae6892350c02316a66d307a647948939af88d085e329a31e3ee0ca",
-    "services/tracking/src/transport/routes.ts": "b521ece511103019bd0c9d2d401d532c8eb0ee119b44e961cb387ae56b977974"
+    "services/tracking/src/transport/routes.ts": "b521ece511103019bd0c9d2d401d532c8eb0ee119b44e961cb387ae56b977974",
+    "apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/AuthBrowserSession.java": "45df220d532912a83f5428082f3779bbc8ad5dea99f038feeb97ef2ad762edd6",
+    "apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/AuthRedirect.java": "f4973299de77005e83fe158dcd34058dd1cdcb4557207fc3fa70daa7b187256a",
+    "apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/AuthSecureStore.java": "67e26a22771c1852aec53c59af9e232c75f3fd6e2ce6cbfbccfe3d9c516a8cff",
+    "apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/ElvoranceAuthBridgePlugin.java": "f27b933d0b61a35ee78e743194ec0859273564d149a46c4fef1e58872ebd41dc",
+    "apps/client-mobile/ios/App/App/Auth/AuthBrowserSession.swift": "22334d35b5717829af800ea8ec8b732897e6ae01c52382cd450205b925b5bd41",
+    "apps/client-mobile/ios/App/App/Auth/AuthRedirect.swift": "7b51a077bb17b63050b547513172d743169a8088ee6343720007d305bbadbba5",
+    "apps/client-mobile/ios/App/App/Auth/AuthSecureStore.swift": "ca7908ff8f72549539896e45b6310a5db073aa69bcee274646b52db133b1f35d",
+    "apps/client-mobile/ios/App/App/Auth/ElvoranceAuthBridgePlugin.swift": "e7dc872b4fd98c61afb715835b12655be01fa1be48a5b689f309f0bb4d57b3d3",
+    "apps/client-mobile/ios/App/App/ClientBridgeViewController.swift": "d777b28a06204f8cb2f22ac1ebad98374cd1277898fc046cc78c1cb7e2d771af"
   },
   "bindings": [
     {
@@ -1774,6 +1790,186 @@
       "nativeMembers": []
     },
     {
+      "featureId": "handler:apps/admin-web/src/server/forms.ts:1f7e625eadae:1",
+      "sourceFingerprint": "dd50e771481d3bc35d8060ccc435d69679390e8966aed9f35aba874c28c15230",
+      "sourceFileSha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b",
+      "category": "local-form-state",
+      "rationale": "The repeating-field add/remove callback edits only the unsaved form input model; persistence occurs solely after the separate confirmed submit operation. The generic button listener forwards its supplied callback, with no independent HTTP operation or locally fabricated successful save.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/quote-editor.ts",
+        "apps/admin-web/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/admin-web/src/server/forms.ts:1f7e625eadae:2",
+      "sourceFingerprint": "6a6a5e5fe4643390c0a16d06dc56932453382feef00ba0d759686e1f1c6c89b6",
+      "sourceFileSha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b",
+      "category": "local-form-state",
+      "rationale": "The repeating-field add/remove callback edits only the unsaved form input model; persistence occurs solely after the separate confirmed submit operation. The generic button listener forwards its supplied callback, with no independent HTTP operation or locally fabricated successful save.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/quote-editor.ts",
+        "apps/admin-web/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/admin-web/src/server/forms.ts:f9db78ae399e:1",
+      "sourceFingerprint": "12e57f80abcbc8598e90fcf10bcb4b05ce57a5b4b4116a2c8fb3b31bf76e3f6a",
+      "sourceFileSha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b",
+      "category": "callback-adapter",
+      "rationale": "The shared semantic button helper forwards the provided click callback. It has no HTTP policy of its own: navigation, form-local edits and confirmed server writes remain separate callers in workspace and operation registries, not accepted business workflows merely because the button renders.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/quote-editor.ts",
+        "apps/admin-web/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/admin-web/src/server/workspace.ts:0079eab32216:1",
+      "sourceFingerprint": "bcf859db81970264a695648be039aeb9899c230bb907642665d1281fe6bb5c0a",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "resource-lifecycle",
+      "rationale": "This lifetime/unload listener aborts stale HTTP work, removes handlers, clears session-scoped UI data, or asks before leaving an outstanding save. It makes no independent remote write. Shared authenticated-host teardown remains authoritative; reload durability and token revocation are not inferred from this callback.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "packages/api-client/src/authenticated-workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/admin-web/src/server/workspace.ts:1f7e625eadae:1",
+      "sourceFingerprint": "813ce1461478eb4f660e6ac0914cd5e7a4d46172c1fe08e77ad37b2819496bda",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "callback-adapter",
+      "rationale": "The retry error button forwards the explicit retry callback supplied by the failed identity/read operation. The API layer never switches to demo data, and mutation retry is a separate confirmed form path with the retained idempotency intent key.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/admin-web/src/server/workspace.ts:a176bf413c75:1",
+      "sourceFingerprint": "8caef01bd5cbe879d8826cad3c3060e7426f2145af716a644628091d2ebe2bd2",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "presentation",
+      "rationale": "The skip link cancels hash navigation and moves keyboard focus to the existing main landmark. It performs no data read, mutation, search, export or account operation; all page business flows remain separately inventoried.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": ["apps/admin-web/src/server/workspace.ts"],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/admin-web/src/server/workspace.ts:b452f19a2962:1",
+      "sourceFingerprint": "ca09e6a452ffe5751247ab2dc5682c1b80ce0eb97653f62649187e2dc9b02072",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "navigation-delegate",
+      "rationale": "Hash navigation dispatches only through the explicit adminRouteTargets registry, aborting obsolete reads and retaining a generation guard. All reachable destinations, including the legacy memberships alias, are separately registered below. Navigation is not proof of persisted business acceptance.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [
+        "route:admin:server:approvals",
+        "route:admin:server:audit",
+        "route:admin:server:catalog",
+        "route:admin:server:contracts",
+        "route:admin:server:conversations",
+        "route:admin:server:customers",
+        "route:admin:server:dashboard",
+        "route:admin:server:invoices",
+        "route:admin:server:memberships",
+        "route:admin:server:notifications",
+        "route:admin:server:opportunities",
+        "route:admin:server:projects",
+        "route:admin:server:quotes",
+        "route:admin:server:regions",
+        "route:admin:server:reports",
+        "route:admin:server:representatives",
+        "route:admin:server:roles",
+        "route:admin:server:routes",
+        "route:admin:server:settings",
+        "route:admin:server:tasks",
+        "route:admin:server:tickets",
+        "route:admin:server:users",
+        "route:admin:server:visits"
+      ],
+      "evidencePaths": ["apps/admin-web/src/server/workspace.ts"],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/admin-web/src/server/workspace.ts:e38512d7350e:1",
+      "sourceFingerprint": "510e423f8f1e258c13207e199fee9d2118675b72dc5b79690655d86e4cd67da5",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "resource-lifecycle",
+      "rationale": "This lifetime/unload listener aborts stale HTTP work, removes handlers, clears session-scoped UI data, or asks before leaving an outstanding save. It makes no independent remote write. Shared authenticated-host teardown remains authoritative; reload durability and token revocation are not inferred from this callback.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "packages/api-client/src/authenticated-workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "handler:apps/admin-web/src/server/workspace.ts:f13eaa331251:1",
+      "sourceFingerprint": "7a6b3f532c625004626411871b7119bf4c9f212fe764dda5060ec2a7d95cac6c",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "resource-lifecycle",
+      "rationale": "This lifetime/unload listener aborts stale HTTP work, removes handlers, clears session-scoped UI data, or asks before leaving an outstanding save. It makes no independent remote write. Shared authenticated-host teardown remains authoritative; reload durability and token revocation are not inferred from this callback.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "packages/api-client/src/authenticated-workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
       "featureId": "handler:apps/rep-mobile/src/server/bootstrap.ts:6c098f7776e6:1",
       "sourceFingerprint": "694e4972fac0ed6bd16fea59c2b8e2e94e2cd61647d459c402ed139b307c9401",
       "sourceFileSha256": "0af022522b9391a4b96ec6865ae3a0b7144c8963db9a117b41e3700295365ed0",
@@ -2918,7 +3114,7 @@
     {
       "featureId": "handler:packages/api-client/src/authenticated-workspace.ts:76ac9a21be53:1",
       "sourceFingerprint": "d4221572204b6f518bc8386994914550bb1bcbcace7e09e353e689608b1daf91",
-      "sourceFileSha256": "8ffc99cd6d4661e2888fc9ea080c47b53c007cec9b4dd1dda4b5dc6f93f232ed",
+      "sourceFileSha256": "b84f2f3fa5f8bdb5cc21222e41a8f3b8849ab7612a212b59389f9189a5e6df47",
       "category": "auth-host",
       "rationale": "This authenticated shell control delegates to shared MobileAuth sign-in/sign-out or AuthHost retry, with pending-form and account-lifecycle handling in this source. OIDC authorization/token/JWKS/revocation endpoints are validated issuer metadata, not fabricated domain URLs. Local logout and confirmed provider revocation remain distinct outcomes.",
       "resolves": [
@@ -2941,7 +3137,7 @@
     {
       "featureId": "handler:packages/api-client/src/authenticated-workspace.ts:95ae7b0e11bf:1",
       "sourceFingerprint": "e280c55ac455d8e02ae170d66a9b9ebdc935e6af013130ccb41af06cd2aed000",
-      "sourceFileSha256": "8ffc99cd6d4661e2888fc9ea080c47b53c007cec9b4dd1dda4b5dc6f93f232ed",
+      "sourceFileSha256": "b84f2f3fa5f8bdb5cc21222e41a8f3b8849ab7612a212b59389f9189a5e6df47",
       "category": "auth-host",
       "rationale": "This authenticated shell control delegates to shared MobileAuth sign-in/sign-out or AuthHost retry, with pending-form and account-lifecycle handling in this source. OIDC authorization/token/JWKS/revocation endpoints are validated issuer metadata, not fabricated domain URLs. Local logout and confirmed provider revocation remain distinct outcomes.",
       "resolves": [
@@ -2964,7 +3160,7 @@
     {
       "featureId": "handler:packages/api-client/src/authenticated-workspace.ts:ff97ac6d3f72:1",
       "sourceFingerprint": "9a39ae3d82eb42e8584f680ba9b2ef09f3c9bbc78443037d1f78c1c27773d15a",
-      "sourceFileSha256": "8ffc99cd6d4661e2888fc9ea080c47b53c007cec9b4dd1dda4b5dc6f93f232ed",
+      "sourceFileSha256": "b84f2f3fa5f8bdb5cc21222e41a8f3b8849ab7612a212b59389f9189a5e6df47",
       "category": "auth-host",
       "rationale": "This authenticated shell control delegates to shared MobileAuth sign-in/sign-out or AuthHost retry, with pending-form and account-lifecycle handling in this source. OIDC authorization/token/JWKS/revocation endpoints are validated issuer metadata, not fabricated domain URLs. Local logout and confirmed provider revocation remain distinct outcomes.",
       "resolves": [
@@ -3302,7 +3498,7 @@
     {
       "featureId": "handler:packages/service-kit/src/http.ts:3dee14649bff:1",
       "sourceFingerprint": "e7b05e5afb405524a89ec73f79eb601a2357de508966fe582eec6cc6d76bca63",
-      "sourceFileSha256": "58a920a8a8b2695f94b7fcab20f5beb952f2a1407c661a9a80d1d01bc1ba26ec",
+      "sourceFileSha256": "41fc5b5791737e886c6799ee2cab5709e6b966e56ed107bd2f0b1de55fe66093",
       "category": "infrastructure-callback",
       "rationale": "This action invocation is a repository/transaction or idempotency callback, not a user-interface action registration. The caller owns the domain operation; the helper supplies atomic execution and error/rollback behavior. Memory repository execution is not PostgreSQL evidence, and no independent HTTP endpoint is invented for the callback.",
       "resolves": [
@@ -3330,7 +3526,7 @@
     {
       "featureId": "handler:packages/service-kit/src/pg-repository.ts:9db35155e918:1",
       "sourceFingerprint": "40169243fc3c4dc8f4b38516dc72cd53f460e0170c7ffce616f81fe43ef9255a",
-      "sourceFileSha256": "3219a49cd5a86fee0d7eb30fd09aba6973ecf5e6644a865b417dc02ab1d34877",
+      "sourceFileSha256": "f0993f56e176445c6afa4e0dc03d569f7a104fd447271727fa3eadcfe9d61452",
       "category": "infrastructure-callback",
       "rationale": "This action invocation is a repository/transaction or idempotency callback, not a user-interface action registration. The caller owns the domain operation; the helper supplies atomic execution and error/rollback behavior. Memory repository execution is not PostgreSQL evidence, and no independent HTTP endpoint is invented for the callback.",
       "resolves": [
@@ -3375,10 +3571,10 @@
     },
     {
       "featureId": "native-adapter:apps/client-mobile/android/app/src/main/java/com/elvorance/client/MainActivity.java",
-      "sourceFingerprint": "3bb71b1326ca73c06e8d1313a2adb92f3ce7be0325fda8a5b90a0cba147d86bd",
-      "sourceFileSha256": "3bb71b1326ca73c06e8d1313a2adb92f3ce7be0325fda8a5b90a0cba147d86bd",
-      "category": "platform-scaffold",
-      "rationale": "The client MainActivity is an empty Capacitor BridgeActivity subclass with no custom native auth bridge or business handler; that absence is a known implementation gap, not successful authentication.",
+      "sourceFingerprint": "a8f5a75e6c8e45ffcbad4a55cae06720215c907723afc721feb4ddbcfc4e4f27",
+      "sourceFileSha256": "a8f5a75e6c8e45ffcbad4a55cae06720215c907723afc721feb4ddbcfc4e4f27",
+      "category": "native-adapter",
+      "rationale": "Client MainActivity now registers ElvoranceAuthBridgePlugin before Capacitor initialization. It reuses the representative host sequence with a distinct application namespace; source review alone is not device or distribution acceptance.",
       "resolves": [
         "Native source is inventoried per adapter; method-level platform/security review remains required."
       ],
@@ -3387,7 +3583,13 @@
       "evidencePaths": [
         "apps/client-mobile/android/app/src/main/java/com/elvorance/client/MainActivity.java"
       ],
-      "nativeMembers": []
+      "nativeMembers": [
+        {
+          "signature": "@Override public void onCreate(Bundle savedInstanceState) {",
+          "line": 8,
+          "sha256": "f6da60d6fe6d0461d8b201cf1d0046de1dc7cb97b6e3c3c9b508ebedfddefe3e"
+        }
+      ]
     },
     {
       "featureId": "native-adapter:apps/client-mobile/ios/App/App/AppDelegate.swift",
@@ -3441,10 +3643,10 @@
     },
     {
       "featureId": "native-adapter:apps/client-mobile/ios/App/App/SceneDelegate.swift",
-      "sourceFingerprint": "738b9b96bb71d34d80cd8c1183cf7f8f6f2e789c64e46fb5fe6777a35ae12dfd",
-      "sourceFileSha256": "738b9b96bb71d34d80cd8c1183cf7f8f6f2e789c64e46fb5fe6777a35ae12dfd",
+      "sourceFingerprint": "116b1e29e6a71ecbaa7eb7490afc9330e0f12a47814155d9ae7aa0f10b5bccfa",
+      "sourceFileSha256": "116b1e29e6a71ecbaa7eb7490afc9330e0f12a47814155d9ae7aa0f10b5bccfa",
       "category": "platform-scaffold",
-      "rationale": "Scene callbacks create the window/controller and forward connection, URL contexts and user activity through Capacitor SceneDelegateProxy. The representative mounts RepBridgeViewController, while the client uses the generic bridge; that difference is not masked as implemented client secure authentication.",
+      "rationale": "Scene callbacks create the application-specific bridge controller and forward URL contexts and user activity through Capacitor SceneDelegateProxy. Both applications register their scoped authentication plugin. This annotation is source review, not signed-device acceptance.",
       "resolves": [
         "Native source is inventoried per adapter; method-level platform/security review remains required."
       ],
@@ -4057,7 +4259,7 @@
       "sourceFingerprint": "cf3134a0d414d09431998cc50bbc8b619a651b14c8893606e7663e109a793e49",
       "sourceFileSha256": "cf3134a0d414d09431998cc50bbc8b619a651b14c8893606e7663e109a793e49",
       "category": "platform-scaffold",
-      "rationale": "Scene callbacks create the window/controller and forward connection, URL contexts and user activity through Capacitor SceneDelegateProxy. The representative mounts RepBridgeViewController, while the client uses the generic bridge; that difference is not masked as implemented client secure authentication.",
+      "rationale": "Scene callbacks create the application-specific bridge controller and forward URL contexts and user activity through Capacitor SceneDelegateProxy. Both applications register their scoped authentication plugin. This annotation is source review, not signed-device acceptance.",
       "resolves": [
         "Native source is inventoried per adapter; method-level platform/security review remains required."
       ],
@@ -4108,6 +4310,588 @@
       "backendRouteIds": [],
       "delegateFeatureIds": [],
       "evidencePaths": ["apps/rep-mobile/ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift"],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:approvals",
+      "sourceFingerprint": "4298194025a996e66e1473ecb51f7ea2de06a6c702331adadde65ff9ee4baa4f",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry approvals resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:sales:backend:GET /v1/quote-discount-approvals",
+        "api-route:sales:backend:POST /v1/quote-discount-approvals/:id/decision",
+        "api-route:sales:backend:GET /v1/quotes/:id"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/sales/src/transport/discount-routes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:audit",
+      "sourceFingerprint": "86e721b52aecf87f186e31e134658bb28bbb9d26d00b0ebd66cc0dd6d044f5cd",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "navigation-delegate",
+      "rationale": "The actual audit route deliberately displays an unavailable-contract notice. It is not a implemented permission-management or audit API. Resolve the navigation target only; product acceptance remains BLOCKED and no presentation-only business exception is granted.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:catalog",
+      "sourceFingerprint": "c97875f0d13998bdb501920a3b26648342597ec3fac20b633efefd2db2e3d54b",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry catalog resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:crm:backend:GET /v1/catalog",
+        "api-route:crm:backend:GET /v1/configuration",
+        "api-route:crm:backend:PUT /v1/configuration"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/quote-editor.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/crm/src/transport/discovery-routes.ts",
+        "services/crm/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:contracts",
+      "sourceFingerprint": "e7f11a391e14934e36bb44c381e2f78520012148a597deb5770e719d0b084cc8",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry contracts resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:sales:backend:GET /v1/contracts",
+        "api-route:sales:backend:GET /v1/contracts/:id",
+        "api-route:sales:backend:GET /v1/contracts/:id/fulfillment"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:conversations",
+      "sourceFingerprint": "b28861a83839819b96c783aace77f3b258106a4e7a4d4fa907514ea4e5b1de1b",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry conversations resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:communications:backend:GET /v1/conversations",
+        "api-route:communications:backend:POST /v1/conversations",
+        "api-route:communications:backend:GET /v1/conversations/:id/messages",
+        "api-route:communications:backend:POST /v1/conversations/:id/messages",
+        "api-route:communications:backend:POST /v1/conversations/:id/read"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/communications/src/transport/conversation-routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:customers",
+      "sourceFingerprint": "b25a3933baf6dbe9e7d1c69e62fbd626709956f196fb009a5fdd5f89abde1133",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry customers resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:crm:backend:GET /v1/customers",
+        "api-route:crm:backend:GET /v1/customers/:id",
+        "api-route:crm:backend:POST /v1/customers",
+        "api-route:crm:backend:PATCH /v1/customers/:id"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/crm/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:dashboard",
+      "sourceFingerprint": "ba01d8920dabc3d6bee6c79ea040c180f0295a32a58ea668c77d3ebc76d8f409",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry dashboard resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements. Full bounded cursor traversal is non-atomic and refuses overflow; invoices are not recognized revenue.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:crm:backend:GET /v1/customers",
+        "api-route:sales:backend:GET /v1/visits",
+        "api-route:sales:backend:GET /v1/tasks",
+        "api-route:sales:backend:GET /v1/opportunities",
+        "api-route:sales:backend:GET /v1/quotes",
+        "api-route:sales:backend:GET /v1/quote-discount-approvals",
+        "api-route:sales:backend:GET /v1/contracts",
+        "api-route:delivery:backend:GET /v1/projects",
+        "api-route:billing:backend:GET /v1/invoices"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/reports.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/billing/src/transport/routes.ts",
+        "services/crm/src/transport/routes.ts",
+        "services/delivery/src/transport/routes.ts",
+        "services/sales/src/transport/discount-routes.ts",
+        "services/sales/src/transport/rep-work-routes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:invoices",
+      "sourceFingerprint": "7dac654ea3c804ed5db7ed14fedd5da2699aa0f30c94bfe7e0642d6119939b8b",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry invoices resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:billing:backend:GET /v1/invoices",
+        "api-route:billing:backend:GET /v1/invoices/:id",
+        "api-route:billing:backend:GET /v1/invoices/:id/payments",
+        "api-route:billing:backend:POST /v1/invoices/:id/payments"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/billing/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:memberships",
+      "sourceFingerprint": "02a9b5eafc8912db72703817d7a651771caa6c33c1ed94844913a789d643dfb6",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry memberships resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements. Membership roles are descriptive only; OIDC provisioning/permission editing is unsupported.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:identity:backend:GET /v1/memberships",
+        "api-route:identity:backend:POST /v1/memberships"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/identity/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:notifications",
+      "sourceFingerprint": "f37c9c461dbdf634696f42f643ec32828ecfa59c0b3e48712637fa3642f74ab3",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry notifications resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:communications:backend:GET /v1/notifications",
+        "api-route:communications:backend:POST /v1/notifications/:id/read"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/communications/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:opportunities",
+      "sourceFingerprint": "3a19254d82a9cd359948233d877deb96e0d25c4ce5e5f8feccf0b186f0dba540",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry opportunities resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:sales:backend:GET /v1/opportunities",
+        "api-route:sales:backend:GET /v1/opportunities/:id",
+        "api-route:sales:backend:POST /v1/opportunities",
+        "api-route:sales:backend:PATCH /v1/opportunities/:id"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/sales/src/transport/rep-work-routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:projects",
+      "sourceFingerprint": "968df2b33a46affab02910d258c22bfdab88f2798386599e7e8988722f38b031",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry projects resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:delivery:backend:GET /v1/projects",
+        "api-route:delivery:backend:GET /v1/projects/:id",
+        "api-route:delivery:backend:POST /v1/projects/:id/milestones",
+        "api-route:delivery:backend:POST /v1/projects/:id/milestones/:milestoneId",
+        "api-route:delivery:backend:POST /v1/projects/:id/deliverables",
+        "api-route:delivery:backend:POST /v1/projects/:id/deliverables/:deliverableId/revise",
+        "api-route:delivery:backend:POST /v1/projects/:id/complete"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/delivery/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:quotes",
+      "sourceFingerprint": "1b370c4a73f47e38523963eed06795b004683e6cb56961e69c7ff0019e148ed3",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry quotes resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:sales:backend:GET /v1/quotes",
+        "api-route:sales:backend:GET /v1/quotes/:id",
+        "api-route:sales:backend:POST /v1/quotes",
+        "api-route:sales:backend:PATCH /v1/quotes/:id",
+        "api-route:sales:backend:POST /v1/quotes/:id/send",
+        "api-route:sales:backend:POST /v1/quotes/:id/revise",
+        "api-route:sales:backend:POST /v1/quotes/:id/discount-approval"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/quote-editor.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/sales/src/transport/discount-routes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:regions",
+      "sourceFingerprint": "89b1b96c88b00cd8c0a1f067d9a14c2fe59dbf730b3050077c96b89e0f77c757",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry regions resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:crm:backend:GET /v1/regions",
+        "api-route:crm:backend:POST /v1/regions"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/crm/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:reports",
+      "sourceFingerprint": "2b9720751098076d75fd5792bd67502b8a416dd92bb2475a4da4d40ab529d88e",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry reports resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements. Full bounded cursor traversal is non-atomic and refuses overflow; invoices are not recognized revenue.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:crm:backend:GET /v1/customers",
+        "api-route:sales:backend:GET /v1/visits",
+        "api-route:sales:backend:GET /v1/tasks",
+        "api-route:sales:backend:GET /v1/opportunities",
+        "api-route:sales:backend:GET /v1/quotes",
+        "api-route:sales:backend:GET /v1/quote-discount-approvals",
+        "api-route:sales:backend:GET /v1/contracts",
+        "api-route:delivery:backend:GET /v1/projects",
+        "api-route:billing:backend:GET /v1/invoices"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/reports.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/billing/src/transport/routes.ts",
+        "services/crm/src/transport/routes.ts",
+        "services/delivery/src/transport/routes.ts",
+        "services/sales/src/transport/discount-routes.ts",
+        "services/sales/src/transport/rep-work-routes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:representatives",
+      "sourceFingerprint": "053991b9c28bf071e8cc05d74e9eb6df9a2b8200f730e9af92095df6aeb4b71c",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry representatives resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements. Membership roles are descriptive only; OIDC provisioning/permission editing is unsupported.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": ["api-route:identity:backend:GET /v1/memberships"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/identity/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:roles",
+      "sourceFingerprint": "c7a63f8c2dd55f32269b254241bd85cd96dfb47c11436a8b5262534031fe6b2e",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "navigation-delegate",
+      "rationale": "The actual roles route deliberately displays an unavailable-contract notice. It is not a implemented permission-management or audit API. Resolve the navigation target only; product acceptance remains BLOCKED and no presentation-only business exception is granted.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:routes",
+      "sourceFingerprint": "1f47e18ca9f7c6e774c4f2a4930daed2f4a8bfe6f809bba2ef162275187a3e3a",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry routes resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:sales:backend:GET /v1/routes",
+        "api-route:sales:backend:GET /v1/routes/:id",
+        "api-route:sales:backend:POST /v1/routes",
+        "api-route:sales:backend:PATCH /v1/routes/:id"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/sales/src/transport/rep-work-routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:settings",
+      "sourceFingerprint": "4c0dc561211924d1aaf1c8e8241daa5e60309ad5191f962015ff9c779aa26dbe",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry settings resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:identity:backend:GET /v1/tenant",
+        "api-route:identity:backend:POST /v1/tenant"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/identity/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:tasks",
+      "sourceFingerprint": "814521613053bc4dd643e254348a4b5c02e8e349fa2dbdc350ec814163eec92a",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry tasks resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:sales:backend:GET /v1/tasks",
+        "api-route:sales:backend:GET /v1/tasks/:id",
+        "api-route:sales:backend:POST /v1/tasks",
+        "api-route:sales:backend:PATCH /v1/tasks/:id"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/sales/src/transport/rep-work-routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:tickets",
+      "sourceFingerprint": "4d011e8f6b591a93714b74e584caad39cbaa0d0d98f6351195276af5cd3c7070",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry tickets resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:communications:backend:GET /v1/tickets",
+        "api-route:communications:backend:GET /v1/tickets/:id",
+        "api-route:communications:backend:POST /v1/tickets/:id/replies",
+        "api-route:communications:backend:POST /v1/tickets/:id/status"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/communications/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:users",
+      "sourceFingerprint": "c277ba318078cc9855f46ddbc4030e14794ec5e422df9ceff4bcdc385c90f4d4",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry users resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements. Membership roles are descriptive only; OIDC provisioning/permission editing is unsupported.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:identity:backend:GET /v1/memberships",
+        "api-route:identity:backend:POST /v1/memberships"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/identity/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "route:admin:server:visits",
+      "sourceFingerprint": "86ad1dacc5c19dafcf703746901bb996b22ee7b8fd2c9f66242c00a2625e4394",
+      "sourceFileSha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189",
+      "category": "view-read",
+      "rationale": "The explicit adminRouteTargets entry visits resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+      "resolves": [
+        "No literal endpoint resolved; inspect shared/dynamic dispatch before claiming backend completion."
+      ],
+      "backendRouteIds": [
+        "api-route:sales:backend:GET /v1/visits",
+        "api-route:sales:backend:GET /v1/visits/:id",
+        "api-route:sales:backend:POST /v1/visits",
+        "api-route:sales:backend:PATCH /v1/visits/:id",
+        "api-route:sales:backend:POST /v1/visits/:id/start",
+        "api-route:sales:backend:POST /v1/visits/:id/complete",
+        "api-route:sales:backend:POST /v1/visits/:id/cancel"
+      ],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/admin-web/src/server/api.ts",
+        "apps/admin-web/src/server/forms.ts",
+        "apps/admin-web/src/server/operations.ts",
+        "apps/admin-web/src/server/workspace.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
       "nativeMembers": []
     },
     {
@@ -4391,6 +5175,487 @@
         "services/crm/src/transport/routes.ts"
       ],
       "nativeMembers": []
+    },
+    {
+      "featureId": "native-adapter:apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/AuthBrowserSession.java",
+      "sourceFingerprint": "45df220d532912a83f5428082f3779bbc8ad5dea99f038feeb97ef2ad762edd6",
+      "sourceFileSha256": "45df220d532912a83f5428082f3779bbc8ad5dea99f038feeb97ef2ad762edd6",
+      "category": "native-adapter",
+      "rationale": "Native browser session methods coordinate one pending authorization, start/callback or completion, cancellation and lifecycle cleanup using the OS browser session boundary. They delegate URL acceptance to AuthRedirect; they do not persist business records or create domain API endpoints. Ported using application-identity substitutions only; parity is separately enforced by source tests.",
+      "resolves": [
+        "Native source is inventoried per adapter; method-level platform/security review remains required."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/AuthBrowserSession.java",
+        "packages/mobile-auth/src/configuration.ts",
+        "packages/mobile-auth/src/oidc.ts",
+        "packages/mobile-auth/src/platform.ts",
+        "packages/mobile-auth/src/session.ts",
+        "packages/mobile-auth/src/vault.ts"
+      ],
+      "nativeMembers": [
+        {
+          "signature": "void success(String callbackUrl);",
+          "line": 13,
+          "sha256": "77cd190b29fc5956acaef7267732ffc18639a15a066ff09ed2de78fe4decbdb6"
+        },
+        {
+          "signature": "void failure(String code);",
+          "line": 14,
+          "sha256": "b68a3b0d04686e92f07c3cbedf5b13eab219e991838d1d318920ef42d0ba04af"
+        },
+        {
+          "signature": "void start(Activity activity, URI url, AuthRedirect redirect, Completion completion) {",
+          "line": 24,
+          "sha256": "db01cb26cd4b08abc05fb52a613c48d6b26a9e8dbf9563d4f02e4fb9ddaa2732"
+        },
+        {
+          "signature": "void callback(String url) {",
+          "line": 40,
+          "sha256": "3183cf5ac5d683979019c756e0a213b0ca5bcaa45dfbd2f794df3faeb9456012"
+        },
+        {
+          "signature": "void paused() {",
+          "line": 46,
+          "sha256": "e78e2434f858757493351e391999dae18ea625c5d77f76b12a45ae1997387bc6"
+        },
+        {
+          "signature": "void resumed() {",
+          "line": 50,
+          "sha256": "11bc31c54d8cd990f293ef758b7dc459f76964c58f26e1ed9307b4fb6321a09e"
+        },
+        {
+          "signature": "void cancel(String code) {",
+          "line": 56,
+          "sha256": "cd728b483293f2722583cfb48688b9f973ad5dcc0a8dd21c960cb9e077339678"
+        },
+        {
+          "signature": "private Completion clear() {",
+          "line": 60,
+          "sha256": "868de1e220f2ac8eff1821424a91007a0c841b0fcbc8ecd577a382d870495d64"
+        }
+      ]
+    },
+    {
+      "featureId": "native-adapter:apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/AuthRedirect.java",
+      "sourceFingerprint": "f4973299de77005e83fe158dcd34058dd1cdcb4557207fc3fa70daa7b187256a",
+      "sourceFileSha256": "f4973299de77005e83fe158dcd34058dd1cdcb4557207fc3fa70daa7b187256a",
+      "category": "native-adapter",
+      "rationale": "Constructor/initializer and authorization/callback validation methods bind the customer bundle identity, redirect URI, configured HTTPS endpoint, code flow and PKCE S256; parameter parsing and rejection paths are included. This is source policy traceability, not proof that every provider/device combination passed. Ported using application-identity substitutions only; parity is separately enforced by source tests.",
+      "resolves": [
+        "Native source is inventoried per adapter; method-level platform/security review remains required."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/AuthRedirect.java",
+        "packages/mobile-auth/src/configuration.ts",
+        "packages/mobile-auth/src/oidc.ts",
+        "packages/mobile-auth/src/platform.ts",
+        "packages/mobile-auth/src/session.ts",
+        "packages/mobile-auth/src/vault.ts"
+      ],
+      "nativeMembers": [
+        {
+          "signature": "public AuthRedirect(String applicationId, String endpoint) {",
+          "line": 16,
+          "sha256": "25aa7719376a4f1848903b88510a069c9e76002f8f9ba0dad81c65d0bbf5e462"
+        },
+        {
+          "signature": "public URI authorization(String url, String redirectUri) {",
+          "line": 27,
+          "sha256": "506be775600feda57805ad62de6f6ba4d96977f9a98414785c5b783b39bbf852"
+        },
+        {
+          "signature": "public boolean acceptsCallback(String url) {",
+          "line": 46,
+          "sha256": "9ebd6716f28a760cecae6484e9912169d1f195be47ed3dde91dca3663f4fb797"
+        },
+        {
+          "signature": "private static boolean isHttps(URI url) {",
+          "line": 58,
+          "sha256": "6ce6615c5fe94bd1a4d78b4ecd4549bff977216068ab997f8692f317f584e853"
+        },
+        {
+          "signature": "private static String decode(String value) {",
+          "line": 63,
+          "sha256": "962b75158d349d3f643b5c2387f47d4220b115da12e8056473bcfc9e81759491"
+        },
+        {
+          "signature": "private static Map<String, String> query(String query) {",
+          "line": 68,
+          "sha256": "075e70844ccfeda2babfa283fc8dad66fb2266960fe6b45e1678eb0938a32c0b"
+        }
+      ]
+    },
+    {
+      "featureId": "native-adapter:apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/AuthSecureStore.java",
+      "sourceFingerprint": "67e26a22771c1852aec53c59af9e232c75f3fd6e2ce6cbfbccfe3d9c516a8cff",
+      "sourceFileSha256": "67e26a22771c1852aec53c59af9e232c75f3fd6e2ce6cbfbccfe3d9c516a8cff",
+      "category": "native-adapter",
+      "rationale": "Declared get/set/remove methods operate on app-private no-backup ciphertext; record restricts keys, aad binds application namespace/key, and secretKey requests Android Keystore AES-GCM key material. These source controls and error paths are inventoried, not a new claim of physical-device execution or signed-build acceptance. Ported using application-identity substitutions only; parity is separately enforced by source tests.",
+      "resolves": [
+        "Native source is inventoried per adapter; method-level platform/security review remains required."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/AuthSecureStore.java",
+        "packages/mobile-auth/src/configuration.ts",
+        "packages/mobile-auth/src/oidc.ts",
+        "packages/mobile-auth/src/platform.ts",
+        "packages/mobile-auth/src/session.ts",
+        "packages/mobile-auth/src/vault.ts"
+      ],
+      "nativeMembers": [
+        {
+          "signature": "public AuthSecureStore(Context context) {",
+          "line": 26,
+          "sha256": "5197c2966712effcc45d856efa03370832d38237268a164a9c4146c4bfd97927"
+        },
+        {
+          "signature": "public synchronized String get(String key) throws IOException, GeneralSecurityException {",
+          "line": 31,
+          "sha256": "aaa9f6475856f8d1ed4795027f0f8eeb37cae1e79ab2bd7e34aeecb70d379eea"
+        },
+        {
+          "signature": "public synchronized void set(String key, String value) throws IOException, GeneralSecurityException {",
+          "line": 50,
+          "sha256": "339bf67b362be5f13c65bb1d3baa32fcd816a0a0536de357ce9c630a8c69c5fa"
+        },
+        {
+          "signature": "public synchronized void remove(String key) throws IOException {",
+          "line": 76,
+          "sha256": "bc965b51fb5b913c15f38f078d000ab537ccf8581b86b84480147a4d3ad89a94"
+        },
+        {
+          "signature": "private AtomicFile record(String key) {",
+          "line": 82,
+          "sha256": "58a766c98380d2a3a012d52523c7ad979141e16f7277b20f8b32b00636a8c729"
+        },
+        {
+          "signature": "private byte[] aad(String key) {",
+          "line": 89,
+          "sha256": "cb2271942b3402d175ece21c021cc22538cb9b34f7e24886f1fd5d5c38800401"
+        },
+        {
+          "signature": "private SecretKey secretKey(boolean create) throws GeneralSecurityException, IOException {",
+          "line": 93,
+          "sha256": "93d80cbe9d9446b8ea94a9a2bd28ff0eb73f5253dea61e00bd8fd105b3c03175"
+        }
+      ]
+    },
+    {
+      "featureId": "native-adapter:apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/ElvoranceAuthBridgePlugin.java",
+      "sourceFingerprint": "f27b933d0b61a35ee78e743194ec0859273564d149a46c4fef1e58872ebd41dc",
+      "sourceFileSha256": "f27b933d0b61a35ee78e743194ec0859273564d149a46c4fef1e58872ebd41dc",
+      "category": "native-adapter",
+      "rationale": "Exported bridge methods get/set/remove/authorize/cancelAuthorization delegate to the scoped secure store or validated browser session. Storage queue/error handling and browser lifecycle hooks are present in the method declarations. JavaScript callers and provider policy remain separate source boundaries; no business API is implemented here. Ported using application-identity substitutions only; parity is separately enforced by source tests.",
+      "resolves": [
+        "Native source is inventoried per adapter; method-level platform/security review remains required."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/client-mobile/android/app/src/main/java/com/elvorance/client/auth/ElvoranceAuthBridgePlugin.java",
+        "packages/mobile-auth/src/configuration.ts",
+        "packages/mobile-auth/src/oidc.ts",
+        "packages/mobile-auth/src/platform.ts",
+        "packages/mobile-auth/src/session.ts",
+        "packages/mobile-auth/src/vault.ts"
+      ],
+      "nativeMembers": [
+        {
+          "signature": "@Override public void load() { store = new AuthSecureStore(getContext()); }",
+          "line": 17,
+          "sha256": "8160ec6a55c0dd9445156d599ce6fb39578f6351f9152ccb708c6ced67ffff3f"
+        },
+        {
+          "signature": "@PluginMethod public void get(PluginCall call) {",
+          "line": 19,
+          "sha256": "8b81fb986bed39ec9e214ced3be93e4dd38688103ab9f02acbd28d4d778cf8a6"
+        },
+        {
+          "signature": "@PluginMethod public void set(PluginCall call) {",
+          "line": 26,
+          "sha256": "7f9eb4913a98f78f5db01fa5f31af5eddb280f9ed4a3d201c28e2db63859c01f"
+        },
+        {
+          "signature": "@PluginMethod public void remove(PluginCall call) {",
+          "line": 33,
+          "sha256": "7bd789a4397f06d86bcce0710e7b3d4545c510ce572525686e5175d8b37c1c95"
+        },
+        {
+          "signature": "@PluginMethod public void authorize(PluginCall call) {",
+          "line": 40,
+          "sha256": "05578b456c8a9fa47da21ab52217ba113f86f054167acb64bf2ee567ba037ffc"
+        },
+        {
+          "signature": "@Override public void success(String callbackUrl) { call.resolve(new JSObject().put(\"callbackUrl\", callbackUrl)); }",
+          "line": 51,
+          "sha256": "0855ed6a862269633c6b7c783af2d81de9c68d1f4a8296e39c15f2bd4e4433b2"
+        },
+        {
+          "signature": "@Override public void failure(String code) { call.reject(\"Authorization did not complete\", code); }",
+          "line": 52,
+          "sha256": "06a3c3fe2ce8ab03d7a849b36abaeb5cda2343cc1641d1c6b9ccfd88a29d3b77"
+        },
+        {
+          "signature": "@PluginMethod public void cancelAuthorization(PluginCall call) {",
+          "line": 56,
+          "sha256": "8030123a166d70079b22592c918f79ef95d07a41ba36a3ea12edae6e5d400c5b"
+        },
+        {
+          "signature": "@Override protected void handleOnNewIntent(Intent intent) {",
+          "line": 60,
+          "sha256": "3b365a739c5fa90f1fcb600ccdc8644b7e6e213678d5e054c06d5d91ce00f7e9"
+        },
+        {
+          "signature": "@Override protected void handleOnPause() { browser.paused(); }",
+          "line": 63,
+          "sha256": "f8c351f8cc39a17eacd255299cb50bb2d1783bca933740e2eb091ccd97a28756"
+        },
+        {
+          "signature": "@Override protected void handleOnResume() { browser.resumed(); }",
+          "line": 64,
+          "sha256": "ad70760002f2df3bcea002ddb53a5b30f1c541391048aac728de712a3e198d05"
+        },
+        {
+          "signature": "@Override protected void handleOnDestroy() { browser.cancel(\"AUTH_CANCELLED\"); }",
+          "line": 65,
+          "sha256": "bb0d92563ecd631a3ac097aa8b61413e8c58f0d9f22bec3439012075686bd003"
+        }
+      ]
+    },
+    {
+      "featureId": "native-adapter:apps/client-mobile/ios/App/App/Auth/AuthBrowserSession.swift",
+      "sourceFingerprint": "22334d35b5717829af800ea8ec8b732897e6ae01c52382cd450205b925b5bd41",
+      "sourceFileSha256": "22334d35b5717829af800ea8ec8b732897e6ae01c52382cd450205b925b5bd41",
+      "category": "native-adapter",
+      "rationale": "Native browser session methods coordinate one pending authorization, start/callback or completion, cancellation and lifecycle cleanup using the OS browser session boundary. They delegate URL acceptance to AuthRedirect; they do not persist business records or create domain API endpoints. Ported using application-identity substitutions only; parity is separately enforced by source tests.",
+      "resolves": [
+        "Native source is inventoried per adapter; method-level platform/security review remains required."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/client-mobile/ios/App/App/Auth/AuthBrowserSession.swift",
+        "packages/mobile-auth/src/configuration.ts",
+        "packages/mobile-auth/src/oidc.ts",
+        "packages/mobile-auth/src/platform.ts",
+        "packages/mobile-auth/src/session.ts",
+        "packages/mobile-auth/src/vault.ts"
+      ],
+      "nativeMembers": [
+        {
+          "signature": "func start(url: URL, policy: AuthRedirect, window: UIWindow,",
+          "line": 12,
+          "sha256": "d484f4443afd2f173c7fb9ddf4eb0e4acd7fc18acb4f92e3cb1d40f8005ba328"
+        },
+        {
+          "signature": "func cancel(_ reason: AuthBridgeError = .cancelled) {",
+          "line": 40,
+          "sha256": "14fa82e3417e996061c85ba0803985693e065ca73bc850bae290ef484b082807"
+        },
+        {
+          "signature": "func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {",
+          "line": 46,
+          "sha256": "fedc3aee7e5e3725a84fa6bc373211bd93ef8f098ae3b1e583f6f308ab446ae7"
+        },
+        {
+          "signature": "private func finish(_ result: Result<URL, AuthBridgeError>) {",
+          "line": 51,
+          "sha256": "2c161bee3068b7b2c59afa14412b13d9745ef39edbb2f7861c86445fb1076e08"
+        }
+      ]
+    },
+    {
+      "featureId": "native-adapter:apps/client-mobile/ios/App/App/Auth/AuthRedirect.swift",
+      "sourceFingerprint": "7b51a077bb17b63050b547513172d743169a8088ee6343720007d305bbadbba5",
+      "sourceFileSha256": "7b51a077bb17b63050b547513172d743169a8088ee6343720007d305bbadbba5",
+      "category": "native-adapter",
+      "rationale": "Constructor/initializer and authorization/callback validation methods bind the customer bundle identity, redirect URI, configured HTTPS endpoint, code flow and PKCE S256; parameter parsing and rejection paths are included. This is source policy traceability, not proof that every provider/device combination passed. Ported using application-identity substitutions only; parity is separately enforced by source tests.",
+      "resolves": [
+        "Native source is inventoried per adapter; method-level platform/security review remains required."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/client-mobile/ios/App/App/Auth/AuthRedirect.swift",
+        "packages/mobile-auth/src/configuration.ts",
+        "packages/mobile-auth/src/oidc.ts",
+        "packages/mobile-auth/src/platform.ts",
+        "packages/mobile-auth/src/session.ts",
+        "packages/mobile-auth/src/vault.ts"
+      ],
+      "nativeMembers": [
+        {
+          "signature": "var code: String {",
+          "line": 6,
+          "sha256": "4edc17ed08d00dab4140e94101c0dc90244cab7e1003c493dddfcf15d4b260f8"
+        },
+        {
+          "signature": "init(applicationId: String, authorizationEndpoint: String) throws {",
+          "line": 23,
+          "sha256": "7abd94df32abdc89ff9de2da30befbdd8ddf1daf846bcf55b643363179a2a4af"
+        },
+        {
+          "signature": "func authorization(_ value: String, redirect: String) throws -> URL {",
+          "line": 33,
+          "sha256": "f9cf511a44fd731391b70aabba83e573ea5b20199a8a5a1cfc9768c79375bb6d"
+        },
+        {
+          "signature": "func acceptsCallback(_ url: URL) -> Bool {",
+          "line": 52,
+          "sha256": "607be759992e1b4787cf655014baf4d341503ad0b7bbb3b91ab9674daf6f19b9"
+        },
+        {
+          "signature": "private static func isHTTPS(_ value: URLComponents) -> Bool {",
+          "line": 58,
+          "sha256": "47843c9b0511e151e78c91fa6693d87c0789bf038eda2d1c77e6929f758ca98f"
+        }
+      ]
+    },
+    {
+      "featureId": "native-adapter:apps/client-mobile/ios/App/App/Auth/AuthSecureStore.swift",
+      "sourceFingerprint": "ca7908ff8f72549539896e45b6310a5db073aa69bcee274646b52db133b1f35d",
+      "sourceFileSha256": "ca7908ff8f72549539896e45b6310a5db073aa69bcee274646b52db133b1f35d",
+      "category": "native-adapter",
+      "rationale": "Declared get/set/remove/match methods use bundle-scoped, non-synchronizing Keychain entries and device-only accessibility. Key names, byte limits and error handling are explicit in this source. No new physical-device result, production account or signing acceptance is inferred. Ported using application-identity substitutions only; parity is separately enforced by source tests.",
+      "resolves": [
+        "Native source is inventoried per adapter; method-level platform/security review remains required."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/client-mobile/ios/App/App/Auth/AuthSecureStore.swift",
+        "packages/mobile-auth/src/configuration.ts",
+        "packages/mobile-auth/src/oidc.ts",
+        "packages/mobile-auth/src/platform.ts",
+        "packages/mobile-auth/src/session.ts",
+        "packages/mobile-auth/src/vault.ts"
+      ],
+      "nativeMembers": [
+        {
+          "signature": "init(applicationId: String) { service = applicationId + \".auth.v1\" }",
+          "line": 8,
+          "sha256": "28c31dbd456624cb5155bfef760cbbdf47e319d7df27d45b3c2a9bb0197effa3"
+        },
+        {
+          "signature": "func get(_ key: String) throws -> String? {",
+          "line": 10,
+          "sha256": "92de6033c4bef114ab473c7b3960650eb3d1868e07f6d54808bdb8022dfdcd05"
+        },
+        {
+          "signature": "func set(_ key: String, value: String) throws {",
+          "line": 22,
+          "sha256": "430c4470b536883c3af1ec358a668c7118938442b6a056835fec0c2a5b5d6147"
+        },
+        {
+          "signature": "func remove(_ key: String) throws {",
+          "line": 37,
+          "sha256": "0154f6a0229c5e12c8e935139e1185c133879a6b7f346334531774d7ac528410"
+        },
+        {
+          "signature": "private func match(_ key: String) throws -> [String: Any] {",
+          "line": 42,
+          "sha256": "323cec17ee459de21548854fd88736ef6195e5643c55e5f46e3a4fdfbb9f223a"
+        }
+      ]
+    },
+    {
+      "featureId": "native-adapter:apps/client-mobile/ios/App/App/Auth/ElvoranceAuthBridgePlugin.swift",
+      "sourceFingerprint": "e7dc872b4fd98c61afb715835b12655be01fa1be48a5b689f309f0bb4d57b3d3",
+      "sourceFileSha256": "e7dc872b4fd98c61afb715835b12655be01fa1be48a5b689f309f0bb4d57b3d3",
+      "category": "native-adapter",
+      "rationale": "Exported bridge methods get/set/remove/authorize/cancelAuthorization delegate to the scoped secure store or validated browser session. Storage queue/error handling and browser lifecycle hooks are present in the method declarations. JavaScript callers and provider policy remain separate source boundaries; no business API is implemented here. Ported using application-identity substitutions only; parity is separately enforced by source tests.",
+      "resolves": [
+        "Native source is inventoried per adapter; method-level platform/security review remains required."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "apps/client-mobile/ios/App/App/Auth/ElvoranceAuthBridgePlugin.swift",
+        "packages/mobile-auth/src/configuration.ts",
+        "packages/mobile-auth/src/oidc.ts",
+        "packages/mobile-auth/src/platform.ts",
+        "packages/mobile-auth/src/session.ts",
+        "packages/mobile-auth/src/vault.ts"
+      ],
+      "nativeMembers": [
+        {
+          "signature": "CAPPluginMethod(name: \"get\", returnType: CAPPluginReturnPromise),",
+          "line": 9,
+          "sha256": "4bec15f40057a1d2f100b8df4c47777702290c80de904e98133f6a3385c57b1a"
+        },
+        {
+          "signature": "CAPPluginMethod(name: \"set\", returnType: CAPPluginReturnPromise),",
+          "line": 10,
+          "sha256": "93d357aea3408255f1028ec8e781278f62d114c72b7495319589e80daa8320f9"
+        },
+        {
+          "signature": "CAPPluginMethod(name: \"remove\", returnType: CAPPluginReturnPromise),",
+          "line": 11,
+          "sha256": "2a00c53c9823da71f75c1bf08fd11437d3413fc9c5b37b50cfa83ff16d2f1d46"
+        },
+        {
+          "signature": "CAPPluginMethod(name: \"authorize\", returnType: CAPPluginReturnPromise),",
+          "line": 12,
+          "sha256": "c64e72cdaee7785ff6ca36271bacb814573c721b406003af3dafaf0f0325c0c1"
+        },
+        {
+          "signature": "CAPPluginMethod(name: \"cancelAuthorization\", returnType: CAPPluginReturnPromise)",
+          "line": 13,
+          "sha256": "0f576c8d9daf23cd24fff9db98cc28bc5f1d7ec0e2fb96f3a5c50fc56f61eac2"
+        },
+        {
+          "signature": "@objc func get(_ call: CAPPluginCall) {",
+          "line": 19,
+          "sha256": "d11143cc8c1d423e020fe8b579483994127fdab3a1c586cfa897dc95256baaf2"
+        },
+        {
+          "signature": "@objc func set(_ call: CAPPluginCall) {",
+          "line": 29,
+          "sha256": "29736a0f9e5a6b758a39dc8c55d981b307690456e18e8cc81e0c46a070a5b6a2"
+        },
+        {
+          "signature": "@objc func remove(_ call: CAPPluginCall) {",
+          "line": 39,
+          "sha256": "1206a60cd930bc05f55c50a028297f6e03f5addd5bcd32e73b1ed96db77e68b4"
+        },
+        {
+          "signature": "@objc func authorize(_ call: CAPPluginCall) {",
+          "line": 49,
+          "sha256": "53d9b5cd025a7581d3097397215f4f01c66ef381b3017c3c7bc48cb67a828a83"
+        },
+        {
+          "signature": "@objc func cancelAuthorization(_ call: CAPPluginCall) {",
+          "line": 68,
+          "sha256": "e2d08c25981c656c3d958da00a69119979ccd657ab439bc2a739a24236df5d4e"
+        }
+      ]
+    },
+    {
+      "featureId": "native-adapter:apps/client-mobile/ios/App/App/ClientBridgeViewController.swift",
+      "sourceFingerprint": "d777b28a06204f8cb2f22ac1ebad98374cd1277898fc046cc78c1cb7e2d771af",
+      "sourceFileSha256": "d777b28a06204f8cb2f22ac1ebad98374cd1277898fc046cc78c1cb7e2d771af",
+      "category": "native-adapter",
+      "rationale": "capacitorDidLoad registers the customer ElvoranceAuthBridgePlugin instance. The controller itself supplies no network or persistence implementation; method-level bridge behavior is catalogued separately. Ported using application-identity substitutions only; parity is separately enforced by source tests.",
+      "resolves": [
+        "Native source is inventoried per adapter; method-level platform/security review remains required."
+      ],
+      "backendRouteIds": [],
+      "delegateFeatureIds": [],
+      "evidencePaths": ["apps/client-mobile/ios/App/App/ClientBridgeViewController.swift"],
+      "nativeMembers": [
+        {
+          "signature": "override func capacitorDidLoad() {",
+          "line": 4,
+          "sha256": "ad707157cef03b46b084b718c59ecfd61cabfa62aa652f802c1e616be18b383b"
+        }
+      ]
     }
   ]
 }

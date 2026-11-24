@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "bf5eb7d28b5c5b0d7354815dff7b509bb8c09e796ab5b57524235321ffd3fc04",
+  "sourceDigest": "f7903120b577fe7d54d00c5cca3b75800bc1f203857f8baa9da8d884d9132995",
   "status": "BLOCKED",
   "semanticStatus": "SOURCE_TRACE_COMPLETE_NOT_RUNTIME_ACCEPTANCE",
-  "sourceBoundDecisions": 183,
+  "sourceBoundDecisions": 224,
   "scope": "Extractor warning classification, not completeness certification, test execution or workflow coverage.",
   "unknownWarningsFailClosed": true,
   "totals": {
-    "unresolvedRecords": 1301,
+    "unresolvedRecords": 1273,
     "recordsWithSemanticGaps": 0,
-    "recordsWithOnlyTestMappingDebt": 1301,
-    "workflowsWithoutTestCandidates": 244
+    "recordsWithOnlyTestMappingDebt": 1273,
+    "workflowsWithoutTestCandidates": 242
   },
-  "categoryCounts": { "test-mapping": 1301 },
+  "categoryCounts": { "test-mapping": 1273 },
   "byCategory": {
     "test-mapping": [
       "account-lifecycle:apps/admin-web/src/app.ts:c83e652f3ba1:1",
@@ -194,7 +194,6 @@
       "api-call:apps/rep-mobile/src/server/views/messages.ts:b2c7612597a5:1",
       "api-call:apps/rep-mobile/src/server/views/messages.ts:c3b8f47f3e00:1",
       "api-call:apps/rep-mobile/src/server/views/quote-editor.ts:9fdd2a85a821:1",
-      "api-call:apps/rep-mobile/src/server/views/quote-editor.ts:d9e6da472f86:1",
       "api-call:apps/rep-mobile/src/server/views/quote-editor.ts:fb5732d988a9:1",
       "api-call:apps/rep-mobile/src/server/views/quotes.ts:18950f2dc3c4:1",
       "api-call:apps/rep-mobile/src/server/views/quotes.ts:18dc42913146:1",
@@ -215,7 +214,6 @@
       "api-call:apps/rep-mobile/src/server/views/records.ts:b5b11169724f:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:bc1278426100:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:d18390b547e3:1",
-      "api-call:apps/rep-mobile/src/server/views/records.ts:d9e6da472f86:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:f09030925270:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:f94d78701f4d:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:f9f97cd85588:1",
@@ -282,47 +280,23 @@
       "api-route:api-gateway:backend:PUT /v1/identity/*",
       "api-route:api-gateway:backend:PUT /v1/sales/*",
       "api-route:api-gateway:backend:PUT /v1/tracking/*",
-      "api-route:billing:backend:GET /health",
-      "api-route:billing:backend:GET /ready",
       "api-route:billing:backend:GET /v1/contracts/:id/account",
       "api-route:billing:backend:GET /v1/invoices/:id",
-      "api-route:billing:backend:HEAD /health",
-      "api-route:billing:backend:HEAD /ready",
       "api-route:billing:backend:HEAD /v1/contracts/:id/account",
       "api-route:billing:backend:HEAD /v1/invoices/:id",
-      "api-route:communications:backend:GET /health",
-      "api-route:communications:backend:GET /ready",
-      "api-route:communications:backend:GET /v1/notifications",
-      "api-route:communications:backend:HEAD /health",
-      "api-route:communications:backend:HEAD /ready",
-      "api-route:communications:backend:HEAD /v1/notifications",
       "api-route:communications:backend:POST /v1/notifications/:id/read",
-      "api-route:crm:backend:GET /health",
-      "api-route:crm:backend:GET /ready",
-      "api-route:crm:backend:HEAD /health",
-      "api-route:crm:backend:HEAD /ready",
-      "api-route:delivery:backend:GET /health",
-      "api-route:delivery:backend:GET /ready",
-      "api-route:delivery:backend:GET /v1/projects/:id",
-      "api-route:delivery:backend:HEAD /health",
-      "api-route:delivery:backend:HEAD /ready",
-      "api-route:delivery:backend:HEAD /v1/projects/:id",
-      "api-route:identity:backend:GET /health",
-      "api-route:identity:backend:GET /ready",
-      "api-route:identity:backend:HEAD /health",
-      "api-route:identity:backend:HEAD /ready",
-      "api-route:sales:backend:GET /health",
-      "api-route:sales:backend:GET /ready",
+      "api-route:crm:backend:PATCH /v1/regions/:id",
       "api-route:sales:backend:GET /v1/contracts/:id",
-      "api-route:sales:backend:HEAD /health",
-      "api-route:sales:backend:HEAD /ready",
+      "api-route:sales:backend:GET /v1/service-requests",
+      "api-route:sales:backend:GET /v1/service-requests/:id",
       "api-route:sales:backend:HEAD /v1/contracts/:id",
+      "api-route:sales:backend:HEAD /v1/service-requests",
+      "api-route:sales:backend:HEAD /v1/service-requests/:id",
       "api-route:sales:backend:POST /v1/quotes/:id/request-changes",
-      "api-route:tracking:backend:GET /health",
-      "api-route:tracking:backend:GET /ready",
+      "api-route:sales:backend:POST /v1/service-requests",
+      "api-route:sales:backend:POST /v1/service-requests/:id/cancel",
+      "api-route:sales:backend:POST /v1/service-requests/:id/review",
       "api-route:tracking:backend:GET /v1/sessions/current",
-      "api-route:tracking:backend:HEAD /health",
-      "api-route:tracking:backend:HEAD /ready",
       "api-route:tracking:backend:HEAD /v1/sessions/current",
       "background-job:apps/rep-mobile/src/lifecycle.ts:23a130e145c7:1",
       "background-job:packages/app-runtime/src/index.ts:19a23a346c4e:1",
@@ -343,8 +317,6 @@
       "background-job:services/sales/src/main.ts:c4228d94aed3:1",
       "background-job:services/tracking/src/main.ts:c4228d94aed3:1",
       "configuration:infra/identity/generate.mts:4aa3f012f684:1",
-      "configuration:packages/service-kit/src/http.ts:360a705dd147:1",
-      "configuration:packages/service-kit/src/http.ts:c46469501b5f:1",
       "configuration:services/api-gateway/src/main.ts:c46469501b5f:1",
       "configuration:services/api-gateway/src/main.ts:fee904229165:1",
       "configuration:services/billing/src/main.ts:20ad72de49a7:1",
@@ -399,6 +371,7 @@
       "failure-state:apps/admin-web/src/features/support/index.ts:b2ff780dfe0c:1",
       "failure-state:apps/admin-web/src/main.ts:36d63be351e3:1",
       "failure-state:apps/admin-web/src/main.ts:97558c958bac:1",
+      "failure-state:apps/admin-web/src/server-main.ts:36d63be351e3:1",
       "failure-state:apps/client-mobile/src/app.ts:0f7074363991:1",
       "failure-state:apps/client-mobile/src/app.ts:81c277226197:1",
       "failure-state:apps/client-mobile/src/features/projects/index.ts:03af28bae0b7:1",
@@ -629,11 +602,6 @@
       "failure-state:packages/mobile-auth/src/oidc.ts:f44bb91dcece:1",
       "failure-state:packages/mobile-auth/src/oidc.ts:f99e90cb94fc:1",
       "failure-state:packages/mobile-auth/src/oidc.ts:fb54fd665610:1",
-      "failure-state:packages/mobile-auth/src/platform.ts:47290668f7bd:1",
-      "failure-state:packages/mobile-auth/src/platform.ts:869177d64f2d:1",
-      "failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:1",
-      "failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:2",
-      "failure-state:packages/mobile-auth/src/platform.ts:e959f736ba60:1",
       "failure-state:packages/mobile-auth/src/vault.ts:2e7fc9af953c:1",
       "failure-state:packages/mobile-auth/src/vault.ts:a869ffb2f7e0:1",
       "failure-state:packages/mobile-auth/src/vault.ts:d0e2ebc544c9:1",
@@ -668,14 +636,11 @@
       "failure-state:packages/service-kit/src/customer-directory.ts:f1481fe60f98:1",
       "failure-state:packages/service-kit/src/errors.ts:2c061a5808b9:1",
       "failure-state:packages/service-kit/src/errors.ts:ef66cf289f01:1",
-      "failure-state:packages/service-kit/src/http.ts:6ea2f8b03805:1",
       "failure-state:packages/service-kit/src/migrations.ts:65c2b28aac49:1",
       "failure-state:packages/service-kit/src/migrations.ts:65c2b28aac49:2",
       "failure-state:packages/service-kit/src/migrations.ts:e4a2b0ca5246:1",
-      "failure-state:services/api-gateway/src/application/proxy.ts:06546b873e13:1",
-      "failure-state:services/api-gateway/src/application/proxy.ts:37e8de3a0d56:1",
-      "failure-state:services/api-gateway/src/application/proxy.ts:72254eae5969:1",
-      "failure-state:services/api-gateway/src/application/proxy.ts:b8534469b82c:1",
+      "failure-state:packages/service-kit/src/security-audit.ts:db0d08f79ce2:1",
+      "failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
       "failure-state:services/api-gateway/src/application/readiness.ts:a9e5adad5c85:1",
       "failure-state:services/communications/src/application/conversations.ts:313df5dfe161:1",
       "failure-state:services/communications/src/application/conversations.ts:a869ffb2f7e0:1",
@@ -961,7 +926,6 @@
       "handler:packages/questionnaire/src/sync.ts:2b39bd848660:1",
       "handler:packages/questionnaire/src/sync.ts:2b39bd848660:2",
       "handler:packages/questionnaire/src/sync.ts:919bb0e0b52a:1",
-      "handler:packages/service-kit/src/http.ts:3dee14649bff:1",
       "handler:packages/ui/src/forms.ts:7ced19a942ec:1",
       "handler:packages/ui/src/page-heads.ts:389ebf037c65:1",
       "permission:packages/mobile-platform/src/index.ts:1f8a6e3308c2:1",
@@ -986,7 +950,9 @@
       "permission:services/crm/src/application/customers.ts:e25817181c27:1",
       "permission:services/crm/src/application/discovery.ts:cb33a640ed9a:1",
       "permission:services/crm/src/application/discovery.ts:cb33a640ed9a:2",
+      "permission:services/crm/src/application/regions.ts:afce00901668:1",
       "permission:services/crm/src/transport/routes.ts:5ef5aec0a6e0:1",
+      "permission:services/delivery/src/application/project-metadata.ts:ba98b96f0c21:1",
       "permission:services/delivery/src/application/projects.ts:2bb97ce7f2da:1",
       "permission:services/delivery/src/application/projects.ts:4bf550c0bd31:1",
       "permission:services/delivery/src/application/projects.ts:ba98b96f0c21:1",
@@ -1017,6 +983,13 @@
       "permission:services/sales/src/application/routes.ts:396a3df576e5:1",
       "permission:services/sales/src/application/routes.ts:cb33a640ed9a:1",
       "permission:services/sales/src/application/routes.ts:cb33a640ed9a:2",
+      "permission:services/sales/src/application/service-requests.ts:13ccb6b2ec73:1",
+      "permission:services/sales/src/application/service-requests.ts:233df655d306:1",
+      "permission:services/sales/src/application/service-requests.ts:233df655d306:2",
+      "permission:services/sales/src/application/service-requests.ts:2bb97ce7f2da:1",
+      "permission:services/sales/src/application/service-requests.ts:2bb97ce7f2da:2",
+      "permission:services/sales/src/application/service-requests.ts:cb33a640ed9a:1",
+      "permission:services/sales/src/application/service-requests.ts:d301358f3874:1",
       "permission:services/sales/src/application/tasks.ts:cb33a640ed9a:1",
       "permission:services/sales/src/application/visit-planning.ts:c8c0be5452c3:1",
       "permission:services/sales/src/application/visits.ts:cb33a640ed9a:1",
@@ -1048,7 +1021,6 @@
       "route:admin:demo:messages",
       "route:admin:demo:more",
       "route:admin:demo:pipeline",
-      "route:admin:demo:settings",
       "route:admin:demo:support",
       "route:admin:demo:territories",
       "route:admin:demo:visits-completed",
@@ -1062,7 +1034,6 @@
       "route:rep:demo:territory",
       "route:rep:demo:visit-detail",
       "route:rep:server:billing",
-      "route:rep:server:catalog",
       "route:rep:server:contracts",
       "route:rep:server:home",
       "route:rep:server:messages",
@@ -1281,7 +1252,6 @@
       "search-filter:packages/app-runtime/src/tracking.ts:58b24e2f8601:1",
       "search-filter:packages/app-runtime/src/tracking.ts:58b24e2f8601:2",
       "search-filter:packages/app-runtime/src/tracking.ts:9081e59557e2:1",
-      "search-filter:packages/service-kit/src/http.ts:257e7abd58ac:1",
       "search-filter:packages/ui/src/primitives.ts:2906240e3683:1",
       "search-filter:services/api-gateway/src/main.ts:8a0fec94c79c:1",
       "search-filter:services/billing/src/transport/routes.ts:b218eb8cd8d0:1",
@@ -1311,6 +1281,8 @@
       "search-filter:services/sales/src/application/events.ts:4d466b356242:1",
       "search-filter:services/sales/src/application/routes.ts:b218eb8cd8d0:1",
       "search-filter:services/sales/src/application/routes.ts:e07e155fcd80:1",
+      "search-filter:services/sales/src/application/service-requests.ts:b218eb8cd8d0:1",
+      "search-filter:services/sales/src/application/service-requests.ts:e07e155fcd80:1",
       "search-filter:services/sales/src/transport/routes.ts:b218eb8cd8d0:1",
       "search-filter:services/sales/src/transport/routes.ts:b218eb8cd8d0:2",
       "search-filter:services/sales/src/transport/routes.ts:e07e155fcd80:1",
@@ -2470,8 +2442,8 @@
       "featureId": "account-lifecycle:packages/api-client/src/authenticated-workspace.ts:20d9be6393bd:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 119,
-        "endLine": 120,
+        "line": 122,
+        "endLine": 123,
         "fingerprint": "4e73c10bce7c0d3bd598f8fde9763ad0005fe07fcf952e11653b0d6252412a97"
       },
       "owningService": null,
@@ -2507,8 +2479,8 @@
       "featureId": "account-lifecycle:packages/api-client/src/authenticated-workspace.ts:35f38b193b36:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 179,
-        "endLine": 180,
+        "line": 182,
+        "endLine": 183,
         "fingerprint": "316aceffc7932f3e2b314b9ee4a4986a1e7b4bda88a0b4f6461ac57625674851"
       },
       "owningService": null,
@@ -2544,8 +2516,8 @@
       "featureId": "account-lifecycle:packages/api-client/src/authenticated-workspace.ts:4ca20c66ed5a:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 137,
-        "endLine": 137,
+        "line": 140,
+        "endLine": 140,
         "fingerprint": "0c58627f144d51b02d64542e0afc34c5e9fce1f419609efb77cf09a31f57264f"
       },
       "owningService": null,
@@ -7943,43 +7915,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "api-call:apps/rep-mobile/src/server/views/quote-editor.ts:d9e6da472f86:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/views/quote-editor.ts",
-        "line": 31,
-        "endLine": 31,
-        "fingerprint": "03a024d8cd3bf9a33fa1e7e26a9913566e6b38a06a3e54dc55985e4964ede940"
-      },
-      "owningService": null,
-      "targetService": "crm",
-      "mode": "server",
-      "targetSprint": "S03",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-call:apps/rep-mobile/src/server/views/quote-editor.ts:d9e6da472f86:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-call:apps/rep-mobile/src/server/views/quote-editor.ts:d9e6da472f86:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-call:apps/rep-mobile/src/server/views/quote-editor.ts:d9e6da472f86:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "api-call:apps/rep-mobile/src/server/views/quote-editor.ts:fb5732d988a9:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/quote-editor.ts",
@@ -8713,43 +8648,6 @@
         },
         {
           "id": "PLANNED:e2e:api-call:apps/rep-mobile/src/server/views/records.ts:d18390b547e3:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-call:apps/rep-mobile/src/server/views/records.ts:d9e6da472f86:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/views/records.ts",
-        "line": 18,
-        "endLine": 20,
-        "fingerprint": "ac173346fbc6fe7972fdd56020250ee78444bec504b73bac4d037abc43aa4e58"
-      },
-      "owningService": null,
-      "targetService": "crm",
-      "mode": "server",
-      "targetSprint": "S03",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-call:apps/rep-mobile/src/server/views/records.ts:d9e6da472f86:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-call:apps/rep-mobile/src/server/views/records.ts:d9e6da472f86:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-call:apps/rep-mobile/src/server/views/records.ts:d9e6da472f86:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -11199,80 +11097,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "api-route:billing:backend:GET /health",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
-      },
-      "owningService": "billing",
-      "targetService": "billing",
-      "mode": "backend",
-      "targetSprint": "S06",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:billing:backend:GET /health",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:billing:backend:GET /health",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:billing:backend:GET /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:billing:backend:GET /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "billing",
-      "targetService": "billing",
-      "mode": "backend",
-      "targetSprint": "S06",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:billing:backend:GET /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:billing:backend:GET /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:billing:backend:GET /ready",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "api-route:billing:backend:GET /v1/contracts/:id/account",
       "source": {
         "path": "services/billing/src/transport/routes.ts",
@@ -11340,80 +11164,6 @@
         },
         {
           "id": "PLANNED:e2e:api-route:billing:backend:GET /v1/invoices/:id",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:billing:backend:HEAD /health",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
-      },
-      "owningService": "billing",
-      "targetService": "billing",
-      "mode": "backend",
-      "targetSprint": "S06",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:billing:backend:HEAD /health",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:billing:backend:HEAD /health",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:billing:backend:HEAD /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:billing:backend:HEAD /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "billing",
-      "targetService": "billing",
-      "mode": "backend",
-      "targetSprint": "S06",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:billing:backend:HEAD /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:billing:backend:HEAD /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:billing:backend:HEAD /ready",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -11495,228 +11245,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "api-route:communications:backend:GET /health",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
-      },
-      "owningService": "communications",
-      "targetService": "communications",
-      "mode": "backend",
-      "targetSprint": "S07",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:communications:backend:GET /health",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:communications:backend:GET /health",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:communications:backend:GET /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:communications:backend:GET /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "communications",
-      "targetService": "communications",
-      "mode": "backend",
-      "targetSprint": "S07",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:communications:backend:GET /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:communications:backend:GET /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:communications:backend:GET /ready",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:communications:backend:GET /v1/notifications",
-      "source": {
-        "path": "services/communications/src/transport/routes.ts",
-        "line": 18,
-        "endLine": 26,
-        "fingerprint": "20f24ba6c8f4b3c4e389da61bcb61e22ec309645f36bc92f747c1fb25d7f9bed"
-      },
-      "owningService": "communications",
-      "targetService": "communications",
-      "mode": "backend",
-      "targetSprint": "S07",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:communications:backend:GET /v1/notifications",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:communications:backend:GET /v1/notifications",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:communications:backend:GET /v1/notifications",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:communications:backend:HEAD /health",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
-      },
-      "owningService": "communications",
-      "targetService": "communications",
-      "mode": "backend",
-      "targetSprint": "S07",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:communications:backend:HEAD /health",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:communications:backend:HEAD /health",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:communications:backend:HEAD /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:communications:backend:HEAD /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "communications",
-      "targetService": "communications",
-      "mode": "backend",
-      "targetSprint": "S07",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:communications:backend:HEAD /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:communications:backend:HEAD /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:communications:backend:HEAD /ready",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:communications:backend:HEAD /v1/notifications",
-      "source": {
-        "path": "services/communications/src/transport/routes.ts",
-        "line": 18,
-        "endLine": 26,
-        "fingerprint": "20f24ba6c8f4b3c4e389da61bcb61e22ec309645f36bc92f747c1fb25d7f9bed"
-      },
-      "owningService": "communications",
-      "targetService": "communications",
-      "mode": "backend",
-      "targetSprint": "S07",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:communications:backend:HEAD /v1/notifications",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:communications:backend:HEAD /v1/notifications",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:communications:backend:HEAD /v1/notifications",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "api-route:communications:backend:POST /v1/notifications/:id/read",
       "source": {
         "path": "services/communications/src/transport/routes.ts",
@@ -11754,12 +11282,12 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "api-route:crm:backend:GET /health",
+      "featureId": "api-route:crm:backend:PATCH /v1/regions/:id",
       "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
+        "path": "services/crm/src/transport/routes.ts",
+        "line": 85,
+        "endLine": 89,
+        "fingerprint": "9b27b37dc56e0c07eafef3d0e0af180dc9934934c7b5a436c250ad3204cf23b2"
       },
       "owningService": "crm",
       "targetService": "crm",
@@ -11773,572 +11301,17 @@
       ],
       "requiredTests": [
         {
-          "id": "PLANNED:contract:api-route:crm:backend:GET /health",
+          "id": "PLANNED:contract:api-route:crm:backend:PATCH /v1/regions/:id",
           "scope": "contract",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:integration:api-route:crm:backend:GET /health",
+          "id": "PLANNED:integration:api-route:crm:backend:PATCH /v1/regions/:id",
           "scope": "integration",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:e2e:api-route:crm:backend:GET /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:crm:backend:GET /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "crm",
-      "targetService": "crm",
-      "mode": "backend",
-      "targetSprint": "S03",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:crm:backend:GET /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:crm:backend:GET /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:crm:backend:GET /ready",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:crm:backend:HEAD /health",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
-      },
-      "owningService": "crm",
-      "targetService": "crm",
-      "mode": "backend",
-      "targetSprint": "S03",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:crm:backend:HEAD /health",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:crm:backend:HEAD /health",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:crm:backend:HEAD /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:crm:backend:HEAD /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "crm",
-      "targetService": "crm",
-      "mode": "backend",
-      "targetSprint": "S03",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:crm:backend:HEAD /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:crm:backend:HEAD /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:crm:backend:HEAD /ready",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:delivery:backend:GET /health",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
-      },
-      "owningService": "delivery",
-      "targetService": "delivery",
-      "mode": "backend",
-      "targetSprint": "S05",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:delivery:backend:GET /health",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:delivery:backend:GET /health",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:delivery:backend:GET /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:delivery:backend:GET /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "delivery",
-      "targetService": "delivery",
-      "mode": "backend",
-      "targetSprint": "S05",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:delivery:backend:GET /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:delivery:backend:GET /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:delivery:backend:GET /ready",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:delivery:backend:GET /v1/projects/:id",
-      "source": {
-        "path": "services/delivery/src/transport/routes.ts",
-        "line": 28,
-        "endLine": 32,
-        "fingerprint": "bc65c4164d5aad92fd2cee03931e38fa5972657d53fb19b417d54c8431a6b31d"
-      },
-      "owningService": "delivery",
-      "targetService": "delivery",
-      "mode": "backend",
-      "targetSprint": "S05",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:delivery:backend:GET /v1/projects/:id",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:delivery:backend:GET /v1/projects/:id",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:delivery:backend:GET /v1/projects/:id",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:delivery:backend:HEAD /health",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
-      },
-      "owningService": "delivery",
-      "targetService": "delivery",
-      "mode": "backend",
-      "targetSprint": "S05",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:delivery:backend:HEAD /health",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:delivery:backend:HEAD /health",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:delivery:backend:HEAD /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:delivery:backend:HEAD /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "delivery",
-      "targetService": "delivery",
-      "mode": "backend",
-      "targetSprint": "S05",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:delivery:backend:HEAD /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:delivery:backend:HEAD /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:delivery:backend:HEAD /ready",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:delivery:backend:HEAD /v1/projects/:id",
-      "source": {
-        "path": "services/delivery/src/transport/routes.ts",
-        "line": 28,
-        "endLine": 32,
-        "fingerprint": "bc65c4164d5aad92fd2cee03931e38fa5972657d53fb19b417d54c8431a6b31d"
-      },
-      "owningService": "delivery",
-      "targetService": "delivery",
-      "mode": "backend",
-      "targetSprint": "S05",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:delivery:backend:HEAD /v1/projects/:id",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:delivery:backend:HEAD /v1/projects/:id",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:delivery:backend:HEAD /v1/projects/:id",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:identity:backend:GET /health",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
-      },
-      "owningService": "identity",
-      "targetService": "identity",
-      "mode": "backend",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:identity:backend:GET /health",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:identity:backend:GET /health",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:identity:backend:GET /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:identity:backend:GET /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "identity",
-      "targetService": "identity",
-      "mode": "backend",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:identity:backend:GET /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:identity:backend:GET /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:identity:backend:GET /ready",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:identity:backend:HEAD /health",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
-      },
-      "owningService": "identity",
-      "targetService": "identity",
-      "mode": "backend",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:identity:backend:HEAD /health",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:identity:backend:HEAD /health",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:identity:backend:HEAD /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:identity:backend:HEAD /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "identity",
-      "targetService": "identity",
-      "mode": "backend",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:identity:backend:HEAD /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:identity:backend:HEAD /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:identity:backend:HEAD /ready",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:sales:backend:GET /health",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
-      },
-      "owningService": "sales",
-      "targetService": "sales",
-      "mode": "backend",
-      "targetSprint": "S04",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:sales:backend:GET /health",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:sales:backend:GET /health",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:sales:backend:GET /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:sales:backend:GET /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "sales",
-      "targetService": "sales",
-      "mode": "backend",
-      "targetSprint": "S04",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:sales:backend:GET /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:sales:backend:GET /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:sales:backend:GET /ready",
+          "id": "PLANNED:e2e:api-route:crm:backend:PATCH /v1/regions/:id",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -12349,8 +11322,8 @@
       "featureId": "api-route:sales:backend:GET /v1/contracts/:id",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 290,
-        "endLine": 294,
+        "line": 292,
+        "endLine": 296,
         "fingerprint": "dafaf7d23520da942d1a7d73145106c3d6a99dff88aaf5b9b3cc91c98ff216fd"
       },
       "owningService": "sales",
@@ -12383,12 +11356,12 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "api-route:sales:backend:HEAD /health",
+      "featureId": "api-route:sales:backend:GET /v1/service-requests",
       "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
+        "path": "services/sales/src/transport/service-request-routes.ts",
+        "line": 16,
+        "endLine": 26,
+        "fingerprint": "f15ec287d716a94ba40e099bde0e1fb4e492bfe79d098489bc6d83e9627482ae"
       },
       "owningService": "sales",
       "targetService": "sales",
@@ -12402,17 +11375,17 @@
       ],
       "requiredTests": [
         {
-          "id": "PLANNED:contract:api-route:sales:backend:HEAD /health",
+          "id": "PLANNED:contract:api-route:sales:backend:GET /v1/service-requests",
           "scope": "contract",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:integration:api-route:sales:backend:HEAD /health",
+          "id": "PLANNED:integration:api-route:sales:backend:GET /v1/service-requests",
           "scope": "integration",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:e2e:api-route:sales:backend:HEAD /health",
+          "id": "PLANNED:e2e:api-route:sales:backend:GET /v1/service-requests",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -12420,12 +11393,12 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "api-route:sales:backend:HEAD /ready",
+      "featureId": "api-route:sales:backend:GET /v1/service-requests/:id",
       "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
+        "path": "services/sales/src/transport/service-request-routes.ts",
+        "line": 27,
+        "endLine": 37,
+        "fingerprint": "e2dd0af18935296f4f8106e5174b975bfb5309ea62f5eee5f5f353af1bbe1da8"
       },
       "owningService": "sales",
       "targetService": "sales",
@@ -12439,17 +11412,17 @@
       ],
       "requiredTests": [
         {
-          "id": "PLANNED:contract:api-route:sales:backend:HEAD /ready",
+          "id": "PLANNED:contract:api-route:sales:backend:GET /v1/service-requests/:id",
           "scope": "contract",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:integration:api-route:sales:backend:HEAD /ready",
+          "id": "PLANNED:integration:api-route:sales:backend:GET /v1/service-requests/:id",
           "scope": "integration",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:e2e:api-route:sales:backend:HEAD /ready",
+          "id": "PLANNED:e2e:api-route:sales:backend:GET /v1/service-requests/:id",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -12460,8 +11433,8 @@
       "featureId": "api-route:sales:backend:HEAD /v1/contracts/:id",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 290,
-        "endLine": 294,
+        "line": 292,
+        "endLine": 296,
         "fingerprint": "dafaf7d23520da942d1a7d73145106c3d6a99dff88aaf5b9b3cc91c98ff216fd"
       },
       "owningService": "sales",
@@ -12494,11 +11467,85 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "api-route:sales:backend:HEAD /v1/service-requests",
+      "source": {
+        "path": "services/sales/src/transport/service-request-routes.ts",
+        "line": 16,
+        "endLine": 26,
+        "fingerprint": "f15ec287d716a94ba40e099bde0e1fb4e492bfe79d098489bc6d83e9627482ae"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-route:sales:backend:HEAD /v1/service-requests",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-route:sales:backend:HEAD /v1/service-requests",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-route:sales:backend:HEAD /v1/service-requests",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-route:sales:backend:HEAD /v1/service-requests/:id",
+      "source": {
+        "path": "services/sales/src/transport/service-request-routes.ts",
+        "line": 27,
+        "endLine": 37,
+        "fingerprint": "e2dd0af18935296f4f8106e5174b975bfb5309ea62f5eee5f5f353af1bbe1da8"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-route:sales:backend:HEAD /v1/service-requests/:id",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-route:sales:backend:HEAD /v1/service-requests/:id",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-route:sales:backend:HEAD /v1/service-requests/:id",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "api-route:sales:backend:POST /v1/quotes/:id/request-changes",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 274,
-        "endLine": 278,
+        "line": 276,
+        "endLine": 280,
         "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
       },
       "owningService": "sales",
@@ -12531,17 +11578,17 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "api-route:tracking:backend:GET /health",
+      "featureId": "api-route:sales:backend:POST /v1/service-requests",
       "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
+        "path": "services/sales/src/transport/service-request-routes.ts",
+        "line": 38,
+        "endLine": 61,
+        "fingerprint": "dc300c5cf9b820dc3ef92bb5d05dfd494b4781ce4028aa79a97956e6efe8ccc7"
       },
-      "owningService": "tracking",
-      "targetService": "tracking",
+      "owningService": "sales",
+      "targetService": "sales",
       "mode": "backend",
-      "targetSprint": "S08",
+      "targetSprint": "S04",
       "reasons": [
         {
           "category": "test-mapping",
@@ -12550,17 +11597,17 @@
       ],
       "requiredTests": [
         {
-          "id": "PLANNED:contract:api-route:tracking:backend:GET /health",
+          "id": "PLANNED:contract:api-route:sales:backend:POST /v1/service-requests",
           "scope": "contract",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:integration:api-route:tracking:backend:GET /health",
+          "id": "PLANNED:integration:api-route:sales:backend:POST /v1/service-requests",
           "scope": "integration",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:e2e:api-route:tracking:backend:GET /health",
+          "id": "PLANNED:e2e:api-route:sales:backend:POST /v1/service-requests",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -12568,17 +11615,17 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "api-route:tracking:backend:GET /ready",
+      "featureId": "api-route:sales:backend:POST /v1/service-requests/:id/cancel",
       "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
+        "path": "services/sales/src/transport/service-request-routes.ts",
+        "line": 87,
+        "endLine": 111,
+        "fingerprint": "4dab01835992a54eaa4ea56af8350abc9599baff544f1abb9e0bdba989b2d4ee"
       },
-      "owningService": "tracking",
-      "targetService": "tracking",
+      "owningService": "sales",
+      "targetService": "sales",
       "mode": "backend",
-      "targetSprint": "S08",
+      "targetSprint": "S04",
       "reasons": [
         {
           "category": "test-mapping",
@@ -12587,17 +11634,54 @@
       ],
       "requiredTests": [
         {
-          "id": "PLANNED:contract:api-route:tracking:backend:GET /ready",
+          "id": "PLANNED:contract:api-route:sales:backend:POST /v1/service-requests/:id/cancel",
           "scope": "contract",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:integration:api-route:tracking:backend:GET /ready",
+          "id": "PLANNED:integration:api-route:sales:backend:POST /v1/service-requests/:id/cancel",
           "scope": "integration",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:e2e:api-route:tracking:backend:GET /ready",
+          "id": "PLANNED:e2e:api-route:sales:backend:POST /v1/service-requests/:id/cancel",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-route:sales:backend:POST /v1/service-requests/:id/review",
+      "source": {
+        "path": "services/sales/src/transport/service-request-routes.ts",
+        "line": 62,
+        "endLine": 86,
+        "fingerprint": "5e3785edc3a3a2883f9aab12121468f0b0892f84a3341e5d3dae9f8040424de9"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-route:sales:backend:POST /v1/service-requests/:id/review",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-route:sales:backend:POST /v1/service-requests/:id/review",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-route:sales:backend:POST /v1/service-requests/:id/review",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -12635,80 +11719,6 @@
         },
         {
           "id": "PLANNED:e2e:api-route:tracking:backend:GET /v1/sessions/current",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:tracking:backend:HEAD /health",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 55,
-        "endLine": 55,
-        "fingerprint": "5d2c6760e23492e04f7fbba14d9f8921454e81b175c5ac523915dbd22c3691d5"
-      },
-      "owningService": "tracking",
-      "targetService": "tracking",
-      "mode": "backend",
-      "targetSprint": "S08",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:tracking:backend:HEAD /health",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:tracking:backend:HEAD /health",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:tracking:backend:HEAD /health",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:tracking:backend:HEAD /ready",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 56,
-        "endLine": 75,
-        "fingerprint": "c49db9d8cf22f955fb7a1c27e7b6f660d04c35ac6664d2701ad6f14aee135398"
-      },
-      "owningService": "tracking",
-      "targetService": "tracking",
-      "mode": "backend",
-      "targetSprint": "S08",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:tracking:backend:HEAD /ready",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:tracking:backend:HEAD /ready",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:tracking:backend:HEAD /ready",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -13449,80 +12459,6 @@
         },
         {
           "id": "PLANNED:e2e:configuration:infra/identity/generate.mts:4aa3f012f684:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "configuration:packages/service-kit/src/http.ts:360a705dd147:1",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 121,
-        "endLine": 121,
-        "fingerprint": "360a705dd147444df6a1f3bdc5a4511edda7c09673cbf2a95bc43c8adbfef540"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "shared",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:configuration:packages/service-kit/src/http.ts:360a705dd147:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:configuration:packages/service-kit/src/http.ts:360a705dd147:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:configuration:packages/service-kit/src/http.ts:360a705dd147:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "configuration:packages/service-kit/src/http.ts:c46469501b5f:1",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 114,
-        "endLine": 114,
-        "fingerprint": "c46469501b5f86bc90b1fee9055515a1b4332936503fcbbb357c2b34f9d75701"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "shared",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:configuration:packages/service-kit/src/http.ts:c46469501b5f:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:configuration:packages/service-kit/src/http.ts:c46469501b5f:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:configuration:packages/service-kit/src/http.ts:c46469501b5f:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -15457,8 +14393,8 @@
       "featureId": "failure-state:apps/admin-web/src/main.ts:36d63be351e3:1",
       "source": {
         "path": "apps/admin-web/src/main.ts",
-        "line": 36,
-        "endLine": 36,
+        "line": 37,
+        "endLine": 37,
         "fingerprint": "48ebdab4332e92d603c710da19f8c11707ac8b530c2713c0bb18bba17a9397d2"
       },
       "owningService": null,
@@ -15494,8 +14430,8 @@
       "featureId": "failure-state:apps/admin-web/src/main.ts:97558c958bac:1",
       "source": {
         "path": "apps/admin-web/src/main.ts",
-        "line": 9,
-        "endLine": 9,
+        "line": 10,
+        "endLine": 10,
         "fingerprint": "43e72a7fb4938975bfb14a272a05063afbef663b0f02871d29109e057f10e8b2"
       },
       "owningService": null,
@@ -15521,6 +14457,43 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:apps/admin-web/src/main.ts:97558c958bac:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:apps/admin-web/src/server-main.ts:36d63be351e3:1",
+      "source": {
+        "path": "apps/admin-web/src/server-main.ts",
+        "line": 5,
+        "endLine": 5,
+        "fingerprint": "48ebdab4332e92d603c710da19f8c11707ac8b530c2713c0bb18bba17a9397d2"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "shared",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/admin-web/src/server-main.ts:36d63be351e3:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/admin-web/src/server-main.ts:36d63be351e3:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/admin-web/src/server-main.ts:36d63be351e3:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -20230,8 +19203,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:0c53486d2c20:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 75,
-        "endLine": 75,
+        "line": 78,
+        "endLine": 78,
         "fingerprint": "d2fb3cf903fc41cadc4e3a5e58d8667453d3cf82fc5e8689623e6bfd24c1293a"
       },
       "owningService": null,
@@ -20267,8 +19240,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:1f70e72f69a6:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 160,
-        "endLine": 160,
+        "line": 163,
+        "endLine": 163,
         "fingerprint": "77bad5802e4f8180320533a4ded43bf4e821fd335d8f19976bae3784b07ecdbc"
       },
       "owningService": null,
@@ -20304,8 +19277,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:1f70e72f69a6:2",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 166,
-        "endLine": 166,
+        "line": 169,
+        "endLine": 169,
         "fingerprint": "0605c305dfb6c61e53f5c25f51923481a041d11a55855798ec56202313c0ebe5"
       },
       "owningService": null,
@@ -20341,8 +19314,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:20fb51ca96c3:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 72,
-        "endLine": 72,
+        "line": 75,
+        "endLine": 75,
         "fingerprint": "5f6f38f0a9a30f53f5d39a2176cc1ba6c32fd1984827b367b360642d8733ae36"
       },
       "owningService": null,
@@ -20378,8 +19351,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:3c168723174f:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 93,
-        "endLine": 96,
+        "line": 96,
+        "endLine": 99,
         "fingerprint": "f69e9bea41915f436ac3ce17939577594052bbb4e615e698814f84c89b589ffe"
       },
       "owningService": null,
@@ -20415,8 +19388,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:4444d8a31f52:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 58,
-        "endLine": 58,
+        "line": 60,
+        "endLine": 60,
         "fingerprint": "a76080452d46872251c38f1193bcd3d464e9552c44216192754cfa51f4b71a71"
       },
       "owningService": null,
@@ -20452,8 +19425,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:48eae8ca9ed5:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 24,
-        "endLine": 25,
+        "line": 26,
+        "endLine": 27,
         "fingerprint": "83dca36c7b2ccbb5d583a41cf495b76ca0435a4859bd80b3154bc8e6d3d8b38c"
       },
       "owningService": null,
@@ -20489,8 +19462,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:60e6656fa14e:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 189,
-        "endLine": 189,
+        "line": 192,
+        "endLine": 192,
         "fingerprint": "43f33a6dbcc3431b673f8cd720690a620624c1e2c83b95579bfc35600d88fce0"
       },
       "owningService": null,
@@ -20526,8 +19499,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:60e6656fa14e:2",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 192,
-        "endLine": 195,
+        "line": 195,
+        "endLine": 198,
         "fingerprint": "43d15e20554e8d49f7e7f191d58903bef72f42b93c5399fd9e9eea4d6ba9d0a0"
       },
       "owningService": null,
@@ -20563,8 +19536,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:6adf7bef60ed:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 48,
-        "endLine": 48,
+        "line": 50,
+        "endLine": 50,
         "fingerprint": "e05bf8c2050ff6ed1ea75ead729f92737a799aa042a2c17c8c72e9da5f678cea"
       },
       "owningService": null,
@@ -20600,8 +19573,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:95c24084d548:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 67,
-        "endLine": 67,
+        "line": 70,
+        "endLine": 70,
         "fingerprint": "4e12f0d9df6ba6d5083abaacabf7bdc170fbaf8aaa7ee860d80967834621828e"
       },
       "owningService": null,
@@ -20637,8 +19610,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:a869ffb2f7e0:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 95,
-        "endLine": 95,
+        "line": 98,
+        "endLine": 98,
         "fingerprint": "8c468a57ba68bc74d4da2e446572891a3884d987edae85e551db81ebbee3f4d4"
       },
       "owningService": null,
@@ -20674,8 +19647,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:cd11a06a06b2:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 26,
-        "endLine": 27,
+        "line": 28,
+        "endLine": 29,
         "fingerprint": "7e11f77eae633947994b62ee7dd95bd3d614bc5585a013cf3007efe643a3b86d"
       },
       "owningService": null,
@@ -24038,191 +23011,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "failure-state:packages/mobile-auth/src/platform.ts:47290668f7bd:1",
-      "source": {
-        "path": "packages/mobile-auth/src/platform.ts",
-        "line": 19,
-        "endLine": 19,
-        "fingerprint": "8a6df46e73a5bb91bb49b2e0dc47399d87ef12f593b3c51cd3bf6aa424a0e60f"
-      },
-      "owningService": null,
-      "targetService": "identity",
-      "mode": "server",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:packages/mobile-auth/src/platform.ts:47290668f7bd:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:packages/mobile-auth/src/platform.ts:47290668f7bd:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:packages/mobile-auth/src/platform.ts:47290668f7bd:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:packages/mobile-auth/src/platform.ts:869177d64f2d:1",
-      "source": {
-        "path": "packages/mobile-auth/src/platform.ts",
-        "line": 42,
-        "endLine": 44,
-        "fingerprint": "07a29af9e0635f545b20ed6252ab195fb744c4277109c21ab3a403caa32a2aac"
-      },
-      "owningService": null,
-      "targetService": "identity",
-      "mode": "server",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:packages/mobile-auth/src/platform.ts:869177d64f2d:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:packages/mobile-auth/src/platform.ts:869177d64f2d:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:packages/mobile-auth/src/platform.ts:869177d64f2d:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:1",
-      "source": {
-        "path": "packages/mobile-auth/src/platform.ts",
-        "line": 25,
-        "endLine": 25,
-        "fingerprint": "14d649f9b78de3e0ecfdf73e09de2b66a1c4f8b691e9f37b52f5500c4662818a"
-      },
-      "owningService": null,
-      "targetService": "identity",
-      "mode": "server",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:2",
-      "source": {
-        "path": "packages/mobile-auth/src/platform.ts",
-        "line": 68,
-        "endLine": 68,
-        "fingerprint": "14d649f9b78de3e0ecfdf73e09de2b66a1c4f8b691e9f37b52f5500c4662818a"
-      },
-      "owningService": null,
-      "targetService": "identity",
-      "mode": "server",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:2",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:2",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:2",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:packages/mobile-auth/src/platform.ts:e959f736ba60:1",
-      "source": {
-        "path": "packages/mobile-auth/src/platform.ts",
-        "line": 43,
-        "endLine": 43,
-        "fingerprint": "c85f8cc46bf2699fae3db5e25a1c6dd137ce388206f1889e68e2f876620313bd"
-      },
-      "owningService": null,
-      "targetService": "identity",
-      "mode": "server",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:packages/mobile-auth/src/platform.ts:e959f736ba60:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:packages/mobile-auth/src/platform.ts:e959f736ba60:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:packages/mobile-auth/src/platform.ts:e959f736ba60:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "failure-state:packages/mobile-auth/src/vault.ts:2e7fc9af953c:1",
       "source": {
         "path": "packages/mobile-auth/src/vault.ts",
@@ -25481,43 +24269,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "failure-state:packages/service-kit/src/http.ts:6ea2f8b03805:1",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 70,
-        "endLine": 74,
-        "fingerprint": "341ba71cd538b8629f601b72566bf4830935a016cdfc631b2d18e0e00f9c5b71"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "shared",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:packages/service-kit/src/http.ts:6ea2f8b03805:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:packages/service-kit/src/http.ts:6ea2f8b03805:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:packages/service-kit/src/http.ts:6ea2f8b03805:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "failure-state:packages/service-kit/src/migrations.ts:65c2b28aac49:1",
       "source": {
         "path": "packages/service-kit/src/migrations.ts",
@@ -25629,16 +24380,16 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "failure-state:services/api-gateway/src/application/proxy.ts:06546b873e13:1",
+      "featureId": "failure-state:packages/service-kit/src/security-audit.ts:db0d08f79ce2:1",
       "source": {
-        "path": "services/api-gateway/src/application/proxy.ts",
-        "line": 62,
-        "endLine": 64,
-        "fingerprint": "356b57a386016c37da05c23bb03711324fe66d036d2e2cbfd5adf3f70527237d"
+        "path": "packages/service-kit/src/security-audit.ts",
+        "line": 41,
+        "endLine": 43,
+        "fingerprint": "f6578e571ad56a53dd75a4a9dafb0404ef037b8a1adf60678b4d238161257763"
       },
-      "owningService": "api-gateway",
-      "targetService": "api-gateway",
-      "mode": "backend",
+      "owningService": null,
+      "targetService": null,
+      "mode": "shared",
       "targetSprint": "S10",
       "reasons": [
         {
@@ -25648,17 +24399,17 @@
       ],
       "requiredTests": [
         {
-          "id": "PLANNED:contract:failure-state:services/api-gateway/src/application/proxy.ts:06546b873e13:1",
+          "id": "PLANNED:contract:failure-state:packages/service-kit/src/security-audit.ts:db0d08f79ce2:1",
           "scope": "contract",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:integration:failure-state:services/api-gateway/src/application/proxy.ts:06546b873e13:1",
+          "id": "PLANNED:integration:failure-state:packages/service-kit/src/security-audit.ts:db0d08f79ce2:1",
           "scope": "integration",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:e2e:failure-state:services/api-gateway/src/application/proxy.ts:06546b873e13:1",
+          "id": "PLANNED:e2e:failure-state:packages/service-kit/src/security-audit.ts:db0d08f79ce2:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -25666,16 +24417,16 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "failure-state:services/api-gateway/src/application/proxy.ts:37e8de3a0d56:1",
+      "featureId": "failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
       "source": {
-        "path": "services/api-gateway/src/application/proxy.ts",
-        "line": 63,
-        "endLine": 63,
-        "fingerprint": "d66df9541530c5f5cf8420dd06d9fd29de1c0f4a524a8cd94dee7a7c6449ff78"
+        "path": "packages/service-kit/src/tenant-security-migration.ts",
+        "line": 6,
+        "endLine": 6,
+        "fingerprint": "d68231368aa3546f5994e7bbba7fb9aca98952404829c3d20d2ae51af165b233"
       },
-      "owningService": "api-gateway",
-      "targetService": "api-gateway",
-      "mode": "backend",
+      "owningService": null,
+      "targetService": null,
+      "mode": "shared",
       "targetSprint": "S10",
       "reasons": [
         {
@@ -25685,91 +24436,17 @@
       ],
       "requiredTests": [
         {
-          "id": "PLANNED:contract:failure-state:services/api-gateway/src/application/proxy.ts:37e8de3a0d56:1",
+          "id": "PLANNED:contract:failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
           "scope": "contract",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:integration:failure-state:services/api-gateway/src/application/proxy.ts:37e8de3a0d56:1",
+          "id": "PLANNED:integration:failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
           "scope": "integration",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:e2e:failure-state:services/api-gateway/src/application/proxy.ts:37e8de3a0d56:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:services/api-gateway/src/application/proxy.ts:72254eae5969:1",
-      "source": {
-        "path": "services/api-gateway/src/application/proxy.ts",
-        "line": 44,
-        "endLine": 50,
-        "fingerprint": "78fad5220bba3899c0e060564044f04c3997d6f8bb3ca010a89abe98468e3403"
-      },
-      "owningService": "api-gateway",
-      "targetService": "api-gateway",
-      "mode": "backend",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:services/api-gateway/src/application/proxy.ts:72254eae5969:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:services/api-gateway/src/application/proxy.ts:72254eae5969:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:services/api-gateway/src/application/proxy.ts:72254eae5969:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:services/api-gateway/src/application/proxy.ts:b8534469b82c:1",
-      "source": {
-        "path": "services/api-gateway/src/application/proxy.ts",
-        "line": 45,
-        "endLine": 49,
-        "fingerprint": "8128cbb07816cd24450b7dd69426e9d728b1154cefd4c73cbaf74042a5e2c016"
-      },
-      "owningService": "api-gateway",
-      "targetService": "api-gateway",
-      "mode": "backend",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:services/api-gateway/src/application/proxy.ts:b8534469b82c:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:services/api-gateway/src/application/proxy.ts:b8534469b82c:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:services/api-gateway/src/application/proxy.ts:b8534469b82c:1",
+          "id": "PLANNED:e2e:failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -34253,8 +32930,8 @@
       "featureId": "handler:packages/api-client/src/authenticated-workspace.ts:76ac9a21be53:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 173,
-        "endLine": 199,
+        "line": 176,
+        "endLine": 202,
         "fingerprint": "d4221572204b6f518bc8386994914550bb1bcbcace7e09e353e689608b1daf91"
       },
       "owningService": null,
@@ -34290,8 +32967,8 @@
       "featureId": "handler:packages/api-client/src/authenticated-workspace.ts:95ae7b0e11bf:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 111,
-        "endLine": 129,
+        "line": 114,
+        "endLine": 132,
         "fingerprint": "e280c55ac455d8e02ae170d66a9b9ebdc935e6af013130ccb41af06cd2aed000"
       },
       "owningService": null,
@@ -34327,8 +33004,8 @@
       "featureId": "handler:packages/api-client/src/authenticated-workspace.ts:ff97ac6d3f72:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 134,
-        "endLine": 142,
+        "line": 137,
+        "endLine": 145,
         "fingerprint": "9a39ae3d82eb42e8584f680ba9b2ef09f3c9bbc78443037d1f78c1c27773d15a"
       },
       "owningService": null,
@@ -36322,43 +34999,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "handler:packages/service-kit/src/http.ts:3dee14649bff:1",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 102,
-        "endLine": 102,
-        "fingerprint": "e7b05e5afb405524a89ec73f79eb601a2357de508966fe582eec6cc6d76bca63"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "shared",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:handler:packages/service-kit/src/http.ts:3dee14649bff:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:handler:packages/service-kit/src/http.ts:3dee14649bff:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:handler:packages/service-kit/src/http.ts:3dee14649bff:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "handler:packages/ui/src/forms.ts:7ced19a942ec:1",
       "source": {
         "path": "packages/ui/src/forms.ts",
@@ -37247,11 +35887,48 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "permission:services/crm/src/application/regions.ts:afce00901668:1",
+      "source": {
+        "path": "services/crm/src/application/regions.ts",
+        "line": 19,
+        "endLine": 19,
+        "fingerprint": "2088ed04437a47a5dd86b83c968fee1d34e1b5beb3abdae566b7692fa605566d"
+      },
+      "owningService": "crm",
+      "targetService": "crm",
+      "mode": "backend",
+      "targetSprint": "S03",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:permission:services/crm/src/application/regions.ts:afce00901668:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:permission:services/crm/src/application/regions.ts:afce00901668:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:permission:services/crm/src/application/regions.ts:afce00901668:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "permission:services/crm/src/transport/routes.ts:5ef5aec0a6e0:1",
       "source": {
         "path": "services/crm/src/transport/routes.ts",
-        "line": 37,
-        "endLine": 37,
+        "line": 38,
+        "endLine": 38,
         "fingerprint": "cc77c8492c7e2ea3cce62bf095247bc72dc9c4e274ed6c4e12b7105ac5efc2c8"
       },
       "owningService": "crm",
@@ -37277,6 +35954,43 @@
         },
         {
           "id": "PLANNED:e2e:permission:services/crm/src/transport/routes.ts:5ef5aec0a6e0:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "permission:services/delivery/src/application/project-metadata.ts:ba98b96f0c21:1",
+      "source": {
+        "path": "services/delivery/src/application/project-metadata.ts",
+        "line": 20,
+        "endLine": 20,
+        "fingerprint": "d6d3a47f1e5bcf47f1dfef8096d463e99c4d311b6268b9c4b64f6cf196e4c812"
+      },
+      "owningService": "delivery",
+      "targetService": "delivery",
+      "mode": "backend",
+      "targetSprint": "S05",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:permission:services/delivery/src/application/project-metadata.ts:ba98b96f0c21:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:permission:services/delivery/src/application/project-metadata.ts:ba98b96f0c21:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:permission:services/delivery/src/application/project-metadata.ts:ba98b96f0c21:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -37546,8 +36260,8 @@
       "featureId": "permission:services/delivery/src/transport/routes.ts:f515fa2137b0:1",
       "source": {
         "path": "services/delivery/src/transport/routes.ts",
-        "line": 24,
-        "endLine": 24,
+        "line": 25,
+        "endLine": 25,
         "fingerprint": "f1ee31c4121e9c24c4286c8fc42ef93b00b7b9166c96b8d37f512b50b8bb8170"
       },
       "owningService": "delivery",
@@ -38394,6 +37108,265 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "permission:services/sales/src/application/service-requests.ts:13ccb6b2ec73:1",
+      "source": {
+        "path": "services/sales/src/application/service-requests.ts",
+        "line": 77,
+        "endLine": 77,
+        "fingerprint": "5f7f3a6ff291499c33435f38d61e7d1cf02178d3403d8dd6d43d75a2c275c1c3"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:permission:services/sales/src/application/service-requests.ts:13ccb6b2ec73:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:permission:services/sales/src/application/service-requests.ts:13ccb6b2ec73:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:permission:services/sales/src/application/service-requests.ts:13ccb6b2ec73:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "permission:services/sales/src/application/service-requests.ts:233df655d306:1",
+      "source": {
+        "path": "services/sales/src/application/service-requests.ts",
+        "line": 56,
+        "endLine": 56,
+        "fingerprint": "808bf4273f8390927c1b34e04b0f4e7ee5d68c5404e2d1098b6f8dfa25b3f870"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:permission:services/sales/src/application/service-requests.ts:233df655d306:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:permission:services/sales/src/application/service-requests.ts:233df655d306:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:permission:services/sales/src/application/service-requests.ts:233df655d306:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "permission:services/sales/src/application/service-requests.ts:233df655d306:2",
+      "source": {
+        "path": "services/sales/src/application/service-requests.ts",
+        "line": 74,
+        "endLine": 74,
+        "fingerprint": "808bf4273f8390927c1b34e04b0f4e7ee5d68c5404e2d1098b6f8dfa25b3f870"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:permission:services/sales/src/application/service-requests.ts:233df655d306:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:permission:services/sales/src/application/service-requests.ts:233df655d306:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:permission:services/sales/src/application/service-requests.ts:233df655d306:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "permission:services/sales/src/application/service-requests.ts:2bb97ce7f2da:1",
+      "source": {
+        "path": "services/sales/src/application/service-requests.ts",
+        "line": 91,
+        "endLine": 91,
+        "fingerprint": "44c386af0999ef65820f10109661fec4ebf4b91fa99d78012fd36f96af57e296"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:permission:services/sales/src/application/service-requests.ts:2bb97ce7f2da:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:permission:services/sales/src/application/service-requests.ts:2bb97ce7f2da:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:permission:services/sales/src/application/service-requests.ts:2bb97ce7f2da:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "permission:services/sales/src/application/service-requests.ts:2bb97ce7f2da:2",
+      "source": {
+        "path": "services/sales/src/application/service-requests.ts",
+        "line": 229,
+        "endLine": 229,
+        "fingerprint": "44c386af0999ef65820f10109661fec4ebf4b91fa99d78012fd36f96af57e296"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:permission:services/sales/src/application/service-requests.ts:2bb97ce7f2da:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:permission:services/sales/src/application/service-requests.ts:2bb97ce7f2da:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:permission:services/sales/src/application/service-requests.ts:2bb97ce7f2da:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "permission:services/sales/src/application/service-requests.ts:cb33a640ed9a:1",
+      "source": {
+        "path": "services/sales/src/application/service-requests.ts",
+        "line": 167,
+        "endLine": 167,
+        "fingerprint": "d17a9c46498ff11db59ff8d23dda553a07aa56df5db8674a13e00d6388d714f8"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:permission:services/sales/src/application/service-requests.ts:cb33a640ed9a:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:permission:services/sales/src/application/service-requests.ts:cb33a640ed9a:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:permission:services/sales/src/application/service-requests.ts:cb33a640ed9a:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "permission:services/sales/src/application/service-requests.ts:d301358f3874:1",
+      "source": {
+        "path": "services/sales/src/application/service-requests.ts",
+        "line": 59,
+        "endLine": 59,
+        "fingerprint": "71bc209478b71dad37323bc1d68f170e43848cefa1f725b72be46008b753b20d"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:permission:services/sales/src/application/service-requests.ts:d301358f3874:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:permission:services/sales/src/application/service-requests.ts:d301358f3874:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:permission:services/sales/src/application/service-requests.ts:d301358f3874:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "permission:services/sales/src/application/tasks.ts:cb33a640ed9a:1",
       "source": {
         "path": "services/sales/src/application/tasks.ts",
@@ -38730,8 +37703,8 @@
       "featureId": "permission:services/sales/src/transport/routes.ts:0ab17a2f1bc5:1",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 77,
-        "endLine": 77,
+        "line": 79,
+        "endLine": 79,
         "fingerprint": "b240be9a93ef774056f89c14aa349951068af112fcf1f8778a42ae9175fe0719"
       },
       "owningService": "sales",
@@ -38767,8 +37740,8 @@
       "featureId": "permission:services/sales/src/transport/routes.ts:0ab17a2f1bc5:2",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 95,
-        "endLine": 95,
+        "line": 97,
+        "endLine": 97,
         "fingerprint": "b240be9a93ef774056f89c14aa349951068af112fcf1f8778a42ae9175fe0719"
       },
       "owningService": "sales",
@@ -38804,8 +37777,8 @@
       "featureId": "permission:services/sales/src/transport/routes.ts:0ab17a2f1bc5:3",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 113,
-        "endLine": 113,
+        "line": 115,
+        "endLine": 115,
         "fingerprint": "b240be9a93ef774056f89c14aa349951068af112fcf1f8778a42ae9175fe0719"
       },
       "owningService": "sales",
@@ -38841,8 +37814,8 @@
       "featureId": "permission:services/sales/src/transport/routes.ts:0ab17a2f1bc5:4",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 131,
-        "endLine": 131,
+        "line": 133,
+        "endLine": 133,
         "fingerprint": "b240be9a93ef774056f89c14aa349951068af112fcf1f8778a42ae9175fe0719"
       },
       "owningService": "sales",
@@ -38878,8 +37851,8 @@
       "featureId": "permission:services/sales/src/transport/routes.ts:0ab17a2f1bc5:5",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 149,
-        "endLine": 149,
+        "line": 151,
+        "endLine": 151,
         "fingerprint": "b240be9a93ef774056f89c14aa349951068af112fcf1f8778a42ae9175fe0719"
       },
       "owningService": "sales",
@@ -38915,8 +37888,8 @@
       "featureId": "permission:services/sales/src/transport/routes.ts:13ccb6b2ec73:1",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 154,
-        "endLine": 154,
+        "line": 156,
+        "endLine": 156,
         "fingerprint": "24696de78de562ac3ee8c61cbe09efc6ef924f8603f0d9527b12ecd223acfe97"
       },
       "owningService": "sales",
@@ -38952,8 +37925,8 @@
       "featureId": "permission:services/sales/src/transport/routes.ts:83360765ba7f:1",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 304,
-        "endLine": 304,
+        "line": 306,
+        "endLine": 306,
         "fingerprint": "652f0505b2e9cbf302d5da9491f6e2205bc3aaa8b696991a9ef2f11a970cac73"
       },
       "owningService": "sales",
@@ -38989,8 +37962,8 @@
       "featureId": "permission:services/sales/src/transport/routes.ts:87cbc3d6766b:1",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 285,
-        "endLine": 285,
+        "line": 287,
+        "endLine": 287,
         "fingerprint": "10936fbc9b78b052758c435879ed0e711647797534bbedfd41d3cac0b37fa058"
       },
       "owningService": "sales",
@@ -39026,8 +37999,8 @@
       "featureId": "permission:services/sales/src/transport/routes.ts:cb33a640ed9a:1",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 44,
-        "endLine": 44,
+        "line": 46,
+        "endLine": 46,
         "fingerprint": "9d4e7e5cdd85efc56bffe1123316b34e784db342478ae3183ec46d88843364d1"
       },
       "owningService": "sales",
@@ -39063,8 +38036,8 @@
       "featureId": "permission:services/sales/src/transport/routes.ts:cb33a640ed9a:2",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 57,
-        "endLine": 57,
+        "line": 59,
+        "endLine": 59,
         "fingerprint": "9d4e7e5cdd85efc56bffe1123316b34e784db342478ae3183ec46d88843364d1"
       },
       "owningService": "sales",
@@ -39534,43 +38507,6 @@
         },
         {
           "id": "PLANNED:e2e:route:admin:demo:pipeline",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "route:admin:demo:settings",
-      "source": {
-        "path": "apps/admin-web/src/features/settings/index.ts",
-        "line": 43,
-        "endLine": 47,
-        "fingerprint": "4a3ccb013eaaf625b06efd5b3eff3150ac679beb15d8445ed341012f629520bb"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "demo",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:route:admin:demo:settings",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:route:admin:demo:settings",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:route:admin:demo:settings",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -40052,43 +38988,6 @@
         },
         {
           "id": "PLANNED:e2e:route:rep:server:billing",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "route:rep:server:catalog",
-      "source": {
-        "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 26,
-        "endLine": 26,
-        "fingerprint": "162c0554e87440342a24bfdf0115088c9e0c8316322a9c3a9cf8573e4cb9f3a2"
-      },
-      "owningService": null,
-      "targetService": "crm",
-      "mode": "server",
-      "targetSprint": "S03",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:route:rep:server:catalog",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:route:rep:server:catalog",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:route:rep:server:catalog",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -48162,43 +47061,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "search-filter:packages/service-kit/src/http.ts:257e7abd58ac:1",
-      "source": {
-        "path": "packages/service-kit/src/http.ts",
-        "line": 96,
-        "endLine": 96,
-        "fingerprint": "085a99a70fd90c42c10ddcb1a88e959070ddd8a75f83fd1af9916d5cf7add552"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "shared",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:search-filter:packages/service-kit/src/http.ts:257e7abd58ac:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:search-filter:packages/service-kit/src/http.ts:257e7abd58ac:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:search-filter:packages/service-kit/src/http.ts:257e7abd58ac:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "search-filter:packages/ui/src/primitives.ts:2906240e3683:1",
       "source": {
         "path": "packages/ui/src/primitives.ts",
@@ -48720,8 +47582,8 @@
       "featureId": "search-filter:services/crm/src/transport/routes.ts:b218eb8cd8d0:1",
       "source": {
         "path": "services/crm/src/transport/routes.ts",
-        "line": 33,
-        "endLine": 39,
+        "line": 34,
+        "endLine": 40,
         "fingerprint": "367391ba0d519bf10b974125107c152d533e9e311337585d3ebdac3c1fff8c70"
       },
       "owningService": "crm",
@@ -48757,8 +47619,8 @@
       "featureId": "search-filter:services/crm/src/transport/routes.ts:b218eb8cd8d0:2",
       "source": {
         "path": "services/crm/src/transport/routes.ts",
-        "line": 81,
-        "endLine": 81,
+        "line": 82,
+        "endLine": 82,
         "fingerprint": "772cb877f1a56705965eb2ab24e00e814e5333d7097afa08132ee8839be8ab84"
       },
       "owningService": "crm",
@@ -48794,8 +47656,8 @@
       "featureId": "search-filter:services/crm/src/transport/routes.ts:e07e155fcd80:1",
       "source": {
         "path": "services/crm/src/transport/routes.ts",
-        "line": 35,
-        "endLine": 38,
+        "line": 36,
+        "endLine": 39,
         "fingerprint": "a30670bfe15cb2246fcd97983c886d07e6f0a9ae26a15689979e8396600be166"
       },
       "owningService": "crm",
@@ -48831,8 +47693,8 @@
       "featureId": "search-filter:services/crm/src/transport/routes.ts:e07e155fcd80:2",
       "source": {
         "path": "services/crm/src/transport/routes.ts",
-        "line": 81,
-        "endLine": 81,
+        "line": 82,
+        "endLine": 82,
         "fingerprint": "215983c12f6db1552ddb99fa4f2415292e724364303159ccabb6db57581d6538"
       },
       "owningService": "crm",
@@ -48905,8 +47767,8 @@
       "featureId": "search-filter:services/delivery/src/transport/routes.ts:b218eb8cd8d0:1",
       "source": {
         "path": "services/delivery/src/transport/routes.ts",
-        "line": 22,
-        "endLine": 25,
+        "line": 23,
+        "endLine": 26,
         "fingerprint": "2f419d0d8cdb43450d80da3b9a15d642db4ea69b85abecf206bb24603b4be1cb"
       },
       "owningService": "delivery",
@@ -48942,8 +47804,8 @@
       "featureId": "search-filter:services/delivery/src/transport/routes.ts:e07e155fcd80:1",
       "source": {
         "path": "services/delivery/src/transport/routes.ts",
-        "line": 24,
-        "endLine": 24,
+        "line": 25,
+        "endLine": 25,
         "fingerprint": "d2c0e53aae51cd257b92163bbf500ff2dfd290216f91fbc773d4b10113a22d7c"
       },
       "owningService": "delivery",
@@ -49272,11 +48134,85 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "search-filter:services/sales/src/application/service-requests.ts:b218eb8cd8d0:1",
+      "source": {
+        "path": "services/sales/src/application/service-requests.ts",
+        "line": 75,
+        "endLine": 78,
+        "fingerprint": "4599e39ec916f981143cb93cc385f599db9a113c67b24b1a05814b13481a710a"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:services/sales/src/application/service-requests.ts:b218eb8cd8d0:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:services/sales/src/application/service-requests.ts:b218eb8cd8d0:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:services/sales/src/application/service-requests.ts:b218eb8cd8d0:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "search-filter:services/sales/src/application/service-requests.ts:e07e155fcd80:1",
+      "source": {
+        "path": "services/sales/src/application/service-requests.ts",
+        "line": 77,
+        "endLine": 77,
+        "fingerprint": "1f13170319bdae85c3643f90d798d3a3d3ac454a716bcda76d60277c4048bd53"
+      },
+      "owningService": "sales",
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:services/sales/src/application/service-requests.ts:e07e155fcd80:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:services/sales/src/application/service-requests.ts:e07e155fcd80:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:services/sales/src/application/service-requests.ts:e07e155fcd80:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "search-filter:services/sales/src/transport/routes.ts:b218eb8cd8d0:1",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 157,
-        "endLine": 157,
+        "line": 159,
+        "endLine": 159,
         "fingerprint": "7ac2f4db5de8da061844c8d082146f9648becb566c6dbb39cd7768c46049a68e"
       },
       "owningService": "sales",
@@ -49312,8 +48248,8 @@
       "featureId": "search-filter:services/sales/src/transport/routes.ts:b218eb8cd8d0:2",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 281,
-        "endLine": 287,
+        "line": 283,
+        "endLine": 289,
         "fingerprint": "00a3925222a8ca561390c2ea8821a24a008360f41ab8402d3c649b3f5eb95a32"
       },
       "owningService": "sales",
@@ -49349,8 +48285,8 @@
       "featureId": "search-filter:services/sales/src/transport/routes.ts:e07e155fcd80:1",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 157,
-        "endLine": 157,
+        "line": 159,
+        "endLine": 159,
         "fingerprint": "f82e19f5a6710baf43c8da1cb1d24d33837b3565b09fc2d36a38d5781fe9a527"
       },
       "owningService": "sales",
@@ -49386,8 +48322,8 @@
       "featureId": "search-filter:services/sales/src/transport/routes.ts:e07e155fcd80:2",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
-        "line": 283,
-        "endLine": 286,
+        "line": 285,
+        "endLine": 288,
         "fingerprint": "d1a123f0d279c27ac99601bfb86c3fc5fbea46bb3b6fdea252cec19355f257d0"
       },
       "owningService": "sales",

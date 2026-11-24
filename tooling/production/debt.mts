@@ -30,27 +30,23 @@ export function measureDebt(ws: Workspace): Debt {
         fingerprint,
       });
     };
-    const scanner = ts.createScanner(
-      ts.ScriptTarget.Latest,
-      false,
-      ts.LanguageVariant.Standard,
-      source.text,
-    );
-    for (
-      let token = scanner.scan();
-      token !== ts.SyntaxKind.EndOfFileToken;
-      token = scanner.scan()
-    ) {
-      if (
-        token !== ts.SyntaxKind.SingleLineCommentTrivia &&
-        token !== ts.SyntaxKind.MultiLineCommentTrivia
-      )
-        continue;
-      const comment = scanner.getTokenText();
+    // Parser-derived trivia avoids treating template/regex fixture text as comments.
+    // Reconciled from PR #7; retain the existing per-comment fingerprints and ceilings.
+    const comments = new Map<number, ts.CommentRange>();
+    visit(source.ast, (node) => {
+      if (ts.isJsxText(node) || ts.isTemplateMiddle(node) || ts.isTemplateTail(node)) return;
+      for (const range of [
+        ...(ts.getLeadingCommentRanges(source.text, node.getFullStart()) ?? []),
+        ...(ts.getTrailingCommentRanges(source.text, node.end) ?? []),
+      ])
+        comments.set(range.pos, range);
+    });
+    for (const range of [...comments.values()].sort((a, b) => a.pos - b.pos)) {
+      const comment = source.text.slice(range.pos, range.end);
       for (const match of comment.matchAll(
         /@ts-(nocheck|ignore|expect-error)|eslint-disable(?:-next-line|-line)?/g,
       ))
-        add(match[0], scanner.getTokenPos(), comment);
+        add(match[0], range.pos, comment);
     }
     visit(source.ast, (node) => {
       if (node.kind === ts.SyntaxKind.AnyKeyword)

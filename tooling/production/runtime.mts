@@ -114,7 +114,7 @@ export async function runtimeRegistrations(ws: Workspace): Promise<RuntimeRegist
     output.push(...validate(await run(`demo-${folder}`, code)));
   }
   const fake = `const fake=new Proxy(function(){throw new Error('Inventory must not call an API')},{get(){return fake;}});`;
-  const live = `import {sectionsForRole} from './packages/api-client/src/live-workspace.ts';${fake}console.log(JSON.stringify(['admin','client'].flatMap(owner=>sectionsForRole(owner,fake).map(x=>({owner,mode:'server',kind:'route',key:x.id})))));`;
+  const live = `import {sectionsForRole} from './packages/api-client/src/live-workspace.ts';import {adminRouteTargets} from './apps/admin-web/src/server/workspace.ts';${fake}console.log(JSON.stringify([...sectionsForRole('client',fake).map(x=>({owner:'client',mode:'server',kind:'route',key:x.id})),...Object.keys(adminRouteTargets).map(key=>({owner:'admin',mode:'server',kind:'route',key}))]));`;
   output.push(...validate(await run('live-sections', live)));
   const fastifyUrl = pathToFileURL(
     createRequire(resolve(ws.root, 'package.json')).resolve('fastify'),
@@ -127,7 +127,7 @@ export async function runtimeRegistrations(ws: Workspace): Promise<RuntimeRegist
         namespace: 'inventory',
       }));
       builder.onLoad({ filter: /.*/, namespace: 'inventory' }, () => ({
-        contents: `import original from ${JSON.stringify(fastifyUrl)};export default function(options){const owner=globalThis.__inventoryOwner;const app=original(options);app.addHook('onRoute',r=>{for(const method of Array.isArray(r.method)?r.method:[r.method])globalThis.__inventoryRoutes.push({owner,mode:'backend',kind:'api-route',key:method+' '+r.url,method,path:r.url,automatic:method==='HEAD'});});return app;}`,
+        contents: `import original, {LogController} from ${JSON.stringify(fastifyUrl)};export {LogController};export default function(options){const owner=globalThis.__inventoryOwner;const app=original(options);app.addHook('onRoute',r=>{for(const method of Array.isArray(r.method)?r.method:[r.method])globalThis.__inventoryRoutes.push({owner,mode:'backend',kind:'api-route',key:method+' '+r.url,method,path:r.url,automatic:method==='HEAD'});});return app;}`,
         resolveDir: ws.root,
       }));
       // File URLs preserve Windows drive letters/backslashes without bundling CommonJS internals.

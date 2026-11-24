@@ -39,7 +39,13 @@ for (const app of apps) {
     metafile: true,
   });
   const css = systemFontCss(
-    commonCss + '\n' + (await read(`apps/${app.folder}/src/styles.css`)) + '\n' + arabicCss,
+    commonCss +
+      '\n' +
+      (await read(`apps/${app.folder}/src/styles.css`)) +
+      '\n' +
+      (app.folder === 'admin-web' ? await read('apps/admin-web/src/server/styles.css') : '') +
+      '\n' +
+      arabicCss,
   );
   await writeFile(resolve(output, 'assets/app.css'), css);
   const html = await read(`apps/${app.folder}/index.html`);
@@ -73,6 +79,7 @@ for (const app of apps) {
       `apps/${app.folder}/config.example.ts`,
       `apps/${app.folder}/src/styles.css`,
       arabicCssPath,
+      ...(app.folder === 'admin-web' ? ['apps/admin-web/src/server/styles.css'] : []),
       ...['styles', 'polish', 'tracking'].map((name) => `packages/design-system/src/${name}.css`),
     ]),
   );
