@@ -1,3 +1,4 @@
+import { tenantSecurityMigration } from '@elvorance/service-kit';
 import { addOwnedTablesMigration, storageMigration } from '@elvorance/service-kit';
 const initialTables = ['notifications', 'tickets'] as const;
 const messageTables = ['conversations', 'conversation_messages', 'conversation_reads'] as const;
@@ -14,4 +15,5 @@ export const migrations = [
   CREATE UNIQUE INDEX read_receipt_per_subject ON conversation_reads (tenant_id, (data->>'conversationId'), (data->>'subject'));
 `,
   ),
+  tenantSecurityMigration(3),
 ];

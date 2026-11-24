@@ -1,4 +1,4 @@
-import { createMobilePlatform } from '@elvorance/mobile-platform';
+import { createMobilePlatform, locationPermissionMode } from '@elvorance/mobile-platform';
 import type { ViewContext } from '../context.ts';
 import { idPath, type RecordValue } from '../api.ts';
 import { card, dateText, detail, el, heading, rows, statusText, words } from '../ui/dom.ts';
@@ -92,8 +92,8 @@ export async function visits(context: ViewContext): Promise<void> {
                     type: 'select',
                     required: true,
                     options: [
-                      { value: 'gps', label: 'قراءة موقع الجهاز الآن' },
-                      { value: 'manual', label: 'تسجيل سبب تعذّر الموقع' },
+                      { value: 'manual', label: 'تسجيل الوصول دون مشاركة الموقع' },
+                      { value: 'gps', label: 'أوافق على إرسال قراءة موقع واحدة لإثبات الوصول' },
                     ],
                   },
                   {
@@ -110,10 +110,17 @@ export async function visits(context: ViewContext): Promise<void> {
                     return { proof: { kind: 'manual', reason: values.reason } };
                   }
                   const platform = createMobilePlatform();
+                  if (context.signal.aborted)
+                    throw new DOMException('Request aborted', 'AbortError');
                   const permission = await platform.requestLocationPermission();
-                  if (permission.location === 'denied')
+                  if (context.signal.aborted)
+                    throw new DOMException('Request aborted', 'AbortError');
+                  const mode = locationPermissionMode(permission, platform.native);
+                  if (mode === 'denied')
                     throw new Error('صلاحية الموقع مرفوضة؛ اختر سببًا يدويًا أو عدّل الصلاحية.');
-                  const position = await platform.currentLocation();
+                  const position = await platform.currentLocation(mode !== 'approximate');
+                  if (context.signal.aborted)
+                    throw new DOMException('Request aborted', 'AbortError');
                   return {
                     proof: {
                       kind: 'gps',

@@ -1,5 +1,6 @@
 import { createServer } from 'node:http';
-import { readFile, stat } from 'node:fs/promises';
+import { open } from 'node:fs/promises';
+import { constants } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
 import { root, apps } from './workspace.mts';
 
@@ -30,8 +31,20 @@ const server = createServer(async (req, res) => {
       res.end();
       return;
     }
-    if ((await stat(file)).isDirectory()) file = resolve(file, 'index.html');
-    const data = await readFile(file);
+    const flags = constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0) | (constants.O_NONBLOCK ?? 0);
+    let handle = await open(file, flags);
+    let data: Buffer;
+    try {
+      if ((await handle.stat()).isDirectory()) {
+        await handle.close();
+        file = resolve(file, 'index.html');
+        handle = await open(file, flags);
+      }
+      if (!(await handle.stat()).isFile()) throw new Error('A regular asset is required.');
+      data = await handle.readFile();
+    } finally {
+      await handle.close();
+    }
     res.writeHead(200, {
       'Content-Type': mime[extname(file)] || 'application/octet-stream',
       'Cache-Control': 'no-store',

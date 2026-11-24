@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "2cd05b16916624c7aae0221d737638d7f35340e2b8167059c9c95afb7766f19f",
+  "sourceDigest": "0fcd41b1ae15b1d92d723d757ee6482e740f2d27f5bcc5be78c7de2473e36cdf",
   "accountability": "Proposed roles only; named service/on-call owners are UNASSIGNED. CODEOWNERS routes review to the repository owner, not proof of independent approval.",
   "services": [
     {
@@ -137,6 +137,7 @@
         "api-route:crm:backend:HEAD /v1/customers/:id/discovery",
         "api-route:crm:backend:HEAD /v1/regions",
         "api-route:crm:backend:PATCH /v1/customers/:id",
+        "api-route:crm:backend:PATCH /v1/regions/:id",
         "api-route:crm:backend:POST /v1/customers",
         "api-route:crm:backend:POST /v1/regions",
         "api-route:crm:backend:PUT /v1/configuration",
@@ -158,6 +159,8 @@
         "api-route:delivery:backend:HEAD /ready",
         "api-route:delivery:backend:HEAD /v1/projects",
         "api-route:delivery:backend:HEAD /v1/projects/:id",
+        "api-route:delivery:backend:PATCH /v1/projects/:id",
+        "api-route:delivery:backend:PATCH /v1/projects/:id/milestones/:milestoneId",
         "api-route:delivery:backend:POST /v1/projects/:id/complete",
         "api-route:delivery:backend:POST /v1/projects/:id/deliverables",
         "api-route:delivery:backend:POST /v1/projects/:id/deliverables/:deliverableId/review",
@@ -207,6 +210,8 @@
         "api-route:sales:backend:GET /v1/quotes/:id",
         "api-route:sales:backend:GET /v1/routes",
         "api-route:sales:backend:GET /v1/routes/:id",
+        "api-route:sales:backend:GET /v1/service-requests",
+        "api-route:sales:backend:GET /v1/service-requests/:id",
         "api-route:sales:backend:GET /v1/tasks",
         "api-route:sales:backend:GET /v1/tasks/:id",
         "api-route:sales:backend:GET /v1/visits",
@@ -223,6 +228,8 @@
         "api-route:sales:backend:HEAD /v1/quotes/:id",
         "api-route:sales:backend:HEAD /v1/routes",
         "api-route:sales:backend:HEAD /v1/routes/:id",
+        "api-route:sales:backend:HEAD /v1/service-requests",
+        "api-route:sales:backend:HEAD /v1/service-requests/:id",
         "api-route:sales:backend:HEAD /v1/tasks",
         "api-route:sales:backend:HEAD /v1/tasks/:id",
         "api-route:sales:backend:HEAD /v1/visits",
@@ -243,6 +250,9 @@
         "api-route:sales:backend:POST /v1/quotes/:id/revise",
         "api-route:sales:backend:POST /v1/quotes/:id/send",
         "api-route:sales:backend:POST /v1/routes",
+        "api-route:sales:backend:POST /v1/service-requests",
+        "api-route:sales:backend:POST /v1/service-requests/:id/cancel",
+        "api-route:sales:backend:POST /v1/service-requests/:id/review",
         "api-route:sales:backend:POST /v1/tasks",
         "api-route:sales:backend:POST /v1/visits",
         "api-route:sales:backend:POST /v1/visits/:id/cancel",
@@ -282,7 +292,8 @@
         "@elvorance/ui": "2.0.0",
         "@elvorance/api-client": "2.0.0",
         "@elvorance/design-system": "2.0.0",
-        "@elvorance/questionnaire": "2.4.0"
+        "@elvorance/questionnaire": "2.4.0",
+        "@elvorance/contracts": "2.0.0"
       }
     },
     {
@@ -389,9 +400,10 @@
       "path": "packages/service-kit/package.json",
       "dependencies": {
         "@elvorance/contracts": "2.0.0",
+        "@fastify/rate-limit": "11.3.0",
         "fastify": "5.12.8",
-        "pg": "8.23.1",
-        "jose": "6.2.17"
+        "jose": "6.2.17",
+        "pg": "8.23.1"
       }
     },
     {
@@ -405,6 +417,7 @@
       "dependencies": {
         "@elvorance/contracts": "2.0.0",
         "@elvorance/service-kit": "2.0.0",
+        "@fastify/rate-limit": "11.3.0",
         "fastify": "5.12.8"
       }
     },
@@ -504,6 +517,9 @@
       "source": "apps/admin-web/src/features/configuration/index.ts",
       "specifier": "@elvorance/questionnaire"
     },
+    { "source": "apps/admin-web/src/main.ts", "specifier": "@elvorance/ui/enterprise-ux" },
+    { "source": "apps/admin-web/src/main.ts", "specifier": "./navigation.ts" },
+    { "source": "apps/admin-web/src/main.ts", "specifier": "./server/workspace.ts" },
     { "source": "apps/admin-web/src/main.ts", "specifier": "@elvorance/questionnaire/sync" },
     { "source": "apps/admin-web/src/main.ts", "specifier": "@elvorance/app-runtime" },
     {
@@ -512,6 +528,32 @@
     },
     { "source": "apps/admin-web/src/main.ts", "specifier": "@elvorance/app-runtime/tracking" },
     { "source": "apps/admin-web/src/main.ts", "specifier": "./app.ts" },
+    { "source": "apps/admin-web/src/navigation.ts", "specifier": "@elvorance/ui/enterprise-ux" },
+    {
+      "source": "apps/admin-web/src/server-main.ts",
+      "specifier": "@elvorance/api-client/authenticated-workspace"
+    },
+    { "source": "apps/admin-web/src/server-main.ts", "specifier": "./server/workspace.ts" },
+    { "source": "apps/admin-web/src/server/api.ts", "specifier": "@elvorance/api-client" },
+    { "source": "apps/admin-web/src/server/api.ts", "specifier": "@elvorance/contracts" },
+    { "source": "apps/admin-web/src/server/forms.ts", "specifier": "./api.ts" },
+    { "source": "apps/admin-web/src/server/operations.ts", "specifier": "./api.ts" },
+    { "source": "apps/admin-web/src/server/operations.ts", "specifier": "./forms.ts" },
+    { "source": "apps/admin-web/src/server/quote-editor.ts", "specifier": "@elvorance/contracts" },
+    { "source": "apps/admin-web/src/server/quote-editor.ts", "specifier": "./api.ts" },
+    { "source": "apps/admin-web/src/server/quote-editor.ts", "specifier": "./operations.ts" },
+    { "source": "apps/admin-web/src/server/reports.ts", "specifier": "./api.ts" },
+    { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "@elvorance/api-client" },
+    {
+      "source": "apps/admin-web/src/server/workspace.ts",
+      "specifier": "@elvorance/api-client/live-workspace"
+    },
+    { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "@elvorance/contracts" },
+    { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "./api.ts" },
+    { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "./forms.ts" },
+    { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "./operations.ts" },
+    { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "./reports.ts" },
+    { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "./quote-editor.ts" },
     { "source": "apps/client-mobile/src/app.ts", "specifier": "./context.ts" },
     { "source": "apps/client-mobile/src/app.ts", "specifier": "./state/local-demo.ts" },
     { "source": "apps/client-mobile/src/app.ts", "specifier": "./lifecycle.ts" },
@@ -534,6 +576,8 @@
       "source": "apps/client-mobile/src/features/discovery/index.ts",
       "specifier": "@elvorance/questionnaire"
     },
+    { "source": "apps/client-mobile/src/main.ts", "specifier": "@elvorance/ui/enterprise-ux" },
+    { "source": "apps/client-mobile/src/main.ts", "specifier": "./navigation.ts" },
     { "source": "apps/client-mobile/src/main.ts", "specifier": "@elvorance/questionnaire/sync" },
     { "source": "apps/client-mobile/src/main.ts", "specifier": "@elvorance/mobile-platform" },
     { "source": "apps/client-mobile/src/main.ts", "specifier": "@elvorance/app-runtime" },
@@ -543,6 +587,10 @@
     },
     { "source": "apps/client-mobile/src/main.ts", "specifier": "@elvorance/app-runtime/tracking" },
     { "source": "apps/client-mobile/src/main.ts", "specifier": "./app.ts" },
+    {
+      "source": "apps/client-mobile/src/navigation.ts",
+      "specifier": "@elvorance/ui/enterprise-ux"
+    },
     { "source": "apps/rep-mobile/src/app.ts", "specifier": "./context.ts" },
     { "source": "apps/rep-mobile/src/app.ts", "specifier": "./state/local-demo.ts" },
     { "source": "apps/rep-mobile/src/app.ts", "specifier": "./lifecycle.ts" },
@@ -570,6 +618,8 @@
       "source": "apps/rep-mobile/src/features/quotes/index.ts",
       "specifier": "@elvorance/app-runtime/finance"
     },
+    { "source": "apps/rep-mobile/src/main.ts", "specifier": "@elvorance/ui/enterprise-ux" },
+    { "source": "apps/rep-mobile/src/main.ts", "specifier": "./navigation.ts" },
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "@elvorance/questionnaire/sync" },
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "@elvorance/mobile-platform" },
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "@elvorance/app-runtime" },
@@ -580,6 +630,8 @@
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "./server/bootstrap.ts" },
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "@elvorance/app-runtime/tracking" },
     { "source": "apps/rep-mobile/src/main.ts", "specifier": "./app.ts" },
+    { "source": "apps/rep-mobile/src/navigation.ts", "specifier": "@elvorance/ui/enterprise-ux" },
+    { "source": "apps/rep-mobile/src/server-main.ts", "specifier": "@elvorance/ui/enterprise-ux" },
     { "source": "apps/rep-mobile/src/server-main.ts", "specifier": "./server/bootstrap.ts" },
     { "source": "apps/rep-mobile/src/server/api.ts", "specifier": "@elvorance/api-client" },
     { "source": "apps/rep-mobile/src/server/api.ts", "specifier": "@elvorance/contracts" },
@@ -596,8 +648,16 @@
     },
     { "source": "apps/rep-mobile/src/server/tracking.ts", "specifier": "./api.ts" },
     { "source": "apps/rep-mobile/src/server/tracking.ts", "specifier": "./api.ts" },
+    {
+      "source": "apps/rep-mobile/src/server/ui/dom.ts",
+      "specifier": "@elvorance/ui/enterprise-ux"
+    },
     { "source": "apps/rep-mobile/src/server/ui/dom.ts", "specifier": "@elvorance/api-client" },
     { "source": "apps/rep-mobile/src/server/ui/dom.ts", "specifier": "../api.ts" },
+    {
+      "source": "apps/rep-mobile/src/server/ui/forms.ts",
+      "specifier": "@elvorance/ui/enterprise-ux"
+    },
     { "source": "apps/rep-mobile/src/server/ui/forms.ts", "specifier": "./dom.ts" },
     { "source": "apps/rep-mobile/src/server/ui/repeating-fields.ts", "specifier": "./forms.ts" },
     { "source": "apps/rep-mobile/src/server/ui/repeating-fields.ts", "specifier": "./dom.ts" },
@@ -661,6 +721,13 @@
     { "source": "apps/rep-mobile/src/server/views/records.ts", "specifier": "../api.ts" },
     { "source": "apps/rep-mobile/src/server/views/records.ts", "specifier": "../ui/dom.ts" },
     { "source": "apps/rep-mobile/src/server/views/records.ts", "specifier": "./quote-editor.ts" },
+    { "source": "apps/rep-mobile/src/server/views/schedule-model.ts", "specifier": "../api.ts" },
+    { "source": "apps/rep-mobile/src/server/views/schedule.ts", "specifier": "../context.ts" },
+    { "source": "apps/rep-mobile/src/server/views/schedule.ts", "specifier": "../ui/dom.ts" },
+    {
+      "source": "apps/rep-mobile/src/server/views/schedule.ts",
+      "specifier": "./schedule-model.ts"
+    },
     { "source": "apps/rep-mobile/src/server/views/support.ts", "specifier": "../context.ts" },
     { "source": "apps/rep-mobile/src/server/views/support.ts", "specifier": "../ui/dom.ts" },
     { "source": "apps/rep-mobile/src/server/views/support.ts", "specifier": "../ui/forms.ts" },
@@ -676,6 +743,10 @@
     { "source": "apps/rep-mobile/src/server/views/visits.ts", "specifier": "./common.ts" },
     {
       "source": "apps/rep-mobile/src/server/workspace.ts",
+      "specifier": "@elvorance/ui/enterprise-ux"
+    },
+    {
+      "source": "apps/rep-mobile/src/server/workspace.ts",
       "specifier": "@elvorance/mobile-platform"
     },
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "@elvorance/mobile-auth" },
@@ -684,6 +755,7 @@
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./ui/dom.ts" },
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./tracking.ts" },
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./views/home.ts" },
+    { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./views/schedule.ts" },
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./views/customers.ts" },
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./views/visits.ts" },
     { "source": "apps/rep-mobile/src/server/workspace.ts", "specifier": "./views/planning.ts" },
@@ -723,10 +795,12 @@
     { "source": "infra/environments/render.mts", "specifier": "./secrets.mts" },
     { "source": "infra/environments/secrets.mts", "specifier": "node:crypto" },
     { "source": "infra/environments/secrets.mts", "specifier": "node:fs/promises" },
+    { "source": "infra/environments/secrets.mts", "specifier": "node:fs" },
     { "source": "infra/environments/secrets.mts", "specifier": "node:path" },
     { "source": "infra/environments/secrets.mts", "specifier": "./topology.mts" },
     { "source": "infra/environments/secrets.mts", "specifier": "./private-path.mts" },
     { "source": "infra/identity/admin-client.mts", "specifier": "node:fs/promises" },
+    { "source": "infra/identity/admin-client.mts", "specifier": "node:fs" },
     { "source": "infra/identity/admin-client.mts", "specifier": "./types.mts" },
     { "source": "infra/identity/assign-scopes.mts", "specifier": "./admin-client.mts" },
     { "source": "infra/identity/assign-scopes.mts", "specifier": "./types.mts" },
@@ -855,10 +929,24 @@
     { "source": "packages/mobile-auth/test/fixtures.ts", "specifier": "node:assert/strict" },
     { "source": "packages/mobile-auth/test/fixtures.ts", "specifier": "../src/session.ts" },
     { "source": "packages/mobile-auth/test/fixtures.ts", "specifier": "../src/types.ts" },
+    { "source": "packages/mobile-auth/test/platform-storage.test.ts", "specifier": "node:test" },
+    {
+      "source": "packages/mobile-auth/test/platform-storage.test.ts",
+      "specifier": "node:assert/strict"
+    },
+    {
+      "source": "packages/mobile-auth/test/platform-storage.test.ts",
+      "specifier": "../src/platform.ts"
+    },
+    {
+      "source": "packages/mobile-auth/test/platform-storage.test.ts",
+      "specifier": "../src/configuration.ts"
+    },
     { "source": "packages/mobile-platform/src/index.ts", "specifier": "@capacitor/core" },
     { "source": "packages/mobile-platform/src/index.ts", "specifier": "@capacitor/app" },
     { "source": "packages/mobile-platform/src/index.ts", "specifier": "@capacitor/geolocation" },
     { "source": "packages/mobile-platform/src/index.ts", "specifier": "@capacitor/network" },
+    { "source": "packages/mobile-platform/src/index.ts", "specifier": "./location-permission.ts" },
     { "source": "packages/questionnaire/src/answers.ts", "specifier": "./configuration.ts" },
     { "source": "packages/questionnaire/src/answers.ts", "specifier": "./types.ts" },
     { "source": "packages/questionnaire/src/answers.ts", "specifier": "./validation-values.ts" },
@@ -917,12 +1005,15 @@
     },
     { "source": "packages/service-kit/src/customer-directory.ts", "specifier": "./errors.ts" },
     { "source": "packages/service-kit/src/customer-directory.ts", "specifier": "./validation.ts" },
+    { "source": "packages/service-kit/src/http.ts", "specifier": "@fastify/rate-limit" },
     { "source": "packages/service-kit/src/http.ts", "specifier": "fastify" },
     { "source": "packages/service-kit/src/http.ts", "specifier": "@elvorance/contracts" },
     { "source": "packages/service-kit/src/http.ts", "specifier": "./auth.ts" },
     { "source": "packages/service-kit/src/http.ts", "specifier": "./errors.ts" },
     { "source": "packages/service-kit/src/http.ts", "specifier": "./repository.ts" },
     { "source": "packages/service-kit/src/http.ts", "specifier": "./validation.ts" },
+    { "source": "packages/service-kit/src/http.ts", "specifier": "./route-policy.ts" },
+    { "source": "packages/service-kit/src/http.ts", "specifier": "./security-audit.ts" },
     { "source": "packages/service-kit/src/index.ts", "specifier": "./errors.ts" },
     { "source": "packages/service-kit/src/index.ts", "specifier": "./validation.ts" },
     { "source": "packages/service-kit/src/index.ts", "specifier": "./repository.ts" },
@@ -933,6 +1024,13 @@
     { "source": "packages/service-kit/src/index.ts", "specifier": "./http.ts" },
     { "source": "packages/service-kit/src/index.ts", "specifier": "./customer-directory.ts" },
     { "source": "packages/service-kit/src/index.ts", "specifier": "./pagination.ts" },
+    { "source": "packages/service-kit/src/index.ts", "specifier": "./route-policy.ts" },
+    { "source": "packages/service-kit/src/index.ts", "specifier": "./security-audit.ts" },
+    { "source": "packages/service-kit/src/index.ts", "specifier": "./request-limits.ts" },
+    {
+      "source": "packages/service-kit/src/index.ts",
+      "specifier": "./tenant-security-migration.ts"
+    },
     {
       "source": "packages/service-kit/src/memory-repository.ts",
       "specifier": "@elvorance/contracts"
@@ -954,6 +1052,18 @@
     { "source": "packages/service-kit/src/repository.ts", "specifier": "node:crypto" },
     { "source": "packages/service-kit/src/repository.ts", "specifier": "@elvorance/contracts" },
     { "source": "packages/service-kit/src/repository.ts", "specifier": "./pagination.ts" },
+    { "source": "packages/service-kit/src/request-limits.ts", "specifier": "./errors.ts" },
+    {
+      "source": "packages/service-kit/src/route-policy.ts",
+      "specifier": "@elvorance/contracts/routes"
+    },
+    { "source": "packages/service-kit/src/route-policy.ts", "specifier": "@elvorance/contracts" },
+    { "source": "packages/service-kit/src/route-policy.ts", "specifier": "./errors.ts" },
+    { "source": "packages/service-kit/src/security-audit.ts", "specifier": "fastify" },
+    {
+      "source": "packages/service-kit/src/tenant-security-migration.ts",
+      "specifier": "./migrations.ts"
+    },
     { "source": "packages/service-kit/src/validation.ts", "specifier": "./errors.ts" },
     { "source": "packages/ui/src/index.ts", "specifier": "./primitives.ts" },
     { "source": "packages/ui/src/index.ts", "specifier": "./buttons.ts" },
@@ -964,7 +1074,12 @@
     { "source": "packages/ui/src/index.ts", "specifier": "./forms.ts" },
     { "source": "packages/ui/src/index.ts", "specifier": "./page-heads.ts" },
     { "source": "packages/ui/src/primitives.ts", "specifier": "@elvorance/design-system/icons" },
+    { "source": "packages/ui/test/enterprise-ux.test.ts", "specifier": "node:test" },
+    { "source": "packages/ui/test/enterprise-ux.test.ts", "specifier": "node:assert/strict" },
+    { "source": "packages/ui/test/enterprise-ux.test.ts", "specifier": "node:module" },
+    { "source": "packages/ui/test/enterprise-ux.test.ts", "specifier": "../src/enterprise-ux.ts" },
     { "source": "prototype/app.ts", "specifier": "../packages/questionnaire/src/index.ts" },
+    { "source": "services/api-gateway/src/app.ts", "specifier": "@fastify/rate-limit" },
     { "source": "services/api-gateway/src/app.ts", "specifier": "fastify" },
     { "source": "services/api-gateway/src/app.ts", "specifier": "@elvorance/service-kit" },
     { "source": "services/api-gateway/src/app.ts", "specifier": "./transport/routes.ts" },
@@ -1021,6 +1136,10 @@
     },
     { "source": "services/billing/src/application/payments.ts", "specifier": "../domain/model.ts" },
     { "source": "services/billing/src/domain/model.ts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "services/billing/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
+    },
     {
       "source": "services/billing/src/infrastructure/migrations/001_initial.ts",
       "specifier": "@elvorance/service-kit"
@@ -1088,6 +1207,10 @@
     {
       "source": "services/communications/src/domain/model.ts",
       "specifier": "@elvorance/contracts"
+    },
+    {
+      "source": "services/communications/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
     },
     {
       "source": "services/communications/src/infrastructure/migrations/001_initial.ts",
@@ -1177,12 +1300,19 @@
     { "source": "services/crm/src/application/events.ts", "specifier": "@elvorance/service-kit" },
     { "source": "services/crm/src/application/events.ts", "specifier": "../domain/model.ts" },
     { "source": "services/crm/src/application/events.ts", "specifier": "./customers.ts" },
+    { "source": "services/crm/src/application/regions.ts", "specifier": "@elvorance/contracts" },
+    { "source": "services/crm/src/application/regions.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "services/crm/src/application/regions.ts", "specifier": "../domain/model.ts" },
     {
       "source": "services/crm/src/domain/customer-details.ts",
       "specifier": "@elvorance/service-kit"
     },
     { "source": "services/crm/src/domain/model.ts", "specifier": "@elvorance/contracts" },
     { "source": "services/crm/src/domain/model.ts", "specifier": "./customer-details.ts" },
+    {
+      "source": "services/crm/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
+    },
     {
       "source": "services/crm/src/infrastructure/migrations/001_initial.ts",
       "specifier": "@elvorance/service-kit"
@@ -1219,6 +1349,7 @@
       "source": "services/crm/src/transport/routes.ts",
       "specifier": "../application/customers.ts"
     },
+    { "source": "services/crm/src/transport/routes.ts", "specifier": "../application/regions.ts" },
     { "source": "services/crm/src/transport/routes.ts", "specifier": "../domain/model.ts" },
     {
       "source": "services/crm/src/transport/routes.ts",
@@ -1238,6 +1369,22 @@
     },
     { "source": "services/delivery/src/application/events.ts", "specifier": "../domain/model.ts" },
     {
+      "source": "services/delivery/src/application/project-metadata.ts",
+      "specifier": "@elvorance/contracts"
+    },
+    {
+      "source": "services/delivery/src/application/project-metadata.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "services/delivery/src/application/project-metadata.ts",
+      "specifier": "../domain/model.ts"
+    },
+    {
+      "source": "services/delivery/src/application/project-metadata.ts",
+      "specifier": "./projects.ts"
+    },
+    {
       "source": "services/delivery/src/application/projects.ts",
       "specifier": "@elvorance/contracts"
     },
@@ -1250,6 +1397,10 @@
       "specifier": "../domain/model.ts"
     },
     { "source": "services/delivery/src/domain/model.ts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "services/delivery/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
+    },
     {
       "source": "services/delivery/src/infrastructure/migrations/001_initial.ts",
       "specifier": "@elvorance/service-kit"
@@ -1271,6 +1422,10 @@
     {
       "source": "services/delivery/src/transport/routes.ts",
       "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "services/delivery/src/transport/routes.ts",
+      "specifier": "../application/project-metadata.ts"
     },
     { "source": "services/delivery/src/transport/routes.ts", "specifier": "../domain/model.ts" },
     {
@@ -1304,6 +1459,10 @@
       "specifier": "@elvorance/service-kit"
     },
     { "source": "services/identity/src/domain/model.ts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "services/identity/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
+    },
     {
       "source": "services/identity/src/infrastructure/migrations/001_initial.ts",
       "specifier": "@elvorance/service-kit"
@@ -1391,6 +1550,23 @@
     { "source": "services/sales/src/application/routes.ts", "specifier": "@elvorance/service-kit" },
     { "source": "services/sales/src/application/routes.ts", "specifier": "../domain/model.ts" },
     { "source": "services/sales/src/application/routes.ts", "specifier": "./assignment.ts" },
+    {
+      "source": "services/sales/src/application/service-requests.ts",
+      "specifier": "@elvorance/contracts"
+    },
+    {
+      "source": "services/sales/src/application/service-requests.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    { "source": "services/sales/src/application/service-requests.ts", "specifier": "./ports.ts" },
+    {
+      "source": "services/sales/src/application/service-requests.ts",
+      "specifier": "./assignment.ts"
+    },
+    {
+      "source": "services/sales/src/application/service-requests.ts",
+      "specifier": "./opportunities.ts"
+    },
     { "source": "services/sales/src/application/tasks.ts", "specifier": "@elvorance/contracts" },
     { "source": "services/sales/src/application/tasks.ts", "specifier": "@elvorance/service-kit" },
     { "source": "services/sales/src/application/tasks.ts", "specifier": "./assignment.ts" },
@@ -1420,6 +1596,10 @@
     { "source": "services/sales/src/domain/quote.ts", "specifier": "@elvorance/service-kit" },
     {
       "source": "services/sales/src/infrastructure/crm-client.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "services/sales/src/infrastructure/migrations/001_initial.ts",
       "specifier": "@elvorance/service-kit"
     },
     {
@@ -1492,6 +1672,10 @@
     { "source": "services/sales/src/transport/routes.ts", "specifier": "../application/ports.ts" },
     { "source": "services/sales/src/transport/routes.ts", "specifier": "../application/visits.ts" },
     { "source": "services/sales/src/transport/routes.ts", "specifier": "../application/quotes.ts" },
+    {
+      "source": "services/sales/src/transport/routes.ts",
+      "specifier": "./service-request-routes.ts"
+    },
     { "source": "services/sales/src/transport/routes.ts", "specifier": "./rep-work-routes.ts" },
     { "source": "services/sales/src/transport/routes.ts", "specifier": "./discount-routes.ts" },
     {
@@ -1501,6 +1685,19 @@
     {
       "source": "services/sales/src/transport/routes.ts",
       "specifier": "../application/assignment.ts"
+    },
+    { "source": "services/sales/src/transport/service-request-routes.ts", "specifier": "fastify" },
+    {
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "specifier": "../application/ports.ts"
+    },
+    {
+      "source": "services/sales/src/transport/service-request-routes.ts",
+      "specifier": "../application/service-requests.ts"
     },
     { "source": "services/tracking/src/app.ts", "specifier": "@elvorance/service-kit" },
     { "source": "services/tracking/src/app.ts", "specifier": "./transport/routes.ts" },
@@ -1517,6 +1714,10 @@
       "specifier": "../domain/model.ts"
     },
     { "source": "services/tracking/src/domain/model.ts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "services/tracking/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
+    },
     {
       "source": "services/tracking/src/infrastructure/migrations/001_initial.ts",
       "specifier": "@elvorance/service-kit"
@@ -1593,6 +1794,145 @@
       "source": "tests/acceptance/postgres-recovery.mts",
       "specifier": "../../services/communications/src/infrastructure/migrations/001_initial.ts"
     },
+    { "source": "tests/admin/admin.test.ts", "specifier": "node:test" },
+    { "source": "tests/admin/admin.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/admin/admin.test.ts", "specifier": "node:module" },
+    {
+      "source": "tests/admin/admin.test.ts",
+      "specifier": "../../apps/admin-web/src/server/api.ts"
+    },
+    {
+      "source": "tests/admin/admin.test.ts",
+      "specifier": "../../apps/admin-web/src/server/forms.ts"
+    },
+    {
+      "source": "tests/admin/admin.test.ts",
+      "specifier": "../../apps/admin-web/src/server/reports.ts"
+    },
+    {
+      "source": "tests/admin/admin.test.ts",
+      "specifier": "../../apps/admin-web/src/server/operations.ts"
+    },
+    {
+      "source": "tests/admin/admin.test.ts",
+      "specifier": "../../apps/admin-web/src/server/workspace.ts"
+    },
+    {
+      "source": "tests/admin/admin.test.ts",
+      "specifier": "../../apps/admin-web/src/server/quote-editor.ts"
+    },
+    { "source": "tests/admin/admin.test.ts", "specifier": "./fixture.mts" },
+    { "source": "tests/admin/build.test.mts", "specifier": "node:test" },
+    { "source": "tests/admin/build.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/admin/build.test.mts",
+      "specifier": "../../tooling/scripts/build-admin-server.mts"
+    },
+    { "source": "tests/admin/chromium.mts", "specifier": "node:child_process" },
+    { "source": "tests/admin/chromium.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/admin/chromium.mts", "specifier": "node:os" },
+    { "source": "tests/admin/chromium.mts", "specifier": "node:path" },
+    { "source": "tests/admin/chromium.mts", "specifier": "node:timers/promises" },
+    { "source": "tests/admin/ci.test.mts", "specifier": "node:test" },
+    { "source": "tests/admin/ci.test.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/admin/ci.test.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/admin/ci.test.mts", "specifier": "node:os" },
+    { "source": "tests/admin/ci.test.mts", "specifier": "node:path" },
+    { "source": "tests/admin/ci.test.mts", "specifier": "node:events" },
+    { "source": "tests/admin/ci.test.mts", "specifier": "./chromium.mts" },
+    { "source": "tests/admin/ci.test.mts", "specifier": "node:child_process" },
+    { "source": "tests/admin/discount-event.test.ts", "specifier": "node:test" },
+    { "source": "tests/admin/discount-event.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/admin/discount-event.test.ts", "specifier": "@elvorance/events" },
+    { "source": "tests/admin/discount-event.test.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/admin/discount-event.test.ts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "tests/admin/discount-event.test.ts",
+      "specifier": "../../services/billing/src/application/events.ts"
+    },
+    { "source": "tests/admin/dom.mts", "specifier": "node:module" },
+    { "source": "tests/admin/dom.mts", "specifier": "node:crypto" },
+    { "source": "tests/admin/dom.mts", "specifier": "node:timers/promises" },
+    { "source": "tests/admin/e2e.ts", "specifier": "node:test" },
+    { "source": "tests/admin/e2e.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/admin/e2e.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/admin/e2e.ts", "specifier": "node:path" },
+    { "source": "tests/admin/e2e.ts", "specifier": "./fixture.mts" },
+    { "source": "tests/admin/e2e.ts", "specifier": "./chromium.mts" },
+    { "source": "tests/admin/e2e.ts", "specifier": "./dom.mts" },
+    { "source": "tests/admin/e2e.ts", "specifier": "../../apps/admin-web/src/server/api.ts" },
+    { "source": "tests/admin/fixture.mts", "specifier": "node:crypto" },
+    { "source": "tests/admin/fixture.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/admin/fixture.mts", "specifier": "node:path" },
+    { "source": "tests/admin/fixture.mts", "specifier": "node:module" },
+    { "source": "tests/admin/fixture.mts", "specifier": "jose" },
+    { "source": "tests/admin/fixture.mts", "specifier": "pg" },
+    { "source": "tests/admin/fixture.mts", "specifier": "fastify" },
+    { "source": "tests/admin/fixture.mts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/admin/fixture.mts", "specifier": "../../services/identity/src/app.ts" },
+    { "source": "tests/admin/fixture.mts", "specifier": "../../services/crm/src/app.ts" },
+    { "source": "tests/admin/fixture.mts", "specifier": "../../services/sales/src/app.ts" },
+    { "source": "tests/admin/fixture.mts", "specifier": "../../services/delivery/src/app.ts" },
+    { "source": "tests/admin/fixture.mts", "specifier": "../../services/billing/src/app.ts" },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/communications/src/app.ts"
+    },
+    { "source": "tests/admin/fixture.mts", "specifier": "../../services/tracking/src/app.ts" },
+    { "source": "tests/admin/fixture.mts", "specifier": "../../services/api-gateway/src/app.ts" },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/identity/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/crm/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/sales/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/delivery/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/billing/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/communications/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/tracking/src/infrastructure/migrations/001_initial.ts"
+    },
+    { "source": "tests/admin/fixture.mts", "specifier": "@elvorance/events" },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/crm/src/application/events.ts"
+    },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/sales/src/application/events.ts"
+    },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/delivery/src/application/events.ts"
+    },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/billing/src/application/events.ts"
+    },
+    {
+      "source": "tests/admin/fixture.mts",
+      "specifier": "../../services/communications/src/application/events.ts"
+    },
+    { "source": "tests/admin/run-e2e.mts", "specifier": "esbuild" },
+    { "source": "tests/admin/run-e2e.mts", "specifier": "node:child_process" },
+    { "source": "tests/admin/run-e2e.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/admin/run-e2e.mts", "specifier": "node:path" },
     { "source": "tests/architecture/boundaries.test.mts", "specifier": "node:test" },
     { "source": "tests/architecture/boundaries.test.mts", "specifier": "node:assert/strict" },
     { "source": "tests/architecture/boundaries.test.mts", "specifier": "node:fs" },
@@ -1726,6 +2066,25 @@
       "source": "tests/backend/authorization-matrix.test.ts",
       "specifier": "../../services/communications/src/infrastructure/migrations/001_initial.ts"
     },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "node:crypto" },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "@elvorance/contracts" },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "@elvorance/events" },
+    {
+      "source": "tests/backend/discount-fulfillment.test.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "tests/backend/discount-fulfillment.test.ts",
+      "specifier": "../../services/billing/src/application/events.ts"
+    },
+    {
+      "source": "tests/backend/discount-fulfillment.test.ts",
+      "specifier": "../../services/billing/src/infrastructure/migrations/001_initial.ts"
+    },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "./rep-fixture.ts" },
+    { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/environment-secrets.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/environment-secrets.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/backend/environment-secrets.test.ts", "specifier": "node:fs/promises" },
@@ -1781,6 +2140,28 @@
     { "source": "tests/backend/helpers.ts", "specifier": "fastify" },
     { "source": "tests/backend/helpers.ts", "specifier": "@elvorance/contracts" },
     { "source": "tests/backend/helpers.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/backend/http-response-semantics.test.ts", "specifier": "node:test" },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "node:assert/strict"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/app.ts"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/application/proxy.ts"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/domain/routes.ts"
+    },
+    { "source": "tests/backend/http-response-semantics.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/identity-configuration.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/identity-configuration.test.ts", "specifier": "node:assert/strict" },
     {
@@ -1844,6 +2225,10 @@
     { "source": "tests/backend/pagination.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/backend/pagination.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/pagination.test.ts", "specifier": "./rep-fixture.ts" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "./postgres-cleanup.ts" },
+    { "source": "tests/backend/postgres-cleanup.ts", "specifier": "node:timers/promises" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "node:assert/strict" },
@@ -1896,7 +2281,35 @@
       "specifier": "../../packages/api-client/src/live-data.ts"
     },
     { "source": "tests/backend/postgres.test.ts", "specifier": "@elvorance/contracts" },
+    { "source": "tests/backend/postgres.test.ts", "specifier": "./sprint04-scenarios.ts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./rep-postgres-scenarios.ts" },
+    { "source": "tests/backend/postgres.test.ts", "specifier": "./postgres-cleanup.ts" },
+    { "source": "tests/backend/pr-repair-security.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/pr-repair-security.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/pr-repair-security.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/pr-repair-security.test.ts", "specifier": "node:os" },
+    { "source": "tests/backend/pr-repair-security.test.ts", "specifier": "node:path" },
+    { "source": "tests/backend/pr-repair-security.test.ts", "specifier": "@elvorance/service-kit" },
+    {
+      "source": "tests/backend/pr-repair-security.test.ts",
+      "specifier": "../../services/identity/src/app.ts"
+    },
+    {
+      "source": "tests/backend/pr-repair-security.test.ts",
+      "specifier": "../../services/api-gateway/src/app.ts"
+    },
+    {
+      "source": "tests/backend/pr-repair-security.test.ts",
+      "specifier": "../../services/api-gateway/src/domain/routes.ts"
+    },
+    {
+      "source": "tests/backend/pr-repair-security.test.ts",
+      "specifier": "../../infra/identity/admin-client.mts"
+    },
+    {
+      "source": "tests/backend/pr-repair-security.test.ts",
+      "specifier": "../../tooling/scripts/copy-content.mts"
+    },
     {
       "source": "tests/backend/questionnaire-configuration.test.ts",
       "specifier": "node:assert/strict"
@@ -2027,6 +2440,98 @@
       "source": "tests/backend/security-and-gateway.test.ts",
       "specifier": "../../services/api-gateway/src/domain/routes.ts"
     },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:os" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:path" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:child_process" },
+    { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "jose" },
+    {
+      "source": "tests/backend/sprint03-regressions.test.ts",
+      "specifier": "@elvorance/contracts/routes"
+    },
+    { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "tests/backend/sprint03-regressions.test.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "tests/backend/sprint03-regressions.test.ts",
+      "specifier": "../../services/identity/src/app.ts"
+    },
+    {
+      "source": "tests/backend/sprint03-regressions.test.ts",
+      "specifier": "../../services/api-gateway/src/app.ts"
+    },
+    {
+      "source": "tests/backend/sprint03-regressions.test.ts",
+      "specifier": "../../services/api-gateway/src/domain/routes.ts"
+    },
+    { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "./helpers.ts" },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "jose" },
+    {
+      "source": "tests/backend/sprint03-security.test.ts",
+      "specifier": "@elvorance/contracts/routes"
+    },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "@elvorance/contracts" },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "@elvorance/service-kit" },
+    {
+      "source": "tests/backend/sprint03-security.test.ts",
+      "specifier": "../../services/identity/src/app.ts"
+    },
+    {
+      "source": "tests/backend/sprint03-security.test.ts",
+      "specifier": "../../services/api-gateway/src/app.ts"
+    },
+    {
+      "source": "tests/backend/sprint03-security.test.ts",
+      "specifier": "../../services/api-gateway/src/domain/routes.ts"
+    },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "./helpers.ts" },
+    { "source": "tests/backend/sprint04-contracts.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint04-contracts.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint04-contracts.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/sprint04-contracts.test.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "node:crypto" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "node:path" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "@elvorance/contracts" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "@elvorance/events" },
+    {
+      "source": "tests/backend/sprint04-domains.test.ts",
+      "specifier": "../../services/delivery/src/app.ts"
+    },
+    {
+      "source": "tests/backend/sprint04-domains.test.ts",
+      "specifier": "../../services/delivery/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/backend/sprint04-domains.test.ts",
+      "specifier": "../../services/sales/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/backend/sprint04-domains.test.ts",
+      "specifier": "../../services/communications/src/application/events.ts"
+    },
+    {
+      "source": "tests/backend/sprint04-domains.test.ts",
+      "specifier": "../../services/communications/src/app.ts"
+    },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "./helpers.ts" },
+    { "source": "tests/backend/sprint04-domains.test.ts", "specifier": "./sprint04-scenarios.ts" },
+    { "source": "tests/backend/sprint04-scenarios.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint04-scenarios.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint04-scenarios.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/backend/sprint04-scenarios.ts", "specifier": "./rep-fixture.ts" },
+    { "source": "tests/backend/sprint04-scenarios.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/sprint09-auth-regression.test.ts", "specifier": "node:test" },
     {
       "source": "tests/backend/sprint09-auth-regression.test.ts",
@@ -2108,6 +2613,60 @@
       "specifier": "../../services/communications/src/app.ts"
     },
     { "source": "tests/backend/tracking-and-communications.test.ts", "specifier": "./helpers.ts" },
+    {
+      "source": "tests/browser/rep-field-entry.ts",
+      "specifier": "../../apps/rep-mobile/src/server/workspace.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-entry.ts",
+      "specifier": "../../apps/rep-mobile/src/server/api.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-entry.ts",
+      "specifier": "../../packages/api-client/src/live-workspace.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-entry.ts",
+      "specifier": "../../packages/mobile-auth/src/types.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-entry.ts",
+      "specifier": "../../apps/rep-mobile/src/server/styles.css"
+    },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "node:test" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "node:http" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "fastify" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "../backend/rep-fixture.ts" },
+    { "source": "tests/browser/rep-field-server.ts", "specifier": "../backend/helpers.ts" },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/tracking/src/app.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/billing/src/app.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/delivery/src/app.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/tracking/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/billing/src/infrastructure/migrations/001_initial.ts"
+    },
+    {
+      "source": "tests/browser/rep-field-server.ts",
+      "specifier": "../../services/delivery/src/infrastructure/migrations/001_initial.ts"
+    },
+    { "source": "tests/browser/run-rep-field.mts", "specifier": "esbuild" },
+    { "source": "tests/browser/run-rep-field.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/browser/run-rep-field.mts", "specifier": "node:child_process" },
     { "source": "tests/build-output/app-build-proof.test.mts", "specifier": "node:test" },
     { "source": "tests/build-output/app-build-proof.test.mts", "specifier": "node:assert/strict" },
     { "source": "tests/build-output/app-build-proof.test.mts", "specifier": "node:fs/promises" },
@@ -2242,6 +2801,16 @@
     { "source": "tests/integration/rep-auth-lifecycle.test.mts", "specifier": "node:url" },
     { "source": "tests/integration/rep-auth-lifecycle.test.mts", "specifier": "esbuild" },
     { "source": "tests/integration/rep-auth-lifecycle.test.mts", "specifier": "jsdom" },
+    { "source": "tests/integration/rep-schedule.test.mts", "specifier": "node:test" },
+    { "source": "tests/integration/rep-schedule.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/integration/rep-schedule.test.mts",
+      "specifier": "../../apps/rep-mobile/src/server/views/schedule-model.ts"
+    },
+    {
+      "source": "tests/integration/rep-schedule.test.mts",
+      "specifier": "../../packages/mobile-platform/src/location-permission.ts"
+    },
     { "source": "tests/integration/rep-server-views.test.ts", "specifier": "node:test" },
     { "source": "tests/integration/rep-server-views.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/integration/rep-server-views.test.ts", "specifier": "node:module" },
@@ -2290,6 +2859,21 @@
       "source": "tests/integration/rep-server-views.test.ts",
       "specifier": "../../apps/rep-mobile/src/server/views/messages.ts"
     },
+    {
+      "source": "tests/integration/rep-server-views.test.ts",
+      "specifier": "../../apps/rep-mobile/src/server/views/schedule.ts"
+    },
+    {
+      "source": "tests/integration/rep-server-views.test.ts",
+      "specifier": "../../apps/rep-mobile/src/server/ui/dom.ts"
+    },
+    {
+      "source": "tests/integration/rep-server-views.test.ts",
+      "specifier": "../../apps/rep-mobile/src/server/ui/forms.ts"
+    },
+    { "source": "tests/native/client-auth-parity.test.mts", "specifier": "node:test" },
+    { "source": "tests/native/client-auth-parity.test.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/native/client-auth-parity.test.mts", "specifier": "node:fs/promises" },
     { "source": "tests/native/ios-profile.test.mts", "specifier": "node:test" },
     { "source": "tests/native/ios-profile.test.mts", "specifier": "node:assert/strict" },
     {
@@ -2317,6 +2901,19 @@
     {
       "source": "tests/production/branch-protection.test.mts",
       "specifier": "../../tooling/production/branch-protection.mts"
+    },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:path" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:os" },
+    {
+      "source": "tests/production/debt-comments.test.mts",
+      "specifier": "../../tooling/production/source.mts"
+    },
+    {
+      "source": "tests/production/debt-comments.test.mts",
+      "specifier": "../../tooling/production/debt.mts"
     },
     { "source": "tests/production/gap-report.test.mts", "specifier": "node:test" },
     { "source": "tests/production/gap-report.test.mts", "specifier": "node:assert/strict" },
@@ -2412,6 +3009,12 @@
       "source": "tests/production/semantic-bindings.test.mts",
       "specifier": "../../tooling/production/model.mts"
     },
+    { "source": "tests/production/source-proof.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/source-proof.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/production/source-proof.test.mts",
+      "specifier": "../../tooling/production/source-proof.mts"
+    },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:test" },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:assert/strict" },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:fs/promises" },
@@ -2468,6 +3071,7 @@
       "source": "tests/regression/quote-ui-consolidated.test.mts",
       "specifier": "../../apps/rep-mobile/src/features/quotes/index.ts"
     },
+    { "source": "tests/runtime/compose-journey.mts", "specifier": "./sprint04-resilience.mts" },
     { "source": "tests/runtime/compose-journey.mts", "specifier": "node:crypto" },
     { "source": "tests/runtime/compose-journey.mts", "specifier": "node:fs/promises" },
     { "source": "tests/runtime/compose-journey.mts", "specifier": "node:path" },
@@ -2495,9 +3099,49 @@
       "source": "tests/runtime/compose-journey.mts",
       "specifier": "../../services/communications/src/domain/model.ts"
     },
+    { "source": "tests/runtime/sprint04-resilience.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/runtime/sprint04-resilience.mts", "specifier": "node:child_process" },
+    { "source": "tests/runtime/sprint04-resilience.mts", "specifier": "node:crypto" },
+    { "source": "tests/runtime/sprint04-resilience.mts", "specifier": "node:timers/promises" },
+    { "source": "tests/runtime/sprint04-resilience.mts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "tests/runtime/sprint04-resilience.mts",
+      "specifier": "../../services/sales/src/application/service-requests.ts"
+    },
+    { "source": "tests/runtime/sprint04-safety.test.mts", "specifier": "node:test" },
+    { "source": "tests/runtime/sprint04-safety.test.mts", "specifier": "node:fs" },
+    { "source": "tests/runtime/sprint04-safety.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/runtime/sprint04-safety.test.mts",
+      "specifier": "./sprint04-resilience.mts"
+    },
     { "source": "tests/runtime/target.test.mts", "specifier": "node:test" },
     { "source": "tests/runtime/target.test.mts", "specifier": "node:assert/strict" },
     { "source": "tests/runtime/target.test.mts", "specifier": "./compose-journey.mts" },
+    { "source": "tests/ux/build-server-fixture.mts", "specifier": "esbuild" },
+    { "source": "tests/ux/build-server-fixture.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/ux/build-server-fixture.mts", "specifier": "node:path" },
+    { "source": "tests/ux/component_inventory.mts", "specifier": "typescript" },
+    { "source": "tests/ux/component_inventory.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/ux/component_inventory.mts", "specifier": "node:crypto" },
+    { "source": "tests/ux/component_inventory.mts", "specifier": "node:path" },
+    {
+      "source": "tests/ux/server-entry.ts",
+      "specifier": "../../packages/api-client/src/live-workspace.ts"
+    },
+    {
+      "source": "tests/ux/server-entry.ts",
+      "specifier": "../../apps/rep-mobile/src/server/api.ts"
+    },
+    {
+      "source": "tests/ux/server-entry.ts",
+      "specifier": "../../apps/rep-mobile/src/server/workspace.ts"
+    },
+    { "source": "tests/ux/server-entry.ts", "specifier": "../../packages/ui/src/enterprise-ux.ts" },
+    {
+      "source": "tests/ux/server-entry.ts",
+      "specifier": "../../packages/mobile-auth/src/index.ts"
+    },
     { "source": "tests/validation/numeric-fields.test.mts", "specifier": "node:test" },
     { "source": "tests/validation/numeric-fields.test.mts", "specifier": "node:assert/strict" },
     {
@@ -2584,6 +3228,13 @@
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "node:path" },
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "./source.mts" },
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "./model.mts" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:child_process" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:crypto" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:path" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:url" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "fflate" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "./evidence.mts" },
     { "source": "tooling/production/source.mts", "specifier": "node:crypto" },
     { "source": "tooling/production/source.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/production/source.mts", "specifier": "node:path" },
@@ -2602,6 +3253,19 @@
     { "source": "tooling/scripts/audit-migration.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/scripts/audit-migration.mts", "specifier": "node:path" },
     { "source": "tooling/scripts/audit-migration.mts", "specifier": "node:url" },
+    { "source": "tooling/scripts/build-admin-server.mts", "specifier": "esbuild" },
+    { "source": "tooling/scripts/build-admin-server.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/build-admin-server.mts", "specifier": "node:path" },
+    { "source": "tooling/scripts/build-admin-server.mts", "specifier": "node:url" },
+    { "source": "tooling/scripts/build-admin-server.mts", "specifier": "node:crypto" },
+    {
+      "source": "tooling/scripts/build-admin-server.mts",
+      "specifier": "../../packages/mobile-auth/src/types.ts"
+    },
+    {
+      "source": "tooling/scripts/build-admin-server.mts",
+      "specifier": "../../packages/api-client/src/index.ts"
+    },
     { "source": "tooling/scripts/build-apps.mts", "specifier": "esbuild" },
     { "source": "tooling/scripts/build-apps.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/scripts/build-apps.mts", "specifier": "node:path" },
@@ -2628,10 +3292,22 @@
     { "source": "tooling/scripts/check-boundaries.mts", "specifier": "node:path" },
     { "source": "tooling/scripts/check-boundaries.mts", "specifier": "node:module" },
     { "source": "tooling/scripts/check-boundaries.mts", "specifier": "node:url" },
+    { "source": "tooling/scripts/client-native/verification.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/client-native/verification.mts", "specifier": "node:path" },
+    {
+      "source": "tooling/scripts/client-native/verification.mts",
+      "specifier": "../rep-release/build-proof.mts"
+    },
+    {
+      "source": "tooling/scripts/client-native/verification.mts",
+      "specifier": "../rep-native/process.mts"
+    },
     { "source": "tooling/scripts/copy-content.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/copy-content.mts", "specifier": "node:fs" },
     { "source": "tooling/scripts/copy-content.mts", "specifier": "node:path" },
     { "source": "tooling/scripts/dev.mts", "specifier": "node:http" },
     { "source": "tooling/scripts/dev.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/dev.mts", "specifier": "node:fs" },
     { "source": "tooling/scripts/dev.mts", "specifier": "node:path" },
     { "source": "tooling/scripts/dev.mts", "specifier": "./workspace.mts" },
     { "source": "tooling/scripts/mobile.mts", "specifier": "node:child_process" },
@@ -2650,6 +3326,7 @@
     { "source": "tooling/scripts/package-hotfix.mts", "specifier": "fflate" },
     { "source": "tooling/scripts/package-hotfix.mts", "specifier": "./workspace.mts" },
     { "source": "tooling/scripts/package.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/package.mts", "specifier": "node:fs" },
     { "source": "tooling/scripts/package.mts", "specifier": "node:path" },
     { "source": "tooling/scripts/package.mts", "specifier": "fflate" },
     { "source": "tooling/scripts/package.mts", "specifier": "./workspace.mts" },
@@ -2777,6 +3454,7 @@
     },
     { "source": "tooling/scripts/rep-native/sync.mts", "specifier": "./process.mts" },
     { "source": "tooling/scripts/rep-release/acceptance.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/rep-release/acceptance.mts", "specifier": "node:fs" },
     { "source": "tooling/scripts/rep-release/acceptance.mts", "specifier": "node:path" },
     { "source": "tooling/scripts/rep-release/acceptance.mts", "specifier": "./build-proof.mts" },
     {
@@ -2803,6 +3481,22 @@
     { "source": "tooling/scripts/run-acceptance.mts", "specifier": "esbuild" },
     { "source": "tooling/scripts/run-acceptance.mts", "specifier": "node:child_process" },
     { "source": "tooling/scripts/run-acceptance.mts", "specifier": "node:path" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:fs" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:path" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:crypto" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "typescript" },
+    {
+      "source": "tooling/scripts/sprint01-inventory.mts",
+      "specifier": "../production/registration-source.mts"
+    },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "../production/source.mts" },
+    { "source": "tooling/scripts/sprint04-contracts.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/sprint04-contracts.mts", "specifier": "node:crypto" },
+    { "source": "tooling/scripts/sprint04-contracts.mts", "specifier": "node:assert/strict" },
+    { "source": "tooling/scripts/sprint04-contracts.mts", "specifier": "prettier" },
+    { "source": "tooling/scripts/sprint04-report.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/sprint04-report.mts", "specifier": "node:assert/strict" },
+    { "source": "tooling/scripts/sprint04-report.mts", "specifier": "prettier" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "esbuild" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "node:child_process" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "node:path" },

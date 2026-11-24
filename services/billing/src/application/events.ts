@@ -37,7 +37,7 @@ export async function handleEvent(tx: Transaction, event: EventEnvelope): Promis
     return (
       sum +
       integer(item.quantity, 'quantity', 1, 1000) *
-        integer(item.unitPriceMinor, 'unitPriceMinor', 1, 1_000_000_000)
+        integer(item.unitPriceMinor, 'unitPriceMinor', 1, 10_000_000_000)
     );
   }, 0);
   // v1 events without either field retain the original undiscounted invariant.
@@ -47,12 +47,13 @@ export async function handleEvent(tx: Transaction, event: EventEnvelope): Promis
   assert(hasSubtotal === hasDiscount, 'CONTRACT_TOTAL', 'Contract pricing evidence is incomplete');
   const subtotalMinor = hasSubtotal
     ? integer(body.subtotalMinor, 'subtotalMinor', 1, 100_000_000_000)
-    : totalMinor;
+    : itemTotal;
   const discountMinor = hasDiscount
     ? integer(body.discountMinor, 'discountMinor', 0, subtotalMinor - 1)
     : 0;
   assert(
     Number.isSafeInteger(itemTotal) &&
+      itemTotal <= 100_000_000_000 &&
       itemTotal === subtotalMinor &&
       subtotalMinor - discountMinor === totalMinor,
     'CONTRACT_TOTAL',

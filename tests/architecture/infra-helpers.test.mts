@@ -36,6 +36,15 @@ test('environment helper preserves unrelated settings and never prints generated
   const second = run();
   assert.equal(second.status, 0);
   assert.equal(fs.readFileSync(path.join(directory, '.env'), 'utf8'), saved);
+  fs.writeFileSync(path.join(directory, '.env.lock'), '');
+  const concurrent = run();
+  assert.notEqual(concurrent.status, 0, 'a competing initializer must fail closed');
+  assert.equal(fs.readFileSync(path.join(directory, '.env'), 'utf8'), saved);
+  fs.unlinkSync(path.join(directory, '.env.lock'));
+  fs.linkSync(path.join(directory, '.env'), path.join(directory, 'outside-alias'));
+  const linked = run();
+  assert.notEqual(linked.status, 0, 'a linked environment file must never be rewritten');
+  assert.equal(fs.readFileSync(path.join(directory, 'outside-alias'), 'utf8'), saved);
 });
 
 test('development smoke uses verified claims, GET requests and no persisted token', async () => {

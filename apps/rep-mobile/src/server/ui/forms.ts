@@ -1,4 +1,7 @@
+import { describeWith } from '@elvorance/ui/enterprise-ux';
 import { button, el, errorMessage } from './dom.ts';
+
+let fieldSequence = 0;
 
 export interface Choice {
   value: string;
@@ -37,6 +40,11 @@ export function fieldControl(
         ? el('select')
         : el('input');
   control.name = field.name;
+  do control.id = `rep-field-${++fieldSequence}`;
+  while (document.getElementById(control.id));
+  control.dir = ['email', 'tel', 'number', 'date', 'datetime-local'].includes(field.type ?? '')
+    ? 'ltr'
+    : 'auto';
   control.required = field.required ?? false;
   if (control instanceof HTMLInputElement) {
     control.type = field.type ?? 'text';
@@ -61,6 +69,11 @@ export function fieldControl(
   if (control instanceof HTMLInputElement || control instanceof HTMLTextAreaElement) {
     if (field.type !== 'number' && field.type !== 'checkbox')
       control.maxLength = field.max ?? (field.type === 'textarea' ? 5000 : 200);
+    if (
+      field.min !== undefined &&
+      ['text', 'textarea', 'email', 'tel', undefined].includes(field.type)
+    )
+      control.minLength = field.min;
   }
   return control;
 }
@@ -69,7 +82,12 @@ export function addField(form: HTMLElement, field: Field): ReturnType<typeof fie
   label.append(el('span', field.label));
   const control = fieldControl(field);
   label.append(control);
-  if (field.hint) label.append(el('small', field.hint, 'muted'));
+  if (field.hint) {
+    const hint = el('small', field.hint, 'muted');
+    hint.id = `${control.id}-hint`;
+    describeWith(control, hint.id);
+    label.append(hint);
+  }
   form.append(label);
   return control;
 }
@@ -111,10 +129,14 @@ export function commandForm(options: {
     'submit',
     (event) => {
       event.preventDefault();
-      if (busy || !form.reportValidity()) return;
+      if (busy || options.signal.aborted || !form.reportValidity()) return;
       const values = fieldValues(form, options.fields);
       busy = true;
+      // Inert blocks editing without excluding dynamic fields from FormData.
+      const wasInert = form.inert === true;
+      form.inert = true;
       submit.disabled = true;
+      output.setAttribute('role', 'status');
       output.textContent = 'جارٍ الحفظ…';
       form.setAttribute('aria-busy', 'true');
       // Form data remains intact after a network failure, including its idempotency intent.
@@ -124,10 +146,14 @@ export function commandForm(options: {
           if (!options.signal.aborted) output.textContent = 'تم الحفظ.';
         })
         .catch((error: unknown) => {
-          if (!options.signal.aborted) output.textContent = errorMessage(error);
+          if (!options.signal.aborted) {
+            output.setAttribute('role', 'alert');
+            output.textContent = errorMessage(error);
+          }
         })
         .finally(() => {
           busy = false;
+          form.inert = wasInert;
           submit.disabled = false;
           form.removeAttribute('aria-busy');
         });
@@ -147,6 +173,8 @@ export function editorButton(
     async () => {
       const previous = parent.querySelector(':scope > .editor');
       if (previous) {
+        if (previous.querySelector('form[aria-busy="true"]'))
+          throw new Error('انتظر تأكيد الحفظ قبل إغلاق النموذج أو تغييره.');
         const same = (previous as HTMLElement).dataset.editor === label;
         previous.remove();
         if (same) return;

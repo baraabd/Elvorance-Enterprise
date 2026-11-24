@@ -1,3 +1,4 @@
+import { tenantSecurityMigration } from '@elvorance/service-kit';
 import { addOwnedTablesMigration, storageMigration, type Migration } from '@elvorance/service-kit';
 // Do not edit the existing migration's definition: deployed databases already record its checksum.
 export const tables = ['customers', 'regions', 'configuration', 'discoveries'] as const;
@@ -32,4 +33,5 @@ export const migrations = [
     ['discoveries'],
     "CREATE UNIQUE INDEX discovery_per_customer ON discoveries (tenant_id, (data->>'clientId'));",
   ),
+  tenantSecurityMigration(4),
 ];

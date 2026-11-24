@@ -1,3 +1,6 @@
+import { installEnterpriseUx } from '@elvorance/ui/enterprise-ux';
+import { navigationGroups } from './navigation.ts';
+import { mountAdminWorkspace } from './server/workspace.ts';
 import { installConfigurationSync } from '@elvorance/questionnaire/sync';
 import { installRuntime } from '@elvorance/app-runtime';
 import { mountAuthenticatedWorkspace } from '@elvorance/api-client/authenticated-workspace';
@@ -41,6 +44,7 @@ if (runtime) {
   void mountAuthenticatedWorkspace({
     root,
     role: 'admin',
+    mountWorkspace: mountAdminWorkspace,
     baseUrl: apiBaseUrl,
     ...('auth' in config && config.auth ? { auth: config.auth } : {}),
     ...('environment' in config && config.environment ? { environment: config.environment } : {}),
@@ -51,3 +55,6 @@ if (runtime) {
     root.textContent = 'تعذّر بدء مساحة البيانات الحية. تحقق من إعدادات API وموفر المصادقة الآمن.';
   });
 }
+
+const uxRoot = document.getElementById('app');
+if (uxRoot) installEnterpriseUx(uxRoot, { mode: config.dataMode, groups: navigationGroups });

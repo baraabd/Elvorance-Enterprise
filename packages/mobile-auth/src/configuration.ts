@@ -1,5 +1,5 @@
 import { AuthError } from './errors.ts';
-import type { MobileAuthConfig, SessionBinding } from './types.ts';
+import type { AuthEnvironment, MobileAuthConfig, SessionBinding } from './types.ts';
 
 export interface ValidatedConfig extends SessionBinding {
   readonly scopes: readonly string[];
@@ -11,6 +11,12 @@ function parseUrl(value: string): URL {
   } catch {
     throw new AuthError('invalid_configuration');
   }
+}
+
+/** Each native bridge additionally pins the callback to its own installed application ID. */
+export function nativeRedirects(environment: AuthEnvironment): readonly string[] {
+  const suffix = environment === 'production' ? '' : '.staging';
+  return ['rep', 'client'].map((app) => `com.elvorance.${app}${suffix}:/oauth2redirect`);
 }
 
 export function validateConfig(config: MobileAuthConfig): ValidatedConfig {
@@ -40,10 +46,6 @@ export function validateConfig(config: MobileAuthConfig): ValidatedConfig {
   ) {
     throw new AuthError('invalid_configuration');
   }
-  const nativeRedirect =
-    config.environment === 'production'
-      ? 'com.elvorance.rep:/oauth2redirect'
-      : 'com.elvorance.rep.staging:/oauth2redirect';
   const developmentLoopback =
     config.environment === 'development' &&
     redirect.protocol === 'http:' &&
@@ -51,7 +53,7 @@ export function validateConfig(config: MobileAuthConfig): ValidatedConfig {
   if (
     redirect.protocol !== 'https:' &&
     !developmentLoopback &&
-    config.redirectUri !== nativeRedirect
+    !nativeRedirects(config.environment).includes(config.redirectUri)
   ) {
     throw new AuthError('invalid_configuration');
   }

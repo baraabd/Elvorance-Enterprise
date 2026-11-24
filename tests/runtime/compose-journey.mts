@@ -1,3 +1,4 @@
+import { sprint04Faults } from './sprint04-resilience.mts';
 import { createHmac, randomUUID } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -441,11 +442,17 @@ async function journey(env: NodeJS.ProcessEnv) {
     consent: true,
   };
   const approvalKey = randomUUID();
-  contract = await http.request<Contract>('POST', `/v1/sales/contracts/${contract.id}/approve`, {
-    token: client,
-    body: approvalBody,
-    key: approvalKey,
-  });
+  const faults = sprint04Faults(env, tenantId);
+  contract = await faults.duringBillingFailure(() =>
+    http.request<Contract>('POST', `/v1/sales/contracts/${contract.id}/approve`, {
+      token: client,
+      body: approvalBody,
+      key: approvalKey,
+    }),
+  );
+  passed(
+    'real PostgreSQL consumer failure rolls back inbox and invoices; independent delivery succeeds and RabbitMQ queues retry',
+  );
   ensure(contract.status === 'approved', 'Explicit customer approval must succeed.');
   const approvalRetry = await http.request<Contract>(
     'POST',
@@ -527,6 +534,16 @@ async function journey(env: NodeJS.ProcessEnv) {
     'real RabbitMQ outbox/inbox round trip creates one project, two invoices and scoped notifications',
   );
 
+  ensure(
+    contract.quoteSnapshot.discountMinor === 2000 && contract.totalMinor === 8000,
+    'Discounted contract must recover with the exact net invoice balance.',
+  );
+  passed('discounted contract recovers from transient billing failure with net-balanced invoices');
+  await faults.verifyBrokerRecovery(http, client);
+  passed(
+    'broker outage preserves command/outbox; reconnect drains, duplicate delivery deduplicates and poison messages dead-letter',
+  );
+
   visit = await http.request<Visit>('POST', `/v1/sales/visits/${visit.id}/complete`, {
     token: rep,
     body: {
@@ -541,6 +558,103 @@ async function journey(env: NodeJS.ProcessEnv) {
     'Representative must be able to complete the accepted visit.',
   );
   passed('representative completes the approved agreement visit');
+
+  // Sprint 07: verify cross-role convergence through the real gateway, never local UI state.
+  const adminVisit = await http.request<Visit>('GET', `/v1/sales/visits/${visit.id}`, {
+    token: admin,
+  });
+  const clientQuote = await http.request<Quote>('GET', `/v1/sales/quotes/${quote.id}`, {
+    token: client,
+  });
+  const repContract = await http.request<Contract>('GET', `/v1/sales/contracts/${contract.id}`, {
+    token: rep,
+  });
+  ensure(
+    adminVisit.status === 'completed' && adminVisit.notes === visit.notes,
+    'Admin must observe the persisted field report.',
+  );
+  ensure(
+    clientQuote.status === 'accepted' && repContract.status === 'approved',
+    'Rep and client must observe the same authoritative commercial decisions.',
+  );
+  const task = await http.request<{ id: string; version: number }>('POST', '/v1/sales/tasks', {
+    token: rep,
+    body: {
+      clientId: customer.id,
+      title: 'CI field handover',
+      dueOn: new Date().toISOString().slice(0, 10),
+    },
+  });
+  await http.request('PATCH', `/v1/sales/tasks/${task.id}`, {
+    token: rep,
+    body: { expectedVersion: task.version, status: 'done' },
+  });
+  await http.request('PATCH', `/v1/sales/tasks/${task.id}`, {
+    token: rep,
+    body: { expectedVersion: task.version, status: 'cancelled' },
+    status: 409,
+  });
+  const adminTask = await http.request<{ status: string }>('GET', `/v1/sales/tasks/${task.id}`, {
+    token: admin,
+  });
+  ensure(
+    adminTask.status === 'done',
+    'A stale field update must not overwrite the completed task.',
+  );
+  await http.request('GET', `/v1/sales/tasks/${task.id}`, { token: otherRep, status: 404 });
+  passed(
+    'field completion and conflict-safe handover converge for Admin, Client and Representative',
+  );
+
+  const conversation = await http.request<{ id: string; version: number }>(
+    'POST',
+    '/v1/communications/conversations',
+    {
+      token: rep,
+      body: { clientId: customer.id },
+    },
+  );
+  const conversationPath = `/v1/communications/conversations/${conversation.id}`;
+  const sentMessage = await http.request<{
+    conversation: { version: number };
+    message: { id: string };
+  }>('POST', conversationPath + '/messages', {
+    token: rep,
+    body: { expectedVersion: conversation.version, body: 'CI synthetic field handover message' },
+  });
+  const clientMessages = await http.request<{ items: { id: string }[] }>(
+    'GET',
+    conversationPath + '/messages',
+    { token: client },
+  );
+  ensure(
+    clientMessages.items.some((row) => row.id === sentMessage.message.id),
+    'Client must receive the field message.',
+  );
+  await http.request('POST', conversationPath + '/read', {
+    token: client,
+    body: {
+      expectedVersion: sentMessage.conversation.version,
+      lastMessageId: sentMessage.message.id,
+    },
+  });
+  const clientRead = await http.request<{ receipt: { lastMessageId: string } | null }>(
+    'GET',
+    conversationPath + '/messages',
+    { token: client },
+  );
+  const repRead = await http.request<{ receipt: unknown }>('GET', conversationPath + '/messages', {
+    token: rep,
+  });
+  ensure(
+    clientRead.receipt?.lastMessageId === sentMessage.message.id && repRead.receipt === null,
+    'Read acknowledgements must belong to the actual actor, not be copied between accounts.',
+  );
+  await http.request('GET', conversationPath + '/messages', { token: otherRep, status: 404 });
+  await http.request('GET', conversationPath + '/messages', { token: outsider, status: 404 });
+  passed(
+    'field message delivery and actor-scoped read receipts persist across real service boundaries',
+  );
 
   return {
     schemaVersion: 1,

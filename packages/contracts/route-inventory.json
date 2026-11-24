@@ -670,5 +670,69 @@
     "servicePath": "/v1/conversations/{id}/read",
     "roles": ["admin", "rep", "client", "support"],
     "summary": "Record this authenticated actor read position"
+  },
+  {
+    "service": "sales",
+    "method": "GET",
+    "gatewayPath": "/v1/sales/service-requests",
+    "servicePath": "/v1/service-requests",
+    "roles": ["admin", "rep", "client"],
+    "summary": "List scoped client service requests"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/service-requests",
+    "servicePath": "/v1/service-requests",
+    "roles": ["client"],
+    "summary": "Submit a request against the published tenant catalog"
+  },
+  {
+    "service": "sales",
+    "method": "GET",
+    "gatewayPath": "/v1/sales/service-requests/{id}",
+    "servicePath": "/v1/service-requests/{id}",
+    "roles": ["admin", "rep", "client"],
+    "summary": "Read a scoped client service request"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/service-requests/{id}/review",
+    "servicePath": "/v1/service-requests/{id}/review",
+    "roles": ["admin", "rep"],
+    "summary": "Review a request; acceptance atomically creates a sales opportunity"
+  },
+  {
+    "service": "sales",
+    "method": "POST",
+    "gatewayPath": "/v1/sales/service-requests/{id}/cancel",
+    "servicePath": "/v1/service-requests/{id}/cancel",
+    "roles": ["client"],
+    "summary": "Cancel an unresolved own request"
+  },
+  {
+    "service": "crm",
+    "method": "PATCH",
+    "gatewayPath": "/v1/crm/regions/{id}",
+    "servicePath": "/v1/regions/{id}",
+    "roles": ["admin"],
+    "summary": "Update region metadata without changing customer or identity assignment"
+  },
+  {
+    "service": "delivery",
+    "method": "PATCH",
+    "gatewayPath": "/v1/delivery/projects/{id}",
+    "servicePath": "/v1/projects/{id}",
+    "roles": ["admin", "delivery"],
+    "summary": "Edit planning title without changing approved commercial scope"
+  },
+  {
+    "service": "delivery",
+    "method": "PATCH",
+    "gatewayPath": "/v1/delivery/projects/{id}/milestones/{milestoneId}",
+    "servicePath": "/v1/projects/{id}/milestones/{milestoneId}",
+    "roles": ["admin", "delivery"],
+    "summary": "Edit unfinished milestone metadata; progress transitions remain on the existing POST"
   }
 ]

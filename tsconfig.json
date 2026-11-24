@@ -13,7 +13,8 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": ["node"],
+    "resolveJsonModule": true
   },
   "include": [
     "services/**/*.ts",
@@ -42,7 +43,15 @@
     "tests/production/**/*.mts",
     "tests/acceptance/**/*.mts",
     "tooling/scripts/run-acceptance.mts",
-    "tooling/qa/**/*.mts"
+    "tooling/qa/**/*.mts",
+    "tests/ux/**/*.ts",
+    "tests/ux/**/*.mts",
+    "apps/admin-web/src/server/**/*.ts",
+    "apps/admin-web/src/server-main.ts",
+    "tests/admin/**/*.mts",
+    "tooling/scripts/build-admin-server.mts",
+    "tests/admin/**/*.ts",
+    "tooling/scripts/sprint01-inventory.mts"
   ],
   "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
 }

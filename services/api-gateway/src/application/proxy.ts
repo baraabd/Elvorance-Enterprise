@@ -48,6 +48,9 @@ export async function forward(
       'The requested service is temporarily unavailable',
     );
   }
+  // HEAD responses have no representation body, including error responses.
+  // Preserve the upstream status without requiring or parsing JSON.
+  if (input.method === 'HEAD') return { status: response.status, body: undefined };
   assert(
     response.headers.get('content-type')?.includes('application/json'),
     'UPSTREAM_RESPONSE',
