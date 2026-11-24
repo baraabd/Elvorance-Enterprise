@@ -10,22 +10,27 @@ export function testCatalog(ws: Workspace): DiscoveredTest[] {
   const result: DiscoveredTest[] = [];
   for (const source of ws.sources.values()) {
     if (!/(?:^tests\/|\/test\/|\/tests\/)/.test(source.path)) continue;
-    const scope = /contracts?/.test(source.path)
-      ? 'contract'
+    const adminE2E = source.path === 'tests/admin/e2e.ts';
+    const scope = adminE2E
+      ? 'e2e'
+      : /contracts?/.test(source.path)
+        ? 'contract'
+        : /runtime\//.test(source.path)
+          ? 'e2e'
+          : /(?:integration|regression|backend|identity)\//.test(source.path)
+            ? 'integration'
+            : 'unit';
+    const environment = adminE2E
+      ? 'chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally'
       : /runtime\//.test(source.path)
-        ? 'e2e'
-        : /(?:integration|regression|backend|identity)\//.test(source.path)
-          ? 'integration'
-          : 'unit';
-    const environment = /runtime\//.test(source.path)
-      ? 'synthetic-real-http-postgres-rabbitmq'
-      : /postgres/.test(source.path)
-        ? 'postgres'
-        : /identity\/local-keycloak/.test(source.path)
-          ? 'local-keycloak'
-          : /(?:integration|regression|design-parity|ui\/test)/.test(source.path)
-            ? 'jsdom-or-injected-api-not-browser-e2e'
-            : 'node';
+        ? 'synthetic-real-http-postgres-rabbitmq'
+        : /postgres/.test(source.path)
+          ? 'postgres'
+          : /identity\/local-keycloak/.test(source.path)
+            ? 'local-keycloak'
+            : /(?:integration|regression|design-parity|ui\/test)/.test(source.path)
+              ? 'jsdom-or-injected-api-not-browser-e2e'
+              : 'node';
     const found: Array<{ title: string; node: ts.Node }> = [];
     visit(source.ast, (node) => {
       if (!ts.isCallExpression(node)) return;

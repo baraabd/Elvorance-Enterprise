@@ -57,3 +57,23 @@ test('gateway masks unexpected errors and bounds the inbound request timeout', a
   assert.doesNotMatch(response.body, /private-internal-detail|stack/);
   assert.equal(app.server.requestTimeout, 30_000);
 });
+
+// Domain authentication failures must keep their existing public contract.
+test('gateway preserves authentication errors without forwarding', async (t) => {
+  let forwarded = false;
+  const app = createApp({
+    auth,
+    upstreams,
+    fetcher: async () => {
+      forwarded = true;
+      return Response.json({});
+    },
+  });
+  t.after(() => app.close());
+  const response = await app.inject({ method: 'GET', url: '/v1/crm/customers' });
+  assert.equal(response.statusCode, 401);
+  assert.equal(response.json().error.code, 'UNAUTHENTICATED');
+  assert.equal(response.headers['cache-control'], 'no-store');
+  assert.equal(forwarded, false);
+  assert.equal(typeof response.json().error.requestId, 'string');
+});

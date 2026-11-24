@@ -515,7 +515,35 @@ function resolveRegistration(
     );
     matches.push(...(owned.length ? owned : compatible));
   }
-  if (registration.mode === 'server' && registration.owner !== 'rep') {
+  if (registration.mode === 'server' && registration.owner === 'admin') {
+    const source = ws.sources.get('apps/admin-web/src/server/workspace.ts');
+    if (source)
+      visit(source.ast, (node) => {
+        if (
+          !ts.isVariableDeclaration(node) ||
+          literal(node.name) !== 'adminRouteTargets' ||
+          !node.initializer
+        )
+          return;
+        const value = unwrap(node.initializer);
+        if (!ts.isObjectLiteralExpression(value))
+          throw new Error('Admin route registry must remain explicit.');
+        for (const property of value.properties) {
+          if (
+            !ts.isPropertyAssignment(property) ||
+            !literal(property.name) ||
+            !literal(property.initializer)
+          )
+            throw new Error('Unresolved Admin route target');
+          if (literal(property.name) === registration.key) matches.push({ source, node: property });
+        }
+      });
+  }
+  if (
+    registration.mode === 'server' &&
+    (registration.owner === 'client' ||
+      (registration.owner === 'admin' && !ws.sources.has('apps/admin-web/src/server/workspace.ts')))
+  ) {
     for (const node of live.get(registration.owner) ?? []) {
       const id = node.properties.find(
         (p) => ts.isPropertyAssignment(p) && literal(p.name) === 'id',

@@ -6,6 +6,7 @@ import {
   routeId,
   type Repository,
 } from '@elvorance/service-kit';
+import { updateProjectMetadata } from '../application/project-metadata.ts';
 import type { Project } from '../domain/model.ts';
 import {
   addDeliverable,
@@ -28,6 +29,22 @@ export function registerRoutes(app: FastifyInstance, repository: Repository): vo
   app.get('/v1/projects/:id', async (request) =>
     repository.transaction(request.principal.tenantId, (tx) =>
       project(tx, request.principal, routeId(request)),
+    ),
+  );
+  app.patch('/v1/projects/:id', async (request) =>
+    command(request, repository, 'delivery.updateProjectMetadata', (tx) =>
+      updateProjectMetadata(tx, request.principal, routeId(request), request.body),
+    ),
+  );
+  app.patch('/v1/projects/:id/milestones/:milestoneId', async (request) =>
+    command(request, repository, 'delivery.updateMilestoneMetadata', (tx) =>
+      updateProjectMetadata(
+        tx,
+        request.principal,
+        routeId(request),
+        request.body,
+        routeId(request, 'milestoneId'),
+      ),
     ),
   );
   app.post('/v1/projects/:id/milestones', async (request) =>

@@ -1,0 +1,20 @@
+# Technical Debt Register
+
+خطوط الأساس محفوظة دون reset. الأعداد قياسات ساكنة لا عدد عيوب مستقلة. المالك والهدف مقترحان ولم يُعتمدا نيابة عن الفريق.
+
+| ID   | الدين / المقدار                                  | المصدر                                               | الأثر                            | المعالجة ومعيار الإغلاق                                             | مالك / هدف                |
+| ---- | ------------------------------------------------ | ---------------------------------------------------- | -------------------------------- | ------------------------------------------------------------------- | ------------------------- |
+| TD01 | 95 ملفًا يعطل فحص الأنواع                        | debt-baseline.json؛ audit-migration.mts              | strict acceptance FAIL           | ترحيل تدريجي مع اختبارات؛ لا حذف directives دون إصلاح الأنواع       | Frontend؛ S02–S10         |
+| TD02 | 20 explicit any                                  | debt-baseline.json                                   | فقدان ضمانات أنواع               | أنواع نطاق حقيقية وعدم استبدالها باستثناءات أخرى                    | Backend/Frontend؛ S02–S10 |
+| TD03 | 211 non-null assertions                          | debt-baseline.json                                   | افتراضات runtime                 | تحقق/تضييق أنواع عند الحدود واختبارات غياب                          | جميع النطاقات؛ S02–S10    |
+| TD04 | 244 workflow بلا test candidate                  | feature-matrix.json                                  | لا تتبع قبول كافٍ                | tests بمعايير مستقلة؛ الروابط الساكنة ليست coverage                 | QA؛ S03–S10               |
+| TD05 | 64 parity مقابل 69 demo routes                   | parity.mts؛ screens.csv                              | خمس إضافات خارج frozen baseline  | تغطية إضافية دون إعادة تعريف baseline لإخفاء التغيير                | Frontend QA؛ S03          |
+| TD06 | 69 demo و33 server بمسارات منفصلة                | apps/\*/src/main.ts                                  | ازدواج وتوقعات UI غير متطابقة    | نطاق إصدار ووظائف server صريحة وربط شاشات معتمد                     | Product/Frontend؛ S03–S08 |
+| TD07 | قفل transaction على tenant + JSONB عام           | pg-repository.ts؛ migrations                         | قابلية توسع غير مقاسة            | قياس حمل وفهارس ثم تضييق القفل مع ثبات idempotency                  | Backend؛ S09              |
+| TD08 | إغلاق outbox/inbox واحتفاظ البيانات التشغيلية    | events/index.ts؛ migrations.ts                       | تراكم/استعادة/DLQ يحتاج تشغيلًا  | سياسات retention وreplay وbackups مثبتة لا targets فقط              | Platform؛ S09             |
+| TD09 | client native scaffold ≠ rep secure bridge       | apps/client-mobile/android,ios؛ packages/mobile-auth | مسار native العميل غير مقبول     | قرار نطاق native واختبارات أصيلة منفصلة                             | Mobile؛ S08               |
+| TD10 | وثائق PRs مبنية على main قديم                    | #5/#7/#8 bodies                                      | قرارات دمج خاطئة                 | تقرير SHA/tree الحالي وتسوية دون تراجع scopes                       | Maintainer؛ S01           |
+| TD11 | default builds تجريبية                           | build-apps.mts؛ config.example.ts                    | التباس artifact المقصود          | build server-only ومراجعة settings لكل منصة                         | Release؛ S02              |
+| TD12 | توثيق توقعات الأعطال HTTP                        | http.ts؛ proxy.ts                                    | error semantics غير متسقة        | إصلاح الفرع +19 حالة؛ يبقى الدمج/النشر غير منفذ                     | Backend؛ S01              |
+| TD13 | مصدر parity latest-results متتبع ومتغير بالتشغيل | tests/design-parity/artifacts/latest-results.json    | فرق غير وظيفي في source archives | فصل source/evidence بسياسة لاحقة؛ أُعيدت النسخة الأصلية قبل التسليم | Tooling؛ S02              |
+| TD14 | لا قبول شامل لمصفوفة الأدوار والملكية            | permissions.csv؛ backend tests                       | فجوة أمنية غير مقدّرة            | deny/allow مع حسابات مستقلة لكل عملية حرجة                          | Security QA؛ S02–S08      |

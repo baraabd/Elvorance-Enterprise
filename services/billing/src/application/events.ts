@@ -37,10 +37,26 @@ export async function handleEvent(tx: Transaction, event: EventEnvelope): Promis
     return (
       sum +
       integer(item.quantity, 'quantity', 1, 1000) *
-        integer(item.unitPriceMinor, 'unitPriceMinor', 1, 1_000_000_000)
+        integer(item.unitPriceMinor, 'unitPriceMinor', 1, 10_000_000_000)
     );
   }, 0);
-  assert(itemTotal === totalMinor, 'CONTRACT_TOTAL', 'Contract item total is inconsistent');
+  // A v1 producer without explicit discount fields may only describe an undiscounted sale.
+  // Never infer a discount from a mismatched total: that would conceal corrupted terms.
+  const explicitDiscount = body.subtotalMinor !== undefined || body.discountMinor !== undefined;
+  const subtotalMinor = explicitDiscount
+    ? integer(body.subtotalMinor, 'subtotalMinor', 1, 100_000_000_000)
+    : itemTotal;
+  const discountMinor = explicitDiscount
+    ? integer(body.discountMinor, 'discountMinor', 0, subtotalMinor - 1)
+    : 0;
+  assert(
+    Number.isSafeInteger(itemTotal) &&
+      itemTotal <= 100_000_000_000 &&
+      itemTotal === subtotalMinor &&
+      subtotalMinor - discountMinor === totalMinor,
+    'CONTRACT_TOTAL',
+    'Contract items, discount and net total are inconsistent',
+  );
   const common = {
     contractId,
     clientId: text(body.clientId, 'clientId', 1, 100),

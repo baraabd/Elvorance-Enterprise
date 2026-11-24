@@ -1,0 +1,512 @@
+{
+  "schemaVersion": 1,
+  "operations": [
+    {
+      "service": "sales",
+      "method": "GET",
+      "servicePath": "/v1/service-requests",
+      "gatewayPath": "/v1/sales/service-requests",
+      "roles": ["admin", "rep", "client"],
+      "summary": "List scoped client service requests",
+      "requestSchema": null,
+      "responseSchema": "ServiceRequestPage",
+      "paginated": true
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "servicePath": "/v1/service-requests",
+      "gatewayPath": "/v1/sales/service-requests",
+      "roles": ["client"],
+      "summary": "Submit a request against the published tenant catalog",
+      "requestSchema": "ServiceRequestInput",
+      "responseSchema": "ServiceRequest",
+      "paginated": false
+    },
+    {
+      "service": "sales",
+      "method": "GET",
+      "servicePath": "/v1/service-requests/{id}",
+      "gatewayPath": "/v1/sales/service-requests/{id}",
+      "roles": ["admin", "rep", "client"],
+      "summary": "Read a scoped client service request",
+      "requestSchema": null,
+      "responseSchema": "ServiceRequest",
+      "paginated": false
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "servicePath": "/v1/service-requests/{id}/review",
+      "gatewayPath": "/v1/sales/service-requests/{id}/review",
+      "roles": ["admin", "rep"],
+      "summary": "Review a request; acceptance atomically creates a sales opportunity",
+      "requestSchema": "ServiceRequestReview",
+      "responseSchema": "ServiceRequest",
+      "paginated": false
+    },
+    {
+      "service": "sales",
+      "method": "POST",
+      "servicePath": "/v1/service-requests/{id}/cancel",
+      "gatewayPath": "/v1/sales/service-requests/{id}/cancel",
+      "roles": ["client"],
+      "summary": "Cancel an unresolved own request",
+      "requestSchema": "ServiceRequestCancel",
+      "responseSchema": "ServiceRequest",
+      "paginated": false
+    },
+    {
+      "service": "crm",
+      "method": "PATCH",
+      "servicePath": "/v1/regions/{id}",
+      "gatewayPath": "/v1/crm/regions/{id}",
+      "roles": ["admin"],
+      "summary": "Update region metadata without changing customer or identity assignment",
+      "requestSchema": "RegionUpdate",
+      "responseSchema": "Region",
+      "paginated": false
+    },
+    {
+      "service": "delivery",
+      "method": "PATCH",
+      "servicePath": "/v1/projects/{id}",
+      "gatewayPath": "/v1/delivery/projects/{id}",
+      "roles": ["admin", "delivery"],
+      "summary": "Edit planning title without changing approved commercial scope",
+      "requestSchema": "ProjectMetadataInput",
+      "responseSchema": "ProjectMetadataResponse",
+      "paginated": false
+    },
+    {
+      "service": "delivery",
+      "method": "PATCH",
+      "servicePath": "/v1/projects/{id}/milestones/{milestoneId}",
+      "gatewayPath": "/v1/delivery/projects/{id}/milestones/{milestoneId}",
+      "roles": ["admin", "delivery"],
+      "summary": "Edit unfinished milestone metadata; progress transitions remain on the existing POST",
+      "requestSchema": "MilestoneMetadataInput",
+      "responseSchema": "ProjectMetadataResponse",
+      "paginated": false
+    }
+  ],
+  "schemas": {
+    "ServiceRequestInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "serviceId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "catalogVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 200
+        },
+        "brief": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 3000
+        },
+        "budgetMinor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000000000
+        },
+        "deadline": {
+          "type": ["string", "null"],
+          "format": "date"
+        }
+      },
+      "required": ["serviceId", "catalogVersion", "currency", "title", "brief", "budgetMinor"]
+    },
+    "ServiceRequestReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "decision": {
+          "enum": ["in_review", "accepted", "declined"]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 3000
+        }
+      },
+      "required": ["expectedVersion", "decision", "note"]
+    },
+    "ServiceRequestCancel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": ["expectedVersion"]
+    },
+    "ServiceRequest": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Entity"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "serviceId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "catalogVersion": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "currency": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 200
+            },
+            "brief": {
+              "type": "string",
+              "minLength": 20,
+              "maxLength": 3000
+            },
+            "budgetMinor": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000000000
+            },
+            "deadline": {
+              "type": ["string", "null"],
+              "format": "date"
+            },
+            "clientId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "customerName": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 200
+            },
+            "serviceTitle": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "status": {
+              "enum": ["submitted", "in_review", "accepted", "declined", "cancelled"]
+            },
+            "reviewNote": {
+              "type": "string",
+              "maxLength": 3000
+            },
+            "reviewedBy": {
+              "type": ["string", "null"]
+            },
+            "reviewedAt": {
+              "type": ["string", "null"],
+              "format": "date-time"
+            },
+            "opportunityId": {
+              "type": ["string", "null"]
+            },
+            "cancelledAt": {
+              "type": ["string", "null"],
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "serviceId",
+            "catalogVersion",
+            "currency",
+            "title",
+            "brief",
+            "budgetMinor",
+            "deadline",
+            "clientId",
+            "repId",
+            "customerName",
+            "serviceTitle",
+            "status",
+            "reviewNote",
+            "reviewedBy",
+            "reviewedAt",
+            "opportunityId",
+            "cancelledAt"
+          ]
+        }
+      ]
+    },
+    "ServiceRequestPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ServiceRequest"
+          }
+        },
+        "nextCursor": {
+          "type": ["string", "null"]
+        }
+      },
+      "required": ["items", "nextCursor"]
+    },
+    "RegionUpdate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 150
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 30
+        },
+        "active": {
+          "type": "boolean"
+        }
+      },
+      "required": ["expectedVersion"],
+      "anyOf": [
+        {
+          "required": ["name"]
+        },
+        {
+          "required": ["code"]
+        },
+        {
+          "required": ["active"]
+        }
+      ]
+    },
+    "Region": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Entity"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 150
+            },
+            "code": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 30
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": ["name", "code", "active"]
+        }
+      ]
+    },
+    "ProjectMetadataInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 300
+        }
+      },
+      "required": ["expectedVersion", "title"]
+    },
+    "MilestoneMetadataInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 300
+        },
+        "dueOn": {
+          "type": ["string", "null"],
+          "format": "date"
+        }
+      },
+      "required": ["expectedVersion"],
+      "anyOf": [
+        {
+          "required": ["title"]
+        },
+        {
+          "required": ["dueOn"]
+        }
+      ]
+    },
+    "ProjectMetadataResponse": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Entity"
+        },
+        {
+          "type": "object",
+          "required": [
+            "title",
+            "contractId",
+            "clientId",
+            "repId",
+            "status",
+            "progress",
+            "contractSnapshot",
+            "milestones",
+            "deliverables"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "contractId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "clientId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "status": {
+              "enum": ["planning", "active", "completed"]
+            },
+            "progress": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "contractSnapshot": {
+              "type": "object"
+            },
+            "milestones": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "title", "status", "dueOn", "completedAt"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 300
+                  },
+                  "status": {
+                    "enum": ["pending", "in_progress", "done"]
+                  },
+                  "dueOn": {
+                    "type": ["string", "null"],
+                    "format": "date"
+                  },
+                  "completedAt": {
+                    "type": ["string", "null"],
+                    "format": "date-time"
+                  }
+                }
+              }
+            },
+            "deliverables": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ContractApprovedAmounts": {
+      "type": "object",
+      "description": "Additive contract.approved.v1 monetary fields. Both absent means legacy zero-discount only. Billing validates gross items = subtotal and subtotal - discount = total. Deploy Billing consumer before Sales producer.",
+      "properties": {
+        "subtotalMinor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000000
+        },
+        "discountMinor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000000000
+        },
+        "totalMinor": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000000
+        }
+      },
+      "required": ["totalMinor"],
+      "dependentRequired": {
+        "subtotalMinor": ["discountMinor"],
+        "discountMinor": ["subtotalMinor"]
+      }
+    }
+  }
+}
