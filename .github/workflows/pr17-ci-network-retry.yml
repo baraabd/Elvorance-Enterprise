@@ -1,0 +1,26 @@
+name: Retry exact-source verification after network failure
+on:
+  push:
+    branches: [repair/pr-integration-publish-20261124]
+    paths: [.github/workflows/pr17-ci-network-retry.yml]
+permissions:
+  contents: read
+  actions: write
+jobs:
+  retry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Start one complete new attempt; do not reuse stale lane artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,subprocess
+          route='repos/baraabd/Elvorance-Enterprise/actions/runs/45338624020'
+          run=json.loads(subprocess.check_output(['gh','api',route]))
+          assert run['head_sha']=='8c677b21444420c8ade37db8920454e026e74e51'
+          assert run['status']=='completed' and run['conclusion']=='failure' and run['run_attempt']==1
+          subprocess.run(['gh','api','--method','POST',route+'/rerun'],check=True)
+          PY
