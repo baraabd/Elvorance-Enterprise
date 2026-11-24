@@ -1,0 +1,59 @@
+name: Diagnose integrated narrow visit layout
+on:
+  push:
+    branches: [repair/pr-integration-publish-20261124]
+    paths: [.github/workflows/pr19-layout-diagnostic.yml]
+permissions:
+  contents: read
+jobs:
+  layout:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 4d5e4c3d2b7da24bf1263db82874990451803363
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - run: npm ci && npm run build
+      - run: |
+          python3 -m venv /tmp/layout-tools
+          /tmp/layout-tools/bin/pip install -r tests/ux/requirements.txt
+          /tmp/layout-tools/bin/python -m playwright install --with-deps chromium
+      - name: Record overflow source, including fixed and absolute descendants
+        run: |
+          mkdir -p dist/layout-diagnostic
+          /tmp/layout-tools/bin/python - <<'PY'
+          import importlib.util,json,pathlib
+          from playwright.sync_api import sync_playwright
+          root=pathlib.Path.cwd()
+          spec=importlib.util.spec_from_file_location('audit',root/'tests/ux/browser_audit.py');mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
+          frozen=json.loads((root/'tests/design-parity/baseline-v1.1.json').read_text())
+          rows=[]
+          with sync_playwright() as pw:
+              browser=pw.chromium.launch(args=['--no-sandbox'])
+              page=browser.new_page(viewport={'width':320,'height':900},locale='ar-SA',timezone_id='UTC',reduced_motion='reduce',device_scale_factor=1)
+              mod.portable(page,(root/'dist/rep.html').read_text())
+              seed=page.evaluate('Elvorance.state()')
+              for name in ['visit-outcome','visit-detail']:
+                  case=next(x for x in frozen['cases'] if x['app']=='rep' and x['route']==name)
+                  fixture=frozen['fixtures'].get(case.get('fixture','default'),{})
+                  page.evaluate('''({seed,fixture,route,params})=>{Elvorance.update(s=>{Object.assign(s,structuredClone(seed));for(const [collection,rows] of Object.entries(fixture))for(const [id,patch]of Object.entries(rows))Object.assign(s[collection].find(r=>r.id===id),patch);});Elvorance.go(route,params);}''',{'seed':seed,'fixture':fixture,'route':name,'params':case.get('params',{})})
+                  page.wait_for_timeout(300)
+                  report=page.evaluate('''()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,body:document.body.scrollWidth,scrollX,fonts:document.fonts.status,elements:[...document.querySelectorAll('*')].filter(e=>e.getClientRects().length).filter(e=>{const r=e.getBoundingClientRect();return r.left<0||r.right>innerWidth||e.scrollWidth>e.clientWidth+1}).map(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return{html:e.outerHTML.slice(0,600),left:r.left,right:r.right,width:r.width,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth,position:s.position,overflow:s.overflow,minWidth:s.minWidth,whiteSpace:s.whiteSpace,transform:s.transform};}).slice(0,100)})''')
+                  rows.append({'route':name,'report':report})
+                  page.screenshot(path=str(root/f'dist/layout-diagnostic/{name}.png'),full_page=True)
+              browser.close()
+          (root/'dist/layout-diagnostic/results.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2))
+          print(json.dumps(rows,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: exact-narrow-layout-${{ github.sha }}
+          path: dist/layout-diagnostic/
+          if-no-files-found: error
+          retention-days: 7
