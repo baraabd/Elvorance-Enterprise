@@ -1,0 +1,40 @@
+name: Prepare pinned security remediation dependency
+on:
+  push:
+    branches: [repair/pr-integration-publish-20261124]
+    paths: [.github/workflows/pr-security-toolchain.yml]
+permissions:
+  contents: read
+jobs:
+  dependency:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 1012b059a088edb3d7b651489aca42b229fb5f16
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Resolve exact patched dependency and audit the locked graph
+        run: |
+          set -euo pipefail
+          npm ci
+          npm install --save-exact --workspace @elvorance/service-kit --workspace @elvorance/api-gateway @fastify/rate-limit@11.3.0
+          npm audit --audit-level=moderate
+          mkdir -p "$RUNNER_TEMP/security-toolchain/packages/service-kit" "$RUNNER_TEMP/security-toolchain/services/api-gateway"
+          cp package-lock.json "$RUNNER_TEMP/security-toolchain/"
+          cp packages/service-kit/package.json "$RUNNER_TEMP/security-toolchain/packages/service-kit/"
+          cp services/api-gateway/package.json "$RUNNER_TEMP/security-toolchain/services/api-gateway/"
+          git diff -- package-lock.json packages/service-kit/package.json services/api-gateway/package.json > "$RUNNER_TEMP/security-toolchain/dependency.patch"
+          tar -czf "$RUNNER_TEMP/security-toolchain/node-modules.tar.gz" node_modules
+          cd "$RUNNER_TEMP/security-toolchain"
+          sha256sum package-lock.json dependency.patch node-modules.tar.gz > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: reviewed-security-toolchain-${{ github.sha }}
+          path: ${{ runner.temp }}/security-toolchain/
+          if-no-files-found: error
+          retention-days: 7
