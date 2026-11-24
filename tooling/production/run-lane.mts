@@ -44,6 +44,7 @@ const definitions: Record<string, string[]> = {
   'example-build': ['node', 'examples/instant-close/build.mts'],
   format: run('check:format'),
   package: run('package'),
+  'source-package-integrity': ['node', 'tooling/production/source-proof.mts'],
   'production-tests': run('test:production'),
   'admin-e2e': run('test:admin:e2e'),
   'runtime-env': ['node', 'infra/compose/init-env.mts'],
@@ -201,6 +202,8 @@ for (const id of spec.commands) {
       const path = paths[0];
       if (path) await copyEvidence(directory, path, 'source-package.zip');
     }
+    if (id === 'source-package-integrity' && command.exitCode === 0)
+      await copyEvidence(directory, 'dist/source-proof.json', 'source-proof.json');
     if (spec.countedCommands.includes(id) && !command.tests) command.status = 'BLOCKED';
     commands.push(command);
   } catch (error) {

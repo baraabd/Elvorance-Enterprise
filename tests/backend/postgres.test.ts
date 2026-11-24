@@ -47,7 +47,9 @@ import {
 import { auth, call, principals } from './helpers.ts';
 import { createLiveDataApi } from '../../packages/api-client/src/live-data.ts';
 import type { EventEnvelope } from '@elvorance/contracts';
+import { verifySprint04 } from './sprint04-scenarios.ts';
 import { verifyRepPostgres } from './rep-postgres-scenarios.ts';
+import { dropFixtureDatabases } from './postgres-cleanup.ts';
 
 const adminUrl = process.env.ELVORANCE_TEST_POSTGRES_URL;
 const configs: { name: string; tables: readonly string[]; migrations: Migration[] }[] = [
@@ -85,17 +87,17 @@ test(
     }[] = [];
     const apps: { close(): Promise<void> }[] = [];
     // Keep track of raw SQL clients so an early assertion cannot leave them connected
-    // while DROP DATABASE WITH (FORCE) is running in test cleanup.
+    // before the server-side disconnect barrier in test cleanup.
     const rawClients = new Set<pg.Client>();
     t.after(async () => {
-      await Promise.all([...rawClients].map((client) => client.end().catch(() => {})));
-      await Promise.all(apps.map((app) => app.close()));
-      for (const service of provisioned) await service.repository.close();
-      for (const service of provisioned) {
-        await administrator.query(`DROP DATABASE IF EXISTS ${service.db} WITH (FORCE)`);
-        await administrator.query(`DROP ROLE IF EXISTS ${service.role}`);
+      try {
+        await Promise.all([...rawClients].map((client) => client.end().catch(() => {})));
+        await Promise.all(apps.map((app) => app.close()));
+        for (const service of provisioned) await service.repository.close();
+        await dropFixtureDatabases((sql, values) => administrator.query(sql, values), provisioned);
+      } finally {
+        await administrator.end();
       }
-      await administrator.end();
     });
     for (const config of configs) {
       const role = `${prefix}_${config.name}`;
@@ -114,8 +116,31 @@ test(
       const url = parsed.toString();
       const repository = new PgRepository(config.name, url, config.tables, config.migrations);
       provisioned.push({ name: config.name, db, role, password, url, repository });
+      if (config.name === 'sales') {
+        const previous = new PgRepository(
+          config.name,
+          url,
+          config.tables.filter((table) => table !== 'service_requests'),
+          config.migrations.filter((migration) => migration.version <= 2),
+        );
+        try {
+          await previous.migrate();
+          await previous.transaction('upgrade-retained', (tx) =>
+            tx.insert<Entity>('tasks', { id: 'previous-version-row', title: 'Keep existing data' }),
+          );
+        } finally {
+          await previous.close();
+        }
+      }
       await repository.migrate();
       await repository.migrate();
+      if (config.name === 'sales')
+        assert.ok(
+          await repository.transaction('upgrade-retained', (tx) =>
+            tx.get('tasks', 'previous-version-row'),
+          ),
+          'Forward migration retains previous-version data',
+        );
       await repository.ping();
       const owner = new pg.Client({ connectionString: url });
       rawClients.add(owner);
@@ -126,9 +151,9 @@ test(
         relforcerowsecurity: boolean;
       }>(
         'SELECT relname,relrowsecurity,relforcerowsecurity FROM pg_class WHERE relname=ANY($1::text[])',
-        [config.tables],
+        [[...config.tables, 'inbox', 'idempotency_keys']],
       );
-      assert.equal(flags.rows.length, config.tables.length);
+      assert.equal(flags.rows.length, config.tables.length + 2);
       for (const row of flags.rows)
         assert.ok(
           row.relrowsecurity && row.relforcerowsecurity,
@@ -209,6 +234,79 @@ test(
     assert.equal(flags.rows[0]!.relforcerowsecurity, true);
     await rawOwner.end();
     rawClients.delete(rawOwner);
+    // Prove metadata isolation without repository WHERE clauses, using the actual owner role.
+    const metadata = new pg.Client({ connectionString: byName('crm').url });
+    rawClients.add(metadata);
+    await metadata.connect();
+    await metadata.query('BEGIN');
+    await metadata.query("SELECT set_config('app.tenant_id', $1, true)", ['tenant-a']);
+    await metadata.query(
+      "INSERT INTO inbox(tenant_id,consumer,event_id) VALUES('tenant-a','s03-consumer','s03-event')",
+    );
+    await metadata.query('COMMIT');
+    assert.equal(
+      (await metadata.query('SELECT * FROM inbox')).rowCount,
+      0,
+      'Tenant context resets after COMMIT',
+    );
+    await metadata.query('BEGIN');
+    await metadata.query("SELECT set_config('app.tenant_id', $1, true)", ['tenant-b']);
+    assert.equal(
+      (await metadata.query('SELECT * FROM inbox')).rowCount,
+      0,
+      'Foreign inbox receipts are invisible',
+    );
+    assert.equal(
+      (await metadata.query("UPDATE inbox SET consumer='other' WHERE tenant_id='tenant-a'"))
+        .rowCount,
+      0,
+    );
+    await assert.rejects(
+      metadata.query(
+        "INSERT INTO inbox(tenant_id,consumer,event_id) VALUES('tenant-a','s03-consumer','other')",
+      ),
+      (error: unknown) =>
+        typeof error === 'object' && error !== null && 'code' in error && error.code === '42501',
+    );
+    await metadata.query('ROLLBACK');
+    await crmRepository.transaction('tenant-a', (tx) =>
+      tx.idempotent('s03-actor', 's03-key', 's03-op', {}, async () => ({ confidential: true })),
+    );
+    assert.equal((await metadata.query('SELECT * FROM idempotency_keys')).rowCount, 0);
+    await metadata.query('BEGIN');
+    await metadata.query("SELECT set_config('app.tenant_id', $1, true)", ['tenant-b']);
+    assert.equal((await metadata.query('SELECT * FROM idempotency_keys')).rowCount, 0);
+    assert.equal(
+      (await metadata.query("DELETE FROM idempotency_keys WHERE tenant_id='tenant-a'")).rowCount,
+      0,
+    );
+    await metadata.query('COMMIT');
+    await metadata.query('BEGIN');
+    await metadata.query("SELECT set_config('app.tenant_id', $1, true)", ['tenant-a']);
+    assert.equal(
+      (await metadata.query('SELECT * FROM idempotency_keys')).rowCount,
+      1,
+      'Owner retains its own cached result',
+    );
+    assert.equal((await metadata.query('SELECT * FROM inbox')).rowCount, 1);
+    await metadata.query('ROLLBACK');
+    await metadata.end();
+    rawClients.delete(metadata);
+    assert.ok(adminUrl);
+    const unsafeUrl = new URL(adminUrl);
+    unsafeUrl.pathname = `/${byName('crm').db}`;
+    const unsafe = new PgRepository('crm', unsafeUrl.toString(), crmTables, crmMigrations);
+    try {
+      await assert.rejects(
+        unsafe.transaction('tenant-a', (tx) => tx.list('customers')),
+        /must not bypass row security/,
+      );
+    } finally {
+      await unsafe.close();
+    }
+    t.diagnostic(
+      'S03: seven metadata RLS policies enforced; tenant read/update/insert denial; pool context reset; privileged request role refused.',
+    );
     const crm = crmApp({ repository: crmRepository, auth });
     const sales = salesApp({
       repository: byName('sales').repository,
@@ -452,6 +550,12 @@ test(
     );
     await salesRaw.end();
     rawClients.delete(salesRaw);
+    await verifySprint04(t, {
+      crm: byName('crm').repository,
+      sales: byName('sales').repository,
+      communications: byName('communications').repository,
+      identity: byName('identity').repository,
+    });
     await verifyRepPostgres(t, {
       crm: byName('crm').repository,
       sales: byName('sales').repository,

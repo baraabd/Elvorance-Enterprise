@@ -127,7 +127,7 @@ export async function runtimeRegistrations(ws: Workspace): Promise<RuntimeRegist
         namespace: 'inventory',
       }));
       builder.onLoad({ filter: /.*/, namespace: 'inventory' }, () => ({
-        contents: `import original from ${JSON.stringify(fastifyUrl)};export default function(options){const owner=globalThis.__inventoryOwner;const app=original(options);app.addHook('onRoute',r=>{for(const method of Array.isArray(r.method)?r.method:[r.method])globalThis.__inventoryRoutes.push({owner,mode:'backend',kind:'api-route',key:method+' '+r.url,method,path:r.url,automatic:method==='HEAD'});});return app;}`,
+        contents: `import original, {LogController} from ${JSON.stringify(fastifyUrl)};export {LogController};export default function(options){const owner=globalThis.__inventoryOwner;const app=original(options);app.addHook('onRoute',r=>{for(const method of Array.isArray(r.method)?r.method:[r.method])globalThis.__inventoryRoutes.push({owner,mode:'backend',kind:'api-route',key:method+' '+r.url,method,path:r.url,automatic:method==='HEAD'});});return app;}`,
         resolveDir: ws.root,
       }));
       // File URLs preserve Windows drive letters/backslashes without bundling CommonJS internals.

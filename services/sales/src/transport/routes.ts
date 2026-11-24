@@ -24,6 +24,7 @@ import {
   sendQuote,
   updateQuote,
 } from '../application/quotes.ts';
+import { registerServiceRequestRoutes } from './service-request-routes.ts';
 import { registerRepWorkRoutes } from './rep-work-routes.ts';
 import { registerDiscountRoutes } from './discount-routes.ts';
 import { cancelVisit, updateVisit } from '../application/visit-planning.ts';
@@ -38,6 +39,7 @@ export function registerRoutes(
   repository: Repository,
   directory: CustomerDirectory,
 ): void {
+  registerServiceRequestRoutes(app, repository, directory);
   registerRepWorkRoutes(app, repository, directory);
   registerDiscountRoutes(app, repository, directory);
   app.get('/v1/visits', async (request) => {

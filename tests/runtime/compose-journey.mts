@@ -1,3 +1,4 @@
+import { sprint04Faults } from './sprint04-resilience.mts';
 import { createHmac, randomUUID } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -314,6 +315,7 @@ async function journey(env: NodeJS.ProcessEnv) {
       visitId: visit.id,
       currency: 'SAR',
       totalMinor: 1,
+      discountMinor: 1000,
       items: [
         {
           serviceId: 'ci-web',
@@ -328,12 +330,12 @@ async function journey(env: NodeJS.ProcessEnv) {
       validUntil: new Date(Date.now() + 86400000).toISOString().slice(0, 10),
       paymentPlan: [
         { id: 'deposit', label: 'CI deposit', amountMinor: 4000, dueOn: null },
-        { id: 'balance', label: 'CI balance', amountMinor: 6000, dueOn: null },
+        { id: 'balance', label: 'CI balance', amountMinor: 5000, dueOn: null },
       ],
     },
   });
   ensure(
-    quote.totalMinor === 10000 && quote.status === 'draft',
+    quote.totalMinor === 9000 && quote.status === 'draft',
     'Quote total must be computed by the real sales service.',
   );
   quote = await http.request<Quote>('POST', `/v1/sales/quotes/${quote.id}/send`, {
@@ -366,7 +368,7 @@ async function journey(env: NodeJS.ProcessEnv) {
   ensure(
     accepted.quote.status === 'accepted' &&
       contract.status === 'pending' &&
-      contract.totalMinor === 10000,
+      contract.totalMinor === 9000,
     'Client acceptance must create a pending contract with authoritative terms.',
   );
   const acceptRetry = await http.request<{ contract: Contract }>(
@@ -399,11 +401,17 @@ async function journey(env: NodeJS.ProcessEnv) {
     consent: true,
   };
   const approvalKey = randomUUID();
-  contract = await http.request<Contract>('POST', `/v1/sales/contracts/${contract.id}/approve`, {
-    token: client,
-    body: approvalBody,
-    key: approvalKey,
-  });
+  const faults = sprint04Faults(env, tenantId);
+  contract = await faults.duringBillingFailure(() =>
+    http.request<Contract>('POST', `/v1/sales/contracts/${contract.id}/approve`, {
+      token: client,
+      body: approvalBody,
+      key: approvalKey,
+    }),
+  );
+  passed(
+    'real PostgreSQL consumer failure rolls back inbox and invoices; independent delivery succeeds and RabbitMQ queues retry',
+  );
   ensure(contract.status === 'approved', 'Explicit customer approval must succeed.');
   const approvalRetry = await http.request<Contract>(
     'POST',
@@ -483,6 +491,16 @@ async function journey(env: NodeJS.ProcessEnv) {
     await http.request('GET', path, { token: outsider, status: 404 });
   passed(
     'real RabbitMQ outbox/inbox round trip creates one project, two invoices and scoped notifications',
+  );
+
+  ensure(
+    contract.quoteSnapshot.discountMinor === 1000 && contract.totalMinor === 9000,
+    'Discounted contract must recover with the exact net invoice balance.',
+  );
+  passed('discounted contract recovers from transient billing failure with net-balanced invoices');
+  await faults.verifyBrokerRecovery(http, client);
+  passed(
+    'broker outage preserves command/outbox; reconnect drains, duplicate delivery deduplicates and poison messages dead-letter',
   );
 
   visit = await http.request<Visit>('POST', `/v1/sales/visits/${visit.id}/complete`, {

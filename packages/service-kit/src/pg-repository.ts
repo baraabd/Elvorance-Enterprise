@@ -103,6 +103,15 @@ export class PgRepository implements Repository {
     };
     try {
       await client.query('BEGIN');
+      const runtimeRole = await client.query<{ rolsuper: boolean; rolbypassrls: boolean }>(
+        'SELECT rolsuper,rolbypassrls FROM pg_roles WHERE rolname=current_user',
+      );
+      assert(
+        runtimeRole.rows[0] && !runtimeRole.rows[0].rolsuper && !runtimeRole.rows[0].rolbypassrls,
+        'UNSAFE_DATABASE_ROLE',
+        'Runtime database role must not bypass row security',
+        500,
+      );
       await client.query("SELECT set_config('app.tenant_id', $1, true)", [tenantId]);
       // This service serializes its own tenant commands. Cross-service coordination uses events, never shared locks/tables.
       await client.query('SELECT pg_advisory_xact_lock(hashtextextended($1, 0))', [
