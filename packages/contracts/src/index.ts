@@ -53,6 +53,9 @@ export interface ContractSnapshot {
   customerName: string;
   currency: string;
   items: ScopeItem[];
+  /** Additive v1 fields. Both absent is the legacy, undiscounted representation. */
+  subtotalMinor?: number;
+  discountMinor?: number;
   totalMinor: number;
   terms: string;
   paymentPlan: PaymentInstallment[];
