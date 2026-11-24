@@ -1,0 +1,97 @@
+name: PR repair source snapshot (read-only)
+on:
+  push:
+    branches: [repair/pr-review-snapshot-20261124]
+    paths: [.github/workflows/pr-review-snapshot.yml]
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Collect exact PR refs and read-only CI evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/review-evidence"
+          python3 - <<'PY'
+          import json, os, pathlib, subprocess
+          out = pathlib.Path(os.environ['RUNNER_TEMP']) / 'review-evidence'
+          repo = 'repos/baraabd/Elvorance-Enterprise'
+          def api(path, target, optional=False, raw=False):
+              p = subprocess.run(['gh', 'api', repo + path], capture_output=True)
+              if p.returncode:
+                  if not optional:
+                      raise RuntimeError(path + ': ' + p.stderr.decode(errors='replace'))
+                  (out / (target + '.error.txt')).write_bytes(p.stderr)
+                  return None
+              (out / target).write_bytes(p.stdout)
+              return p.stdout if raw else json.loads(p.stdout)
+          api('/branches/main', 'main.json')
+          api('/rulesets', 'rulesets.json', optional=True)
+          api('/branches/main/protection', 'main-protection.json', optional=True)
+          manifest = {}
+          for number in range(13, 21):
+              pr = api(f'/pulls/{number}', f'pr-{number}.json')
+              sha = pr['head']['sha']
+              manifest[str(number)] = {'head': sha, 'branch': pr['head']['ref'], 'base': pr['base']['sha']}
+              subprocess.run(['git', 'fetch', '--no-tags', 'origin', f'+refs/pull/{number}/head:refs/heads/review/pr-{number}'], check=True)
+              actual = subprocess.check_output(['git', 'rev-parse', f'review/pr-{number}'], text=True).strip()
+              if actual != sha:
+                  raise RuntimeError(f'PR {number} changed during snapshot; refusing mixed evidence')
+              api(f'/pulls/{number}/reviews?per_page=100', f'pr-{number}-reviews.json')
+              api(f'/issues/{number}/comments?per_page=100', f'pr-{number}-comments.json')
+              api(f'/commits/{sha}/check-runs?per_page=100', f'pr-{number}-checks.json')
+              api(f'/commits/{sha}/status', f'pr-{number}-status.json')
+              runs = api(f'/actions/runs?event=pull_request&head_sha={sha}&per_page=100', f'pr-{number}-runs.json')
+              seen = set()
+              for run in runs['workflow_runs']:
+                  if run['workflow_id'] in seen:
+                      continue
+                  seen.add(run['workflow_id'])
+                  run_id = run['id']
+                  jobs = api(f'/actions/runs/{run_id}/jobs?filter=latest&per_page=100', f'run-{run_id}-jobs.json')
+                  for job in jobs['jobs']:
+                      if job['conclusion'] in ('failure', 'timed_out', 'cancelled'):
+                          api(f"/actions/jobs/{job['id']}/logs", f"job-{job['id']}.log", optional=True, raw=True)
+          (out / 'refs.json').write_text(json.dumps(manifest, indent=2) + '\n')
+          PY
+          git bundle create "$RUNNER_TEMP/review-evidence/repository.bundle" --all
+          git bundle verify "$RUNNER_TEMP/review-evidence/repository.bundle"
+          git rev-parse HEAD HEAD^{tree} > "$RUNNER_TEMP/review-evidence/snapshot-source.txt"
+      - name: Install the unchanged locked baseline toolchain
+        run: npm ci
+      - name: Package source evidence and Linux toolchain without Git configuration or credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          export OUT="$RUNNER_TEMP/review-evidence"
+          cp package-lock.json "$OUT/baseline-package-lock.json"
+          node --version > "$OUT/toolchain-versions.txt"
+          npm --version >> "$OUT/toolchain-versions.txt"
+          tar -czf "$OUT/node-modules.tar.gz" node_modules
+          cp "$(command -v node)" "$OUT/node"
+          tar -czf "$OUT/npm.tar.gz" -C "$(npm root -g)" npm
+          cd "$OUT"
+          sha256sum repository.bundle node-modules.tar.gz node npm.tar.gz baseline-package-lock.json > SHA256SUMS
+      - name: Upload immutable repair snapshot
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr-repair-snapshot-${{ github.sha }}
+          path: ${{ runner.temp }}/review-evidence/
+          if-no-files-found: error
+          retention-days: 7
