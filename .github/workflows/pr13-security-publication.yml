@@ -1,0 +1,124 @@
+name: Materialize reviewed QA security integration
+on:
+  push:
+    branches: [repair/pr-integration-publish-20261124]
+    paths: [.github/workflows/pr13-security-publication.yml]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Reproduce checked source objects and reject any unexpected change
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/pr13-evidence"
+          git worktree add --detach "$RUNNER_TEMP/pr13-repair" fd64455a72f673839f8eb2aa00cf05ce53bf4774
+          cd "$RUNNER_TEMP/pr13-repair"
+          git config user.name 'Elvorance PR Repair'
+          git config user.email 'elvorance-pr-repair@users.noreply.github.com'
+          python3 - <<'PY'
+          import base64,hashlib,json,pathlib,re,subprocess,zlib
+          P=pathlib.Path
+          original='fd64455a72f673839f8eb2aa00cf05ce53bf4774'
+          predecessor='489dd5971f34ebb0c9cee97e66187bfefdc0a29c'
+          def git(*args,check=True):
+              p=subprocess.run(['git',*args],text=True,capture_output=True)
+              if check and p.returncode:raise RuntimeError(p.stdout+p.stderr)
+              return p.stdout.strip()
+          git('merge','--no-ff','--no-commit',predecessor,check=False)
+          allowed={'docs/production/'+name+'.json' for name in ['architecture-inventory','data-flow-inventory','feature-matrix','ownership-dependency-map','semantic-bindings','semantic-review']}
+          allowed|={'services/billing/src/application/events.ts','services/sales/src/domain/model.ts','tests/backend/security-and-gateway.test.ts','tests/runtime/compose-journey.mts','tsconfig.json'}
+          conflicts=set(git('diff','--name-only','--diff-filter=U').splitlines())
+          if conflicts!=allowed:raise RuntimeError('Raw merge conflicts differ: '+str(conflicts))
+          for path in sorted(conflicts):git('checkout','--ours','--',path)
+          git('add','-u')
+          if git('write-tree')!='3e5f48d209a5a2c5af44bdee0968513c6f5f0fe7':raise RuntimeError('Raw integration tree differs')
+          # These content-addressed parts contain only the reviewed textual patch.
+          # Verify their Git identities before decompressing; no external code download.
+          pieces=[]
+          for sha in ['9faf7cef4e458338b7ae38ab4aa826c615f86b80','b2c2b9665af35ddb1669e7ee2fd38ce99372bb26','b5db0f523d229f941a8fb8863ce0078b684a3ee0']:
+              response=json.loads(subprocess.check_output(['gh','api','repos/baraabd/Elvorance-Enterprise/git/blobs/'+sha]))
+              data=base64.b64decode(response['content'])
+              if hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()!=sha:raise RuntimeError('Patch object mismatch')
+              pieces.append(data)
+          patch=zlib.decompress(b''.join(pieces))
+          subprocess.run(['git','apply','-'],input=patch,check=True)
+          path='docs/production/semantic-bindings.json'
+          refs=['453242e1256f6d876d170142b8ad235be9120344',original,predecessor]
+          reviewed={'packages/service-kit/src/auth.ts','packages/service-kit/src/http.ts'}
+          source_paths={}
+          def load(ref,p=path):return json.loads(git('show',ref+':'+p))
+          for ref in refs:
+              for feature in load(ref,'docs/production/feature-matrix.json')['features']:
+                  source_paths.setdefault(feature['id'],set()).add(feature['source']['path'])
+          missing=object()
+          def merge(b,l,r,p=''):
+              if l==r:return l
+              if l==b:return r
+              if r==b:return l
+              if isinstance(l,dict) and isinstance(r,dict) and (isinstance(b,dict) or b is missing):
+                  b={} if b is missing else b;out={}
+                  for key in dict.fromkeys([*l,*r]):
+                      value=merge(b.get(key,missing),l.get(key,missing),r.get(key,missing),p+'/'+key)
+                      if value is not missing:out[key]=value
+                  return out
+              if isinstance(l,list) and isinstance(r,list) and (isinstance(b,list) or b is missing):
+                  b=[] if b is missing else b
+                  if all(isinstance(x,dict) and 'featureId' in x for x in [*b,*l,*r]):
+                      bm,lm,rm=[{x['featureId']:x for x in xs} for xs in (b,l,r)];out=[]
+                      for key in dict.fromkeys([*lm,*rm]):
+                          value=merge(bm.get(key,missing),lm.get(key,missing),rm.get(key,missing),p+'/'+key)
+                          if value is not missing:out.append(value)
+                      return out
+                  if all(isinstance(x,str) for x in [*b,*l,*r]):return list(dict.fromkeys([x for x in [*l,*r] if x not in b or (x in l and x in r)]))
+              if isinstance(l,str) and isinstance(r,str) and re.fullmatch('[a-f0-9]{64}',l) and re.fullmatch('[a-f0-9]{64}',r):
+                  key=p.removeprefix('/bindings/').removesuffix('/sourceFileSha256').removesuffix('/sourceFingerprint')
+                  if p.startswith('/bindings/') and (p.endswith('/sourceFileSha256') or p.endswith('/sourceFingerprint')) and len(source_paths.get(key,set()))==1 and bool(source_paths.get(key,set())&reviewed):return l
+                  if p.startswith('/evidenceFiles/') and p.removeprefix('/evidenceFiles/') in reviewed:return l
+              raise RuntimeError('Unreviewed semantic conflict: '+p)
+          document=merge(*[load(ref) for ref in refs])
+          for source in reviewed:
+              digest=hashlib.sha256(P(source).read_bytes()).hexdigest()
+              if source in document['evidenceFiles']:document['evidenceFiles'][source]=digest
+              for binding in document['bindings']:
+                  if source_paths.get(binding['featureId'])=={source}:binding['sourceFileSha256']=digest
+          P(path).write_text(json.dumps(document,indent=2,ensure_ascii=False)+'\n')
+          subprocess.run(['npm','ci'],check=True)
+          subprocess.run(['npx','prettier','--write',path],check=True)
+          subprocess.run(['npm','run','inventory:write'],check=True)
+          git('add','-A');git('diff','--cached','--check','--','.',':!*.tsv')
+          tree=git('write-tree')
+          if tree!='71e26d68bbd48a56650cedddd4cb912d2966dd53':raise RuntimeError('Reviewed final tree mismatch: '+tree)
+          git('commit','-m','fix(pr13): integrate tested platform and harden admission and descriptor-based file access')
+          git('branch','repair/validated-pr13-20261124')
+          import os
+          P(os.environ['RUNNER_TEMP'],'pr13-evidence','manifest.json').write_text(json.dumps({'pr':13,'sha':git('rev-parse','HEAD'),'tree':tree,'original':original,'predecessor':predecessor},indent=2)+'\n')
+          PY
+      - name: Audit the exact locked graph and publish only the isolated ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/pr13-repair"
+          npm audit --audit-level=moderate
+          gh auth setup-git
+          git push origin refs/heads/repair/validated-pr13-20261124
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: reviewed-pr13-source-${{ github.sha }}
+          path: ${{ runner.temp }}/pr13-evidence/
+          if-no-files-found: error
+          retention-days: 7
