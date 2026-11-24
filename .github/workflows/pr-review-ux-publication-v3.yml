@@ -1,0 +1,46 @@
+name: Publish exact reviewed UX tree
+on:
+  push:
+    branches: [repair/pr-integration-publish-20261124]
+    paths: [.github/workflows/pr-review-ux-publication-v3.yml]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Reproduce independently hash-checked local source
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import base64,hashlib,json,re,subprocess,textwrap,zlib
+          source=subprocess.check_output(['git','show','780a191eff05e5dfbad0920eed48cc3d31d71dc6:.github/workflows/pr-review-ux-publication.yml'],text=True)
+          for old,new in [('scvvva1','scvva1'),('/WFSXX8','/WFSX8'),('HOrbTT7','HOrbT7'),('mONNNpb','mONNpb')]:
+              if source.count(old)!=1: raise RuntimeError('Transport context differs: '+old)
+              source=source.replace(old,new)
+          payload=re.search("payload='([^']+)'",source).group(1)
+          if hashlib.sha256(payload.encode()).hexdigest()!='cbec1a1e424d10279a2a0a30c9c4c2afdf3bb21fabf90f513a40636c4ced8642': raise RuntimeError('Reviewed payload SHA256 mismatch')
+          reviewed=json.loads(zlib.decompress(base64.b64decode(payload)))
+          assert len(reviewed['bindings'])==23
+          start='      - name: Reconcile the reviewed sources without changing acceptance criteria\n        shell: bash\n        run: |\n'
+          end='\n      - name: Publish only the exact reviewed temporary ref'
+          assert source.count(start)==1 and source.count(end)==1
+          subprocess.run(['bash','-euo','pipefail','-c',textwrap.dedent(source.split(start)[1].split(end)[0])],check=True)
+          PY
+      - name: Publish verified objects only to the isolated UX repair ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/ux-repair"
+          gh auth setup-git
+          git push origin refs/heads/repair/validated-pr19-20261124
