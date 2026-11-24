@@ -1,0 +1,186 @@
+.admin-server {
+  font-family: system-ui, sans-serif;
+  color: #17221b;
+  background: #f5f7f5;
+  padding: 1rem;
+  min-block-size: 100vh;
+  line-height: 1.7;
+}
+.admin-server *,
+.admin-server *::before,
+.admin-server *::after {
+  box-sizing: border-box;
+}
+.admin-server .admin-shell {
+  display: grid;
+  grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+.admin-server nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.admin-server main {
+  min-inline-size: 0;
+  background: #fff;
+  border: 1px solid #ced8cf;
+  border-radius: 0.6rem;
+  padding: 1rem;
+}
+.admin-server h1 {
+  font-size: 1.6rem;
+}
+.admin-server h2 {
+  font-size: 1.3rem;
+}
+.admin-server button {
+  cursor: pointer;
+  border: 1px solid #647568;
+  border-radius: 0.35rem;
+  padding: 0.55rem 0.8rem;
+  min-block-size: 44px;
+  background: #fff;
+  color: #17221b;
+  font: inherit;
+  white-space: normal;
+}
+.admin-server button[aria-current],
+.admin-server button[type='submit'] {
+  background: #214d35;
+  color: #fff;
+}
+.admin-server button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.admin-server :focus-visible {
+  outline: 3px solid #1c5fcc;
+  outline-offset: 3px;
+}
+.admin-server .admin-skip {
+  position: absolute;
+  inset-block-start: -10rem;
+}
+.admin-server .admin-skip:focus {
+  inset-block-start: 0;
+  background: #fff;
+  z-index: 10;
+  padding: 0.75rem;
+}
+.admin-server .admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-block: 0.75rem;
+  align-items: end;
+}
+.admin-server .admin-fields {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  inline-size: 100%;
+}
+.admin-server label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-inline-size: 0;
+}
+.admin-server input,
+.admin-server select,
+.admin-server textarea {
+  font: inherit;
+  inline-size: 100%;
+  min-block-size: 44px;
+  padding: 0.5rem;
+  border: 1px solid #647568;
+  border-radius: 0.25rem;
+  color: #17221b;
+  background: #fff;
+}
+.admin-server input[type='checkbox'] {
+  inline-size: 1.4rem;
+  min-block-size: 1.4rem;
+}
+.admin-server textarea {
+  min-block-size: 7rem;
+  resize: vertical;
+}
+.admin-server fieldset {
+  min-inline-size: 0;
+  grid-column: 1/-1;
+  padding: 0.7rem;
+  margin: 0.4rem 0;
+  border: 1px solid #bac7bd;
+}
+.admin-server .admin-table-scroll {
+  overflow-x: auto;
+  max-inline-size: 100%;
+}
+.admin-server table {
+  border-collapse: collapse;
+  inline-size: 100%;
+}
+.admin-server caption {
+  text-align: start;
+  font-weight: 700;
+  padding: 0.7rem 0;
+}
+.admin-server th,
+.admin-server td {
+  text-align: start;
+  border-block-end: 1px solid #ced8cf;
+  padding: 0.7rem;
+  overflow-wrap: anywhere;
+}
+.admin-server .admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+}
+.admin-server .admin-cards section {
+  padding: 0.8rem;
+  border: 1px solid #ced8cf;
+  border-radius: 0.4rem;
+}
+.admin-server .admin-cards button {
+  margin: 0.2rem;
+}
+.admin-server dl {
+  display: grid;
+  grid-template-columns: minmax(6rem, 1fr) minmax(0, 3fr);
+  gap: 0.6rem;
+}
+.admin-server dt {
+  font-weight: 700;
+}
+.admin-server dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.admin-server pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-inline-size: 100%;
+  font-size: 0.9rem;
+}
+.admin-server [role='alert'] {
+  color: #8a1921;
+}
+@media (max-width: 48rem) {
+  .admin-server {
+    padding: 0.5rem;
+  }
+  .admin-server .admin-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .admin-server nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .admin-server dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,606 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "453242e1256f6d876d170142b8ad235be9120344",
+  "decision": "PARTIAL_IMPLEMENTATION_NOT_SPRINT_DONE",
+  "commonCriteria": [
+    "Load authenticated owning-service data without demo fallback.",
+    "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+    "Show loading, empty, error and explicit retry states.",
+    "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+    "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+    "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+  ],
+  "serverRoutes": [
+    {
+      "route": "#/admin/dashboard",
+      "category": "partial",
+      "implemented": "Nine real-domain counts, state drilldowns and currency-separated invoice totals.",
+      "api": "/v1/crm/customers; /v1/sales/{visits,tasks,opportunities,quotes,quote-discount-approvals,contracts}; /v1/delivery/projects; /v1/billing/invoices",
+      "localEvidence": "Unit: invoice totals, cursor bounds, route/filter selection. E2E: navigation smoke only.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "No atomic server snapshot, historical analytics, recognized-revenue metric or large-tenant aggregation API.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/reports",
+      "category": "partial",
+      "implemented": "Refreshable bounded totals with status drilldowns and capture time.",
+      "api": "Same nine reads as dashboard",
+      "localEvidence": "Unit: aggregation rejects invalid money and incomplete traversal. E2E: smoke only.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "No date-range historical reports, scheduled reports, CSV/PDF export or cross-service snapshot isolation.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/customers",
+      "category": "partial",
+      "implemented": "Create, edit, contact preference, detail, cursor paging and bounded all-page search/filter/sort.",
+      "api": "GET/POST /v1/crm/customers; GET/PATCH /v1/crm/customers/{id}",
+      "localEvidence": "E2E: create/edit/reload/CRM reopen; 409 retains inputs; uncertain committed write retries once; >100 records/filter/reload; foreign tenant 404.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "No delete/archive endpoint; related identifiers are entered manually rather than rich selectors.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/regions",
+      "category": "partial",
+      "implemented": "List, create and inspect a row obtained from the real list API.",
+      "api": "GET/POST /v1/crm/regions",
+      "localEvidence": "E2E: list smoke.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "Region update/delete, polygon assignment and map editor are not implemented by this contract/UI.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/users",
+      "category": "partial",
+      "implemented": "Read and create descriptive membership records with an explicit identity-provider warning.",
+      "api": "GET/POST /v1/identity/memberships",
+      "localEvidence": "E2E: list smoke; API identity/admin gate and negative authorization controls.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "NOT login-account provisioning, disabling, role assignment in OIDC or effective permission management. No membership update/delete API.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/representatives",
+      "category": "partial",
+      "implemented": "Filter and inspect representative membership records.",
+      "api": "GET /v1/identity/memberships",
+      "localEvidence": "E2E: list smoke.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "No complete workforce CRUD, account lifecycle, team assignment, live tracking or measured performance history.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/roles",
+      "category": "blocked",
+      "implemented": "Explain backend-enforced token roles and the missing management contract; no fake save action.",
+      "api": "No role-governance endpoint",
+      "localEvidence": "E2E: explanatory-page smoke.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "BLOCKED_API: actual role/permission CRUD and permission matrix administration are not implemented.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/visits",
+      "category": "partial",
+      "implemented": "Schedule/edit, manually justified start, completion, cancellation, detail and list controls.",
+      "api": "GET/POST /v1/sales/visits; GET/PATCH /v1/sales/visits/{id}; POST /{id}/{start,complete,cancel}",
+      "localEvidence": "E2E: schedule/start/complete/reload.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "Cancellation and every outcome are not individually browser-tested; no automatic geolocation proof is manufactured.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/tasks",
+      "category": "partial",
+      "implemented": "Create/edit, priority/date and open/done/cancelled transitions.",
+      "api": "GET/POST /v1/sales/tasks; GET/PATCH /v1/sales/tasks/{id}",
+      "localEvidence": "E2E: create/done/reload.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "No destructive delete contract; assignment/cancel edge cases need broader browser acceptance.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/opportunities",
+      "category": "partial",
+      "implemented": "Create/edit opportunity, value/stage and approved-contract reference.",
+      "api": "GET/POST /v1/sales/opportunities; GET/PATCH /v1/sales/opportunities/{id}",
+      "localEvidence": "E2E: list smoke; server tests remain separate.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "No exhaustive browser stage/ownership/contract linkage workflow acceptance.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/routes",
+      "category": "partial",
+      "implemented": "Create/edit an ordered list of visit IDs and transition its allowed status.",
+      "api": "GET/POST /v1/sales/routes; GET/PATCH /v1/sales/routes/{id}",
+      "localEvidence": "E2E: list smoke.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "No route optimization or map editor; manual IDs; mutation browser journey pending.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/catalog",
+      "category": "partial",
+      "implemented": "Read published configuration, edit actual services/prices, publish with version; advanced questionnaire JSON editing.",
+      "api": "GET /v1/crm/catalog; GET/PUT /v1/crm/configuration",
+      "localEvidence": "E2E: publish service, reload and use actual catalog in a quote.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "Full legacy visual questionnaire designer, question-level CRUD UX and exhaustive configuration variants are NOT completed.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/quotes",
+      "category": "partial",
+      "implemented": "Catalog-only draft pricing, integer minor-unit totals, payment-plan validation, send/revise/request discount.",
+      "api": "GET/POST /v1/sales/quotes; GET /{id}; POST /{id}/{send,revise,discount-approval}",
+      "localEvidence": "E2E: real catalog -> 10000 gross / 2000 discount -> approval -> send; client acceptance performed as a separate test actor.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "All revisions, rejected decisions and quote-editor validation combinations still need browser coverage.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/approvals",
+      "category": "partial",
+      "implemented": "Inspect and approve/reject pending commercial decisions with justification/version.",
+      "api": "GET /v1/sales/quote-discount-approvals; POST /{id}/decision",
+      "localEvidence": "E2E: approved discount, subsequent quote/contract/project/invoice flow.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "Rejected/expired/competing reviewer paths are not all browser-tested.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/contracts",
+      "category": "partial",
+      "implemented": "Read actual contract and consent state; no Admin impersonation of the customer.",
+      "api": "GET /v1/sales/contracts; GET /{id}",
+      "localEvidence": "E2E: separately authorized client acceptance/approval -> domain events -> project/invoice.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "No Admin contract authoring/amendment/termination API or UI. Read-only is not full contract management.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/projects",
+      "category": "partial",
+      "implemented": "Milestones, actual deliverables, requested revisions and completion with service guards.",
+      "api": "GET /v1/delivery/projects; GET /{id}; POST /{id}/milestones; POST /{id}/milestones/{milestoneId}; POST /{id}/deliverables; POST /{id}/deliverables/{deliverableId}/revise; POST /{id}/complete",
+      "localEvidence": "E2E: each milestone stage -> deliverable -> separate client approval -> complete/reload.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "Rejected/revised-deliverable browser path and all concurrency cases pending.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/invoices",
+      "category": "partial",
+      "implemented": "Read invoice/complete paginated ledger; record externally verified collection with unique reference/version.",
+      "api": "GET /v1/billing/invoices; GET /{id}; GET /{id}/ledger; POST /{id}/payments",
+      "localEvidence": "E2E: discounted contract produces balanced invoice; collection and ledger reload.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "Does not charge a payment provider. Refunds, invoice correction/void and accounting exports have no completed UI/contracts.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/tickets",
+      "category": "partial",
+      "implemented": "Read, reply and reopen/resolve support tickets.",
+      "api": "GET /v1/communications/tickets; GET /{id}; POST /{id}/{replies,status}",
+      "localEvidence": "E2E: reply/resolve/reload.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "Admin ticket creation, assignment/escalation and full reopen coverage are not completed.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/conversations",
+      "category": "partial",
+      "implemented": "Create/open conversations, read all message pages, send with version and read receipts.",
+      "api": "GET/POST /v1/communications/conversations; GET/POST /{id}/messages; POST /{id}/read",
+      "localEvidence": "E2E: send/read/reload.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "No external email/SMS delivery or attachments; bounded related traversal is not a chat push/realtime guarantee.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/notifications",
+      "category": "partial",
+      "implemented": "List real in-app notifications and mark read.",
+      "api": "GET /v1/communications/notifications; POST /{id}/read",
+      "localEvidence": "E2E: list smoke.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "No provider push/email delivery or exhaustive read-receipt browser test.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/settings",
+      "category": "partial",
+      "implemented": "Read/create the tenant profile allowed by the current API; explain missing edit/security contracts.",
+      "api": "GET/POST /v1/identity/tenants",
+      "localEvidence": "E2E: page smoke only.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "Tenant profile editing, security configuration, SSO admin and preferences are incomplete.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/audit",
+      "category": "blocked",
+      "implemented": "Explicit blocked page; notifications are NOT substituted for audit events.",
+      "api": "No audit-read endpoint",
+      "localEvidence": "E2E: explanatory-page smoke.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "BLOCKED_API: audit query/filter/paging/export and tamper-evidence acceptance absent.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/memberships",
+      "category": "partial",
+      "implemented": "Preserve the previous server route without inventing a second membership store.",
+      "api": "Alias to users",
+      "localEvidence": "Unit: alias routing; browser semantics covered only by users page smoke.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_CI",
+      "gaps": "Same limitations as users; this is compatibility, not an extra completed screen.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    }
+  ],
+  "legacyAdminRoutes": [
+    {
+      "legacyRoute": "analytics",
+      "serverReplacement": "reports",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "approvals",
+      "serverReplacement": "approvals",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "client-detail",
+      "serverReplacement": "customers/{id}",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "clients",
+      "serverReplacement": "customers",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "configuration",
+      "serverReplacement": "catalog",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "conversation",
+      "serverReplacement": "conversations/{id}",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "home",
+      "serverReplacement": "dashboard",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "invoice-detail",
+      "serverReplacement": "invoices/{id}",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "invoices",
+      "serverReplacement": "invoices",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "live-tracking",
+      "serverReplacement": null,
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "NOT_IMPLEMENTED",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "messages",
+      "serverReplacement": "conversations",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "more",
+      "serverReplacement": "settings/navigation",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "opportunity",
+      "serverReplacement": "opportunities/{id}",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "pipeline",
+      "serverReplacement": "opportunities",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "project-detail",
+      "serverReplacement": "projects/{id}",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "projects",
+      "serverReplacement": "projects",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "settings",
+      "serverReplacement": "settings",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "support",
+      "serverReplacement": "tickets",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "tasks",
+      "serverReplacement": "tasks",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "team",
+      "serverReplacement": "users/representatives",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "team-member",
+      "serverReplacement": "users/{id}",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "territories",
+      "serverReplacement": "regions",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "ticket-detail",
+      "serverReplacement": "tickets/{id}",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "visits-completed",
+      "serverReplacement": "visits?scope=all&status=completed",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    },
+    {
+      "legacyRoute": "zone-detail",
+      "serverReplacement": "regions/{id}",
+      "mapping": "FEATURE_MAPPING_NOT_URL_REDIRECT",
+      "status": "PARTIAL_SEE_SERVER_MATRIX",
+      "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
+    }
+  ]
+}

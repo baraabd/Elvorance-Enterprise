@@ -15,6 +15,8 @@ export interface AuthenticatedWorkspaceOptions {
   baseUrl: string;
   auth?: MobileAuthConfig;
   environment?: MobileAuthConfig['environment'];
+  /** Application-owned server UI; authentication and disposal remain centralized. */
+  mountWorkspace?: typeof mountLiveWorkspace;
   /** Explicit compatibility port. Its owner remains responsible for its session lifecycle. */
   externalAccessToken?: () => string | null | undefined | Promise<string | null | undefined>;
 }
@@ -58,6 +60,7 @@ export async function mountAuthenticatedWorkspace(
     throw new Error('تتطلب مساحة العمل اتصال HTTPS مصادقًا.');
   }
   const { root, role } = options;
+  const mountWorkspace = options.mountWorkspace ?? mountLiveWorkspace;
   root.setAttribute('dir', 'rtl');
 
   async function verify(accessToken: () => Promise<string | null>, signal: AbortSignal) {
@@ -78,7 +81,7 @@ export async function mountAuthenticatedWorkspace(
     };
     try {
       await verify(accessToken, lifetime.signal);
-      const remove = await mountLiveWorkspace({
+      const remove = await mountWorkspace({
         root,
         role,
         baseUrl: options.baseUrl,
@@ -200,7 +203,7 @@ export async function mountAuthenticatedWorkspace(
       actions.append(signOut);
       shell.append(actions, content);
       root.replaceChildren(shell);
-      return mountLiveWorkspace({
+      return mountWorkspace({
         root: content,
         role,
         baseUrl: options.baseUrl,

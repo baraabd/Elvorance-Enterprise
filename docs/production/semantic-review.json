@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "d1fe1b34a3d7de1eb96b2f02cd53a9633fc46b03ab1a4f1d78ddbe21a5bac1b4",
+  "sourceDigest": "9e639f340ced09964e81c0a65099ce1ec48e797e80d2467ad78bda5ff542b9f8",
   "status": "BLOCKED",
   "semanticStatus": "SOURCE_TRACE_COMPLETE_NOT_RUNTIME_ACCEPTANCE",
-  "sourceBoundDecisions": 185,
+  "sourceBoundDecisions": 217,
   "scope": "Extractor warning classification, not completeness certification, test execution or workflow coverage.",
   "unknownWarningsFailClosed": true,
   "totals": {
-    "unresolvedRecords": 1269,
+    "unresolvedRecords": 1266,
     "recordsWithSemanticGaps": 0,
-    "recordsWithOnlyTestMappingDebt": 1269,
-    "workflowsWithoutTestCandidates": 244
+    "recordsWithOnlyTestMappingDebt": 1266,
+    "workflowsWithoutTestCandidates": 242
   },
-  "categoryCounts": { "test-mapping": 1269 },
+  "categoryCounts": { "test-mapping": 1266 },
   "byCategory": {
     "test-mapping": [
       "account-lifecycle:apps/admin-web/src/app.ts:c83e652f3ba1:1",
@@ -194,7 +194,6 @@
       "api-call:apps/rep-mobile/src/server/views/messages.ts:b2c7612597a5:1",
       "api-call:apps/rep-mobile/src/server/views/messages.ts:c3b8f47f3e00:1",
       "api-call:apps/rep-mobile/src/server/views/quote-editor.ts:9fdd2a85a821:1",
-      "api-call:apps/rep-mobile/src/server/views/quote-editor.ts:d9e6da472f86:1",
       "api-call:apps/rep-mobile/src/server/views/quote-editor.ts:fb5732d988a9:1",
       "api-call:apps/rep-mobile/src/server/views/quotes.ts:18950f2dc3c4:1",
       "api-call:apps/rep-mobile/src/server/views/quotes.ts:18dc42913146:1",
@@ -215,7 +214,6 @@
       "api-call:apps/rep-mobile/src/server/views/records.ts:b5b11169724f:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:bc1278426100:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:d18390b547e3:1",
-      "api-call:apps/rep-mobile/src/server/views/records.ts:d9e6da472f86:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:f09030925270:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:f94d78701f4d:1",
       "api-call:apps/rep-mobile/src/server/views/records.ts:f9f97cd85588:1",
@@ -372,6 +370,7 @@
       "failure-state:apps/admin-web/src/features/support/index.ts:b2ff780dfe0c:1",
       "failure-state:apps/admin-web/src/main.ts:36d63be351e3:1",
       "failure-state:apps/admin-web/src/main.ts:97558c958bac:1",
+      "failure-state:apps/admin-web/src/server-main.ts:36d63be351e3:1",
       "failure-state:apps/client-mobile/src/app.ts:0f7074363991:1",
       "failure-state:apps/client-mobile/src/app.ts:81c277226197:1",
       "failure-state:apps/client-mobile/src/features/projects/index.ts:03af28bae0b7:1",
@@ -1015,7 +1014,6 @@
       "route:admin:demo:messages",
       "route:admin:demo:more",
       "route:admin:demo:pipeline",
-      "route:admin:demo:settings",
       "route:admin:demo:support",
       "route:admin:demo:territories",
       "route:admin:demo:visits-completed",
@@ -1029,7 +1027,6 @@
       "route:rep:demo:territory",
       "route:rep:demo:visit-detail",
       "route:rep:server:billing",
-      "route:rep:server:catalog",
       "route:rep:server:contracts",
       "route:rep:server:home",
       "route:rep:server:messages",
@@ -2438,8 +2435,8 @@
       "featureId": "account-lifecycle:packages/api-client/src/authenticated-workspace.ts:20d9be6393bd:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 119,
-        "endLine": 120,
+        "line": 122,
+        "endLine": 123,
         "fingerprint": "4e73c10bce7c0d3bd598f8fde9763ad0005fe07fcf952e11653b0d6252412a97"
       },
       "owningService": null,
@@ -2475,8 +2472,8 @@
       "featureId": "account-lifecycle:packages/api-client/src/authenticated-workspace.ts:35f38b193b36:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 179,
-        "endLine": 180,
+        "line": 182,
+        "endLine": 183,
         "fingerprint": "316aceffc7932f3e2b314b9ee4a4986a1e7b4bda88a0b4f6461ac57625674851"
       },
       "owningService": null,
@@ -2512,8 +2509,8 @@
       "featureId": "account-lifecycle:packages/api-client/src/authenticated-workspace.ts:4ca20c66ed5a:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 137,
-        "endLine": 137,
+        "line": 140,
+        "endLine": 140,
         "fingerprint": "0c58627f144d51b02d64542e0afc34c5e9fce1f419609efb77cf09a31f57264f"
       },
       "owningService": null,
@@ -7911,43 +7908,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "api-call:apps/rep-mobile/src/server/views/quote-editor.ts:d9e6da472f86:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/views/quote-editor.ts",
-        "line": 31,
-        "endLine": 31,
-        "fingerprint": "03a024d8cd3bf9a33fa1e7e26a9913566e6b38a06a3e54dc55985e4964ede940"
-      },
-      "owningService": null,
-      "targetService": "crm",
-      "mode": "server",
-      "targetSprint": "S03",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-call:apps/rep-mobile/src/server/views/quote-editor.ts:d9e6da472f86:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-call:apps/rep-mobile/src/server/views/quote-editor.ts:d9e6da472f86:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-call:apps/rep-mobile/src/server/views/quote-editor.ts:d9e6da472f86:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "api-call:apps/rep-mobile/src/server/views/quote-editor.ts:fb5732d988a9:1",
       "source": {
         "path": "apps/rep-mobile/src/server/views/quote-editor.ts",
@@ -8681,43 +8641,6 @@
         },
         {
           "id": "PLANNED:e2e:api-call:apps/rep-mobile/src/server/views/records.ts:d18390b547e3:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-call:apps/rep-mobile/src/server/views/records.ts:d9e6da472f86:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/views/records.ts",
-        "line": 18,
-        "endLine": 20,
-        "fingerprint": "ac173346fbc6fe7972fdd56020250ee78444bec504b73bac4d037abc43aa4e58"
-      },
-      "owningService": null,
-      "targetService": "crm",
-      "mode": "server",
-      "targetSprint": "S03",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-call:apps/rep-mobile/src/server/views/records.ts:d9e6da472f86:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-call:apps/rep-mobile/src/server/views/records.ts:d9e6da472f86:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-call:apps/rep-mobile/src/server/views/records.ts:d9e6da472f86:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -14426,8 +14349,8 @@
       "featureId": "failure-state:apps/admin-web/src/main.ts:36d63be351e3:1",
       "source": {
         "path": "apps/admin-web/src/main.ts",
-        "line": 36,
-        "endLine": 36,
+        "line": 37,
+        "endLine": 37,
         "fingerprint": "48ebdab4332e92d603c710da19f8c11707ac8b530c2713c0bb18bba17a9397d2"
       },
       "owningService": null,
@@ -14463,8 +14386,8 @@
       "featureId": "failure-state:apps/admin-web/src/main.ts:97558c958bac:1",
       "source": {
         "path": "apps/admin-web/src/main.ts",
-        "line": 9,
-        "endLine": 9,
+        "line": 10,
+        "endLine": 10,
         "fingerprint": "43e72a7fb4938975bfb14a272a05063afbef663b0f02871d29109e057f10e8b2"
       },
       "owningService": null,
@@ -14490,6 +14413,43 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:apps/admin-web/src/main.ts:97558c958bac:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:apps/admin-web/src/server-main.ts:36d63be351e3:1",
+      "source": {
+        "path": "apps/admin-web/src/server-main.ts",
+        "line": 5,
+        "endLine": 5,
+        "fingerprint": "48ebdab4332e92d603c710da19f8c11707ac8b530c2713c0bb18bba17a9397d2"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "shared",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/admin-web/src/server-main.ts:36d63be351e3:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/admin-web/src/server-main.ts:36d63be351e3:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/admin-web/src/server-main.ts:36d63be351e3:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -19236,8 +19196,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:0c53486d2c20:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 75,
-        "endLine": 75,
+        "line": 78,
+        "endLine": 78,
         "fingerprint": "d2fb3cf903fc41cadc4e3a5e58d8667453d3cf82fc5e8689623e6bfd24c1293a"
       },
       "owningService": null,
@@ -19273,8 +19233,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:1f70e72f69a6:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 160,
-        "endLine": 160,
+        "line": 163,
+        "endLine": 163,
         "fingerprint": "77bad5802e4f8180320533a4ded43bf4e821fd335d8f19976bae3784b07ecdbc"
       },
       "owningService": null,
@@ -19310,8 +19270,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:1f70e72f69a6:2",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 166,
-        "endLine": 166,
+        "line": 169,
+        "endLine": 169,
         "fingerprint": "0605c305dfb6c61e53f5c25f51923481a041d11a55855798ec56202313c0ebe5"
       },
       "owningService": null,
@@ -19347,8 +19307,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:20fb51ca96c3:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 72,
-        "endLine": 72,
+        "line": 75,
+        "endLine": 75,
         "fingerprint": "5f6f38f0a9a30f53f5d39a2176cc1ba6c32fd1984827b367b360642d8733ae36"
       },
       "owningService": null,
@@ -19384,8 +19344,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:3c168723174f:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 93,
-        "endLine": 96,
+        "line": 96,
+        "endLine": 99,
         "fingerprint": "f69e9bea41915f436ac3ce17939577594052bbb4e615e698814f84c89b589ffe"
       },
       "owningService": null,
@@ -19421,8 +19381,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:4444d8a31f52:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 58,
-        "endLine": 58,
+        "line": 60,
+        "endLine": 60,
         "fingerprint": "a76080452d46872251c38f1193bcd3d464e9552c44216192754cfa51f4b71a71"
       },
       "owningService": null,
@@ -19458,8 +19418,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:48eae8ca9ed5:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 24,
-        "endLine": 25,
+        "line": 26,
+        "endLine": 27,
         "fingerprint": "83dca36c7b2ccbb5d583a41cf495b76ca0435a4859bd80b3154bc8e6d3d8b38c"
       },
       "owningService": null,
@@ -19495,8 +19455,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:60e6656fa14e:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 189,
-        "endLine": 189,
+        "line": 192,
+        "endLine": 192,
         "fingerprint": "43f33a6dbcc3431b673f8cd720690a620624c1e2c83b95579bfc35600d88fce0"
       },
       "owningService": null,
@@ -19532,8 +19492,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:60e6656fa14e:2",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 192,
-        "endLine": 195,
+        "line": 195,
+        "endLine": 198,
         "fingerprint": "43d15e20554e8d49f7e7f191d58903bef72f42b93c5399fd9e9eea4d6ba9d0a0"
       },
       "owningService": null,
@@ -19569,8 +19529,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:6adf7bef60ed:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 48,
-        "endLine": 48,
+        "line": 50,
+        "endLine": 50,
         "fingerprint": "e05bf8c2050ff6ed1ea75ead729f92737a799aa042a2c17c8c72e9da5f678cea"
       },
       "owningService": null,
@@ -19606,8 +19566,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:95c24084d548:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 67,
-        "endLine": 67,
+        "line": 70,
+        "endLine": 70,
         "fingerprint": "4e12f0d9df6ba6d5083abaacabf7bdc170fbaf8aaa7ee860d80967834621828e"
       },
       "owningService": null,
@@ -19643,8 +19603,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:a869ffb2f7e0:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 95,
-        "endLine": 95,
+        "line": 98,
+        "endLine": 98,
         "fingerprint": "8c468a57ba68bc74d4da2e446572891a3884d987edae85e551db81ebbee3f4d4"
       },
       "owningService": null,
@@ -19680,8 +19640,8 @@
       "featureId": "failure-state:packages/api-client/src/authenticated-workspace.ts:cd11a06a06b2:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 26,
-        "endLine": 27,
+        "line": 28,
+        "endLine": 29,
         "fingerprint": "7e11f77eae633947994b62ee7dd95bd3d614bc5585a013cf3007efe643a3b86d"
       },
       "owningService": null,
@@ -32704,8 +32664,8 @@
       "featureId": "handler:packages/api-client/src/authenticated-workspace.ts:76ac9a21be53:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 173,
-        "endLine": 199,
+        "line": 176,
+        "endLine": 202,
         "fingerprint": "d4221572204b6f518bc8386994914550bb1bcbcace7e09e353e689608b1daf91"
       },
       "owningService": null,
@@ -32741,8 +32701,8 @@
       "featureId": "handler:packages/api-client/src/authenticated-workspace.ts:95ae7b0e11bf:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 111,
-        "endLine": 129,
+        "line": 114,
+        "endLine": 132,
         "fingerprint": "e280c55ac455d8e02ae170d66a9b9ebdc935e6af013130ccb41af06cd2aed000"
       },
       "owningService": null,
@@ -32778,8 +32738,8 @@
       "featureId": "handler:packages/api-client/src/authenticated-workspace.ts:ff97ac6d3f72:1",
       "source": {
         "path": "packages/api-client/src/authenticated-workspace.ts",
-        "line": 134,
-        "endLine": 142,
+        "line": 137,
+        "endLine": 145,
         "fingerprint": "9a39ae3d82eb42e8584f680ba9b2ef09f3c9bbc78443037d1f78c1c27773d15a"
       },
       "owningService": null,
@@ -38288,43 +38248,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "route:admin:demo:settings",
-      "source": {
-        "path": "apps/admin-web/src/features/settings/index.ts",
-        "line": 43,
-        "endLine": 47,
-        "fingerprint": "4a3ccb013eaaf625b06efd5b3eff3150ac679beb15d8445ed341012f629520bb"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "demo",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:route:admin:demo:settings",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:route:admin:demo:settings",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:route:admin:demo:settings",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "route:admin:demo:support",
       "source": {
         "path": "apps/admin-web/src/features/support/index.ts",
@@ -38799,43 +38722,6 @@
         },
         {
           "id": "PLANNED:e2e:route:rep:server:billing",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "route:rep:server:catalog",
-      "source": {
-        "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 24,
-        "endLine": 24,
-        "fingerprint": "162c0554e87440342a24bfdf0115088c9e0c8316322a9c3a9cf8573e4cb9f3a2"
-      },
-      "owningService": null,
-      "targetService": "crm",
-      "mode": "server",
-      "targetSprint": "S03",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:route:rep:server:catalog",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:route:rep:server:catalog",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:route:rep:server:catalog",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }

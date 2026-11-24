@@ -65,10 +65,52 @@ jobs:
           path: dist/full-ci/security/
           if-no-files-found: error
           retention-days: 30
+  admin-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16.16
+        env:
+          POSTGRES_PASSWORD: isolated-admin-browser-test-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s
+          --health-timeout 5s --health-retries 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Discover installed Chromium engine or fail
+        run: |
+          browser="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          test -n "$browser"
+          "$browser" --version
+          printf 'ELVORANCE_CHROMIUM=%s\n' "$browser" >> "$GITHUB_ENV"
+      - name: Run Admin real-browser and PostgreSQL acceptance
+        env:
+          ELVORANCE_TEST_POSTGRES_URL: postgresql://postgres:isolated-admin-browser-test-only@127.0.0.1:5432/postgres
+          ELVORANCE_ADMIN_E2E_STORAGE: postgres
+        run: node tooling/production/run-lane.mts admin-browser
+      - name: Upload exact-source Admin evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-ci-admin-browser-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/full-ci/admin-browser/
+          if-no-files-found: error
+          retention-days: 30
   required:
     name: FULL-CI / required
     if: ${{ always() }}
-    needs: [project, runtime, native, identity, security]
+    needs: [project, runtime, native, identity, security, admin-browser]
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
