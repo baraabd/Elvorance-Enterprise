@@ -160,7 +160,11 @@ export async function fixture(mode: 'memory' | 'postgres' = 'memory') {
     };
     let failNextRead = false;
     let dropNextWrite = false;
+    // Populate the exact ephemeral loopback origin before exposing this fixture.
+    // Keep the production default-deny Origin policy; never authorize arbitrary origins.
+    const allowedOrigins: string[] = [];
     const app = gateway({
+      allowedOrigins,
       auth,
       upstreams,
       fetcher: async (input, init) => {
@@ -206,6 +210,7 @@ export async function fixture(mode: 'memory' | 'postgres' = 'memory') {
     );
     app.get('/app.css', async (_request, reply) => reply.type('text/css').send(css));
     const url = await listen(app);
+    allowedOrigins.push(new URL(url).origin);
     async function call(
       path: string,
       method = 'GET',

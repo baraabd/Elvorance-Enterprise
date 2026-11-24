@@ -40,6 +40,30 @@ test(
       assert.equal(result.status, 200, JSON.stringify(result.data));
       return result.data;
     };
+    await t.test(
+      'fixture permits only its exact browser origin and rejects foreign-origin writes',
+      async () => {
+        const blocked = await fetch(stack.url + paths.customers, {
+          method: 'POST',
+          headers: {
+            Origin: 'https://unapproved.example.invalid',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name: 'must not be created' }),
+        });
+        assert.equal(blocked.status, 403);
+        assert.equal((await blocked.json()).error.code, 'ORIGIN_DENIED');
+        const allowed = await fetch(stack.url + paths.customers, {
+          method: 'OPTIONS',
+          headers: {
+            Origin: new URL(stack.url).origin,
+            'Access-Control-Request-Method': 'POST',
+          },
+        });
+        assert.equal(allowed.status, 204);
+        assert.equal(allowed.headers.get('access-control-allow-origin'), new URL(stack.url).origin);
+      },
+    );
     let customerId = '';
     let taskId = '';
     let visitId = '';

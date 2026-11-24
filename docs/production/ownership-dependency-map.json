@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "d476c125acc5d19cdde724fc8cb2c0a4e029176f245fd0db01bf872b8d16baaa",
+  "sourceDigest": "9e639f340ced09964e81c0a65099ce1ec48e797e80d2467ad78bda5ff542b9f8",
   "accountability": "Proposed roles only; named service/on-call owners are UNASSIGNED. CODEOWNERS routes review to the repository owner, not proof of independent approval.",
   "services": [
     {
