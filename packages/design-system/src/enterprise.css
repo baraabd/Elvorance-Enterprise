@@ -151,3 +151,11 @@ input[dir="auto"]:placeholder-shown, textarea[dir="auto"]:placeholder-shown {
   direction: rtl;
   text-align: start;
 }
+
+/* Footer and browser-chrome copy remain readable on their measured light surfaces. */
+.page-footer, .client-proof-chrome > span { color: var(--elv-text-muted); }
+/* Narrow visit summaries preserve all columns without expanding the page viewport. */
+@media (max-width: 599px) {
+  .data-table { white-space: normal; overflow-wrap: anywhere; }
+  .data-table th, .data-table td { padding-inline: .5rem; }
+}

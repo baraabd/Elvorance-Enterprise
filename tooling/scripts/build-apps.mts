@@ -45,6 +45,8 @@ for (const app of apps) {
       '\n' +
       (await read(`apps/${app.folder}/src/styles.css`)) +
       '\n' +
+      (app.folder === 'admin-web' ? await read('apps/admin-web/src/server/styles.css') : '') +
+      '\n' +
       arabicCss +
       '\n' +
       enterpriseCss,
@@ -82,6 +84,7 @@ for (const app of apps) {
       `apps/${app.folder}/src/styles.css`,
       arabicCssPath,
       enterpriseCssPath,
+      ...(app.folder === 'admin-web' ? ['apps/admin-web/src/server/styles.css'] : []),
       ...['styles', 'polish', 'tracking'].map((name) => `packages/design-system/src/${name}.css`),
     ]),
   );

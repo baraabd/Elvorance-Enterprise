@@ -1,4 +1,4 @@
-import { createMobilePlatform } from '@elvorance/mobile-platform';
+import { createMobilePlatform, locationPermissionMode } from '@elvorance/mobile-platform';
 import type { RepApi } from './api.ts';
 import { idPath } from './api.ts';
 
@@ -150,7 +150,8 @@ export class TrackingController {
     const signal = AbortSignal.any([this.lifetime.signal, this.capture.signal]);
     const permission = await this.platform.requestLocationPermission();
     if (!this.current(generation)) return;
-    if (permission.location === 'denied')
+    const mode = locationPermissionMode(permission, this.platform.native);
+    if (mode === 'denied')
       throw new Error('صلاحية الموقع مرفوضة. يمكنك تعديلها من إعدادات الجهاز.');
     await this.serialize(async () => {
       if (!this.current(generation)) return;
@@ -180,6 +181,7 @@ export class TrackingController {
     try {
       const pending = this.platform.watchLocation({
         consent: true,
+        enableHighAccuracy: mode !== 'approximate',
         onPosition: (position) => {
           if (!this.collecting || !this.current(generation)) return;
           void this.serialize(async () => {
@@ -216,7 +218,11 @@ export class TrackingController {
             if (!this.current(generation) || this.session !== session) return;
             session.version = accepted.version;
             session.sequence = accepted.acceptedSequence;
-            this.publish('مشاركة الموقع نشطة أثناء استخدام التطبيق.');
+            this.publish(
+              mode === 'approximate'
+                ? 'مشاركة الموقع التقريبي نشطة أثناء استخدام التطبيق.'
+                : 'مشاركة الموقع نشطة أثناء استخدام التطبيق.',
+            );
           }).catch(() => {
             if (this.current(generation))
               void this.pause(

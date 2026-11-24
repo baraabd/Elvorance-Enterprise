@@ -83,12 +83,23 @@ export function createIdentityDefinition(input: IdentityInput): IdentityDefiniti
     suffix === 'production'
       ? 'com.elvorance.rep:/oauth2redirect'
       : 'com.elvorance.rep.staging:/oauth2redirect';
+  const clientNativeId = `elvorance-client-${suffix}`;
+  const clientNativeRedirectUri = `com.elvorance.client${suffix === 'production' ? '' : '.staging'}:/oauth2redirect`;
   const issuer = `${base.origin}/realms/${realmName}`;
   const clients = [
     client(audience, audience, [], [], true),
     client(nativeId, audience, [redirectUri], ['capacitor://localhost', 'https://localhost']),
+    client(
+      clientNativeId,
+      audience,
+      [clientNativeRedirectUri],
+      ['capacitor://localhost', 'https://localhost'],
+    ),
   ];
-  const roleScopes = new Map<string, readonly string[]>([[nativeId, ['rep']]]);
+  const roleScopes = new Map<string, readonly string[]>([
+    [nativeId, ['rep']],
+    [clientNativeId, ['client']],
+  ]);
   const webConfig: Pick<
     IdentityDefinition['publicConfig'],
     | 'webClientId'
@@ -220,6 +231,8 @@ export function createIdentityDefinition(input: IdentityInput): IdentityDefiniti
       issuer,
       audience,
       clientId: nativeId,
+      clientNativeClientId: clientNativeId,
+      clientNativeRedirectUri,
       redirectUri,
       authorizationEndpoint: `${issuer}/protocol/openid-connect/auth`,
       jwksUrl: `${issuer}/protocol/openid-connect/certs`,

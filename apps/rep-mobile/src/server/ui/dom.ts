@@ -29,7 +29,7 @@ export const dateText = (value: unknown): string => {
   if (typeof value !== 'string' || !Number.isFinite(Date.parse(value))) return '—';
   return new Intl.DateTimeFormat('ar-SA', {
     dateStyle: 'medium',
-    ...(value.includes('T') ? { timeStyle: 'short' as const } : {}),
+    ...(value.includes('T') ? { timeStyle: 'short' as const } : { timeZone: 'UTC' }),
   }).format(new Date(value));
 };
 const labels: Record<string, string> = {
@@ -70,19 +70,25 @@ export function button(
 ): HTMLButtonElement {
   const node = el('button', label, className);
   node.type = 'button';
+  let busy = false;
   node.addEventListener(
     'click',
     () => {
-      if (node.disabled) return;
+      if (busy || signal.aborted || node.disabled) return;
       const previousBusy = node.getAttribute('aria-busy');
+      busy = true;
       node.disabled = true;
       node.setAttribute('aria-busy', 'true');
       void Promise.resolve()
-        .then(handler)
+        .then(() => {
+          if (!signal.aborted) return handler();
+        })
         .catch((error: unknown) => {
-          node.dispatchEvent(new CustomEvent('rep:error', { bubbles: true, detail: error }));
+          if (!signal.aborted)
+            node.dispatchEvent(new CustomEvent('rep:error', { bubbles: true, detail: error }));
         })
         .finally(() => {
+          busy = false;
           node.disabled = false;
           if (previousBusy === null) node.removeAttribute('aria-busy');
           else node.setAttribute('aria-busy', previousBusy);

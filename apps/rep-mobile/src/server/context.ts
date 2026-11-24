@@ -3,6 +3,7 @@ import type { RepApi } from './api.ts';
 import type { TrackingController } from './tracking.ts';
 export type Page =
   | 'home'
+  | 'schedule'
   | 'customers'
   | 'visits'
   | 'routes'

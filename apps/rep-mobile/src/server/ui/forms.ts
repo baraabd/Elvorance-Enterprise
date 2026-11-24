@@ -69,6 +69,11 @@ export function fieldControl(
   if (control instanceof HTMLInputElement || control instanceof HTMLTextAreaElement) {
     if (field.type !== 'number' && field.type !== 'checkbox')
       control.maxLength = field.max ?? (field.type === 'textarea' ? 5000 : 200);
+    if (
+      field.min !== undefined &&
+      ['text', 'textarea', 'email', 'tel', undefined].includes(field.type)
+    )
+      control.minLength = field.min;
   }
   return control;
 }
@@ -124,9 +129,12 @@ export function commandForm(options: {
     'submit',
     (event) => {
       event.preventDefault();
-      if (busy || !form.reportValidity()) return;
+      if (busy || options.signal.aborted || !form.reportValidity()) return;
       const values = fieldValues(form, options.fields);
       busy = true;
+      // Inert blocks editing without excluding dynamic fields from FormData.
+      const wasInert = form.inert === true;
+      form.inert = true;
       submit.disabled = true;
       output.setAttribute('role', 'status');
       output.textContent = 'جارٍ الحفظ…';
@@ -145,6 +153,7 @@ export function commandForm(options: {
         })
         .finally(() => {
           busy = false;
+          form.inert = wasInert;
           submit.disabled = false;
           form.removeAttribute('aria-busy');
         });
@@ -164,6 +173,8 @@ export function editorButton(
     async () => {
       const previous = parent.querySelector(':scope > .editor');
       if (previous) {
+        if (previous.querySelector('form[aria-busy="true"]'))
+          throw new Error('انتظر تأكيد الحفظ قبل إغلاق النموذج أو تغييره.');
         const same = (previous as HTMLElement).dataset.editor === label;
         previous.remove();
         if (same) return;

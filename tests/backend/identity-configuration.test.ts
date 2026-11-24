@@ -56,7 +56,19 @@ function mockAdmin(definition: IdentityDefinition, unexpectedOptionalScope = fal
         const clientRoles = definition.realm.roles as { client: Record<string, unknown> };
         return clientRoles.client[definition.publicConfig.audience];
       }
-      if (path.includes('/scope-mappings/clients/')) return [{ name: 'rep' }];
+      if (path.includes('/scope-mappings/clients/')) {
+        const clientPath = path.split('/clients/')[1];
+        assert.ok(clientPath);
+        const id = clientPath.split('/')[0];
+        const mapping = (
+          definition.realm.clientScopeMappings as Record<
+            string,
+            Array<{ client: string; roles: string[] }>
+          >
+        )[definition.publicConfig.audience]?.find((item) => item.client === id);
+        assert.ok(mapping);
+        return mapping.roles.map((name) => ({ name }));
+      }
       throw new Error('Unexpected test administration request.');
     },
     async write(method, path, body) {
@@ -282,4 +294,28 @@ test('admin transport pins HTTPS origin, denies redirects and redacts upstream r
   });
   await assert.rejects(admin.get('//attacker.example/admin/realms'));
   assert.equal(calls, 1);
+});
+
+test('S03 customer native client is public S256-only with separate callback and client-only roles', () => {
+  for (const environment of ['staging', 'production'] as const) {
+    const definition = createIdentityDefinition({ ...input, environment });
+    const id = definition.publicConfig.clientNativeClientId;
+    const native = definition.realm.clients.find((item) => item.clientId === id);
+    assert.ok(native);
+    assert.equal(native.publicClient, true);
+    assert.equal(native.standardFlowEnabled, true);
+    assert.equal(native.implicitFlowEnabled, false);
+    assert.equal(native.directAccessGrantsEnabled, false);
+    assert.equal(native.attributes['pkce.code.challenge.method'], 'S256');
+    assert.deepEqual(native.redirectUris, [definition.publicConfig.clientNativeRedirectUri]);
+    const mapping = (
+      definition.realm.clientScopeMappings as Record<
+        string,
+        Array<{ client: string; roles: string[] }>
+      >
+    )[definition.publicConfig.audience]?.find((item) => item.client === id);
+    assert.ok(mapping);
+    assert.deepEqual(mapping.roles, ['client']);
+    assert.notEqual(native.redirectUris[0], definition.publicConfig.redirectUri);
+  }
 });
