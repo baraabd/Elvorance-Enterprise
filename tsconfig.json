@@ -28,18 +28,7 @@
     "packages/contracts/src/browser-window.d.ts",
     "tooling/scripts/workspace.mts",
     "tooling/scripts/dev.mts",
-    "apps/rep-mobile/src/server/**/*.ts",
-    "apps/rep-mobile/src/server-main.ts",
-    "tooling/scripts/rep-release/**/*.mts",
-    "tooling/scripts/build-rep-server.mts",
-    "tooling/scripts/rep-native/**/*.mts",
-    "infra/identity/**/*.mts",
-    "infra/environments/**/*.mts",
-    "tests/runtime/**/*.mts",
-    "tests/identity/**/*.mts",
-    "tooling/scripts/test-local-identity.mts",
-    "tooling/production/**/*.mts",
-    "tests/production/**/*.mts"
+    "tooling/scripts/sprint01-inventory.mts"
   ],
   "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "07da32aa68983d1b5ac8d001fc7042e1410f3850620891e4f97c6fe3d3b4c1bf",
+  "sourceDigest": "f31485390b45fe7d1de30cf81c87a7014eaab92d1c2aa23e2a338bf3f652d55a",
   "accountability": "Proposed roles only; named service/on-call owners are UNASSIGNED. CODEOWNERS routes review to the repository owner, not proof of independent approval.",
   "services": [
     {
@@ -1740,6 +1740,10 @@
     { "source": "tests/backend/pagination.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/backend/pagination.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/pagination.test.ts", "specifier": "./rep-fixture.ts" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "./postgres-cleanup.ts" },
+    { "source": "tests/backend/postgres-cleanup.ts", "specifier": "node:timers/promises" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "node:assert/strict" },
@@ -1793,6 +1797,7 @@
     },
     { "source": "tests/backend/postgres.test.ts", "specifier": "@elvorance/contracts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./rep-postgres-scenarios.ts" },
+    { "source": "tests/backend/postgres.test.ts", "specifier": "./postgres-cleanup.ts" },
     {
       "source": "tests/backend/questionnaire-configuration.test.ts",
       "specifier": "node:assert/strict"
@@ -1923,6 +1928,12 @@
       "source": "tests/backend/security-and-gateway.test.ts",
       "specifier": "../../services/api-gateway/src/domain/routes.ts"
     },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:os" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:path" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:child_process" },
     { "source": "tests/backend/tracking-and-communications.test.ts", "specifier": "node:test" },
     {
       "source": "tests/backend/tracking-and-communications.test.ts",
@@ -2151,6 +2162,19 @@
       "source": "tests/production/branch-protection.test.mts",
       "specifier": "../../tooling/production/branch-protection.mts"
     },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:path" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:os" },
+    {
+      "source": "tests/production/debt-comments.test.mts",
+      "specifier": "../../tooling/production/source.mts"
+    },
+    {
+      "source": "tests/production/debt-comments.test.mts",
+      "specifier": "../../tooling/production/debt.mts"
+    },
     { "source": "tests/production/gap-report.test.mts", "specifier": "node:test" },
     { "source": "tests/production/gap-report.test.mts", "specifier": "node:assert/strict" },
     {
@@ -2244,6 +2268,12 @@
     {
       "source": "tests/production/semantic-bindings.test.mts",
       "specifier": "../../tooling/production/model.mts"
+    },
+    { "source": "tests/production/source-proof.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/source-proof.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/production/source-proof.test.mts",
+      "specifier": "../../tooling/production/source-proof.mts"
     },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:test" },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:assert/strict" },
@@ -2417,6 +2447,13 @@
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "node:path" },
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "./source.mts" },
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "./model.mts" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:child_process" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:crypto" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:path" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:url" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "fflate" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "./evidence.mts" },
     { "source": "tooling/production/source.mts", "specifier": "node:crypto" },
     { "source": "tooling/production/source.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/production/source.mts", "specifier": "node:path" },
@@ -2629,6 +2666,15 @@
       "source": "tooling/scripts/rep-release/check-acceptance.mts",
       "specifier": "./acceptance.mts"
     },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:fs" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:path" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:crypto" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "typescript" },
+    {
+      "source": "tooling/scripts/sprint01-inventory.mts",
+      "specifier": "../production/registration-source.mts"
+    },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "../production/source.mts" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "esbuild" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "node:child_process" },
     { "source": "tooling/scripts/test-local-identity.mts", "specifier": "node:path" },

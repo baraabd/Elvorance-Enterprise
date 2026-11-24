@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
-  "sourceDigest": "07da32aa68983d1b5ac8d001fc7042e1410f3850620891e4f97c6fe3d3b4c1bf",
+  "sourceDigest": "f31485390b45fe7d1de30cf81c87a7014eaab92d1c2aa23e2a338bf3f652d55a",
   "sourceFiles": [
     {
       "path": ".gitattributes",
@@ -705,7 +705,7 @@
     },
     {
       "path": "docs/production/full-ci-contract.json",
-      "sha256": "2d2c418cd332d39d64d5507991db83b08131f1db5d8ddd9020d7b039ede844e4"
+      "sha256": "5b5b1bd4af2a75ac05444303bd808b6dc566abe7c5ed9e87ceaf4ee9c10b101f"
     },
     {
       "path": "docs/production/inventory-dispositions.json",
@@ -1597,7 +1597,7 @@
     },
     {
       "path": "tests/backend/gateway-input-errors.test.ts",
-      "sha256": "4269f3960d7ec37f64cac521b2eea2cb3c566a2766b61c26d67317e16e833ced"
+      "sha256": "cbe6397f7444241772785153da78063a81ce22b60c944e2407a6075949575008"
     },
     {
       "path": "tests/backend/gateway-readiness.test.ts",
@@ -1628,8 +1628,16 @@
       "sha256": "ed98844b70c1f59a3687000efdf1b7220339a221d6a17daef5b07f32ca6ce287"
     },
     {
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "sha256": "8c9013029f99f10ce20dfb6d6ce42354282af11d2587c4401658f1ea6fd0958a"
+    },
+    {
+      "path": "tests/backend/postgres-cleanup.ts",
+      "sha256": "4a7966c55584fed639b13e3510a9d222f7c8829bc2230188c34f240d0446540d"
+    },
+    {
       "path": "tests/backend/postgres.test.ts",
-      "sha256": "b2c49607c9661581221beedb20d97fab4d9fd3b6cdd6f026b0c190c64a0f4dd4"
+      "sha256": "1bbbfe784d9cf437f14b809fe29a6b69e4c73ed8929af6784837cffd08cf4542"
     },
     {
       "path": "tests/backend/questionnaire-configuration.test.ts",
@@ -1662,6 +1670,10 @@
     {
       "path": "tests/backend/security-and-gateway.test.ts",
       "sha256": "1ae5c287e6b1fc949a968fd4e517e358f07d94fd3b2e2c5d9826f072273ab152"
+    },
+    {
+      "path": "tests/backend/sprint01-inventory.test.ts",
+      "sha256": "d9b2ea588ca55d8036540b224882af697f754077f1b8bbe7bb01ae275c1d0b65"
     },
     {
       "path": "tests/backend/tracking-and-communications.test.ts",
@@ -1756,6 +1768,10 @@
       "sha256": "5cd4174938b538c8fc55cb3ffbc87fd88dedf2fc0b051ede359ddce6225759ad"
     },
     {
+      "path": "tests/production/debt-comments.test.mts",
+      "sha256": "1441962e4501295b7126e5a7385919f81328caa97053faa8fc2b48b87486835e"
+    },
+    {
       "path": "tests/production/gap-report.test.mts",
       "sha256": "e6c893483220e316459da71d0f8fec3648d6998cd91ee04fc04c92a206c7e8ad"
     },
@@ -1776,8 +1792,12 @@
       "sha256": "55f1dc0223e500b1a15fb090c68056160f2a5aa7b589b8b8e4d4277a2c10852c"
     },
     {
+      "path": "tests/production/source-proof.test.mts",
+      "sha256": "b49d3bf45f25ae2125c7135a5a50ce4dea7eef54b856cb5603740b6266c0a81c"
+    },
+    {
       "path": "tests/production/workflow.test.mts",
-      "sha256": "a21b57c13018fdaa7611c0c2786911f344935e6c6275662defedba9605bd7088"
+      "sha256": "9555dd92a685c6ba14b6139d6075fd6bdb5d53edc0e8b20ebb980f6d589102e5"
     },
     {
       "path": "tests/questionnaire/dynamic-form.test.mts",
@@ -1853,7 +1873,7 @@
     },
     {
       "path": "tooling/production/debt.mts",
-      "sha256": "7bc93a6c278f0eeb76e0f7e6d7ede7219095863bad8bb78a45ed3cdd3d24db97"
+      "sha256": "f5330b271b3cc8f7247d950247c63b9c34d2ee92cf41e70044db40be8514c431"
     },
     {
       "path": "tooling/production/discover.mts",
@@ -1901,7 +1921,7 @@
     },
     {
       "path": "tooling/production/run-lane.mts",
-      "sha256": "9dc4037cf8a4748befee6c332fb168ea4f9550e6c74d2fb9274f4b2610f45312"
+      "sha256": "fe589077893db02eef3a98f713dfff7dd24e73b4375913ad26e40f320a7658dc"
     },
     {
       "path": "tooling/production/runtime.mts",
@@ -1914,6 +1934,10 @@
     {
       "path": "tooling/production/semantic-bindings.mts",
       "sha256": "aea9a12a9a8e5df8a54be387bca1a793a2bb6a1c1753182e6bf9b2f0b271001c"
+    },
+    {
+      "path": "tooling/production/source-proof.mts",
+      "sha256": "4a354dbf86c6bc72f01ace8eb408d86e6a9c1e92703a586bd69daf16049c804a"
     },
     {
       "path": "tooling/production/source.mts",
@@ -2048,6 +2072,10 @@
       "sha256": "3c98ec27901061500b6035c85e1002269816110f9e162e3643362a17c7ff59fb"
     },
     {
+      "path": "tooling/scripts/sprint01-inventory.mts",
+      "sha256": "c607d6a94e7f41ede5f985082e2a4e4280f4525dd84ad3a86988e20615984dbe"
+    },
+    {
       "path": "tooling/scripts/test-local-identity.mts",
       "sha256": "04b84498ecb12d88f6434d3e09d9713aad1ee01a0cf419cecda48d387d507815"
     },
@@ -2065,7 +2093,7 @@
     },
     {
       "path": "tsconfig.json",
-      "sha256": "c30f860e567f6693d358104ca68a0684b51025ea37696940778bba69aea3b76c"
+      "sha256": "301410aa5916d2bfa2a0d7cb25a851bf7a530e9b31068784d43dc129f8658eac"
     }
   ],
   "runtimeRegistrations": [
@@ -19322,6 +19350,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -19330,6 +19359,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -19456,6 +19486,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -19464,6 +19495,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -19526,6 +19558,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -19534,6 +19567,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -19596,6 +19630,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -19604,6 +19639,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -19730,6 +19766,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -19738,6 +19775,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -28172,6 +28210,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
@@ -28189,6 +28228,7 @@
           "T:packages/api-client/test/live-data.test.ts:f1e30808fd87:1",
           "T:packages/api-client/test/live-data.test.ts:f9bc731774c2:1",
           "T:packages/api-client/test/live-data.test.ts:ffacf95f9b45:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
@@ -28798,6 +28838,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
@@ -28815,6 +28856,7 @@
           "T:packages/api-client/test/live-data.test.ts:f1e30808fd87:1",
           "T:packages/api-client/test/live-data.test.ts:f9bc731774c2:1",
           "T:packages/api-client/test/live-data.test.ts:ffacf95f9b45:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
@@ -30209,7 +30251,10 @@
       "categories": [],
       "tests": {
         "contract": [],
-        "integration": ["T:tests/backend/postgres.test.ts:0567cd29ccfc:1"],
+        "integration": [
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint01-inventory.test.ts:95b8c84591c1:1"
+        ],
         "e2e": [],
         "related": [
           "T:packages/api-client/test/live-data.test.ts:255d356805bd:1",
@@ -30220,7 +30265,8 @@
           "T:packages/api-client/test/live-data.test.ts:f1e30808fd87:1",
           "T:packages/api-client/test/live-data.test.ts:f9bc731774c2:1",
           "T:packages/api-client/test/live-data.test.ts:ffacf95f9b45:1",
-          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1"
+          "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/sprint01-inventory.test.ts:95b8c84591c1:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -31058,6 +31104,7 @@
         "contract": [],
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31067,6 +31114,7 @@
         "e2e": [],
         "related": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31131,6 +31179,7 @@
         "contract": [],
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31140,6 +31189,7 @@
         "e2e": [],
         "related": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31661,6 +31711,7 @@
         "contract": [],
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31670,6 +31721,7 @@
         "e2e": [],
         "related": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31734,6 +31786,7 @@
         "contract": [],
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -31743,6 +31796,7 @@
         "e2e": [],
         "related": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -32264,6 +32318,7 @@
         "contract": [],
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -32273,6 +32328,7 @@
         "e2e": [],
         "related": [
           "T:tests/backend/gateway-input-errors.test.ts:58c5d55226e0:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
@@ -36680,6 +36736,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
@@ -36693,6 +36750,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
@@ -37367,6 +37425,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
@@ -37380,6 +37439,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
@@ -37901,6 +37961,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
@@ -37914,6 +37975,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/ownership-regressions.test.ts:175a9d4c6141:1",
@@ -43727,13 +43789,15 @@
         "integration": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
-          "T:tests/backend/rep-workflows.test.ts:d9a9f44562e6:1"
+          "T:tests/backend/rep-workflows.test.ts:d9a9f44562e6:1",
+          "T:tests/backend/sprint01-inventory.test.ts:95b8c84591c1:1"
         ],
         "e2e": [],
         "related": [
           "T:tests/backend/lifecycle.test.ts:38630c8da84b:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
-          "T:tests/backend/rep-workflows.test.ts:d9a9f44562e6:1"
+          "T:tests/backend/rep-workflows.test.ts:d9a9f44562e6:1",
+          "T:tests/backend/sprint01-inventory.test.ts:95b8c84591c1:1"
         ],
         "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
       },
@@ -82547,6 +82611,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -82555,6 +82620,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -93501,6 +93567,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -93509,6 +93576,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -112487,6 +112555,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-commercial.test.ts:03e613141013:1",
           "T:tests/integration/live-commercial.test.ts:fba8c3e58172:1",
@@ -112498,6 +112567,7 @@
         "e2e": [],
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-commercial.test.ts:03e613141013:1",
           "T:tests/integration/live-commercial.test.ts:fba8c3e58172:1",
@@ -117010,6 +117080,7 @@
       "tests": {
         "contract": [],
         "integration": [
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -117020,6 +117091,7 @@
         "related": [
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
           "T:packages/api-client/test/client.test.ts:ef9b4a454056:1",
+          "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
@@ -136868,6 +136940,14 @@
       "environment": "node"
     },
     {
+      "id": "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
+      "path": "tests/backend/gateway-input-errors.test.ts",
+      "line": 62,
+      "title": "gateway preserves authentication errors without forwarding",
+      "scope": "integration",
+      "environment": "node"
+    },
+    {
       "id": "T:tests/backend/gateway-input-errors.test.ts:9e42e458ca2f:1",
       "path": "tests/backend/gateway-input-errors.test.ts",
       "line": 22,
@@ -137068,9 +137148,49 @@
       "environment": "node"
     },
     {
+      "id": "T:tests/backend/postgres-cleanup.test.ts:1745853d5bdf:1",
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "line": 7,
+      "title": "PostgreSQL fixture cleanup waits for every closing backend before a non-forced drop",
+      "scope": "integration",
+      "environment": "postgres"
+    },
+    {
+      "id": "T:tests/backend/postgres-cleanup.test.ts:18639947a895:1",
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "line": 46,
+      "title": "PostgreSQL fixture cleanup rejects malformed connection evidence before dropping data",
+      "scope": "integration",
+      "environment": "postgres"
+    },
+    {
+      "id": "T:tests/backend/postgres-cleanup.test.ts:5af0b084305a:1",
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "line": 60,
+      "title": "PostgreSQL fixture cleanup rejects non-fixture names, mismatched roles and invalid timing",
+      "scope": "integration",
+      "environment": "postgres"
+    },
+    {
+      "id": "T:tests/backend/postgres-cleanup.test.ts:99a48e72d5d7:1",
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "line": 78,
+      "title": "PostgreSQL fixture cleanup preserves database drop errors instead of masking failed cleanup",
+      "scope": "integration",
+      "environment": "postgres"
+    },
+    {
+      "id": "T:tests/backend/postgres-cleanup.test.ts:adf1dcece845:1",
+      "path": "tests/backend/postgres-cleanup.test.ts",
+      "line": 29,
+      "title": "PostgreSQL fixture cleanup times out without force termination or destructive queries",
+      "scope": "integration",
+      "environment": "postgres"
+    },
+    {
       "id": "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
       "path": "tests/backend/postgres.test.ts",
-      "line": 63,
+      "line": 64,
       "title": "PostgreSQL: seven owned databases, 42 denied cross-service connections, forced tenant RLS, atomic outbox/inbox and full contract provisioning",
       "scope": "integration",
       "environment": "postgres"
@@ -137240,6 +137360,14 @@
       "path": "tests/backend/security-and-gateway.test.ts",
       "line": 153,
       "title": "a cached command cannot be replayed after the same subject loses its signed roles",
+      "scope": "integration",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/backend/sprint01-inventory.test.ts:95b8c84591c1:1",
+      "path": "tests/backend/sprint01-inventory.test.ts",
+      "line": 10,
+      "title": "source inventory ${scenario} registration evidence",
       "scope": "integration",
       "environment": "node"
     },
@@ -137788,6 +137916,14 @@
       "environment": "node"
     },
     {
+      "id": "T:tests/production/debt-comments.test.mts:adbabc1c36c0:1",
+      "path": "tests/production/debt-comments.test.mts",
+      "line": 19,
+      "title": "debt parser distinguishes ${label} from suppression directives",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
       "id": "T:tests/production/gap-report.test.mts:3abb9233cd8a:1",
       "path": "tests/production/gap-report.test.mts",
       "line": 79,
@@ -138220,9 +138356,57 @@
       "environment": "node"
     },
     {
+      "id": "T:tests/production/source-proof.test.mts:19340b3586fe:1",
+      "path": "tests/production/source-proof.test.mts",
+      "line": 8,
+      "title": "source package proof accepts exact tracked bytes including an empty file",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/production/source-proof.test.mts:1da2ae503865:1",
+      "path": "tests/production/source-proof.test.mts",
+      "line": 17,
+      "title": "source package proof rejects missing or changed product source",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/production/source-proof.test.mts:9f3f8ab88ddf:1",
+      "path": "tests/production/source-proof.test.mts",
+      "line": 39,
+      "title": "source package proof permits a changed parity report but never a missing one",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/production/source-proof.test.mts:aefb655fb063:1",
+      "path": "tests/production/source-proof.test.mts",
+      "line": 62,
+      "title": "source package proof rejects empty, duplicate and unsupported source trees",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/production/source-proof.test.mts:b107b2842f13:1",
+      "path": "tests/production/source-proof.test.mts",
+      "line": 28,
+      "title": "source package proof accepts only Git-attribute-normalized matching blobs",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
+      "id": "T:tests/production/source-proof.test.mts:c609b91aa18d:1",
+      "path": "tests/production/source-proof.test.mts",
+      "line": 51,
+      "title": "source package proof does not exempt arbitrary generated-looking paths",
+      "scope": "unit",
+      "environment": "node"
+    },
+    {
       "id": "T:tests/production/workflow.test.mts:2310e9d5449b:1",
       "path": "tests/production/workflow.test.mts",
-      "line": 64,
+      "line": 71,
       "title": "all third-party workflow actions are immutable commits and verification jobs use read-only contents",
       "scope": "unit",
       "environment": "node"
@@ -138230,7 +138414,7 @@
     {
       "id": "T:tests/production/workflow.test.mts:5617d89a45c3:1",
       "path": "tests/production/workflow.test.mts",
-      "line": 47,
+      "line": 54,
       "title": "required aggregation always runs and includes every dependency without path or error bypass",
       "scope": "unit",
       "environment": "node"
@@ -139598,9 +139782,9 @@
   ],
   "totals": {
     "features": 1837,
-    "sourceFiles": 516,
+    "sourceFiles": 523,
     "runtimeRegistrations": 442,
-    "testCatalogEntries": 441,
+    "testCatalogEntries": 455,
     "unmappedWorkflows": 244,
     "unresolvedFeatures": 1257,
     "kind:account-lifecycle": 58,
