@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "f31485390b45fe7d1de30cf81c87a7014eaab92d1c2aa23e2a338bf3f652d55a",
+  "sourceDigest": "e84a05361854c64b9012f6f8b697017553bca60f83abbb1c5171dc65362b405a",
   "status": "BLOCKED",
   "semanticStatus": "SOURCE_TRACE_COMPLETE_NOT_RUNTIME_ACCEPTANCE",
-  "sourceBoundDecisions": 176,
+  "sourceBoundDecisions": 185,
   "scope": "Extractor warning classification, not completeness certification, test execution or workflow coverage.",
   "unknownWarningsFailClosed": true,
   "totals": {
-    "unresolvedRecords": 1257,
+    "unresolvedRecords": 1254,
     "recordsWithSemanticGaps": 0,
-    "recordsWithOnlyTestMappingDebt": 1257,
+    "recordsWithOnlyTestMappingDebt": 1254,
     "workflowsWithoutTestCandidates": 244
   },
-  "categoryCounts": { "test-mapping": 1257 },
+  "categoryCounts": { "test-mapping": 1254 },
   "byCategory": {
     "test-mapping": [
       "account-lifecycle:apps/admin-web/src/app.ts:c83e652f3ba1:1",
@@ -599,11 +599,6 @@
       "failure-state:packages/mobile-auth/src/oidc.ts:f44bb91dcece:1",
       "failure-state:packages/mobile-auth/src/oidc.ts:f99e90cb94fc:1",
       "failure-state:packages/mobile-auth/src/oidc.ts:fb54fd665610:1",
-      "failure-state:packages/mobile-auth/src/platform.ts:47290668f7bd:1",
-      "failure-state:packages/mobile-auth/src/platform.ts:869177d64f2d:1",
-      "failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:1",
-      "failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:2",
-      "failure-state:packages/mobile-auth/src/platform.ts:e959f736ba60:1",
       "failure-state:packages/mobile-auth/src/vault.ts:2e7fc9af953c:1",
       "failure-state:packages/mobile-auth/src/vault.ts:a869ffb2f7e0:1",
       "failure-state:packages/mobile-auth/src/vault.ts:d0e2ebc544c9:1",
@@ -638,6 +633,8 @@
       "failure-state:packages/service-kit/src/migrations.ts:65c2b28aac49:1",
       "failure-state:packages/service-kit/src/migrations.ts:65c2b28aac49:2",
       "failure-state:packages/service-kit/src/migrations.ts:e4a2b0ca5246:1",
+      "failure-state:packages/service-kit/src/security-audit.ts:db0d08f79ce2:1",
+      "failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
       "failure-state:services/api-gateway/src/application/readiness.ts:a9e5adad5c85:1",
       "failure-state:services/communications/src/application/conversations.ts:313df5dfe161:1",
       "failure-state:services/communications/src/application/conversations.ts:a869ffb2f7e0:1",
@@ -22884,191 +22881,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "failure-state:packages/mobile-auth/src/platform.ts:47290668f7bd:1",
-      "source": {
-        "path": "packages/mobile-auth/src/platform.ts",
-        "line": 19,
-        "endLine": 19,
-        "fingerprint": "8a6df46e73a5bb91bb49b2e0dc47399d87ef12f593b3c51cd3bf6aa424a0e60f"
-      },
-      "owningService": null,
-      "targetService": "identity",
-      "mode": "server",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:packages/mobile-auth/src/platform.ts:47290668f7bd:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:packages/mobile-auth/src/platform.ts:47290668f7bd:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:packages/mobile-auth/src/platform.ts:47290668f7bd:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:packages/mobile-auth/src/platform.ts:869177d64f2d:1",
-      "source": {
-        "path": "packages/mobile-auth/src/platform.ts",
-        "line": 42,
-        "endLine": 44,
-        "fingerprint": "07a29af9e0635f545b20ed6252ab195fb744c4277109c21ab3a403caa32a2aac"
-      },
-      "owningService": null,
-      "targetService": "identity",
-      "mode": "server",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:packages/mobile-auth/src/platform.ts:869177d64f2d:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:packages/mobile-auth/src/platform.ts:869177d64f2d:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:packages/mobile-auth/src/platform.ts:869177d64f2d:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:1",
-      "source": {
-        "path": "packages/mobile-auth/src/platform.ts",
-        "line": 25,
-        "endLine": 25,
-        "fingerprint": "14d649f9b78de3e0ecfdf73e09de2b66a1c4f8b691e9f37b52f5500c4662818a"
-      },
-      "owningService": null,
-      "targetService": "identity",
-      "mode": "server",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:2",
-      "source": {
-        "path": "packages/mobile-auth/src/platform.ts",
-        "line": 68,
-        "endLine": 68,
-        "fingerprint": "14d649f9b78de3e0ecfdf73e09de2b66a1c4f8b691e9f37b52f5500c4662818a"
-      },
-      "owningService": null,
-      "targetService": "identity",
-      "mode": "server",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:2",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:2",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:packages/mobile-auth/src/platform.ts:a11b4499e957:2",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "failure-state:packages/mobile-auth/src/platform.ts:e959f736ba60:1",
-      "source": {
-        "path": "packages/mobile-auth/src/platform.ts",
-        "line": 43,
-        "endLine": 43,
-        "fingerprint": "c85f8cc46bf2699fae3db5e25a1c6dd137ce388206f1889e68e2f876620313bd"
-      },
-      "owningService": null,
-      "targetService": "identity",
-      "mode": "server",
-      "targetSprint": "S02",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:packages/mobile-auth/src/platform.ts:e959f736ba60:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:packages/mobile-auth/src/platform.ts:e959f736ba60:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:packages/mobile-auth/src/platform.ts:e959f736ba60:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "failure-state:packages/mobile-auth/src/vault.ts:2e7fc9af953c:1",
       "source": {
         "path": "packages/mobile-auth/src/vault.ts",
@@ -24320,6 +24132,80 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:packages/service-kit/src/migrations.ts:e4a2b0ca5246:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:packages/service-kit/src/security-audit.ts:db0d08f79ce2:1",
+      "source": {
+        "path": "packages/service-kit/src/security-audit.ts",
+        "line": 41,
+        "endLine": 43,
+        "fingerprint": "f6578e571ad56a53dd75a4a9dafb0404ef037b8a1adf60678b4d238161257763"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "shared",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:packages/service-kit/src/security-audit.ts:db0d08f79ce2:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:packages/service-kit/src/security-audit.ts:db0d08f79ce2:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:packages/service-kit/src/security-audit.ts:db0d08f79ce2:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
+      "source": {
+        "path": "packages/service-kit/src/tenant-security-migration.ts",
+        "line": 6,
+        "endLine": 6,
+        "fingerprint": "d68231368aa3546f5994e7bbba7fb9aca98952404829c3d20d2ae51af165b233"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "shared",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:packages/service-kit/src/tenant-security-migration.ts:3f06f6a43ca3:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
