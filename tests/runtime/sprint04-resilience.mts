@@ -97,7 +97,10 @@ export function sprint04Faults(env: NodeJS.ProcessEnv, tenantId: string) {
       headers: { authorization, 'content-type': 'application/json' },
       ...(body === undefined ? {} : { body: JSON.stringify(body) }),
     });
-    assert.ok(response.ok, `Isolated broker diagnostic failed (${response.status})`);
+    assert.ok(
+      response.ok,
+      `Isolated broker diagnostic failed (${method} ${path}: ${response.status})`,
+    );
     return (await response.json()) as T;
   }
   async function until<T>(
@@ -122,7 +125,7 @@ export function sprint04Faults(env: NodeJS.ProcessEnv, tenantId: string) {
   }
   async function publish(event: EventEnvelope): Promise<void> {
     const result = await broker<{ routed: boolean }>(
-      'PUT',
+      'POST',
       '/exchanges/atlas/atlas.events/publish',
       {
         properties: { message_id: event.id, delivery_mode: 2, content_type: 'application/json' },

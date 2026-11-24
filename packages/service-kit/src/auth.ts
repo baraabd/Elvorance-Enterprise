@@ -3,8 +3,17 @@ import { roles, type Principal, type Role } from '@elvorance/contracts';
 import { AppError, assert } from './errors.ts';
 export type AuthVerifier = (authorization: string | undefined) => Promise<Principal>;
 export function principalFromClaims(claims: JWTPayload): Principal {
+  if (claims.iat !== undefined)
+    assert(
+      typeof claims.iat === 'number' &&
+        Number.isFinite(claims.iat) &&
+        claims.iat <= Date.now() / 1000 + 5,
+      'INVALID_TOKEN',
+      'Token issuance time is invalid',
+      401,
+    );
   assert(
-    typeof claims.sub === 'string' && claims.sub.length > 0,
+    typeof claims.sub === 'string' && claims.sub.length > 0 && claims.sub.length <= 512,
     'INVALID_TOKEN',
     'Token subject is missing',
     401,

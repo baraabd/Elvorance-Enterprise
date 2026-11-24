@@ -1,6 +1,6 @@
 import { App } from '@capacitor/app';
 import { Capacitor, registerPlugin } from '@capacitor/core';
-import { matchesRedirect, type ValidatedConfig } from './configuration.ts';
+import { nativeRedirects, matchesRedirect, type ValidatedConfig } from './configuration.ts';
 import { AuthError, safeAuthError } from './errors.ts';
 import type { AuthDependencies, AuthStorageKey } from './types.ts';
 
@@ -18,11 +18,8 @@ function nativePorts(config: ValidatedConfig): AuthDependencies {
   if (!Capacitor.isPluginAvailable('ElvoranceAuthBridge')) {
     throw new AuthError('native_bridge_unavailable');
   }
-  const expected =
-    config.environment === 'production'
-      ? 'com.elvorance.rep:/oauth2redirect'
-      : 'com.elvorance.rep.staging:/oauth2redirect';
-  if (config.redirectUri !== expected) throw new AuthError('invalid_configuration');
+  if (!nativeRedirects(config.environment).includes(config.redirectUri))
+    throw new AuthError('invalid_configuration');
   return {
     storage: {
       async get(key) {

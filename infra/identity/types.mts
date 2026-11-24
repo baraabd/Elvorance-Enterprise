@@ -67,6 +67,8 @@ export interface IdentityDefinition {
     redirectUri: string;
     authorizationEndpoint: string;
     jwksUrl: string;
+    clientNativeClientId: string;
+    clientNativeRedirectUri: string;
     webClientId?: string;
     webRedirectUri?: string;
     adminWebClientId?: string;

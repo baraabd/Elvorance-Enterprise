@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import { sprint04Faults } from './sprint04-resilience.mts';
 const fixture: NodeJS.ProcessEnv = {
@@ -24,4 +25,15 @@ test('Sprint 04 destructive failure harness refuses hosted, production, non-CI a
   ])
     assert.throws(() => sprint04Faults({ ...fixture, ...change }, tenant));
   assert.throws(() => sprint04Faults(fixture, 'production-tenant'));
+});
+
+// The real Compose journey still verifies routing, duplicate acknowledgements and DLQ delivery.
+// This contract regression catches an unsupported HTTP method before spinning up Docker.
+test('isolated broker publishing uses RabbitMQ management POST without a permissive fallback', () => {
+  const source = readFileSync(new URL('./sprint04-resilience.mts', import.meta.url), 'utf8');
+  assert.match(
+    source,
+    /broker<\{ routed: boolean \}>\(\s*'POST',\s*'\/exchanges\/atlas\/atlas\.events\/publish'/,
+  );
+  assert.match(source, /assert\.equal\(result\.routed, true\)/);
 });

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "c393b554f3d315078bfcb4481e9a5cd9896971d621d805c332f22235d15126fc",
+  "sourceDigest": "d1fe1b34a3d7de1eb96b2f02cd53a9633fc46b03ab1a4f1d78ddbe21a5bac1b4",
   "workspaces": [
     {
       "name": "@elvorance/admin-web",
@@ -583,6 +583,19 @@
     { "source": "packages/mobile-auth/test/fixtures.ts", "specifier": "node:assert/strict" },
     { "source": "packages/mobile-auth/test/fixtures.ts", "specifier": "../src/session.ts" },
     { "source": "packages/mobile-auth/test/fixtures.ts", "specifier": "../src/types.ts" },
+    { "source": "packages/mobile-auth/test/platform-storage.test.ts", "specifier": "node:test" },
+    {
+      "source": "packages/mobile-auth/test/platform-storage.test.ts",
+      "specifier": "node:assert/strict"
+    },
+    {
+      "source": "packages/mobile-auth/test/platform-storage.test.ts",
+      "specifier": "../src/platform.ts"
+    },
+    {
+      "source": "packages/mobile-auth/test/platform-storage.test.ts",
+      "specifier": "../src/configuration.ts"
+    },
     { "source": "packages/mobile-platform/src/index.ts", "specifier": "@capacitor/core" },
     { "source": "packages/mobile-platform/src/index.ts", "specifier": "@capacitor/app" },
     { "source": "packages/mobile-platform/src/index.ts", "specifier": "@capacitor/geolocation" },
@@ -651,6 +664,8 @@
     { "source": "packages/service-kit/src/http.ts", "specifier": "./errors.ts" },
     { "source": "packages/service-kit/src/http.ts", "specifier": "./repository.ts" },
     { "source": "packages/service-kit/src/http.ts", "specifier": "./validation.ts" },
+    { "source": "packages/service-kit/src/http.ts", "specifier": "./route-policy.ts" },
+    { "source": "packages/service-kit/src/http.ts", "specifier": "./security-audit.ts" },
     { "source": "packages/service-kit/src/index.ts", "specifier": "./errors.ts" },
     { "source": "packages/service-kit/src/index.ts", "specifier": "./validation.ts" },
     { "source": "packages/service-kit/src/index.ts", "specifier": "./repository.ts" },
@@ -661,6 +676,13 @@
     { "source": "packages/service-kit/src/index.ts", "specifier": "./http.ts" },
     { "source": "packages/service-kit/src/index.ts", "specifier": "./customer-directory.ts" },
     { "source": "packages/service-kit/src/index.ts", "specifier": "./pagination.ts" },
+    { "source": "packages/service-kit/src/index.ts", "specifier": "./route-policy.ts" },
+    { "source": "packages/service-kit/src/index.ts", "specifier": "./security-audit.ts" },
+    { "source": "packages/service-kit/src/index.ts", "specifier": "./request-limits.ts" },
+    {
+      "source": "packages/service-kit/src/index.ts",
+      "specifier": "./tenant-security-migration.ts"
+    },
     {
       "source": "packages/service-kit/src/memory-repository.ts",
       "specifier": "@elvorance/contracts"
@@ -682,6 +704,18 @@
     { "source": "packages/service-kit/src/repository.ts", "specifier": "node:crypto" },
     { "source": "packages/service-kit/src/repository.ts", "specifier": "@elvorance/contracts" },
     { "source": "packages/service-kit/src/repository.ts", "specifier": "./pagination.ts" },
+    { "source": "packages/service-kit/src/request-limits.ts", "specifier": "./errors.ts" },
+    {
+      "source": "packages/service-kit/src/route-policy.ts",
+      "specifier": "@elvorance/contracts/routes"
+    },
+    { "source": "packages/service-kit/src/route-policy.ts", "specifier": "@elvorance/contracts" },
+    { "source": "packages/service-kit/src/route-policy.ts", "specifier": "./errors.ts" },
+    { "source": "packages/service-kit/src/security-audit.ts", "specifier": "fastify" },
+    {
+      "source": "packages/service-kit/src/tenant-security-migration.ts",
+      "specifier": "./migrations.ts"
+    },
     { "source": "packages/service-kit/src/validation.ts", "specifier": "./errors.ts" },
     { "source": "packages/ui/src/index.ts", "specifier": "./primitives.ts" },
     { "source": "packages/ui/src/index.ts", "specifier": "./buttons.ts" },
@@ -754,6 +788,10 @@
       "specifier": "@elvorance/service-kit"
     },
     {
+      "source": "services/billing/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
       "source": "services/billing/src/infrastructure/repository.ts",
       "specifier": "@elvorance/service-kit"
     },
@@ -816,6 +854,10 @@
     {
       "source": "services/communications/src/domain/model.ts",
       "specifier": "@elvorance/contracts"
+    },
+    {
+      "source": "services/communications/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
     },
     {
       "source": "services/communications/src/infrastructure/migrations/001_initial.ts",
@@ -919,6 +961,10 @@
       "specifier": "@elvorance/service-kit"
     },
     {
+      "source": "services/crm/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
       "source": "services/crm/src/infrastructure/repository.ts",
       "specifier": "@elvorance/service-kit"
     },
@@ -1003,6 +1049,10 @@
       "specifier": "@elvorance/service-kit"
     },
     {
+      "source": "services/delivery/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
       "source": "services/delivery/src/infrastructure/repository.ts",
       "specifier": "@elvorance/service-kit"
     },
@@ -1056,6 +1106,10 @@
       "specifier": "@elvorance/service-kit"
     },
     { "source": "services/identity/src/domain/model.ts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "services/identity/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
+    },
     {
       "source": "services/identity/src/infrastructure/migrations/001_initial.ts",
       "specifier": "@elvorance/service-kit"
@@ -1196,6 +1250,10 @@
       "specifier": "@elvorance/service-kit"
     },
     {
+      "source": "services/sales/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
       "source": "services/sales/src/infrastructure/repository.ts",
       "specifier": "@elvorance/service-kit"
     },
@@ -1303,6 +1361,10 @@
       "specifier": "../domain/model.ts"
     },
     { "source": "services/tracking/src/domain/model.ts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "services/tracking/src/infrastructure/migrations/001_initial.ts",
+      "specifier": "@elvorance/service-kit"
+    },
     {
       "source": "services/tracking/src/infrastructure/migrations/001_initial.ts",
       "specifier": "@elvorance/service-kit"
@@ -1460,6 +1522,28 @@
     { "source": "tests/backend/helpers.ts", "specifier": "fastify" },
     { "source": "tests/backend/helpers.ts", "specifier": "@elvorance/contracts" },
     { "source": "tests/backend/helpers.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/backend/http-response-semantics.test.ts", "specifier": "node:test" },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "node:assert/strict"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/app.ts"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/application/proxy.ts"
+    },
+    {
+      "source": "tests/backend/http-response-semantics.test.ts",
+      "specifier": "../../services/api-gateway/src/domain/routes.ts"
+    },
+    { "source": "tests/backend/http-response-semantics.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/identity-configuration.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/identity-configuration.test.ts", "specifier": "node:assert/strict" },
     {
@@ -1523,6 +1607,10 @@
     { "source": "tests/backend/pagination.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/backend/pagination.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/pagination.test.ts", "specifier": "./rep-fixture.ts" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/postgres-cleanup.test.ts", "specifier": "./postgres-cleanup.ts" },
+    { "source": "tests/backend/postgres-cleanup.ts", "specifier": "node:timers/promises" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "node:assert/strict" },
@@ -1577,6 +1665,7 @@
     { "source": "tests/backend/postgres.test.ts", "specifier": "@elvorance/contracts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./sprint04-scenarios.ts" },
     { "source": "tests/backend/postgres.test.ts", "specifier": "./rep-postgres-scenarios.ts" },
+    { "source": "tests/backend/postgres.test.ts", "specifier": "./postgres-cleanup.ts" },
     {
       "source": "tests/backend/questionnaire-configuration.test.ts",
       "specifier": "node:assert/strict"
@@ -1707,6 +1796,59 @@
       "source": "tests/backend/security-and-gateway.test.ts",
       "specifier": "../../services/api-gateway/src/domain/routes.ts"
     },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:os" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:path" },
+    { "source": "tests/backend/sprint01-inventory.test.ts", "specifier": "node:child_process" },
+    { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "jose" },
+    {
+      "source": "tests/backend/sprint03-regressions.test.ts",
+      "specifier": "@elvorance/contracts/routes"
+    },
+    { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "tests/backend/sprint03-regressions.test.ts",
+      "specifier": "@elvorance/service-kit"
+    },
+    {
+      "source": "tests/backend/sprint03-regressions.test.ts",
+      "specifier": "../../services/identity/src/app.ts"
+    },
+    {
+      "source": "tests/backend/sprint03-regressions.test.ts",
+      "specifier": "../../services/api-gateway/src/app.ts"
+    },
+    {
+      "source": "tests/backend/sprint03-regressions.test.ts",
+      "specifier": "../../services/api-gateway/src/domain/routes.ts"
+    },
+    { "source": "tests/backend/sprint03-regressions.test.ts", "specifier": "./helpers.ts" },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "jose" },
+    {
+      "source": "tests/backend/sprint03-security.test.ts",
+      "specifier": "@elvorance/contracts/routes"
+    },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "@elvorance/contracts" },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "@elvorance/service-kit" },
+    {
+      "source": "tests/backend/sprint03-security.test.ts",
+      "specifier": "../../services/identity/src/app.ts"
+    },
+    {
+      "source": "tests/backend/sprint03-security.test.ts",
+      "specifier": "../../services/api-gateway/src/app.ts"
+    },
+    {
+      "source": "tests/backend/sprint03-security.test.ts",
+      "specifier": "../../services/api-gateway/src/domain/routes.ts"
+    },
+    { "source": "tests/backend/sprint03-security.test.ts", "specifier": "./helpers.ts" },
     { "source": "tests/backend/sprint04-contracts.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/sprint04-contracts.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/backend/sprint04-contracts.test.ts", "specifier": "node:fs/promises" },
@@ -1946,6 +2088,9 @@
       "source": "tests/integration/rep-server-views.test.ts",
       "specifier": "../../apps/rep-mobile/src/server/views/messages.ts"
     },
+    { "source": "tests/native/client-auth-parity.test.mts", "specifier": "node:test" },
+    { "source": "tests/native/client-auth-parity.test.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/native/client-auth-parity.test.mts", "specifier": "node:fs/promises" },
     { "source": "tests/native/ios-profile.test.mts", "specifier": "node:test" },
     { "source": "tests/native/ios-profile.test.mts", "specifier": "node:assert/strict" },
     {
@@ -1973,6 +2118,19 @@
     {
       "source": "tests/production/branch-protection.test.mts",
       "specifier": "../../tooling/production/branch-protection.mts"
+    },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:path" },
+    { "source": "tests/production/debt-comments.test.mts", "specifier": "node:os" },
+    {
+      "source": "tests/production/debt-comments.test.mts",
+      "specifier": "../../tooling/production/source.mts"
+    },
+    {
+      "source": "tests/production/debt-comments.test.mts",
+      "specifier": "../../tooling/production/debt.mts"
     },
     { "source": "tests/production/gap-report.test.mts", "specifier": "node:test" },
     { "source": "tests/production/gap-report.test.mts", "specifier": "node:assert/strict" },
@@ -2068,6 +2226,12 @@
       "source": "tests/production/semantic-bindings.test.mts",
       "specifier": "../../tooling/production/model.mts"
     },
+    { "source": "tests/production/source-proof.test.mts", "specifier": "node:test" },
+    { "source": "tests/production/source-proof.test.mts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/production/source-proof.test.mts",
+      "specifier": "../../tooling/production/source-proof.mts"
+    },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:test" },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:assert/strict" },
     { "source": "tests/production/workflow.test.mts", "specifier": "node:fs/promises" },
@@ -2162,6 +2326,7 @@
       "specifier": "../../services/sales/src/application/service-requests.ts"
     },
     { "source": "tests/runtime/sprint04-safety.test.mts", "specifier": "node:test" },
+    { "source": "tests/runtime/sprint04-safety.test.mts", "specifier": "node:fs" },
     { "source": "tests/runtime/sprint04-safety.test.mts", "specifier": "node:assert/strict" },
     {
       "source": "tests/runtime/sprint04-safety.test.mts",
@@ -2256,6 +2421,13 @@
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "node:path" },
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "./source.mts" },
     { "source": "tooling/production/semantic-bindings.mts", "specifier": "./model.mts" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:child_process" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:crypto" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:path" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "node:url" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "fflate" },
+    { "source": "tooling/production/source-proof.mts", "specifier": "./evidence.mts" },
     { "source": "tooling/production/source.mts", "specifier": "node:crypto" },
     { "source": "tooling/production/source.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/production/source.mts", "specifier": "node:path" },
@@ -2296,6 +2468,16 @@
     { "source": "tooling/scripts/check-boundaries.mts", "specifier": "node:path" },
     { "source": "tooling/scripts/check-boundaries.mts", "specifier": "node:module" },
     { "source": "tooling/scripts/check-boundaries.mts", "specifier": "node:url" },
+    { "source": "tooling/scripts/client-native/verification.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/client-native/verification.mts", "specifier": "node:path" },
+    {
+      "source": "tooling/scripts/client-native/verification.mts",
+      "specifier": "../rep-release/build-proof.mts"
+    },
+    {
+      "source": "tooling/scripts/client-native/verification.mts",
+      "specifier": "../rep-native/process.mts"
+    },
     { "source": "tooling/scripts/copy-content.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/scripts/copy-content.mts", "specifier": "node:path" },
     { "source": "tooling/scripts/dev.mts", "specifier": "node:http" },
@@ -2468,6 +2650,15 @@
       "source": "tooling/scripts/rep-release/check-acceptance.mts",
       "specifier": "./acceptance.mts"
     },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:fs" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:path" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "node:crypto" },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "typescript" },
+    {
+      "source": "tooling/scripts/sprint01-inventory.mts",
+      "specifier": "../production/registration-source.mts"
+    },
+    { "source": "tooling/scripts/sprint01-inventory.mts", "specifier": "../production/source.mts" },
     { "source": "tooling/scripts/sprint04-contracts.mts", "specifier": "node:fs/promises" },
     { "source": "tooling/scripts/sprint04-contracts.mts", "specifier": "node:crypto" },
     { "source": "tooling/scripts/sprint04-contracts.mts", "specifier": "node:assert/strict" },

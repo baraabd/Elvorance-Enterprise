@@ -61,6 +61,9 @@ jobs:
         run: node tooling/production/native-lane.mts command android native-prepare -- node tooling/scripts/rep-native/prepare-verification.mts android
       - name: Lint, unit-test and compile an unsigned verification bundle
         run: |
+          node tooling/scripts/client-native/verification.mts android
+          chmod +x apps/client-mobile/android/gradlew
+          ./apps/client-mobile/android/gradlew -p apps/client-mobile/android --no-daemon -PallowUnsignedRelease lintStagingRelease testStagingDebugUnitTest bundleStagingRelease
           chmod +x apps/rep-mobile/android/gradlew
           node tooling/production/native-lane.mts command android android-build -- ./apps/rep-mobile/android/gradlew -p apps/rep-mobile/android --no-daemon -PallowUnsignedRelease lintStagingRelease testStagingDebugUnitTest bundleStagingRelease
       - name: Enable emulator acceleration
@@ -72,7 +75,20 @@ jobs:
           arch: x86_64
           target: google_apis
           disable-animations: true
-          script: node tooling/production/native-lane.mts command android android-instrumented -- ./apps/rep-mobile/android/gradlew -p apps/rep-mobile/android --no-daemon connectedStagingDebugAndroidTest
+          script: |
+            node tooling/production/native-lane.mts command android android-instrumented -- ./apps/rep-mobile/android/gradlew -p apps/rep-mobile/android --no-daemon connectedStagingDebugAndroidTest
+            ./apps/client-mobile/android/gradlew -p apps/client-mobile/android --no-daemon connectedStagingDebugAndroidTest
+      - name: Upload client Android reports (separate from representative totals)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: client-android-verification-${{ github.sha }}
+          path: |
+            apps/client-mobile/android/app/build/reports/
+            apps/client-mobile/android/app/build/test-results/
+            apps/client-mobile/android/app/build/outputs/androidTest-results/
+          if-no-files-found: error
+          retention-days: 30
       - name: Bind exact native test totals and source identity
         if: always()
         run: node tooling/production/native-lane.mts finish android
@@ -112,6 +128,16 @@ jobs:
         run: node tooling/production/native-lane.mts command ios native-prepare -- node tooling/scripts/rep-native/prepare-verification.mts ios
       - name: Test redirect policy and Keychain on an iPhone simulator
         run: node tooling/production/native-lane.mts command ios ios-simulator -- node tooling/scripts/rep-native/ios-verification.mts
+      - name: Verify customer Keychain and callback on iPhone simulator
+        run: node tooling/scripts/client-native/verification.mts ios
+      - name: Upload customer iOS results (separate from representative totals)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: client-ios-verification-${{ github.sha }}
+          path: dist/client-native/ios-verification.xcresult/
+          if-no-files-found: error
+          retention-days: 30
       - name: Bind xcresult totals and exact source identity
         if: always()
         run: node tooling/production/native-lane.mts finish ios

@@ -192,15 +192,21 @@ test('new staff-only notifications never expose internal discovery or task event
   assert.equal((await call(app, 'GET', '/v1/notifications', 'rep')).body.items.length, 6);
 });
 
-test('Sales migration 3 is additive, keeps old migration checksums and forces tenant RLS', () => {
-  assert.equal(migrations.length, 3);
+test('Sales migration 4 preserves prior security and data migrations and forces tenant RLS', () => {
+  assert.equal(migrations.length, 4);
+  assert.deepEqual(
+    migrations.map((migration) => migration.version),
+    [1, 2, 3, 4],
+  );
+  assert.match(migrations[2]?.sql ?? '', /ALTER TABLE inbox FORCE ROW LEVEL SECURITY/);
+  assert.match(migrations[2]?.sql ?? '', /ALTER TABLE idempotency_keys FORCE ROW LEVEL SECURITY/);
   const previous = migrations
     .slice(0, 2)
     .map((migration) => createHash('sha256').update(migration.sql).digest('hex'));
   assert.deepEqual(previous, LEGACY_MIGRATION_CHECKSUMS);
-  const migration = migrations[2];
+  const migration = migrations[3];
   assert.ok(migration);
-  assert.equal(migration.version, 3);
+  assert.equal(migration.version, 4);
   assert.match(migration.sql, /FORCE ROW LEVEL SECURITY/);
   assert.doesNotMatch(migration.sql, /DROP\s|ALTER\s+TABLE\s+(visits|quotes|contracts)\s/i);
 });

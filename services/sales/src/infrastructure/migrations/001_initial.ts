@@ -1,3 +1,4 @@
+import { tenantSecurityMigration } from '@elvorance/service-kit';
 import { addOwnedTablesMigration, storageMigration } from '@elvorance/service-kit';
 const initialTables = [
   'visits',
@@ -25,8 +26,9 @@ export const migrations = [
     CREATE UNIQUE INDEX one_pending_discount_approval ON discount_approvals (tenant_id, (data->>'quoteId')) WHERE data->>'status'='pending';
   `,
   ),
+  tenantSecurityMigration(3),
   addOwnedTablesMigration(
-    3,
+    4,
     'client_service_requests',
     requestTables,
     `CREATE INDEX service_requests_client ON service_requests (tenant_id, (data->>'clientId'), id);
