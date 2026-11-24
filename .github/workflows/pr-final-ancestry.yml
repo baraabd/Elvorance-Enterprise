@@ -1,0 +1,53 @@
+name: Reconcile final reviewed integration ancestry
+on:
+  push:
+    branches: [repair/pr-integration-publish-20261124]
+    paths: [.github/workflows/pr-final-ancestry.yml]
+permissions:
+  contents: write
+jobs:
+  reconcile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Preserve exact reviewed trees while reconciling generated inventories
+        run: |
+          set -euo pipefail
+          git worktree add --detach "$RUNNER_TEMP/final-ancestry" f1e3c71a54aa5a7060dd9118e4ba28ce310994a9
+          cd "$RUNNER_TEMP/final-ancestry"
+          git config user.name 'Elvorance PR Repair'
+          git config user.email 'elvorance-pr-repair@users.noreply.github.com'
+          python3 - <<'PY'
+          import subprocess,json
+          def git(*args,check=True):
+              p=subprocess.run(['git',*args],capture_output=True,text=True)
+              if check and p.returncode:raise RuntimeError(p.stdout+p.stderr)
+              return p.stdout.strip()
+          previous='cdd8f6140606bf9f42d67ef867da10c93dec9656'
+          allowed={'docs/production/'+name+'.json' for name in ['architecture-inventory','data-flow-inventory','feature-matrix','ownership-dependency-map','semantic-review','workflow-debt']}
+          for number,source,expected in [(17,'f1e3c71a54aa5a7060dd9118e4ba28ce310994a9','328c596beb6cd1ba4deb8e2865be5e99dd0e0e5d'),(19,'489dd5971f34ebb0c9cee97e66187bfefdc0a29c','3eedd30f6b104dcf96ea24acb9ea84cc6539b15f'),(13,'ca7125f4bb6f4382eb992f3e50a0662e3256ee46','71e26d68bbd48a56650cedddd4cb912d2966dd53')]:
+              git('checkout','--detach',source)
+              git('merge','--no-ff','--no-commit',previous,check=False)
+              conflicts=set(git('diff','--name-only','--diff-filter=U').splitlines())
+              if not conflicts<=allowed:raise RuntimeError('Unexpected source conflict: '+str(conflicts))
+              for path in conflicts:git('checkout','--ours','--',path)
+              git('add','-u')
+              actual=git('write-tree')
+              if actual!=expected:raise RuntimeError(f'PR{number}: tree mismatch {actual}')
+              git('commit','-m',f'chore(pr{number}): reconcile final predecessor without changing verified source tree')
+              previous=git('rev-parse','HEAD')
+              git('branch',f'repair/pr{number}-final-20261124',previous)
+              print(json.dumps({'pr':number,'sha':previous,'tree':actual}))
+          PY
+      - name: Publish isolated refs, never original PR branches or main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/final-ancestry"
+          gh auth setup-git
+          git push --atomic origin refs/heads/repair/pr17-final-20261124 refs/heads/repair/pr19-final-20261124 refs/heads/repair/pr13-final-20261124
