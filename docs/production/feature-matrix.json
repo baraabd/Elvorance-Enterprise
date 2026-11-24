@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
-  "sourceDigest": "4064aae91477e90ee9f9197c7e7900328f4931cec4a48d9ae67e44c50bf65bf4",
+  "sourceDigest": "bba68ed99ad3b9d7dec6d2fd5c0817e9d7e82e71bba9296bd4925907ecf8fcd9",
   "sourceFiles": [
     {
       "path": ".gitattributes",
@@ -1765,11 +1765,11 @@
     },
     {
       "path": "tests/admin/e2e.ts",
-      "sha256": "ca2ffd7251840831720b0907a98fc54842255149d839b5a59e99ec4ad70815a5"
+      "sha256": "775b30e573113b70bd279383884262a4e83cd19390cf716adbbc1212811890cf"
     },
     {
       "path": "tests/admin/fixture.mts",
-      "sha256": "73ff947b592c83a3427c1d733e32c8a3db623ab0a3cc497c9eeeeb68afe5a1a0"
+      "sha256": "e1c48b822bf799441f41b253c5c4566c2f81d881710d7b22800449379a11be3e"
     },
     {
       "path": "tests/admin/run-e2e.mts",
@@ -155797,15 +155797,23 @@
     {
       "id": "T:tests/admin/e2e.ts:27fc2aae5f10:1",
       "path": "tests/admin/e2e.ts",
-      "line": 195,
+      "line": 219,
       "title": "catalog publication and quote pricing use tenant API data, with a real commercial approval",
+      "scope": "e2e",
+      "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
+    },
+    {
+      "id": "T:tests/admin/e2e.ts:28804ad46051:1",
+      "path": "tests/admin/e2e.ts",
+      "line": 43,
+      "title": "fixture permits only its exact browser origin and rejects foreign-origin writes",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
     },
     {
       "id": "T:tests/admin/e2e.ts:2caae1c0fafd:1",
       "path": "tests/admin/e2e.ts",
-      "line": 422,
+      "line": 446,
       "title": "support reply/status and conversation send/read persist without local-only writes",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155813,7 +155821,7 @@
     {
       "id": "T:tests/admin/e2e.ts:377909911c33:1",
       "path": "tests/admin/e2e.ts",
-      "line": 326,
+      "line": 350,
       "title": "invoice collection, ledger reread and reload use the external-payment recording contract",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155821,7 +155829,7 @@
     {
       "id": "T:tests/admin/e2e.ts:4c9463062329:1",
       "path": "tests/admin/e2e.ts",
-      "line": 348,
+      "line": 372,
       "title": "project stages and actual deliverable require separate customer approval before closure",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155829,7 +155837,7 @@
     {
       "id": "T:tests/admin/e2e.ts:66cf9ea88533:1",
       "path": "tests/admin/e2e.ts",
-      "line": 477,
+      "line": 501,
       "title": "real pagination, whole-scope search and query state survive a page reload",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155837,7 +155845,7 @@
     {
       "id": "T:tests/admin/e2e.ts:6b00e4b8c200:1",
       "path": "tests/admin/e2e.ts",
-      "line": 161,
+      "line": 185,
       "title": "visit scheduling, manual start and completion are actual persisted commands",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155845,7 +155853,7 @@
     {
       "id": "T:tests/admin/e2e.ts:75a5ad878e3f:1",
       "path": "tests/admin/e2e.ts",
-      "line": 512,
+      "line": 536,
       "title": "RTL, keyboard focus, labels and responsive overflow checks at three viewport widths",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155853,7 +155861,7 @@
     {
       "id": "T:tests/admin/e2e.ts:795023c2c576:1",
       "path": "tests/admin/e2e.ts",
-      "line": 281,
+      "line": 305,
       "title": "customer-owned consent provisions real discounted contract, project and invoice via domain handlers",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155861,7 +155869,7 @@
     {
       "id": "T:tests/admin/e2e.ts:854d69824211:1",
       "path": "tests/admin/e2e.ts",
-      "line": 566,
+      "line": 590,
       "title": "all connected resource lists render an API result, not bundled mock collections",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155869,7 +155877,7 @@
     {
       "id": "T:tests/admin/e2e.ts:873ce895af90:1",
       "path": "tests/admin/e2e.ts",
-      "line": 136,
+      "line": 160,
       "title": "task create, completion and reload persist through the public gateway",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155877,7 +155885,7 @@
     {
       "id": "T:tests/admin/e2e.ts:8a11712ed9ce:1",
       "path": "tests/admin/e2e.ts",
-      "line": 587,
+      "line": 611,
       "title": "non-admin direct navigation is denied and foreign-tenant/customer writes are rejected server-side",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155885,7 +155893,7 @@
     {
       "id": "T:tests/admin/e2e.ts:955138d6d956:1",
       "path": "tests/admin/e2e.ts",
-      "line": 49,
+      "line": 73,
       "title": "customer create, server reread, edit, reload and service/repository recreation",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155901,7 +155909,7 @@
     {
       "id": "T:tests/admin/e2e.ts:a32fbecd3bf2:1",
       "path": "tests/admin/e2e.ts",
-      "line": 502,
+      "line": 526,
       "title": "read failure offers retry and never shows fallback records",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155909,7 +155917,7 @@
     {
       "id": "T:tests/admin/e2e.ts:c154a2da120e:1",
       "path": "tests/admin/e2e.ts",
-      "line": 115,
+      "line": 139,
       "title": "lost write response retries the same intent exactly once at the service",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -155917,7 +155925,7 @@
     {
       "id": "T:tests/admin/e2e.ts:ec42fb7dc96b:1",
       "path": "tests/admin/e2e.ts",
-      "line": 87,
+      "line": 111,
       "title": "stale optimistic version is rejected without losing entered form values",
       "scope": "e2e",
       "environment": "chromium-http-postgres-required-in-CI; explicit-DOM-memory-diagnostic-locally"
@@ -159399,7 +159407,7 @@
     "features": 2030,
     "sourceFiles": 596,
     "runtimeRegistrations": 465,
-    "testCatalogEntries": 538,
+    "testCatalogEntries": 539,
     "unmappedWorkflows": 242,
     "unresolvedFeatures": 1273,
     "kind:account-lifecycle": 58,
