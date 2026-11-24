@@ -1,0 +1,102 @@
+name: Materialize browser-tested UX repair
+on:
+  push:
+    branches: [repair/pr-integration-publish-20261124]
+    paths: [.github/workflows/pr-review-ux-publication.yml]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Reconcile the reviewed sources without changing acceptance criteria
+        shell: bash
+        run: |
+          set -euo pipefail
+          git worktree add --detach "$RUNNER_TEMP/ux-repair" a6cb0949591cdf4d49be9450b9f0a6de64258ad0
+          cd "$RUNNER_TEMP/ux-repair"
+          git config user.name 'Elvorance PR Repair'
+          git config user.email 'elvorance-pr-repair@users.noreply.github.com'
+          python3 - <<'PY'
+          import base64,hashlib,json,pathlib,subprocess,zlib
+          P=pathlib.Path
+          payload='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'
+          data=json.loads(zlib.decompress(base64.b64decode(payload)))
+          def git(*args,check=True):
+              p=subprocess.run(['git',*args],text=True,capture_output=True)
+              if check and p.returncode: raise RuntimeError(p.stdout+p.stderr)
+              return p.stdout.strip()
+          original='a6cb0949591cdf4d49be9450b9f0a6de64258ad0'
+          predecessor='1012b059a088edb3d7b651489aca42b229fb5f16'
+          git('merge','--no-ff','--no-commit',predecessor,check=False)
+          generated={'docs/production/'+name+'.json' for name in ['architecture-inventory','data-flow-inventory','feature-matrix','ownership-dependency-map','semantic-review','workflow-debt']}
+          manual={'apps/admin-web/src/main.ts','apps/rep-mobile/src/server/ui/dom.ts','tooling/scripts/build-apps.mts','tsconfig.json'}
+          conflicts=set(git('diff','--name-only','--diff-filter=U').splitlines())
+          if not conflicts<=generated|manual|{'docs/production/semantic-bindings.json'}: raise RuntimeError('Unexpected conflict: '+str(conflicts))
+          for path in conflicts & (generated|manual): git('checkout','--ours','--',path)
+          subprocess.run(['git','apply','-'],input=data['patch'],text=True,check=True)
+          path='docs/production/semantic-bindings.json'
+          missing=object()
+          def load(ref): return json.loads(git('show',ref+':'+path))
+          def merge(b,l,r,p=''):
+              if l==r: return l
+              if l==b: return r
+              if r==b: return l
+              if isinstance(l,dict) and isinstance(r,dict) and (isinstance(b,dict) or b is missing):
+                  b={} if b is missing else b;out={}
+                  for k in dict.fromkeys([*l,*r]):
+                      v=merge(b.get(k,missing),l.get(k,missing),r.get(k,missing),p+'/'+k)
+                      if v is not missing:out[k]=v
+                  return out
+              if isinstance(l,list) and isinstance(r,list) and (isinstance(b,list) or b is missing):
+                  b=[] if b is missing else b
+                  if all(isinstance(x,dict) and 'featureId' in x for x in [*b,*l,*r]):
+                      bm,lm,rm=[{x['featureId']:x for x in xs} for xs in (b,l,r)];out=[]
+                      for k in dict.fromkeys([*lm,*rm]):
+                          v=merge(bm.get(k,missing),lm.get(k,missing),rm.get(k,missing),p+'/'+k)
+                          if v is not missing:out.append(v)
+                      return out
+                  if all(isinstance(x,str) for x in [*b,*l,*r]): return list(dict.fromkeys([x for x in [*l,*r] if x not in b or (x in l and x in r)]))
+              if p.startswith('/bindings/'):
+                  key,field=p.removeprefix('/bindings/').rsplit('/',1)
+                  if key in data['bindings'] and field in ('sourceFingerprint','sourceFileSha256'): return data['bindings'][key][field]
+              if p.startswith('/evidenceFiles/') and p.removeprefix('/evidenceFiles/') in data['evidence']: return data['evidence'][p.removeprefix('/evidenceFiles/')]
+              raise RuntimeError('Unreviewed semantic conflict: '+p)
+          doc=merge(load('453242e1256f6d876d170142b8ad235be9120344'),load(original),load(predecessor))
+          for binding in doc['bindings']:
+              if binding['featureId'] in data['bindings']:
+                  reviewed=data['bindings'][binding['featureId']]
+                  if hashlib.sha256(P(reviewed['path']).read_bytes()).hexdigest()!=reviewed['sourceFileSha256']:raise RuntimeError('Reviewed source differs')
+                  for field in ('sourceFingerprint','sourceFileSha256'):binding[field]=reviewed[field]
+          for source,digest in data['evidence'].items():
+              if hashlib.sha256(P(source).read_bytes()).hexdigest()!=digest:raise RuntimeError('Reviewed evidence differs')
+              doc['evidenceFiles'][source]=digest
+          P(path).write_text(json.dumps(doc,indent=2,ensure_ascii=False)+'\n')
+          subprocess.run(['npm','ci'],check=True)
+          subprocess.run(['npx','prettier','--write',*sorted(manual),path],check=True)
+          subprocess.run(['npm','run','inventory:write'],check=True)
+          git('add','-u')
+          git('diff','--cached','--check','--','.',':!*.tsv')
+          tree=git('write-tree')
+          if tree!='74f1f8f20027f1d61da5b304623287d010b87856':raise RuntimeError('Exact reviewed tree mismatch: '+tree)
+          git('commit','-m','fix(pr19): reconcile shared UX with integrated apps and repair contrast and narrow tables')
+          git('branch','repair/validated-pr19-20261124')
+          print(json.dumps({'pr':19,'sha':git('rev-parse','HEAD'),'tree':tree}))
+          PY
+      - name: Publish only the exact reviewed temporary ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/ux-repair"
+          gh auth setup-git
+          git push origin refs/heads/repair/validated-pr19-20261124
