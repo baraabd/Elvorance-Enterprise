@@ -1,0 +1,73 @@
+name: Publish reviewed code trees and export locked accessibility tool
+on:
+  push:
+    branches: [repair/pr-integration-publish-20261124]
+    paths: [.github/workflows/pr-review-publish-v2.yml]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Execute the immutable reviewed materialization recipe
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import subprocess, textwrap
+          source = subprocess.check_output(['git','show','fcd4b33bbd36155263d81bbf56408a6ba6dc39dc:.github/workflows/pr-integration-stage2.yml'], text=True)
+          start = '      - name: Reproduce reviewed trees with exact hash assertions\n        shell: bash\n        run: |\n'
+          end = '\n      - name: Publish exact reviewed trees only to temporary refs'
+          assert source.count(start) == 1 and source.count(end) == 1
+          script = textwrap.dedent(source.split(start)[1].split(end)[0])
+          subprocess.run(['bash','-euo','pipefail','-c',script], check=True)
+          PY
+      - name: Publish reviewed domain and Admin code, never main or original PR heads
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/integration2"
+          gh auth setup-git
+          git push --atomic origin refs/heads/repair/validated-pr15-20261124 refs/heads/repair/validated-pr18-20261124
+          # GitHub Actions lacks workflows permission. Publish only the reviewed
+          # non-workflow objects on an isolated transport ref. The authorized
+          # connector will materialize the final tree and check its exact hash.
+          git show repair/validated-pr17-20261124:.github/workflows/full-ci.yml > "$RUNNER_TEMP/materialized/pr17-full-ci.yml"
+          git show e48f7ea163707e4ac5b9910e5f5d6f5421d1e013:.github/workflows/full-ci.yml > .github/workflows/full-ci.yml
+          git add .github/workflows/full-ci.yml
+          TREE=$(git write-tree)
+          PARENT=$(git rev-parse repair/validated-pr18-20261124)
+          TRANSPORT=$(printf 'chore(repair): temporary code-object transport, not a PR candidate\n' | git commit-tree "$TREE" -p e48f7ea163707e4ac5b9910e5f5d6f5421d1e013 -p "$PARENT")
+          git update-ref refs/heads/repair/pr17-code-transport-20261124 "$TRANSPORT"
+          printf '%s\n%s\n%s\n' "$TRANSPORT" "$TREE" "$PARENT" > "$RUNNER_TEMP/materialized/pr17-transport.txt"
+          git push origin refs/heads/repair/pr17-code-transport-20261124
+      - name: Export only the existing locked accessibility dependency
+        shell: bash
+        run: |
+          set -euo pipefail
+          git worktree add --detach "$RUNNER_TEMP/ux-tools" a6cb0949591cdf4d49be9450b9f0a6de64258ad0
+          cd "$RUNNER_TEMP/ux-tools/tests/ux/tooling"
+          npm ci --ignore-scripts
+          npm audit --audit-level=high
+          cp node_modules/axe-core/axe.min.js "$RUNNER_TEMP/materialized/axe.min.js"
+          cp package-lock.json "$RUNNER_TEMP/materialized/axe-package-lock.json"
+          cd "$RUNNER_TEMP/materialized"
+          sha256sum axe.min.js axe-package-lock.json pr17-full-ci.yml > exported-sha256.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: reviewed-code-publication-${{ github.sha }}
+          path: ${{ runner.temp }}/materialized/
+          if-no-files-found: error
+          retention-days: 7
