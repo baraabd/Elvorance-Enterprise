@@ -1,0 +1,147 @@
+name: Publish reviewed final SAST correction
+on:
+  push:
+    branches: [repair/pr-integration-publish-20261124]
+    paths: [.github/workflows/pr13-final-sast.yml]
+permissions:
+  contents: write
+  actions: write
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Reproduce the independently tested exact source tree
+        run: |
+          set -euo pipefail
+          git worktree add --detach "$RUNNER_TEMP/pr13-final" eb75456e16cd47c538aca7f6c5f677963aba3a71
+          cd "$RUNNER_TEMP/pr13-final"
+          git config user.name 'Elvorance PR Repair'
+          git config user.email 'elvorance-pr-repair@users.noreply.github.com'
+          python3 - <<'PY'
+          import pathlib
+          path=pathlib.Path('infra/environments/secrets.mts')
+          text=path.read_text()
+          old="""  try {
+              await lstat(target);
+              throw new Error('Choose a new, empty secret directory.');
+            } catch (error) {
+              if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+            }
+          """
+          assert text.count(old)==1
+          path.write_text(text.replace(old,'  // Do not check existence separately: exclusive mkdir below is the authority.\n'))
+          pathlib.Path('tooling/scripts/copy-content.mts').write_text("""import { lstat, mkdir, open, readdir } from 'node:fs/promises';
+          import { constants } from 'node:fs';
+          import { dirname, resolve } from 'node:path';
+
+          /** Copy generated content without fs.cp's source-mode/chmod propagation. */
+          export async function copyContent(source: string, destination: string): Promise<void> {
+            // Open before validation and use that same descriptor for every file read.
+            const input = await open(
+              source,
+              constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0) | (constants.O_NONBLOCK ?? 0),
+            ).catch((error: unknown) => {
+              if (error instanceof Error && 'code' in error && error.code === 'ELOOP')
+                throw new Error(`Content copy refuses a symbolic link: ${source}`);
+              throw error;
+            });
+            try {
+              const current = await input.stat();
+              // Also verify the path after opening, including Windows where O_NOFOLLOW
+              // is unavailable. No file contents are read or written before this check.
+              const observed = await lstat(source);
+              if (observed.isSymbolicLink())
+                throw new Error(`Content copy refuses a symbolic link: ${source}`);
+              if (current.dev !== observed.dev || current.ino !== observed.ino)
+                throw new Error('Content copy source changed during validation.');
+              if (current.isDirectory()) {
+                await mkdir(destination, { recursive: true });
+                const target = await lstat(destination);
+                if (target.isSymbolicLink() || !target.isDirectory())
+                  throw new Error(`Content copy refuses a symbolic-link destination: ${destination}`);
+                for (const name of (await readdir(source)).sort())
+                  await copyContent(resolve(source, name), resolve(destination, name));
+                return;
+              }
+              if (!current.isFile()) throw new Error(`Content copy requires a regular file: ${source}`);
+              const bytes = await input.readFile();
+              await mkdir(dirname(destination), { recursive: true });
+              // Never truncate during open: validate the actual output descriptor first.
+              // A real write failure (ACL, locked file, read-only output, disk full) stays fatal.
+              const output = await open(
+                destination,
+                constants.O_WRONLY |
+                  constants.O_CREAT |
+                  (constants.O_NOFOLLOW ?? 0) |
+                  (constants.O_NONBLOCK ?? 0),
+                0o666,
+              ).catch((error: unknown) => {
+                if (error instanceof Error && 'code' in error && error.code === 'ELOOP')
+                  throw new Error(`Content copy refuses a symbolic-link destination: ${destination}`);
+                throw error;
+              });
+              try {
+                const currentOutput = await output.stat();
+                const observedOutput = await lstat(destination);
+                if (observedOutput.isSymbolicLink())
+                  throw new Error(`Content copy refuses a symbolic-link destination: ${destination}`);
+                if (
+                  !currentOutput.isFile() ||
+                  currentOutput.nlink !== 1 ||
+                  (currentOutput.dev === current.dev && currentOutput.ino === current.ino) ||
+                  currentOutput.dev !== observedOutput.dev ||
+                  currentOutput.ino !== observedOutput.ino
+                )
+                  throw new Error('Content copy destination must be a distinct, unlinked regular file.');
+                await output.truncate(0);
+                await output.writeFile(bytes);
+              } finally {
+                await output.close();
+              }
+            } finally {
+              await input.close();
+            }
+          }
+          """)
+          PY
+          npm ci
+          npx prettier --write infra/environments/secrets.mts tooling/scripts/copy-content.mts
+          echo 'a1847961e7874502bcaa87899ff4fad5a1db199b39c90e5fddd53c0025a29746  tooling/scripts/copy-content.mts' | sha256sum --check
+          npm run inventory:write
+          node tooling/qa/sprint09-matrix.mts --write
+          git add -u
+          test "$(git write-tree)" = 3ae944e2fcf09a769fdc0495102821866dfbb4e5
+          git commit -m 'fix(pr13): eliminate remaining file access races and refresh integrated QA matrix'
+          git branch repair/pr13-sast-final-20261124
+      - name: Publish only the verified temporary source ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/pr13-final"
+          gh auth setup-git
+          git push origin refs/heads/repair/pr13-sast-final-20261124
+      - name: Retry the entire exact-source PR17 run after verified checkout network failure
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,subprocess
+          route='repos/baraabd/Elvorance-Enterprise/actions/runs/45338624020'
+          run=json.loads(subprocess.check_output(['gh','api',route]))
+          if run['head_sha']!='8c677b21444420c8ade37db8920454e026e74e51':raise RuntimeError('Unexpected retry source')
+          if run['status']=='completed' and run['conclusion']!='success' and run['run_attempt']==1:
+              subprocess.run(['gh','api','--method','POST',route+'/rerun'],check=True)
+          else:
+              print('Retry not applied; current state:',run['status'],run['conclusion'],run['run_attempt'])
+          PY
