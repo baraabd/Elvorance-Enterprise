@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "171839fcafd1d324ee645b6d9a27ca486e2523292cbf5358d042cd8010f05430",
+  "sourceDigest": "c9a705eacc1b3718ed4e199304a731d71ddef351064411c6f48083c67214cb02",
   "status": "BLOCKED",
   "semanticStatus": "SOURCE_TRACE_COMPLETE_NOT_RUNTIME_ACCEPTANCE",
   "sourceBoundDecisions": 233,
@@ -285,7 +285,6 @@
       "api-route:billing:backend:HEAD /v1/contracts/:id/account",
       "api-route:billing:backend:HEAD /v1/invoices/:id",
       "api-route:communications:backend:POST /v1/notifications/:id/read",
-      "api-route:crm:backend:PATCH /v1/regions/:id",
       "api-route:sales:backend:GET /v1/contracts/:id",
       "api-route:sales:backend:GET /v1/service-requests",
       "api-route:sales:backend:GET /v1/service-requests/:id",
@@ -294,8 +293,6 @@
       "api-route:sales:backend:HEAD /v1/service-requests/:id",
       "api-route:sales:backend:POST /v1/quotes/:id/request-changes",
       "api-route:sales:backend:POST /v1/service-requests",
-      "api-route:sales:backend:POST /v1/service-requests/:id/cancel",
-      "api-route:sales:backend:POST /v1/service-requests/:id/review",
       "api-route:tracking:backend:GET /v1/sessions/current",
       "api-route:tracking:backend:HEAD /v1/sessions/current",
       "background-job:apps/rep-mobile/src/lifecycle.ts:23a130e145c7:1",
@@ -475,6 +472,9 @@
       "failure-state:apps/rep-mobile/src/state/local-demo.ts:a869ffb2f7e0:1",
       "failure-state:apps/rep-mobile/src/state/local-demo.ts:a869ffb2f7e0:2",
       "failure-state:apps/rep-mobile/src/state/local-demo.ts:c62105da32ed:1",
+      "failure-state:infra/compose/init-env.mts:0767f428e0d0:1",
+      "failure-state:infra/compose/init-env.mts:a869ffb2f7e0:1",
+      "failure-state:infra/compose/init-env.mts:c8f883c890b8:1",
       "failure-state:infra/environments/create-secrets.mts:d611fe0e26e9:1",
       "failure-state:infra/environments/private-path.mts:2902ae4b786e:1",
       "failure-state:infra/environments/private-path.mts:7ebf0dd87fed:1",
@@ -11282,43 +11282,6 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "api-route:crm:backend:PATCH /v1/regions/:id",
-      "source": {
-        "path": "services/crm/src/transport/routes.ts",
-        "line": 85,
-        "endLine": 89,
-        "fingerprint": "9b27b37dc56e0c07eafef3d0e0af180dc9934934c7b5a436c250ad3204cf23b2"
-      },
-      "owningService": "crm",
-      "targetService": "crm",
-      "mode": "backend",
-      "targetSprint": "S03",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:crm:backend:PATCH /v1/regions/:id",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:crm:backend:PATCH /v1/regions/:id",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:crm:backend:PATCH /v1/regions/:id",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "api-route:sales:backend:GET /v1/contracts/:id",
       "source": {
         "path": "services/sales/src/transport/routes.ts",
@@ -11608,80 +11571,6 @@
         },
         {
           "id": "PLANNED:e2e:api-route:sales:backend:POST /v1/service-requests",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:sales:backend:POST /v1/service-requests/:id/cancel",
-      "source": {
-        "path": "services/sales/src/transport/service-request-routes.ts",
-        "line": 87,
-        "endLine": 111,
-        "fingerprint": "4dab01835992a54eaa4ea56af8350abc9599baff544f1abb9e0bdba989b2d4ee"
-      },
-      "owningService": "sales",
-      "targetService": "sales",
-      "mode": "backend",
-      "targetSprint": "S04",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:sales:backend:POST /v1/service-requests/:id/cancel",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:sales:backend:POST /v1/service-requests/:id/cancel",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:sales:backend:POST /v1/service-requests/:id/cancel",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
-      "featureId": "api-route:sales:backend:POST /v1/service-requests/:id/review",
-      "source": {
-        "path": "services/sales/src/transport/service-request-routes.ts",
-        "line": 62,
-        "endLine": 86,
-        "fingerprint": "5e3785edc3a3a2883f9aab12121468f0b0892f84a3341e5d3dae9f8040424de9"
-      },
-      "owningService": "sales",
-      "targetService": "sales",
-      "mode": "backend",
-      "targetSprint": "S04",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:api-route:sales:backend:POST /v1/service-requests/:id/review",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:api-route:sales:backend:POST /v1/service-requests/:id/review",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:api-route:sales:backend:POST /v1/service-requests/:id/review",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -18305,6 +18194,117 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/state/local-demo.ts:c62105da32ed:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/compose/init-env.mts:0767f428e0d0:1",
+      "source": {
+        "path": "infra/compose/init-env.mts",
+        "line": 26,
+        "endLine": 30,
+        "fingerprint": "7989e9bd47143f4cadd6ed3f25f2f0dc5b76087a555c283fba2bcb6a5397d12d"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/compose/init-env.mts:0767f428e0d0:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/compose/init-env.mts:0767f428e0d0:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/compose/init-env.mts:0767f428e0d0:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/compose/init-env.mts:a869ffb2f7e0:1",
+      "source": {
+        "path": "infra/compose/init-env.mts",
+        "line": 27,
+        "endLine": 27,
+        "fingerprint": "8c468a57ba68bc74d4da2e446572891a3884d987edae85e551db81ebbee3f4d4"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/compose/init-env.mts:a869ffb2f7e0:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/compose/init-env.mts:a869ffb2f7e0:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/compose/init-env.mts:a869ffb2f7e0:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/compose/init-env.mts:c8f883c890b8:1",
+      "source": {
+        "path": "infra/compose/init-env.mts",
+        "line": 33,
+        "endLine": 33,
+        "fingerprint": "0c46a8385276db51778db60e0c1a6ddcd45513983365599aec0db8d6a353368c"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/compose/init-env.mts:c8f883c890b8:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/compose/init-env.mts:c8f883c890b8:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/compose/init-env.mts:c8f883c890b8:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }

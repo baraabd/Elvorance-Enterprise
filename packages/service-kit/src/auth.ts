@@ -26,6 +26,7 @@ export function principalFromClaims(claims: JWTPayload): Principal {
   );
   assert(
     Array.isArray(claims.roles) &&
+      claims.roles.length > 0 &&
       claims.roles.every((role) => typeof role === 'string' && roles.includes(role as Role)),
     'INVALID_TOKEN',
     'Token roles are invalid',

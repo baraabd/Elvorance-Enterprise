@@ -22,7 +22,8 @@ test('content copy preserves bytes from read-only sources without copying modes 
   const source = resolve(temporary, 'source/config.js');
   const target = resolve(temporary, 'output/config.js');
   await mkdir(resolve(temporary, 'source/nested'), { recursive: true });
-  await writeFile(source, 'window.ELVORANCE_CONFIG = { label: "إلفورانس" };\r\n');
+  const original = Buffer.from('window.ELVORANCE_CONFIG = { label: "إلفورانس" };\r\n');
+  await writeFile(source, original);
   await writeFile(resolve(temporary, 'source/nested/font.bin'), Buffer.from([0, 128, 255, 13, 10]));
   await chmod(source, 0o444);
   const sourceMode = (await stat(source)).mode;
@@ -34,7 +35,7 @@ test('content copy preserves bytes from read-only sources without copying modes 
   t.mock.method(fs, 'chmod', denied);
   t.mock.method(fs, 'cp', denied);
   await copyContent(resolve(temporary, 'source'), resolve(temporary, 'output'));
-  assert.deepEqual(await readFile(target), await readFile(source));
+  assert.deepEqual(await readFile(target), original);
   assert.deepEqual(
     await readFile(resolve(temporary, 'output/nested/font.bin')),
     Buffer.from([0, 128, 255, 13, 10]),

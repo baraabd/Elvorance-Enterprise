@@ -40,13 +40,15 @@ export async function handleEvent(tx: Transaction, event: EventEnvelope): Promis
         integer(item.unitPriceMinor, 'unitPriceMinor', 1, 10_000_000_000)
     );
   }, 0);
-  // A v1 producer without explicit discount fields may only describe an undiscounted sale.
-  // Never infer a discount from a mismatched total: that would conceal corrupted terms.
-  const explicitDiscount = body.subtotalMinor !== undefined || body.discountMinor !== undefined;
-  const subtotalMinor = explicitDiscount
+  // v1 events without either field retain the original undiscounted invariant.
+  // A lower net amount is never treated as an implicit/unauthorized discount.
+  const hasSubtotal = Object.hasOwn(body, 'subtotalMinor');
+  const hasDiscount = Object.hasOwn(body, 'discountMinor');
+  assert(hasSubtotal === hasDiscount, 'CONTRACT_TOTAL', 'Contract pricing evidence is incomplete');
+  const subtotalMinor = hasSubtotal
     ? integer(body.subtotalMinor, 'subtotalMinor', 1, 100_000_000_000)
     : itemTotal;
-  const discountMinor = explicitDiscount
+  const discountMinor = hasDiscount
     ? integer(body.discountMinor, 'discountMinor', 0, subtotalMinor - 1)
     : 0;
   assert(
@@ -55,7 +57,7 @@ export async function handleEvent(tx: Transaction, event: EventEnvelope): Promis
       itemTotal === subtotalMinor &&
       subtotalMinor - discountMinor === totalMinor,
     'CONTRACT_TOTAL',
-    'Contract items, discount and net total are inconsistent',
+    'Contract subtotal, discount and net total are inconsistent',
   );
   const common = {
     contractId,

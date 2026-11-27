@@ -90,8 +90,9 @@ export const toApprovedSnapshot = (value: Contract): ContractSnapshot => ({
   customerName: value.customerName,
   currency: value.currency,
   items: structuredClone(value.items),
-  subtotalMinor: value.quoteSnapshot.subtotalMinor,
-  discountMinor: value.quoteSnapshot.discountMinor,
+  // Preserve the approved commercial evidence rather than inferring a discount downstream.
+  subtotalMinor: value.quoteSnapshot.subtotalMinor ?? value.totalMinor,
+  discountMinor: value.quoteSnapshot.discountMinor ?? 0,
   totalMinor: value.totalMinor,
   terms: value.terms,
   paymentPlan: structuredClone(value.paymentPlan),

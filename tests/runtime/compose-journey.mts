@@ -315,7 +315,7 @@ async function journey(env: NodeJS.ProcessEnv) {
       visitId: visit.id,
       currency: 'SAR',
       totalMinor: 1,
-      discountMinor: 1000,
+      discountMinor: 2000,
       items: [
         {
           serviceId: 'ci-web',
@@ -329,14 +329,55 @@ async function journey(env: NodeJS.ProcessEnv) {
       terms: 'CI ONLY synthetic acceptance terms; not a commercial agreement.',
       validUntil: new Date(Date.now() + 86400000).toISOString().slice(0, 10),
       paymentPlan: [
-        { id: 'deposit', label: 'CI deposit', amountMinor: 4000, dueOn: null },
-        { id: 'balance', label: 'CI balance', amountMinor: 5000, dueOn: null },
+        { id: 'deposit', label: 'CI deposit', amountMinor: 3200, dueOn: null },
+        { id: 'balance', label: 'CI balance', amountMinor: 4800, dueOn: null },
       ],
     },
   });
   ensure(
-    quote.totalMinor === 9000 && quote.status === 'draft',
+    quote.totalMinor === 8000 && quote.status === 'draft',
     'Quote total must be computed by the real sales service.',
+  );
+  // A 20% discount requires a distinct administrator commercial review.
+  const blocked = await http.request<{ error: { code: string } }>(
+    'POST',
+    `/v1/sales/quotes/${quote.id}/send`,
+    { token: rep, body: { expectedVersion: quote.version }, status: 409 },
+  );
+  ensure(
+    blocked.error.code === 'DISCOUNT_APPROVAL_REQUIRED',
+    'Unreviewed discount must not be sent.',
+  );
+  const review = await http.request<{ id: string; version: number; status: string }>(
+    'POST',
+    `/v1/sales/quotes/${quote.id}/discount-approval`,
+    {
+      token: rep,
+      body: { expectedVersion: quote.version, reason: 'CI synthetic 20% commercial exception' },
+    },
+  );
+  ensure(review.status === 'pending', 'Commercial review must start pending.');
+  const reviewBody = {
+    expectedVersion: review.version,
+    decision: 'approved',
+    note: 'CI synthetic approval; no real agreement',
+  };
+  await http.request('POST', `/v1/sales/quote-discount-approvals/${review.id}/decision`, {
+    token: rep,
+    body: reviewBody,
+    status: 403,
+  });
+  const reviewed = await http.request<{ status: string }>(
+    'POST',
+    `/v1/sales/quote-discount-approvals/${review.id}/decision`,
+    { token: admin, body: reviewBody },
+  );
+  ensure(
+    reviewed.status === 'approved',
+    'A distinct administrator must approve the discounted content.',
+  );
+  passed(
+    'representative discounted quote requires distinct administrator review through live CRM/sales boundaries',
   );
   quote = await http.request<Quote>('POST', `/v1/sales/quotes/${quote.id}/send`, {
     token: rep,
@@ -368,7 +409,7 @@ async function journey(env: NodeJS.ProcessEnv) {
   ensure(
     accepted.quote.status === 'accepted' &&
       contract.status === 'pending' &&
-      contract.totalMinor === 9000,
+      contract.totalMinor === 8000,
     'Client acceptance must create a pending contract with authoritative terms.',
   );
   const acceptRetry = await http.request<{ contract: Contract }>(
@@ -494,7 +535,7 @@ async function journey(env: NodeJS.ProcessEnv) {
   );
 
   ensure(
-    contract.quoteSnapshot.discountMinor === 1000 && contract.totalMinor === 9000,
+    contract.quoteSnapshot.discountMinor === 2000 && contract.totalMinor === 8000,
     'Discounted contract must recover with the exact net invoice balance.',
   );
   passed('discounted contract recovers from transient billing failure with net-balanced invoices');

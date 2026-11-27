@@ -1,0 +1,105 @@
+name: Sprint 09 isolated QA
+on:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: sprint09-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  authorization-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16-bookworm
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: sprint09-ci-only
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      CI: 'true'
+      ELVORANCE_DISPOSABLE_ACCEPTANCE: '1'
+      ELVORANCE_TEST_POSTGRES_URL: postgresql://postgres:sprint09-ci-only@localhost:5432/postgres
+      ELVORANCE_ACCEPTANCE_REPORT_DIR: dist/acceptance/evidence
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - run: npm run check:types
+      - run: node tooling/qa/sprint09-matrix.mts
+      - run: node tooling/scripts/run-acceptance.mts authorization
+      - run: node tooling/scripts/run-acceptance.mts postgres-recovery
+        env:
+          ELVORANCE_ACCEPTANCE_POSTGRES_CONTAINER: ${{ job.services.postgres.id }}
+      - name: Bind evidence to this exact execution
+        if: always()
+        run: |
+          mkdir -p dist/acceptance/evidence
+          git rev-parse HEAD > dist/acceptance/evidence/source-sha.txt
+          git rev-parse HEAD^{tree} > dist/acceptance/evidence/source-tree.txt
+          printf '%s/%s\n' "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" > dist/acceptance/evidence/run.txt
+          sha256sum package-lock.json > dist/acceptance/evidence/lock.sha256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sprint09-authorization-recovery-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/acceptance/evidence/
+          if-no-files-found: error
+          retention-days: 30
+  sast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: github/codeql-action/init@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea
+        with:
+          languages: javascript-typescript
+          build-mode: none
+          queries: security-extended
+      - uses: github/codeql-action/analyze@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea
+        with:
+          output: dist/sprint09/sarif
+          upload: false
+      - name: Fail closed on missing analysis or untriaged findings
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+          root = pathlib.Path('dist/sprint09/sarif')
+          files = sorted(root.glob('*.sarif'))
+          if not files:
+              raise SystemExit('Missing CodeQL SARIF evidence')
+          results = []
+          for path in files:
+              document = json.loads(path.read_text())
+              if not document.get('runs'):
+                  raise SystemExit('Empty CodeQL analysis')
+              for run in document['runs']:
+                  for item in run.get('results', []):
+                      results.append({'rule': item.get('ruleId'), 'level': item.get('level', 'warning'), 'locations': item.get('locations', []), 'message': item.get('message')})
+          blocking = [item for item in results if item['level'] not in ('note', 'none')]
+          report = {'sourceSha': os.environ['GITHUB_SHA'], 'runId': os.environ['GITHUB_RUN_ID'], 'runAttempt': os.environ['GITHUB_RUN_ATTEMPT'], 'results': results, 'blocking': len(blocking), 'status': 'FAIL' if blocking else 'PASS', 'scope': 'CodeQL JavaScript/TypeScript security-extended; not complete security acceptance'}
+          (root / 'decision.json').write_text(json.dumps(report, indent=2) + '\n')
+          if blocking:
+              raise SystemExit(f'{len(blocking)} untriaged static-security findings')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sprint09-sast-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/sprint09/sarif/
+          if-no-files-found: error
+          retention-days: 30

@@ -1,4 +1,5 @@
-import { readFile, stat } from 'node:fs/promises';
+import { open } from 'node:fs/promises';
+import { constants } from 'node:fs';
 import type { JsonRecord } from './types.mts';
 
 export function object(value: unknown, label: string): JsonRecord {
@@ -98,11 +99,27 @@ export async function adminTokenFromEnv(env: NodeJS.ProcessEnv = process.env): P
     throw new Error('Specify exactly one admin token source.');
   let token = env.KEYCLOAK_ADMIN_TOKEN;
   if (env.KEYCLOAK_ADMIN_TOKEN_FILE) {
-    const info = await stat(env.KEYCLOAK_ADMIN_TOKEN_FILE);
-    if (!info.isFile() || (process.platform !== 'win32' && (info.mode & 0o077) !== 0)) {
-      throw new Error('Admin token file must be a regular file readable only by its owner.');
+    const handle = await open(
+      env.KEYCLOAK_ADMIN_TOKEN_FILE,
+      constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0) | (constants.O_NONBLOCK ?? 0),
+    );
+    try {
+      const info = await handle.stat();
+      if (
+        !info.isFile() ||
+        info.nlink !== 1 ||
+        (process.platform !== 'win32' && (info.mode & 0o077) !== 0)
+      ) {
+        throw new Error(
+          'Admin token file must be a private, unlinked regular file readable only by its owner.',
+        );
+      }
+      if (info.size > 32_768)
+        throw new Error('Admin token file exceeds the credential size limit.');
+      token = (await handle.readFile('utf8')).trim();
+    } finally {
+      await handle.close();
     }
-    token = (await readFile(env.KEYCLOAK_ADMIN_TOKEN_FILE, 'utf8')).trim();
   }
   if (!token || /\s/.test(token) || token.length > 32_768)
     throw new Error('Provide KEYCLOAK_ADMIN_TOKEN_FILE or KEYCLOAK_ADMIN_TOKEN securely.');
