@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse, csv, hashlib, html, json
 from pathlib import Path
 from PIL import Image, ImageChops, ImageStat
+from visual_additions import declared_additions
 
 
 def repeat_comparison(image: Image.Image, repeat: Image.Image):
@@ -23,8 +24,11 @@ def run(args):
     args.output.mkdir(parents=True,exist_ok=True)
     before={p.name:p for p in args.before.glob('*.png')}
     after={p.name:p for p in args.after.glob('*.png')}
-    if not before or before.keys()!=after.keys():
-        raise SystemExit('Missing or unmatched screenshot set; comparison is not accepted.')
+    try:
+        additions = declared_additions(args.before, args.after, before, after)
+    except (ValueError, KeyError, TypeError, OSError) as error:
+        raise SystemExit('Missing or unmatched screenshot set; comparison is not accepted: ' + str(error)) from error
+    (args.output/'new-route-captures.json').write_text(json.dumps(additions,indent=2))
     results=[]; nondeterministic=[]
     for name in sorted(before):
         with Image.open(before[name]) as image:a=image.convert('RGB')
@@ -51,7 +55,7 @@ def run(args):
     (args.output/'results.json').write_text(json.dumps(results,indent=2))
     with (args.output/'results.csv').open('w',newline='') as out:
         writer=csv.DictWriter(out,fieldnames=results[0].keys());writer.writeheader();writer.writerows(results)
-    summary={'comparisons':len(results),'changed':sum(r['changedPixels']>0 for r in results),'repeatExecuted':bool(args.repeat),'repeatMismatches':nondeterministic,'repeatExactMatches':sum(r['repeatIdentical'] is True for r in results),'rasterTolerance':'At most 16 pixels, at most 1 RGB level in each channel, unchanged dimensions; only applies to candidate repeat, never design approval.','visualApproval':'REQUIRES_REVIEW; no changed screenshot is silently promoted to a golden baseline','method':'Same-viewport RGB pixel comparison, dimensions preserved; white padding only for unequal page heights.'}
+    summary={'newRouteCaptures':len(additions),'comparisons':len(results),'changed':sum(r['changedPixels']>0 for r in results),'repeatExecuted':bool(args.repeat),'repeatMismatches':nondeterministic,'repeatExactMatches':sum(r['repeatIdentical'] is True for r in results),'rasterTolerance':'At most 16 pixels, at most 1 RGB level in each channel, unchanged dimensions; only applies to candidate repeat, never design approval.','visualApproval':'REQUIRES_REVIEW; no changed screenshot is silently promoted to a golden baseline','method':'Same-viewport RGB pixel comparison, dimensions preserved; white padding only for unequal page heights.'}
     (args.output/'summary.json').write_text(json.dumps(summary,indent=2))
     print(json.dumps(summary),flush=True)
     if nondeterministic:raise SystemExit(1)
