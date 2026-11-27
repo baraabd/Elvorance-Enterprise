@@ -1,0 +1,48 @@
+name: Repair source snapshot 20261127
+on:
+  push:
+    branches: [repair/source-snapshot-20261127]
+    paths: [.github/workflows/repair-source-snapshot-20261127.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Export source objects and tools only, never credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/current-source"
+          mkdir -p "$OUT"
+          git fetch --no-tags origin '+refs/heads/main:refs/heads/review/main'
+          for number in 13 17 19 20; do
+            git fetch --no-tags origin "+refs/pull/$number/head:refs/heads/review/pr-$number"
+          done
+          git show-ref > "$OUT/refs.txt"
+          git bundle create "$OUT/repository.bundle" --all
+          git bundle verify "$OUT/repository.bundle"
+          tar -czf "$OUT/node-modules.tar.gz" node_modules
+          cp "$(command -v node)" "$OUT/node"
+          tar -czf "$OUT/npm.tar.gz" -C "$(npm root -g)" npm
+          cp package-lock.json "$OUT/package-lock.json"
+          node --version > "$OUT/toolchain.txt"
+          npm --version >> "$OUT/toolchain.txt"
+          cd "$OUT"
+          sha256sum repository.bundle node-modules.tar.gz node npm.tar.gz package-lock.json > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: repair-source-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/current-source/
+          if-no-files-found: error
+          retention-days: 7
