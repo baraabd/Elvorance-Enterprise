@@ -1,0 +1,167 @@
+diff --git a/docs/production/architecture-inventory.json b/docs/production/architecture-inventory.json
+index 3d4becd..1b37c35 100644
+--- a/docs/production/architecture-inventory.json
++++ b/docs/production/architecture-inventory.json
+@@ -1,6 +1,6 @@
+ {
+   "schemaVersion": 1,
+-  "sourceDigest": "bba68ed99ad3b9d7dec6d2fd5c0817e9d7e82e71bba9296bd4925907ecf8fcd9",
++  "sourceDigest": "171839fcafd1d324ee645b6d9a27ca486e2523292cbf5358d042cd8010f05430",
+   "workspaces": [
+     {
+       "name": "@elvorance/admin-web",
+diff --git a/docs/production/data-flow-inventory.json b/docs/production/data-flow-inventory.json
+index 7b7570d..db7f4a1 100644
+--- a/docs/production/data-flow-inventory.json
++++ b/docs/production/data-flow-inventory.json
+@@ -1,6 +1,6 @@
+ {
+   "schemaVersion": 1,
+-  "sourceDigest": "bba68ed99ad3b9d7dec6d2fd5c0817e9d7e82e71bba9296bd4925907ecf8fcd9",
++  "sourceDigest": "171839fcafd1d324ee645b6d9a27ca486e2523292cbf5358d042cd8010f05430",
+   "trustBoundaries": [
+     {
+       "id": "TB1",
+diff --git a/docs/production/feature-matrix.json b/docs/production/feature-matrix.json
+index 79c37e9..4f5d4af 100644
+--- a/docs/production/feature-matrix.json
++++ b/docs/production/feature-matrix.json
+@@ -1,7 +1,7 @@
+ {
+   "schemaVersion": 1,
+   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
+-  "sourceDigest": "bba68ed99ad3b9d7dec6d2fd5c0817e9d7e82e71bba9296bd4925907ecf8fcd9",
++  "sourceDigest": "171839fcafd1d324ee645b6d9a27ca486e2523292cbf5358d042cd8010f05430",
+   "sourceFiles": [
+     {
+       "path": ".gitattributes",
+@@ -1105,7 +1105,7 @@
+     },
+     {
+       "path": "packages/design-system/src/enterprise.css",
+-      "sha256": "24693edafce4c9df30ea8f485cb104ce08622a95d6e8aca36a506751c8ddc46c"
++      "sha256": "f03fe7f8bbf4a314435d2e41f72239aee9c117aa6f34f6878ed437e4f808d052"
+     },
+     {
+       "path": "packages/design-system/src/icons.ts",
+diff --git a/docs/production/ownership-dependency-map.json b/docs/production/ownership-dependency-map.json
+index 55bd06b..6df5117 100644
+--- a/docs/production/ownership-dependency-map.json
++++ b/docs/production/ownership-dependency-map.json
+@@ -1,6 +1,6 @@
+ {
+   "schemaVersion": 1,
+-  "sourceDigest": "bba68ed99ad3b9d7dec6d2fd5c0817e9d7e82e71bba9296bd4925907ecf8fcd9",
++  "sourceDigest": "171839fcafd1d324ee645b6d9a27ca486e2523292cbf5358d042cd8010f05430",
+   "accountability": "Proposed roles only; named service/on-call owners are UNASSIGNED. CODEOWNERS routes review to the repository owner, not proof of independent approval.",
+   "services": [
+     {
+diff --git a/docs/production/semantic-review.json b/docs/production/semantic-review.json
+index cd66da9..9cbb44d 100644
+--- a/docs/production/semantic-review.json
++++ b/docs/production/semantic-review.json
+@@ -1,6 +1,6 @@
+ {
+   "schemaVersion": 1,
+-  "sourceDigest": "bba68ed99ad3b9d7dec6d2fd5c0817e9d7e82e71bba9296bd4925907ecf8fcd9",
++  "sourceDigest": "171839fcafd1d324ee645b6d9a27ca486e2523292cbf5358d042cd8010f05430",
+   "status": "BLOCKED",
+   "semanticStatus": "SOURCE_TRACE_COMPLETE_NOT_RUNTIME_ACCEPTANCE",
+   "sourceBoundDecisions": 233,
+diff --git a/packages/design-system/src/enterprise.css b/packages/design-system/src/enterprise.css
+index 2ebe2ec..08323cf 100644
+--- a/packages/design-system/src/enterprise.css
++++ b/packages/design-system/src/enterprise.css
+@@ -158,4 +158,11 @@ input[dir="auto"]:placeholder-shown, textarea[dir="auto"]:placeholder-shown {
+ @media (max-width: 599px) {
+   .data-table { white-space: normal; overflow-wrap: anywhere; }
+   .data-table th, .data-table td { padding-inline: .5rem; }
++  /* A non-wrapping status must not shrink beneath its Arabic text width. */
++  .rep-agreement-summary > .row-between { flex-wrap: wrap; }
++  .rep-agreement-summary > .row-between > .badge {
++    max-inline-size: 100%;
++    white-space: normal;
++    overflow-wrap: anywhere;
++  }
+ }
+diff --git a/tests/ux/test_visit_summary.py b/tests/ux/test_visit_summary.py
+new file mode 100644
+index 0000000..6954498
+--- /dev/null
++++ b/tests/ux/test_visit_summary.py
+@@ -0,0 +1,75 @@
++"""Real-browser regression for Arabic status text in narrow visit summaries.
++
++Use the shipped portable bundle and frozen visit fixtures. Changing the local
++font stack reproduces the CI overflow without hiding text or enlarging the
++viewport. These are frontend fixtures, not backend acceptance.
++"""
++import json
++import os
++import unittest
++from playwright.sync_api import sync_playwright
++from browser_audit import ROOT, portable
++
++
++class VisitSummaryLayout(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls):
++        cls.playwright = sync_playwright().start()
++        cls.browser = cls.playwright.chromium.launch(
++            executable_path=os.environ.get('CHROMIUM', '/usr/bin/chromium'),
++            args=['--no-sandbox'],
++        )
++        cls.html = (ROOT / 'dist/rep.html').read_text()
++        cls.baseline = json.loads((ROOT / 'tests/design-parity/baseline-v1.1.json').read_text())
++
++    @classmethod
++    def tearDownClass(cls):
++        cls.browser.close()
++        cls.playwright.stop()
++
++    def test_status_text_stays_inside_visit_summary(self):
++        for route in ['visit-outcome', 'visit-detail']:
++            case = next(c for c in self.baseline['cases'] if c['app'] == 'rep' and c['route'] == route)
++            for width in [320, 390, 768, 1440]:
++                for font in ['system-ui', '"DejaVu Sans", sans-serif']:
++                    with self.subTest(route=route, width=width, font=font):
++                        page = self.browser.new_page(
++                            viewport={'width': width, 'height': 900}, locale='ar-SA',
++                            timezone_id='UTC', reduced_motion='reduce',
++                        )
++                        try:
++                            portable(page, self.html)
++                            page.evaluate('''({fixture, route, params, font}) => {
++                                document.documentElement.style.setProperty('--font', font);
++                                Elvorance.update(s => {
++                                    for (const [collection, rows] of Object.entries(fixture))
++                                        for (const [id, patch] of Object.entries(rows))
++                                            Object.assign(s[collection].find(r => r.id === id), patch);
++                                });
++                                Elvorance.go(route, params);
++                            }''', {'fixture': self.baseline['fixtures'][case['fixture']],
++                                   'route': route, 'params': case['params'], 'font': font})
++                            page.wait_for_function('(route) => Elvorance.route() === route', arg=route)
++                            page.evaluate('document.fonts.ready')
++                            badge = page.locator('.rep-agreement-summary > .row-between > .badge')
++                            self.assertEqual(badge.count(), 1)
++                            self.assertEqual(badge.inner_text(), 'عرض مرسل ينتظر قرار العميل')
++                            dimensions = badge.evaluate('''e => ({
++                                content: e.scrollWidth, box: e.clientWidth,
++                                page: document.documentElement.scrollWidth, viewport: innerWidth,
++                                overflow: getComputedStyle(e).overflowX,
++                                left: e.getBoundingClientRect().left,
++                                right: e.getBoundingClientRect().right
++                            })''')
++                            self.assertLessEqual(dimensions['page'], width + 1, dimensions)
++                            self.assertLessEqual(dimensions['content'], dimensions['box'] + 1, dimensions)
++                            self.assertGreaterEqual(dimensions['left'], -1, dimensions)
++                            self.assertLessEqual(dimensions['right'], width + 1, dimensions)
++                            self.assertNotIn(dimensions['overflow'], ['hidden', 'clip'])
++                            self.assertEqual(page.locator('.rep-agreement-summary th').count(), 4)
++                        finally:
++                            page.close()
++
++
++if __name__ == '__main__':
++    unittest.main()
