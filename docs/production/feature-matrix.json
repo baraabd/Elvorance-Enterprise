@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
-  "sourceDigest": "6a575d23e4440e8039a11ab1d31b1e3bf16efae6cbad1e9b5ec76830098a6553",
+  "sourceDigest": "171839fcafd1d324ee645b6d9a27ca486e2523292cbf5358d042cd8010f05430",
   "sourceFiles": [
     {
       "path": ".gitattributes",
@@ -14,6 +14,10 @@
     {
       "path": ".github/workflows/backend-runtime.yml",
       "sha256": "6ce2c34408443ad9c603beed1b9dc7af6f2f8b30ef15892328756193fd112b22"
+    },
+    {
+      "path": ".github/workflows/enterprise-ux.yml",
+      "sha256": "54745aa925c152be838bc776b310e37c74c1d854932a394e3dcdb5f881c3f7dd"
     },
     {
       "path": ".github/workflows/full-ci.yml",
@@ -117,7 +121,11 @@
     },
     {
       "path": "apps/admin-web/src/main.ts",
-      "sha256": "25f472386fac0aa4f96f842665a84074d63f9a772ad6d352595fe6e73e6f97f9"
+      "sha256": "a3e36ea14efd2aaad2c9ec97a3335c34941e460eb0b357ae95ece79db87dc8dd"
+    },
+    {
+      "path": "apps/admin-web/src/navigation.ts",
+      "sha256": "fd5f599297ad365504d0f13e465877f6cd6f2c6a20a96ee409ccbd62ccafd2bd"
     },
     {
       "path": "apps/admin-web/src/queries.ts",
@@ -421,7 +429,11 @@
     },
     {
       "path": "apps/client-mobile/src/main.ts",
-      "sha256": "5f8ac3060a5c8e3baffca55c20f8597d9679de307fae881452e77d268a9e7d08"
+      "sha256": "8062a50e734889514be9225f612268f4b60979a29ce5ffc937a82973e5821f87"
+    },
+    {
+      "path": "apps/client-mobile/src/navigation.ts",
+      "sha256": "9173ab07b963af46a413aaffa112e28c17e26464a554c654ed2a1c5798123b4d"
     },
     {
       "path": "apps/client-mobile/src/queries.ts",
@@ -689,7 +701,11 @@
     },
     {
       "path": "apps/rep-mobile/src/main.ts",
-      "sha256": "d20e1dda3841f2c9803cede0a4cc974a3fe866064319e2b8c3aca42c19bce8c7"
+      "sha256": "86a6805ba0cdb9e28f64025d544a48a6011231f66d4658554adb3a4f423d9dec"
+    },
+    {
+      "path": "apps/rep-mobile/src/navigation.ts",
+      "sha256": "1922f809c6dabd1161e62cf9da89d21cba0a20cedef59dab4001ca7df3e64c8c"
     },
     {
       "path": "apps/rep-mobile/src/queries.ts",
@@ -697,7 +713,7 @@
     },
     {
       "path": "apps/rep-mobile/src/server-main.ts",
-      "sha256": "b51327491334115420e7ba1c4358c8ca76d8e6bb4821184498f73d305f4c3fde"
+      "sha256": "708d392c40aba7a4571891f0f3c1e9b2204cb96fe539fd44bc43a8c8e92f9779"
     },
     {
       "path": "apps/rep-mobile/src/server/api.ts",
@@ -721,11 +737,11 @@
     },
     {
       "path": "apps/rep-mobile/src/server/ui/dom.ts",
-      "sha256": "b271f23314ea02d02286fdc4fcca29bb94cdbac3a54c0d92810ea8d82ee6d3e1"
+      "sha256": "ab31b8fc765e1953d05722046b29bd50678285491c2823cad0f9d1dcc50c1eec"
     },
     {
       "path": "apps/rep-mobile/src/server/ui/forms.ts",
-      "sha256": "edc2dd5ace3ff74420db3b44183cb0e258fb9ff8d5410a9bc29ca3abf60290f6"
+      "sha256": "fc0af6e16494f0940922a1ba1b534851e0d75d69c9b045c5a0ad3c9f0447fe17"
     },
     {
       "path": "apps/rep-mobile/src/server/ui/repeating-fields.ts",
@@ -789,7 +805,7 @@
     },
     {
       "path": "apps/rep-mobile/src/server/workspace.ts",
-      "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+      "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
     },
     {
       "path": "apps/rep-mobile/src/state/local-demo.ts",
@@ -809,7 +825,7 @@
     },
     {
       "path": "docs/production/semantic-bindings.json",
-      "sha256": "45cfa417451b63cd58c67b7252e80f05885e566a84d78b66b7e3337929b74511"
+      "sha256": "5f7ce082753d19f09302f05858ae0cd32f7018da77ae8f2e3deac0f372792070"
     },
     {
       "path": "examples/configuration-preview.html",
@@ -1025,7 +1041,7 @@
     },
     {
       "path": "packages/app-runtime/src/index.ts",
-      "sha256": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa"
+      "sha256": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc"
     },
     {
       "path": "packages/app-runtime/src/tracking.ts",
@@ -1086,6 +1102,10 @@
     {
       "path": "packages/design-system/src/brand.json",
       "sha256": "83277e33f94ed652db0d6ce6f82d074b63700bcd74900446d86f0a4b75446172"
+    },
+    {
+      "path": "packages/design-system/src/enterprise.css",
+      "sha256": "f03fe7f8bbf4a314435d2e41f72239aee9c117aa6f34f6878ed437e4f808d052"
     },
     {
       "path": "packages/design-system/src/icons.ts",
@@ -1301,11 +1321,15 @@
     },
     {
       "path": "packages/ui/package.json",
-      "sha256": "397081399e18dc60c9a305e70a8653bbf8dfc8ca10523dbb602b456d49dd7ef8"
+      "sha256": "a91d46362e928b02f16324462497a0f734a843759fc244dd20b295be31a6358f"
     },
     {
       "path": "packages/ui/src/buttons.ts",
       "sha256": "7c594265bd410123da62707c6930f83175e2eacfe74bd53b100e1a63fb0ff662"
+    },
+    {
+      "path": "packages/ui/src/enterprise-ux.ts",
+      "sha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c"
     },
     {
       "path": "packages/ui/src/forms.ts",
@@ -1322,6 +1346,10 @@
     {
       "path": "packages/ui/src/primitives.ts",
       "sha256": "54392fa63a96de0557cb65f9e0bef0fb29c40301a772832eba0b76b61ba0969b"
+    },
+    {
+      "path": "packages/ui/test/enterprise-ux.test.ts",
+      "sha256": "32b8ce9f4439677d7151452af0200f5bfe817a688f7e905987f0469c75f51518"
     },
     {
       "path": "packages/ui/test/register-apps.test.cts",
@@ -2080,6 +2108,26 @@
       "sha256": "15d89071a7f32821eb36031239b8a88c049f45b625968a05b1c5125fb24f1b24"
     },
     {
+      "path": "tests/ux/build-server-fixture.mts",
+      "sha256": "cc3054462a6bbf272a23d9fa0182338593eea31bfa6c00ef1e2bfbebac2b871c"
+    },
+    {
+      "path": "tests/ux/component_inventory.mts",
+      "sha256": "da50838dd37f4a800e06e0a22ea5bd9eb0edf0cd29cbf25e34f16439c1f3f7c6"
+    },
+    {
+      "path": "tests/ux/server-entry.ts",
+      "sha256": "10633488c8dfde51ef1867a419ec4f7b9c1832c713ae3d486d1ab64197bb47c3"
+    },
+    {
+      "path": "tests/ux/tooling/package-lock.json",
+      "sha256": "c1b5f506f8fb8c689db918b1e758c2c92d349805410346227e7573a0e5f2c717"
+    },
+    {
+      "path": "tests/ux/tooling/package.json",
+      "sha256": "bb6f60c39f59701ed42901348bbb7b8ffd3d3c501c6815c1b7190db0e19f2388"
+    },
+    {
       "path": "tests/validation/numeric-fields.test.mts",
       "sha256": "81c7abe1a03df7dcb0b5bfa62a5dab7e638a6b5e75475e45677780915de5c901"
     },
@@ -2189,11 +2237,11 @@
     },
     {
       "path": "tooling/scripts/build-apps.mts",
-      "sha256": "f16340a1dbfe4e35027dbd5f2a7e58103dff007d4dc43a7de165ecd603af7a1c"
+      "sha256": "f01e90bf7b9ffa72117b7a3b74659ac7db75db86b1a8243736fa8ea0e164a368"
     },
     {
       "path": "tooling/scripts/build-rep-server.mts",
-      "sha256": "74bec51cd3843016c7f3d2e4a79cd07eb1850da653bcc74dc6dbd6cde7379751"
+      "sha256": "aba9c992881f90213a7c296c2b64db36071d96eebc99e0ca1d78cf736dbf4491"
     },
     {
       "path": "tooling/scripts/build-services.mts",
@@ -2337,7 +2385,7 @@
     },
     {
       "path": "tsconfig.json",
-      "sha256": "7024e44782c7d146fb13646ec2ba35483a912d4b09187e47dfccf431dc5a015f"
+      "sha256": "4d29a227f613bac3687c69505206f502c4affe236aaad3270d10ce64403f1b49"
     }
   ],
   "runtimeRegistrations": [
@@ -7073,8 +7121,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 141,
-        "endLine": 141,
+        "line": 143,
+        "endLine": 143,
         "fingerprint": "0c58627f144d51b02d64542e0afc34c5e9fce1f419609efb77cf09a31f57264f"
       },
       "owningService": null,
@@ -7486,8 +7534,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 375,
-        "endLine": 375,
+        "line": 376,
+        "endLine": 376,
         "fingerprint": "230105d919aad712ba92444c60ad245ff84877a3e8aecd51bdf6fd7e16cbb10e"
       },
       "owningService": null,
@@ -7545,8 +7593,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 497,
-        "endLine": 497,
+        "line": 535,
+        "endLine": 535,
         "fingerprint": "230105d919aad712ba92444c60ad245ff84877a3e8aecd51bdf6fd7e16cbb10e"
       },
       "owningService": null,
@@ -7604,8 +7652,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 526,
-        "endLine": 526,
+        "line": 564,
+        "endLine": 564,
         "fingerprint": "230105d919aad712ba92444c60ad245ff84877a3e8aecd51bdf6fd7e16cbb10e"
       },
       "owningService": null,
@@ -7663,8 +7711,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 543,
-        "endLine": 543,
+        "line": 581,
+        "endLine": 581,
         "fingerprint": "230105d919aad712ba92444c60ad245ff84877a3e8aecd51bdf6fd7e16cbb10e"
       },
       "owningService": null,
@@ -28981,8 +29029,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 44,
-        "endLine": 44,
+        "line": 45,
+        "endLine": 45,
         "fingerprint": "451f8ba82c114213109098fd1534b51aae9256d0b280c3fd28504ceb0caa9ba8"
       },
       "owningService": null,
@@ -48543,8 +48591,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 254,
-        "endLine": 254,
+        "line": 255,
+        "endLine": 255,
         "fingerprint": "c5c3358ad8d1a332ebd293b1be3efa6773381c14a402b331047c081b6e75ebb6"
       },
       "owningService": null,
@@ -48602,8 +48650,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 263,
-        "endLine": 263,
+        "line": 264,
+        "endLine": 264,
         "fingerprint": "c49d5f5fd8f39cbf1298774a279937f6d29876ac207d15349d7e6de7e87adefb"
       },
       "owningService": null,
@@ -53430,8 +53478,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 390,
-        "endLine": 390,
+        "line": 391,
+        "endLine": 391,
         "fingerprint": "320b883d1eaa351f03dc1f9e0252be6c845365ef2ddf090e63807fe7a31ef455"
       },
       "owningService": null,
@@ -53489,8 +53537,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 276,
-        "endLine": 283,
+        "line": 277,
+        "endLine": 284,
         "fingerprint": "13dca4ddb639cd8be5f1d57d9a6b2703e4c1ec611c291524325cd9dba0cc4b46"
       },
       "owningService": null,
@@ -53548,8 +53596,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 366,
-        "endLine": 366,
+        "line": 367,
+        "endLine": 367,
         "fingerprint": "872437e81003996d4274f44b21ca30ab860661f04482fc20325a461b07aa6a92"
       },
       "owningService": null,
@@ -54512,8 +54560,8 @@
       "mode": "shared",
       "source": {
         "path": "apps/admin-web/src/main.ts",
-        "line": 37,
-        "endLine": 37,
+        "line": 39,
+        "endLine": 39,
         "fingerprint": "48ebdab4332e92d603c710da19f8c11707ac8b530c2713c0bb18bba17a9397d2"
       },
       "owningService": null,
@@ -54571,8 +54619,8 @@
       "mode": "shared",
       "source": {
         "path": "apps/admin-web/src/main.ts",
-        "line": 10,
-        "endLine": 10,
+        "line": 12,
+        "endLine": 12,
         "fingerprint": "43e72a7fb4938975bfb14a272a05063afbef663b0f02871d29109e057f10e8b2"
       },
       "owningService": null,
@@ -57854,8 +57902,8 @@
       "mode": "shared",
       "source": {
         "path": "apps/client-mobile/src/main.ts",
-        "line": 41,
-        "endLine": 41,
+        "line": 43,
+        "endLine": 43,
         "fingerprint": "48ebdab4332e92d603c710da19f8c11707ac8b530c2713c0bb18bba17a9397d2"
       },
       "owningService": null,
@@ -57913,8 +57961,8 @@
       "mode": "shared",
       "source": {
         "path": "apps/client-mobile/src/main.ts",
-        "line": 10,
-        "endLine": 10,
+        "line": 12,
+        "endLine": 12,
         "fingerprint": "43e72a7fb4938975bfb14a272a05063afbef663b0f02871d29109e057f10e8b2"
       },
       "owningService": null,
@@ -58851,8 +58899,8 @@
       "mode": "shared",
       "source": {
         "path": "apps/rep-mobile/src/main.ts",
-        "line": 42,
-        "endLine": 42,
+        "line": 44,
+        "endLine": 44,
         "fingerprint": "48ebdab4332e92d603c710da19f8c11707ac8b530c2713c0bb18bba17a9397d2"
       },
       "owningService": null,
@@ -58910,8 +58958,8 @@
       "mode": "shared",
       "source": {
         "path": "apps/rep-mobile/src/main.ts",
-        "line": 11,
-        "endLine": 11,
+        "line": 13,
+        "endLine": 13,
         "fingerprint": "43e72a7fb4938975bfb14a272a05063afbef663b0f02871d29109e057f10e8b2"
       },
       "owningService": null,
@@ -58969,8 +59017,8 @@
       "mode": "shared",
       "source": {
         "path": "apps/rep-mobile/src/server-main.ts",
-        "line": 4,
-        "endLine": 4,
+        "line": 5,
+        "endLine": 5,
         "fingerprint": "e598503fd40bc5a387ea573aca45009ba71701757fa8dc6bb21dd53de7226a4b"
       },
       "owningService": null,
@@ -60660,9 +60708,9 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 120,
-        "endLine": 123,
-        "fingerprint": "22ac51be287b1b98adf531b4b20e31a19711357b47507c35073c46fbe3210044"
+        "line": 123,
+        "endLine": 126,
+        "fingerprint": "522678b8f7dde9d510686c0c0495d127e2fecce30e9dba720d1f0c00d08a9e2f"
       },
       "owningService": null,
       "targetService": null,
@@ -60723,8 +60771,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 133,
-        "endLine": 134,
+        "line": 136,
+        "endLine": 137,
         "fingerprint": "57e1b09eff815db32eb5494b157d87b51d3e4bea77b3cb3cf629f85b0bb7b563"
       },
       "owningService": null,
@@ -60786,8 +60834,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 82,
-        "endLine": 82,
+        "line": 84,
+        "endLine": 84,
         "fingerprint": "31ee08c72d2c46274141ab283b0740531432cd24889a653083112943992f16bc"
       },
       "owningService": null,
@@ -60849,8 +60897,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 85,
-        "endLine": 86,
+        "line": 87,
+        "endLine": 88,
         "fingerprint": "091c5241adb36fc5f5c67e21edeb05aad27381bda24b829c22e1440859debfad"
       },
       "owningService": null,
@@ -60912,8 +60960,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 23,
-        "endLine": 25,
+        "line": 24,
+        "endLine": 26,
         "fingerprint": "c4caf91223055269ad7f06fe5bf08fc2de072ddfb708ca262c536858451d141c"
       },
       "owningService": null,
@@ -60968,69 +61016,6 @@
       "unresolved": []
     },
     {
-      "id": "failure-state:apps/rep-mobile/src/server/ui/dom.ts:a3f74f7cd8c4:1",
-      "key": "condition:busy || signal.aborted",
-      "kind": "failure-state",
-      "apps": ["rep"],
-      "mode": "server",
-      "source": {
-        "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 76,
-        "endLine": 76,
-        "fingerprint": "5ba0048319ae11f18646747829e1acbca71b80e948706c296ea00efcee009596"
-      },
-      "owningService": null,
-      "targetService": null,
-      "endpoints": [],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "persistenceEvent": {
-        "status": "UNRESOLVED_OR_NO_WRITE",
-        "tables": [],
-        "events": [],
-        "evidence": []
-      },
-      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
-      "targetSprint": "S10",
-      "categories": ["failure-states"],
-      "tests": {
-        "contract": [],
-        "integration": [
-          "T:tests/integration/rep-server-views.test.ts:18efb0bab513:1",
-          "T:tests/integration/rep-server-views.test.ts:3e0f1d8c3949:1"
-        ],
-        "e2e": [],
-        "related": [
-          "T:tests/integration/rep-server-views.test.ts:18efb0bab513:1",
-          "T:tests/integration/rep-server-views.test.ts:3e0f1d8c3949:1"
-        ],
-        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
-      },
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/ui/dom.ts:a3f74f7cd8c4:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/ui/dom.ts:a3f74f7cd8c4:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/ui/dom.ts:a3f74f7cd8c4:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "presentationOnly": null,
-      "unresolved": []
-    },
-    {
       "id": "failure-state:apps/rep-mobile/src/server/ui/dom.ts:aad91bbae37f:1",
       "key": "condition:error.status === 401",
       "kind": "failure-state",
@@ -61038,8 +61023,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 130,
-        "endLine": 130,
+        "line": 133,
+        "endLine": 133,
         "fingerprint": "ae3b27c6e7dc67212fe9437d23ef22a60f611ae0797ea8a778f04bac884b3522"
       },
       "owningService": null,
@@ -61101,8 +61086,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 131,
-        "endLine": 132,
+        "line": 134,
+        "endLine": 135,
         "fingerprint": "4a6d67b5e74a242d6abb22f3db60ba005be5116064e6d71a778e6e378a4742af"
       },
       "owningService": null,
@@ -61157,6 +61142,69 @@
       "unresolved": []
     },
     {
+      "id": "failure-state:apps/rep-mobile/src/server/ui/dom.ts:f677a1b2085c:1",
+      "key": "condition:busy || signal.aborted || node.disabled",
+      "kind": "failure-state",
+      "apps": ["rep"],
+      "mode": "server",
+      "source": {
+        "path": "apps/rep-mobile/src/server/ui/dom.ts",
+        "line": 77,
+        "endLine": 77,
+        "fingerprint": "ba3952bd84b6a3e0584b7189aa70a8334d802c6e1ff79cc3318b1c18d8317970"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": ["failure-states"],
+      "tests": {
+        "contract": [],
+        "integration": [
+          "T:tests/integration/rep-server-views.test.ts:18efb0bab513:1",
+          "T:tests/integration/rep-server-views.test.ts:3e0f1d8c3949:1"
+        ],
+        "e2e": [],
+        "related": [
+          "T:tests/integration/rep-server-views.test.ts:18efb0bab513:1",
+          "T:tests/integration/rep-server-views.test.ts:3e0f1d8c3949:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/ui/dom.ts:f677a1b2085c:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/ui/dom.ts:f677a1b2085c:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/ui/dom.ts:f677a1b2085c:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": null,
+      "unresolved": []
+    },
+    {
       "id": "failure-state:apps/rep-mobile/src/server/ui/forms.ts:1f70e72f69a6:1",
       "key": "condition:signal.aborted",
       "kind": "failure-state",
@@ -61164,8 +61212,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 168,
-        "endLine": 168,
+        "line": 185,
+        "endLine": 185,
         "fingerprint": "b6ed28a5150b6560f30c3f4659fc3cbc735212fbb680aa2a22cd3e44c18f8605"
       },
       "owningService": null,
@@ -61227,8 +61275,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 132,
-        "endLine": 132,
+        "line": 146,
+        "endLine": 146,
         "fingerprint": "cc903642f69b24f7052a777f1c821cf3c261da6ac9cd33423ce658234dc11143"
       },
       "owningService": null,
@@ -61290,9 +61338,9 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 135,
-        "endLine": 135,
-        "fingerprint": "4314811fd153fd25c9d971190b6937790aa12952a6bf1f4702253166cc856a75"
+        "line": 149,
+        "endLine": 152,
+        "fingerprint": "abc621be70d26d408cddf5a9b768749c0f56c5062452add69b1d580094d149dc"
       },
       "owningService": null,
       "targetService": null,
@@ -61353,8 +61401,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 119,
-        "endLine": 119,
+        "line": 132,
+        "endLine": 132,
         "fingerprint": "871bd5f7e21e030e37e87de660a9fe6f3b21ad25191aa8c095c2c3d61cdaf730"
       },
       "owningService": null,
@@ -61416,8 +61464,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 160,
-        "endLine": 160,
+        "line": 177,
+        "endLine": 177,
         "fingerprint": "87701995c497a921b7e6e3234cc5a6ce42ef5d53966d14715cc19826801f50e8"
       },
       "owningService": null,
@@ -63856,65 +63904,6 @@
       ]
     },
     {
-      "id": "failure-state:apps/rep-mobile/src/server/workspace.ts:1ee2af1a836d:1",
-      "key": "catch:d05aeed9c5b7",
-      "kind": "failure-state",
-      "apps": ["rep"],
-      "mode": "server",
-      "source": {
-        "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 107,
-        "endLine": 114,
-        "fingerprint": "d80e642a9850c8b9fea98fd985403c5178124fbc5231420307fdcc1ccf8d5406"
-      },
-      "owningService": null,
-      "targetService": null,
-      "endpoints": [],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": ["apps/rep-mobile/src/server/workspace.ts:76-115"]
-      },
-      "persistenceEvent": {
-        "status": "UNRESOLVED_OR_NO_WRITE",
-        "tables": [],
-        "events": [],
-        "evidence": []
-      },
-      "currentStatus": "IMPLEMENTATION_OBSERVED_REVIEW_BLOCKED",
-      "targetSprint": "S10",
-      "categories": ["failure-states"],
-      "tests": {
-        "contract": [],
-        "integration": [],
-        "e2e": [],
-        "related": [],
-        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
-      },
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/workspace.ts:1ee2af1a836d:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/workspace.ts:1ee2af1a836d:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/workspace.ts:1ee2af1a836d:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "presentationOnly": null,
-      "unresolved": [
-        "No source-reference test mapping discovered; required tests remain planned, not executed."
-      ]
-    },
-    {
       "id": "failure-state:apps/rep-mobile/src/server/workspace.ts:1f70e72f69a6:1",
       "key": "condition:signal.aborted",
       "kind": "failure-state",
@@ -63922,8 +63911,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 47,
-        "endLine": 47,
+        "line": 48,
+        "endLine": 48,
         "fingerprint": "16e401afd73345617d9051a0f6941fe45141c6914b78ff44998d26cc97e7ea68"
       },
       "owningService": null,
@@ -63981,8 +63970,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 202,
-        "endLine": 205,
+        "line": 204,
+        "endLine": 207,
         "fingerprint": "d7e9800159a5d919cb2541c51003ffc0d46e22f24151217e9b9b0a85d96de173"
       },
       "owningService": null,
@@ -64040,8 +64029,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 198,
-        "endLine": 198,
+        "line": 200,
+        "endLine": 200,
         "fingerprint": "015a878598ec83b9240393249ec374477e1bd35c893b3f04f571925f1b22ff25"
       },
       "owningService": null,
@@ -64099,8 +64088,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 66,
-        "endLine": 66,
+        "line": 67,
+        "endLine": 67,
         "fingerprint": "eb65afb0a7d016175ddbf48502fb6688cea4cd26e1487cc24416679a044c15ea"
       },
       "owningService": null,
@@ -64158,8 +64147,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 145,
-        "endLine": 148,
+        "line": 147,
+        "endLine": 150,
         "fingerprint": "a18f7dbb51e359a4697e0f425ed6712d9cb50f6b2c58f34f9e4a95f44d95aa54"
       },
       "owningService": null,
@@ -64217,8 +64206,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 77,
-        "endLine": 77,
+        "line": 78,
+        "endLine": 78,
         "fingerprint": "1f69cbdeb914b634b11d51658ffc333cf7443737996645c3f9cb10c7bfd78828"
       },
       "owningService": null,
@@ -64269,6 +64258,65 @@
       ]
     },
     {
+      "id": "failure-state:apps/rep-mobile/src/server/workspace.ts:c23b2323b699:1",
+      "key": "catch:63bd0bab5d61",
+      "kind": "failure-state",
+      "apps": ["rep"],
+      "mode": "server",
+      "source": {
+        "path": "apps/rep-mobile/src/server/workspace.ts",
+        "line": 109,
+        "endLine": 116,
+        "fingerprint": "cd1659c1a90fe83c314772a57199448d0313038e7ec0a4303ec9a3feadf609cf"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": ["apps/rep-mobile/src/server/workspace.ts:77-117"]
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "IMPLEMENTATION_OBSERVED_REVIEW_BLOCKED",
+      "targetSprint": "S10",
+      "categories": ["failure-states"],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/workspace.ts:c23b2323b699:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/workspace.ts:c23b2323b699:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/workspace.ts:c23b2323b699:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": null,
+      "unresolved": [
+        "No source-reference test mapping discovered; required tests remain planned, not executed."
+      ]
+    },
+    {
       "id": "failure-state:apps/rep-mobile/src/server/workspace.ts:c4ea8c4540d8:1",
       "key": "condition:requestSignal.aborted",
       "kind": "failure-state",
@@ -64276,8 +64324,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 108,
-        "endLine": 108,
+        "line": 110,
+        "endLine": 110,
         "fingerprint": "663fa78bcb6abf695676ad58c3dcdf89488137c008446d5827b3205efb739311"
       },
       "owningService": null,
@@ -64335,8 +64383,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 46,
-        "endLine": 46,
+        "line": 47,
+        "endLine": 47,
         "fingerprint": "fa7b2624c766ad4b8e69a6e7e86ce58c15b15f4127102a7e347e3ec3a4a711a6"
       },
       "owningService": null,
@@ -64394,9 +64442,9 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 103,
-        "endLine": 106,
-        "fingerprint": "be18a036790621f7af432562f482984c493fe2384ff5ec764a754e01037009a5"
+        "line": 104,
+        "endLine": 108,
+        "fingerprint": "a666681ea197f8b60e28ff71105d2924a14083591c33d1125ad7c05b7422b310"
       },
       "owningService": null,
       "targetService": null,
@@ -64453,8 +64501,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 138,
-        "endLine": 140,
+        "line": 140,
+        "endLine": 142,
         "fingerprint": "8f6a7a517c9e8f71ddfa92bfdd9321c7b8c9c0d5f896d0965d37e264f4579668"
       },
       "owningService": null,
@@ -72799,8 +72847,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 530,
-        "endLine": 530,
+        "line": 568,
+        "endLine": 568,
         "fingerprint": "02d1a2c43f3230bda4c2a653c8db32fc2c0566dc0e92a1ffc3bf33eafc39cc78"
       },
       "owningService": null,
@@ -72917,8 +72965,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 536,
-        "endLine": 538,
+        "line": 574,
+        "endLine": 576,
         "fingerprint": "30b258561000ba3bc8ca9f2cb13bce191cbfddc9fd5be21432a7abaf2cac859c"
       },
       "owningService": null,
@@ -73035,8 +73083,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 352,
-        "endLine": 363,
+        "line": 353,
+        "endLine": 364,
         "fingerprint": "2cfa9ab945007c7b61618c0c521053a57893677d57f7263a8942f0ff4cc507a1"
       },
       "owningService": null,
@@ -73094,8 +73142,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 266,
-        "endLine": 269,
+        "line": 267,
+        "endLine": 270,
         "fingerprint": "3497d0ee749c7dbda2ac8c7cbbed25dc274c6e179df58e1d546417b84e875167"
       },
       "owningService": null,
@@ -73330,8 +73378,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 379,
-        "endLine": 379,
+        "line": 380,
+        "endLine": 380,
         "fingerprint": "88f06af12ec9d3e9efe352086ea2f309f20c1320b48288dca64071aabd404a51"
       },
       "owningService": null,
@@ -73389,8 +73437,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 505,
-        "endLine": 505,
+        "line": 543,
+        "endLine": 543,
         "fingerprint": "88f06af12ec9d3e9efe352086ea2f309f20c1320b48288dca64071aabd404a51"
       },
       "owningService": null,
@@ -73448,8 +73496,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 515,
-        "endLine": 515,
+        "line": 553,
+        "endLine": 553,
         "fingerprint": "88f06af12ec9d3e9efe352086ea2f309f20c1320b48288dca64071aabd404a51"
       },
       "owningService": null,
@@ -73507,8 +73555,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 408,
-        "endLine": 411,
+        "line": 439,
+        "endLine": 442,
         "fingerprint": "f0b1be512a0385023cd277b083b5f22b6d2d3fb2493c6ac29004775914fe1170"
       },
       "owningService": null,
@@ -83861,6 +83909,201 @@
       "unresolved": [
         "No source-reference test mapping discovered; required tests remain planned, not executed."
       ]
+    },
+    {
+      "id": "failure-state:packages/ui/src/enterprise-ux.ts:3101ef6c1ea5:1",
+      "key": "condition:!invalid.length",
+      "kind": "failure-state",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 124,
+        "endLine": 127,
+        "fingerprint": "fef1f4aeba6acf88a14af42147fdf137a44aafb805469ca0e3a99107b61cbcc9"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": [],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:packages/ui/src/enterprise-ux.ts:3101ef6c1ea5:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:packages/ui/src/enterprise-ux.ts:3101ef6c1ea5:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:packages/ui/src/enterprise-ux.ts:3101ef6c1ea5:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": null,
+      "unresolved": []
+    },
+    {
+      "id": "failure-state:packages/ui/src/enterprise-ux.ts:51a188c2558e:1",
+      "key": "condition:!sidebar || !options.groups?.length || sidebar.querySelector('.elv-secondary-nav')",
+      "kind": "failure-state",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 194,
+        "endLine": 194,
+        "fingerprint": "d77754b87efd589748ad4859eb14e4538b4d2a53f4edac5a1b5b1be608a11ad1"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": ["search-filter"],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:packages/ui/src/enterprise-ux.ts:51a188c2558e:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:packages/ui/src/enterprise-ux.ts:51a188c2558e:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:packages/ui/src/enterprise-ux.ts:51a188c2558e:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": null,
+      "unresolved": []
+    },
+    {
+      "id": "failure-state:packages/ui/src/enterprise-ux.ts:7401f6873db2:1",
+      "key": "condition:control instanceof HTMLInputElement &&\n        control.type === 'search' &&\n        !control.labels?.length &&\n        !control.hasAttribute('aria-label')",
+      "kind": "failure-state",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 225,
+        "endLine": 232,
+        "fingerprint": "096930ea1fcb91754a8e9a8dbfc43d25644ad8eacd29feafbaf8ec6d09345ce9"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": ["search-filter"],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:packages/ui/src/enterprise-ux.ts:7401f6873db2:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:packages/ui/src/enterprise-ux.ts:7401f6873db2:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:packages/ui/src/enterprise-ux.ts:7401f6873db2:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": null,
+      "unresolved": []
     },
     {
       "id": "failure-state:services/api-gateway/src/app.ts:4ec141326ded:1",
@@ -94228,7 +94471,7 @@
         "evidence": [
           {
             "path": "packages/app-runtime/src/index.ts",
-            "sha256": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa"
+            "sha256": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc"
           },
           {
             "path": "packages/ui/src/forms.ts",
@@ -101675,7 +101918,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/mobile-auth/src/configuration.ts",
@@ -101779,7 +102022,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/mobile-auth/src/configuration.ts",
@@ -101883,7 +102126,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/mobile-auth/src/configuration.ts",
@@ -102364,9 +102607,9 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/dom.ts",
-        "line": 73,
-        "endLine": 95,
-        "fingerprint": "22474dd9089003203e92221a7a25f3ea738c73630bfde6d02a2ca4fc19e5783c"
+        "line": 74,
+        "endLine": 98,
+        "fingerprint": "24b88e3fb09cefaa93a5ab59b68f94fc70f292507264dcfe33fdfc3f26d1bb22"
       },
       "owningService": null,
       "targetService": null,
@@ -102425,7 +102668,7 @@
         "evidence": [
           {
             "path": "apps/rep-mobile/src/server/ui/dom.ts",
-            "sha256": "b271f23314ea02d02286fdc4fcca29bb94cdbac3a54c0d92810ea8d82ee6d3e1"
+            "sha256": "ab31b8fc765e1953d05722046b29bd50678285491c2823cad0f9d1dcc50c1eec"
           }
         ],
         "originalEndpoints": [],
@@ -102444,8 +102687,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 154,
-        "endLine": 174,
+        "line": 171,
+        "endLine": 191,
         "fingerprint": "e696a87c8302993625b9f26429422f9065afeb7687d7cae83e5e10cfd5dbcbf5"
       },
       "owningService": null,
@@ -102505,7 +102748,7 @@
         "evidence": [
           {
             "path": "apps/rep-mobile/src/server/ui/forms.ts",
-            "sha256": "edc2dd5ace3ff74420db3b44183cb0e258fb9ff8d5410a9bc29ca3abf60290f6"
+            "sha256": "fc0af6e16494f0940922a1ba1b534851e0d75d69c9b045c5a0ad3c9f0447fe17"
           },
           {
             "path": "apps/rep-mobile/src/server/views/common.ts",
@@ -102532,9 +102775,9 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/ui/forms.ts",
-        "line": 115,
-        "endLine": 145,
-        "fingerprint": "1695447fd122dc4349bd6f325084a010d18d51762e0c0e656724d287e28363b5"
+        "line": 128,
+        "endLine": 162,
+        "fingerprint": "a5eb457b00ca940d07b5cd0afc93acf9d2cbe4e3655567fbbe7b810c44974861"
       },
       "owningService": null,
       "targetService": null,
@@ -102593,7 +102836,7 @@
         "evidence": [
           {
             "path": "apps/rep-mobile/src/server/ui/forms.ts",
-            "sha256": "edc2dd5ace3ff74420db3b44183cb0e258fb9ff8d5410a9bc29ca3abf60290f6"
+            "sha256": "fc0af6e16494f0940922a1ba1b534851e0d75d69c9b045c5a0ad3c9f0447fe17"
           },
           {
             "path": "apps/rep-mobile/src/server/views/common.ts",
@@ -103803,7 +104046,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -106711,7 +106954,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -106795,7 +107038,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -106879,7 +107122,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -106963,7 +107206,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -107047,7 +107290,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -107131,7 +107374,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -107839,8 +108082,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 123,
-        "endLine": 153,
+        "line": 125,
+        "endLine": 155,
         "fingerprint": "35ce26a394922d09b9df81c9662c2e3ab82eab600238afc4d4f27aaae3d375bd"
       },
       "owningService": null,
@@ -107913,7 +108156,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -108051,8 +108294,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 117,
-        "endLine": 117,
+        "line": 119,
+        "endLine": 119,
         "fingerprint": "397b2db51c860e669a7c231429564b1b6acaa722d7b16925433b7390452dc274"
       },
       "owningService": null,
@@ -108062,7 +108305,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["apps/rep-mobile/src/server/workspace.ts:76-115"]
+        "evidence": ["apps/rep-mobile/src/server/workspace.ts:77-117"]
       },
       "persistenceEvent": {
         "status": "UNRESOLVED_OR_NO_WRITE",
@@ -108112,7 +108355,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -108148,8 +108391,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 173,
-        "endLine": 180,
+        "line": 175,
+        "endLine": 182,
         "fingerprint": "5d524ddc5b65ee63132c05518ca8a76a7efdc359d6618351662007dd689896ad"
       },
       "owningService": null,
@@ -108159,7 +108402,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["apps/rep-mobile/src/server/workspace.ts:76-115"]
+        "evidence": ["apps/rep-mobile/src/server/workspace.ts:77-117"]
       },
       "persistenceEvent": {
         "status": "UNRESOLVED_OR_NO_WRITE",
@@ -108209,7 +108452,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -108245,8 +108488,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 112,
-        "endLine": 112,
+        "line": 114,
+        "endLine": 114,
         "fingerprint": "c1cf04f7403feaea4e988da709d9105271609cab99efed477164a3cb819856e6"
       },
       "owningService": null,
@@ -108256,7 +108499,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["apps/rep-mobile/src/server/workspace.ts:76-115"]
+        "evidence": ["apps/rep-mobile/src/server/workspace.ts:77-117"]
       },
       "persistenceEvent": {
         "status": "UNRESOLVED_OR_NO_WRITE",
@@ -108306,7 +108549,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -108342,8 +108585,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 155,
-        "endLine": 159,
+        "line": 157,
+        "endLine": 161,
         "fingerprint": "f8bad342d9332d3a001fc15547ef49c88432ccf1afa12bffd64eb785dfcd4b7d"
       },
       "owningService": null,
@@ -108406,7 +108649,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -108425,8 +108668,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 160,
-        "endLine": 167,
+        "line": 162,
+        "endLine": 169,
         "fingerprint": "b0e8a08c16142d341eadad877badf75b424134bebb4b38e021ef4618fdb2113e"
       },
       "owningService": null,
@@ -108489,7 +108732,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -108508,8 +108751,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 121,
-        "endLine": 121,
+        "line": 123,
+        "endLine": 123,
         "fingerprint": "7c2e59a9617a8ba1d108d4c8bc802bc63f42c109a1c8f0e9d3351318b70d2a60"
       },
       "owningService": null,
@@ -108519,7 +108762,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["apps/rep-mobile/src/server/workspace.ts:76-115"]
+        "evidence": ["apps/rep-mobile/src/server/workspace.ts:77-117"]
       },
       "persistenceEvent": {
         "status": "UNRESOLVED_OR_NO_WRITE",
@@ -108569,7 +108812,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -108605,8 +108848,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 168,
-        "endLine": 172,
+        "line": 170,
+        "endLine": 174,
         "fingerprint": "c381163aeaa42e4c3955af064289020b51a82f370d61b8cb72c52783aa5045ea"
       },
       "owningService": null,
@@ -108669,7 +108912,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           }
         ],
         "originalEndpoints": [],
@@ -108688,8 +108931,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 206,
-        "endLine": 213,
+        "line": 208,
+        "endLine": 215,
         "fingerprint": "4568798f5eb1fa9195c29b7109e11e7da0e2b8526b0ae5535008f1353adbfc3a"
       },
       "owningService": null,
@@ -108753,7 +108996,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/mobile-platform/src/index.ts",
@@ -108837,7 +109080,7 @@
           },
           {
             "path": "packages/app-runtime/src/index.ts",
-            "sha256": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa"
+            "sha256": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc"
           }
         ],
         "originalEndpoints": [],
@@ -108917,7 +109160,7 @@
           },
           {
             "path": "packages/app-runtime/src/index.ts",
-            "sha256": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa"
+            "sha256": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc"
           }
         ],
         "originalEndpoints": [],
@@ -108997,7 +109240,7 @@
           },
           {
             "path": "packages/app-runtime/src/index.ts",
-            "sha256": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa"
+            "sha256": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc"
           }
         ],
         "originalEndpoints": [],
@@ -109077,7 +109320,7 @@
           },
           {
             "path": "packages/app-runtime/src/index.ts",
-            "sha256": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa"
+            "sha256": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc"
           }
         ],
         "originalEndpoints": [],
@@ -109157,7 +109400,7 @@
           },
           {
             "path": "packages/app-runtime/src/index.ts",
-            "sha256": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa"
+            "sha256": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc"
           }
         ],
         "originalEndpoints": [],
@@ -109237,7 +109480,7 @@
           },
           {
             "path": "packages/app-runtime/src/index.ts",
-            "sha256": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa"
+            "sha256": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc"
           }
         ],
         "originalEndpoints": [],
@@ -110407,8 +110650,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 348,
-        "endLine": 348,
+        "line": 349,
+        "endLine": 349,
         "fingerprint": "bf8b1caaa45075db6e5dd057bb97d1040c734022e80905bdf5d472fe251e93a5"
       },
       "owningService": null,
@@ -110466,9 +110709,9 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 458,
-        "endLine": 482,
-        "fingerprint": "2e65787fec8cb6bed67282848bea64497cf60c3e1d39fce413e9de9da9a6947c"
+        "line": 489,
+        "endLine": 520,
+        "fingerprint": "9ba21e6a1529490c5a94f5215c1cd814ea335fe37d6ebb96dc31ae5f7f821748"
       },
       "owningService": null,
       "targetService": null,
@@ -110525,8 +110768,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 440,
-        "endLine": 449,
+        "line": 471,
+        "endLine": 480,
         "fingerprint": "c3caf3644891a51d483a7e3a593311e7074c96c57f3be2d7f068e6c238c722d4"
       },
       "owningService": null,
@@ -110584,8 +110827,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 483,
-        "endLine": 494,
+        "line": 521,
+        "endLine": 532,
         "fingerprint": "0f16a24021cfdfb3543ba998b29098d815390ae1ee707ab2a14f2177ee7b098b"
       },
       "owningService": null,
@@ -110643,8 +110886,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 348,
-        "endLine": 348,
+        "line": 349,
+        "endLine": 349,
         "fingerprint": "3a1ead6f76ac9a2c53c279838001f7843002eeaabd3b81c9ba5dbf644897644c"
       },
       "owningService": null,
@@ -110702,8 +110945,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 500,
-        "endLine": 507,
+        "line": 538,
+        "endLine": 545,
         "fingerprint": "ee75afc4850be3b3bcaccc7f848d5910b0c931eba9d5e77112b5954abbeb7c62"
       },
       "owningService": null,
@@ -110761,8 +111004,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 328,
-        "endLine": 328,
+        "line": 329,
+        "endLine": 329,
         "fingerprint": "d144c13a7804500670c4cbd397bdea921ff4e77be2ed80cf8ec14a4b634323cf"
       },
       "owningService": null,
@@ -110820,8 +111063,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 289,
-        "endLine": 289,
+        "line": 290,
+        "endLine": 290,
         "fingerprint": "4fa7065dba4cfa981fb1eb4b837eebed2643569c6125a0acda97a9c1c2847dc5"
       },
       "owningService": null,
@@ -110879,8 +111122,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 421,
-        "endLine": 421,
+        "line": 452,
+        "endLine": 452,
         "fingerprint": "80c4d1d79d22b93e2f8d7a15f459c1024555f0b2690fc051cbb79af46188c0f0"
       },
       "owningService": null,
@@ -110938,8 +111181,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 454,
-        "endLine": 457,
+        "line": 485,
+        "endLine": 488,
         "fingerprint": "2f5789977788bd8af99c55efbdfc5aeaf9474417429c7d537f7801188278e7a9"
       },
       "owningService": null,
@@ -110997,8 +111240,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 495,
-        "endLine": 499,
+        "line": 533,
+        "endLine": 537,
         "fingerprint": "2ef7319a89727c888e6ed12da9c23490ced25970ad2824c0a7aee19e995f786c"
       },
       "owningService": null,
@@ -111115,8 +111358,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 386,
-        "endLine": 386,
+        "line": 387,
+        "endLine": 387,
         "fingerprint": "341650645a61072b7e047ad1fb6a5f02a5e609e2d2e47f13bc7f215787bd9e59"
       },
       "owningService": null,
@@ -111174,8 +111417,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 241,
-        "endLine": 241,
+        "line": 242,
+        "endLine": 242,
         "fingerprint": "ad3358053c50ae0653a7b17be7c390bc6b9444ee883f1c1bc11652c956327eb4"
       },
       "owningService": null,
@@ -111233,8 +111476,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 305,
-        "endLine": 305,
+        "line": 306,
+        "endLine": 306,
         "fingerprint": "9d8b4e9df8cb3387857e7d99f19637244f1a86edc7014593d8550388a6e2ec6e"
       },
       "owningService": null,
@@ -111354,8 +111597,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 348,
-        "endLine": 348,
+        "line": 349,
+        "endLine": 349,
         "fingerprint": "d091ee722e257fc4f91e9318ab46942f67077bf30750c6813f1bd314180869de"
       },
       "owningService": null,
@@ -111472,8 +111715,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 422,
-        "endLine": 422,
+        "line": 453,
+        "endLine": 453,
         "fingerprint": "85eb9c9f75c2b737197b5b3574d9fe206cb83b47f61e426637a0881ac6d39494"
       },
       "owningService": null,
@@ -111531,8 +111774,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 450,
-        "endLine": 453,
+        "line": 481,
+        "endLine": 484,
         "fingerprint": "c663cef1a891a67aebbd895fe9b4c13daf958e8606a9b4750ad9a497fdf96914"
       },
       "owningService": null,
@@ -111649,8 +111892,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 241,
-        "endLine": 241,
+        "line": 242,
+        "endLine": 242,
         "fingerprint": "ad3358053c50ae0653a7b17be7c390bc6b9444ee883f1c1bc11652c956327eb4"
       },
       "owningService": null,
@@ -111826,8 +112069,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 423,
-        "endLine": 439,
+        "line": 454,
+        "endLine": 470,
         "fingerprint": "2d45851541bc9bf9151d0daaf82564635d49537b09852aa87c2d18dd7d9a5872"
       },
       "owningService": null,
@@ -112972,7 +113215,7 @@
         "evidence": [
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/api-client/src/live-workspace.ts",
@@ -113076,7 +113319,7 @@
         "evidence": [
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/api-client/src/live-workspace.ts",
@@ -113180,7 +113423,7 @@
         "evidence": [
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/api-client/src/live-workspace.ts",
@@ -114087,6 +114330,771 @@
       }
     },
     {
+      "id": "handler:packages/ui/src/enterprise-ux.ts:155122938a48:1",
+      "key": "root.addEventListener:invalid",
+      "kind": "handler",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 159,
+        "endLine": 168,
+        "fingerprint": "86191c887f952bf8077edc1448c2f2e45aacd146ffdfee0977e6c5c73fcc151a"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "SOURCE_TRACE_BOUND_IMPLEMENTATION_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": [],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:packages/ui/src/enterprise-ux.ts:155122938a48:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:packages/ui/src/enterprise-ux.ts:155122938a48:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:packages/ui/src/enterprise-ux.ts:155122938a48:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": {
+        "reason": "Native invalid-event feedback: add an Arabic inline message, aria-invalid and form error summary. Does not submit the form or contact a backend.",
+        "reviewedSourceFingerprint": "86191c887f952bf8077edc1448c2f2e45aacd146ffdfee0977e6c5c73fcc151a"
+      },
+      "unresolved": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "presentation",
+        "rationale": "Native invalid-event feedback: add an Arabic inline message, aria-invalid and form error summary. Does not submit the form or contact a backend.",
+        "evidence": [
+          {
+            "path": "packages/ui/src/enterprise-ux.ts",
+            "sha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c"
+          }
+        ],
+        "originalEndpoints": [],
+        "dynamicEndpointBindings": [],
+        "backendPolicies": [],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      }
+    },
+    {
+      "id": "handler:packages/ui/src/enterprise-ux.ts:6e5e16f295c9:1",
+      "key": "root.addEventListener:click",
+      "kind": "handler",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 355,
+        "endLine": 365,
+        "fingerprint": "05e5a3eaa611a6e41ec00a017bc4f5320eece721355826de584c60e82b168343"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "SOURCE_TRACE_BOUND_IMPLEMENTATION_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": [],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:packages/ui/src/enterprise-ux.ts:6e5e16f295c9:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:packages/ui/src/enterprise-ux.ts:6e5e16f295c9:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:packages/ui/src/enterprise-ux.ts:6e5e16f295c9:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": {
+        "reason": "Capture phase marks focus pending for existing live-navigation controls. It does not prevent events, change routes, submit forms or call APIs; the original workspace owns those actions.",
+        "reviewedSourceFingerprint": "05e5a3eaa611a6e41ec00a017bc4f5320eece721355826de584c60e82b168343"
+      },
+      "unresolved": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "presentation",
+        "rationale": "Capture phase marks focus pending for existing live-navigation controls. It does not prevent events, change routes, submit forms or call APIs; the original workspace owns those actions.",
+        "evidence": [
+          {
+            "path": "packages/ui/src/enterprise-ux.ts",
+            "sha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c"
+          }
+        ],
+        "originalEndpoints": [],
+        "dynamicEndpointBindings": [],
+        "backendPolicies": [],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      }
+    },
+    {
+      "id": "handler:packages/ui/src/enterprise-ux.ts:892d05803b53:1",
+      "key": "root.addEventListener:input",
+      "kind": "handler",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 169,
+        "endLine": 179,
+        "fingerprint": "170f4b681086122d9fbbe9314e8012426ab2315740c3611c7941c4cb5781a04e"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "SOURCE_TRACE_BOUND_IMPLEMENTATION_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": [],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:packages/ui/src/enterprise-ux.ts:892d05803b53:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:packages/ui/src/enterprise-ux.ts:892d05803b53:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:packages/ui/src/enterprise-ux.ts:892d05803b53:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": {
+        "reason": "Input feedback reconciles only this enhancement's validation message/described-by references. Existing application input dispatch and business data remain owned by the application.",
+        "reviewedSourceFingerprint": "170f4b681086122d9fbbe9314e8012426ab2315740c3611c7941c4cb5781a04e"
+      },
+      "unresolved": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "presentation",
+        "rationale": "Input feedback reconciles only this enhancement's validation message/described-by references. Existing application input dispatch and business data remain owned by the application.",
+        "evidence": [
+          {
+            "path": "packages/ui/src/enterprise-ux.ts",
+            "sha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c"
+          }
+        ],
+        "originalEndpoints": [],
+        "dynamicEndpointBindings": [],
+        "backendPolicies": [],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      }
+    },
+    {
+      "id": "handler:packages/ui/src/enterprise-ux.ts:a176bf413c75:1",
+      "key": "skip.addEventListener:click",
+      "kind": "handler",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 302,
+        "endLine": 309,
+        "fingerprint": "e8af8cf98e038b49806e643fd967ecc6be47635c242d1485d9cde64ab17be821"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "SOURCE_TRACE_BOUND_IMPLEMENTATION_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": [],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:packages/ui/src/enterprise-ux.ts:a176bf413c75:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:packages/ui/src/enterprise-ux.ts:a176bf413c75:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:packages/ui/src/enterprise-ux.ts:a176bf413c75:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": {
+        "reason": "Skip-link handler focuses the existing main landmark without changing the application route, data or authorization.",
+        "reviewedSourceFingerprint": "e8af8cf98e038b49806e643fd967ecc6be47635c242d1485d9cde64ab17be821"
+      },
+      "unresolved": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "presentation",
+        "rationale": "Skip-link handler focuses the existing main landmark without changing the application route, data or authorization.",
+        "evidence": [
+          {
+            "path": "packages/ui/src/enterprise-ux.ts",
+            "sha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c"
+          }
+        ],
+        "originalEndpoints": [],
+        "dynamicEndpointBindings": [],
+        "backendPolicies": [],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      }
+    },
+    {
+      "id": "handler:packages/ui/src/enterprise-ux.ts:b278c86df906:1",
+      "key": "window.addEventListener:offline",
+      "kind": "handler",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 336,
+        "endLine": 336,
+        "fingerprint": "7cb9fba1a2fc1756c733f0420a81346ad4112187951db98a2be45cf12b473167"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "SOURCE_TRACE_BOUND_IMPLEMENTATION_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": ["failure-states"],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:packages/ui/src/enterprise-ux.ts:b278c86df906:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:packages/ui/src/enterprise-ux.ts:b278c86df906:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:packages/ui/src/enterprise-ux.ts:b278c86df906:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": {
+        "reason": "Browser offline signal updates a status notice. It does not queue, send or replay mutations and does not establish backend reachability.",
+        "reviewedSourceFingerprint": "7cb9fba1a2fc1756c733f0420a81346ad4112187951db98a2be45cf12b473167"
+      },
+      "unresolved": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "presentation",
+        "rationale": "Browser offline signal updates a status notice. It does not queue, send or replay mutations and does not establish backend reachability.",
+        "evidence": [
+          {
+            "path": "packages/ui/src/enterprise-ux.ts",
+            "sha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c"
+          }
+        ],
+        "originalEndpoints": [],
+        "dynamicEndpointBindings": [],
+        "backendPolicies": [],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      }
+    },
+    {
+      "id": "handler:packages/ui/src/enterprise-ux.ts:bb0afabcc39e:1",
+      "key": "window.addEventListener:elvorance:render",
+      "kind": "handler",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 353,
+        "endLine": 353,
+        "fingerprint": "00ab15ac72a218609cd90121bdfac0110f9e2bc22d62a783819f7181288567d0"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "SOURCE_TRACE_BOUND_IMPLEMENTATION_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": [],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:packages/ui/src/enterprise-ux.ts:bb0afabcc39e:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:packages/ui/src/enterprise-ux.ts:bb0afabcc39e:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:packages/ui/src/enterprise-ux.ts:bb0afabcc39e:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": {
+        "reason": "Application render notification tracks distinct route changes for focus/navigation presentation. Existing router continues to own every route and data load.",
+        "reviewedSourceFingerprint": "00ab15ac72a218609cd90121bdfac0110f9e2bc22d62a783819f7181288567d0"
+      },
+      "unresolved": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "presentation",
+        "rationale": "Application render notification tracks distinct route changes for focus/navigation presentation. Existing router continues to own every route and data load.",
+        "evidence": [
+          {
+            "path": "packages/ui/src/enterprise-ux.ts",
+            "sha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c"
+          }
+        ],
+        "originalEndpoints": [],
+        "dynamicEndpointBindings": [],
+        "backendPolicies": [],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      }
+    },
+    {
+      "id": "handler:packages/ui/src/enterprise-ux.ts:e2dfd67f3131:1",
+      "key": "link.addEventListener:click",
+      "kind": "handler",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 146,
+        "endLine": 153,
+        "fingerprint": "c2fdab259073f808c2ee70ed956909ce17ccd282b89cdee44e1fa03df5818af8"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "SOURCE_TRACE_BOUND_IMPLEMENTATION_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": [],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:packages/ui/src/enterprise-ux.ts:e2dfd67f3131:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:packages/ui/src/enterprise-ux.ts:e2dfd67f3131:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:packages/ui/src/enterprise-ux.ts:e2dfd67f3131:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": {
+        "reason": "Error-summary link prevents hash navigation and focuses the existing invalid control. No form submission or network operation.",
+        "reviewedSourceFingerprint": "c2fdab259073f808c2ee70ed956909ce17ccd282b89cdee44e1fa03df5818af8"
+      },
+      "unresolved": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "presentation",
+        "rationale": "Error-summary link prevents hash navigation and focuses the existing invalid control. No form submission or network operation.",
+        "evidence": [
+          {
+            "path": "packages/ui/src/enterprise-ux.ts",
+            "sha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c"
+          }
+        ],
+        "originalEndpoints": [],
+        "dynamicEndpointBindings": [],
+        "backendPolicies": [],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      }
+    },
+    {
+      "id": "handler:packages/ui/src/enterprise-ux.ts:e3be8ef6e3d9:1",
+      "key": "window.addEventListener:online",
+      "kind": "handler",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 335,
+        "endLine": 335,
+        "fingerprint": "149a44a121a5a216e031f905d624a41cab00600a82de667345abae8874f51fe2"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "SOURCE_TRACE_BOUND_IMPLEMENTATION_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": [],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:packages/ui/src/enterprise-ux.ts:e3be8ef6e3d9:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:packages/ui/src/enterprise-ux.ts:e3be8ef6e3d9:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:packages/ui/src/enterprise-ux.ts:e3be8ef6e3d9:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": {
+        "reason": "Browser online signal updates a recovery notice, explicitly requiring manual retry. It does not queue, send or replay mutations.",
+        "reviewedSourceFingerprint": "149a44a121a5a216e031f905d624a41cab00600a82de667345abae8874f51fe2"
+      },
+      "unresolved": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "presentation",
+        "rationale": "Browser online signal updates a recovery notice, explicitly requiring manual retry. It does not queue, send or replay mutations.",
+        "evidence": [
+          {
+            "path": "packages/ui/src/enterprise-ux.ts",
+            "sha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c"
+          }
+        ],
+        "originalEndpoints": [],
+        "dynamicEndpointBindings": [],
+        "backendPolicies": [],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      }
+    },
+    {
+      "id": "handler:packages/ui/src/enterprise-ux.ts:e75256f22362:1",
+      "key": "root.addEventListener:change",
+      "kind": "handler",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 180,
+        "endLine": 190,
+        "fingerprint": "c51145c10cdd6f9077b093bba22e7e3a0423d85df9765f2034cca4c2abb85bfa"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "SOURCE_TRACE_BOUND_IMPLEMENTATION_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": [],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:handler:packages/ui/src/enterprise-ux.ts:e75256f22362:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:handler:packages/ui/src/enterprise-ux.ts:e75256f22362:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:handler:packages/ui/src/enterprise-ux.ts:e75256f22362:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": {
+        "reason": "Change feedback reconciles native validity and enhancement-owned errors. Does not persist, transmit or authorize any data.",
+        "reviewedSourceFingerprint": "c51145c10cdd6f9077b093bba22e7e3a0423d85df9765f2034cca4c2abb85bfa"
+      },
+      "unresolved": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "presentation",
+        "rationale": "Change feedback reconciles native validity and enhancement-owned errors. Does not persist, transmit or authorize any data.",
+        "evidence": [
+          {
+            "path": "packages/ui/src/enterprise-ux.ts",
+            "sha256": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c"
+          }
+        ],
+        "originalEndpoints": [],
+        "dynamicEndpointBindings": [],
+        "backendPolicies": [],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      }
+    },
+    {
       "id": "handler:packages/ui/src/forms.ts:7ced19a942ec:1",
       "key": "action:close-modal",
       "kind": "handler",
@@ -114154,7 +115162,7 @@
         "evidence": [
           {
             "path": "packages/app-runtime/src/index.ts",
-            "sha256": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa"
+            "sha256": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc"
           },
           {
             "path": "packages/ui/src/forms.ts",
@@ -114237,7 +115245,7 @@
         "evidence": [
           {
             "path": "packages/app-runtime/src/index.ts",
-            "sha256": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa"
+            "sha256": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc"
           },
           {
             "path": "packages/ui/src/page-heads.ts",
@@ -133354,8 +134362,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 35,
-        "endLine": 35,
+        "line": 36,
+        "endLine": 36,
         "fingerprint": "5f44d797041dc3fc682d0eacda73d170b04349a953b9e32f6b6a6c89bbd9ea4e"
       },
       "owningService": null,
@@ -133435,8 +134443,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 32,
-        "endLine": 32,
+        "line": 33,
+        "endLine": 33,
         "fingerprint": "0fe2ebf812610c24bd7afccf48f46b7f8dfb257211c3275b3a8691281f19344b"
       },
       "owningService": null,
@@ -133513,7 +134521,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -133627,8 +134635,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 26,
-        "endLine": 26,
+        "line": 27,
+        "endLine": 27,
         "fingerprint": "162c0554e87440342a24bfdf0115088c9e0c8316322a9c3a9cf8573e4cb9f3a2"
       },
       "owningService": null,
@@ -133686,8 +134694,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 30,
-        "endLine": 30,
+        "line": 31,
+        "endLine": 31,
         "fingerprint": "19d25ee3ce3daa7d2d0d01113f4ae2ca7a2b40d7ae36c1ab8e85bdb90ae6ea0f"
       },
       "owningService": null,
@@ -133764,7 +134772,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -133870,8 +134878,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 21,
-        "endLine": 21,
+        "line": 22,
+        "endLine": 22,
         "fingerprint": "874f0f3854be619b131e756690a87135b3abb79a76cb17fffd7fa0d5290e2783"
       },
       "owningService": null,
@@ -133979,7 +134987,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -134153,8 +135161,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 19,
-        "endLine": 19,
+        "line": 20,
+        "endLine": 20,
         "fingerprint": "fad645bea49f5477aa364703ce68e0a4be19235ed7830d98699b626c8128ed61"
       },
       "owningService": null,
@@ -134243,7 +135251,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -134409,8 +135417,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 28,
-        "endLine": 28,
+        "line": 29,
+        "endLine": 29,
         "fingerprint": "58c3e78e38e4a1f0e2529d513e26a7a8c5efbba3eed11b587b99fe96d9cd1a6e"
       },
       "owningService": null,
@@ -134484,8 +135492,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 29,
-        "endLine": 29,
+        "line": 30,
+        "endLine": 30,
         "fingerprint": "2fe888c849e674ec9a395cf3ab590a38909ad74b92eab35bfdff84b37dfca10a"
       },
       "owningService": null,
@@ -134558,7 +135566,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -134653,8 +135661,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 24,
-        "endLine": 24,
+        "line": 25,
+        "endLine": 25,
         "fingerprint": "7e2bf6bc95f8560736a821deab6e563cacb09cd6624eab9121071182ba9e7d36"
       },
       "owningService": null,
@@ -134753,7 +135761,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -134970,8 +135978,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 31,
-        "endLine": 31,
+        "line": 32,
+        "endLine": 32,
         "fingerprint": "2cf7b18bf4f987295fbd16a5c6d063f8f7c76a719557e95048dd4b7b8ab2bcbf"
       },
       "owningService": null,
@@ -135042,7 +136050,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -135100,8 +136108,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 25,
-        "endLine": 25,
+        "line": 26,
+        "endLine": 26,
         "fingerprint": "17037bc0826756ccf669dfc3c26e2bddaf15952b8c3ea3b34bf06913d79ecee8"
       },
       "owningService": null,
@@ -135220,7 +136228,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -135391,8 +136399,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 23,
-        "endLine": 23,
+        "line": 24,
+        "endLine": 24,
         "fingerprint": "9c941d7c4bcec06ea5e9b3232f09ef1d20817cd99d4a3d0222704e43f0eeaf01"
       },
       "owningService": null,
@@ -135450,8 +136458,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 20,
-        "endLine": 20,
+        "line": 21,
+        "endLine": 21,
         "fingerprint": "fd494ca1792c54b86173c112a8da0974073564108cf6fe496df97911332a0926"
       },
       "owningService": null,
@@ -135510,8 +136518,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 33,
-        "endLine": 33,
+        "line": 34,
+        "endLine": 34,
         "fingerprint": "b6e7c6be0f37958d7160cffb4fa0a069584918794c6603825e20d84e8db3046f"
       },
       "owningService": null,
@@ -135594,8 +136602,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 27,
-        "endLine": 27,
+        "line": 28,
+        "endLine": 28,
         "fingerprint": "9d60e6043c1e6534eb9a2b8a6410533464954a42e149baa95ad756508f56d58b"
       },
       "owningService": null,
@@ -135688,7 +136696,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -135873,8 +136881,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 34,
-        "endLine": 34,
+        "line": 35,
+        "endLine": 35,
         "fingerprint": "5fef5ee7a6c861029b70197f3d557306636d6361865f59f1e0f2e74a88665b82"
       },
       "owningService": null,
@@ -135990,7 +136998,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -136196,8 +137204,8 @@
       "mode": "server",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 22,
-        "endLine": 22,
+        "line": 23,
+        "endLine": 23,
         "fingerprint": "e02bfcfc286ac0f5b3459f0b5f471117fefc50b279630333ba0d20e61db7abd8"
       },
       "owningService": null,
@@ -136307,7 +137315,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
+            "sha256": "a815e8a6b1f72426f319d45e36eff5279e64af290e5c02b020c6a47a1ac60a03"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -149948,9 +150956,9 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 462,
-        "endLine": 464,
-        "fingerprint": "11f72766d06bc6a1cdab1eb9db276e4fb32de76d4f5de8456fd5616b7024ddc1"
+        "line": 493,
+        "endLine": 502,
+        "fingerprint": "d952df7e4ce4f78b77d0cc6a45f6177b1eae264d133db6628dfd3e9d6ad3008d"
       },
       "owningService": null,
       "targetService": null,
@@ -150007,8 +151015,8 @@
       "mode": "demo",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 294,
-        "endLine": 294,
+        "line": 295,
+        "endLine": 295,
         "fingerprint": "d284e38b6b2d80758e51327c3bae170e02cb7ce41b4602bfd27d0901ba2cf760"
       },
       "owningService": null,
@@ -151674,6 +152682,201 @@
         },
         {
           "id": "PLANNED:e2e:search-filter:packages/service-kit/src/repository.ts:137e0ff964b6:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": null,
+      "unresolved": []
+    },
+    {
+      "id": "search-filter:packages/ui/src/enterprise-ux.ts:1492acfb3424:1",
+      "key": "(control.getAttribute('aria-describedby') ?? '').split(/\\s+/).filter",
+      "kind": "search-filter",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 21,
+        "endLine": 21,
+        "fingerprint": "73a385a2320ac587e406e434e80d53dad7ecd8ac20488f54e52e302a2bc64cab"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": ["search-filter"],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:packages/ui/src/enterprise-ux.ts:1492acfb3424:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:packages/ui/src/enterprise-ux.ts:1492acfb3424:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:packages/ui/src/enterprise-ux.ts:1492acfb3424:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": null,
+      "unresolved": []
+    },
+    {
+      "id": "search-filter:packages/ui/src/enterprise-ux.ts:a38469b97b20:1",
+      "key": "[...invalidControls].filter",
+      "kind": "search-filter",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 120,
+        "endLine": 122,
+        "fingerprint": "a00731df0a836b4b5aeaa558d178ba75011d5c8af5fe81d727c8f8181353cdf7"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": ["search-filter"],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:packages/ui/src/enterprise-ux.ts:a38469b97b20:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:packages/ui/src/enterprise-ux.ts:a38469b97b20:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:packages/ui/src/enterprise-ux.ts:a38469b97b20:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": null,
+      "unresolved": []
+    },
+    {
+      "id": "search-filter:packages/ui/src/enterprise-ux.ts:d54ab96173ef:1",
+      "key": "(control.getAttribute('aria-describedby') ?? '')\n      .split(/\\s+/)\n      .filter",
+      "kind": "search-filter",
+      "apps": ["admin", "client", "rep"],
+      "mode": "shared",
+      "source": {
+        "path": "packages/ui/src/enterprise-ux.ts",
+        "line": 93,
+        "endLine": 95,
+        "fingerprint": "7d81d3fe11fe55c8b4ebd91acf155d0e59b95dbb70f75d90f094d0ef8eaafb62"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": ["search-filter"],
+      "tests": {
+        "contract": [],
+        "integration": [],
+        "e2e": [],
+        "related": [
+          "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+          "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:packages/ui/src/enterprise-ux.ts:d54ab96173ef:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:packages/ui/src/enterprise-ux.ts:d54ab96173ef:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:packages/ui/src/enterprise-ux.ts:d54ab96173ef:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -154374,6 +155577,62 @@
       "title": "configuration validation rejects primitive values and malformed collection shapes",
       "scope": "unit",
       "environment": "node"
+    },
+    {
+      "id": "T:packages/ui/test/enterprise-ux.test.ts:3cf467063c76:1",
+      "path": "packages/ui/test/enterprise-ux.test.ts",
+      "line": 68,
+      "title": "invalid fields expose Arabic errors and clear only their own references",
+      "scope": "unit",
+      "environment": "jsdom-or-injected-api-not-browser-e2e"
+    },
+    {
+      "id": "T:packages/ui/test/enterprise-ux.test.ts:41c293a634ac:1",
+      "path": "packages/ui/test/enterprise-ux.test.ts",
+      "line": 129,
+      "title": "state semantics distinguish errors from status without HTML injection",
+      "scope": "unit",
+      "environment": "jsdom-or-injected-api-not-browser-e2e"
+    },
+    {
+      "id": "T:packages/ui/test/enterprise-ux.test.ts:583259ed6947:1",
+      "path": "packages/ui/test/enterprise-ux.test.ts",
+      "line": 145,
+      "title": "live offline feedback does not submit or pretend to synchronize drafts",
+      "scope": "unit",
+      "environment": "jsdom-or-injected-api-not-browser-e2e"
+    },
+    {
+      "id": "T:packages/ui/test/enterprise-ux.test.ts:7a5410d0b153:1",
+      "path": "packages/ui/test/enterprise-ux.test.ts",
+      "line": 50,
+      "title": "enterprise fields link existing hints without losing descriptions or values",
+      "scope": "unit",
+      "environment": "jsdom-or-injected-api-not-browser-e2e"
+    },
+    {
+      "id": "T:packages/ui/test/enterprise-ux.test.ts:8e478f914478:1",
+      "path": "packages/ui/test/enterprise-ux.test.ts",
+      "line": 100,
+      "title": "reinstallation does not duplicate secondary navigation or skip links",
+      "scope": "unit",
+      "environment": "jsdom-or-injected-api-not-browser-e2e"
+    },
+    {
+      "id": "T:packages/ui/test/enterprise-ux.test.ts:e05fbf1c9cc1:1",
+      "path": "packages/ui/test/enterprise-ux.test.ts",
+      "line": 87,
+      "title": "mixed content is text, not markup, and explicit direction is honored",
+      "scope": "unit",
+      "environment": "jsdom-or-injected-api-not-browser-e2e"
+    },
+    {
+      "id": "T:packages/ui/test/enterprise-ux.test.ts:ec492353780b:1",
+      "path": "packages/ui/test/enterprise-ux.test.ts",
+      "line": 116,
+      "title": "same-route renders do not steal focus while navigation focuses main",
+      "scope": "unit",
+      "environment": "jsdom-or-injected-api-not-browser-e2e"
     },
     {
       "id": "T:packages/ui/test/register-apps.test.cts:ac9f28ffa1d4:1",
@@ -158145,10 +159404,10 @@
     }
   ],
   "totals": {
-    "features": 2015,
-    "sourceFiles": 584,
+    "features": 2030,
+    "sourceFiles": 596,
     "runtimeRegistrations": 465,
-    "testCatalogEntries": 532,
+    "testCatalogEntries": 539,
     "unmappedWorkflows": 242,
     "unresolvedFeatures": 1273,
     "kind:account-lifecycle": 58,
@@ -158158,13 +159417,13 @@
     "kind:background-job": 25,
     "kind:configuration": 34,
     "kind:export": 30,
-    "kind:failure-state": 507,
+    "kind:failure-state": 510,
     "kind:form": 99,
-    "kind:handler": 245,
+    "kind:handler": 254,
     "kind:native-adapter": 28,
     "kind:permission": 87,
     "kind:route": 115,
-    "kind:search-filter": 289
+    "kind:search-filter": 292
   },
   "limitations": [
     "Runtime probes execute registration only in disposable fixtures. They do not execute a business journey or establish production authorization/persistence.",

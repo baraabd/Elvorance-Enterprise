@@ -1,3 +1,4 @@
+import { isolatedText, statePanel } from '@elvorance/ui/enterprise-ux';
 import { ApiError } from '@elvorance/api-client';
 import type { RecordValue } from '../api.ts';
 
@@ -73,7 +74,8 @@ export function button(
   node.addEventListener(
     'click',
     () => {
-      if (busy || signal.aborted) return;
+      if (busy || signal.aborted || node.disabled) return;
+      const previousBusy = node.getAttribute('aria-busy');
       busy = true;
       node.disabled = true;
       node.setAttribute('aria-busy', 'true');
@@ -88,7 +90,8 @@ export function button(
         .finally(() => {
           busy = false;
           node.disabled = false;
-          node.removeAttribute('aria-busy');
+          if (previousBusy === null) node.removeAttribute('aria-busy');
+          else node.setAttribute('aria-busy', previousBusy);
         });
     },
     { signal },
@@ -109,7 +112,7 @@ export function card(title: string, subtitle?: string): HTMLElement {
 }
 export function detail(node: HTMLElement, label: string, value: unknown): void {
   const row = el('p', '', 'detail');
-  row.append(el('strong', label + ': '), el('span', words(value)));
+  row.append(el('strong', label + ': '), isolatedText(words(value)));
   node.append(row);
 }
 export function rows(
@@ -118,7 +121,7 @@ export function rows(
   render: (value: RecordValue) => HTMLElement,
 ): void {
   if (!values.length) {
-    container.append(el('p', 'لا توجد سجلات لعرضها بعد.', 'empty'));
+    container.append(statePanel('empty', 'لا توجد سجلات لعرضها بعد.'));
     return;
   }
   const list = el('div', '', 'cards');

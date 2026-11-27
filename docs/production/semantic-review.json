@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "6a575d23e4440e8039a11ab1d31b1e3bf16efae6cbad1e9b5ec76830098a6553",
+  "sourceDigest": "171839fcafd1d324ee645b6d9a27ca486e2523292cbf5358d042cd8010f05430",
   "status": "BLOCKED",
   "semanticStatus": "SOURCE_TRACE_COMPLETE_NOT_RUNTIME_ACCEPTANCE",
-  "sourceBoundDecisions": 224,
+  "sourceBoundDecisions": 233,
   "scope": "Extractor warning classification, not completeness certification, test execution or workflow coverage.",
   "unknownWarningsFailClosed": true,
   "totals": {
@@ -458,13 +458,13 @@
       "failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:3",
       "failure-state:apps/rep-mobile/src/server/views/visits.ts:97f9f70b76ae:4",
       "failure-state:apps/rep-mobile/src/server/views/visits.ts:b32d1f4065f5:1",
-      "failure-state:apps/rep-mobile/src/server/workspace.ts:1ee2af1a836d:1",
       "failure-state:apps/rep-mobile/src/server/workspace.ts:1f70e72f69a6:1",
       "failure-state:apps/rep-mobile/src/server/workspace.ts:1f70e72f69a6:2",
       "failure-state:apps/rep-mobile/src/server/workspace.ts:429242fdcc61:1",
       "failure-state:apps/rep-mobile/src/server/workspace.ts:60e6656fa14e:1",
       "failure-state:apps/rep-mobile/src/server/workspace.ts:60e6656fa14e:2",
       "failure-state:apps/rep-mobile/src/server/workspace.ts:a4c5914dc7c1:1",
+      "failure-state:apps/rep-mobile/src/server/workspace.ts:c23b2323b699:1",
       "failure-state:apps/rep-mobile/src/server/workspace.ts:c4ea8c4540d8:1",
       "failure-state:apps/rep-mobile/src/server/workspace.ts:cb62b681f624:1",
       "failure-state:apps/rep-mobile/src/server/workspace.ts:d25f57527b3a:1",
@@ -2368,8 +2368,8 @@
       "featureId": "account-lifecycle:apps/rep-mobile/src/server/workspace.ts:4ca20c66ed5a:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 141,
-        "endLine": 141,
+        "line": 143,
+        "endLine": 143,
         "fingerprint": "0c58627f144d51b02d64542e0afc34c5e9fce1f419609efb77cf09a31f57264f"
       },
       "owningService": null,
@@ -2627,8 +2627,8 @@
       "featureId": "account-lifecycle:packages/app-runtime/src/index.ts:d6cc0a088c07:3",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 375,
-        "endLine": 375,
+        "line": 376,
+        "endLine": 376,
         "fingerprint": "230105d919aad712ba92444c60ad245ff84877a3e8aecd51bdf6fd7e16cbb10e"
       },
       "owningService": null,
@@ -2664,8 +2664,8 @@
       "featureId": "account-lifecycle:packages/app-runtime/src/index.ts:d6cc0a088c07:4",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 497,
-        "endLine": 497,
+        "line": 535,
+        "endLine": 535,
         "fingerprint": "230105d919aad712ba92444c60ad245ff84877a3e8aecd51bdf6fd7e16cbb10e"
       },
       "owningService": null,
@@ -2701,8 +2701,8 @@
       "featureId": "account-lifecycle:packages/app-runtime/src/index.ts:d6cc0a088c07:5",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 526,
-        "endLine": 526,
+        "line": 564,
+        "endLine": 564,
         "fingerprint": "230105d919aad712ba92444c60ad245ff84877a3e8aecd51bdf6fd7e16cbb10e"
       },
       "owningService": null,
@@ -2738,8 +2738,8 @@
       "featureId": "account-lifecycle:packages/app-runtime/src/index.ts:d6cc0a088c07:6",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 543,
-        "endLine": 543,
+        "line": 581,
+        "endLine": 581,
         "fingerprint": "230105d919aad712ba92444c60ad245ff84877a3e8aecd51bdf6fd7e16cbb10e"
       },
       "owningService": null,
@@ -11840,8 +11840,8 @@
       "featureId": "background-job:packages/app-runtime/src/index.ts:e5a1f7170818:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 254,
-        "endLine": 254,
+        "line": 255,
+        "endLine": 255,
         "fingerprint": "c5c3358ad8d1a332ebd293b1be3efa6773381c14a402b331047c081b6e75ebb6"
       },
       "owningService": null,
@@ -11877,8 +11877,8 @@
       "featureId": "background-job:packages/app-runtime/src/index.ts:e5a1f7170818:2",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 263,
-        "endLine": 263,
+        "line": 264,
+        "endLine": 264,
         "fingerprint": "c49d5f5fd8f39cbf1298774a279937f6d29876ac207d15349d7e6de7e87adefb"
       },
       "owningService": null,
@@ -13801,8 +13801,8 @@
       "featureId": "export:packages/app-runtime/src/index.ts:475746a72ec6:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 390,
-        "endLine": 390,
+        "line": 391,
+        "endLine": 391,
         "fingerprint": "320b883d1eaa351f03dc1f9e0252be6c845365ef2ddf090e63807fe7a31ef455"
       },
       "owningService": null,
@@ -13838,8 +13838,8 @@
       "featureId": "export:packages/app-runtime/src/index.ts:68ff63fb82e0:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 276,
-        "endLine": 283,
+        "line": 277,
+        "endLine": 284,
         "fingerprint": "13dca4ddb639cd8be5f1d57d9a6b2703e4c1ec611c291524325cd9dba0cc4b46"
       },
       "owningService": null,
@@ -13875,8 +13875,8 @@
       "featureId": "export:packages/app-runtime/src/index.ts:68ff63fb82e0:2",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 366,
-        "endLine": 366,
+        "line": 367,
+        "endLine": 367,
         "fingerprint": "872437e81003996d4274f44b21ca30ab860661f04482fc20325a461b07aa6a92"
       },
       "owningService": null,
@@ -14393,8 +14393,8 @@
       "featureId": "failure-state:apps/admin-web/src/main.ts:36d63be351e3:1",
       "source": {
         "path": "apps/admin-web/src/main.ts",
-        "line": 37,
-        "endLine": 37,
+        "line": 39,
+        "endLine": 39,
         "fingerprint": "48ebdab4332e92d603c710da19f8c11707ac8b530c2713c0bb18bba17a9397d2"
       },
       "owningService": null,
@@ -14430,8 +14430,8 @@
       "featureId": "failure-state:apps/admin-web/src/main.ts:97558c958bac:1",
       "source": {
         "path": "apps/admin-web/src/main.ts",
-        "line": 10,
-        "endLine": 10,
+        "line": 12,
+        "endLine": 12,
         "fingerprint": "43e72a7fb4938975bfb14a272a05063afbef663b0f02871d29109e057f10e8b2"
       },
       "owningService": null,
@@ -14763,8 +14763,8 @@
       "featureId": "failure-state:apps/client-mobile/src/main.ts:36d63be351e3:1",
       "source": {
         "path": "apps/client-mobile/src/main.ts",
-        "line": 41,
-        "endLine": 41,
+        "line": 43,
+        "endLine": 43,
         "fingerprint": "48ebdab4332e92d603c710da19f8c11707ac8b530c2713c0bb18bba17a9397d2"
       },
       "owningService": null,
@@ -14800,8 +14800,8 @@
       "featureId": "failure-state:apps/client-mobile/src/main.ts:97558c958bac:1",
       "source": {
         "path": "apps/client-mobile/src/main.ts",
-        "line": 10,
-        "endLine": 10,
+        "line": 12,
+        "endLine": 12,
         "fingerprint": "43e72a7fb4938975bfb14a272a05063afbef663b0f02871d29109e057f10e8b2"
       },
       "owningService": null,
@@ -15281,8 +15281,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/main.ts:36d63be351e3:1",
       "source": {
         "path": "apps/rep-mobile/src/main.ts",
-        "line": 42,
-        "endLine": 42,
+        "line": 44,
+        "endLine": 44,
         "fingerprint": "48ebdab4332e92d603c710da19f8c11707ac8b530c2713c0bb18bba17a9397d2"
       },
       "owningService": null,
@@ -15318,8 +15318,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/main.ts:97558c958bac:1",
       "source": {
         "path": "apps/rep-mobile/src/main.ts",
-        "line": 11,
-        "endLine": 11,
+        "line": 13,
+        "endLine": 13,
         "fingerprint": "43e72a7fb4938975bfb14a272a05063afbef663b0f02871d29109e057f10e8b2"
       },
       "owningService": null,
@@ -15355,8 +15355,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server-main.ts:735aca9c6b1d:1",
       "source": {
         "path": "apps/rep-mobile/src/server-main.ts",
-        "line": 4,
-        "endLine": 4,
+        "line": 5,
+        "endLine": 5,
         "fingerprint": "e598503fd40bc5a387ea573aca45009ba71701757fa8dc6bb21dd53de7226a4b"
       },
       "owningService": null,
@@ -17683,48 +17683,11 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
-      "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:1ee2af1a836d:1",
-      "source": {
-        "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 107,
-        "endLine": 114,
-        "fingerprint": "d80e642a9850c8b9fea98fd985403c5178124fbc5231420307fdcc1ccf8d5406"
-      },
-      "owningService": null,
-      "targetService": null,
-      "mode": "server",
-      "targetSprint": "S10",
-      "reasons": [
-        {
-          "category": "test-mapping",
-          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
-        }
-      ],
-      "requiredTests": [
-        {
-          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/workspace.ts:1ee2af1a836d:1",
-          "scope": "contract",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/workspace.ts:1ee2af1a836d:1",
-          "scope": "integration",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        },
-        {
-          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/workspace.ts:1ee2af1a836d:1",
-          "scope": "e2e",
-          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
-        }
-      ],
-      "disposition": "OPEN_NOT_ACCEPTED"
-    },
-    {
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:1f70e72f69a6:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 47,
-        "endLine": 47,
+        "line": 48,
+        "endLine": 48,
         "fingerprint": "16e401afd73345617d9051a0f6941fe45141c6914b78ff44998d26cc97e7ea68"
       },
       "owningService": null,
@@ -17760,8 +17723,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:1f70e72f69a6:2",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 202,
-        "endLine": 205,
+        "line": 204,
+        "endLine": 207,
         "fingerprint": "d7e9800159a5d919cb2541c51003ffc0d46e22f24151217e9b9b0a85d96de173"
       },
       "owningService": null,
@@ -17797,8 +17760,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:429242fdcc61:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 198,
-        "endLine": 198,
+        "line": 200,
+        "endLine": 200,
         "fingerprint": "015a878598ec83b9240393249ec374477e1bd35c893b3f04f571925f1b22ff25"
       },
       "owningService": null,
@@ -17834,8 +17797,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:60e6656fa14e:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 66,
-        "endLine": 66,
+        "line": 67,
+        "endLine": 67,
         "fingerprint": "eb65afb0a7d016175ddbf48502fb6688cea4cd26e1487cc24416679a044c15ea"
       },
       "owningService": null,
@@ -17871,8 +17834,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:60e6656fa14e:2",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 145,
-        "endLine": 148,
+        "line": 147,
+        "endLine": 150,
         "fingerprint": "a18f7dbb51e359a4697e0f425ed6712d9cb50f6b2c58f34f9e4a95f44d95aa54"
       },
       "owningService": null,
@@ -17908,8 +17871,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:a4c5914dc7c1:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 77,
-        "endLine": 77,
+        "line": 78,
+        "endLine": 78,
         "fingerprint": "1f69cbdeb914b634b11d51658ffc333cf7443737996645c3f9cb10c7bfd78828"
       },
       "owningService": null,
@@ -17942,11 +17905,48 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:c23b2323b699:1",
+      "source": {
+        "path": "apps/rep-mobile/src/server/workspace.ts",
+        "line": 109,
+        "endLine": 116,
+        "fingerprint": "cd1659c1a90fe83c314772a57199448d0313038e7ec0a4303ec9a3feadf609cf"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "server",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/rep-mobile/src/server/workspace.ts:c23b2323b699:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/rep-mobile/src/server/workspace.ts:c23b2323b699:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/rep-mobile/src/server/workspace.ts:c23b2323b699:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:c4ea8c4540d8:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 108,
-        "endLine": 108,
+        "line": 110,
+        "endLine": 110,
         "fingerprint": "663fa78bcb6abf695676ad58c3dcdf89488137c008446d5827b3205efb739311"
       },
       "owningService": null,
@@ -17982,8 +17982,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:cb62b681f624:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 46,
-        "endLine": 46,
+        "line": 47,
+        "endLine": 47,
         "fingerprint": "fa7b2624c766ad4b8e69a6e7e86ce58c15b15f4127102a7e347e3ec3a4a711a6"
       },
       "owningService": null,
@@ -18019,9 +18019,9 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:d25f57527b3a:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 103,
-        "endLine": 106,
-        "fingerprint": "be18a036790621f7af432562f482984c493fe2384ff5ec764a754e01037009a5"
+        "line": 104,
+        "endLine": 108,
+        "fingerprint": "a666681ea197f8b60e28ff71105d2924a14083591c33d1125ad7c05b7422b310"
       },
       "owningService": null,
       "targetService": null,
@@ -18056,8 +18056,8 @@
       "featureId": "failure-state:apps/rep-mobile/src/server/workspace.ts:f7298e236a6e:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 138,
-        "endLine": 140,
+        "line": 140,
+        "endLine": 142,
         "fingerprint": "8f6a7a517c9e8f71ddfa92bfdd9321c7b8c9c0d5f896d0965d37e264f4579668"
       },
       "owningService": null,
@@ -20017,8 +20017,8 @@
       "featureId": "failure-state:packages/app-runtime/src/index.ts:0fa78734197b:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 530,
-        "endLine": 530,
+        "line": 568,
+        "endLine": 568,
         "fingerprint": "02d1a2c43f3230bda4c2a653c8db32fc2c0566dc0e92a1ffc3bf33eafc39cc78"
       },
       "owningService": null,
@@ -20091,8 +20091,8 @@
       "featureId": "failure-state:packages/app-runtime/src/index.ts:3949cb604396:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 536,
-        "endLine": 538,
+        "line": 574,
+        "endLine": 576,
         "fingerprint": "30b258561000ba3bc8ca9f2cb13bce191cbfddc9fd5be21432a7abaf2cac859c"
       },
       "owningService": null,
@@ -20165,8 +20165,8 @@
       "featureId": "failure-state:packages/app-runtime/src/index.ts:88bd94fb4aae:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 352,
-        "endLine": 363,
+        "line": 353,
+        "endLine": 364,
         "fingerprint": "2cfa9ab945007c7b61618c0c521053a57893677d57f7263a8942f0ff4cc507a1"
       },
       "owningService": null,
@@ -20202,8 +20202,8 @@
       "featureId": "failure-state:packages/app-runtime/src/index.ts:9d8ebbd708fc:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 266,
-        "endLine": 269,
+        "line": 267,
+        "endLine": 270,
         "fingerprint": "3497d0ee749c7dbda2ac8c7cbbed25dc274c6e179df58e1d546417b84e875167"
       },
       "owningService": null,
@@ -20350,8 +20350,8 @@
       "featureId": "failure-state:packages/app-runtime/src/index.ts:bd0df3bd4d8f:2",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 379,
-        "endLine": 379,
+        "line": 380,
+        "endLine": 380,
         "fingerprint": "88f06af12ec9d3e9efe352086ea2f309f20c1320b48288dca64071aabd404a51"
       },
       "owningService": null,
@@ -20387,8 +20387,8 @@
       "featureId": "failure-state:packages/app-runtime/src/index.ts:bd0df3bd4d8f:3",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 505,
-        "endLine": 505,
+        "line": 543,
+        "endLine": 543,
         "fingerprint": "88f06af12ec9d3e9efe352086ea2f309f20c1320b48288dca64071aabd404a51"
       },
       "owningService": null,
@@ -20424,8 +20424,8 @@
       "featureId": "failure-state:packages/app-runtime/src/index.ts:bd0df3bd4d8f:4",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 515,
-        "endLine": 515,
+        "line": 553,
+        "endLine": 553,
         "fingerprint": "88f06af12ec9d3e9efe352086ea2f309f20c1320b48288dca64071aabd404a51"
       },
       "owningService": null,
@@ -20461,8 +20461,8 @@
       "featureId": "failure-state:packages/app-runtime/src/index.ts:e0dcb23505c4:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 408,
-        "endLine": 411,
+        "line": 439,
+        "endLine": 442,
         "fingerprint": "f0b1be512a0385023cd277b083b5f22b6d2d3fb2493c6ac29004775914fe1170"
       },
       "owningService": null,
@@ -32375,8 +32375,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:1f9be067f4c4:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 123,
-        "endLine": 153,
+        "line": 125,
+        "endLine": 155,
         "fingerprint": "35ce26a394922d09b9df81c9662c2e3ab82eab600238afc4d4f27aaae3d375bd"
       },
       "owningService": null,
@@ -32412,8 +32412,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:5fe95578c67f:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 117,
-        "endLine": 117,
+        "line": 119,
+        "endLine": 119,
         "fingerprint": "397b2db51c860e669a7c231429564b1b6acaa722d7b16925433b7390452dc274"
       },
       "owningService": null,
@@ -32449,8 +32449,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:6ea370bf32b5:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 173,
-        "endLine": 180,
+        "line": 175,
+        "endLine": 182,
         "fingerprint": "5d524ddc5b65ee63132c05518ca8a76a7efdc359d6618351662007dd689896ad"
       },
       "owningService": null,
@@ -32486,8 +32486,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:74d70aff092a:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 112,
-        "endLine": 112,
+        "line": 114,
+        "endLine": 114,
         "fingerprint": "c1cf04f7403feaea4e988da709d9105271609cab99efed477164a3cb819856e6"
       },
       "owningService": null,
@@ -32523,8 +32523,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:783472c06c38:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 155,
-        "endLine": 159,
+        "line": 157,
+        "endLine": 161,
         "fingerprint": "f8bad342d9332d3a001fc15547ef49c88432ccf1afa12bffd64eb785dfcd4b7d"
       },
       "owningService": null,
@@ -32560,8 +32560,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:b278c86df906:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 160,
-        "endLine": 167,
+        "line": 162,
+        "endLine": 169,
         "fingerprint": "b0e8a08c16142d341eadad877badf75b424134bebb4b38e021ef4618fdb2113e"
       },
       "owningService": null,
@@ -32597,8 +32597,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:db85047714c0:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 121,
-        "endLine": 121,
+        "line": 123,
+        "endLine": 123,
         "fingerprint": "7c2e59a9617a8ba1d108d4c8bc802bc63f42c109a1c8f0e9d3351318b70d2a60"
       },
       "owningService": null,
@@ -32634,8 +32634,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:e3be8ef6e3d9:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 168,
-        "endLine": 172,
+        "line": 170,
+        "endLine": 174,
         "fingerprint": "c381163aeaa42e4c3955af064289020b51a82f370d61b8cb72c52783aa5045ea"
       },
       "owningService": null,
@@ -32671,8 +32671,8 @@
       "featureId": "handler:apps/rep-mobile/src/server/workspace.ts:e81b4ef8e460:1",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 206,
-        "endLine": 213,
+        "line": 208,
+        "endLine": 215,
         "fingerprint": "4568798f5eb1fa9195c29b7109e11e7da0e2b8526b0ae5535008f1353adbfc3a"
       },
       "owningService": null,
@@ -33115,8 +33115,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:262015b34677:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 348,
-        "endLine": 348,
+        "line": 349,
+        "endLine": 349,
         "fingerprint": "bf8b1caaa45075db6e5dd057bb97d1040c734022e80905bdf5d472fe251e93a5"
       },
       "owningService": null,
@@ -33152,9 +33152,9 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:3079f71de935:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 458,
-        "endLine": 482,
-        "fingerprint": "2e65787fec8cb6bed67282848bea64497cf60c3e1d39fce413e9de9da9a6947c"
+        "line": 489,
+        "endLine": 520,
+        "fingerprint": "9ba21e6a1529490c5a94f5215c1cd814ea335fe37d6ebb96dc31ae5f7f821748"
       },
       "owningService": null,
       "targetService": null,
@@ -33189,8 +33189,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:36fd8d725975:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 440,
-        "endLine": 449,
+        "line": 471,
+        "endLine": 480,
         "fingerprint": "c3caf3644891a51d483a7e3a593311e7074c96c57f3be2d7f068e6c238c722d4"
       },
       "owningService": null,
@@ -33226,8 +33226,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:387e64174c7e:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 483,
-        "endLine": 494,
+        "line": 521,
+        "endLine": 532,
         "fingerprint": "0f16a24021cfdfb3543ba998b29098d815390ae1ee707ab2a14f2177ee7b098b"
       },
       "owningService": null,
@@ -33263,8 +33263,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:3d423124eb32:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 348,
-        "endLine": 348,
+        "line": 349,
+        "endLine": 349,
         "fingerprint": "3a1ead6f76ac9a2c53c279838001f7843002eeaabd3b81c9ba5dbf644897644c"
       },
       "owningService": null,
@@ -33300,8 +33300,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:4c5f7b7b9dc6:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 500,
-        "endLine": 507,
+        "line": 538,
+        "endLine": 545,
         "fingerprint": "ee75afc4850be3b3bcaccc7f848d5910b0c931eba9d5e77112b5954abbeb7c62"
       },
       "owningService": null,
@@ -33337,8 +33337,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:4f9c9b9f43a5:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 328,
-        "endLine": 328,
+        "line": 329,
+        "endLine": 329,
         "fingerprint": "d144c13a7804500670c4cbd397bdea921ff4e77be2ed80cf8ec14a4b634323cf"
       },
       "owningService": null,
@@ -33374,8 +33374,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:55ae797ffed8:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 289,
-        "endLine": 289,
+        "line": 290,
+        "endLine": 290,
         "fingerprint": "4fa7065dba4cfa981fb1eb4b837eebed2643569c6125a0acda97a9c1c2847dc5"
       },
       "owningService": null,
@@ -33411,8 +33411,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:593acfdb7473:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 421,
-        "endLine": 421,
+        "line": 452,
+        "endLine": 452,
         "fingerprint": "80c4d1d79d22b93e2f8d7a15f459c1024555f0b2690fc051cbb79af46188c0f0"
       },
       "owningService": null,
@@ -33448,8 +33448,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:593acfdb7473:2",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 454,
-        "endLine": 457,
+        "line": 485,
+        "endLine": 488,
         "fingerprint": "2f5789977788bd8af99c55efbdfc5aeaf9474417429c7d537f7801188278e7a9"
       },
       "owningService": null,
@@ -33485,8 +33485,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:5fff9b177dc4:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 495,
-        "endLine": 499,
+        "line": 533,
+        "endLine": 537,
         "fingerprint": "2ef7319a89727c888e6ed12da9c23490ced25970ad2824c0a7aee19e995f786c"
       },
       "owningService": null,
@@ -33559,8 +33559,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:75a0b4ec8977:2",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 386,
-        "endLine": 386,
+        "line": 387,
+        "endLine": 387,
         "fingerprint": "341650645a61072b7e047ad1fb6a5f02a5e609e2d2e47f13bc7f215787bd9e59"
       },
       "owningService": null,
@@ -33596,8 +33596,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:7ee408f19ddd:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 241,
-        "endLine": 241,
+        "line": 242,
+        "endLine": 242,
         "fingerprint": "ad3358053c50ae0653a7b17be7c390bc6b9444ee883f1c1bc11652c956327eb4"
       },
       "owningService": null,
@@ -33633,8 +33633,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:873b10982192:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 305,
-        "endLine": 305,
+        "line": 306,
+        "endLine": 306,
         "fingerprint": "9d8b4e9df8cb3387857e7d99f19637244f1a86edc7014593d8550388a6e2ec6e"
       },
       "owningService": null,
@@ -33707,8 +33707,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:a2347753eb9e:2",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 348,
-        "endLine": 348,
+        "line": 349,
+        "endLine": 349,
         "fingerprint": "d091ee722e257fc4f91e9318ab46942f67077bf30750c6813f1bd314180869de"
       },
       "owningService": null,
@@ -33781,8 +33781,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:d9882624d8bd:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 422,
-        "endLine": 422,
+        "line": 453,
+        "endLine": 453,
         "fingerprint": "85eb9c9f75c2b737197b5b3574d9fe206cb83b47f61e426637a0881ac6d39494"
       },
       "owningService": null,
@@ -33818,8 +33818,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:d9882624d8bd:2",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 450,
-        "endLine": 453,
+        "line": 481,
+        "endLine": 484,
         "fingerprint": "c663cef1a891a67aebbd895fe9b4c13daf958e8606a9b4750ad9a497fdf96914"
       },
       "owningService": null,
@@ -33892,8 +33892,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:de5021752a13:2",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 241,
-        "endLine": 241,
+        "line": 242,
+        "endLine": 242,
         "fingerprint": "ad3358053c50ae0653a7b17be7c390bc6b9444ee883f1c1bc11652c956327eb4"
       },
       "owningService": null,
@@ -34003,8 +34003,8 @@
       "featureId": "handler:packages/app-runtime/src/index.ts:f97a805bcf9e:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 423,
-        "endLine": 439,
+        "line": 454,
+        "endLine": 470,
         "fingerprint": "2d45851541bc9bf9151d0daaf82564635d49537b09852aa87c2d18dd7d9a5872"
       },
       "owningService": null,
@@ -38961,8 +38961,8 @@
       "featureId": "route:rep:server:billing",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 32,
-        "endLine": 32,
+        "line": 33,
+        "endLine": 33,
         "fingerprint": "0fe2ebf812610c24bd7afccf48f46b7f8dfb257211c3275b3a8691281f19344b"
       },
       "owningService": null,
@@ -38998,8 +38998,8 @@
       "featureId": "route:rep:server:contracts",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 30,
-        "endLine": 30,
+        "line": 31,
+        "endLine": 31,
         "fingerprint": "19d25ee3ce3daa7d2d0d01113f4ae2ca7a2b40d7ae36c1ab8e85bdb90ae6ea0f"
       },
       "owningService": null,
@@ -39035,8 +39035,8 @@
       "featureId": "route:rep:server:home",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 19,
-        "endLine": 19,
+        "line": 20,
+        "endLine": 20,
         "fingerprint": "fad645bea49f5477aa364703ce68e0a4be19235ed7830d98699b626c8128ed61"
       },
       "owningService": null,
@@ -39072,8 +39072,8 @@
       "featureId": "route:rep:server:messages",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 28,
-        "endLine": 28,
+        "line": 29,
+        "endLine": 29,
         "fingerprint": "58c3e78e38e4a1f0e2529d513e26a7a8c5efbba3eed11b587b99fe96d9cd1a6e"
       },
       "owningService": null,
@@ -39109,8 +39109,8 @@
       "featureId": "route:rep:server:notifications",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 29,
-        "endLine": 29,
+        "line": 30,
+        "endLine": 30,
         "fingerprint": "2fe888c849e674ec9a395cf3ab590a38909ad74b92eab35bfdff84b37dfca10a"
       },
       "owningService": null,
@@ -39146,8 +39146,8 @@
       "featureId": "route:rep:server:opportunities",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 24,
-        "endLine": 24,
+        "line": 25,
+        "endLine": 25,
         "fingerprint": "7e2bf6bc95f8560736a821deab6e563cacb09cd6624eab9121071182ba9e7d36"
       },
       "owningService": null,
@@ -39183,8 +39183,8 @@
       "featureId": "route:rep:server:projects",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 31,
-        "endLine": 31,
+        "line": 32,
+        "endLine": 32,
         "fingerprint": "2cf7b18bf4f987295fbd16a5c6d063f8f7c76a719557e95048dd4b7b8ab2bcbf"
       },
       "owningService": null,
@@ -39220,8 +39220,8 @@
       "featureId": "route:rep:server:support",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 33,
-        "endLine": 33,
+        "line": 34,
+        "endLine": 34,
         "fingerprint": "b6e7c6be0f37958d7160cffb4fa0a069584918794c6603825e20d84e8db3046f"
       },
       "owningService": null,
@@ -39257,8 +39257,8 @@
       "featureId": "route:rep:server:tasks",
       "source": {
         "path": "apps/rep-mobile/src/server/workspace.ts",
-        "line": 27,
-        "endLine": 27,
+        "line": 28,
+        "endLine": 28,
         "fingerprint": "9d60e6043c1e6534eb9a2b8a6410533464954a42e149baa95ad756508f56d58b"
       },
       "owningService": null,
@@ -46879,9 +46879,9 @@
       "featureId": "search-filter:packages/app-runtime/src/index.ts:b2f98802e3ae:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 462,
-        "endLine": 464,
-        "fingerprint": "11f72766d06bc6a1cdab1eb9db276e4fb32de76d4f5de8456fd5616b7024ddc1"
+        "line": 493,
+        "endLine": 502,
+        "fingerprint": "d952df7e4ce4f78b77d0cc6a45f6177b1eae264d133db6628dfd3e9d6ad3008d"
       },
       "owningService": null,
       "targetService": null,
@@ -46916,8 +46916,8 @@
       "featureId": "search-filter:packages/app-runtime/src/index.ts:b5e79ffbd3c2:1",
       "source": {
         "path": "packages/app-runtime/src/index.ts",
-        "line": 294,
-        "endLine": 294,
+        "line": 295,
+        "endLine": 295,
         "fingerprint": "d284e38b6b2d80758e51327c3bae170e02cb7ce41b4602bfd27d0901ba2cf760"
       },
       "owningService": null,

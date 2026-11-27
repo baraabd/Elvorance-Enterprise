@@ -1,4 +1,7 @@
+import { describeWith } from '@elvorance/ui/enterprise-ux';
 import { button, el, errorMessage } from './dom.ts';
+
+let fieldSequence = 0;
 
 export interface Choice {
   value: string;
@@ -37,6 +40,11 @@ export function fieldControl(
         ? el('select')
         : el('input');
   control.name = field.name;
+  do control.id = `rep-field-${++fieldSequence}`;
+  while (document.getElementById(control.id));
+  control.dir = ['email', 'tel', 'number', 'date', 'datetime-local'].includes(field.type ?? '')
+    ? 'ltr'
+    : 'auto';
   control.required = field.required ?? false;
   if (control instanceof HTMLInputElement) {
     control.type = field.type ?? 'text';
@@ -74,7 +82,12 @@ export function addField(form: HTMLElement, field: Field): ReturnType<typeof fie
   label.append(el('span', field.label));
   const control = fieldControl(field);
   label.append(control);
-  if (field.hint) label.append(el('small', field.hint, 'muted'));
+  if (field.hint) {
+    const hint = el('small', field.hint, 'muted');
+    hint.id = `${control.id}-hint`;
+    describeWith(control, hint.id);
+    label.append(hint);
+  }
   form.append(label);
   return control;
 }
@@ -123,6 +136,7 @@ export function commandForm(options: {
       const wasInert = form.inert === true;
       form.inert = true;
       submit.disabled = true;
+      output.setAttribute('role', 'status');
       output.textContent = 'جارٍ الحفظ…';
       form.setAttribute('aria-busy', 'true');
       // Form data remains intact after a network failure, including its idempotency intent.
@@ -132,7 +146,10 @@ export function commandForm(options: {
           if (!options.signal.aborted) output.textContent = 'تم الحفظ.';
         })
         .catch((error: unknown) => {
-          if (!options.signal.aborted) output.textContent = errorMessage(error);
+          if (!options.signal.aborted) {
+            output.setAttribute('role', 'alert');
+            output.textContent = errorMessage(error);
+          }
         })
         .finally(() => {
           busy = false;

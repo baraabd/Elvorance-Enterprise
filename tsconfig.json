@@ -41,6 +41,8 @@
     "tooling/scripts/test-local-identity.mts",
     "tooling/production/**/*.mts",
     "tests/production/**/*.mts",
+    "tests/ux/**/*.ts",
+    "tests/ux/**/*.mts",
     "apps/admin-web/src/server/**/*.ts",
     "apps/admin-web/src/server-main.ts",
     "tests/admin/**/*.mts",

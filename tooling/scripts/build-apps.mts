@@ -21,6 +21,8 @@ const commonCss = (
 ).join('\n');
 const arabicCssPath = 'packages/design-system/src/arabic-accessibility.css';
 const arabicCss = await read(arabicCssPath);
+const enterpriseCssPath = 'packages/design-system/src/enterprise.css';
+const enterpriseCss = await read(enterpriseCssPath);
 await mkdir(resolve(root, 'dist'), { recursive: true });
 for (const app of apps) {
   const output = resolve(root, `apps/${app.folder}/dist`);
@@ -45,7 +47,9 @@ for (const app of apps) {
       '\n' +
       (app.folder === 'admin-web' ? await read('apps/admin-web/src/server/styles.css') : '') +
       '\n' +
-      arabicCss,
+      arabicCss +
+      '\n' +
+      enterpriseCss,
   );
   await writeFile(resolve(output, 'assets/app.css'), css);
   const html = await read(`apps/${app.folder}/index.html`);
@@ -79,6 +83,7 @@ for (const app of apps) {
       `apps/${app.folder}/config.example.ts`,
       `apps/${app.folder}/src/styles.css`,
       arabicCssPath,
+      enterpriseCssPath,
       ...(app.folder === 'admin-web' ? ['apps/admin-web/src/server/styles.css'] : []),
       ...['styles', 'polish', 'tracking'].map((name) => `packages/design-system/src/${name}.css`),
     ]),
