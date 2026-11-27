@@ -1,0 +1,54 @@
+name: Prepare reviewed PR19 candidate
+on:
+  push:
+    branches: [repair/pr19-source-20261127]
+    paths: [.github/workflows/repair-publish19-20261127.yml]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - name: Restore pinned source and verify reviewed patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp .repair-pr19.patch "$RUNNER_TEMP/pr19.patch"
+          printf '%s  %s\n' 76a547fc749bd0b3189fc24a31fb10cbf11faac3014ca9d6fe04502db270ee31 "$RUNNER_TEMP/pr19.patch" | sha256sum -c -
+          git checkout --detach 4d5e4c3d2b7da24bf1263db82874990451803363
+          git apply --check "$RUNNER_TEMP/pr19.patch"
+          git apply --index "$RUNNER_TEMP/pr19.patch"
+          test "$(git write-tree)" = 8227ce9ea6a14a7ac8128af159aed903d487d929
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - run: npm run check:types
+      - run: npm run check:format
+      - run: npm run inventory:check
+      - name: Publish only the verified source to a new repair result branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git write-tree)" = 8227ce9ea6a14a7ac8128af159aed903d487d929
+          git diff --exit-code
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          COMMIT=$(printf '%s\n' 'fix(ux): wrap Arabic visit status without clipping and verify font-dependent layouts' | git commit-tree 8227ce9ea6a14a7ac8128af159aed903d487d929 -p 4d5e4c3d2b7da24bf1263db82874990451803363)
+          git branch repair/pr19-result-20261127 "$COMMIT"
+          git push origin refs/heads/repair/pr19-result-20261127:refs/heads/repair/pr19-result-20261127
+          mkdir -p "$RUNNER_TEMP/pr19-result"
+          printf '%s\n' "$COMMIT" > "$RUNNER_TEMP/pr19-result/commit.txt"
+          git show --no-patch --format='%H%n%T%n%P' "$COMMIT" > "$RUNNER_TEMP/pr19-result/source.txt"
+          git bundle create "$RUNNER_TEMP/pr19-result/candidate.bundle" 4d5e4c3d2b7da24bf1263db82874990451803363..repair/pr19-result-20261127
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: repair-pr19-candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/pr19-result/
+          if-no-files-found: error
+          retention-days: 7
