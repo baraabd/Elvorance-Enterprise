@@ -58,7 +58,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/verified-candidate"
           git show --no-patch --format='%H%n%T%n%P' "$COMMIT" > "$RUNNER_TEMP/verified-candidate/source.txt"
           git bundle create "$RUNNER_TEMP/verified-candidate/candidate.bundle" 2ff6af6b9e5e673a8308784aabf20905e61c80b0..repair/pr20-bindings-result-20261127
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540e92b4886f43607fa02
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: repair-pr20-bindings-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/verified-candidate/
