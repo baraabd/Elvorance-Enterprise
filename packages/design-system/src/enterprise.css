@@ -158,4 +158,11 @@ input[dir="auto"]:placeholder-shown, textarea[dir="auto"]:placeholder-shown {
 @media (max-width: 599px) {
   .data-table { white-space: normal; overflow-wrap: anywhere; }
   .data-table th, .data-table td { padding-inline: .5rem; }
+  /* A non-wrapping status must not shrink beneath its Arabic text width. */
+  .rep-agreement-summary > .row-between { flex-wrap: wrap; }
+  .rep-agreement-summary > .row-between > .badge {
+    max-inline-size: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }

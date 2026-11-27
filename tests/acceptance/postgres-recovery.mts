@@ -313,55 +313,63 @@ try {
   const app = crmApp({ repository: crm.repository, auth });
   const url = await app.listen({ host: '127.0.0.1', port: 0 });
   const upstreams = Object.fromEntries(definitions.map((d) => [d.name, url])) as Upstreams;
-  const gateway = gatewayApp({ auth, upstreams });
   try {
-    const base = await gateway.listen({ host: '127.0.0.1', port: 0 });
-    const headers = { authorization: 'Bearer ' + token, 'content-type': 'application/json' };
-    const created = await fetch(base + '/v1/crm/customers', {
-      method: 'POST',
-      headers: { ...headers, 'idempotency-key': 'load-fixture-create' },
-      body: JSON.stringify({ name: 'Synthetic load customer' }),
-    });
-    assert.equal(created.status, 200);
-    const customer = (await created.json()) as { id: string };
+    // Each concurrency stage measures a fresh gateway with the production budgets.
+    // Sharing one limiter across 3 x 120 reads incorrectly exhausts its 300-request
+    // principal window. Isolate stages instead of weakening limits or accepting 429s.
     for (const concurrency of [1, 4, 8]) {
-      const latencies: number[] = [];
-      const errors: number[] = [];
-      let next = 0;
-      const start = performance.now();
-      await Promise.all(
-        Array.from({ length: concurrency }, async () => {
-          while (next++ < 120) {
-            const began = performance.now();
-            const response = await fetch(base + '/v1/crm/customers/' + customer.id, {
-              headers,
-              signal: AbortSignal.timeout(15000),
-            });
-            const payload = (await response.json()) as { id?: string };
-            latencies.push(performance.now() - began);
-            if (response.status !== 200 || payload.id !== customer.id) errors.push(response.status);
-          }
-        }),
-      );
-      const elapsed = performance.now() - start;
-      latencies.sort((a, b) => a - b);
-      const percentile = (p: number) => latencies[Math.ceil(latencies.length * p) - 1];
-      loadReports.push({
-        scope: 'gateway-to-CRM HTTP + PostgreSQL, disposable same-runner CI',
-        concurrency,
-        requests: latencies.length,
-        failures: errors.length,
-        elapsedMilliseconds: elapsed,
-        requestsPerSecond: latencies.length / (elapsed / 1000),
-        p50Milliseconds: percentile(0.5),
-        p95Milliseconds: percentile(0.95),
-        p99Milliseconds: percentile(0.99),
-      });
-      assert.equal(latencies.length, 120);
-      assert.deepEqual(errors, []);
+      const gateway = gatewayApp({ auth, upstreams });
+      try {
+        const base = await gateway.listen({ host: '127.0.0.1', port: 0 });
+        const headers = { authorization: 'Bearer ' + token, 'content-type': 'application/json' };
+        const created = await fetch(base + '/v1/crm/customers', {
+          method: 'POST',
+          headers: { ...headers, 'idempotency-key': 'load-fixture-create-' + concurrency },
+          body: JSON.stringify({ name: 'Synthetic load customer ' + concurrency }),
+        });
+        assert.equal(created.status, 200);
+        const customer = (await created.json()) as { id: string };
+        const latencies: number[] = [];
+        const errors: number[] = [];
+        let next = 0;
+        const start = performance.now();
+        await Promise.all(
+          Array.from({ length: concurrency }, async () => {
+            while (next++ < 120) {
+              const began = performance.now();
+              const response = await fetch(base + '/v1/crm/customers/' + customer.id, {
+                headers,
+                signal: AbortSignal.timeout(15000),
+              });
+              const payload = (await response.json()) as { id?: string };
+              latencies.push(performance.now() - began);
+              if (response.status !== 200 || payload.id !== customer.id)
+                errors.push(response.status);
+            }
+          }),
+        );
+        const elapsed = performance.now() - start;
+        latencies.sort((a, b) => a - b);
+        const percentile = (p: number) => latencies[Math.ceil(latencies.length * p) - 1];
+        loadReports.push({
+          scope: 'gateway-to-CRM HTTP + PostgreSQL, disposable same-runner CI',
+          rateLimitScope: 'fresh gateway per concurrency stage; unchanged production defaults',
+          concurrency,
+          requests: latencies.length,
+          failures: errors.length,
+          elapsedMilliseconds: elapsed,
+          requestsPerSecond: latencies.length / (elapsed / 1000),
+          p50Milliseconds: percentile(0.5),
+          p95Milliseconds: percentile(0.95),
+          p99Milliseconds: percentile(0.99),
+        });
+        assert.equal(latencies.length, 120);
+        assert.deepEqual(errors, []);
+      } finally {
+        await gateway.close();
+      }
     }
   } finally {
-    await gateway.close();
     await app.close();
   }
   complete = true;

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "f2cb9194e0898ccc61ea721db6d7a3c081626b138dcba4d0643324bf79ec0958",
+  "sourceDigest": "c9a705eacc1b3718ed4e199304a731d71ddef351064411c6f48083c67214cb02",
   "scope": "Every discovered source feature, including all three applications and services. Execution belongs to exact-SHA CI artifacts, not inferred links.",
   "individualFeatureAcceptance": "NOT_ESTABLISHED",
   "features": [
@@ -3294,6 +3294,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -3309,6 +3310,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -13455,6 +13457,7 @@
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -13464,6 +13467,7 @@
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -13583,6 +13587,7 @@
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -13592,6 +13597,7 @@
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -13651,6 +13657,7 @@
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -13660,6 +13667,7 @@
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -13719,6 +13727,7 @@
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -13728,6 +13737,7 @@
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -13847,6 +13857,7 @@
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -13856,6 +13867,7 @@
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19310,6 +19322,7 @@
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19328,6 +19341,7 @@
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19745,6 +19759,7 @@
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -19763,6 +19778,7 @@
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -21406,6 +21422,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -21421,6 +21438,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -21487,6 +21505,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -21502,6 +21521,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -21997,6 +22017,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -22012,6 +22033,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -22078,6 +22100,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -22093,6 +22116,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -22588,6 +22612,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -22603,6 +22628,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -26803,6 +26829,7 @@
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
           "T:tests/backend/pagination.test.ts:23fbaa27b55c:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -26817,6 +26844,7 @@
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
           "T:tests/backend/pagination.test.ts:23fbaa27b55c:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -27470,6 +27498,7 @@
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
           "T:tests/backend/pagination.test.ts:23fbaa27b55c:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -27484,6 +27513,7 @@
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
           "T:tests/backend/pagination.test.ts:23fbaa27b55c:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -28052,6 +28082,7 @@
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
           "T:tests/backend/pagination.test.ts:23fbaa27b55c:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -28066,6 +28097,7 @@
           "T:tests/backend/ownership-regressions.test.ts:8ee756a89384:1",
           "T:tests/backend/pagination.test.ts:23fbaa27b55c:1",
           "T:tests/backend/postgres.test.ts:0567cd29ccfc:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -69823,6 +69855,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -69838,6 +69871,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -69902,6 +69936,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -69917,6 +69952,7 @@
           "T:tests/backend/gateway-readiness.test.ts:0f2751cf0d36:1",
           "T:tests/backend/gateway-readiness.test.ts:d0fb770bdc79:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/backend/pr-repair-security.test.ts:790f286965e9:1",
           "T:tests/backend/security-and-gateway.test.ts:0864ffe23c68:1",
           "T:tests/backend/sprint03-regressions.test.ts:758165ccfb6c:1",
@@ -74506,6 +74542,7 @@
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -74515,6 +74552,7 @@
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -84141,6 +84179,7 @@
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -84150,6 +84189,7 @@
           "T:packages/api-client/test/client.test.ts:13916a15d464:1",
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1"
@@ -105064,6 +105104,7 @@
         "integration": [
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1",
@@ -105077,6 +105118,7 @@
           "T:tests/admin/e2e.ts:a2a97a674cd0:1",
           "T:tests/backend/gateway-input-errors.test.ts:90fd58ba0f81:1",
           "T:tests/backend/http-response-semantics.test.ts:954fa8ab7a01:1",
+          "T:tests/backend/pr-repair-security.test.ts:766aea1e3463:1",
           "T:tests/integration/live-workspace.test.mts:3a6f30218d30:1",
           "T:tests/integration/rep-server-views.test.ts:2fa9ac900b44:1",
           "T:tests/integration/rep-server-views.test.ts:cfc7bc82d2da:1",

@@ -9,6 +9,7 @@ import { createApp as createGateway } from '../../services/api-gateway/src/app.t
 import type { Upstreams } from '../../services/api-gateway/src/domain/routes.ts';
 import { adminTokenFromEnv } from '../../infra/identity/admin-client.mts';
 import { copyContent } from '../../tooling/scripts/copy-content.mts';
+import { auth } from './helpers.ts';
 
 const upstreams = Object.fromEntries(
   ['identity', 'crm', 'sales', 'delivery', 'billing', 'tracking', 'communications'].map((name) => [
@@ -114,4 +115,33 @@ test('PR repair: content copy cannot truncate its source or a hard-linked destin
   await rm(destination);
   await copyContent(source, destination);
   assert.equal(await readFile(destination, 'utf8'), 'source bytes');
+});
+
+test('PR repair: the default gateway principal budget still rejects request 301 before forwarding', async (t) => {
+  let forwarded = 0;
+  const app = createGateway({
+    auth,
+    upstreams,
+    fetcher: async () => {
+      forwarded++;
+      return new Response(JSON.stringify({ items: [], nextCursor: null }), {
+        status: 200,
+        headers: { 'content-type': 'application/json' },
+      });
+    },
+  });
+  t.after(() => app.close());
+  const request = {
+    method: 'GET' as const,
+    url: '/v1/crm/customers',
+    headers: { authorization: 'Bearer rep' },
+  };
+  for (let index = 0; index < 300; index++) {
+    assert.equal((await app.inject(request)).statusCode, 200);
+  }
+  const limited = await app.inject(request);
+  assert.equal(limited.statusCode, 429);
+  assert.equal(limited.json().error.code, 'RATE_LIMITED');
+  assert.ok(Number(limited.headers['retry-after']) > 0);
+  assert.equal(forwarded, 300, 'a limited request must never reach the upstream');
 });
