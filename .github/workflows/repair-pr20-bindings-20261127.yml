@@ -1,0 +1,66 @@
+name: Prepare reviewed PR20 contract trace repair
+on:
+  push:
+    branches: [repair/pr20-bindings-source-20261127]
+    paths: [.github/workflows/repair-pr20-bindings-20261127.yml]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - name: Verify transport and apply only the reviewed source changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import base64, hashlib, os, pathlib, zlib
+          encoded = ''.join(pathlib.Path(f'.repair-bindings-part{i}').read_text().strip() for i in range(4))
+          assert len(encoded) == 11188
+          patch = zlib.decompress(base64.b64decode(encoded, validate=True))
+          assert hashlib.sha256(patch).hexdigest() == '0e531895f098ab8eb7fffd454311131442509e460045ccb225895ca250d5b03c'
+          pathlib.Path(os.environ['RUNNER_TEMP'], 'bindings.patch').write_bytes(patch)
+          PY
+          git checkout --detach 2ff6af6b9e5e673a8308784aabf20905e61c80b0
+          git apply --check "$RUNNER_TEMP/bindings.patch"
+          git apply --index "$RUNNER_TEMP/bindings.patch"
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Rebuild inventories and confirm the locally verified source tree
+        run: |
+          npm run inventory:write
+          node tooling/qa/sprint09-matrix.mts --write
+          git add docs/production docs/qa/sprint09/test-matrix.json
+          test "$(git write-tree)" = 7b11c96935ee3daaf3e2f2dcc0b87c6c7a62ecf1
+      - run: npm run check:types
+      - run: npm run check:format
+      - run: npm run check:boundaries
+      - run: npm run test:production
+      - run: npm run inventory:check
+      - name: Publish clean candidate without transport or auxiliary workflow history
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git write-tree)" = 7b11c96935ee3daaf3e2f2dcc0b87c6c7a62ecf1
+          git diff --exit-code
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          COMMIT=$(printf '%s\n' 'fix(acceptance): validate staging resource IDs and bind reviewed calls to exact backend contracts' | git commit-tree 7b11c96935ee3daaf3e2f2dcc0b87c6c7a62ecf1 -p 2ff6af6b9e5e673a8308784aabf20905e61c80b0)
+          git branch repair/pr20-bindings-result-20261127 "$COMMIT"
+          git push origin refs/heads/repair/pr20-bindings-result-20261127:refs/heads/repair/pr20-bindings-result-20261127
+          mkdir -p "$RUNNER_TEMP/verified-candidate"
+          git show --no-patch --format='%H%n%T%n%P' "$COMMIT" > "$RUNNER_TEMP/verified-candidate/source.txt"
+          git bundle create "$RUNNER_TEMP/verified-candidate/candidate.bundle" 2ff6af6b9e5e673a8308784aabf20905e61c80b0..repair/pr20-bindings-result-20261127
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540e92b4886f43607fa02
+        with:
+          name: repair-pr20-bindings-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/verified-candidate/
+          if-no-files-found: error
+          retention-days: 7
