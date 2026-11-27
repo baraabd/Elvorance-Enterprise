@@ -344,6 +344,14 @@ export function bindSemantics(
       row.mode === 'demo' ? 'DEMO_ONLY' : 'SOURCE_TRACE_BOUND_IMPLEMENTATION_UNVERIFIED';
   }
 }
+// Hosted acceptance sources are inventoried too. Admit only the reviewed staging
+// caller/guard files; retain scanned membership, source hashes and exact route checks.
+const stagingEvidenceSources = new Set([
+  'infra/railway/staging/http.mts',
+  'infra/railway/staging/target.mts',
+  'infra/railway/staging/journey.mts',
+  'infra/railway/staging/policy-checks.mts',
+]);
 export async function applySemanticBindings(ws: Workspace, features: Feature[]): Promise<void> {
   let raw: string;
   try {
@@ -358,7 +366,7 @@ export async function applySemanticBindings(ws: Workspace, features: Feature[]):
     if (
       !ws.files.includes(path) ||
       path.includes('..') ||
-      !/^(apps|services|packages)\//.test(path)
+      (!/^(apps|services|packages)\//.test(path) && !stagingEvidenceSources.has(path))
     )
       throw new Error('Semantic evidence path outside scanned source: ' + path);
     sources.set(

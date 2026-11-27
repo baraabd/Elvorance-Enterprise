@@ -1,8 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, mkdtemp, mkdir, writeFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { dirname, resolve } from 'node:path';
+import ts from 'typescript';
 import {
   bindSemantics,
+  applySemanticBindings,
   nativeDeclarations,
   parseBindings,
   semanticReasons,
@@ -303,4 +307,66 @@ test('all committed semantic decisions bind to current source without upgrading 
       .filter((row) => row.kind === 'native-adapter' && row.apps.includes('client'))
       .every((row) => row.currentStatus !== 'PASS'),
   );
+});
+
+test('only reviewed and scanned staging sources can supply semantic evidence', async (t) => {
+  const cases = [
+    ['infra/railway/staging/http.mts', true, true],
+    ['infra/railway/staging/target.mts', true, true],
+    ['infra/railway/staging/journey.mts', true, true],
+    ['infra/railway/staging/policy-checks.mts', true, true],
+    ['infra/railway/staging/journey.mts', false, false],
+    ['infra/railway/production/journey.mts', true, false],
+    ['infra/railway/staging/unreviewed.mts', true, false],
+    ['docs/arbitrary.mts', true, false],
+    ['infra/railway/staging/../journey.mts', true, false],
+  ] as const;
+  for (const [path, scanned, accepted] of cases) {
+    await t.test(`${path} scanned=${scanned}`, async () => {
+      const f = fixture();
+      const oldPath = f.caller.source.path;
+      const text = f.sources.get(oldPath);
+      assert.ok(text);
+      f.caller.source.path = path;
+      f.sources.delete(oldPath);
+      f.sources.set(path, text);
+      delete f.document.evidenceFiles[oldPath];
+      f.document.evidenceFiles[path] = sha256(text);
+      f.binding.evidencePaths = f.binding.evidencePaths.map((p) => (p === oldPath ? path : p));
+      const root = await mkdtemp(resolve(tmpdir(), 'elv-semantic-staging-'));
+      try {
+        await mkdir(resolve(root, 'docs/production'), { recursive: true });
+        await writeFile(
+          resolve(root, 'docs/production/semantic-bindings.json'),
+          JSON.stringify(f.document),
+        );
+        for (const [file, value] of f.sources) {
+          if (file.includes('..')) continue;
+          await mkdir(dirname(resolve(root, file)), { recursive: true });
+          await writeFile(resolve(root, file), value);
+        }
+        const workspace = {
+          root,
+          files: [...f.sources.keys()].filter((p) => p !== path || scanned),
+          sources: new Map(),
+          checker: ts.createProgram([], {}).getTypeChecker(),
+        };
+        if (accepted) {
+          await applySemanticBindings(workspace, f.features);
+          assert.ok(f.caller.sourceTrace);
+          assert.ok(!f.caller.unresolved.includes(semanticReasons[1]));
+          assert.ok(f.caller.unresolved.includes(testDebt));
+          assert.equal(f.caller.tests.verification, 'NOT_EXECUTED');
+        } else {
+          await assert.rejects(
+            applySemanticBindings(workspace, f.features),
+            /outside scanned source/,
+          );
+          assert.equal(f.caller.sourceTrace, undefined);
+        }
+      } finally {
+        await rm(root, { recursive: true, force: true });
+      }
+    });
+  }
 });
