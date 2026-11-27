@@ -107,7 +107,11 @@
     "apps/client-mobile/ios/App/App/Auth/AuthRedirect.swift": "7b51a077bb17b63050b547513172d743169a8088ee6343720007d305bbadbba5",
     "apps/client-mobile/ios/App/App/Auth/AuthSecureStore.swift": "ca7908ff8f72549539896e45b6310a5db073aa69bcee274646b52db133b1f35d",
     "apps/client-mobile/ios/App/App/Auth/ElvoranceAuthBridgePlugin.swift": "e7dc872b4fd98c61afb715835b12655be01fa1be48a5b689f309f0bb4d57b3d3",
-    "apps/client-mobile/ios/App/App/ClientBridgeViewController.swift": "d777b28a06204f8cb2f22ac1ebad98374cd1277898fc046cc78c1cb7e2d771af"
+    "apps/client-mobile/ios/App/App/ClientBridgeViewController.swift": "d777b28a06204f8cb2f22ac1ebad98374cd1277898fc046cc78c1cb7e2d771af",
+    "infra/railway/staging/http.mts": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509",
+    "infra/railway/staging/journey.mts": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+    "infra/railway/staging/policy-checks.mts": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+    "infra/railway/staging/target.mts": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
   },
   "bindings": [
     {
@@ -5783,6 +5787,578 @@
           "sha256": "ad707157cef03b46b084b718c59ecfd61cabfa62aa652f802c1e616be18b383b"
         }
       ]
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:09a6ef11d9fc:1",
+      "sourceFingerprint": "6697b81710f7aa2da9f9e3ff96aee6ed7a236775b81e2890566dc1474e02e61a",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:POST /v1/visits/:id/start"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/visits.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:09a6ef11d9fc:2",
+      "sourceFingerprint": "f5d35c4e7a132bdc14b85a9c6f70bd8a4b9af49e3b533c7951f0ab2d2d0ab649",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:POST /v1/visits/:id/start"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/visits.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:2d34d55f1f11:1",
+      "sourceFingerprint": "6ae7c1ac8df697f02d8b7da7c39d38ef9168dac0d11b63409997a8927aebd055",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:POST /v1/quotes/:id/send"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/quotes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:383fab09d85f:1",
+      "sourceFingerprint": "325cb824bf984ef3875bba5f724a33f9ad2a0aff165cec379a92e945212c54eb",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:POST /v1/quotes/:id/accept"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/quotes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:383fab09d85f:2",
+      "sourceFingerprint": "4fbc852548929290176f0b31346e2edbc83f5ca64ce84f0c386bb994f8ecf988",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:POST /v1/quotes/:id/accept"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/quotes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:383fab09d85f:3",
+      "sourceFingerprint": "f6bf8df2ed8f6a23c67bc8e62b8dccd17ab25f350f761eb2dc3747920974f30b",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:POST /v1/quotes/:id/accept"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/quotes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:5b11516e3ea3:1",
+      "sourceFingerprint": "4611e3dc67546e268a2e4baa2b824a6a580853c6a7016dccdd3b37e06b226dda",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:GET /v1/contracts/:id/fulfillment"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/quotes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:83c96c23e94d:1",
+      "sourceFingerprint": "61bfa62bfc79d517cd1f643f8363a12a5d8713197c663bd6d9f53aba8f3f86b5",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:POST /v1/visits/:id/complete"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/visits.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:9257862cf885:1",
+      "sourceFingerprint": "d3f39a222fbb3ab4e2260b61fd077d800c871e5cf4aa6ee72d856da191af9969",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:GET /v1/contracts/:id/fulfillment"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/quotes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:aff5e65ee8ac:1",
+      "sourceFingerprint": "0aa48d073645b84f07846a815d29f8d621b26966e8b62247658a90e666c8e2c6",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:GET /v1/quotes/:id"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/quotes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:b41cdafd9b19:1",
+      "sourceFingerprint": "ca74eee04c9ed969fc26a20b5390af3852bd1ebaabc597ed96b85ade2e5adf3e",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:crm:backend:GET /v1/customers/:id"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/crm/src/application/customers.ts",
+        "services/crm/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:cd958b20655b:1",
+      "sourceFingerprint": "d7f2ece0e1938e460e2beee8c640f0ab654a7742bba9acc150878ff51b3d4793",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:POST /v1/contracts/:id/approve"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/quotes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:cd958b20655b:2",
+      "sourceFingerprint": "838de3c939b76b7729cba215baa0268a5d41d338ddf982e872f1e9cca66f8992",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:POST /v1/contracts/:id/approve"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/quotes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:cd958b20655b:3",
+      "sourceFingerprint": "2728f73bef4caac05b28819fbfe52a40e57b62ae8d3b9b6568f98a0fe5288fc7",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:POST /v1/contracts/:id/approve"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/quotes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:fba75bda349f:1",
+      "sourceFingerprint": "28eefee7cd9aaabc29c672ddb442755450ca4ce1916f4d53c350c07afb72cd47",
+      "sourceFileSha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:GET /v1/visits/:id"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/journey.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:1a91b86d6f8e:1",
+      "sourceFingerprint": "dc23bc793915c4792f939924bd383a4d21fc908f0d9f649d6bbb977079f5d926",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:billing:backend:GET /v1/invoices/:id"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/billing/src/application/payments.ts",
+        "services/billing/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:7df0a11f4433:1",
+      "sourceFingerprint": "d399886d79fa41dcb416262d73d88b082603e0d343bf79ac4353fc5b6160ba53",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:billing:backend:POST /v1/invoices/:id/payments"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/billing/src/application/payments.ts",
+        "services/billing/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:7df0a11f4433:2",
+      "sourceFingerprint": "59acbf7a8fe77455d7bfd22ab38db4a9b019b48b09cb328b83c910e6d637d252",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:billing:backend:POST /v1/invoices/:id/payments"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/billing/src/application/payments.ts",
+        "services/billing/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:7df0a11f4433:3",
+      "sourceFingerprint": "88cd5ef1ae1ec1db7f3cfe34783783b4d7673e2ee90c9b7a10e0e1367a5e5632",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:billing:backend:POST /v1/invoices/:id/payments"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/billing/src/application/payments.ts",
+        "services/billing/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:7df0a11f4433:4",
+      "sourceFingerprint": "76da29099e9430ed36d79846c3e864b0d764bc6607de3d5181f764c24c272c36",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:billing:backend:POST /v1/invoices/:id/payments"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/billing/src/application/payments.ts",
+        "services/billing/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:b41cdafd9b19:1",
+      "sourceFingerprint": "1eea0a63ba276b41c87092a209dae063b70152063681a81f6b0c4a395defe328",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:crm:backend:GET /v1/customers/:id"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/crm/src/application/customers.ts",
+        "services/crm/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:b41cdafd9b19:2",
+      "sourceFingerprint": "755672f9c590818e2a31c2e27cf6605d1ba6aff430aa828ee18ff690963699e7",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:crm:backend:GET /v1/customers/:id"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/crm/src/application/customers.ts",
+        "services/crm/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:e0fec2c5a557:1",
+      "sourceFingerprint": "67cc9193b9a8bc3e9049df3e7e7f3f0cdd4695c7a112c23a07aa78c76ae041e9",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:sales:backend:POST /v1/quotes/:id/accept"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/sales/src/application/assignment.ts",
+        "services/sales/src/application/quotes.ts",
+        "services/sales/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:eeec9d7a5e67:1",
+      "sourceFingerprint": "fe639c9654ff1e4f3ef5013e77f90008d2de8d0a327fdc35b760f9111334a360",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:crm:backend:PATCH /v1/customers/:id"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/crm/src/application/customers.ts",
+        "services/crm/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:eeec9d7a5e67:2",
+      "sourceFingerprint": "fc8aab3432908a3e0303eeafa911ba46f2439c46ec4d2a84e289862b46d78de5",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:crm:backend:PATCH /v1/customers/:id"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/crm/src/application/customers.ts",
+        "services/crm/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:eeec9d7a5e67:3",
+      "sourceFingerprint": "dd4617ace22fed5bf4790dd9a39f8d47e2a49efbc90b91e72b32bd623dfeb2b0",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:crm:backend:PATCH /v1/customers/:id"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/crm/src/application/customers.ts",
+        "services/crm/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:eeec9d7a5e67:4",
+      "sourceFingerprint": "38d48df8cb81486ed0bbd714c4712a1136a6ee722f644e2c225e895365e1a9e3",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:crm:backend:PATCH /v1/customers/:id"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/crm/src/application/customers.ts",
+        "services/crm/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:eeec9d7a5e67:5",
+      "sourceFingerprint": "09dd950667540246b1830682282bef594ae162df35486d46b67993b0c4ebaecc",
+      "sourceFileSha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c",
+      "category": "parameterized-http",
+      "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+      "resolves": ["Dynamic URL/method requires runtime contract validation."],
+      "backendRouteIds": ["api-route:crm:backend:PATCH /v1/customers/:id"],
+      "delegateFeatureIds": [],
+      "evidencePaths": [
+        "infra/railway/staging/http.mts",
+        "infra/railway/staging/policy-checks.mts",
+        "infra/railway/staging/target.mts",
+        "packages/service-kit/src/auth.ts",
+        "packages/service-kit/src/http.ts",
+        "services/crm/src/application/customers.ts",
+        "services/crm/src/transport/routes.ts"
+      ],
+      "nativeMembers": []
     }
   ]
 }

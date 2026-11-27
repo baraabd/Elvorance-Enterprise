@@ -5,6 +5,7 @@ import type { Invoice } from '../../../services/billing/src/domain/model.ts';
 import { ensure, requiredValue, stagingTarget } from './target.mts';
 import { createIdentityFixtures } from './identity-fixture.mts';
 import { hostedJourney } from './journey.mts';
+import { idPath } from './http.mts';
 /** Expectations deliberately authored here; not generated from route-inventory.json. */
 export async function policyChecks(
   identities: Awaited<ReturnType<typeof createIdentityFixtures>>,
@@ -20,7 +21,7 @@ export async function policyChecks(
     status: 403,
   });
   passed('A customer cannot create CRM customers');
-  await http.request('PATCH', `/v1/crm/customers/${customer.id}`, {
+  await http.request('PATCH', `/v1/crm/customers/${idPath(customer.id)}`, {
     session: client,
     body: { expectedVersion: customer.version, repId: 'other' },
     status: 403,
@@ -28,7 +29,7 @@ export async function policyChecks(
   passed('A customer cannot self-reassign');
   const own = await http.request<Record<string, unknown>>(
     'GET',
-    `/v1/crm/customers/${customer.id}`,
+    `/v1/crm/customers/${idPath(customer.id)}`,
     { session: client },
   );
   ensure(!('notes' in own) && !('budget' in own), 'Customer projection leaked internal fields.');
@@ -92,7 +93,7 @@ export async function policyChecks(
     ['client', client],
     ['rep', rep],
   ] as const) {
-    await http.request('POST', `/v1/billing/invoices/${invoice.id}/payments`, {
+    await http.request('POST', `/v1/billing/invoices/${idPath(invoice.id)}/payments`, {
       session,
       body: pay,
       status: 403,
@@ -101,7 +102,7 @@ export async function policyChecks(
   }
   const supportAccount = await identities.create({ tenantId, roles: ['support'] });
   const support = await identities.login(supportAccount, 'admin');
-  await http.request('POST', `/v1/billing/invoices/${invoice.id}/payments`, {
+  await http.request('POST', `/v1/billing/invoices/${idPath(invoice.id)}/payments`, {
     session: support,
     body: pay,
     status: 403,
@@ -109,18 +110,18 @@ export async function policyChecks(
   passed('Support alone cannot record a payment');
   const p = await http.request<{ invoice: Invoice }>(
     'POST',
-    `/v1/billing/invoices/${invoice.id}/payments`,
+    `/v1/billing/invoices/${idPath(invoice.id)}/payments`,
     { session: combo, body: pay },
   );
   ensure(p.invoice.paidMinor === 100, 'Finance ledger control failed.');
   passed('Combined roles retain legitimate finance permission; synthetic ledger entry persists');
-  await http.request('POST', `/v1/billing/invoices/${invoice.id}/payments`, {
+  await http.request('POST', `/v1/billing/invoices/${idPath(invoice.id)}/payments`, {
     session: combo,
     body: { ...pay, requestId: 'stale-' + randomUUID() },
     status: 409,
   });
   passed('Authorized finance cannot overwrite a newer invoice version');
-  const after = await http.request<Invoice>('GET', `/v1/billing/invoices/${invoice.id}`, {
+  const after = await http.request<Invoice>('GET', `/v1/billing/invoices/${idPath(invoice.id)}`, {
     session: client,
   });
   ensure(after.paidMinor === 100, 'Rejected request changed the invoice.');
@@ -152,13 +153,13 @@ export async function policyChecks(
         ' OAuth client',
     );
   }
-  await http.request('POST', `/v1/sales/quotes/${flow.quote.id}/accept`, {
+  await http.request('POST', `/v1/sales/quotes/${idPath(flow.quote.id)}/accept`, {
     session: dualRep,
     body: { expectedVersion: flow.quote.version, consent: true },
     status: 403,
   });
   passed('Dual-role account cannot exercise customer consent through representative token');
-  let updated = await http.request<Customer>('PATCH', `/v1/crm/customers/${customer.id}`, {
+  let updated = await http.request<Customer>('PATCH', `/v1/crm/customers/${idPath(customer.id)}`, {
     session: client,
     body: { expectedVersion: customer.version, doNotContact: true },
   });
@@ -172,22 +173,25 @@ export async function policyChecks(
     status: 409,
   });
   passed('Contact withdrawal blocks new sales work through live CRM boundary');
-  await http.request('PATCH', `/v1/crm/customers/${customer.id}`, {
+  await http.request('PATCH', `/v1/crm/customers/${idPath(customer.id)}`, {
     session: rep,
     body: { expectedVersion: updated.version, doNotContact: false },
     status: 403,
   });
   passed('Representative cannot override customer contact withdrawal');
-  updated = await http.request<Customer>('PATCH', `/v1/crm/customers/${customer.id}`, {
+  updated = await http.request<Customer>('PATCH', `/v1/crm/customers/${idPath(customer.id)}`, {
     session: client,
     body: { expectedVersion: updated.version, doNotContact: false },
   });
   passed('Customer can explicitly restore contact consent');
-  updated = await http.request<Customer>('PATCH', `/v1/crm/customers/${customer.id}`, {
+  updated = await http.request<Customer>('PATCH', `/v1/crm/customers/${idPath(customer.id)}`, {
     session: admin,
     body: { expectedVersion: updated.version, repId: 'ci-other-rep' },
   });
-  await http.request('GET', `/v1/crm/customers/${customer.id}`, { session: rep, status: 404 });
+  await http.request('GET', `/v1/crm/customers/${idPath(customer.id)}`, {
+    session: rep,
+    status: 404,
+  });
   passed('Transferred customer is no longer visible to the former representative');
   // This is an account lifecycle test, not immediate revocation of already-issued offline JWTs.
   await identities.removeRoles(flow.repAccount, ['rep']);

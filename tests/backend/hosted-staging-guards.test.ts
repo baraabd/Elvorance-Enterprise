@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { idPath } from '../../infra/railway/staging/http.mts';
 import {
   assertStaging,
   privateDatabaseUrl,
@@ -51,4 +52,28 @@ test('hosted required values reject missing evidence without rejecting zero or f
   assert.throws(() => requiredValue(null, 'missing evidence'), /missing evidence/);
   assert.equal(requiredValue(0, 'zero is present'), 0);
   assert.equal(requiredValue(false, 'false is present'), false);
+});
+
+test('hosted resource IDs cannot change a URL path, origin, query or fragment', () => {
+  for (const id of ['ci-id_01', 'a'.repeat(128)]) assert.equal(idPath(id), id);
+  for (const id of [
+    '',
+    '.',
+    '..',
+    '../customers',
+    '/admin',
+    'https://foreign.example',
+    '//foreign.example',
+    'id?admin=true',
+    'id#fragment',
+    '%2fadmin',
+    'a\\b',
+    'two words',
+    'a'.repeat(129),
+    '\n',
+    'id\n',
+  ])
+    assert.throws(() => idPath(id), /Invalid staging resource identifier/);
+  for (const value of [null, undefined, 42, ['valid'], { toString: () => 'valid' }])
+    assert.throws(() => idPath(value as never), /Invalid staging resource identifier/);
 });

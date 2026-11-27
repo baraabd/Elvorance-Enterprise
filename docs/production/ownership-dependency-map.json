@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "f684fd3503639fc9135bff70d8476942f900cfea2e4a94bb2a8846beee640c60",
+  "sourceDigest": "73bc0b23d77a98f5d5346f0e045ca8d7d51932ac1305c4038caee3aaf5e8e845",
   "accountability": "Proposed roles only; named service/on-call owners are UNASSIGNED. CODEOWNERS routes review to the repository owner, not proof of independent approval.",
   "services": [
     {
@@ -914,6 +914,7 @@
     { "source": "infra/railway/staging/policy-checks.mts", "specifier": "./target.mts" },
     { "source": "infra/railway/staging/policy-checks.mts", "specifier": "./identity-fixture.mts" },
     { "source": "infra/railway/staging/policy-checks.mts", "specifier": "./journey.mts" },
+    { "source": "infra/railway/staging/policy-checks.mts", "specifier": "./http.mts" },
     { "source": "infra/railway/staging/recovery.mts", "specifier": "./pg-command.mts" },
     { "source": "infra/railway/staging/recovery.mts", "specifier": "pg" },
     {
@@ -2310,6 +2311,10 @@
     { "source": "tests/backend/hosted-staging-guards.test.ts", "specifier": "node:test" },
     {
       "source": "tests/backend/hosted-staging-guards.test.ts",
+      "specifier": "../../infra/railway/staging/http.mts"
+    },
+    {
+      "source": "tests/backend/hosted-staging-guards.test.ts",
       "specifier": "../../infra/railway/staging/target.mts"
     },
     { "source": "tests/backend/hosted-styles.test.ts", "specifier": "node:test" },
@@ -3184,6 +3189,9 @@
     { "source": "tests/production/semantic-bindings.test.mts", "specifier": "node:test" },
     { "source": "tests/production/semantic-bindings.test.mts", "specifier": "node:assert/strict" },
     { "source": "tests/production/semantic-bindings.test.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/production/semantic-bindings.test.mts", "specifier": "node:os" },
+    { "source": "tests/production/semantic-bindings.test.mts", "specifier": "node:path" },
+    { "source": "tests/production/semantic-bindings.test.mts", "specifier": "typescript" },
     {
       "source": "tests/production/semantic-bindings.test.mts",
       "specifier": "../../tooling/production/semantic-bindings.mts"

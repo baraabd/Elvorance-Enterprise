@@ -2,6 +2,14 @@ import { randomUUID } from 'node:crypto';
 import { performance } from 'node:perf_hooks';
 import type { HostedSession } from './identity-fixture.mts';
 import { assertStaging, ensure, stagingTarget } from './target.mts';
+/** Keep server-returned identifiers inside one literal resource path segment. */
+export function idPath(id: string): string {
+  ensure(
+    typeof id === 'string' && /^[a-zA-Z0-9_-]{1,128}$/.test(id),
+    'Invalid staging resource identifier.',
+  );
+  return id;
+}
 export function hostedHttp() {
   assertStaging();
   const observations: Array<{

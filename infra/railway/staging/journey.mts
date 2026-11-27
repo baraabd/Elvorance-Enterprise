@@ -15,7 +15,7 @@ import type { Notification } from '../../../services/communications/src/domain/m
 import { ensure, assertStaging, domains as serviceNames } from './target.mts';
 import { requiredValue } from './target.mts';
 import { createIdentityFixtures } from './identity-fixture.mts';
-import { hostedHttp } from './http.mts';
+import { hostedHttp, idPath } from './http.mts';
 type Page<T> = { items: T[] };
 async function poll<T>(
   name: string,
@@ -176,7 +176,10 @@ export async function hostedJourney(
     'Retry must not duplicate a customer in PostgreSQL.',
   );
   for (const token of [outsider, otherRep])
-    await http.request('GET', `/v1/crm/customers/${customer.id}`, { session: token, status: 404 });
+    await http.request('GET', `/v1/crm/customers/${idPath(customer.id)}`, {
+      session: token,
+      status: 404,
+    });
   const foreign = await http.request<Page<Customer>>('GET', '/v1/crm/customers', {
     session: outsider,
   });
@@ -198,23 +201,30 @@ export async function hostedJourney(
     proof: { kind: 'manual', reason: 'CI synthetic manual arrival evidence; no GPS claim.' },
   };
   const startKey = randomUUID();
-  visit = await http.request<Visit>('POST', `/v1/sales/visits/${visit.id}/start`, {
+  visit = await http.request<Visit>('POST', `/v1/sales/visits/${idPath(visit.id)}/start`, {
     session: rep,
     body: startBody,
     key: startKey,
   });
-  const startRetry = await http.request<Visit>('POST', `/v1/sales/visits/${visit.id}/start`, {
-    session: rep,
-    body: startBody,
-    key: startKey,
-  });
+  const startRetry = await http.request<Visit>(
+    'POST',
+    `/v1/sales/visits/${idPath(visit.id)}/start`,
+    {
+      session: rep,
+      body: startBody,
+      key: startKey,
+    },
+  );
   ensure(
     visit.status === 'active' &&
       visit.startProof?.kind === 'manual' &&
       startRetry.version === visit.version,
     'Manual visit start must persist once.',
   );
-  await http.request('GET', `/v1/sales/visits/${visit.id}`, { session: outsider, status: 404 });
+  await http.request('GET', `/v1/sales/visits/${idPath(visit.id)}`, {
+    session: outsider,
+    status: 404,
+  });
   let quote = await http.request<Quote>('POST', '/v1/sales/quotes', {
     session: rep,
     body: {
@@ -243,7 +253,7 @@ export async function hostedJourney(
     quote.totalMinor === 10000 && quote.status === 'draft',
     'Quote total must be computed by the real sales service.',
   );
-  quote = await http.request<Quote>('POST', `/v1/sales/quotes/${quote.id}/send`, {
+  quote = await http.request<Quote>('POST', `/v1/sales/quotes/${idPath(quote.id)}/send`, {
     session: rep,
     body: { expectedVersion: quote.version },
   });
@@ -257,16 +267,19 @@ export async function hostedJourney(
   });
   const client = await identities.login(clientAccount, 'client');
   const acceptBody = { expectedVersion: quote.version, consent: true };
-  await http.request('POST', `/v1/sales/quotes/${quote.id}/accept`, {
+  await http.request('POST', `/v1/sales/quotes/${idPath(quote.id)}/accept`, {
     session: rep,
     body: acceptBody,
     status: 403,
   });
-  await http.request('GET', `/v1/sales/quotes/${quote.id}`, { session: outsider, status: 404 });
+  await http.request('GET', `/v1/sales/quotes/${idPath(quote.id)}`, {
+    session: outsider,
+    status: 404,
+  });
   const acceptKey = randomUUID();
   const accepted = await http.request<{ quote: Quote; contract: Contract }>(
     'POST',
-    `/v1/sales/quotes/${quote.id}/accept`,
+    `/v1/sales/quotes/${idPath(quote.id)}/accept`,
     { session: client, body: acceptBody, key: acceptKey },
   );
   let contract = accepted.contract;
@@ -278,7 +291,7 @@ export async function hostedJourney(
   );
   const acceptRetry = await http.request<{ contract: Contract }>(
     'POST',
-    `/v1/sales/quotes/${quote.id}/accept`,
+    `/v1/sales/quotes/${idPath(quote.id)}/accept`,
     { session: client, body: acceptBody, key: acceptKey },
   );
   ensure(
@@ -289,7 +302,7 @@ export async function hostedJourney(
     const page = await http.request<Page<unknown>>('GET', path, { session: client });
     ensure(page.items.length === 0, 'Client acceptance alone must not trigger fulfillment.');
   }
-  await http.request('POST', `/v1/sales/contracts/${contract.id}/approve`, {
+  await http.request('POST', `/v1/sales/contracts/${idPath(contract.id)}/approve`, {
     session: client,
     body: {
       expectedVersion: contract.version,
@@ -306,15 +319,19 @@ export async function hostedJourney(
     consent: true,
   };
   const approvalKey = randomUUID();
-  contract = await http.request<Contract>('POST', `/v1/sales/contracts/${contract.id}/approve`, {
-    session: client,
-    body: approvalBody,
-    key: approvalKey,
-  });
+  contract = await http.request<Contract>(
+    'POST',
+    `/v1/sales/contracts/${idPath(contract.id)}/approve`,
+    {
+      session: client,
+      body: approvalBody,
+      key: approvalKey,
+    },
+  );
   ensure(contract.status === 'approved', 'Explicit customer approval must succeed.');
   const approvalRetry = await http.request<Contract>(
     'POST',
-    `/v1/sales/contracts/${contract.id}/approve`,
+    `/v1/sales/contracts/${idPath(contract.id)}/approve`,
     { session: client, body: approvalBody, key: approvalKey },
   );
   ensure(
@@ -326,7 +343,7 @@ export async function hostedJourney(
     () =>
       http.request<Fulfillment & { status: string }>(
         'GET',
-        `/v1/sales/contracts/${contract.id}/fulfillment`,
+        `/v1/sales/contracts/${idPath(contract.id)}/fulfillment`,
         { session: client },
       ),
     (value) => value.status === 'ready',
@@ -383,7 +400,7 @@ export async function hostedJourney(
     'Event-generated notifications must remain tenant scoped.',
   );
   for (const path of [
-    `/v1/sales/contracts/${contract.id}/fulfillment`,
+    `/v1/sales/contracts/${idPath(contract.id)}/fulfillment`,
     `/v1/delivery/projects/${requiredValue(projects.items[0], 'Expected a fulfilled project.').id}`,
     `/v1/billing/invoices/${requiredValue(invoices.items[0], 'Expected a fulfilled invoice.').id}`,
   ])
@@ -392,7 +409,7 @@ export async function hostedJourney(
     'real RabbitMQ outbox/inbox round trip creates one project, two invoices and scoped notifications',
   );
 
-  visit = await http.request<Visit>('POST', `/v1/sales/visits/${visit.id}/complete`, {
+  visit = await http.request<Visit>('POST', `/v1/sales/visits/${idPath(visit.id)}/complete`, {
     session: rep,
     body: {
       expectedVersion: visit.version,

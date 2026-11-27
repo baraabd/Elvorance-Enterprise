@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "f684fd3503639fc9135bff70d8476942f900cfea2e4a94bb2a8846beee640c60",
+  "sourceDigest": "73bc0b23d77a98f5d5346f0e045ca8d7d51932ac1305c4038caee3aaf5e8e845",
   "trustBoundaries": [
     {
       "id": "TB1",
@@ -7709,78 +7709,6 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
-      "featureId": "api-call:infra/railway/staging/journey.mts:0166aeba5e92:1",
-      "source": "infra/railway/staging/journey.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "POST",
-          "path": "/v1/sales/contracts/${contract.id}/approve",
-          "service": "sales",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": ["infra/railway/staging/journey.mts:292-300"]
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/journey.mts:0166aeba5e92:2",
-      "source": "infra/railway/staging/journey.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "POST",
-          "path": "/v1/sales/contracts/${contract.id}/approve",
-          "service": "sales",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/journey.mts:0166aeba5e92:3",
-      "source": "infra/railway/staging/journey.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "POST",
-          "path": "/v1/sales/contracts/${contract.id}/approve",
-          "service": "sales",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
       "featureId": "api-call:infra/railway/staging/journey.mts:016e83eb72d2:1",
       "source": "infra/railway/staging/journey.mts",
       "mode": "backend",
@@ -7853,30 +7781,6 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
-      "featureId": "api-call:infra/railway/staging/journey.mts:02648b8b61c5:1",
-      "source": "infra/railway/staging/journey.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "GET",
-          "path": "/v1/sales/visits/${visit.id}",
-          "service": "sales",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
       "featureId": "api-call:infra/railway/staging/journey.mts:0315632e5500:1",
       "source": "infra/railway/staging/journey.mts",
       "mode": "backend",
@@ -7901,16 +7805,16 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
-      "featureId": "api-call:infra/railway/staging/journey.mts:0479f8c275a5:1",
+      "featureId": "api-call:infra/railway/staging/journey.mts:09a6ef11d9fc:1",
       "source": "infra/railway/staging/journey.mts",
       "mode": "backend",
       "owner": null,
       "endpoints": [
         {
-          "method": "GET",
-          "path": "/v1/crm/customers/${customer.id}",
-          "service": "crm",
-          "resolution": "dynamic"
+          "method": "POST",
+          "path": "/v1/sales/visits/:id/start",
+          "service": "sales",
+          "resolution": "source-bound"
         }
       ],
       "authorization": {
@@ -7921,7 +7825,231 @@
       },
       "tables": [],
       "events": [],
-      "sourceTrace": null,
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/visits.ts",
+            "sha256": "eefc452e8fc79b3880a4aa2062fb2bb15b7fa631a98be5662ac46b10a697d144"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/sales/visits/${idPath(visit.id)}/start",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/sales/visits/${idPath(visit.id)}/start",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:POST /v1/visits/:id/start"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:POST /v1/visits/:id/start",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 82,
+              "endLine": 99,
+              "fingerprint": "2e517a37f57131ca1ee7d852f4d80ac6cc422c66e82f3c3e54ba808d08841399"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["authorizeOwned", "requireOwner", "requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/assignment.ts:15-18",
+                "services/sales/src/application/assignment.ts:19-51",
+                "services/sales/src/application/assignment.ts:52-69",
+                "services/sales/src/application/visits.ts:21-25",
+                "services/sales/src/application/visits.ts:63-110",
+                "services/sales/src/transport/routes.ts:82-99"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["visits"],
+              "events": [],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/visits.ts:21-25",
+                "services/sales/src/application/visits.ts:63-110"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:09a6ef11d9fc:2",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/visits/:id/start",
+          "service": "sales",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/visits.ts",
+            "sha256": "eefc452e8fc79b3880a4aa2062fb2bb15b7fa631a98be5662ac46b10a697d144"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/sales/visits/${idPath(visit.id)}/start",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/sales/visits/${idPath(visit.id)}/start",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:POST /v1/visits/:id/start"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:POST /v1/visits/:id/start",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 82,
+              "endLine": 99,
+              "fingerprint": "2e517a37f57131ca1ee7d852f4d80ac6cc422c66e82f3c3e54ba808d08841399"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["authorizeOwned", "requireOwner", "requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/assignment.ts:15-18",
+                "services/sales/src/application/assignment.ts:19-51",
+                "services/sales/src/application/assignment.ts:52-69",
+                "services/sales/src/application/visits.ts:21-25",
+                "services/sales/src/application/visits.ts:63-110",
+                "services/sales/src/transport/routes.ts:82-99"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["visits"],
+              "events": [],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/visits.ts:21-25",
+                "services/sales/src/application/visits.ts:63-110"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
       "resolution": "REVIEW_REQUIRED"
     },
     {
@@ -7987,6 +8115,488 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
+      "featureId": "api-call:infra/railway/staging/journey.mts:2d34d55f1f11:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/quotes/:id/send",
+          "service": "sales",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/quotes.ts",
+            "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/sales/quotes/${idPath(quote.id)}/send",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/sales/quotes/${idPath(quote.id)}/send",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:POST /v1/quotes/:id/send"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:POST /v1/quotes/:id/send",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 252,
+              "endLine": 274,
+              "fingerprint": "b0235fd1f1cd775a4c31c0cfa079c8ba59decbde3c404a91f313d2db4e027933"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["authorizeQuoteAssignment", "requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:177-218",
+                "services/sales/src/application/quotes.ts:22-30",
+                "services/sales/src/application/quotes.ts:31-35",
+                "services/sales/src/application/quotes.ts:45-66",
+                "services/sales/src/transport/routes.ts:252-274"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["discount_approvals", "quotes"],
+              "events": ["sales.quote_sent.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/discounts.ts:40-52",
+                "services/sales/src/application/quotes.ts:177-218",
+                "services/sales/src/application/quotes.ts:31-35"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:383fab09d85f:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/quotes/:id/accept",
+          "service": "sales",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/quotes.ts",
+            "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/sales/quotes/${idPath(quote.id)}/accept",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/sales/quotes/${idPath(quote.id)}/accept",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:POST /v1/quotes/:id/accept"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:POST /v1/quotes/:id/accept",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 276,
+              "endLine": 280,
+              "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:219-306",
+                "services/sales/src/application/quotes.ts:22-30",
+                "services/sales/src/application/quotes.ts:31-35",
+                "services/sales/src/transport/routes.ts:276-280"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contracts", "fulfillments", "quotes"],
+              "events": ["sales.quote_accepted.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:219-306",
+                "services/sales/src/application/quotes.ts:31-35"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:383fab09d85f:2",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/quotes/:id/accept",
+          "service": "sales",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/quotes.ts",
+            "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/sales/quotes/${idPath(quote.id)}/accept",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/sales/quotes/${idPath(quote.id)}/accept",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:POST /v1/quotes/:id/accept"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:POST /v1/quotes/:id/accept",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 276,
+              "endLine": 280,
+              "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:219-306",
+                "services/sales/src/application/quotes.ts:22-30",
+                "services/sales/src/application/quotes.ts:31-35",
+                "services/sales/src/transport/routes.ts:276-280"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contracts", "fulfillments", "quotes"],
+              "events": ["sales.quote_accepted.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:219-306",
+                "services/sales/src/application/quotes.ts:31-35"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:383fab09d85f:3",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/quotes/:id/accept",
+          "service": "sales",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/quotes.ts",
+            "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/sales/quotes/${idPath(quote.id)}/accept",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/sales/quotes/${idPath(quote.id)}/accept",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:POST /v1/quotes/:id/accept"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:POST /v1/quotes/:id/accept",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 276,
+              "endLine": 280,
+              "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:219-306",
+                "services/sales/src/application/quotes.ts:22-30",
+                "services/sales/src/application/quotes.ts:31-35",
+                "services/sales/src/transport/routes.ts:276-280"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contracts", "fulfillments", "quotes"],
+              "events": ["sales.quote_accepted.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:219-306",
+                "services/sales/src/application/quotes.ts:31-35"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
       "featureId": "api-call:infra/railway/staging/journey.mts:410bb128ffbd:1",
       "source": "infra/railway/staging/journey.mts",
       "mode": "backend",
@@ -8016,30 +8626,6 @@
           "path": "/v1/delivery/projects",
           "service": "delivery",
           "resolution": "literal"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/journey.mts:58897fa22675:1",
-      "source": "infra/railway/staging/journey.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "GET",
-          "path": "/v1/sales/quotes/${quote.id}",
-          "service": "sales",
-          "resolution": "dynamic"
         }
       ],
       "authorization": {
@@ -8111,16 +8697,16 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
-      "featureId": "api-call:infra/railway/staging/journey.mts:669baef2fcb8:1",
+      "featureId": "api-call:infra/railway/staging/journey.mts:5b11516e3ea3:1",
       "source": "infra/railway/staging/journey.mts",
       "mode": "backend",
       "owner": null,
       "endpoints": [
         {
-          "method": "POST",
-          "path": "/v1/sales/quotes/${quote.id}/send",
+          "method": "GET",
+          "path": "/v1/sales/contracts/:id/fulfillment",
           "service": "sales",
-          "resolution": "dynamic"
+          "resolution": "source-bound"
         }
       ],
       "authorization": {
@@ -8131,8 +8717,217 @@
       },
       "tables": [],
       "events": [],
-      "sourceTrace": null,
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/quotes.ts",
+            "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "GET",
+            "path": "/v1/sales/contracts/${idPath(contract.id)}/fulfillment",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "GET",
+              "path": "/v1/sales/contracts/${idPath(contract.id)}/fulfillment",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:GET /v1/contracts/:id/fulfillment"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:GET /v1/contracts/:id/fulfillment",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 302,
+              "endLine": 314,
+              "fingerprint": "c6eb0847c957e06e73754215e2faf8eec5bd11b33baa8c7810ff86ad07dd820b"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner"],
+              "roles": [],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "services/sales/src/transport/routes.ts:302-314"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["fulfillments"],
+              "events": [],
+              "evidence": ["services/sales/src/transport/routes.ts:302-314"]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
       "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:83c96c23e94d:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/visits/:id/complete",
+          "service": "sales",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/visits.ts",
+            "sha256": "eefc452e8fc79b3880a4aa2062fb2bb15b7fa631a98be5662ac46b10a697d144"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/sales/visits/${idPath(visit.id)}/complete",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/sales/visits/${idPath(visit.id)}/complete",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:POST /v1/visits/:id/complete"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:POST /v1/visits/:id/complete",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 100,
+              "endLine": 117,
+              "fingerprint": "7f71f366f5be8344213889a296201630a9d9acf35f4a94e0be016d9c46c4d6f2"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["authorizeOwned", "requireOwner", "requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/assignment.ts:15-18",
+                "services/sales/src/application/assignment.ts:19-51",
+                "services/sales/src/application/assignment.ts:52-69",
+                "services/sales/src/application/visits.ts:111-219",
+                "services/sales/src/application/visits.ts:21-25",
+                "services/sales/src/transport/routes.ts:100-117"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contracts", "quotes", "visits"],
+              "events": ["sales.visit_completed.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/visits.ts:111-219",
+                "services/sales/src/application/visits.ts:21-25"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
       "featureId": "api-call:infra/railway/staging/journey.mts:90ee58beb064:1",
@@ -8166,9 +8961,9 @@
       "endpoints": [
         {
           "method": "GET",
-          "path": "/v1/sales/contracts/${contract.id}/fulfillment",
+          "path": "/v1/sales/contracts/:id/fulfillment",
           "service": "sales",
-          "resolution": "dynamic"
+          "resolution": "source-bound"
         }
       ],
       "authorization": {
@@ -8179,20 +8974,105 @@
       },
       "tables": [],
       "events": [],
-      "sourceTrace": null,
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/quotes.ts",
+            "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "GET",
+            "path": "/v1/sales/contracts/${idPath(contract.id)}/fulfillment",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "GET",
+              "path": "/v1/sales/contracts/${idPath(contract.id)}/fulfillment",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:GET /v1/contracts/:id/fulfillment"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:GET /v1/contracts/:id/fulfillment",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 302,
+              "endLine": 314,
+              "fingerprint": "c6eb0847c957e06e73754215e2faf8eec5bd11b33baa8c7810ff86ad07dd820b"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner"],
+              "roles": [],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "services/sales/src/transport/routes.ts:302-314"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["fulfillments"],
+              "events": [],
+              "evidence": ["services/sales/src/transport/routes.ts:302-314"]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
       "resolution": "REVIEW_REQUIRED"
     },
     {
-      "featureId": "api-call:infra/railway/staging/journey.mts:ab9fd51f2202:1",
+      "featureId": "api-call:infra/railway/staging/journey.mts:aff5e65ee8ac:1",
       "source": "infra/railway/staging/journey.mts",
       "mode": "backend",
       "owner": null,
       "endpoints": [
         {
-          "method": "POST",
-          "path": "/v1/sales/visits/${visit.id}/start",
+          "method": "GET",
+          "path": "/v1/sales/quotes/:id",
           "service": "sales",
-          "resolution": "dynamic"
+          "resolution": "source-bound"
         }
       ],
       "authorization": {
@@ -8203,31 +9083,100 @@
       },
       "tables": [],
       "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/journey.mts:ab9fd51f2202:2",
-      "source": "infra/railway/staging/journey.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "POST",
-          "path": "/v1/sales/visits/${visit.id}/start",
-          "service": "sales",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/quotes.ts",
+            "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "GET",
+            "path": "/v1/sales/quotes/${idPath(quote.id)}",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "GET",
+              "path": "/v1/sales/quotes/${idPath(quote.id)}",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:GET /v1/quotes/:id"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:GET /v1/quotes/:id",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 171,
+              "endLine": 189,
+              "fingerprint": "e334f927e767bd29706464bac03774b72e3056afccc57d83360a27959a468146"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": [],
+              "roles": [],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "services/sales/src/application/assignment.ts:100-137",
+                "services/sales/src/application/quotes.ts:22-30",
+                "services/sales/src/application/quotes.ts:31-35",
+                "services/sales/src/transport/routes.ts:171-189"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["quotes"],
+              "events": [],
+              "evidence": [
+                "services/sales/src/application/quotes.ts:31-35",
+                "services/sales/src/transport/routes.ts:171-189"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
       },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
       "resolution": "REVIEW_REQUIRED"
     },
     {
@@ -8255,16 +9204,16 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
-      "featureId": "api-call:infra/railway/staging/journey.mts:b58332717d1f:1",
+      "featureId": "api-call:infra/railway/staging/journey.mts:b41cdafd9b19:1",
       "source": "infra/railway/staging/journey.mts",
       "mode": "backend",
       "owner": null,
       "endpoints": [
         {
-          "method": "POST",
-          "path": "/v1/sales/quotes/${quote.id}/accept",
-          "service": "sales",
-          "resolution": "dynamic"
+          "method": "GET",
+          "path": "/v1/crm/customers/:id",
+          "service": "crm",
+          "resolution": "source-bound"
         }
       ],
       "authorization": {
@@ -8275,56 +9224,98 @@
       },
       "tables": [],
       "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/journey.mts:b58332717d1f:2",
-      "source": "infra/railway/staging/journey.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "POST",
-          "path": "/v1/sales/quotes/${quote.id}/accept",
-          "service": "sales",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/crm/src/application/customers.ts",
+            "sha256": "973e139192e7b6dbf99cef5041b25033b1199097b87569661998a8fef50535ee"
+          },
+          {
+            "path": "services/crm/src/transport/routes.ts",
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "GET",
+            "path": "/v1/crm/customers/${idPath(customer.id)}",
+            "service": "crm",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "GET",
+              "path": "/v1/crm/customers/${idPath(customer.id)}",
+              "service": "crm",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:crm:backend:GET /v1/customers/:id"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:crm:backend:GET /v1/customers/:id",
+            "owningService": "crm",
+            "source": {
+              "path": "services/crm/src/transport/routes.ts",
+              "line": 44,
+              "endLine": 48,
+              "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner"],
+              "roles": [],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "services/crm/src/application/customers.ts:118-142",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/transport/routes.ts:44-48"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["customers"],
+              "events": [],
+              "evidence": [
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/transport/routes.ts:44-48"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
       },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/journey.mts:b58332717d1f:3",
-      "source": "infra/railway/staging/journey.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "POST",
-          "path": "/v1/sales/quotes/${quote.id}/accept",
-          "service": "sales",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
       "featureId": "api-call:infra/railway/staging/journey.mts:c741a3163655:1",
@@ -8375,40 +9366,137 @@
       "resolution": "REVIEW_REQUIRED"
     },
     {
-      "featureId": "api-call:infra/railway/staging/journey.mts:e68934e35134:1",
-      "source": "infra/railway/staging/journey.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "GET",
-          "path": "/v1/sales/contracts/${contract.id}/fulfillment",
-          "service": "sales",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/journey.mts:fa2311d69db0:1",
+      "featureId": "api-call:infra/railway/staging/journey.mts:cd958b20655b:1",
       "source": "infra/railway/staging/journey.mts",
       "mode": "backend",
       "owner": null,
       "endpoints": [
         {
           "method": "POST",
-          "path": "/v1/sales/visits/${visit.id}/complete",
+          "path": "/v1/sales/contracts/:id/approve",
           "service": "sales",
-          "resolution": "dynamic"
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": ["infra/railway/staging/journey.mts:305-313"]
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/quotes.ts",
+            "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/sales/contracts/${idPath(contract.id)}/approve",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/sales/contracts/${idPath(contract.id)}/approve",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:POST /v1/contracts/:id/approve"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:POST /v1/contracts/:id/approve",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 297,
+              "endLine": 301,
+              "fingerprint": "d972a570b0b1b332f1171dc56dec3c2700f50bbe4cd04762f63aa526ed560135"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "delivery", "finance", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:307-341",
+                "services/sales/src/application/quotes.ts:36-44",
+                "services/sales/src/transport/routes.ts:297-301"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contracts"],
+              "events": ["contract.approved.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:307-341",
+                "services/sales/src/application/quotes.ts:36-44"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:cd958b20655b:2",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/contracts/:id/approve",
+          "service": "sales",
+          "resolution": "source-bound"
         }
       ],
       "authorization": {
@@ -8419,7 +9507,342 @@
       },
       "tables": [],
       "events": [],
-      "sourceTrace": null,
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/quotes.ts",
+            "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/sales/contracts/${idPath(contract.id)}/approve",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/sales/contracts/${idPath(contract.id)}/approve",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:POST /v1/contracts/:id/approve"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:POST /v1/contracts/:id/approve",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 297,
+              "endLine": 301,
+              "fingerprint": "d972a570b0b1b332f1171dc56dec3c2700f50bbe4cd04762f63aa526ed560135"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "delivery", "finance", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:307-341",
+                "services/sales/src/application/quotes.ts:36-44",
+                "services/sales/src/transport/routes.ts:297-301"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contracts"],
+              "events": ["contract.approved.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:307-341",
+                "services/sales/src/application/quotes.ts:36-44"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:cd958b20655b:3",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/contracts/:id/approve",
+          "service": "sales",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/quotes.ts",
+            "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/sales/contracts/${idPath(contract.id)}/approve",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/sales/contracts/${idPath(contract.id)}/approve",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:POST /v1/contracts/:id/approve"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:POST /v1/contracts/:id/approve",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 297,
+              "endLine": 301,
+              "fingerprint": "d972a570b0b1b332f1171dc56dec3c2700f50bbe4cd04762f63aa526ed560135"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "delivery", "finance", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:307-341",
+                "services/sales/src/application/quotes.ts:36-44",
+                "services/sales/src/transport/routes.ts:297-301"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contracts"],
+              "events": ["contract.approved.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:307-341",
+                "services/sales/src/application/quotes.ts:36-44"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:fba75bda349f:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/sales/visits/:id",
+          "service": "sales",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/journey.mts",
+            "sha256": "cdde20f68442d7d4ad7f95abb8789c7f0d73b8719e42fac71e20455b0325134d"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "GET",
+            "path": "/v1/sales/visits/${idPath(visit.id)}",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "GET",
+              "path": "/v1/sales/visits/${idPath(visit.id)}",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:GET /v1/visits/:id"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:GET /v1/visits/:id",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 58,
+              "endLine": 70,
+              "fingerprint": "11b675acb7cd10af70626c65bc123543c011ac90f6cddf9bfa0e44e3f10ca22f"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["authorizeOwned", "requireOwner", "requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "services/sales/src/application/assignment.ts:15-18",
+                "services/sales/src/application/assignment.ts:19-51",
+                "services/sales/src/application/assignment.ts:52-69",
+                "services/sales/src/application/assignment.ts:70-81",
+                "services/sales/src/transport/routes.ts:58-70"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["table"],
+              "events": [],
+              "evidence": [
+                "services/sales/src/application/assignment.ts:70-81",
+                "services/sales/src/transport/routes.ts:58-70"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
       "resolution": "REVIEW_REQUIRED"
     },
     {
@@ -8439,7 +9862,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["infra/railway/staging/policy-checks.mts:55-57"]
+        "evidence": ["infra/railway/staging/policy-checks.mts:56-58"]
       },
       "tables": [],
       "events": [],
@@ -8463,7 +9886,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["infra/railway/staging/policy-checks.mts:64-66"]
+        "evidence": ["infra/railway/staging/policy-checks.mts:65-67"]
       },
       "tables": [],
       "events": [],
@@ -8487,7 +9910,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["infra/railway/staging/policy-checks.mts:140-142"]
+        "evidence": ["infra/railway/staging/policy-checks.mts:141-143"]
       },
       "tables": [],
       "events": [],
@@ -8535,7 +9958,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["infra/railway/staging/policy-checks.mts:165-173"]
+        "evidence": ["infra/railway/staging/policy-checks.mts:166-174"]
       },
       "tables": [],
       "events": [],
@@ -8543,64 +9966,16 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:1",
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:1a91b86d6f8e:1",
       "source": "infra/railway/staging/policy-checks.mts",
       "mode": "backend",
       "owner": null,
       "endpoints": [
         {
           "method": "GET",
-          "path": "/v1/crm/customers/${customer.id}",
-          "service": "crm",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:2",
-      "source": "infra/railway/staging/policy-checks.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "GET",
-          "path": "/v1/crm/customers/${customer.id}",
-          "service": "crm",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:1",
-      "source": "infra/railway/staging/policy-checks.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "POST",
-          "path": "/v1/billing/invoices/${invoice.id}/payments",
+          "path": "/v1/billing/invoices/:id",
           "service": "billing",
-          "resolution": "dynamic"
+          "resolution": "source-bound"
         }
       ],
       "authorization": {
@@ -8611,79 +9986,96 @@
       },
       "tables": [],
       "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:2",
-      "source": "infra/railway/staging/policy-checks.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "POST",
-          "path": "/v1/billing/invoices/${invoice.id}/payments",
-          "service": "billing",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/billing/src/application/payments.ts",
+            "sha256": "31867bd3976e839e2d7616105c62cc759d7d00f7de555f499b36dc287d293a3c"
+          },
+          {
+            "path": "services/billing/src/transport/routes.ts",
+            "sha256": "fc276d7246a276958c654a43c123d2c15b4b504598d9eaa763cdec0575fb5790"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "GET",
+            "path": "/v1/billing/invoices/${idPath(invoice.id)}",
+            "service": "billing",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "GET",
+              "path": "/v1/billing/invoices/${idPath(invoice.id)}",
+              "service": "billing",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:billing:backend:GET /v1/invoices/:id"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:billing:backend:GET /v1/invoices/:id",
+            "owningService": "billing",
+            "source": {
+              "path": "services/billing/src/transport/routes.ts",
+              "line": 22,
+              "endLine": 26,
+              "fingerprint": "8057d1d24c4657b7ba242d1069b23b0910e2dcc2747c1a089c5eea1af5155a2f"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner"],
+              "roles": [],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "services/billing/src/application/payments.ts:16-20",
+                "services/billing/src/transport/routes.ts:22-26"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["invoices"],
+              "events": [],
+              "evidence": [
+                "services/billing/src/application/payments.ts:16-20",
+                "services/billing/src/transport/routes.ts:22-26"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
       },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:3",
-      "source": "infra/railway/staging/policy-checks.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "POST",
-          "path": "/v1/billing/invoices/${invoice.id}/payments",
-          "service": "billing",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:4",
-      "source": "infra/railway/staging/policy-checks.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "POST",
-          "path": "/v1/billing/invoices/${invoice.id}/payments",
-          "service": "billing",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
       "resolution": "REVIEW_REQUIRED"
     },
     {
@@ -8725,126 +10117,6 @@
       "resolution": "REVIEW_REQUIRED"
     },
     {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:1",
-      "source": "infra/railway/staging/policy-checks.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "PATCH",
-          "path": "/v1/crm/customers/${customer.id}",
-          "service": "crm",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:2",
-      "source": "infra/railway/staging/policy-checks.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "PATCH",
-          "path": "/v1/crm/customers/${customer.id}",
-          "service": "crm",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:3",
-      "source": "infra/railway/staging/policy-checks.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "PATCH",
-          "path": "/v1/crm/customers/${customer.id}",
-          "service": "crm",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:4",
-      "source": "infra/railway/staging/policy-checks.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "PATCH",
-          "path": "/v1/crm/customers/${customer.id}",
-          "service": "crm",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:5",
-      "source": "infra/railway/staging/policy-checks.mts",
-      "mode": "backend",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "PATCH",
-          "path": "/v1/crm/customers/${customer.id}",
-          "service": "crm",
-          "resolution": "dynamic"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
       "featureId": "api-call:infra/railway/staging/policy-checks.mts:59bef9fab5d1:1",
       "source": "infra/railway/staging/policy-checks.mts",
       "mode": "backend",
@@ -8864,16 +10136,16 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:68ff234e5bea:1",
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:7df0a11f4433:1",
       "source": "infra/railway/staging/policy-checks.mts",
       "mode": "backend",
       "owner": null,
       "endpoints": [
         {
-          "method": "GET",
-          "path": "/v1/billing/invoices/${invoice.id}",
+          "method": "POST",
+          "path": "/v1/billing/invoices/:id/payments",
           "service": "billing",
-          "resolution": "dynamic"
+          "resolution": "source-bound"
         }
       ],
       "authorization": {
@@ -8884,7 +10156,451 @@
       },
       "tables": [],
       "events": [],
-      "sourceTrace": null,
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/billing/src/application/payments.ts",
+            "sha256": "31867bd3976e839e2d7616105c62cc759d7d00f7de555f499b36dc287d293a3c"
+          },
+          {
+            "path": "services/billing/src/transport/routes.ts",
+            "sha256": "fc276d7246a276958c654a43c123d2c15b4b504598d9eaa763cdec0575fb5790"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/billing/invoices/${idPath(invoice.id)}/payments",
+            "service": "billing",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/billing/invoices/${idPath(invoice.id)}/payments",
+              "service": "billing",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:billing:backend:POST /v1/invoices/:id/payments"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:billing:backend:POST /v1/invoices/:id/payments",
+            "owningService": "billing",
+            "source": {
+              "path": "services/billing/src/transport/routes.ts",
+              "line": 36,
+              "endLine": 40,
+              "fingerprint": "390d9d140af56a81e3d7c0f9172793f20fe78beda5908e9503aa90b396d30164"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "finance", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/billing/src/application/payments.ts:16-20",
+                "services/billing/src/application/payments.ts:21-83",
+                "services/billing/src/transport/routes.ts:36-40"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contract_accounts", "invoices", "payments"],
+              "events": ["billing.payment_recorded.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/billing/src/application/payments.ts:16-20",
+                "services/billing/src/application/payments.ts:21-83"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:7df0a11f4433:2",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/billing/invoices/:id/payments",
+          "service": "billing",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/billing/src/application/payments.ts",
+            "sha256": "31867bd3976e839e2d7616105c62cc759d7d00f7de555f499b36dc287d293a3c"
+          },
+          {
+            "path": "services/billing/src/transport/routes.ts",
+            "sha256": "fc276d7246a276958c654a43c123d2c15b4b504598d9eaa763cdec0575fb5790"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/billing/invoices/${idPath(invoice.id)}/payments",
+            "service": "billing",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/billing/invoices/${idPath(invoice.id)}/payments",
+              "service": "billing",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:billing:backend:POST /v1/invoices/:id/payments"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:billing:backend:POST /v1/invoices/:id/payments",
+            "owningService": "billing",
+            "source": {
+              "path": "services/billing/src/transport/routes.ts",
+              "line": 36,
+              "endLine": 40,
+              "fingerprint": "390d9d140af56a81e3d7c0f9172793f20fe78beda5908e9503aa90b396d30164"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "finance", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/billing/src/application/payments.ts:16-20",
+                "services/billing/src/application/payments.ts:21-83",
+                "services/billing/src/transport/routes.ts:36-40"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contract_accounts", "invoices", "payments"],
+              "events": ["billing.payment_recorded.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/billing/src/application/payments.ts:16-20",
+                "services/billing/src/application/payments.ts:21-83"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:7df0a11f4433:3",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/billing/invoices/:id/payments",
+          "service": "billing",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/billing/src/application/payments.ts",
+            "sha256": "31867bd3976e839e2d7616105c62cc759d7d00f7de555f499b36dc287d293a3c"
+          },
+          {
+            "path": "services/billing/src/transport/routes.ts",
+            "sha256": "fc276d7246a276958c654a43c123d2c15b4b504598d9eaa763cdec0575fb5790"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/billing/invoices/${idPath(invoice.id)}/payments",
+            "service": "billing",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/billing/invoices/${idPath(invoice.id)}/payments",
+              "service": "billing",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:billing:backend:POST /v1/invoices/:id/payments"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:billing:backend:POST /v1/invoices/:id/payments",
+            "owningService": "billing",
+            "source": {
+              "path": "services/billing/src/transport/routes.ts",
+              "line": 36,
+              "endLine": 40,
+              "fingerprint": "390d9d140af56a81e3d7c0f9172793f20fe78beda5908e9503aa90b396d30164"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "finance", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/billing/src/application/payments.ts:16-20",
+                "services/billing/src/application/payments.ts:21-83",
+                "services/billing/src/transport/routes.ts:36-40"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contract_accounts", "invoices", "payments"],
+              "events": ["billing.payment_recorded.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/billing/src/application/payments.ts:16-20",
+                "services/billing/src/application/payments.ts:21-83"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:7df0a11f4433:4",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/billing/invoices/:id/payments",
+          "service": "billing",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/billing/src/application/payments.ts",
+            "sha256": "31867bd3976e839e2d7616105c62cc759d7d00f7de555f499b36dc287d293a3c"
+          },
+          {
+            "path": "services/billing/src/transport/routes.ts",
+            "sha256": "fc276d7246a276958c654a43c123d2c15b4b504598d9eaa763cdec0575fb5790"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/billing/invoices/${idPath(invoice.id)}/payments",
+            "service": "billing",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/billing/invoices/${idPath(invoice.id)}/payments",
+              "service": "billing",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:billing:backend:POST /v1/invoices/:id/payments"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:billing:backend:POST /v1/invoices/:id/payments",
+            "owningService": "billing",
+            "source": {
+              "path": "services/billing/src/transport/routes.ts",
+              "line": 36,
+              "endLine": 40,
+              "fingerprint": "390d9d140af56a81e3d7c0f9172793f20fe78beda5908e9503aa90b396d30164"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "finance", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/billing/src/application/payments.ts:16-20",
+                "services/billing/src/application/payments.ts:21-83",
+                "services/billing/src/transport/routes.ts:36-40"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contract_accounts", "invoices", "payments"],
+              "events": ["billing.payment_recorded.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/billing/src/application/payments.ts:16-20",
+                "services/billing/src/application/payments.ts:21-83"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
       "resolution": "REVIEW_REQUIRED"
     },
     {
@@ -8936,6 +10652,234 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:b41cdafd9b19:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/crm/customers/:id",
+          "service": "crm",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/crm/src/application/customers.ts",
+            "sha256": "973e139192e7b6dbf99cef5041b25033b1199097b87569661998a8fef50535ee"
+          },
+          {
+            "path": "services/crm/src/transport/routes.ts",
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "GET",
+            "path": "/v1/crm/customers/${idPath(customer.id)}",
+            "service": "crm",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "GET",
+              "path": "/v1/crm/customers/${idPath(customer.id)}",
+              "service": "crm",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:crm:backend:GET /v1/customers/:id"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:crm:backend:GET /v1/customers/:id",
+            "owningService": "crm",
+            "source": {
+              "path": "services/crm/src/transport/routes.ts",
+              "line": 44,
+              "endLine": 48,
+              "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner"],
+              "roles": [],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "services/crm/src/application/customers.ts:118-142",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/transport/routes.ts:44-48"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["customers"],
+              "events": [],
+              "evidence": [
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/transport/routes.ts:44-48"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:b41cdafd9b19:2",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/crm/customers/:id",
+          "service": "crm",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/crm/src/application/customers.ts",
+            "sha256": "973e139192e7b6dbf99cef5041b25033b1199097b87569661998a8fef50535ee"
+          },
+          {
+            "path": "services/crm/src/transport/routes.ts",
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "GET",
+            "path": "/v1/crm/customers/${idPath(customer.id)}",
+            "service": "crm",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "GET",
+              "path": "/v1/crm/customers/${idPath(customer.id)}",
+              "service": "crm",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:crm:backend:GET /v1/customers/:id"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:crm:backend:GET /v1/customers/:id",
+            "owningService": "crm",
+            "source": {
+              "path": "services/crm/src/transport/routes.ts",
+              "line": 44,
+              "endLine": 48,
+              "fingerprint": "4f16760ffa1e6c1d6a5747b578d98813db00b4e4a617a9c472575791fcceda0a"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner"],
+              "roles": [],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "services/crm/src/application/customers.ts:118-142",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/transport/routes.ts:44-48"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["customers"],
+              "events": [],
+              "evidence": [
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/transport/routes.ts:44-48"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
       "featureId": "api-call:infra/railway/staging/policy-checks.mts:b45c42039a18:1",
       "source": "infra/railway/staging/policy-checks.mts",
       "mode": "backend",
@@ -8960,28 +10904,719 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
-      "featureId": "api-call:infra/railway/staging/policy-checks.mts:fbf89433d65c:1",
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:e0fec2c5a557:1",
       "source": "infra/railway/staging/policy-checks.mts",
       "mode": "backend",
       "owner": null,
       "endpoints": [
         {
           "method": "POST",
-          "path": "/v1/sales/quotes/${flow.quote.id}/accept",
+          "path": "/v1/sales/quotes/:id/accept",
           "service": "sales",
-          "resolution": "dynamic"
+          "resolution": "source-bound"
         }
       ],
       "authorization": {
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["infra/railway/staging/policy-checks.mts:155-159"]
+        "evidence": ["infra/railway/staging/policy-checks.mts:156-160"]
       },
       "tables": [],
       "events": [],
-      "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/sales/src/application/assignment.ts",
+            "sha256": "924721aac63a4ee4fd5ddff5672ecc71a28d41de6cd173d53f8c481668acc570"
+          },
+          {
+            "path": "services/sales/src/application/quotes.ts",
+            "sha256": "2277eed61e27f0e51503252a85caa9bf318b93aeaadb4af76dc229b14a5edc9c"
+          },
+          {
+            "path": "services/sales/src/transport/routes.ts",
+            "sha256": "ae2aa71277acb7fa3273b53c85883ff1072ef2b222163b5dfb0372ba76c69e81"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "POST",
+            "path": "/v1/sales/quotes/${idPath(flow.quote.id)}/accept",
+            "service": "sales",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/sales/quotes/${idPath(flow.quote.id)}/accept",
+              "service": "sales",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:sales:backend:POST /v1/quotes/:id/accept"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:POST /v1/quotes/:id/accept",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/routes.ts",
+              "line": 276,
+              "endLine": 280,
+              "fingerprint": "2b29d7f1e9222d8a7c25424a64b2c1e4b73d4218064de5cc9c31f78474c8b716"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:219-306",
+                "services/sales/src/application/quotes.ts:22-30",
+                "services/sales/src/application/quotes.ts:31-35",
+                "services/sales/src/transport/routes.ts:276-280"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contracts", "fulfillments", "quotes"],
+              "events": ["sales.quote_accepted.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/quotes.ts:219-306",
+                "services/sales/src/application/quotes.ts:31-35"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:eeec9d7a5e67:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/crm/customers/:id",
+          "service": "crm",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/crm/src/application/customers.ts",
+            "sha256": "973e139192e7b6dbf99cef5041b25033b1199097b87569661998a8fef50535ee"
+          },
+          {
+            "path": "services/crm/src/transport/routes.ts",
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "PATCH",
+            "path": "/v1/crm/customers/${idPath(customer.id)}",
+            "service": "crm",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "PATCH",
+              "path": "/v1/crm/customers/${idPath(customer.id)}",
+              "service": "crm",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:crm:backend:PATCH /v1/customers/:id"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:crm:backend:PATCH /v1/customers/:id",
+            "owningService": "crm",
+            "source": {
+              "path": "services/crm/src/transport/routes.ts",
+              "line": 65,
+              "endLine": 79,
+              "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "delivery", "finance", "rep", "support"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/customers.ts:118-142",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/application/customers.ts:31-41",
+                "services/crm/src/application/customers.ts:69-117",
+                "services/crm/src/transport/routes.ts:65-79"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["customers", "regions"],
+              "events": ["crm.customer_updated.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/application/customers.ts:69-117"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:eeec9d7a5e67:2",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/crm/customers/:id",
+          "service": "crm",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/crm/src/application/customers.ts",
+            "sha256": "973e139192e7b6dbf99cef5041b25033b1199097b87569661998a8fef50535ee"
+          },
+          {
+            "path": "services/crm/src/transport/routes.ts",
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "PATCH",
+            "path": "/v1/crm/customers/${idPath(customer.id)}",
+            "service": "crm",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "PATCH",
+              "path": "/v1/crm/customers/${idPath(customer.id)}",
+              "service": "crm",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:crm:backend:PATCH /v1/customers/:id"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:crm:backend:PATCH /v1/customers/:id",
+            "owningService": "crm",
+            "source": {
+              "path": "services/crm/src/transport/routes.ts",
+              "line": 65,
+              "endLine": 79,
+              "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "delivery", "finance", "rep", "support"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/customers.ts:118-142",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/application/customers.ts:31-41",
+                "services/crm/src/application/customers.ts:69-117",
+                "services/crm/src/transport/routes.ts:65-79"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["customers", "regions"],
+              "events": ["crm.customer_updated.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/application/customers.ts:69-117"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:eeec9d7a5e67:3",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/crm/customers/:id",
+          "service": "crm",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/crm/src/application/customers.ts",
+            "sha256": "973e139192e7b6dbf99cef5041b25033b1199097b87569661998a8fef50535ee"
+          },
+          {
+            "path": "services/crm/src/transport/routes.ts",
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "PATCH",
+            "path": "/v1/crm/customers/${idPath(customer.id)}",
+            "service": "crm",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "PATCH",
+              "path": "/v1/crm/customers/${idPath(customer.id)}",
+              "service": "crm",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:crm:backend:PATCH /v1/customers/:id"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:crm:backend:PATCH /v1/customers/:id",
+            "owningService": "crm",
+            "source": {
+              "path": "services/crm/src/transport/routes.ts",
+              "line": 65,
+              "endLine": 79,
+              "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "delivery", "finance", "rep", "support"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/customers.ts:118-142",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/application/customers.ts:31-41",
+                "services/crm/src/application/customers.ts:69-117",
+                "services/crm/src/transport/routes.ts:65-79"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["customers", "regions"],
+              "events": ["crm.customer_updated.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/application/customers.ts:69-117"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:eeec9d7a5e67:4",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/crm/customers/:id",
+          "service": "crm",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/crm/src/application/customers.ts",
+            "sha256": "973e139192e7b6dbf99cef5041b25033b1199097b87569661998a8fef50535ee"
+          },
+          {
+            "path": "services/crm/src/transport/routes.ts",
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "PATCH",
+            "path": "/v1/crm/customers/${idPath(customer.id)}",
+            "service": "crm",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "PATCH",
+              "path": "/v1/crm/customers/${idPath(customer.id)}",
+              "service": "crm",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:crm:backend:PATCH /v1/customers/:id"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:crm:backend:PATCH /v1/customers/:id",
+            "owningService": "crm",
+            "source": {
+              "path": "services/crm/src/transport/routes.ts",
+              "line": 65,
+              "endLine": 79,
+              "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "delivery", "finance", "rep", "support"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/customers.ts:118-142",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/application/customers.ts:31-41",
+                "services/crm/src/application/customers.ts:69-117",
+                "services/crm/src/transport/routes.ts:65-79"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["customers", "regions"],
+              "events": ["crm.customer_updated.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/application/customers.ts:69-117"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:eeec9d7a5e67:5",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/crm/customers/:id",
+          "service": "crm",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The staging acceptance caller uses a literal HTTP verb and one resource identifier validated by staging/http.mts idPath (1-128 ASCII letters, digits, underscore or hyphen; no URL delimiters). The resulting template matches the exact registered domain operation and its authorization/application sources. Both successful and deliberately rejected requests remain source traces only: this binding does not claim that hosted acceptance ran or replace missing contract, integration or E2E evidence.",
+        "evidence": [
+          {
+            "path": "infra/railway/staging/http.mts",
+            "sha256": "cc8d3398780aeac5dca4a6459920aee998ce44d6a6e6fc3e016f8263c152e509"
+          },
+          {
+            "path": "infra/railway/staging/policy-checks.mts",
+            "sha256": "0be4b6b16524df68689e3ec73868a3d3a4f5f50c6260837f391e259cfb95e88c"
+          },
+          {
+            "path": "infra/railway/staging/target.mts",
+            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "7f91946a4f4a1a23b334b89f2cab7e8f66a1cd9adc09d0e2251b623e1457c4a5"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "5e225b062f079c600b1ff4f0b5969d4f875c65484abcf088e6e951d76ea56b6d"
+          },
+          {
+            "path": "services/crm/src/application/customers.ts",
+            "sha256": "973e139192e7b6dbf99cef5041b25033b1199097b87569661998a8fef50535ee"
+          },
+          {
+            "path": "services/crm/src/transport/routes.ts",
+            "sha256": "1a9717a24eb66dbb1d8be21012f0d1ed77902a945457a798a956b59f3567d95d"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "PATCH",
+            "path": "/v1/crm/customers/${idPath(customer.id)}",
+            "service": "crm",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "PATCH",
+              "path": "/v1/crm/customers/${idPath(customer.id)}",
+              "service": "crm",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:crm:backend:PATCH /v1/customers/:id"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:crm:backend:PATCH /v1/customers/:id",
+            "owningService": "crm",
+            "source": {
+              "path": "services/crm/src/transport/routes.ts",
+              "line": 65,
+              "endLine": 79,
+              "fingerprint": "f4aa85a421d1bc78310074401ed94fe25bd75943b09b1f0a503baad1f35efec2"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "delivery", "finance", "rep", "support"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/customers.ts:118-142",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/application/customers.ts:31-41",
+                "services/crm/src/application/customers.ts:69-117",
+                "services/crm/src/transport/routes.ts:65-79"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["customers", "regions"],
+              "events": ["crm.customer_updated.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/customers.ts:17-30",
+                "services/crm/src/application/customers.ts:69-117"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
       "featureId": "api-call:packages/api-client/src/authenticated-workspace.ts:876874a599f0:1",
