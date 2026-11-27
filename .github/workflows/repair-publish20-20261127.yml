@@ -1,0 +1,84 @@
+name: Prepare reviewed PR20 reconciliation
+on:
+  push:
+    branches: [repair/pr20-source-20261127]
+    paths: [.github/workflows/repair-publish20-20261127.yml]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - name: Decode and verify the exact reviewed patch before applying anything
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import base64, hashlib, os, pathlib, zlib
+          encoded = pathlib.Path('.repair-pr20.b64').read_text().strip()
+          # Correct one duplicated character in text transport, never in source code.
+          encoded = encoded.replace('4VHRbUU07', '4VHRbU07')
+          patch = zlib.decompress(base64.b64decode(encoded, validate=True))
+          assert hashlib.sha256(patch).hexdigest() == 'ff5cf2f9d7e25f8373ede9327ec96219ff84100e3d49434c1d0800876106cb49'
+          pathlib.Path(os.environ['RUNNER_TEMP'], 'pr20.patch').write_bytes(patch)
+          PY
+          git checkout --detach 984b87710eb938064f9c09ca02fa26e79049e1c4
+          git checkout 63f9e4bab063e793e08ae435c2db0c311cf1aceb -- \
+            .github/workflows/acceptance-verification.yml \
+            .github/workflows/hosted-tooling.yml \
+            apps/client-mobile/src/server-main.ts \
+            infra/railway/staging-ops.Dockerfile infra/railway/staging-web.Dockerfile \
+            infra/railway/staging/acceptance.mts infra/railway/staging/bootstrap.mts \
+            infra/railway/staging/entry.mts infra/railway/staging/http.mts \
+            infra/railway/staging/identity-fixture.mts infra/railway/staging/journey.mts \
+            infra/railway/staging/load.mts infra/railway/staging/pg-command.mts \
+            infra/railway/staging/policy-checks.mts infra/railway/staging/recovery.mts \
+            infra/railway/staging/target.mts infra/railway/staging/web-main.mts \
+            infra/railway/staging/web-server.mts tests/acceptance/client-ios-shell.mts \
+            tests/acceptance/keycloak-ci.mts tests/backend/hosted-admin-transport.test.ts \
+            tests/backend/hosted-load.test.ts tests/backend/hosted-pg-command.test.ts \
+            tests/backend/hosted-staging-guards.test.ts tests/backend/hosted-web.test.ts \
+            tooling/scripts/hosted/build-ops.mts tooling/scripts/hosted/build-web.mts
+          git apply --check "$RUNNER_TEMP/pr20.patch"
+          git apply --index "$RUNNER_TEMP/pr20.patch"
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Regenerate source-bound reports, preserving every quality baseline
+        run: |
+          npm run inventory:write
+          node tooling/qa/sprint09-matrix.mts --write
+          git add docs/production docs/qa/sprint09/test-matrix.json
+          test "$(git write-tree)" = 9678f1893db4d8acf6fd24e82d39e3df580152de
+      - run: npm run check:types
+      - run: npm run check:format
+      - run: npm run check:boundaries
+      - run: npm run inventory:check
+      - name: Publish only source objects; reviewed workflows are written by the authorized connector
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git write-tree)" = 9678f1893db4d8acf6fd24e82d39e3df580152de
+          git diff --exit-code
+          git rm .github/workflows/acceptance-verification.yml .github/workflows/hosted-tooling.yml
+          test "$(git write-tree)" = cca7e78cf2e3d9ab5b5ba63d4cff2c07da2b9074
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          COMMIT=$(printf '%s\n' 'chore(repair): verified PR20 source objects for final workflow-aware integration' | git commit-tree cca7e78cf2e3d9ab5b5ba63d4cff2c07da2b9074 -p 984b87710eb938064f9c09ca02fa26e79049e1c4)
+          git branch repair/pr20-result-20261127 "$COMMIT"
+          git push origin refs/heads/repair/pr20-result-20261127:refs/heads/repair/pr20-result-20261127
+          mkdir -p "$RUNNER_TEMP/pr20-result"
+          git show --no-patch --format='%H%n%T%n%P' "$COMMIT" > "$RUNNER_TEMP/pr20-result/source.txt"
+          git bundle create "$RUNNER_TEMP/pr20-result/candidate.bundle" 984b87710eb938064f9c09ca02fa26e79049e1c4..repair/pr20-result-20261127
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: repair-pr20-candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/pr20-result/
+          if-no-files-found: error
+          retention-days: 7
