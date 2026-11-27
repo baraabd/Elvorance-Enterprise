@@ -51,7 +51,10 @@
     "tests/admin/**/*.mts",
     "tooling/scripts/build-admin-server.mts",
     "tests/admin/**/*.ts",
-    "tooling/scripts/sprint01-inventory.mts"
+    "tooling/scripts/sprint01-inventory.mts",
+    "infra/railway/**/*.mts",
+    "tooling/scripts/hosted/**/*.mts",
+    "apps/client-mobile/src/server-main.ts"
   ],
   "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]
 }

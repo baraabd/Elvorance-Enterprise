@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "c9a705eacc1b3718ed4e199304a731d71ddef351064411c6f48083c67214cb02",
+  "sourceDigest": "f684fd3503639fc9135bff70d8476942f900cfea2e4a94bb2a8846beee640c60",
   "status": "BLOCKED",
-  "semanticStatus": "SOURCE_TRACE_COMPLETE_NOT_RUNTIME_ACCEPTANCE",
+  "semanticStatus": "BLOCKED",
   "sourceBoundDecisions": 233,
   "scope": "Extractor warning classification, not completeness certification, test execution or workflow coverage.",
   "unknownWarningsFailClosed": true,
   "totals": {
-    "unresolvedRecords": 1273,
-    "recordsWithSemanticGaps": 0,
-    "recordsWithOnlyTestMappingDebt": 1273,
+    "unresolvedRecords": 1351,
+    "recordsWithSemanticGaps": 28,
+    "recordsWithOnlyTestMappingDebt": 1323,
     "workflowsWithoutTestCandidates": 242
   },
-  "categoryCounts": { "test-mapping": 1273 },
+  "categoryCounts": { "endpoint-dynamic": 28, "test-mapping": 1338 },
   "byCategory": {
     "test-mapping": [
       "account-lifecycle:apps/admin-web/src/app.ts:c83e652f3ba1:1",
@@ -46,6 +46,19 @@
       "account-lifecycle:apps/rep-mobile/src/server/views/records.ts:55837b94b81b:1",
       "account-lifecycle:apps/rep-mobile/src/server/workspace.ts:4ca20c66ed5a:1",
       "account-lifecycle:apps/rep-mobile/src/state/local-demo.ts:9e3446552a0c:1",
+      "account-lifecycle:infra/railway/staging/identity-fixture.mts:3bc46040d326:1",
+      "account-lifecycle:infra/railway/staging/identity-fixture.mts:987ddf9c9627:1",
+      "account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:1",
+      "account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:2",
+      "account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:3",
+      "account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:4",
+      "account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:5",
+      "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:1",
+      "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:2",
+      "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:3",
+      "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:4",
+      "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:5",
+      "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:6",
       "account-lifecycle:packages/api-client/src/authenticated-workspace.ts:20d9be6393bd:1",
       "account-lifecycle:packages/api-client/src/authenticated-workspace.ts:35f38b193b36:1",
       "account-lifecycle:packages/api-client/src/authenticated-workspace.ts:4ca20c66ed5a:1",
@@ -238,6 +251,27 @@
       "api-call:apps/rep-mobile/src/server/views/visits.ts:dafb3781d648:2",
       "api-call:apps/rep-mobile/src/server/views/visits.ts:dafb3781d648:3",
       "api-call:apps/rep-mobile/src/server/views/visits.ts:f3e01e44967c:1",
+      "api-call:infra/railway/staging/journey.mts:0166aeba5e92:1",
+      "api-call:infra/railway/staging/journey.mts:0166aeba5e92:2",
+      "api-call:infra/railway/staging/journey.mts:0166aeba5e92:3",
+      "api-call:infra/railway/staging/journey.mts:02648b8b61c5:1",
+      "api-call:infra/railway/staging/journey.mts:502555fa728f:1",
+      "api-call:infra/railway/staging/journey.mts:58897fa22675:1",
+      "api-call:infra/railway/staging/journey.mts:669baef2fcb8:1",
+      "api-call:infra/railway/staging/journey.mts:9257862cf885:1",
+      "api-call:infra/railway/staging/journey.mts:ab9fd51f2202:1",
+      "api-call:infra/railway/staging/journey.mts:ab9fd51f2202:2",
+      "api-call:infra/railway/staging/journey.mts:c741a3163655:1",
+      "api-call:infra/railway/staging/journey.mts:c95e96c52ea2:1",
+      "api-call:infra/railway/staging/journey.mts:e68934e35134:1",
+      "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:1",
+      "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:2",
+      "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:3",
+      "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:4",
+      "api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:1",
+      "api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:2",
+      "api-call:infra/railway/staging/policy-checks.mts:68ff234e5bea:1",
+      "api-call:infra/railway/staging/policy-checks.mts:8f0a1a6d92f6:1",
       "api-route:api-gateway:backend:DELETE /v1/billing/*",
       "api-route:api-gateway:backend:DELETE /v1/communications/*",
       "api-route:api-gateway:backend:DELETE /v1/crm/*",
@@ -314,6 +348,19 @@
       "background-job:services/sales/src/main.ts:c4228d94aed3:1",
       "background-job:services/tracking/src/main.ts:c4228d94aed3:1",
       "configuration:infra/identity/generate.mts:4aa3f012f684:1",
+      "configuration:infra/railway/staging/bootstrap.mts:2ee868091d40:1",
+      "configuration:infra/railway/staging/bootstrap.mts:5e617c315209:1",
+      "configuration:infra/railway/staging/bootstrap.mts:79a3e3e8af29:1",
+      "configuration:infra/railway/staging/bootstrap.mts:a0ba8c97df5a:1",
+      "configuration:infra/railway/staging/entry.mts:3f8cfc9fa460:1",
+      "configuration:infra/railway/staging/recovery.mts:69e3a9e05aec:1",
+      "configuration:infra/railway/staging/recovery.mts:a0ba8c97df5a:1",
+      "configuration:infra/railway/staging/recovery.mts:dc770fd45650:1",
+      "configuration:infra/railway/staging/recovery.mts:fdb4bc745a5d:1",
+      "configuration:infra/railway/staging/web-main.mts:1d07649e567b:1",
+      "configuration:infra/railway/staging/web-main.mts:6c28481cd5ac:1",
+      "configuration:infra/railway/staging/web-main.mts:9804c9242afe:1",
+      "configuration:infra/railway/staging/web-main.mts:c46469501b5f:1",
       "configuration:services/api-gateway/src/main.ts:c46469501b5f:1",
       "configuration:services/api-gateway/src/main.ts:fee904229165:1",
       "configuration:services/billing/src/main.ts:20ad72de49a7:1",
@@ -378,6 +425,7 @@
       "failure-state:apps/client-mobile/src/features/support/index.ts:addccc1ff00b:1",
       "failure-state:apps/client-mobile/src/main.ts:36d63be351e3:1",
       "failure-state:apps/client-mobile/src/main.ts:97558c958bac:1",
+      "failure-state:apps/client-mobile/src/server-main.ts:735aca9c6b1d:1",
       "failure-state:apps/rep-mobile/src/app.ts:0f7074363991:1",
       "failure-state:apps/rep-mobile/src/app.ts:81c277226197:1",
       "failure-state:apps/rep-mobile/src/features/account/index.ts:56b0c397b9ca:1",
@@ -499,6 +547,16 @@
       "failure-state:infra/identity/assign-scopes.mts:a7ad467a055e:1",
       "failure-state:infra/identity/assign-scopes.mts:beafd2e5c1c2:1",
       "failure-state:infra/identity/assign-scopes.mts:e46718f4dbda:1",
+      "failure-state:infra/railway/staging/acceptance.mts:a625f4eef24d:1",
+      "failure-state:infra/railway/staging/entry.mts:3544ea1ccef4:1",
+      "failure-state:infra/railway/staging/identity-fixture.mts:0422d3aa7ab3:1",
+      "failure-state:infra/railway/staging/identity-fixture.mts:45e54a53e588:1",
+      "failure-state:infra/railway/staging/identity-fixture.mts:9547ef82fd62:1",
+      "failure-state:infra/railway/staging/journey.mts:8825088d1407:1",
+      "failure-state:infra/railway/staging/policy-checks.mts:9b1cdf765365:1",
+      "failure-state:infra/railway/staging/recovery.mts:2e7403b658ae:1",
+      "failure-state:infra/railway/staging/recovery.mts:7fc86527b8a4:1",
+      "failure-state:infra/railway/staging/recovery.mts:dc805b2d0821:1",
       "failure-state:packages/api-client/src/authenticated-workspace.ts:0c53486d2c20:1",
       "failure-state:packages/api-client/src/authenticated-workspace.ts:1f70e72f69a6:1",
       "failure-state:packages/api-client/src/authenticated-workspace.ts:1f70e72f69a6:2",
@@ -1244,6 +1302,13 @@
       "search-filter:apps/rep-mobile/src/server/views/quote-editor.ts:2e4d4d7b0880:1",
       "search-filter:apps/rep-mobile/src/server/views/quote-editor.ts:f0b9e856225c:1",
       "search-filter:apps/rep-mobile/src/server/views/visits.ts:e90ec8e2f11c:1",
+      "search-filter:infra/railway/staging/bootstrap.mts:b69eeee5e4a0:1",
+      "search-filter:infra/railway/staging/journey.mts:1b19204a3c4f:1",
+      "search-filter:infra/railway/staging/journey.mts:aeb8df32c67e:1",
+      "search-filter:infra/railway/staging/policy-checks.mts:d92ce8990256:1",
+      "search-filter:infra/railway/staging/recovery.mts:5c847d6dab65:1",
+      "search-filter:infra/railway/staging/recovery.mts:f0f2ae61c28c:1",
+      "search-filter:infra/railway/staging/recovery.mts:f0f2ae61c28c:2",
       "search-filter:packages/app-runtime/src/demo-workflows.ts:0606e329f17f:1",
       "search-filter:packages/app-runtime/src/index.ts:46351de54313:1",
       "search-filter:packages/app-runtime/src/index.ts:820aa30dd2ce:1",
@@ -1288,6 +1353,36 @@
       "search-filter:services/sales/src/transport/routes.ts:e07e155fcd80:1",
       "search-filter:services/sales/src/transport/routes.ts:e07e155fcd80:2",
       "search-filter:services/tracking/src/transport/routes.ts:b7d5e1986e54:1"
+    ],
+    "endpoint-dynamic": [
+      "api-call:infra/railway/staging/journey.mts:0166aeba5e92:1",
+      "api-call:infra/railway/staging/journey.mts:0166aeba5e92:2",
+      "api-call:infra/railway/staging/journey.mts:0166aeba5e92:3",
+      "api-call:infra/railway/staging/journey.mts:02648b8b61c5:1",
+      "api-call:infra/railway/staging/journey.mts:0479f8c275a5:1",
+      "api-call:infra/railway/staging/journey.mts:58897fa22675:1",
+      "api-call:infra/railway/staging/journey.mts:669baef2fcb8:1",
+      "api-call:infra/railway/staging/journey.mts:9257862cf885:1",
+      "api-call:infra/railway/staging/journey.mts:ab9fd51f2202:1",
+      "api-call:infra/railway/staging/journey.mts:ab9fd51f2202:2",
+      "api-call:infra/railway/staging/journey.mts:b58332717d1f:1",
+      "api-call:infra/railway/staging/journey.mts:b58332717d1f:2",
+      "api-call:infra/railway/staging/journey.mts:b58332717d1f:3",
+      "api-call:infra/railway/staging/journey.mts:e68934e35134:1",
+      "api-call:infra/railway/staging/journey.mts:fa2311d69db0:1",
+      "api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:1",
+      "api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:2",
+      "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:1",
+      "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:2",
+      "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:3",
+      "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:4",
+      "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:1",
+      "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:2",
+      "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:3",
+      "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:4",
+      "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:5",
+      "api-call:infra/railway/staging/policy-checks.mts:68ff234e5bea:1",
+      "api-call:infra/railway/staging/policy-checks.mts:fbf89433d65c:1"
     ]
   },
   "records": [
@@ -2432,6 +2527,487 @@
         },
         {
           "id": "PLANNED:e2e:account-lifecycle:apps/rep-mobile/src/state/local-demo.ts:9e3446552a0c:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/identity-fixture.mts:3bc46040d326:1",
+      "source": {
+        "path": "infra/railway/staging/identity-fixture.mts",
+        "line": 217,
+        "endLine": 217,
+        "fingerprint": "8cf37e42d359260c1fa1faa4109c72cee61e3ff5c80416fbd5ecc56e996a0a1e"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/identity-fixture.mts:3bc46040d326:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/identity-fixture.mts:3bc46040d326:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/identity-fixture.mts:3bc46040d326:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/identity-fixture.mts:987ddf9c9627:1",
+      "source": {
+        "path": "infra/railway/staging/identity-fixture.mts",
+        "line": 210,
+        "endLine": 210,
+        "fingerprint": "8e7d36e3ce48d808876b630c6606fd8951b4139eb348bcc3074770458c737324"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/identity-fixture.mts:987ddf9c9627:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/identity-fixture.mts:987ddf9c9627:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/identity-fixture.mts:987ddf9c9627:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 75,
+        "endLine": 75,
+        "fingerprint": "e9b8cea91b382daa1a6f95b5d256ee51bf9cfbf9b68c08c88822d92158d86423"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:2",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 77,
+        "endLine": 77,
+        "fingerprint": "ba501742325633e5337863cae2ed0258f0449509fc4298215bbf03d48ed482ca"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:3",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 82,
+        "endLine": 82,
+        "fingerprint": "1964b1887f97765cb7c76c8d2c5268d5cd34a912277bd77c402f43b40d5242cb"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:3",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:3",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:3",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:4",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 88,
+        "endLine": 88,
+        "fingerprint": "3bc2f455d5ffe6a9e4336180eae2ddab7835a93276974199d93b172866a36940"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:4",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:4",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:4",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:5",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 258,
+        "endLine": 258,
+        "fingerprint": "785edc9c0f9d96de464cfdbf60aea05ca64762e674d5a070fb40f8e4e5d03876"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:5",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:5",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/journey.mts:ede5fd496e86:5",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:1",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 63,
+        "endLine": 63,
+        "fingerprint": "b969645a04fd7fe0ee173b9ae4d34b922ffbd3ce0d1ef67aae06cc73b45d5d33"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:2",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 103,
+        "endLine": 103,
+        "fingerprint": "35f9a2f9f26a231577d1ae56aa4af1983dfb8eaffa496470d5290bdc485f94a6"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:3",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 134,
+        "endLine": 134,
+        "fingerprint": "aba1d52872ad6636a10d4cf99c93ad102a34272d96f1669a62b4b0c670586f1d"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:3",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:3",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:3",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:4",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 135,
+        "endLine": 135,
+        "fingerprint": "8f62b3666e3bba4d5cc9cf3027f61c13e68950bb6d2a9a17e2fb59fd09c7070a"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:4",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:4",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:4",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:5",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 194,
+        "endLine": 194,
+        "fingerprint": "a1b0d434ce68263c58eb8f9942f51e03e335076eec0d719121746dde7e92c226"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:5",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:5",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:5",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:6",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 236,
+        "endLine": 236,
+        "fingerprint": "8f62b3666e3bba4d5cc9cf3027f61c13e68950bb6d2a9a17e2fb59fd09c7070a"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:6",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:6",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:account-lifecycle:infra/railway/staging/policy-checks.mts:ede5fd496e86:6",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -9543,6 +10119,1324 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "api-call:infra/railway/staging/journey.mts:0166aeba5e92:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 292,
+        "endLine": 300,
+        "fingerprint": "853f575b23faf1dc49a9a51c610aac2be885e56de3528d29d9fb489768908add"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:0166aeba5e92:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:0166aeba5e92:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:0166aeba5e92:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:0166aeba5e92:2",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 309,
+        "endLine": 313,
+        "fingerprint": "d2ec5dc43c20ed41e59dcd1e058b8f567030701e970dd74fe10b0d4a0afefa19"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:0166aeba5e92:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:0166aeba5e92:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:0166aeba5e92:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:0166aeba5e92:3",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 315,
+        "endLine": 319,
+        "fingerprint": "8c7c355d760f3b0165632e38b4d64406fa6a77fab5edc2bb76f3c9097fa9fc8f"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:0166aeba5e92:3",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:0166aeba5e92:3",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:0166aeba5e92:3",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:02648b8b61c5:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 217,
+        "endLine": 217,
+        "fingerprint": "fba974ad82056956eb3ac3e4e735746dacf13586bff8afa0da8b9c743b30717e"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:02648b8b61c5:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:02648b8b61c5:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:02648b8b61c5:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:0479f8c275a5:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 179,
+        "endLine": 179,
+        "fingerprint": "fbeee8246434174c83b6c0b35eed8d49805ce8227a1ef1338cf3bd6524de59da"
+      },
+      "owningService": null,
+      "targetService": "crm",
+      "mode": "backend",
+      "targetSprint": "S03",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:0479f8c275a5:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:0479f8c275a5:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:0479f8c275a5:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:502555fa728f:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 334,
+        "endLine": 336,
+        "fingerprint": "abcccd1e2e419e30a89c94626e7dda6558bcede25ad236ec752b63573b0e98b9"
+      },
+      "owningService": null,
+      "targetService": "delivery",
+      "mode": "backend",
+      "targetSprint": "S05",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:502555fa728f:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:502555fa728f:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:502555fa728f:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:58897fa22675:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 265,
+        "endLine": 265,
+        "fingerprint": "241ae78f11babda7af0554ed17373ffd519a6305f1c2076fd1702b62312b6f46"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:58897fa22675:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:58897fa22675:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:58897fa22675:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:669baef2fcb8:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 246,
+        "endLine": 249,
+        "fingerprint": "2bc334e79b2f0267a8d0c99046f425fe08b4486f9d5d86bfde7fb0eb01699a42"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:669baef2fcb8:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:669baef2fcb8:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:669baef2fcb8:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:9257862cf885:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 324,
+        "endLine": 333,
+        "fingerprint": "7ab4598c1624c8798e506711de275740ba3b76c4b3aabe45f151012ef5160923"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:9257862cf885:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:9257862cf885:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:9257862cf885:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:ab9fd51f2202:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 201,
+        "endLine": 205,
+        "fingerprint": "b78fb2689538424a385f4722da1fccc2fdbdcf954f0950384e0f11d7bd2e7c38"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:ab9fd51f2202:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:ab9fd51f2202:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:ab9fd51f2202:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:ab9fd51f2202:2",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 206,
+        "endLine": 210,
+        "fingerprint": "b78fb2689538424a385f4722da1fccc2fdbdcf954f0950384e0f11d7bd2e7c38"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:ab9fd51f2202:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:ab9fd51f2202:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:ab9fd51f2202:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:b58332717d1f:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 260,
+        "endLine": 264,
+        "fingerprint": "7a783a56f16d2c1d1268fc897a27b7268aef005af47a18fe9a04d7374c38397f"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:b58332717d1f:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:b58332717d1f:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:b58332717d1f:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:b58332717d1f:2",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 267,
+        "endLine": 271,
+        "fingerprint": "4dac02b28d13e8eadb590c60f636bc90e04e1cf4941507310d26a3815b2f86ed"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:b58332717d1f:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:b58332717d1f:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:b58332717d1f:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:b58332717d1f:3",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 279,
+        "endLine": 283,
+        "fingerprint": "d17c50f2662c1ec042ccf439161a534d188abd6b84c63d787f2eb404831249e0"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:b58332717d1f:3",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:b58332717d1f:3",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:b58332717d1f:3",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:c741a3163655:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 370,
+        "endLine": 380,
+        "fingerprint": "5e919ec969284c2ccd0120ec071793a902374b8bc6dae5eec96e6911070757a7"
+      },
+      "owningService": null,
+      "targetService": "communications",
+      "mode": "backend",
+      "targetSprint": "S07",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:c741a3163655:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:c741a3163655:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:c741a3163655:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:c95e96c52ea2:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 373,
+        "endLine": 375,
+        "fingerprint": "b18d4dcc399303fc4c3384da6e06d300ea9988714c7bc560b40f76773ac95862"
+      },
+      "owningService": null,
+      "targetService": "communications",
+      "mode": "backend",
+      "targetSprint": "S07",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:c95e96c52ea2:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:c95e96c52ea2:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:c95e96c52ea2:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:e68934e35134:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 327,
+        "endLine": 331,
+        "fingerprint": "938adf0af20fd61cdd1e51b643867ae96f7120c18ac2763327337010670603fe"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:e68934e35134:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:e68934e35134:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:e68934e35134:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:fa2311d69db0:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 395,
+        "endLine": 403,
+        "fingerprint": "c3404eacf459e9af76a239efdfd08b541c2983a83c862df7134057a090584415"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/journey.mts:fa2311d69db0:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/journey.mts:fa2311d69db0:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/journey.mts:fa2311d69db0:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:1",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 29,
+        "endLine": 33,
+        "fingerprint": "57c43501f4abea13147729b5cb29bb22ff3f4af506341c507cdbf6faa9cae0ad"
+      },
+      "owningService": null,
+      "targetService": "crm",
+      "mode": "backend",
+      "targetSprint": "S03",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:2",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 190,
+        "endLine": 190,
+        "fingerprint": "677bf0ad91dcae006e1369f45cc4891e1e9f6fef88a9e577274ee1c28db259a7"
+      },
+      "owningService": null,
+      "targetService": "crm",
+      "mode": "backend",
+      "targetSprint": "S03",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:1",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 95,
+        "endLine": 99,
+        "fingerprint": "1fd4bbc5455d3895e5272a64c51cbfc355ab51686630783ba2ea7037890f8d2e"
+      },
+      "owningService": null,
+      "targetService": "billing",
+      "mode": "backend",
+      "targetSprint": "S06",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:2",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 104,
+        "endLine": 108,
+        "fingerprint": "7eec487cb4044bad26d4ce8bb3fafc0530177794b389ffba19e09b2f94149ec0"
+      },
+      "owningService": null,
+      "targetService": "billing",
+      "mode": "backend",
+      "targetSprint": "S06",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:3",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 110,
+        "endLine": 114,
+        "fingerprint": "7cbdf30bbe7b9173499147e4f32ac544f922074af193e43211b40dfde06c814e"
+      },
+      "owningService": null,
+      "targetService": "billing",
+      "mode": "backend",
+      "targetSprint": "S06",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:3",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:3",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:3",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:4",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 117,
+        "endLine": 121,
+        "fingerprint": "bfdcbc83d35d59316e7c8dd8061b9565a16073637f33b06261527db9db1ae444"
+      },
+      "owningService": null,
+      "targetService": "billing",
+      "mode": "backend",
+      "targetSprint": "S06",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:4",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:4",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:4",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:1",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 36,
+        "endLine": 40,
+        "fingerprint": "e5d076a68d0b574a569b22755f273f0ebe05f624d9fc80890d5fb808b5a42e80"
+      },
+      "owningService": null,
+      "targetService": "crm",
+      "mode": "backend",
+      "targetSprint": "S03",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:2",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 74,
+        "endLine": 78,
+        "fingerprint": "1a6c18f5811ba43b5a2e823587b2aa2bfc1e6beae780fdbb8d4a67f9615703b7"
+      },
+      "owningService": null,
+      "targetService": "crm",
+      "mode": "backend",
+      "targetSprint": "S03",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:1",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 23,
+        "endLine": 27,
+        "fingerprint": "93a512b47f35c91951d7339f381987e7fdab374f0c8ec42270e196c3b8a35698"
+      },
+      "owningService": null,
+      "targetService": "crm",
+      "mode": "backend",
+      "targetSprint": "S03",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:2",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 161,
+        "endLine": 164,
+        "fingerprint": "0007e9f1120fd991045556f5744320430eaae3f79156f540497d2781df5f6e81"
+      },
+      "owningService": null,
+      "targetService": "crm",
+      "mode": "backend",
+      "targetSprint": "S03",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:3",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 175,
+        "endLine": 179,
+        "fingerprint": "79df25c57f59009d6f3fb4f0e705ed01263a19942c0d2abf9b3269d9b919652d"
+      },
+      "owningService": null,
+      "targetService": "crm",
+      "mode": "backend",
+      "targetSprint": "S03",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:3",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:3",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:3",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:4",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 181,
+        "endLine": 184,
+        "fingerprint": "70e832093a8267ca603becd1c1cbb52d407559856089f7b41ab011c4ad0a11d3"
+      },
+      "owningService": null,
+      "targetService": "crm",
+      "mode": "backend",
+      "targetSprint": "S03",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:4",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:4",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:4",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:5",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 186,
+        "endLine": 189,
+        "fingerprint": "c8ba50f651e5f72ac4cb6ceb909b43025dffff6f54b3ae566a4632a2abbe23af"
+      },
+      "owningService": null,
+      "targetService": "crm",
+      "mode": "backend",
+      "targetSprint": "S03",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:5",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:5",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:5",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:68ff234e5bea:1",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 123,
+        "endLine": 125,
+        "fingerprint": "c8e8b02a8440326b0e79d3516235c643319b33ed73aafd3da0bb64486508d2eb"
+      },
+      "owningService": null,
+      "targetService": "billing",
+      "mode": "backend",
+      "targetSprint": "S06",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        },
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:68ff234e5bea:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:68ff234e5bea:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:68ff234e5bea:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:8f0a1a6d92f6:1",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 44,
+        "endLine": 53,
+        "fingerprint": "1fce44a974e59ab8aa110afd569201726550c2f2418aa69aaa0aff040c6145bd"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:8f0a1a6d92f6:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:8f0a1a6d92f6:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:8f0a1a6d92f6:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:fbf89433d65c:1",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 155,
+        "endLine": 159,
+        "fingerprint": "fab3ac5337b0a9b846782992caa6bb4d182a80c2093d95f4b86aac7d4a45cd7e"
+      },
+      "owningService": null,
+      "targetService": "sales",
+      "mode": "backend",
+      "targetSprint": "S04",
+      "reasons": [
+        {
+          "category": "endpoint-dynamic",
+          "reason": "Dynamic URL/method requires runtime contract validation."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:api-call:infra/railway/staging/policy-checks.mts:fbf89433d65c:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:api-call:infra/railway/staging/policy-checks.mts:fbf89433d65c:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:api-call:infra/railway/staging/policy-checks.mts:fbf89433d65c:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "api-route:api-gateway:backend:DELETE /v1/billing/*",
       "source": {
         "path": "services/api-gateway/src/transport/routes.ts",
@@ -12355,6 +14249,487 @@
       "disposition": "OPEN_NOT_ACCEPTED"
     },
     {
+      "featureId": "configuration:infra/railway/staging/bootstrap.mts:2ee868091d40:1",
+      "source": {
+        "path": "infra/railway/staging/bootstrap.mts",
+        "line": 82,
+        "endLine": 82,
+        "fingerprint": "2ee868091d407a2daaed7c0df4ad4abce25fda6d1bf6148df1d79cd0704ff609"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/bootstrap.mts:2ee868091d40:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/bootstrap.mts:2ee868091d40:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/bootstrap.mts:2ee868091d40:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/bootstrap.mts:5e617c315209:1",
+      "source": {
+        "path": "infra/railway/staging/bootstrap.mts",
+        "line": 18,
+        "endLine": 18,
+        "fingerprint": "5e617c315209d29323e4329589e3c081a1e581871e4c211de3c3015c34d1921a"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/bootstrap.mts:5e617c315209:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/bootstrap.mts:5e617c315209:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/bootstrap.mts:5e617c315209:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/bootstrap.mts:79a3e3e8af29:1",
+      "source": {
+        "path": "infra/railway/staging/bootstrap.mts",
+        "line": 17,
+        "endLine": 17,
+        "fingerprint": "79a3e3e8af29fc9fd06feefcbc2c2913cfe0099ec6dbfdf0f2a8c031db6736fe"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/bootstrap.mts:79a3e3e8af29:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/bootstrap.mts:79a3e3e8af29:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/bootstrap.mts:79a3e3e8af29:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/bootstrap.mts:a0ba8c97df5a:1",
+      "source": {
+        "path": "infra/railway/staging/bootstrap.mts",
+        "line": 59,
+        "endLine": 59,
+        "fingerprint": "a0ba8c97df5a005406ea7bdaf954ad2e700d0e1bbab0a08c3b9616a4d84c02bc"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/bootstrap.mts:a0ba8c97df5a:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/bootstrap.mts:a0ba8c97df5a:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/bootstrap.mts:a0ba8c97df5a:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/entry.mts:3f8cfc9fa460:1",
+      "source": {
+        "path": "infra/railway/staging/entry.mts",
+        "line": 10,
+        "endLine": 10,
+        "fingerprint": "3f8cfc9fa460ce56fea6310c69e631c8455e0fecc2adb597d0e33072178d19cf"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/entry.mts:3f8cfc9fa460:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/entry.mts:3f8cfc9fa460:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/entry.mts:3f8cfc9fa460:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/recovery.mts:69e3a9e05aec:1",
+      "source": {
+        "path": "infra/railway/staging/recovery.mts",
+        "line": 46,
+        "endLine": 46,
+        "fingerprint": "69e3a9e05aec464b89f31f0bce4615fb6377414bbf59b48e7b47e31b96956460"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/recovery.mts:69e3a9e05aec:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/recovery.mts:69e3a9e05aec:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/recovery.mts:69e3a9e05aec:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/recovery.mts:a0ba8c97df5a:1",
+      "source": {
+        "path": "infra/railway/staging/recovery.mts",
+        "line": 22,
+        "endLine": 22,
+        "fingerprint": "a0ba8c97df5a005406ea7bdaf954ad2e700d0e1bbab0a08c3b9616a4d84c02bc"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/recovery.mts:a0ba8c97df5a:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/recovery.mts:a0ba8c97df5a:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/recovery.mts:a0ba8c97df5a:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/recovery.mts:dc770fd45650:1",
+      "source": {
+        "path": "infra/railway/staging/recovery.mts",
+        "line": 47,
+        "endLine": 47,
+        "fingerprint": "dc770fd456505f1012a65a504cc8a4b81cd119eba8702dacf77e4043b9f477f2"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/recovery.mts:dc770fd45650:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/recovery.mts:dc770fd45650:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/recovery.mts:dc770fd45650:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/recovery.mts:fdb4bc745a5d:1",
+      "source": {
+        "path": "infra/railway/staging/recovery.mts",
+        "line": 29,
+        "endLine": 29,
+        "fingerprint": "fdb4bc745a5d2bcab0205e074b1424bd5e568637cc696b37478997f4c123f389"
+      },
+      "owningService": null,
+      "targetService": "identity",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/recovery.mts:fdb4bc745a5d:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/recovery.mts:fdb4bc745a5d:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/recovery.mts:fdb4bc745a5d:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/web-main.mts:1d07649e567b:1",
+      "source": {
+        "path": "infra/railway/staging/web-main.mts",
+        "line": 6,
+        "endLine": 6,
+        "fingerprint": "1d07649e567befb4117abd4eb099744c98d38f394c0c7e6ee6b55aa241f11720"
+      },
+      "owningService": null,
+      "targetService": "delivery",
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/web-main.mts:1d07649e567b:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/web-main.mts:1d07649e567b:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/web-main.mts:1d07649e567b:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/web-main.mts:6c28481cd5ac:1",
+      "source": {
+        "path": "infra/railway/staging/web-main.mts",
+        "line": 10,
+        "endLine": 10,
+        "fingerprint": "6c28481cd5ac346e02b87e0faca79c0857b3e6250bbc5b35bc27db88f88359a6"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/web-main.mts:6c28481cd5ac:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/web-main.mts:6c28481cd5ac:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/web-main.mts:6c28481cd5ac:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/web-main.mts:9804c9242afe:1",
+      "source": {
+        "path": "infra/railway/staging/web-main.mts",
+        "line": 7,
+        "endLine": 7,
+        "fingerprint": "9804c9242afeb1292644b4fbe34524a6a6b907cc42dda4df7d5126ef567d6a9e"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/web-main.mts:9804c9242afe:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/web-main.mts:9804c9242afe:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/web-main.mts:9804c9242afe:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "configuration:infra/railway/staging/web-main.mts:c46469501b5f:1",
+      "source": {
+        "path": "infra/railway/staging/web-main.mts",
+        "line": 12,
+        "endLine": 12,
+        "fingerprint": "c46469501b5f86bc90b1fee9055515a1b4332936503fcbbb357c2b34f9d75701"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S02",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:configuration:infra/railway/staging/web-main.mts:c46469501b5f:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:configuration:infra/railway/staging/web-main.mts:c46469501b5f:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:configuration:infra/railway/staging/web-main.mts:c46469501b5f:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
       "featureId": "configuration:services/api-gateway/src/main.ts:c46469501b5f:1",
       "source": {
         "path": "services/api-gateway/src/main.ts",
@@ -14716,6 +17091,43 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:apps/client-mobile/src/main.ts:97558c958bac:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:apps/client-mobile/src/server-main.ts:735aca9c6b1d:1",
+      "source": {
+        "path": "apps/client-mobile/src/server-main.ts",
+        "line": 3,
+        "endLine": 3,
+        "fingerprint": "e598503fd40bc5a387ea573aca45009ba71701757fa8dc6bb21dd53de7226a4b"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "shared",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:apps/client-mobile/src/server-main.ts:735aca9c6b1d:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:apps/client-mobile/src/server-main.ts:735aca9c6b1d:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:apps/client-mobile/src/server-main.ts:735aca9c6b1d:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -19193,6 +21605,376 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:infra/identity/assign-scopes.mts:e46718f4dbda:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/railway/staging/acceptance.mts:a625f4eef24d:1",
+      "source": {
+        "path": "infra/railway/staging/acceptance.mts",
+        "line": 37,
+        "endLine": 43,
+        "fingerprint": "175a8c88485067dedae8fa32e96869c89afdc6f797c6602086a4b3979bd732f0"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/acceptance.mts:a625f4eef24d:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/acceptance.mts:a625f4eef24d:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/acceptance.mts:a625f4eef24d:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/railway/staging/entry.mts:3544ea1ccef4:1",
+      "source": {
+        "path": "infra/railway/staging/entry.mts",
+        "line": 26,
+        "endLine": 36,
+        "fingerprint": "fb2294c0207628b80c1111099fbddb20d75f4a1328b6ca08f18728dbcf74b68e"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/entry.mts:3544ea1ccef4:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/entry.mts:3544ea1ccef4:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/entry.mts:3544ea1ccef4:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/railway/staging/identity-fixture.mts:0422d3aa7ab3:1",
+      "source": {
+        "path": "infra/railway/staging/identity-fixture.mts",
+        "line": 227,
+        "endLine": 229,
+        "fingerprint": "48488486d2d6b8a5fba624c84b87bcfa5387969b0aab73a306971ff5e9a99e39"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/identity-fixture.mts:0422d3aa7ab3:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/identity-fixture.mts:0422d3aa7ab3:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/identity-fixture.mts:0422d3aa7ab3:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/railway/staging/identity-fixture.mts:45e54a53e588:1",
+      "source": {
+        "path": "infra/railway/staging/identity-fixture.mts",
+        "line": 219,
+        "endLine": 221,
+        "fingerprint": "e3800b163f329d73441ac863c77babd1ad1d9f42ec2f7cd8b61c1d7af6a2a576"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/identity-fixture.mts:45e54a53e588:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/identity-fixture.mts:45e54a53e588:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/identity-fixture.mts:45e54a53e588:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/railway/staging/identity-fixture.mts:9547ef82fd62:1",
+      "source": {
+        "path": "infra/railway/staging/identity-fixture.mts",
+        "line": 190,
+        "endLine": 190,
+        "fingerprint": "e23ccb7e46b678cbaed9b002dae9771065e140ebe7f448ce1915f5da5dc60d2c"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/identity-fixture.mts:9547ef82fd62:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/identity-fixture.mts:9547ef82fd62:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/identity-fixture.mts:9547ef82fd62:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/railway/staging/journey.mts:8825088d1407:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 31,
+        "endLine": 31,
+        "fingerprint": "2d4845598b7fd12ba3dfa79a20864313dec2468d4b74183540e86069e1a41897"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/journey.mts:8825088d1407:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/journey.mts:8825088d1407:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/journey.mts:8825088d1407:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/railway/staging/policy-checks.mts:9b1cdf765365:1",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 237,
+        "endLine": 239,
+        "fingerprint": "20d1a5254757ea9a8cc1e26745075016a7e798afaea39453c23a73c2892f088c"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/policy-checks.mts:9b1cdf765365:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/policy-checks.mts:9b1cdf765365:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/policy-checks.mts:9b1cdf765365:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/railway/staging/recovery.mts:2e7403b658ae:1",
+      "source": {
+        "path": "infra/railway/staging/recovery.mts",
+        "line": 365,
+        "endLine": 367,
+        "fingerprint": "4dc12530428b706250bcb2131ea626c933fb36e6820ebbf0db965c50cc486aec"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/recovery.mts:2e7403b658ae:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/recovery.mts:2e7403b658ae:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/recovery.mts:2e7403b658ae:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/railway/staging/recovery.mts:7fc86527b8a4:1",
+      "source": {
+        "path": "infra/railway/staging/recovery.mts",
+        "line": 276,
+        "endLine": 276,
+        "fingerprint": "cb741bbbb0889e9f6951990d89e46596bbefef426ca591192d87005231cebefd"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/recovery.mts:7fc86527b8a4:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/recovery.mts:7fc86527b8a4:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/recovery.mts:7fc86527b8a4:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "failure-state:infra/railway/staging/recovery.mts:dc805b2d0821:1",
+      "source": {
+        "path": "infra/railway/staging/recovery.mts",
+        "line": 328,
+        "endLine": 331,
+        "fingerprint": "456fa47a892484c7c05e2c69935617f768fef0368288bdaae1567e724debb778"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/recovery.mts:dc805b2d0821:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/recovery.mts:dc805b2d0821:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/recovery.mts:dc805b2d0821:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -46758,6 +49540,265 @@
         },
         {
           "id": "PLANNED:e2e:search-filter:apps/rep-mobile/src/server/views/visits.ts:e90ec8e2f11c:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "search-filter:infra/railway/staging/bootstrap.mts:b69eeee5e4a0:1",
+      "source": {
+        "path": "infra/railway/staging/bootstrap.mts",
+        "line": 133,
+        "endLine": 133,
+        "fingerprint": "db127fac8a178129b6bcbeeca7ac567948c8db902d1ac79616f11474051e5a35"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:infra/railway/staging/bootstrap.mts:b69eeee5e4a0:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:infra/railway/staging/bootstrap.mts:b69eeee5e4a0:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:infra/railway/staging/bootstrap.mts:b69eeee5e4a0:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "search-filter:infra/railway/staging/journey.mts:1b19204a3c4f:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 366,
+        "endLine": 366,
+        "fingerprint": "7733d09d53ee01fc213f5b649fa2796823e733d9aec4437cb0b700aeb26323cd"
+      },
+      "owningService": null,
+      "targetService": "billing",
+      "mode": "backend",
+      "targetSprint": "S06",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:infra/railway/staging/journey.mts:1b19204a3c4f:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:infra/railway/staging/journey.mts:1b19204a3c4f:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:infra/railway/staging/journey.mts:1b19204a3c4f:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "search-filter:infra/railway/staging/journey.mts:aeb8df32c67e:1",
+      "source": {
+        "path": "infra/railway/staging/journey.mts",
+        "line": 367,
+        "endLine": 367,
+        "fingerprint": "d0a2913b1159faba0405b21ce67d3339b4dc43f7b22461f102676835c93c2241"
+      },
+      "owningService": null,
+      "targetService": "billing",
+      "mode": "backend",
+      "targetSprint": "S06",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:infra/railway/staging/journey.mts:aeb8df32c67e:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:infra/railway/staging/journey.mts:aeb8df32c67e:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:infra/railway/staging/journey.mts:aeb8df32c67e:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "search-filter:infra/railway/staging/policy-checks.mts:d92ce8990256:1",
+      "source": {
+        "path": "infra/railway/staging/policy-checks.mts",
+        "line": 68,
+        "endLine": 68,
+        "fingerprint": "a8f15827cfaf5119dff80964dc3141726a07216a7c4e32abf107e920106f3ff5"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:infra/railway/staging/policy-checks.mts:d92ce8990256:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:infra/railway/staging/policy-checks.mts:d92ce8990256:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:infra/railway/staging/policy-checks.mts:d92ce8990256:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "search-filter:infra/railway/staging/recovery.mts:5c847d6dab65:1",
+      "source": {
+        "path": "infra/railway/staging/recovery.mts",
+        "line": 268,
+        "endLine": 268,
+        "fingerprint": "ab2ea8b00c45fc7875d5648c7aca5111f910a168c5b990a491a8c3284df853c6"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:infra/railway/staging/recovery.mts:5c847d6dab65:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:infra/railway/staging/recovery.mts:5c847d6dab65:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:infra/railway/staging/recovery.mts:5c847d6dab65:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "search-filter:infra/railway/staging/recovery.mts:f0f2ae61c28c:1",
+      "source": {
+        "path": "infra/railway/staging/recovery.mts",
+        "line": 187,
+        "endLine": 187,
+        "fingerprint": "7a4be8ecb14c45e2df8b20d78f0446c788de173148a0bef64da39f57dafb0bfd"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:infra/railway/staging/recovery.mts:f0f2ae61c28c:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:infra/railway/staging/recovery.mts:f0f2ae61c28c:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:infra/railway/staging/recovery.mts:f0f2ae61c28c:1",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "disposition": "OPEN_NOT_ACCEPTED"
+    },
+    {
+      "featureId": "search-filter:infra/railway/staging/recovery.mts:f0f2ae61c28c:2",
+      "source": {
+        "path": "infra/railway/staging/recovery.mts",
+        "line": 200,
+        "endLine": 200,
+        "fingerprint": "7a4be8ecb14c45e2df8b20d78f0446c788de173148a0bef64da39f57dafb0bfd"
+      },
+      "owningService": null,
+      "targetService": null,
+      "mode": "backend",
+      "targetSprint": "S10",
+      "reasons": [
+        {
+          "category": "test-mapping",
+          "reason": "No source-reference test mapping discovered; required tests remain planned, not executed."
+        }
+      ],
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:search-filter:infra/railway/staging/recovery.mts:f0f2ae61c28c:2",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:search-filter:infra/railway/staging/recovery.mts:f0f2ae61c28c:2",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:search-filter:infra/railway/staging/recovery.mts:f0f2ae61c28c:2",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }

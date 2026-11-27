@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "c9a705eacc1b3718ed4e199304a731d71ddef351064411c6f48083c67214cb02",
+  "sourceDigest": "f684fd3503639fc9135bff70d8476942f900cfea2e4a94bb2a8846beee640c60",
   "workspaces": [
     {
       "name": "@elvorance/admin-web",
@@ -309,6 +309,10 @@
       "source": "apps/client-mobile/src/navigation.ts",
       "specifier": "@elvorance/ui/enterprise-ux"
     },
+    {
+      "source": "apps/client-mobile/src/server-main.ts",
+      "specifier": "@elvorance/api-client/authenticated-workspace"
+    },
     { "source": "apps/rep-mobile/src/app.ts", "specifier": "./context.ts" },
     { "source": "apps/rep-mobile/src/app.ts", "specifier": "./state/local-demo.ts" },
     { "source": "apps/rep-mobile/src/app.ts", "specifier": "./lifecycle.ts" },
@@ -544,6 +548,112 @@
     { "source": "infra/identity/user-profile.mts", "specifier": "./types.mts" },
     { "source": "infra/identity/verify.mts", "specifier": "./admin-client.mts" },
     { "source": "infra/identity/verify.mts", "specifier": "./types.mts" },
+    { "source": "infra/railway/staging/acceptance.mts", "specifier": "node:crypto" },
+    { "source": "infra/railway/staging/acceptance.mts", "specifier": "./identity-fixture.mts" },
+    { "source": "infra/railway/staging/acceptance.mts", "specifier": "./journey.mts" },
+    { "source": "infra/railway/staging/acceptance.mts", "specifier": "./policy-checks.mts" },
+    { "source": "infra/railway/staging/acceptance.mts", "specifier": "./load.mts" },
+    { "source": "infra/railway/staging/acceptance.mts", "specifier": "./recovery.mts" },
+    { "source": "infra/railway/staging/acceptance.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/bootstrap.mts", "specifier": "pg" },
+    {
+      "source": "infra/railway/staging/bootstrap.mts",
+      "specifier": "../../identity/admin-client.mts"
+    },
+    { "source": "infra/railway/staging/bootstrap.mts", "specifier": "../../identity/realm.mts" },
+    {
+      "source": "infra/railway/staging/bootstrap.mts",
+      "specifier": "../../identity/provision.mts"
+    },
+    { "source": "infra/railway/staging/bootstrap.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/entry.mts", "specifier": "node:fs/promises" },
+    { "source": "infra/railway/staging/entry.mts", "specifier": "./bootstrap.mts" },
+    { "source": "infra/railway/staging/entry.mts", "specifier": "./acceptance.mts" },
+    { "source": "infra/railway/staging/entry.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/http.mts", "specifier": "node:crypto" },
+    { "source": "infra/railway/staging/http.mts", "specifier": "node:perf_hooks" },
+    { "source": "infra/railway/staging/http.mts", "specifier": "./identity-fixture.mts" },
+    { "source": "infra/railway/staging/http.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/identity-fixture.mts", "specifier": "node:crypto" },
+    { "source": "infra/railway/staging/identity-fixture.mts", "specifier": "jsdom" },
+    {
+      "source": "infra/railway/staging/identity-fixture.mts",
+      "specifier": "../../../packages/mobile-auth/src/session.ts"
+    },
+    {
+      "source": "infra/railway/staging/identity-fixture.mts",
+      "specifier": "../../../packages/mobile-auth/src/types.ts"
+    },
+    { "source": "infra/railway/staging/identity-fixture.mts", "specifier": "./bootstrap.mts" },
+    { "source": "infra/railway/staging/identity-fixture.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/journey.mts", "specifier": "node:crypto" },
+    { "source": "infra/railway/staging/journey.mts", "specifier": "node:timers/promises" },
+    { "source": "infra/railway/staging/journey.mts", "specifier": "@elvorance/contracts" },
+    { "source": "infra/railway/staging/journey.mts", "specifier": "@elvorance/questionnaire" },
+    {
+      "source": "infra/railway/staging/journey.mts",
+      "specifier": "../../../services/crm/src/domain/model.ts"
+    },
+    {
+      "source": "infra/railway/staging/journey.mts",
+      "specifier": "../../../services/sales/src/domain/model.ts"
+    },
+    {
+      "source": "infra/railway/staging/journey.mts",
+      "specifier": "../../../services/delivery/src/domain/model.ts"
+    },
+    {
+      "source": "infra/railway/staging/journey.mts",
+      "specifier": "../../../services/billing/src/domain/model.ts"
+    },
+    {
+      "source": "infra/railway/staging/journey.mts",
+      "specifier": "../../../services/communications/src/domain/model.ts"
+    },
+    { "source": "infra/railway/staging/journey.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/journey.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/journey.mts", "specifier": "./identity-fixture.mts" },
+    { "source": "infra/railway/staging/journey.mts", "specifier": "./http.mts" },
+    { "source": "infra/railway/staging/load.mts", "specifier": "node:perf_hooks" },
+    { "source": "infra/railway/staging/load.mts", "specifier": "node:timers/promises" },
+    { "source": "infra/railway/staging/load.mts", "specifier": "./identity-fixture.mts" },
+    { "source": "infra/railway/staging/load.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/pg-command.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/policy-checks.mts", "specifier": "node:crypto" },
+    { "source": "infra/railway/staging/policy-checks.mts", "specifier": "@elvorance/contracts" },
+    {
+      "source": "infra/railway/staging/policy-checks.mts",
+      "specifier": "../../../services/crm/src/domain/model.ts"
+    },
+    {
+      "source": "infra/railway/staging/policy-checks.mts",
+      "specifier": "../../../services/billing/src/domain/model.ts"
+    },
+    { "source": "infra/railway/staging/policy-checks.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/policy-checks.mts", "specifier": "./identity-fixture.mts" },
+    { "source": "infra/railway/staging/policy-checks.mts", "specifier": "./journey.mts" },
+    { "source": "infra/railway/staging/recovery.mts", "specifier": "./pg-command.mts" },
+    { "source": "infra/railway/staging/recovery.mts", "specifier": "pg" },
+    {
+      "source": "infra/railway/staging/recovery.mts",
+      "specifier": "../../../packages/service-kit/src/pg-repository.ts"
+    },
+    { "source": "infra/railway/staging/recovery.mts", "specifier": "@elvorance/contracts" },
+    { "source": "infra/railway/staging/recovery.mts", "specifier": "node:crypto" },
+    { "source": "infra/railway/staging/recovery.mts", "specifier": "node:fs/promises" },
+    { "source": "infra/railway/staging/recovery.mts", "specifier": "node:os" },
+    { "source": "infra/railway/staging/recovery.mts", "specifier": "node:path" },
+    { "source": "infra/railway/staging/recovery.mts", "specifier": "node:child_process" },
+    { "source": "infra/railway/staging/recovery.mts", "specifier": "node:perf_hooks" },
+    { "source": "infra/railway/staging/recovery.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/recovery.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/web-main.mts", "specifier": "node:path" },
+    { "source": "infra/railway/staging/web-main.mts", "specifier": "./web-server.mts" },
+    { "source": "infra/railway/staging/web-main.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/web-server.mts", "specifier": "node:http" },
+    { "source": "infra/railway/staging/web-server.mts", "specifier": "node:fs/promises" },
+    { "source": "infra/railway/staging/web-server.mts", "specifier": "node:path" },
+    { "source": "infra/railway/staging/web-server.mts", "specifier": "./target.mts" },
     {
       "source": "packages/api-client/src/authenticated-workspace.ts",
       "specifier": "@elvorance/contracts"
@@ -1462,6 +1572,30 @@
       "source": "services/tracking/src/transport/routes.ts",
       "specifier": "../application/sessions.ts"
     },
+    { "source": "tests/acceptance/client-ios-shell.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/acceptance/client-ios-shell.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/acceptance/client-ios-shell.mts", "specifier": "node:path" },
+    {
+      "source": "tests/acceptance/client-ios-shell.mts",
+      "specifier": "../../tooling/scripts/rep-native/process.mts"
+    },
+    { "source": "tests/acceptance/client-shell.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/acceptance/client-shell.mts", "specifier": "node:path" },
+    {
+      "source": "tests/acceptance/client-shell.mts",
+      "specifier": "../../tooling/scripts/app-build-proof.mts"
+    },
+    {
+      "source": "tests/acceptance/client-shell.mts",
+      "specifier": "../../tooling/scripts/rep-native/process.mts"
+    },
+    { "source": "tests/acceptance/keycloak-ci.mts", "specifier": "node:assert/strict" },
+    { "source": "tests/acceptance/keycloak-ci.mts", "specifier": "node:crypto" },
+    { "source": "tests/acceptance/keycloak-ci.mts", "specifier": "node:child_process" },
+    { "source": "tests/acceptance/keycloak-ci.mts", "specifier": "node:fs/promises" },
+    { "source": "tests/acceptance/keycloak-ci.mts", "specifier": "node:os" },
+    { "source": "tests/acceptance/keycloak-ci.mts", "specifier": "node:path" },
+    { "source": "tests/acceptance/keycloak-ci.mts", "specifier": "node:https" },
     { "source": "tests/acceptance/postgres-recovery.mts", "specifier": "node:assert/strict" },
     { "source": "tests/acceptance/postgres-recovery.mts", "specifier": "node:crypto" },
     { "source": "tests/acceptance/postgres-recovery.mts", "specifier": "node:child_process" },
@@ -1512,6 +1646,7 @@
       "source": "tests/acceptance/postgres-recovery.mts",
       "specifier": "../../services/communications/src/infrastructure/migrations/001_initial.ts"
     },
+    { "source": "tests/acceptance/prepare-client-shell.mts", "specifier": "./client-shell.mts" },
     { "source": "tests/admin/admin.test.ts", "specifier": "node:test" },
     { "source": "tests/admin/admin.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/admin/admin.test.ts", "specifier": "node:module" },
@@ -1784,6 +1919,19 @@
       "source": "tests/backend/authorization-matrix.test.ts",
       "specifier": "../../services/communications/src/infrastructure/migrations/001_initial.ts"
     },
+    { "source": "tests/backend/client-shell-preparation.test.ts", "specifier": "node:test" },
+    {
+      "source": "tests/backend/client-shell-preparation.test.ts",
+      "specifier": "node:assert/strict"
+    },
+    { "source": "tests/backend/client-shell-preparation.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/client-shell-preparation.test.ts", "specifier": "node:fs" },
+    { "source": "tests/backend/client-shell-preparation.test.ts", "specifier": "node:os" },
+    { "source": "tests/backend/client-shell-preparation.test.ts", "specifier": "node:path" },
+    {
+      "source": "tests/backend/client-shell-preparation.test.ts",
+      "specifier": "../acceptance/client-shell.mts"
+    },
     { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/backend/discount-fulfillment.test.ts", "specifier": "node:crypto" },
@@ -1858,6 +2006,48 @@
     { "source": "tests/backend/helpers.ts", "specifier": "fastify" },
     { "source": "tests/backend/helpers.ts", "specifier": "@elvorance/contracts" },
     { "source": "tests/backend/helpers.ts", "specifier": "@elvorance/service-kit" },
+    { "source": "tests/backend/hosted-admin-transport.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/hosted-admin-transport.test.ts", "specifier": "node:test" },
+    {
+      "source": "tests/backend/hosted-admin-transport.test.ts",
+      "specifier": "../../infra/identity/admin-client.mts"
+    },
+    { "source": "tests/backend/hosted-load.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/hosted-load.test.ts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/backend/hosted-load.test.ts",
+      "specifier": "../../infra/railway/staging/load.mts"
+    },
+    { "source": "tests/backend/hosted-pg-command.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/hosted-pg-command.test.ts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/backend/hosted-pg-command.test.ts",
+      "specifier": "../../infra/railway/staging/pg-command.mts"
+    },
+    { "source": "tests/backend/hosted-staging-guards.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/hosted-staging-guards.test.ts", "specifier": "node:test" },
+    {
+      "source": "tests/backend/hosted-staging-guards.test.ts",
+      "specifier": "../../infra/railway/staging/target.mts"
+    },
+    { "source": "tests/backend/hosted-styles.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/hosted-styles.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/hosted-styles.test.ts", "specifier": "node:fs/promises" },
+    {
+      "source": "tests/backend/hosted-styles.test.ts",
+      "specifier": "../../tooling/scripts/hosted/styles.mts"
+    },
+    { "source": "tests/backend/hosted-web.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/hosted-web.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/hosted-web.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/hosted-web.test.ts", "specifier": "node:os" },
+    { "source": "tests/backend/hosted-web.test.ts", "specifier": "node:path" },
+    { "source": "tests/backend/hosted-web.test.ts", "specifier": "node:events" },
+    { "source": "tests/backend/hosted-web.test.ts", "specifier": "node:net" },
+    {
+      "source": "tests/backend/hosted-web.test.ts",
+      "specifier": "../../infra/railway/staging/web-server.mts"
+    },
     { "source": "tests/backend/http-response-semantics.test.ts", "specifier": "node:test" },
     {
       "source": "tests/backend/http-response-semantics.test.ts",
@@ -3029,6 +3219,17 @@
     { "source": "tooling/scripts/dev.mts", "specifier": "node:fs" },
     { "source": "tooling/scripts/dev.mts", "specifier": "node:path" },
     { "source": "tooling/scripts/dev.mts", "specifier": "./workspace.mts" },
+    { "source": "tooling/scripts/hosted/build-ops.mts", "specifier": "esbuild" },
+    { "source": "tooling/scripts/hosted/build-web.mts", "specifier": "esbuild" },
+    { "source": "tooling/scripts/hosted/build-web.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/hosted/build-web.mts", "specifier": "node:crypto" },
+    { "source": "tooling/scripts/hosted/build-web.mts", "specifier": "./styles.mts" },
+    {
+      "source": "tooling/scripts/hosted/build-web.mts",
+      "specifier": "../../../infra/railway/staging/target.mts"
+    },
+    { "source": "tooling/scripts/hosted/styles.mts", "specifier": "node:fs/promises" },
+    { "source": "tooling/scripts/hosted/styles.mts", "specifier": "node:path" },
     { "source": "tooling/scripts/mobile.mts", "specifier": "node:child_process" },
     { "source": "tooling/scripts/mobile.mts", "specifier": "node:path" },
     { "source": "tooling/scripts/mobile.mts", "specifier": "node:url" },
@@ -3546,6 +3747,7 @@
     "apps/admin-web/src/main.ts",
     "apps/admin-web/src/server-main.ts",
     "apps/client-mobile/src/main.ts",
+    "apps/client-mobile/src/server-main.ts",
     "apps/rep-mobile/src/main.ts",
     "apps/rep-mobile/src/server-main.ts",
     "services/api-gateway/src/main.ts",
@@ -3585,7 +3787,20 @@
     "infra/identity/user-profile.mts",
     "infra/identity/verify.mts",
     "infra/railway/domain-service.json",
-    "infra/railway/gateway.json"
+    "infra/railway/gateway.json",
+    "infra/railway/staging/acceptance.mts",
+    "infra/railway/staging/bootstrap.mts",
+    "infra/railway/staging/entry.mts",
+    "infra/railway/staging/http.mts",
+    "infra/railway/staging/identity-fixture.mts",
+    "infra/railway/staging/journey.mts",
+    "infra/railway/staging/load.mts",
+    "infra/railway/staging/pg-command.mts",
+    "infra/railway/staging/policy-checks.mts",
+    "infra/railway/staging/recovery.mts",
+    "infra/railway/staging/target.mts",
+    "infra/railway/staging/web-main.mts",
+    "infra/railway/staging/web-server.mts"
   ],
   "sourceOnly": true
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "c9a705eacc1b3718ed4e199304a731d71ddef351064411c6f48083c67214cb02",
+  "sourceDigest": "f684fd3503639fc9135bff70d8476942f900cfea2e4a94bb2a8846beee640c60",
   "trustBoundaries": [
     {
       "id": "TB1",
@@ -7707,6 +7707,1281 @@
       "events": [],
       "sourceTrace": null,
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:0166aeba5e92:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/contracts/${contract.id}/approve",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": ["infra/railway/staging/journey.mts:292-300"]
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:0166aeba5e92:2",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/contracts/${contract.id}/approve",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:0166aeba5e92:3",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/contracts/${contract.id}/approve",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:016e83eb72d2:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/identity/me",
+          "service": "identity",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:016e83eb72d2:2",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/identity/me",
+          "service": "identity",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:016e83eb72d2:3",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/identity/me",
+          "service": "identity",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": ["infra/railway/staging/journey.mts:106-108"]
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:02648b8b61c5:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/sales/visits/${visit.id}",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:0315632e5500:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/visits",
+          "service": "sales",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:0479f8c275a5:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/crm/customers/${customer.id}",
+          "service": "crm",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:0eafa315185e:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        { "method": "GET", "path": "/v1/crm/customers", "service": "crm", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:0eafa315185e:2",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        { "method": "GET", "path": "/v1/crm/customers", "service": "crm", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:257fd39ca453:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/billing/invoices",
+          "service": "billing",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:410bb128ffbd:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        { "method": "GET", "path": "/v1/crm/catalog", "service": "crm", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:502555fa728f:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/delivery/projects",
+          "service": "delivery",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:58897fa22675:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/sales/quotes/${quote.id}",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:59bef9fab5d1:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        { "method": "POST", "path": "/v1/crm/customers", "service": "crm", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:59bef9fab5d1:2",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        { "method": "POST", "path": "/v1/crm/customers", "service": "crm", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:59bef9fab5d1:3",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        { "method": "POST", "path": "/v1/crm/customers", "service": "crm", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:669baef2fcb8:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/quotes/${quote.id}/send",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:90ee58beb064:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/quotes",
+          "service": "sales",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:9257862cf885:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/sales/contracts/${contract.id}/fulfillment",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:ab9fd51f2202:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/visits/${visit.id}/start",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:ab9fd51f2202:2",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/visits/${visit.id}/start",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:b193c4621bc3:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PUT",
+          "path": "/v1/crm/configuration",
+          "service": "crm",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:b58332717d1f:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/quotes/${quote.id}/accept",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:b58332717d1f:2",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/quotes/${quote.id}/accept",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:b58332717d1f:3",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/quotes/${quote.id}/accept",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:c741a3163655:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/communications/notifications",
+          "service": "communications",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": ["contract.approved.v1"],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:c95e96c52ea2:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/communications/notifications",
+          "service": "communications",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:e68934e35134:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/sales/contracts/${contract.id}/fulfillment",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/journey.mts:fa2311d69db0:1",
+      "source": "infra/railway/staging/journey.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/visits/${visit.id}/complete",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:016e83eb72d2:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/identity/me",
+          "service": "identity",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": ["infra/railway/staging/policy-checks.mts:55-57"]
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:016e83eb72d2:2",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/identity/me",
+          "service": "identity",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": ["infra/railway/staging/policy-checks.mts:64-66"]
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:016e83eb72d2:3",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/identity/me",
+          "service": "identity",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": ["infra/railway/staging/policy-checks.mts:140-142"]
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:016e83eb72d2:4",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/identity/me",
+          "service": "identity",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0315632e5500:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/visits",
+          "service": "sales",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": ["infra/railway/staging/policy-checks.mts:165-173"]
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/crm/customers/${customer.id}",
+          "service": "crm",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0479f8c275a5:2",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/crm/customers/${customer.id}",
+          "service": "crm",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/billing/invoices/${invoice.id}/payments",
+          "service": "billing",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:2",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/billing/invoices/${invoice.id}/payments",
+          "service": "billing",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:3",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/billing/invoices/${invoice.id}/payments",
+          "service": "billing",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:0a80c397097d:4",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/billing/invoices/${invoice.id}/payments",
+          "service": "billing",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        { "method": "POST", "path": "/v1/crm/regions", "service": "crm", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:1ab7a925b7fe:2",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        { "method": "POST", "path": "/v1/crm/regions", "service": "crm", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/crm/customers/${customer.id}",
+          "service": "crm",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:2",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/crm/customers/${customer.id}",
+          "service": "crm",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:3",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/crm/customers/${customer.id}",
+          "service": "crm",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:4",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/crm/customers/${customer.id}",
+          "service": "crm",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:2e0b9a27d3b1:5",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/crm/customers/${customer.id}",
+          "service": "crm",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:59bef9fab5d1:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        { "method": "POST", "path": "/v1/crm/customers", "service": "crm", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:68ff234e5bea:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/billing/invoices/${invoice.id}",
+          "service": "billing",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:8f0a1a6d92f6:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PATCH",
+          "path": "/v1/identity/me/profile",
+          "service": "identity",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:b193c4621bc3:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "PUT",
+          "path": "/v1/crm/configuration",
+          "service": "crm",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:b45c42039a18:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/identity/memberships",
+          "service": "identity",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:infra/railway/staging/policy-checks.mts:fbf89433d65c:1",
+      "source": "infra/railway/staging/policy-checks.mts",
+      "mode": "backend",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/v1/sales/quotes/${flow.quote.id}/accept",
+          "service": "sales",
+          "resolution": "dynamic"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": ["infra/railway/staging/policy-checks.mts:155-159"]
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
     },
     {
       "featureId": "api-call:packages/api-client/src/authenticated-workspace.ts:876874a599f0:1",
