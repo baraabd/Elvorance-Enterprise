@@ -66,7 +66,7 @@ jobs:
           set -euo pipefail
           test "$(git write-tree)" = 9678f1893db4d8acf6fd24e82d39e3df580152de
           git diff --exit-code
-          git rm .github/workflows/acceptance-verification.yml .github/workflows/hosted-tooling.yml
+          git rm --cached .github/workflows/acceptance-verification.yml .github/workflows/hosted-tooling.yml
           test "$(git write-tree)" = cca7e78cf2e3d9ab5b5ba63d4cff2c07da2b9074
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
