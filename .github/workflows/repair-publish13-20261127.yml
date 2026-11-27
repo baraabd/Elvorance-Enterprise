@@ -1,0 +1,59 @@
+name: Prepare reviewed PR13 candidate
+on:
+  push:
+    branches: [repair/pr13-source-20261127]
+    paths: [.github/workflows/repair-publish13-20261127.yml]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - name: Apply bounded patch and the exact reviewed UX fix
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp .repair-pr13.patch "$RUNNER_TEMP/pr13.patch"
+          printf '%s  %s\n' 6287822e27ec7b3822bc3a980a6641dc8dc11a71e09626aa6bf4fc3c3b8f7d72 "$RUNNER_TEMP/pr13.patch" | sha256sum -c -
+          git checkout --detach ac7cca98ad6a28f9cbe9ead61e3114f1b848f1a1
+          git apply --check "$RUNNER_TEMP/pr13.patch"
+          git apply --index "$RUNNER_TEMP/pr13.patch"
+          git checkout 565febfb889cc48abeb2b7b8c33c27a84b44d0f9 -- packages/design-system/src/enterprise.css tests/ux/test_visit_summary.py
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Rebuild deterministic inventories without changing debt baselines
+        run: |
+          npm run inventory:write
+          node tooling/qa/sprint09-matrix.mts --write
+          git add docs/production docs/qa/sprint09/test-matrix.json
+          test "$(git write-tree)" = e1047d99ffb20ee808384d45d868563a0e979061
+      - run: npm run check:types
+      - run: npm run check:format
+      - run: npm run inventory:check
+      - name: Publish the clean exact-tree integration candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git write-tree)" = e1047d99ffb20ee808384d45d868563a0e979061
+          git diff --exit-code
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          COMMIT=$(printf '%s\n' 'fix(qa): isolate concurrency stages without relaxing production limits and integrate UX regression' | git commit-tree e1047d99ffb20ee808384d45d868563a0e979061 -p ac7cca98ad6a28f9cbe9ead61e3114f1b848f1a1 -p 565febfb889cc48abeb2b7b8c33c27a84b44d0f9)
+          git branch repair/pr13-result-20261127 "$COMMIT"
+          git push origin refs/heads/repair/pr13-result-20261127:refs/heads/repair/pr13-result-20261127
+          mkdir -p "$RUNNER_TEMP/pr13-result"
+          git show --no-patch --format='%H%n%T%n%P' "$COMMIT" > "$RUNNER_TEMP/pr13-result/source.txt"
+          git bundle create "$RUNNER_TEMP/pr13-result/candidate.bundle" ac7cca98ad6a28f9cbe9ead61e3114f1b848f1a1..repair/pr13-result-20261127
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: repair-pr13-candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/pr13-result/
+          if-no-files-found: error
+          retention-days: 7
