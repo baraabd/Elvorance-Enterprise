@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
-  "sourceDigest": "bba68ed99ad3b9d7dec6d2fd5c0817e9d7e82e71bba9296bd4925907ecf8fcd9",
+  "sourceDigest": "171839fcafd1d324ee645b6d9a27ca486e2523292cbf5358d042cd8010f05430",
   "sourceFiles": [
     {
       "path": ".gitattributes",
@@ -1105,7 +1105,7 @@
     },
     {
       "path": "packages/design-system/src/enterprise.css",
-      "sha256": "24693edafce4c9df30ea8f485cb104ce08622a95d6e8aca36a506751c8ddc46c"
+      "sha256": "f03fe7f8bbf4a314435d2e41f72239aee9c117aa6f34f6878ed437e4f808d052"
     },
     {
       "path": "packages/design-system/src/icons.ts",
