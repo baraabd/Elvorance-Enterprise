@@ -1,6 +1,14 @@
 {
   "schemaVersion": 1,
-  "requiredJobs": ["project", "runtime", "native", "identity", "security", "admin-browser"],
+  "requiredJobs": [
+    "project",
+    "runtime",
+    "native",
+    "identity",
+    "security",
+    "browser",
+    "admin-browser"
+  ],
   "lanes": [
     {
       "name": "project-linux",
@@ -101,6 +109,13 @@
       "countedCommands": ["admin-e2e"],
       "allowedSkips": [],
       "scope": "Actual Chromium UI + isolated PostgreSQL databases + signed synthetic identities + actual HTTP service handlers. Test-only outbox dispatch exercises consumers, not RabbitMQ; existing backend-runtime lane retains real broker acceptance. Includes reload/service-recreation, RBAC, negative state, labels/keyboard and RTL/responsive checks. No hosted account or manual accessibility acceptance."
+    },
+    {
+      "name": "browser",
+      "commands": ["browser-field-journey"],
+      "countedCommands": ["browser-field-journey"],
+      "allowedSkips": [],
+      "scope": "Actual Chromium mobile-width RTL journey across Representative, Client and Admin UIs over loopback HTTP with real service handlers, synthetic identity and memory storage. Not hosted OIDC, PostgreSQL, native or physical-device proof."
     }
   ],
   "policy": {

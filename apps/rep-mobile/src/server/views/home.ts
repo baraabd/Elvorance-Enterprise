@@ -28,7 +28,10 @@ export async function home(context: ViewContext): Promise<void> {
     metric.append(el('strong', String(value), 'metric-value'));
     metrics.append(metric);
   }
-  context.root.append(metrics);
+  context.root.append(
+    metrics,
+    button('فتح جدول العمل', () => context.navigate('schedule'), context.signal),
+  );
   const next = card('الزيارة التالية');
   const upcoming = visits!
     .filter((v) => v.status === 'scheduled' || v.status === 'active')

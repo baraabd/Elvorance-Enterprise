@@ -5,6 +5,7 @@ import type { Page, View } from './context.ts';
 import { button, el, errorMessage, words } from './ui/dom.ts';
 import { TrackingController } from './tracking.ts';
 import { home } from './views/home.ts';
+import { schedule } from './views/schedule.ts';
 import { customers } from './views/customers.ts';
 import { visits } from './views/visits.ts';
 import { opportunities, routes, tasks } from './views/planning.ts';
@@ -16,6 +17,7 @@ import { account, tracking } from './views/account.ts';
 
 const pages: Record<Page, { label: string; view: View }> = {
   home: { label: 'الرئيسية', view: home },
+  schedule: { label: 'جدول العمل', view: schedule },
   customers: { label: 'العملاء', view: customers },
   visits: { label: 'الزيارات', view: visits },
   routes: { label: 'خطط الزيارات', view: routes },
@@ -157,7 +159,10 @@ export async function mountRepWorkspace(
   );
   window.addEventListener(
     'offline',
-    () => notify('الاتصال منقطع. يبقى الحفظ متاحًا بعد عودة الشبكة.'),
+    () =>
+      notify(
+        'الاتصال منقطع. لا تُرسل التغييرات دون شبكة. تبقى مدخلات النموذج في هذه الصفحة فقط؛ لا تغلق التطبيق.',
+      ),
     { signal },
   );
   window.addEventListener(
@@ -175,6 +180,10 @@ export async function mountRepWorkspace(
   );
   const removeNative = await installMobileShell({
     closeModal: () => {
+      if (main.querySelector('form[aria-busy="true"]')) {
+        notify('انتظر تأكيد الحفظ قبل إغلاق النموذج.');
+        return;
+      }
       main.querySelector('.editor')?.remove();
     },
   });

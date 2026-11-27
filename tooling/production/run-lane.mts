@@ -66,6 +66,7 @@ const definitions: Record<string, string[]> = {
   'identity-integration': ['node', 'tooling/production/identity-fixture.mts'],
   'dependency-audit': [...npm, 'audit', '--audit-level=high', '--json'],
   'source-secrets': ['node', 'tooling/production/security-source.mts'],
+  'browser-field-journey': ['node', 'tests/browser/run-rep-field.mts'],
   'windows-repair-syntax': [
     'pwsh',
     '-NoProfile',
@@ -168,6 +169,30 @@ for (const id of spec.commands) {
         'persisted cross-service HTTP/event journey checks',
       );
       await copyEvidence(directory, 'dist/runtime/compose-journey.json', 'runtime-journey.json');
+    }
+    if (id === 'browser-field-journey' && command.exitCode === 0) {
+      const report = JSON.parse(await readFile('dist/browser/field-report.json', 'utf8')) as {
+        passed: boolean;
+        sourceRevision: string;
+        environment: string;
+        checks: Array<{ name: string; passed: boolean }>;
+      };
+      if (
+        !report.passed ||
+        report.sourceRevision !== context.sourceSha ||
+        report.environment !== 'loopback-chromium-memory-synthetic-auth' ||
+        report.checks.length !== 10 ||
+        report.checks.some((check) => check.passed !== true)
+      )
+        throw new Error('Missing, stale or incomplete browser journey evidence.');
+      command.tests = counts(
+        report.checks.length,
+        report.checks.length,
+        0,
+        0,
+        'Chromium UI journey checks; synthetic identity and memory storage, not native or hosted acceptance',
+      );
+      await copyEvidence(directory, 'dist/browser', 'browser');
     }
     if (id === 'identity-integration' && command.exitCode === 0) {
       const report = JSON.parse(

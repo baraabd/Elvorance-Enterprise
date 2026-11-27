@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "9e639f340ced09964e81c0a65099ce1ec48e797e80d2467ad78bda5ff542b9f8",
+  "sourceDigest": "6a575d23e4440e8039a11ab1d31b1e3bf16efae6cbad1e9b5ec76830098a6553",
   "trustBoundaries": [
     {
       "id": "TB1",
@@ -72,11 +72,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -241,11 +245,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -717,6 +725,235 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
+      "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:072e68e1b4f8:1",
+      "source": "apps/rep-mobile/src/server/tracking.ts",
+      "mode": "server",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/tracking/sessions/:id",
+          "service": "tracking",
+          "resolution": "source-bound"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/tracking/sessions/:id/points",
+          "service": "tracking",
+          "resolution": "source-bound"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/tracking/sessions/:id/state",
+          "service": "tracking",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "parameterized-http",
+        "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches. Sprint 07 review: the watch callback now honors approximate permission; the three parameterized backend route bindings remain unchanged.",
+        "evidence": [
+          {
+            "path": "apps/rep-mobile/src/server/api.ts",
+            "sha256": "38554a18520cbd3e506f75f342fbe0a6d58bb9608a59ad240e1da28ce8ceabaf"
+          },
+          {
+            "path": "apps/rep-mobile/src/server/tracking.ts",
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
+          },
+          {
+            "path": "packages/api-client/src/live-data.ts",
+            "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
+          },
+          {
+            "path": "packages/service-kit/src/auth.ts",
+            "sha256": "d1f24b25255eec78ae6001ebd7c8ed47c81db95a728702ab356a3762dcd80c6f"
+          },
+          {
+            "path": "packages/service-kit/src/http.ts",
+            "sha256": "41fc5b5791737e886c6799ee2cab5709e6b966e56ed107bd2f0b1de55fe66093"
+          },
+          {
+            "path": "services/tracking/src/application/sessions.ts",
+            "sha256": "35bc4c2364ae6892350c02316a66d307a647948939af88d085e329a31e3ee0ca"
+          },
+          {
+            "path": "services/tracking/src/transport/routes.ts",
+            "sha256": "b521ece511103019bd0c9d2d401d532c8eb0ee119b44e961cb387ae56b977974"
+          }
+        ],
+        "originalEndpoints": [
+          {
+            "method": "GET",
+            "path": "/v1/tracking/sessions/${idPath(this.session.id)}",
+            "service": "tracking",
+            "resolution": "dynamic"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/tracking/sessions/${idPath(session.id)}/points",
+            "service": "tracking",
+            "resolution": "dynamic"
+          },
+          {
+            "method": "POST",
+            "path": "/v1/tracking/sessions/${idPath(session.id)}/state",
+            "service": "tracking",
+            "resolution": "dynamic"
+          }
+        ],
+        "dynamicEndpointBindings": [
+          {
+            "original": {
+              "method": "GET",
+              "path": "/v1/tracking/sessions/${idPath(this.session.id)}",
+              "service": "tracking",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:tracking:backend:GET /v1/sessions/:id"]
+          },
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/tracking/sessions/${idPath(session.id)}/points",
+              "service": "tracking",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:tracking:backend:POST /v1/sessions/:id/points"]
+          },
+          {
+            "original": {
+              "method": "POST",
+              "path": "/v1/tracking/sessions/${idPath(session.id)}/state",
+              "service": "tracking",
+              "resolution": "dynamic"
+            },
+            "routeIds": ["api-route:tracking:backend:POST /v1/sessions/:id/state"]
+          }
+        ],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:tracking:backend:GET /v1/sessions/:id",
+            "owningService": "tracking",
+            "source": {
+              "path": "services/tracking/src/transport/routes.ts",
+              "line": 21,
+              "endLine": 25,
+              "fingerprint": "775b44821635dfff35c1d03b8e0141a3325ed7c7b6f283edc3ad7105dc574931"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner"],
+              "roles": [],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:138-139",
+                "packages/service-kit/src/auth.ts:148-160",
+                "packages/service-kit/src/auth.ts:161-167",
+                "services/tracking/src/application/sessions.ts:49-58",
+                "services/tracking/src/transport/routes.ts:21-25"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["tracking_sessions"],
+              "events": [],
+              "evidence": [
+                "services/tracking/src/application/sessions.ts:49-58",
+                "services/tracking/src/transport/routes.ts:21-25"
+              ]
+            }
+          },
+          {
+            "routeId": "api-route:tracking:backend:POST /v1/sessions/:id/points",
+            "owningService": "tracking",
+            "source": {
+              "path": "services/tracking/src/transport/routes.ts",
+              "line": 26,
+              "endLine": 30,
+              "fingerprint": "450d8ccd3630bf54d31dde69b07954fcd2a346a51b8ffb4b216dc7a4bcb263c0"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:138-139",
+                "packages/service-kit/src/auth.ts:140-147",
+                "packages/service-kit/src/auth.ts:148-160",
+                "packages/service-kit/src/auth.ts:161-167",
+                "packages/service-kit/src/http.ts:99-125",
+                "services/tracking/src/application/sessions.ts:49-58",
+                "services/tracking/src/application/sessions.ts:59-122",
+                "services/tracking/src/transport/routes.ts:26-30"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["tracking_sessions"],
+              "events": [],
+              "evidence": [
+                "packages/service-kit/src/http.ts:99-125",
+                "services/tracking/src/application/sessions.ts:49-58",
+                "services/tracking/src/application/sessions.ts:59-122"
+              ]
+            }
+          },
+          {
+            "routeId": "api-route:tracking:backend:POST /v1/sessions/:id/state",
+            "owningService": "tracking",
+            "source": {
+              "path": "services/tracking/src/transport/routes.ts",
+              "line": 31,
+              "endLine": 35,
+              "fingerprint": "327216009c7ee60fcbe8149fe00c11b0a487835d46bbbe36cc59fe7eab081889"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:138-139",
+                "packages/service-kit/src/auth.ts:140-147",
+                "packages/service-kit/src/auth.ts:148-160",
+                "packages/service-kit/src/auth.ts:161-167",
+                "packages/service-kit/src/http.ts:99-125",
+                "services/tracking/src/application/sessions.ts:123-160",
+                "services/tracking/src/application/sessions.ts:49-58",
+                "services/tracking/src/transport/routes.ts:31-35"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["tracking_sessions"],
+              "events": [],
+              "evidence": [
+                "packages/service-kit/src/http.ts:99-125",
+                "services/tracking/src/application/sessions.ts:123-160",
+                "services/tracking/src/application/sessions.ts:49-58"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:36db1baa2b6a:1",
       "source": "apps/rep-mobile/src/server/tracking.ts",
       "mode": "server",
@@ -748,11 +985,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -865,11 +1106,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -974,11 +1219,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -1083,11 +1332,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -1204,11 +1457,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -1373,11 +1630,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -1502,11 +1763,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -1668,7 +1933,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["apps/rep-mobile/src/server/tracking.ts:155-177"]
+        "evidence": ["apps/rep-mobile/src/server/tracking.ts:156-178"]
       },
       "tables": [],
       "events": [],
@@ -1683,11 +1948,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -1852,11 +2121,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -1975,11 +2248,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -2144,11 +2421,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -2300,231 +2581,6 @@
       "resolution": "REVIEW_REQUIRED"
     },
     {
-      "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:c9ebf8c20179:1",
-      "source": "apps/rep-mobile/src/server/tracking.ts",
-      "mode": "server",
-      "owner": null,
-      "endpoints": [
-        {
-          "method": "GET",
-          "path": "/v1/tracking/sessions/:id",
-          "service": "tracking",
-          "resolution": "source-bound"
-        },
-        {
-          "method": "POST",
-          "path": "/v1/tracking/sessions/:id/points",
-          "service": "tracking",
-          "resolution": "source-bound"
-        },
-        {
-          "method": "POST",
-          "path": "/v1/tracking/sessions/:id/state",
-          "service": "tracking",
-          "resolution": "source-bound"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": []
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": {
-        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
-        "category": "parameterized-http",
-        "rationale": "The varying path segment is the resource ID handled by the source idPath/idSegment helper; the HTTP verb and route template are matched to actual registered domain operations. The annotation identifies parameterized source traffic, not successful authorization, persistence or E2E execution. Conditional quote creation/copy and update, when present, remain distinct POST collection and PATCH entity branches.",
-        "evidence": [
-          {
-            "path": "apps/rep-mobile/src/server/api.ts",
-            "sha256": "38554a18520cbd3e506f75f342fbe0a6d58bb9608a59ad240e1da28ce8ceabaf"
-          },
-          {
-            "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
-          },
-          {
-            "path": "packages/api-client/src/live-data.ts",
-            "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
-          },
-          {
-            "path": "packages/service-kit/src/auth.ts",
-            "sha256": "d1f24b25255eec78ae6001ebd7c8ed47c81db95a728702ab356a3762dcd80c6f"
-          },
-          {
-            "path": "packages/service-kit/src/http.ts",
-            "sha256": "41fc5b5791737e886c6799ee2cab5709e6b966e56ed107bd2f0b1de55fe66093"
-          },
-          {
-            "path": "services/tracking/src/application/sessions.ts",
-            "sha256": "35bc4c2364ae6892350c02316a66d307a647948939af88d085e329a31e3ee0ca"
-          },
-          {
-            "path": "services/tracking/src/transport/routes.ts",
-            "sha256": "b521ece511103019bd0c9d2d401d532c8eb0ee119b44e961cb387ae56b977974"
-          }
-        ],
-        "originalEndpoints": [
-          {
-            "method": "GET",
-            "path": "/v1/tracking/sessions/${idPath(this.session.id)}",
-            "service": "tracking",
-            "resolution": "dynamic"
-          },
-          {
-            "method": "POST",
-            "path": "/v1/tracking/sessions/${idPath(session.id)}/points",
-            "service": "tracking",
-            "resolution": "dynamic"
-          },
-          {
-            "method": "POST",
-            "path": "/v1/tracking/sessions/${idPath(session.id)}/state",
-            "service": "tracking",
-            "resolution": "dynamic"
-          }
-        ],
-        "dynamicEndpointBindings": [
-          {
-            "original": {
-              "method": "GET",
-              "path": "/v1/tracking/sessions/${idPath(this.session.id)}",
-              "service": "tracking",
-              "resolution": "dynamic"
-            },
-            "routeIds": ["api-route:tracking:backend:GET /v1/sessions/:id"]
-          },
-          {
-            "original": {
-              "method": "POST",
-              "path": "/v1/tracking/sessions/${idPath(session.id)}/points",
-              "service": "tracking",
-              "resolution": "dynamic"
-            },
-            "routeIds": ["api-route:tracking:backend:POST /v1/sessions/:id/points"]
-          },
-          {
-            "original": {
-              "method": "POST",
-              "path": "/v1/tracking/sessions/${idPath(session.id)}/state",
-              "service": "tracking",
-              "resolution": "dynamic"
-            },
-            "routeIds": ["api-route:tracking:backend:POST /v1/sessions/:id/state"]
-          }
-        ],
-        "backendPolicies": [
-          {
-            "routeId": "api-route:tracking:backend:GET /v1/sessions/:id",
-            "owningService": "tracking",
-            "source": {
-              "path": "services/tracking/src/transport/routes.ts",
-              "line": 21,
-              "endLine": 25,
-              "fingerprint": "775b44821635dfff35c1d03b8e0141a3325ed7c7b6f283edc3ad7105dc574931"
-            },
-            "authorization": {
-              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
-              "controls": ["requireOwner"],
-              "roles": [],
-              "evidence": [
-                "packages/service-kit/src/auth.ts:138-139",
-                "packages/service-kit/src/auth.ts:148-160",
-                "packages/service-kit/src/auth.ts:161-167",
-                "services/tracking/src/application/sessions.ts:49-58",
-                "services/tracking/src/transport/routes.ts:21-25"
-              ]
-            },
-            "persistenceEvent": {
-              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
-              "tables": ["tracking_sessions"],
-              "events": [],
-              "evidence": [
-                "services/tracking/src/application/sessions.ts:49-58",
-                "services/tracking/src/transport/routes.ts:21-25"
-              ]
-            }
-          },
-          {
-            "routeId": "api-route:tracking:backend:POST /v1/sessions/:id/points",
-            "owningService": "tracking",
-            "source": {
-              "path": "services/tracking/src/transport/routes.ts",
-              "line": 26,
-              "endLine": 30,
-              "fingerprint": "450d8ccd3630bf54d31dde69b07954fcd2a346a51b8ffb4b216dc7a4bcb263c0"
-            },
-            "authorization": {
-              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
-              "controls": ["requireOwner", "requireRole"],
-              "roles": ["admin", "client", "rep"],
-              "evidence": [
-                "packages/service-kit/src/auth.ts:138-139",
-                "packages/service-kit/src/auth.ts:140-147",
-                "packages/service-kit/src/auth.ts:148-160",
-                "packages/service-kit/src/auth.ts:161-167",
-                "packages/service-kit/src/http.ts:99-125",
-                "services/tracking/src/application/sessions.ts:49-58",
-                "services/tracking/src/application/sessions.ts:59-122",
-                "services/tracking/src/transport/routes.ts:26-30"
-              ]
-            },
-            "persistenceEvent": {
-              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
-              "tables": ["tracking_sessions"],
-              "events": [],
-              "evidence": [
-                "packages/service-kit/src/http.ts:99-125",
-                "services/tracking/src/application/sessions.ts:49-58",
-                "services/tracking/src/application/sessions.ts:59-122"
-              ]
-            }
-          },
-          {
-            "routeId": "api-route:tracking:backend:POST /v1/sessions/:id/state",
-            "owningService": "tracking",
-            "source": {
-              "path": "services/tracking/src/transport/routes.ts",
-              "line": 31,
-              "endLine": 35,
-              "fingerprint": "327216009c7ee60fcbe8149fe00c11b0a487835d46bbbe36cc59fe7eab081889"
-            },
-            "authorization": {
-              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
-              "controls": ["requireOwner", "requireRole"],
-              "roles": ["admin", "client", "rep"],
-              "evidence": [
-                "packages/service-kit/src/auth.ts:138-139",
-                "packages/service-kit/src/auth.ts:140-147",
-                "packages/service-kit/src/auth.ts:148-160",
-                "packages/service-kit/src/auth.ts:161-167",
-                "packages/service-kit/src/http.ts:99-125",
-                "services/tracking/src/application/sessions.ts:123-160",
-                "services/tracking/src/application/sessions.ts:49-58",
-                "services/tracking/src/transport/routes.ts:31-35"
-              ]
-            },
-            "persistenceEvent": {
-              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
-              "tables": ["tracking_sessions"],
-              "events": [],
-              "evidence": [
-                "packages/service-kit/src/http.ts:99-125",
-                "services/tracking/src/application/sessions.ts:123-160",
-                "services/tracking/src/application/sessions.ts:49-58"
-              ]
-            }
-          }
-        ],
-        "delegateFeatureIds": [],
-        "nativeMembers": [],
-        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
-      },
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
       "featureId": "api-call:apps/rep-mobile/src/server/tracking.ts:ccedd62d5d9c:1",
       "source": "apps/rep-mobile/src/server/tracking.ts",
       "mode": "server",
@@ -2554,8 +2610,8 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/rep-mobile/src/server/tracking.ts:181-235",
-          "packages/mobile-platform/src/index.ts:25-55"
+          "apps/rep-mobile/src/server/tracking.ts:182-241",
+          "packages/mobile-platform/src/index.ts:26-58"
         ]
       },
       "tables": [],
@@ -2571,11 +2627,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -2769,7 +2829,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["apps/rep-mobile/src/server/tracking.ts:168-173"]
+        "evidence": ["apps/rep-mobile/src/server/tracking.ts:169-174"]
       },
       "tables": [],
       "events": [],
@@ -5946,6 +6006,64 @@
       "resolution": "REVIEW_REQUIRED"
     },
     {
+      "featureId": "api-call:apps/rep-mobile/src/server/views/schedule.ts:4dbbf74af3a9:1",
+      "source": "apps/rep-mobile/src/server/views/schedule.ts",
+      "mode": "server",
+      "owner": null,
+      "endpoints": [
+        { "method": "GET", "path": "/v1/sales/tasks", "service": "sales", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "featureId": "api-call:apps/rep-mobile/src/server/views/schedule.ts:64d17c938bcb:1",
+      "source": "apps/rep-mobile/src/server/views/schedule.ts",
+      "mode": "server",
+      "owner": null,
+      "endpoints": [
+        { "method": "GET", "path": "/v1/sales/tasks", "service": "sales", "resolution": "literal" },
+        { "method": "GET", "path": "/v1/sales/visits", "service": "sales", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "api-call:apps/rep-mobile/src/server/views/schedule.ts:b5a549d3bd00:1",
+      "source": "apps/rep-mobile/src/server/views/schedule.ts",
+      "mode": "server",
+      "owner": null,
+      "endpoints": [
+        { "method": "GET", "path": "/v1/sales/visits", "service": "sales", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
       "featureId": "api-call:apps/rep-mobile/src/server/views/support.ts:49c829dc12c2:1",
       "source": "apps/rep-mobile/src/server/views/support.ts",
       "mode": "server",
@@ -6232,7 +6350,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["packages/mobile-platform/src/index.ts:7-75"]
+        "evidence": ["packages/mobile-platform/src/index.ts:8-78"]
       },
       "tables": [],
       "events": [],
@@ -6283,11 +6401,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/visits.ts",
-            "sha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96"
+            "sha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -6479,11 +6601,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/visits.ts",
-            "sha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96"
+            "sha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -6637,7 +6763,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["packages/mobile-platform/src/index.ts:7-75"]
+        "evidence": ["packages/mobile-platform/src/index.ts:8-78"]
       },
       "tables": [],
       "events": [],
@@ -6652,11 +6778,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/visits.ts",
-            "sha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96"
+            "sha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -6873,11 +7003,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/visits.ts",
-            "sha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96"
+            "sha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -7045,11 +7179,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/visits.ts",
-            "sha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96"
+            "sha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -7140,7 +7278,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["packages/mobile-platform/src/index.ts:7-75"]
+        "evidence": ["packages/mobile-platform/src/index.ts:8-78"]
       },
       "tables": [],
       "events": [],
@@ -7255,7 +7393,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["packages/mobile-platform/src/index.ts:7-75"]
+        "evidence": ["packages/mobile-platform/src/index.ts:8-78"]
       },
       "tables": [],
       "events": [],
@@ -7330,11 +7468,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/visits.ts",
-            "sha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96"
+            "sha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -15569,11 +15711,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -15767,9 +15913,9 @@
         "roles": [],
         "evidence": [
           "apps/rep-mobile/src/server/tracking.ts:130-138",
-          "apps/rep-mobile/src/server/tracking.ts:140-246",
+          "apps/rep-mobile/src/server/tracking.ts:140-252",
           "apps/rep-mobile/src/server/views/account.ts:73-92",
-          "packages/mobile-platform/src/index.ts:25-55"
+          "packages/mobile-platform/src/index.ts:26-58"
         ]
       },
       "tables": [],
@@ -16078,7 +16224,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/planning.ts",
-            "sha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5"
+            "sha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa"
           },
           {
             "path": "apps/rep-mobile/src/server/views/quotes.ts",
@@ -16090,7 +16236,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/visits.ts",
-            "sha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96"
+            "sha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -16649,7 +16795,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/planning.ts",
-            "sha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5"
+            "sha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa"
           },
           {
             "path": "apps/rep-mobile/src/server/views/quotes.ts",
@@ -16661,7 +16807,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/visits.ts",
-            "sha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96"
+            "sha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -17202,8 +17348,8 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/rep-mobile/src/server/views/messages.ts:13-91",
-          "apps/rep-mobile/src/server/views/messages.ts:24-33"
+          "apps/rep-mobile/src/server/views/messages.ts:13-110",
+          "apps/rep-mobile/src/server/views/messages.ts:29-44"
         ]
       },
       "tables": [],
@@ -17219,7 +17365,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/messages.ts",
-            "sha256": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2"
+            "sha256": "4e5a954acdc92db2a9645a2e4d59de10dd467b11a5b65f136139c0c4b6b00781"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -17391,7 +17537,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/planning.ts",
-            "sha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5"
+            "sha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -17592,7 +17738,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/planning.ts",
-            "sha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5"
+            "sha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -18131,7 +18277,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["packages/mobile-platform/src/index.ts:7-75"]
+        "evidence": ["packages/mobile-platform/src/index.ts:8-78"]
       },
       "tables": [],
       "events": [],
@@ -18206,11 +18352,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/visits.ts",
-            "sha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96"
+            "sha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -20560,11 +20710,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -20729,11 +20883,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/tracking.ts",
-            "sha256": "50087c34a616a7ff9552a45164a7a9b6c819f241e3b52ece90c6930d30e4a5d8"
+            "sha256": "27e8187f310820b66d349b1711268f8a8d55a08679f299764d3363559404bd90"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -21452,8 +21610,8 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/rep-mobile/src/server/views/messages.ts:13-91",
-          "apps/rep-mobile/src/server/views/messages.ts:24-33"
+          "apps/rep-mobile/src/server/views/messages.ts:13-110",
+          "apps/rep-mobile/src/server/views/messages.ts:29-44"
         ]
       },
       "tables": [],
@@ -21469,7 +21627,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/messages.ts",
-            "sha256": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2"
+            "sha256": "4e5a954acdc92db2a9645a2e4d59de10dd467b11a5b65f136139c0c4b6b00781"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -21577,8 +21735,8 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/rep-mobile/src/server/views/messages.ts:13-91",
-          "apps/rep-mobile/src/server/views/messages.ts:24-33"
+          "apps/rep-mobile/src/server/views/messages.ts:13-110",
+          "apps/rep-mobile/src/server/views/messages.ts:29-44"
         ]
       },
       "tables": [],
@@ -21594,7 +21752,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/messages.ts",
-            "sha256": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2"
+            "sha256": "4e5a954acdc92db2a9645a2e4d59de10dd467b11a5b65f136139c0c4b6b00781"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -21712,8 +21870,8 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/rep-mobile/src/server/views/messages.ts:13-91",
-          "apps/rep-mobile/src/server/views/messages.ts:24-33"
+          "apps/rep-mobile/src/server/views/messages.ts:13-110",
+          "apps/rep-mobile/src/server/views/messages.ts:29-44"
         ]
       },
       "tables": [],
@@ -21729,7 +21887,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/messages.ts",
-            "sha256": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2"
+            "sha256": "4e5a954acdc92db2a9645a2e4d59de10dd467b11a5b65f136139c0c4b6b00781"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -21806,7 +21964,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["apps/rep-mobile/src/server/views/messages.ts:24-33"]
+        "evidence": ["apps/rep-mobile/src/server/views/messages.ts:29-44"]
       },
       "tables": [],
       "events": [],
@@ -21821,7 +21979,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/messages.ts",
-            "sha256": "c2160b4c79fe182391285843f491baa5ba0f3ee78e2843bc038b8107b2c4f4b2"
+            "sha256": "4e5a954acdc92db2a9645a2e4d59de10dd467b11a5b65f136139c0c4b6b00781"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -21929,7 +22087,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/planning.ts",
-            "sha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5"
+            "sha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -22130,7 +22288,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/planning.ts",
-            "sha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5"
+            "sha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -23368,11 +23526,15 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/visits.ts",
-            "sha256": "dce43e65ec9ae3271bb6d9e57b706b3de5e0197fd1473f8aa2bfe0966da2ce96"
+            "sha256": "8182388ed079ebf7af4a3db7b1a425d1ca37332c82863ff8f5930a06653b2242"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
             "sha256": "1e05015c1dd42f68f7176c7d15e0bab31c21df36056767b9fecfc2286b29aca7"
+          },
+          {
+            "path": "packages/mobile-platform/src/location-permission.ts",
+            "sha256": "825cfc4a23c9b33d6f50dbb47754c78487b11f9ec29a6be66f6396a6510e6e44"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -23525,7 +23687,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["packages/mobile-platform/src/index.ts:7-75"]
+        "evidence": ["packages/mobile-platform/src/index.ts:8-78"]
       },
       "tables": [],
       "events": [],
@@ -23642,7 +23804,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -28881,7 +29043,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -29049,7 +29211,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -29205,7 +29367,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -29422,11 +29584,11 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/home.ts",
-            "sha256": "cfdaf3b31e2e87c080adf53850c257f5a50b80b88e31952bd0e6600ba9152cf6"
+            "sha256": "cde1360f39eadb46b175433008db3fae8dc6130509d7d6383c25a0230a54bea2"
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -29609,8 +29771,8 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/rep-mobile/src/server/views/messages.ts:13-91",
-          "apps/rep-mobile/src/server/views/messages.ts:24-33"
+          "apps/rep-mobile/src/server/views/messages.ts:13-110",
+          "apps/rep-mobile/src/server/views/messages.ts:29-44"
         ]
       },
       "tables": [],
@@ -29656,7 +29818,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -29804,11 +29966,11 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/planning.ts",
-            "sha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5"
+            "sha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa"
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -30054,7 +30216,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -30178,7 +30340,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -30362,6 +30524,26 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
+      "featureId": "route:rep:server:schedule",
+      "source": "apps/rep-mobile/src/server/workspace.ts",
+      "mode": "server",
+      "owner": null,
+      "endpoints": [
+        { "method": "GET", "path": "/v1/sales/tasks", "service": "sales", "resolution": "literal" },
+        { "method": "GET", "path": "/v1/sales/visits", "service": "sales", "resolution": "literal" }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
       "featureId": "route:rep:server:support",
       "source": "apps/rep-mobile/src/server/workspace.ts",
       "mode": "server",
@@ -30457,11 +30639,11 @@
           },
           {
             "path": "apps/rep-mobile/src/server/views/planning.ts",
-            "sha256": "01e441463c136a7f8353a6f87234dc274d3e16a8d6d3cfcf6152dd164bc6aac5"
+            "sha256": "126a614a41217e28ef74ab68402126ad9fa6784d4a8d5afd10595d50d2e906fa"
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -30688,9 +30870,9 @@
         "roles": [],
         "evidence": [
           "apps/rep-mobile/src/server/tracking.ts:130-138",
-          "apps/rep-mobile/src/server/tracking.ts:140-246",
+          "apps/rep-mobile/src/server/tracking.ts:140-252",
           "apps/rep-mobile/src/server/views/account.ts:58-98",
-          "packages/mobile-platform/src/index.ts:25-55"
+          "packages/mobile-platform/src/index.ts:26-58"
         ]
       },
       "tables": [],
@@ -30706,7 +30888,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/api-client/src/live-data.ts",
@@ -30964,7 +31146,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["packages/mobile-platform/src/index.ts:7-75"]
+        "evidence": ["packages/mobile-platform/src/index.ts:8-78"]
       },
       "tables": [],
       "events": [],
@@ -30979,7 +31161,7 @@
           },
           {
             "path": "apps/rep-mobile/src/server/workspace.ts",
-            "sha256": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37"
+            "sha256": "51a6bbcf07f2552e0c127132561813a927de8dc35ce0c70888a142012f763833"
           },
           {
             "path": "packages/api-client/src/live-data.ts",

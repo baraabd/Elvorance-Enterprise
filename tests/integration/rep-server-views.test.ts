@@ -13,6 +13,13 @@ import { tasks, opportunities, routes } from '../../apps/rep-mobile/src/server/v
 import { catalog } from '../../apps/rep-mobile/src/server/views/records.ts';
 import { quotes } from '../../apps/rep-mobile/src/server/views/quotes.ts';
 import { messages } from '../../apps/rep-mobile/src/server/views/messages.ts';
+import { schedule } from '../../apps/rep-mobile/src/server/views/schedule.ts';
+import { button as actionButton, dateText } from '../../apps/rep-mobile/src/server/ui/dom.ts';
+import {
+  commandForm,
+  editorButton,
+  fieldControl,
+} from '../../apps/rep-mobile/src/server/ui/forms.ts';
 
 // Keep JSDOM's worker files in its installed package when the test runner bundles TS.
 const { JSDOM } = createRequire(import.meta.url)('jsdom') as typeof import('jsdom');
@@ -668,5 +675,129 @@ test('no-contact visit UI persists CRM withdrawal before sales completion withou
         assert.deepEqual(f.errors, []);
       },
     );
+  }
+});
+
+test('offline edits remain in the form and are sent only after an explicit retry', async (t) => {
+  const f = await fixture(t);
+  await f.render(tasks);
+  const form = await editor(f.root, 'إضافة');
+  Object.defineProperty(f.dom.window.navigator, 'onLine', { configurable: true, value: false });
+  const result = await submit(form, { title: 'Offline follow-up', dueOn: tomorrow() });
+  assert.match(result, /الاتصال|الشبكة/);
+  assert.equal((form.elements.namedItem('title') as HTMLInputElement).value, 'Offline follow-up');
+  assert.equal(f.requests.filter((r) => r.method === 'POST').length, 0);
+  Object.defineProperty(f.dom.window.navigator, 'onLine', { configurable: true, value: true });
+  f.dom.window.dispatchEvent(new Event('online'));
+  assert.equal(f.requests.filter((r) => r.method === 'POST').length, 0);
+  assert.equal(await submit(form), 'تم الحفظ.');
+  assert.equal(f.requests.filter((r) => r.method === 'POST').length, 1);
+});
+
+test('pending editor cannot be replaced and duplicate action clicks execute once', async (t) => {
+  const f = await fixture(t);
+  let finish!: () => void;
+  const saving = new Promise<void>((resolve) => {
+    finish = resolve;
+  });
+  const toggle = editorButton(
+    'Edit pending',
+    f.root,
+    () =>
+      commandForm({
+        title: 'Pending operation',
+        fields: [],
+        signal: f.context.signal,
+        submit: async () => {
+          await saving;
+        },
+      }),
+    f.context.signal,
+  );
+  f.root.append(toggle);
+  toggle.click();
+  await until(() => Boolean(f.root.querySelector('form')), 'Editor missing');
+  await until(() => !toggle.disabled, 'Toggle did not settle');
+  const form = f.root.querySelector<HTMLFormElement>('form');
+  assert.ok(form);
+  form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+  toggle.click();
+  await until(() => f.errors.length === 1, 'Busy editor closure was not rejected');
+  assert.equal(f.root.querySelector('form'), form);
+  finish();
+  await until(() => !form.hasAttribute('aria-busy'), 'Pending form did not settle');
+  let calls = 0;
+  let release!: () => void;
+  const pending = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  const guarded = actionButton(
+    'One operation',
+    async () => {
+      calls++;
+      await pending;
+    },
+    f.context.signal,
+  );
+  f.root.append(guarded);
+  guarded.click();
+  guarded.click();
+  await until(() => calls === 1, 'Action never started');
+  assert.equal(guarded.disabled, true);
+  release();
+  await until(() => !guarded.disabled, 'Action never settled');
+  assert.equal(calls, 1);
+});
+
+test('schedule renders only selected-day data from authorized API lists and changes day locally', async (t) => {
+  const f = await fixture(t);
+  const visit = await f.schedule();
+  const dueOn = new Date().toLocaleDateString('en-CA');
+  assert.equal(
+    (
+      await call(f.sales, 'POST', '/v1/tasks', 'rep', {
+        title: 'Today follow-up',
+        dueOn,
+        clientId: f.customer.id,
+      })
+    ).status,
+    200,
+  );
+  await f.render(schedule);
+  assert.match(f.root.textContent ?? '', /Today follow-up/);
+  assert.match(f.root.textContent ?? '', /Real staged customer/);
+  const reads = f.requests.length;
+  button(f.root, 'اليوم التالي').click();
+  await until(() => !f.root.textContent?.includes('Today follow-up'), 'Day was not changed');
+  assert.equal(
+    f.requests.length,
+    reads,
+    'Changing a calendar day must not issue writes or stale reloads',
+  );
+  button(f.root, 'اليوم').click();
+  await until(() => Boolean(f.root.textContent?.includes('Today follow-up')), 'Today not restored');
+  assert.ok(f.requests.every((row) => row.method === 'GET'));
+  assert.equal(visit.repId, f.context.principal.repId);
+});
+
+test('all-day dates do not move backward in western timezones and text minimums use HTML minlength', async (t) => {
+  await fixture(t);
+  const previous = process.env.TZ;
+  process.env.TZ = 'America/Los_Angeles';
+  try {
+    const expected = new Intl.DateTimeFormat('ar-SA', {
+      dateStyle: 'medium',
+      timeZone: 'UTC',
+    }).format(new Date('2026-11-23'));
+    assert.equal(dateText('2026-11-23'), expected);
+    assert.equal(
+      fieldControl({ name: 'reason', label: 'Reason', type: 'textarea', min: 5 }).getAttribute(
+        'minlength',
+      ),
+      '5',
+    );
+  } finally {
+    if (previous === undefined) delete process.env.TZ;
+    else process.env.TZ = previous;
   }
 });
