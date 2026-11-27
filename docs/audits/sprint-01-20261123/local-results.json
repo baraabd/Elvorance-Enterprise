@@ -1,0 +1,316 @@
+{
+  "scope": "Local measured command results, not hosted or new-PR FULL-CI acceptance",
+  "baseSha": "453242e1256f6d876d170142b8ad235be9120344",
+  "baseTree": "6534bc4e7c7475e54e855095f652236f672ed052",
+  "postfixSourceDigest": "07da32aa68983d1b5ac8d001fc7042e1410f3850620891e4f97c6fe3d3b4c1bf",
+  "baseline": [
+    {
+      "id": "types",
+      "argv": ["node", "node_modules/typescript/bin/tsc", "--noEmit"],
+      "startedAt": "2026-11-23T09:59:55.022870+00:00",
+      "durationSeconds": 3.843,
+      "exitCode": 0,
+      "error": null,
+      "log": "types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "boundaries",
+      "argv": ["node", "tooling/scripts/check-boundaries.mts"],
+      "startedAt": "2026-11-23T09:59:58.870744+00:00",
+      "durationSeconds": 1.124,
+      "exitCode": 0,
+      "error": null,
+      "log": "boundaries.log",
+      "sha256": "5dcedcfb62f78427079677d0e0960276a52997702d4bd4140bc13569a923e118"
+    },
+    {
+      "id": "build-apps",
+      "argv": ["node", "tooling/scripts/build-apps.mts"],
+      "startedAt": "2026-11-23T09:59:59.999006+00:00",
+      "durationSeconds": 0.368,
+      "exitCode": 0,
+      "error": null,
+      "log": "build-apps.log",
+      "sha256": "455e91837cea735c773a7520890a46d7f2f401ddf17124380bef051f18768f41"
+    },
+    {
+      "id": "build-services",
+      "argv": ["node", "tooling/scripts/build-services.mts"],
+      "startedAt": "2026-11-23T10:00:00.371171+00:00",
+      "durationSeconds": 0.927,
+      "exitCode": 0,
+      "error": null,
+      "log": "build-services.log",
+      "sha256": "fbabb49a81cc7541d896764d3fd1d6a5769e0daa65f2c280d3e64e6b61ba384d"
+    },
+    {
+      "id": "inventory",
+      "argv": ["node", "tooling/production/inventory.mts"],
+      "startedAt": "2026-11-23T10:00:01.302819+00:00",
+      "durationSeconds": 9.617,
+      "exitCode": 0,
+      "error": null,
+      "log": "inventory.log",
+      "sha256": "82199b676f213829ea7d060137a4f31fb2ecc1c1acccd65fd9de19b0f2ebc36d"
+    },
+    {
+      "id": "tests",
+      "argv": ["node", "tooling/scripts/test.mts"],
+      "startedAt": "2026-11-23T10:00:25.887745+00:00",
+      "durationSeconds": 15.094,
+      "exitCode": 0,
+      "error": null,
+      "log": "tests.log",
+      "sha256": "0e3f49c1cb7428ef48f4cc6295933d3492439a58006d65b2f8b5f5a57d6428a6"
+    },
+    {
+      "id": "parity",
+      "argv": ["node", "tests/design-parity/parity.mts"],
+      "startedAt": "2026-11-23T10:00:40.994630+00:00",
+      "durationSeconds": 2.881,
+      "exitCode": 0,
+      "error": null,
+      "log": "parity.log",
+      "sha256": "4d6fd2102731e9af29ae6cad9ff28fc09437a6c45bba4771a4363322b25c0a40"
+    },
+    {
+      "id": "merged",
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/questionnaire/dynamic-form.test.mts",
+        "tests/validation/numeric-fields.test.mts",
+        "tests/regression/dashboard-drilldown.integration.test.mts",
+        "tests/regression/finance-2.3.test.mts",
+        "tests/regression/quote-ui-consolidated.test.mts",
+        "examples/instant-close/tests/flow.test.mts"
+      ],
+      "startedAt": "2026-11-23T10:00:43.884826+00:00",
+      "durationSeconds": 0.375,
+      "exitCode": 0,
+      "error": null,
+      "log": "merged.log",
+      "sha256": "93ed26834d441475302d92cb78c8fad058389082d30374549b652876cbc7e111"
+    },
+    {
+      "id": "migration-report",
+      "argv": ["node", "tooling/scripts/audit-migration.mts"],
+      "startedAt": "2026-11-23T10:00:44.299289+00:00",
+      "durationSeconds": 0.168,
+      "exitCode": 0,
+      "error": null,
+      "log": "migration-report.log",
+      "sha256": "f18ce30508456718fd246e1ac2db0dd99b84ec178b48473254c5080a1e609f34"
+    },
+    {
+      "id": "migration-strict",
+      "argv": ["node", "tooling/scripts/audit-migration.mts", "--strict"],
+      "startedAt": "2026-11-23T10:00:44.472600+00:00",
+      "durationSeconds": 0.165,
+      "exitCode": 1,
+      "error": null,
+      "log": "migration-strict.log",
+      "sha256": "caff566626598b0b970d2f87f5c86813c2502c6e67aede1445f9aa91c1a80384"
+    },
+    {
+      "id": "regression",
+      "argv": ["node", "tooling/scripts/test-regression.mts"],
+      "startedAt": "2026-11-23T10:01:03.965589+00:00",
+      "durationSeconds": 18.344,
+      "exitCode": 0,
+      "error": null,
+      "log": "regression.log",
+      "sha256": "c4515d18e14204417e700e3b5b1c84b92fb69df3e3350d943acf7668f9428cc9"
+    },
+    {
+      "id": "example-build",
+      "argv": ["node", "examples/instant-close/build.mts"],
+      "startedAt": "2026-11-23T10:01:22.314790+00:00",
+      "durationSeconds": 0.066,
+      "exitCode": 0,
+      "error": null,
+      "log": "example-build.log",
+      "sha256": "7c7768e199a1e2d2476e0fc71d8eab2e759d8b11e113f13bf8bac2cafd6391a3"
+    },
+    {
+      "id": "format",
+      "argv": ["node", "node_modules/prettier/bin/prettier.cjs", "--check", "."],
+      "startedAt": "2026-11-23T10:01:22.384801+00:00",
+      "durationSeconds": 8.173,
+      "exitCode": 0,
+      "error": null,
+      "log": "format.log",
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "id": "package",
+      "argv": ["node", "tooling/scripts/package.mts"],
+      "startedAt": "2026-11-23T10:01:30.561985+00:00",
+      "durationSeconds": 0.724,
+      "exitCode": 0,
+      "error": null,
+      "log": "package.log",
+      "sha256": "c608b4db1403ed13662f701811b91fe68f9158bb8b6ae5ead4875b65881ea378"
+    }
+  ],
+  "postfix": [
+    {
+      "id": "types",
+      "argv": ["node", "node_modules/typescript/bin/tsc", "--noEmit"],
+      "startedAt": "2026-11-23T10:10:26.966092+00:00",
+      "durationSeconds": 3.54,
+      "exitCode": 0,
+      "error": null,
+      "log": "types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "boundaries",
+      "argv": ["node", "tooling/scripts/check-boundaries.mts"],
+      "startedAt": "2026-11-23T10:10:30.512824+00:00",
+      "durationSeconds": 1.07,
+      "exitCode": 0,
+      "error": null,
+      "log": "boundaries.log",
+      "sha256": "5dcedcfb62f78427079677d0e0960276a52997702d4bd4140bc13569a923e118"
+    },
+    {
+      "id": "build-apps",
+      "argv": ["node", "tooling/scripts/build-apps.mts"],
+      "startedAt": "2026-11-23T10:10:31.586735+00:00",
+      "durationSeconds": 0.369,
+      "exitCode": 0,
+      "error": null,
+      "log": "build-apps.log",
+      "sha256": "455e91837cea735c773a7520890a46d7f2f401ddf17124380bef051f18768f41"
+    },
+    {
+      "id": "build-services",
+      "argv": ["node", "tooling/scripts/build-services.mts"],
+      "startedAt": "2026-11-23T10:10:31.960014+00:00",
+      "durationSeconds": 0.979,
+      "exitCode": 0,
+      "error": null,
+      "log": "build-services.log",
+      "sha256": "fbabb49a81cc7541d896764d3fd1d6a5769e0daa65f2c280d3e64e6b61ba384d"
+    },
+    {
+      "id": "inventory",
+      "argv": ["node", "tooling/production/inventory.mts"],
+      "startedAt": "2026-11-23T10:12:04.834774+00:00",
+      "durationSeconds": 10.667,
+      "exitCode": 0,
+      "error": null,
+      "log": "inventory.log",
+      "sha256": "d9a44e5d1b171a9d73a9bf5addb6c3731b0378a911563ae04be8ff0ceb12975a"
+    },
+    {
+      "id": "tests",
+      "argv": ["node", "tooling/scripts/test.mts"],
+      "startedAt": "2026-11-23T10:12:15.507098+00:00",
+      "durationSeconds": 13.216,
+      "exitCode": 0,
+      "error": null,
+      "log": "tests.log",
+      "sha256": "10e004ce149184e0eaf74ec45bd1a1940ecc2c09d510ba7f3cfb514dc9d04514"
+    },
+    {
+      "id": "parity",
+      "argv": ["node", "tests/design-parity/parity.mts"],
+      "startedAt": "2026-11-23T10:12:28.728058+00:00",
+      "durationSeconds": 2.633,
+      "exitCode": 0,
+      "error": null,
+      "log": "parity.log",
+      "sha256": "4d6fd2102731e9af29ae6cad9ff28fc09437a6c45bba4771a4363322b25c0a40"
+    },
+    {
+      "id": "regression",
+      "argv": ["node", "tooling/scripts/test-regression.mts"],
+      "startedAt": "2026-11-23T10:12:47.436792+00:00",
+      "durationSeconds": 18.349,
+      "exitCode": 0,
+      "error": null,
+      "log": "regression.log",
+      "sha256": "c4515d18e14204417e700e3b5b1c84b92fb69df3e3350d943acf7668f9428cc9"
+    },
+    {
+      "id": "merged",
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/questionnaire/dynamic-form.test.mts",
+        "tests/validation/numeric-fields.test.mts",
+        "tests/regression/dashboard-drilldown.integration.test.mts",
+        "tests/regression/finance-2.3.test.mts",
+        "tests/regression/quote-ui-consolidated.test.mts",
+        "examples/instant-close/tests/flow.test.mts"
+      ],
+      "startedAt": "2026-11-23T10:13:05.794041+00:00",
+      "durationSeconds": 0.427,
+      "exitCode": 0,
+      "error": null,
+      "log": "merged.log",
+      "sha256": "d846eabb56fc8f6eaccf9cdaee6349f557ae5e78a0144c8c89d696cc057549bd"
+    },
+    {
+      "id": "example-build",
+      "argv": ["node", "examples/instant-close/build.mts"],
+      "startedAt": "2026-11-23T10:17:25.031157+00:00",
+      "durationSeconds": 0.164,
+      "exitCode": 0,
+      "error": null,
+      "log": "example-build.log",
+      "sha256": "7c7768e199a1e2d2476e0fc71d8eab2e759d8b11e113f13bf8bac2cafd6391a3"
+    },
+    {
+      "id": "migration-report",
+      "argv": ["node", "tooling/scripts/audit-migration.mts"],
+      "startedAt": "2026-11-23T10:17:25.200201+00:00",
+      "durationSeconds": 0.164,
+      "exitCode": 0,
+      "error": null,
+      "log": "migration-report.log",
+      "sha256": "5ec8974b82b734abaad7b49a864ff895e869f1db3b49744fa3bdc891924168e6"
+    },
+    {
+      "id": "migration-strict",
+      "argv": ["node", "tooling/scripts/audit-migration.mts", "--strict"],
+      "startedAt": "2026-11-23T10:17:25.368608+00:00",
+      "durationSeconds": 0.165,
+      "exitCode": 1,
+      "error": null,
+      "log": "migration-strict.log",
+      "sha256": "9a5b567dc3ac30e73ea838ea6d89702a4331737024df5030e7e2c58f360379bf"
+    },
+    {
+      "id": "format",
+      "argv": ["node", "node_modules/prettier/bin/prettier.cjs", "--check", "."],
+      "startedAt": "2026-11-23T10:17:25.538543+00:00",
+      "durationSeconds": 8.258,
+      "exitCode": 0,
+      "error": null,
+      "log": "format.log",
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "id": "package",
+      "argv": ["node", "tooling/scripts/package.mts"],
+      "startedAt": "2026-11-23T10:17:33.801247+00:00",
+      "durationSeconds": 0.666,
+      "exitCode": 0,
+      "error": null,
+      "log": "package.log",
+      "sha256": "54e33b3a231581db1384cc2f7a863376cfb5a3971fd573a9b9a800a7d5380263"
+    }
+  ],
+  "notes": [
+    "One PostgreSQL test is skipped locally.",
+    "Initial direct TS invocation failed before tests; esbuild-bundled execution is authoritative.",
+    "A batched regression run timed out; separate rerun passed all seven groups.",
+    "No baseline reset or runtime test deletion."
+  ]
+}

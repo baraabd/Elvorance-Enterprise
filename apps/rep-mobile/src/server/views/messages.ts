@@ -14,7 +14,12 @@ async function openThread(
   context: ViewContext,
   conversation: RecordValue,
   host: HTMLElement,
+  committed = false,
 ): Promise<void> {
+  if (!committed && host.querySelector('form[aria-busy="true"]')) {
+    context.notify('انتظر تأكيد إرسال الرسالة قبل تحديث المحادثة.');
+    return;
+  }
   const path = `/v1/communications/conversations/${idPath(conversation.id)}`;
   let current = await context.api.get<Thread>(path + '/messages', { signal: context.signal });
   if (context.signal.aborted) return;
@@ -24,7 +29,13 @@ async function openThread(
   const show = (items: RecordValue[]) => {
     for (const message of items) {
       const node = card(
-        message.senderId === context.principal.sub ? 'أنت' : 'العميل',
+        message.senderId === context.principal.sub
+          ? 'أنت'
+          : message.senderRole === 'client'
+            ? 'العميل'
+            : message.senderRole === 'admin' || message.senderRole === 'support'
+              ? 'فريق الإدارة والدعم'
+              : 'المندوب',
         dateText(message.createdAt),
       );
       node.append(el('p', words(message.body), 'message-body'));
@@ -32,7 +43,15 @@ async function openThread(
     }
   };
   show(current.items);
-  host.append(messages);
+  const receipt = el('p', '', 'muted');
+  receipt.textContent = current.receipt
+    ? `آخر تأكيد لقراءتك: ${dateText(current.receipt.readAt)}`
+    : 'لم تسجل تأكيد قراءة في هذه المحادثة بعد.';
+  host.append(
+    messages,
+    receipt,
+    el('p', 'تأكيد القراءة المعروض يخص حسابك. لا تتوفر هنا حالة قراءة الطرف الآخر.', 'muted'),
+  );
   let lastDisplayed = current.items.at(-1);
   const load = button(
     'تحميل رسائل أخرى',
@@ -66,7 +85,7 @@ async function openThread(
           { ...values, expectedVersion: current.conversation.version },
           context.signal,
         );
-        await openThread(context, conversation, host);
+        await openThread(context, conversation, host, true);
       },
     }),
   );
@@ -83,7 +102,7 @@ async function openThread(
             context.signal,
           );
           context.notify('تم تسجيل القراءة.');
-          await openThread(context, conversation, host);
+          await openThread(context, conversation, host, true);
         },
         context.signal,
       ),
@@ -125,6 +144,11 @@ export async function messages(context: ViewContext): Promise<void> {
   rows(context.root, items, (value) => {
     const node = card(words(value.customerName, words(value.title, 'محادثة العميل')));
     detail(node, 'آخر تحديث', dateText(value.updatedAt));
+    const pending = Math.max(
+      0,
+      Number(value.messageCount ?? 0) - Number(value.lastReadSequence ?? 0),
+    );
+    detail(node, 'رسائل لم تؤكد قراءتها', String(pending));
     const thread = el('section');
     node.append(
       button('فتح المحادثة', () => openThread(context, value, thread), context.signal),

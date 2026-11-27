@@ -17,6 +17,7 @@ import {
   privateDatabaseUrl,
   type Domain,
 } from './target.mts';
+import { requiredValue } from './target.mts';
 export function adminUrl(database?: string) {
   const url = privateDatabaseUrl(process.env.PGADMIN_URL ?? '');
   if (database) url.pathname = '/' + database;
@@ -88,12 +89,15 @@ export async function snapshot(db: Pool) {
     const data = await db.query<{ value: string }>(
       `SELECT row_to_json(t)::text AS value FROM public.${identifier(table)} t ORDER BY row_to_json(t)::text`,
     );
-    const flags = (
-      await db.query<{ relrowsecurity: boolean; relforcerowsecurity: boolean }>(
-        'SELECT relrowsecurity,relforcerowsecurity FROM pg_class WHERE oid=$1::regclass',
-        ['public.' + table],
-      )
-    ).rows[0]!;
+    const flags = requiredValue(
+      (
+        await db.query<{ relrowsecurity: boolean; relforcerowsecurity: boolean }>(
+          'SELECT relrowsecurity,relforcerowsecurity FROM pg_class WHERE oid=$1::regclass',
+          ['public.' + table],
+        )
+      ).rows[0],
+      'Missing restored table security metadata.',
+    );
     tables.push({
       table,
       rows: data.rowCount ?? 0,
@@ -127,8 +131,10 @@ export async function recovery(tenantId: string, replay: RecoveryReplay) {
   const started = performance.now();
   let cleanupSucceeded = false;
   try {
-    const version = (await root.query<{ server_version: string }>('SHOW server_version')).rows[0]!
-      .server_version;
+    const version = requiredValue(
+      (await root.query<{ server_version: string }>('SHOW server_version')).rows[0],
+      'Missing PostgreSQL server version.',
+    ).server_version;
     ensure(version.startsWith('18.'), 'Hosted recovery requires the actual PostgreSQL 18 target.');
     for (const service of domains) {
       const original = ownedName(service),
@@ -145,9 +151,11 @@ export async function recovery(tenantId: string, replay: RecoveryReplay) {
           'Outbox must be drained before consistent rehearsal snapshot.',
         );
         const before = await snapshot(source);
-        const snapshotId = (
-          await source.query<{ snapshot: string }>('SELECT pg_export_snapshot() AS snapshot')
-        ).rows[0]!.snapshot;
+        const snapshotId = requiredValue(
+          (await source.query<{ snapshot: string }>('SELECT pg_export_snapshot() AS snapshot'))
+            .rows[0],
+          'Missing exported database snapshot.',
+        ).snapshot;
         const dumpStarted = performance.now();
         await command(
           'pg_dump',

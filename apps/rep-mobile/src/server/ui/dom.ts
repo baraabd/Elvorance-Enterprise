@@ -1,3 +1,4 @@
+import { isolatedText, statePanel } from '@elvorance/ui/enterprise-ux';
 import { ApiError } from '@elvorance/api-client';
 import type { RecordValue } from '../api.ts';
 
@@ -28,7 +29,7 @@ export const dateText = (value: unknown): string => {
   if (typeof value !== 'string' || !Number.isFinite(Date.parse(value))) return '—';
   return new Intl.DateTimeFormat('ar-SA', {
     dateStyle: 'medium',
-    ...(value.includes('T') ? { timeStyle: 'short' as const } : {}),
+    ...(value.includes('T') ? { timeStyle: 'short' as const } : { timeZone: 'UTC' }),
   }).format(new Date(value));
 };
 const labels: Record<string, string> = {
@@ -69,13 +70,28 @@ export function button(
 ): HTMLButtonElement {
   const node = el('button', label, className);
   node.type = 'button';
+  let busy = false;
   node.addEventListener(
     'click',
     () => {
+      if (busy || signal.aborted || node.disabled) return;
+      const previousBusy = node.getAttribute('aria-busy');
+      busy = true;
+      node.disabled = true;
+      node.setAttribute('aria-busy', 'true');
       void Promise.resolve()
-        .then(handler)
+        .then(() => {
+          if (!signal.aborted) return handler();
+        })
         .catch((error: unknown) => {
-          node.dispatchEvent(new CustomEvent('rep:error', { bubbles: true, detail: error }));
+          if (!signal.aborted)
+            node.dispatchEvent(new CustomEvent('rep:error', { bubbles: true, detail: error }));
+        })
+        .finally(() => {
+          busy = false;
+          node.disabled = false;
+          if (previousBusy === null) node.removeAttribute('aria-busy');
+          else node.setAttribute('aria-busy', previousBusy);
         });
     },
     { signal },
@@ -96,7 +112,7 @@ export function card(title: string, subtitle?: string): HTMLElement {
 }
 export function detail(node: HTMLElement, label: string, value: unknown): void {
   const row = el('p', '', 'detail');
-  row.append(el('strong', label + ': '), el('span', words(value)));
+  row.append(el('strong', label + ': '), isolatedText(words(value)));
   node.append(row);
 }
 export function rows(
@@ -105,7 +121,7 @@ export function rows(
   render: (value: RecordValue) => HTMLElement,
 ): void {
   if (!values.length) {
-    container.append(el('p', 'لا توجد سجلات لعرضها بعد.', 'empty'));
+    container.append(statePanel('empty', 'لا توجد سجلات لعرضها بعد.'));
     return;
   }
   const list = el('div', '', 'cards');

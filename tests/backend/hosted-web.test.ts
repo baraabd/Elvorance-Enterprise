@@ -24,7 +24,9 @@ test('hosted static shell denies path traversal and writes; keeps config uncache
       assert.equal(r.status, 200);
       await r.text();
       assert.equal(r.headers.get('cache-control'), 'no-store');
-      assert.match(r.headers.get('content-security-policy')!, /script-src 'self';/);
+      const policy = r.headers.get('content-security-policy');
+      assert.ok(policy, 'A hosted response must have a CSP header.');
+      assert.match(policy, /script-src 'self';/);
     }
     for (const path of ['/.env', '/%2e%2e%2fpackage.json', '/package.json', '/../server.mjs']) {
       const r = await fetch(base + path);

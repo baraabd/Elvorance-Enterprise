@@ -6,6 +6,7 @@ import {
   sourceRevision,
   stagingTarget,
   identifier,
+  requiredValue,
 } from '../../infra/railway/staging/target.mts';
 const valid = {
   RAILWAY_PROJECT_ID: stagingTarget.projectId,
@@ -43,4 +44,11 @@ test('hosted evidence requires an exact source revision', () => {
   assert.throws(() => sourceRevision({}));
   assert.throws(() => sourceRevision({ RAILWAY_GIT_COMMIT_SHA: 'main' }));
   assert.equal(sourceRevision({ RAILWAY_GIT_COMMIT_SHA: 'a'.repeat(40) }), 'a'.repeat(40));
+});
+
+test('hosted required values reject missing evidence without rejecting zero or false', () => {
+  assert.throws(() => requiredValue(undefined, 'missing evidence'), /missing evidence/);
+  assert.throws(() => requiredValue(null, 'missing evidence'), /missing evidence/);
+  assert.equal(requiredValue(0, 'zero is present'), 0);
+  assert.equal(requiredValue(false, 'false is present'), false);
 });

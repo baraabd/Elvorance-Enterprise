@@ -100,9 +100,19 @@ test('authorization matrix: all catalogued operations reject invalid identities 
     communications: new MemoryRepository('communications', communicationsTables),
   };
   const apps: Record<string, FastifyInstance> = {};
+  // Each matrix observation models an independent socket peer so its authorization
+  // result is not masked by another observation's request budget. Rate exhaustion,
+  // spoofed forwarding headers and pre-auth rejection are tested separately.
+  let peerSequence = 0;
+  const nextMatrixPeer = () => {
+    const peer = ++peerSequence;
+    assert.ok(peer < 65_536, 'Synthetic peer space must not wrap');
+    return `198.18.${peer >>> 8}.${peer & 255}`;
+  };
   const directory: CustomerDirectory & CatalogDirectory = {
     async getCatalog(authorization): Promise<CatalogSnapshot> {
-      const response = await apps.crm!.inject({
+      const response = await requiredValue(apps.crm).inject({
+        remoteAddress: nextMatrixPeer(),
         method: 'GET',
         url: '/v1/catalog',
         headers: { authorization },
@@ -112,7 +122,8 @@ test('authorization matrix: all catalogued operations reject invalid identities 
       return response.json() as CatalogSnapshot;
     },
     async getCustomer(id, authorization): Promise<CustomerContext> {
-      const response = await apps.crm!.inject({
+      const response = await requiredValue(apps.crm).inject({
+        remoteAddress: nextMatrixPeer(),
         method: 'GET',
         url: '/v1/customers/' + encodeURIComponent(id) + '/context',
         headers: { authorization },
@@ -122,14 +133,18 @@ test('authorization matrix: all catalogued operations reject invalid identities 
       return response.json() as CustomerContext;
     },
   };
-  apps.identity = identityApp({ repository: repositories.identity!, auth });
-  apps.crm = crmApp({ repository: repositories.crm!, auth });
-  apps.sales = salesApp({ repository: repositories.sales!, auth, customerDirectory: directory });
-  apps.delivery = deliveryApp({ repository: repositories.delivery!, auth });
-  apps.billing = billingApp({ repository: repositories.billing!, auth });
-  apps.tracking = trackingApp({ repository: repositories.tracking!, auth });
+  apps.identity = identityApp({ repository: requiredValue(repositories.identity), auth });
+  apps.crm = crmApp({ repository: requiredValue(repositories.crm), auth });
+  apps.sales = salesApp({
+    repository: requiredValue(repositories.sales),
+    auth,
+    customerDirectory: directory,
+  });
+  apps.delivery = deliveryApp({ repository: requiredValue(repositories.delivery), auth });
+  apps.billing = billingApp({ repository: requiredValue(repositories.billing), auth });
+  apps.tracking = trackingApp({ repository: requiredValue(repositories.tracking), auth });
   apps.communications = communicationsApp({
-    repository: repositories.communications!,
+    repository: requiredValue(repositories.communications),
     auth,
     customerDirectory: directory,
   });
@@ -140,9 +155,10 @@ test('authorization matrix: all catalogued operations reject invalid identities 
   const fetcher: typeof fetch = async (input, init) => {
     forwards++;
     const u = new URL(String(input));
-    const name = u.hostname.split('.')[0]!;
+    const name = requiredValue(u.hostname.split('.')[0]);
     assert.ok(apps[name], 'Gateway must never forward outside this fixture');
-    const response = await apps[name]!.inject({
+    const response = await requiredValue(apps[name]).inject({
+      remoteAddress: nextMatrixPeer(),
       method: (init?.method ?? 'GET') as HTTPMethods,
       url: u.pathname + u.search,
       headers: Object.fromEntries(new Headers(init?.headers)),
@@ -218,12 +234,14 @@ test('authorization matrix: all catalogued operations reject invalid identities 
     ['sales', '/v1/tasks/', 'rep'],
     ['sales', '/v1/opportunities/', 'rep'],
     ['sales', '/v1/routes/', 'rep'],
+    ['sales', '/v1/service-requests/', 'client'],
     ['delivery', '/v1/projects/', 'delivery'],
     ['billing', '/v1/invoices/', 'finance'],
     ['tracking', '/v1/sessions/', 'admin'],
     ['communications', '/v1/tickets/', 'support'],
   ] as const) {
-    const response = await apps[service]!.inject({
+    const response = await requiredValue(apps[service]).inject({
+      remoteAddress: nextMatrixPeer(),
       method: 'GET',
       url: path + fixtureId,
       headers: { authorization: 'Bearer ' + (await token([role])) },
@@ -255,6 +273,20 @@ test('authorization matrix: all catalogued operations reject invalid identities 
     title: 'Synthetic task',
     deviceId: 'acceptance-device-0001',
   };
+  function bodyFor(op: Operation): Record<string, unknown> {
+    // Additive Sprint 04 contracts reject unknown fields before reading a record.
+    // Use valid command shapes so 400 validation failures cannot masquerade as
+    // authorization evidence; denial still must be 403/404 with unchanged rows.
+    if (op.service === 'sales' && op.servicePath === '/v1/service-requests/{id}/review')
+      return { expectedVersion: 1, decision: 'declined', note: 'Synthetic authorization check' };
+    if (op.service === 'sales' && op.servicePath === '/v1/service-requests/{id}/cancel')
+      return { expectedVersion: 1 };
+    if (op.service === 'crm' && op.method === 'PATCH' && op.servicePath === '/v1/regions/{id}')
+      return { expectedVersion: 1, name: 'Synthetic region change' };
+    if (op.service === 'delivery' && op.method === 'PATCH')
+      return { expectedVersion: 1, title: 'Synthetic planning change' };
+    return body;
+  }
   function pathFor(path: string) {
     return path.replace(/\{[^}]+\}/g, fixtureId);
   }
@@ -263,7 +295,8 @@ test('authorization matrix: all catalogued operations reject invalid identities 
     transport: 'service' | 'gateway',
     authorization: string | undefined,
   ) {
-    return (transport === 'gateway' ? gateway : apps[op.service]!).inject({
+    return (transport === 'gateway' ? gateway : requiredValue(apps[op.service])).inject({
+      remoteAddress: nextMatrixPeer(),
       method: op.method,
       url: pathFor(transport === 'gateway' ? op.gatewayPath : op.servicePath),
       headers: {
@@ -273,7 +306,7 @@ test('authorization matrix: all catalogued operations reject invalid identities 
         'x-roles': 'admin',
         ...(op.method === 'GET' ? {} : { 'content-type': 'application/json' }),
       },
-      ...(op.method === 'GET' ? {} : { payload: JSON.stringify(body) }),
+      ...(op.method === 'GET' ? {} : { payload: JSON.stringify(bodyFor(op)) }),
     });
   }
   function record(
@@ -416,3 +449,8 @@ test('authorization matrix: all catalogued operations reject invalid identities 
   assert.deepEqual(failures, [], JSON.stringify(failures.slice(0, 20), null, 2));
   assert.ok(unchanged, 'Denied requests must not change business records');
 });
+
+function requiredValue<T>(value: T | undefined): T {
+  if (value === undefined) throw new Error('Required test fixture is missing');
+  return value;
+}

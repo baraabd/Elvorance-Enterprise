@@ -13,7 +13,8 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": ["node"],
+    "resolveJsonModule": true
   },
   "include": [
     "services/**/*.ts",
@@ -38,9 +39,21 @@
     "tests/runtime/**/*.mts",
     "tests/identity/**/*.mts",
     "tooling/scripts/test-local-identity.mts",
+    "tooling/production/**/*.mts",
+    "tests/production/**/*.mts",
+    "tests/acceptance/**/*.mts",
+    "tooling/scripts/run-acceptance.mts",
+    "tooling/qa/**/*.mts",
+    "tests/ux/**/*.ts",
+    "tests/ux/**/*.mts",
+    "apps/admin-web/src/server/**/*.ts",
+    "apps/admin-web/src/server-main.ts",
+    "tests/admin/**/*.mts",
+    "tooling/scripts/build-admin-server.mts",
+    "tests/admin/**/*.ts",
+    "tooling/scripts/sprint01-inventory.mts",
     "infra/railway/**/*.mts",
     "tooling/scripts/hosted/**/*.mts",
-    "apps/admin-web/src/server-main.ts",
     "apps/client-mobile/src/server-main.ts"
   ],
   "exclude": ["**/node_modules", "**/dist", "**/android", "**/ios"]

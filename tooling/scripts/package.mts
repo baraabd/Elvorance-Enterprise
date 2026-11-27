@@ -1,6 +1,7 @@
 // @ts-nocheck
 // Elvorance TypeScript migration: refine legacy dynamic types before removing this directive.
-import { readdir, readFile, writeFile, mkdir, stat } from 'node:fs/promises';
+import { readdir, readFile, writeFile, mkdir, open } from 'node:fs/promises';
+import { constants } from 'node:fs';
 import { relative, resolve } from 'node:path';
 import { zipSync } from 'fflate';
 import { root } from './workspace.mts';
@@ -36,12 +37,22 @@ async function visit(dir) {
       await visit(file);
     } else if (entry.isFile()) {
       if (/\.env\./.test(entry.name) && entry.name !== '.env.example') continue;
-      const mode = (await stat(file)).mode;
-      const executable = Boolean(mode & 0o111) || path.endsWith('/gradlew') || path.endsWith('.sh');
-      files[`Elvorance-Enterprise/${path}`] = [
-        new Uint8Array(await readFile(file)),
-        { os: 3, attrs: ((executable ? 0o100755 : 0o100644) << 16) >>> 0 },
-      ];
+      const handle = await open(
+        file,
+        constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0) | (constants.O_NONBLOCK ?? 0),
+      );
+      try {
+        const details = await handle.stat();
+        if (!details.isFile()) throw new Error('Package content changed to a non-regular file.');
+        const executable =
+          Boolean(details.mode & 0o111) || path.endsWith('/gradlew') || path.endsWith('.sh');
+        files[`Elvorance-Enterprise/${path}`] = [
+          new Uint8Array(await handle.readFile()),
+          { os: 3, attrs: ((executable ? 0o100755 : 0o100644) << 16) >>> 0 },
+        ];
+      } finally {
+        await handle.close();
+      }
     }
   }
 }

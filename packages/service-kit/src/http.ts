@@ -1,9 +1,12 @@
-import Fastify, { type FastifyInstance, type FastifyRequest } from 'fastify';
+import rateLimit from '@fastify/rate-limit';
+import Fastify, { LogController, type FastifyInstance, type FastifyRequest } from 'fastify';
 import type { Principal } from '@elvorance/contracts';
 import { type AuthVerifier } from './auth.ts';
 import { AppError, assert } from './errors.ts';
 import type { Repository, Transaction } from './repository.ts';
 import { text } from './validation.ts';
+import { requireRoutePermission, routeRoles } from './route-policy.ts';
+import { registerSecurityAudit, type AuditObserver } from './security-audit.ts';
 declare module 'fastify' {
   interface FastifyRequest {
     principal: Principal;
@@ -13,6 +16,7 @@ export interface AppOptions {
   repository: Repository;
   auth: AuthVerifier;
   logger?: boolean;
+  auditObserver?: AuditObserver;
   brokerReady?: () => boolean;
 }
 export function createService(name: string, options: AppOptions): FastifyInstance {
@@ -20,13 +24,45 @@ export function createService(name: string, options: AppOptions): FastifyInstanc
     logger: options.logger
       ? { redact: ['req.headers.authorization', 'req.headers.cookie', 'res.headers.set-cookie'] }
       : false,
+    logController: new LogController({ disableRequestLogging: true }),
     bodyLimit: 256 * 1024,
     requestTimeout: 30_000,
   });
+  // Per-process socket-IP admission happens before parsing or JWT verification.
+  // Existing tenant/principal budgets remain an independent second layer in the gateway.
+  void app.register(rateLimit, {
+    global: true,
+    hook: 'onRequest',
+    max: 600,
+    timeWindow: 60_000,
+    cache: 10_000,
+    skipOnError: false,
+    errorResponseBuilder: () => new AppError(429, 'RATE_LIMITED', 'Too many requests'),
+  });
+  // These factories register routes synchronously, before plugin boot. Attach an
+  // instance hook as well as the plugin's onRoute hook so early routes cannot bypass it.
+  let admission: ReturnType<typeof app.rateLimit> | undefined;
+  app.addHook('onRequest', async (request, reply) => {
+    if (request.routeOptions.config.rateLimit === false) return;
+    admission ??= app.rateLimit();
+    await admission.call(app, request, reply);
+  });
   app.decorateRequest('principal');
-  app.addHook('onRequest', async (request) => {
-    if (request.url.startsWith('/v1/'))
+  registerSecurityAudit(app, name, options.auditObserver);
+  app.addHook('onRoute', (route) => {
+    if (!route.url.startsWith('/v1/')) return;
+    for (const method of [route.method].flat()) routeRoles(name, method, route.url);
+  });
+  app.addHook('onRequest', async (request, reply) => {
+    reply.header('cache-control', 'no-store');
+    reply.header('x-content-type-options', 'nosniff');
+  });
+  app.addHook('preParsing', async (request) => {
+    const path = request.routeOptions.url;
+    if (path?.startsWith('/v1/') || request.url.startsWith('/v1/')) {
       request.principal = await options.auth(request.headers.authorization);
+      if (path) requireRoutePermission(name, request.method, path, request.principal);
+    }
   });
   app.setErrorHandler((error, request, reply) => {
     const known = error instanceof AppError;
@@ -36,10 +72,13 @@ export function createService(name: string, options: AppOptions): FastifyInstanc
         : undefined;
     const status = known
       ? error.statusCode
-      : typeof upstreamStatus === 'number' && upstreamStatus < 500
+      : typeof upstreamStatus === 'number' &&
+          Number.isInteger(upstreamStatus) &&
+          upstreamStatus >= 400 &&
+          upstreamStatus < 500
         ? upstreamStatus
         : 500;
-    if (status >= 500) request.log.error({ err: error, requestId: request.id }, 'Request failed');
+    if (status >= 500) request.log.error({ requestId: request.id }, 'Request failed');
     reply.code(status).send({
       error: {
         code: known ? error.code : status >= 500 ? 'INTERNAL_ERROR' : 'INVALID_REQUEST',
@@ -52,8 +91,11 @@ export function createService(name: string, options: AppOptions): FastifyInstanc
       },
     });
   });
-  app.get('/health', async () => ({ service: name, status: 'alive' }));
-  app.get('/ready', async (_request, reply) => {
+  app.get('/health', { config: { rateLimit: false } }, async () => ({
+    service: name,
+    status: 'alive',
+  }));
+  app.get('/ready', { config: { rateLimit: false } }, async (_request, reply) => {
     try {
       await options.repository.ping();
       const broker = options.brokerReady?.();

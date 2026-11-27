@@ -1,5 +1,6 @@
 import { randomBytes } from 'node:crypto';
-import { chmod, mkdir, readFile, writeFile, lstat } from 'node:fs/promises';
+import { mkdir, open, lstat } from 'node:fs/promises';
+import { constants } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { domains } from './topology.mts';
 import { privateSecretPath } from './private-path.mts';
@@ -33,18 +34,24 @@ export async function validateEnvironmentSecrets(
     throw new Error('Secret directory must have owner-only permissions (0700).');
   }
   const metadataPath = resolve(target, 'environment.json');
-  const metadataDetails = await lstat(metadataPath);
-  if (
-    !metadataDetails.isFile() ||
-    metadataDetails.nlink !== 1 ||
-    (metadataDetails.mode & 0o777) !== 0o600
-  ) {
-    throw new Error('Secret metadata must be a private regular file (0600).');
+  const metadataFile = await open(
+    metadataPath,
+    constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+  );
+  let metadata: { schemaVersion?: number; environment?: string };
+  try {
+    const metadataDetails = await metadataFile.stat();
+    if (
+      !metadataDetails.isFile() ||
+      metadataDetails.nlink !== 1 ||
+      (metadataDetails.mode & 0o777) !== 0o600
+    ) {
+      throw new Error('Secret metadata must be a private regular file (0600).');
+    }
+    metadata = JSON.parse(await metadataFile.readFile('utf8')) as typeof metadata;
+  } finally {
+    await metadataFile.close();
   }
-  const metadata = JSON.parse(await readFile(metadataPath, 'utf8')) as {
-    schemaVersion?: number;
-    environment?: string;
-  };
   if (metadata.schemaVersion !== 1 || metadata.environment !== environment) {
     throw new Error('Secret files belong to a different environment or have invalid metadata.');
   }
@@ -69,10 +76,23 @@ export async function createEnvironmentSecrets(
     throw new Error('Select staging or production explicitly.');
   const metadata = resolve(target, 'environment.json');
   try {
-    const metadataDetails = await lstat(metadata);
-    if (!metadataDetails.isFile() || metadataDetails.nlink !== 1)
-      throw new Error('Secret metadata must be a private regular file.');
-    const previous = JSON.parse(await readFile(metadata, 'utf8')) as { environment?: string };
+    const metadataFile = await open(
+      metadata,
+      constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+    );
+    let previous: { environment?: string };
+    try {
+      const metadataDetails = await metadataFile.stat();
+      if (
+        !metadataDetails.isFile() ||
+        metadataDetails.nlink !== 1 ||
+        (metadataDetails.mode & 0o777) !== 0o600
+      )
+        throw new Error('Secret metadata must be a private regular file.');
+      previous = JSON.parse(await metadataFile.readFile('utf8')) as typeof previous;
+    } finally {
+      await metadataFile.close();
+    }
     if (previous.environment !== environment)
       throw new Error('Secret directories cannot be reused across environments.');
     throw new Error(
@@ -81,17 +101,20 @@ export async function createEnvironmentSecrets(
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
   }
-  try {
-    await lstat(target);
-    throw new Error('Choose a new, empty secret directory.');
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
-  }
+  // Do not check existence separately: exclusive mkdir below is the authority.
   await mkdir(dirname(target), { recursive: true, mode: 0o700 });
   privateSecretPath(target);
   // The final mkdir is exclusive: concurrent initializers cannot mix environments.
   await mkdir(target, { mode: 0o700 });
-  await chmod(target, 0o700);
+  const directoryHandle = await open(
+    target,
+    constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW,
+  );
+  try {
+    await directoryHandle.chmod(0o700);
+  } finally {
+    await directoryHandle.close();
+  }
   const secrets: Record<string, string> = {
     postgres_admin_password: randomBytes(32).toString('hex'),
     oidc_database_password: randomBytes(32).toString('hex'),
@@ -110,10 +133,9 @@ export async function createEnvironmentSecrets(
   // confidentiality comes from the 0700 enclosing directory, not shared host UIDs.
   for (const [name, value] of Object.entries(secrets)) {
     const file = resolve(target, name);
-    await writeFile(file, value, { flag: 'wx', mode: 0o444 });
-    await chmod(file, 0o444);
+    await writeExclusiveSecret(file, value, 0o444);
   }
-  await writeFile(
+  await writeExclusiveSecret(
     metadata,
     JSON.stringify(
       {
@@ -125,8 +147,22 @@ export async function createEnvironmentSecrets(
       null,
       2,
     ) + '\n',
-    { flag: 'wx', mode: 0o600 },
+    0o600,
   );
-  await chmod(metadata, 0o600);
   await validateEnvironmentSecrets(target, environment);
+}
+
+/** Exclusive creation and descriptor-based mode changes cannot chmod a substituted pathname. */
+async function writeExclusiveSecret(path: string, contents: string, mode: number): Promise<void> {
+  const handle = await open(
+    path,
+    constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_NOFOLLOW,
+    mode,
+  );
+  try {
+    await handle.writeFile(contents);
+    await handle.chmod(mode);
+  } finally {
+    await handle.close();
+  }
 }

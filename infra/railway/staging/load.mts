@@ -1,11 +1,18 @@
 import { performance } from 'node:perf_hooks';
 import { setTimeout as delay } from 'node:timers/promises';
 import type { HostedSession } from './identity-fixture.mts';
-import { assertStaging, ensure, stagingTarget } from './target.mts';
+import { assertStaging, ensure, requiredValue, stagingTarget } from './target.mts';
 export function percentile(values: readonly number[], p: number): number {
-  ensure(values.length > 0 && p > 0 && p <= 1, 'Invalid percentile input.');
+  ensure(
+    values.length > 0 && values.every(Number.isFinite) && p > 0 && p <= 1,
+    'Invalid percentile input.',
+  );
   const sorted = [...values].sort((a, b) => a - b);
-  return Number(sorted[Math.ceil(p * sorted.length) - 1]!.toFixed(2));
+  return Number(
+    requiredValue(sorted[Math.ceil(p * sorted.length) - 1], 'Missing percentile sample.').toFixed(
+      2,
+    ),
+  );
 }
 /** Bounded five-minute read-only soak. This is not a saturation or production capacity claim. */
 export async function sustainedLoad(session: HostedSession) {

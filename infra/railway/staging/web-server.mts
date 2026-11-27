@@ -1,7 +1,7 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { stagingTarget, ensure } from './target.mts';
+import { stagingTarget, ensure, requiredValue } from './target.mts';
 export async function createWebServer(role: string, directory: string) {
   ensure(
     role === 'admin' || role === 'client' || role === 'rep',
@@ -16,7 +16,9 @@ export async function createWebServer(role: string, directory: string) {
     ['build.json', 'application/json'],
   ] as const)
     assets.set('/' + name, { body: await readFile(resolve(directory, name)), type });
-  const build = JSON.parse(assets.get('/build.json')!.body.toString()) as {
+  const build = JSON.parse(
+    requiredValue(assets.get('/build.json'), 'Missing hosted build provenance.').body.toString(),
+  ) as {
     source: string;
     role: string;
     environment: string;

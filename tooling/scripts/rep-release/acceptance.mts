@@ -1,4 +1,5 @@
-import { readFile, realpath, stat } from 'node:fs/promises';
+import { open, readFile, realpath } from 'node:fs/promises';
+import { constants } from 'node:fs';
 import { resolve, relative, isAbsolute, extname, sep } from 'node:path';
 import { sha256 } from './build-proof.mts';
 import { imageNames, immutableImagePattern } from '../../../infra/environments/topology.mts';
@@ -209,11 +210,22 @@ export async function verifyEvidence(report: StagingAcceptance, directory: strin
       path && path !== '..' && !path.startsWith('..' + sep) && !isAbsolute(path),
       'evidence escapes the acceptance artifact',
     );
-    const details = await stat(file);
-    ensure(details.isFile() && details.size > 0, 'evidence must reference a nonempty regular file');
-    ensure(
-      sha256(await readFile(file)) === evidence.sha256,
-      `evidence digest differs: ${evidence.path}`,
+    const handle = await open(
+      file,
+      constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0) | (constants.O_NONBLOCK ?? 0),
     );
+    try {
+      const details = await handle.stat();
+      ensure(
+        details.isFile() && details.size > 0,
+        'evidence must reference a nonempty regular file',
+      );
+      ensure(
+        sha256(await handle.readFile()) === evidence.sha256,
+        `evidence digest differs: ${evidence.path}`,
+      );
+    } finally {
+      await handle.close();
+    }
   }
 }

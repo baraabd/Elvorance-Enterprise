@@ -34,12 +34,15 @@ const forbidden = inputNames.filter((file) =>
 if (forbidden.length)
   throw new Error(`Demo code entered the release graph: ${forbidden.join(', ')}`);
 const cssInput = 'apps/rep-mobile/src/server/styles.css';
+const enterpriseCssInput = 'packages/design-system/src/enterprise.css';
 const arabicCssInput = 'packages/design-system/src/arabic-accessibility.css';
 await writeFile(
   resolve(repOutput, 'assets/app.css'),
   (await readFile(resolve(repositoryRoot, cssInput), 'utf8')) +
     '\n' +
-    (await readFile(resolve(repositoryRoot, arabicCssInput), 'utf8')),
+    (await readFile(resolve(repositoryRoot, arabicCssInput), 'utf8')) +
+    '\n' +
+    (await readFile(resolve(repositoryRoot, enterpriseCssInput), 'utf8')),
 );
 await writeFile(
   resolve(repOutput, 'config.js'),
@@ -50,7 +53,7 @@ const csp = `default-src 'none'; script-src 'self'; style-src 'self'; img-src 's
 await writeFile(
   resolve(repOutput, 'index.html'),
   `<!doctype html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#17221b"><meta http-equiv="Content-Security-Policy" content="${csp}"><title>إلفورانس الميداني</title><link rel="stylesheet" href="./assets/app.css"><script src="./config.js" defer></script><script src="./assets/app.js" defer></script></head><body><div id="app" aria-live="polite"></div><noscript>يتطلب التطبيق تفعيل JavaScript.</noscript></body></html>\n`,
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#17221b"><meta http-equiv="Content-Security-Policy" content="${csp}"><title>إلفورانس الميداني</title><link rel="stylesheet" href="./assets/app.css"><script src="./config.js" defer></script><script src="./assets/app.js" defer></script></head><body><div id="app"></div><noscript>يتطلب التطبيق تفعيل JavaScript.</noscript></body></html>\n`,
 );
 const inputs: Record<string, string> = {};
 for (const name of [
@@ -58,6 +61,7 @@ for (const name of [
     ...inputNames,
     cssInput,
     arabicCssInput,
+    enterpriseCssInput,
     'package-lock.json',
     'tooling/scripts/build-rep-server.mts',
     'tooling/scripts/rep-release/release-config.mts',

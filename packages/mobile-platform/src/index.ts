@@ -2,6 +2,7 @@ import { Capacitor } from '@capacitor/core';
 import { App } from '@capacitor/app';
 import { Geolocation } from '@capacitor/geolocation';
 import { Network } from '@capacitor/network';
+export { locationPermissionMode } from './location-permission.ts';
 
 /** Device capabilities are ports; domain features never import native plugins directly. */
 export function createMobilePlatform() {
@@ -15,19 +16,21 @@ export function createMobilePlatform() {
       }
       return Geolocation.requestPermissions({ permissions: ['location'] });
     },
-    async currentLocation() {
+    async currentLocation(enableHighAccuracy = true) {
       return Geolocation.getCurrentPosition({
-        enableHighAccuracy: true,
+        enableHighAccuracy,
         maximumAge: 0,
         timeout: 12_000,
       });
     },
     async watchLocation({
       consent,
+      enableHighAccuracy = true,
       onPosition,
       onError,
     }: {
       consent: boolean;
+      enableHighAccuracy?: boolean;
       onPosition: (position: Awaited<ReturnType<typeof Geolocation.getCurrentPosition>>) => void;
       onError: (error: unknown) => void;
     }) {
@@ -35,7 +38,7 @@ export function createMobilePlatform() {
       let stopped = false;
       const watchId = await Geolocation.watchPosition(
         {
-          enableHighAccuracy: true,
+          enableHighAccuracy,
           maximumAge: 0,
           timeout: 12_000,
           interval: 10_000,
@@ -80,12 +83,22 @@ export async function installMobileShell(runtime: { closeModal(): void }) {
   const network = await Network.addListener('networkStatusChange', (state) =>
     window.dispatchEvent(new Event(state.connected ? 'online' : 'offline')),
   );
-  const back = await App.addListener('backButton', ({ canGoBack }) => {
-    if (document.querySelector('dialog[open]')) runtime.closeModal();
-    else if (canGoBack) window.history.back();
-  });
-  return async () => {
+  try {
+    const back = await App.addListener('backButton', ({ canGoBack }) => {
+      if (document.querySelector('dialog[open], .editor')) runtime.closeModal();
+      else if (canGoBack) window.history.back();
+    });
+    let cleanup: Promise<void> | null = null;
+    return () => {
+      cleanup ??= (async () => {
+        const results = await Promise.allSettled([network.remove(), back.remove()]);
+        if (results.some((result) => result.status === 'rejected'))
+          throw new Error('تعذّر إغلاق مراقبة حالة الجهاز.');
+      })();
+      return cleanup;
+    };
+  } catch (error) {
     await network.remove();
-    await back.remove();
-  };
+    throw error;
+  }
 }

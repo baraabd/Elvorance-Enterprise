@@ -1,0 +1,74 @@
+{
+  "status": "Author source review, not independent approval or runtime/backend acceptance",
+  "changedSourceEvidence": [
+    {
+      "path": "apps/rep-mobile/src/server/ui/forms.ts",
+      "before": "0fdc08d0b8614acbc029a2c808557c75e433b8389734b7e3b4a2d34bc45cf72d",
+      "after": "6e6b5e00273a1a0a60dc225507b681847f2d5a857bdab746d7f5cbb6246e1986",
+      "review": "Presentation only: pending controls, semantic state surfaces, labels/direction, page title. Existing route/command ownership and authorization unchanged."
+    },
+    {
+      "path": "apps/rep-mobile/src/server/ui/dom.ts",
+      "before": "4ffab96ed39b01af839d90b635ca2e5ab9a4be02db22ef4363b3c0f1893deee1",
+      "after": "3e963c3a136ce7c25217573240d37f0c0152fb7f74a0335a490a5887672e10b9",
+      "review": "Presentation only: pending controls, semantic state surfaces, labels/direction, page title. Existing route/command ownership and authorization unchanged."
+    },
+    {
+      "path": "apps/rep-mobile/src/server/workspace.ts",
+      "before": "b60160990263e975f9125e4b2ac64494d0a95544de2f04ebf55a8cdc2ac1ad37",
+      "after": "8c5f95a9c64eca60fc1857b24af8c68f625a249098ec2ab90216628e21aa4489",
+      "review": "Presentation only: pending controls, semantic state surfaces, labels/direction, page title. Existing route/command ownership and authorization unchanged."
+    },
+    {
+      "path": "packages/app-runtime/src/index.ts",
+      "before": "48e0ffcd53d4d5b0a19fd21d2d49e8f3407ebed6b1bbd3af7e5d4ff4272162aa",
+      "after": "bc42607cf9faf3e0482320342c843e444e9f319ac8b25fae5b413b9b406298dc",
+      "review": "Existing dispatch owners/routes unchanged. FormData and original disabled states captured before handler invocation; pending promise guard prevents duplicate dispatch and restores prior state. Modal keyboard filtering and disconnected-trigger focus fallback only. Existing business regression suites required."
+    }
+  ],
+  "newPresentationHandlers": [
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:155122938a48:1",
+      "rationale": "Native invalid-event feedback: add an Arabic inline message, aria-invalid and form error summary. Does not submit the form or contact a backend."
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:6e5e16f295c9:1",
+      "rationale": "Capture phase marks focus pending for existing live-navigation controls. It does not prevent events, change routes, submit forms or call APIs; the original workspace owns those actions."
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:892d05803b53:1",
+      "rationale": "Input feedback reconciles only this enhancement's validation message/described-by references. Existing application input dispatch and business data remain owned by the application."
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:a176bf413c75:1",
+      "rationale": "Skip-link handler focuses the existing main landmark without changing the application route, data or authorization."
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:b278c86df906:1",
+      "rationale": "Browser offline signal updates a status notice. It does not queue, send or replay mutations and does not establish backend reachability."
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:bb0afabcc39e:1",
+      "rationale": "Application render notification tracks distinct route changes for focus/navigation presentation. Existing router continues to own every route and data load."
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:e2dfd67f3131:1",
+      "rationale": "Error-summary link prevents hash navigation and focuses the existing invalid control. No form submission or network operation."
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:e3be8ef6e3d9:1",
+      "rationale": "Browser online signal updates a recovery notice, explicitly requiring manual retry. It does not queue, send or replay mutations."
+    },
+    {
+      "featureId": "handler:packages/ui/src/enterprise-ux.ts:e75256f22362:1",
+      "rationale": "Change feedback reconciles native validity and enhancement-owned errors. Does not persist, transmit or authorize any data."
+    }
+  ],
+  "debtAndQualityBaselines": "Unmodified",
+  "timerRoleReview": {
+    "path": "packages/ui/src/enterprise-ux.ts",
+    "before": "1a619de88c3070820f22daf6d0b40b77f9529c2976bc5f82f7a2c3fe2affa918",
+    "after": "46b766fe4d3d92ed719d92833d998e12dab2e63ccf3ac32ccdbc422189fc967c",
+    "reason": "Only labels existing elapsed-time display as role=timer, aria-live=off. No new listeners or changed handlers, network calls, routes, business-data writes or authorization. Existing nine presentation handler fingerprints preserved."
+  }
+}

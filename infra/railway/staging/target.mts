@@ -23,6 +23,10 @@ export type Domain = (typeof domains)[number];
 export function ensure(value: unknown, message: string): asserts value {
   if (!value) throw new Error(message);
 }
+export function requiredValue<T>(value: T | null | undefined, message: string): T {
+  ensure(value !== null && value !== undefined, message);
+  return value;
+}
 export function assertStaging(env: NodeJS.ProcessEnv = process.env): void {
   ensure(
     env.RAILWAY_PROJECT_ID === stagingTarget.projectId,

@@ -34,6 +34,7 @@ run('xcodebuild', [
   'dist/acceptance/client-ios-derived',
   'CODE_SIGN_IDENTITY=-',
   'CODE_SIGNING_ALLOWED=YES',
+  'ELVORANCE_BUNDLE_IDENTIFIER=com.elvorance.client.staging',
   'build',
 ]);
 const application = resolve(
@@ -44,7 +45,7 @@ const identity = capture('/usr/libexec/PlistBuddy', [
   'Print :CFBundleIdentifier',
   application + '/Info.plist',
 ]).trim();
-assert.equal(identity, 'com.elvorance.client');
+assert.equal(identity, 'com.elvorance.client.staging');
 const bootedHere = device.state !== 'Booted';
 let installed = false;
 try {
@@ -53,7 +54,7 @@ try {
   run('xcrun', ['simctl', 'install', device.udid, application]);
   installed = true;
   const launched = capture('xcrun', ['simctl', 'launch', device.udid, identity]).trim();
-  assert.match(launched, /^com\.elvorance\.client: \d+$/);
+  assert.match(launched, /^com\.elvorance\.client\.staging: \d+$/);
   await writeFile(
     'dist/acceptance/client-ios-shell.json',
     JSON.stringify(

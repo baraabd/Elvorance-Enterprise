@@ -13,6 +13,7 @@ import type { Project } from '../../../services/delivery/src/domain/model.ts';
 import type { Invoice } from '../../../services/billing/src/domain/model.ts';
 import type { Notification } from '../../../services/communications/src/domain/model.ts';
 import { ensure, assertStaging, domains as serviceNames } from './target.mts';
+import { requiredValue } from './target.mts';
 import { createIdentityFixtures } from './identity-fixture.mts';
 import { hostedHttp } from './http.mts';
 type Page<T> = { items: T[] };
@@ -383,8 +384,8 @@ export async function hostedJourney(
   );
   for (const path of [
     `/v1/sales/contracts/${contract.id}/fulfillment`,
-    `/v1/delivery/projects/${projects.items[0]!.id}`,
-    `/v1/billing/invoices/${invoices.items[0]!.id}`,
+    `/v1/delivery/projects/${requiredValue(projects.items[0], 'Expected a fulfilled project.').id}`,
+    `/v1/billing/invoices/${requiredValue(invoices.items[0], 'Expected a fulfilled invoice.').id}`,
   ])
     await http.request('GET', path, { session: outsider, status: 404 });
   passed(

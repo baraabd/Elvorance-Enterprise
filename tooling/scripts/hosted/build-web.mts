@@ -1,6 +1,7 @@
 import { build } from 'esbuild';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
+import { hostedStyles, hostedStylePaths } from './styles.mts';
 import { stagingTarget, sourceRevision, ensure } from '../../../infra/railway/staging/target.mts';
 const source = sourceRevision();
 for (const [role, app] of [
@@ -20,21 +21,15 @@ for (const [role, app] of [
     minify: true,
     metafile: true,
   });
-  const inputs = Object.keys(result.metafile!.inputs);
+  const inputs = Object.keys(result.metafile.inputs);
   ensure(
     !inputs.some((path) =>
       /packages\/(demo-data|app-runtime)\/|apps\/[^/]+\/src\/(features\/|app\.ts)/.test(path),
     ),
     'Hosted bundles must not include demo repositories or legacy app registration.',
   );
-  const cssPaths = ['styles', 'polish', 'tracking', 'arabic-accessibility'].map(
-    (name) => `packages/design-system/src/${name}.css`,
-  );
-  if (role === 'rep') cssPaths.push('apps/rep-mobile/src/server/styles.css');
-  let css = (await Promise.all(cssPaths.map((path) => readFile(path, 'utf8')))).join('\n');
-  // Deployment uses system fonts; do not package font binaries or embedded font data.
-  css = css.replace(/@font-face\s*\{[^}]*\}/g, '');
-  await writeFile(`${out}/styles.css`, css);
+  const cssPaths = hostedStylePaths(role);
+  await writeFile(`${out}/styles.css`, await hostedStyles(role));
   const config = {
     dataMode: 'server',
     environment: 'staging',
@@ -71,6 +66,7 @@ for (const [role, app] of [
         demoFallback: false,
         assets,
         inputs,
+        styles: cssPaths,
       },
       null,
       2,

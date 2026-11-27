@@ -21,6 +21,7 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.elvorance.client", appContext.getPackageName());
+        // The CI harness installs the isolated staging flavor, never the production app.
+        assertEquals("com.elvorance.client.staging", appContext.getPackageName());
     }
 }

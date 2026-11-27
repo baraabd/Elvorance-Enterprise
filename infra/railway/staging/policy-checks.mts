@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 import type { Principal } from '@elvorance/contracts';
 import type { Customer } from '../../../services/crm/src/domain/model.ts';
 import type { Invoice } from '../../../services/billing/src/domain/model.ts';
-import { ensure, stagingTarget } from './target.mts';
+import { ensure, requiredValue, stagingTarget } from './target.mts';
 import { createIdentityFixtures } from './identity-fixture.mts';
 import { hostedJourney } from './journey.mts';
 /** Expectations deliberately authored here; not generated from route-inventory.json. */
@@ -77,7 +77,10 @@ export async function policyChecks(
     status: 403,
   });
   passed('Combining finance/support does not grant administrative commands');
-  const invoice = flow.invoices.items[0]!;
+  const invoice = requiredValue(
+    flow.invoices.items[0],
+    'Expected an invoice before policy checks.',
+  );
   const pay = {
     expectedVersion: invoice.version,
     requestId: 'stg-pay-' + randomUUID(),
@@ -191,11 +194,21 @@ export async function policyChecks(
   const downgraded = await identities.login(flow.repAccount, 'rep');
   await http.request('GET', '/v1/identity/me', { session: downgraded, status: 401 });
   passed('Fresh access token after role removal is rejected when no role remains');
-  const oldRefresh = JSON.parse(dualClient.memory.get('auth-session')!).refreshToken as string;
+  const oldRefresh = JSON.parse(
+    requiredValue(
+      dualClient.memory.get('auth-session'),
+      'Expected an authenticated fixture session.',
+    ),
+  ).refreshToken as string;
   dualClient.advance(280000);
   ensure(await dualClient.auth.getAccessToken(), 'Refresh did not return a token.');
   dualClient.advance(0);
-  const rotated = JSON.parse(dualClient.memory.get('auth-session')!).refreshToken as string;
+  const rotated = JSON.parse(
+    requiredValue(
+      dualClient.memory.get('auth-session'),
+      'Expected an authenticated fixture session.',
+    ),
+  ).refreshToken as string;
   ensure(rotated !== oldRefresh, 'Refresh token did not rotate.');
   const replay = await fetch(
     stagingTarget.identityOrigin + '/realms/elvorance-staging/protocol/openid-connect/token',

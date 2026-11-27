@@ -9,3 +9,9 @@ test('hosted latency percentiles are nearest-rank, reject missing data and never
   assert.throws(() => percentile([], 0.95));
   assert.throws(() => percentile(v, 0));
 });
+
+test('hosted latency percentiles reject non-finite samples', () => {
+  for (const value of [NaN, Infinity, -Infinity]) {
+    assert.throws(() => percentile([1, value, 3], 0.95), /Invalid percentile input/);
+  }
+});

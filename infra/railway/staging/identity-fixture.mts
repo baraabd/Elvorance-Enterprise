@@ -31,6 +31,7 @@ export async function createIdentityFixtures() {
   }>;
   const api = clients[0];
   ensure(api && clients.length === 1, 'Exactly one API audience client required.');
+  const apiId = api.id;
   async function create(input: {
     roles: string[];
     tenantId: string;
@@ -66,13 +67,13 @@ export async function createIdentityFixtures() {
     accounts.push(account);
     const roles = await Promise.all(
       input.roles.map((role) =>
-        operator.get(realm + '/clients/' + api!.id + '/roles/' + encodeURIComponent(role)),
+        operator.get(realm + '/clients/' + apiId + '/roles/' + encodeURIComponent(role)),
       ),
     );
     if (roles.length)
       await operator.write(
         'POST',
-        realm + '/users/' + account.id + '/role-mappings/clients/' + api!.id,
+        realm + '/users/' + account.id + '/role-mappings/clients/' + apiId,
         roles,
       );
     return account;
@@ -82,11 +83,11 @@ export async function createIdentityFixtures() {
     const operator = await identityAdmin();
     const mappings = await Promise.all(
       roles.map((role) =>
-        operator.get(realm + '/clients/' + api!.id + '/roles/' + encodeURIComponent(role)),
+        operator.get(realm + '/clients/' + apiId + '/roles/' + encodeURIComponent(role)),
       ),
     );
     await operator.remove(
-      realm + '/users/' + account.id + '/role-mappings/clients/' + api!.id,
+      realm + '/users/' + account.id + '/role-mappings/clients/' + apiId,
       mappings,
     );
   }
@@ -116,7 +117,7 @@ export async function createIdentityFixtures() {
         },
       });
       for (const c of response.headers.getSetCookie()) {
-        const pair = c.split(';')[0]!;
+        const pair = c.split(';')[0] ?? '';
         const i = pair.indexOf('=');
         if (i > 0) cookies.set(pair.slice(0, i), pair.slice(i + 1));
       }
