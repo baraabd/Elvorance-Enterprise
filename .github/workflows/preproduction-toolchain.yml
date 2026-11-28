@@ -1,0 +1,48 @@
+name: Preproduction toolchain preparation
+on:
+  push:
+    branches: [chore/preproduction-toolchain-20261128]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prepare:
+    if: github.ref == 'refs/heads/chore/preproduction-toolchain-20261128'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 63a266cfcc8c968a65e8b61237494f71ef8ad4a7
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Materialize reviewed SDK version without repository writes
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = '63a266cfcc8c968a65e8b61237494f71ef8ad4a7'
+          npm install --save-exact @aws-sdk/client-s3@3.1179.0
+          npm ci
+          node -e "if(require('@aws-sdk/client-s3/package.json').version!=='3.1179.0')process.exit(1)"
+          mkdir -p /tmp/preproduction-toolchain
+          npm audit --omit=dev --json > /tmp/preproduction-toolchain/dependency-audit.json
+          cp package.json package-lock.json /tmp/preproduction-toolchain/
+          cp -L "$(command -v node)" /tmp/preproduction-toolchain/node
+          tar -czf /tmp/preproduction-toolchain/dependencies.tar.gz node_modules
+          node --input-type=module <<'JS'
+          import {readFile,writeFile} from 'node:fs/promises';
+          import {createHash} from 'node:crypto';
+          const hashes={};
+          for(const name of ['package.json','package-lock.json','node','dependencies.tar.gz','dependency-audit.json']) hashes[name]=createHash('sha256').update(await readFile('/tmp/preproduction-toolchain/'+name)).digest('hex');
+          await writeFile('/tmp/preproduction-toolchain/manifest.json',JSON.stringify({baseSha:'63a266cfcc8c968a65e8b61237494f71ef8ad4a7',package:'@aws-sdk/client-s3',version:'3.1179.0',node:process.version,hashes},null,2));
+          JS
+      - name: Export dependency materialization evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: preproduction-toolchain
+          path: /tmp/preproduction-toolchain/
+          if-no-files-found: error
+          retention-days: 1
