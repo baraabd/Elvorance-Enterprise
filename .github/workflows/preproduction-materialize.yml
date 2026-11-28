@@ -1,0 +1,101 @@
+name: Materialize reviewed preproduction source
+on:
+  push:
+    branches: [chore/preproduction-toolchain-20261128]
+    paths: [.readiness-transfer/**, .github/workflows/preproduction-materialize.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  materialize:
+    if: github.ref == 'refs/heads/chore/preproduction-toolchain-20261128'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Verify source transport and dependency provenance
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "${GITHUB_REPOSITORY}" = 'baraabd/Elvorance-Enterprise'
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = '63a266cfcc8c968a65e8b61237494f71ef8ad4a7'
+          mkdir -p /tmp/preproduction-sdk /tmp/preproduction-evidence
+          gh api repos/baraabd/Elvorance-Enterprise/actions/artifacts/15254006694/zip > /tmp/sdk.zip
+          echo '79f4872080bf71e979fb1e8ad9fc98e0c586cf50e68904b1b72194d9492c35f0  /tmp/sdk.zip' | sha256sum --check
+          unzip -q /tmp/sdk.zip -d /tmp/preproduction-sdk
+          cat .readiness-transfer/part{0,1,2,3} | base64 --decode > /tmp/candidate.patch.xz
+          echo '8455ab27b1741cdc9c391aaf7d115ea9ea8511c5b007ed13a452ec0a7815da11  /tmp/candidate.patch.xz' | sha256sum --check
+          echo 'd326dc364384b0e021e2122fd07083bc08b274b4cc9ccb7837f8e89931d641de  .readiness-transfer/manifest.json' | sha256sum --check
+          xz --decompress --stdout /tmp/candidate.patch.xz > /tmp/candidate.patch
+          git worktree add --detach /tmp/preproduction-product 63a266cfcc8c968a65e8b61237494f71ef8ad4a7
+          git -C /tmp/preproduction-product apply --check /tmp/candidate.patch
+          git -C /tmp/preproduction-product apply /tmp/candidate.patch
+          cp /tmp/preproduction-sdk/package{,-lock}.json /tmp/preproduction-product/
+          cp .readiness-transfer/manifest.json /tmp/preproduction-evidence/expected-files.json
+      - name: Fresh install, deterministic inventories and complete file proof
+        working-directory: /tmp/preproduction-product
+        run: |
+          set -euo pipefail
+          npm ci
+          npm run inventory:write
+          python3 - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          expected=json.loads(pathlib.Path('/tmp/preproduction-evidence/expected-files.json').read_text())
+          assert len(expected)==30
+          for name,digest in expected.items():
+              p=pathlib.Path(name)
+              assert not p.is_absolute() and '..' not in p.parts
+              assert p.is_file() and not p.is_symlink()
+              assert hashlib.sha256(p.read_bytes()).hexdigest()==digest,name
+          subprocess.run(['git','add','--',*expected],check=True)
+          changed=subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')
+          assert set(filter(None,changed))==set(expected),'unexpected file set'
+          assert not subprocess.check_output(['git','ls-files','--others','--exclude-standard']).strip(),'untracked product files'
+          assert not any('.readiness-transfer' in p or 'preproduction-materialize.yml' in p for p in changed)
+          print('VERIFIED: 30 exact final file SHA-256 digests; no helper files in product source')
+          PY
+          npm run inventory:check
+          npm run check:types
+          npm run check:boundaries
+          npm run check:format
+          npm run build
+          node tooling/scripts/hosted/build-ops.mts
+          npm test > /tmp/preproduction-evidence/node-tests.log 2>&1
+      - name: Publish clean main-parent candidate, never main
+        working-directory: /tmp/preproduction-product
+        env:
+          GIT_AUTHOR_NAME: Elvorance CI Materializer
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: Elvorance CI Materializer
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = '63a266cfcc8c968a65e8b61237494f71ef8ad4a7'
+          git diff --exit-code
+          TREE=$(git write-tree)
+          COMMIT=$(printf '%s\n' 'feat: close bounded Admin gaps and add verified encrypted staging backups' | git commit-tree "$TREE" -p 63a266cfcc8c968a65e8b61237494f71ef8ad4a7)
+          test -z "$(git ls-remote origin refs/heads/chore/preproduction-materialized-20261128)"
+          git push origin "$COMMIT:refs/heads/chore/preproduction-materialized-20261128"
+          export TREE COMMIT
+          python3 - <<'PY'
+          import json,os,pathlib
+          result={'base':'63a266cfcc8c968a65e8b61237494f71ef8ad4a7','head':os.environ['COMMIT'],'tree':os.environ['TREE'],'runId':os.environ['GITHUB_RUN_ID'],'fullCiSatisfied':False,'productionApproved':False,'files':json.loads(pathlib.Path('/tmp/preproduction-evidence/expected-files.json').read_text())}
+          pathlib.Path('/tmp/preproduction-evidence/candidate.json').write_text(json.dumps(result,indent=2)+'\n')
+          print(json.dumps({k:v for k,v in result.items() if k!='files'}))
+          PY
+      - name: Retain materialization evidence, not release approval
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: preproduction-materialization-evidence
+          path: /tmp/preproduction-evidence/
+          if-no-files-found: error
+          retention-days: 7
