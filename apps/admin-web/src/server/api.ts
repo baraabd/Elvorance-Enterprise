@@ -11,6 +11,7 @@ export const paths = {
   visits: '/v1/sales/visits',
   tasks: '/v1/sales/tasks',
   opportunities: '/v1/sales/opportunities',
+  'service-requests': '/v1/sales/service-requests',
   routes: '/v1/sales/routes',
   quotes: '/v1/sales/quotes',
   approvals: '/v1/sales/quote-discount-approvals',

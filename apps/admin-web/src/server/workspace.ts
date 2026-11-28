@@ -19,6 +19,7 @@ import {
   type Operation,
 } from './operations.ts';
 import { snapshot } from './reports.ts';
+import { downloadCsv, rowsCsv, snapshotCsv } from './export.ts';
 import { quoteOperation } from './quote-editor.ts';
 
 const extraTitles = {
@@ -46,6 +47,7 @@ export const adminRouteTargets = {
   visits: 'visits',
   tasks: 'tasks',
   opportunities: 'opportunities',
+  'service-requests': 'service-requests',
   routes: 'routes',
   quotes: 'quotes',
   approvals: 'approvals',
@@ -62,6 +64,7 @@ const detailEndpoints = new Set<Resource>([
   'visits',
   'tasks',
   'opportunities',
+  'service-requests',
   'routes',
   'quotes',
   'contracts',
@@ -103,6 +106,14 @@ const displayNames: Record<string, string> = {
   roles: 'الأدوار الوصفية',
   doNotContact: 'عدم التواصل',
   progress: 'التقدم',
+  serviceId: 'معرّف الخدمة',
+  serviceTitle: 'الخدمة المطلوبة',
+  brief: 'تفاصيل الطلب',
+  deadline: 'الموعد المطلوب',
+  reviewNote: 'ملاحظة المراجعة',
+  reviewedBy: 'المراجع',
+  reviewedAt: 'تاريخ المراجعة',
+  opportunityId: 'الفرصة الناتجة',
 };
 export function parseRoute(hash: string): {
   screen: Screen;
@@ -406,6 +417,22 @@ export async function mountAdminWorkspace(options: LiveWorkspaceOptions): Promis
         ? Math.max(1, Math.min(requested, Math.max(1, Math.ceil(matching.length / 100))))
         : 1;
     const visible = global ? matching.slice((currentPage - 1) * 100, currentPage * 100) : matching;
+    const exportButton = button(doc, 'تصدير النتائج المقروءة CSV', () => {
+      try {
+        downloadCsv(
+          doc,
+          `elvorance-${resource}-${global ? 'all-filtered' : 'current-page'}.csv`,
+          rowsCsv(resource, matching, global ? 'bounded-all-pages' : 'current-page'),
+        );
+        notice.textContent = global
+          ? 'صُدّرت النتائج المقروءة المطابقة للتصفية؛ ليست لقطة ذرية أو تقريرًا تاريخيًا.'
+          : 'صُدّرت النتائج المطابقة في الصفحة الحالية فقط، وليس جميع سجلات المؤسسة.';
+      } catch (error) {
+        notice.textContent = errorText(error);
+      }
+    });
+    exportButton.disabled = matching.length === 0;
+    tools.append(exportButton);
     const holder = el(doc, 'div');
     holder.className = 'admin-table-scroll';
     holder.tabIndex = 0;
@@ -623,6 +650,15 @@ export async function mountAdminWorkspace(options: LiveWorkspaceOptions): Promis
     content.replaceChildren(
       el(doc, 'h2', 'مؤشرات تشغيلية من API'),
       button(doc, 'تحديث المؤشرات', () => void render()),
+      button(doc, 'تصدير المؤشرات CSV', () => {
+        try {
+          downloadCsv(doc, 'elvorance-operational-observation.csv', snapshotCsv(data));
+          notice.textContent =
+            'صُدّر التقرير التشغيلي الحالي؛ لا يمثل سجلًا تاريخيًا أو إيرادًا محاسبيًا.';
+        } catch (error) {
+          notice.textContent = errorText(error);
+        }
+      }),
       el(
         doc,
         'p',

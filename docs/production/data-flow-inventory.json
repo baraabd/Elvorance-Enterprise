@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "73bc0b23d77a98f5d5346f0e045ca8d7d51932ac1305c4038caee3aaf5e8e845",
+  "sourceDigest": "f0f69913a739de9182945bcc63efd0072600cb9e1b6f61fb4f21999fdae6820d",
   "trustBoundaries": [
     {
       "id": "TB1",
@@ -397,7 +397,7 @@
         "status": "UNRESOLVED_OR_NOT_APPLICABLE",
         "controls": [],
         "roles": [],
-        "evidence": ["apps/admin-web/src/server/api.ts:58-60"]
+        "evidence": ["apps/admin-web/src/server/api.ts:59-61"]
       },
       "tables": [],
       "events": [],
@@ -501,11 +501,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -600,11 +600,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -637,11 +637,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -712,11 +712,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -7840,7 +7840,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -7964,7 +7964,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -8150,7 +8150,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -8272,7 +8272,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -8392,7 +8392,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -8512,7 +8512,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -8732,7 +8732,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -8841,7 +8841,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -8989,7 +8989,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -9098,7 +9098,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -9239,7 +9239,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -9401,7 +9401,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -9522,7 +9522,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -9643,7 +9643,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -9764,7 +9764,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -10001,7 +10001,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -10171,7 +10171,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -10288,7 +10288,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -10405,7 +10405,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -10522,7 +10522,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -10687,7 +10687,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -10801,7 +10801,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -10939,7 +10939,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -11059,7 +11059,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -11178,7 +11178,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -11297,7 +11297,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -11416,7 +11416,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -11535,7 +11535,7 @@
           },
           {
             "path": "infra/railway/staging/target.mts",
-            "sha256": "62cc954942a63ac3df128c911d6c218190124ab51ec4f155d5f33a697a96335c"
+            "sha256": "0e9491538a9c4d2ec524d3c64f97cc399a0109b2e28f161c1fe30590210f1866"
           },
           {
             "path": "packages/service-kit/src/auth.ts",
@@ -17306,7 +17306,7 @@
       "tables": ["service_requests"],
       "events": [],
       "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
       "featureId": "api-route:sales:backend:GET /v1/service-requests/:id",
@@ -17884,7 +17884,7 @@
       "tables": ["service_requests"],
       "events": [],
       "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
       "featureId": "api-route:sales:backend:HEAD /v1/service-requests/:id",
@@ -18716,7 +18716,7 @@
       "tables": ["service_requests"],
       "events": ["sales.service_request_created.v1"],
       "sourceTrace": null,
-      "resolution": "REVIEW_REQUIRED"
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
       "featureId": "api-route:sales:backend:POST /v1/service-requests/:id/cancel",
@@ -19497,11 +19497,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -19534,11 +19534,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -19571,11 +19571,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -23867,11 +23867,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -23904,11 +23904,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -23941,11 +23941,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -23978,11 +23978,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24015,11 +24015,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24052,11 +24052,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24089,11 +24089,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24126,48 +24126,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
-        ]
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
-    },
-    {
-      "featureId": "handler:apps/admin-web/src/server/workspace.ts:1f7e625eadae:18",
-      "source": "apps/admin-web/src/server/workspace.ts",
-      "mode": "server",
-      "owner": null,
-      "endpoints": [
-        { "method": "GET", "path": "/v1/crm/catalog", "service": "crm", "resolution": "literal" },
-        {
-          "method": "GET",
-          "path": "/v1/crm/configuration",
-          "service": "crm",
-          "resolution": "literal"
-        },
-        {
-          "method": "GET",
-          "path": "/v1/identity/tenant",
-          "service": "identity",
-          "resolution": "literal"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24200,11 +24163,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24237,11 +24200,85 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
+        ]
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "handler:apps/admin-web/src/server/workspace.ts:1f7e625eadae:20",
+      "source": "apps/admin-web/src/server/workspace.ts",
+      "mode": "server",
+      "owner": null,
+      "endpoints": [
+        { "method": "GET", "path": "/v1/crm/catalog", "service": "crm", "resolution": "literal" },
+        {
+          "method": "GET",
+          "path": "/v1/crm/configuration",
+          "service": "crm",
+          "resolution": "literal"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/identity/tenant",
+          "service": "identity",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": [
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
+        ]
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": null,
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
+      "featureId": "handler:apps/admin-web/src/server/workspace.ts:1f7e625eadae:21",
+      "source": "apps/admin-web/src/server/workspace.ts",
+      "mode": "server",
+      "owner": null,
+      "endpoints": [
+        { "method": "GET", "path": "/v1/crm/catalog", "service": "crm", "resolution": "literal" },
+        {
+          "method": "GET",
+          "path": "/v1/crm/configuration",
+          "service": "crm",
+          "resolution": "literal"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/identity/tenant",
+          "service": "identity",
+          "resolution": "literal"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": [
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24274,11 +24311,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24311,11 +24348,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24348,48 +24385,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
-        ]
-      },
-      "tables": [],
-      "events": [],
-      "sourceTrace": null,
-      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
-    },
-    {
-      "featureId": "handler:apps/admin-web/src/server/workspace.ts:1f7e625eadae:6",
-      "source": "apps/admin-web/src/server/workspace.ts",
-      "mode": "server",
-      "owner": null,
-      "endpoints": [
-        { "method": "GET", "path": "/v1/crm/catalog", "service": "crm", "resolution": "literal" },
-        {
-          "method": "GET",
-          "path": "/v1/crm/configuration",
-          "service": "crm",
-          "resolution": "literal"
-        },
-        {
-          "method": "GET",
-          "path": "/v1/identity/tenant",
-          "service": "identity",
-          "resolution": "literal"
-        }
-      ],
-      "authorization": {
-        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
-        "controls": [],
-        "roles": [],
-        "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24422,11 +24422,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24459,11 +24459,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24496,11 +24496,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24533,11 +24533,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -24570,11 +24570,11 @@
         "controls": [],
         "roles": [],
         "evidence": [
-          "apps/admin-web/src/server/api.ts:131-165",
-          "apps/admin-web/src/server/api.ts:166-173",
-          "apps/admin-web/src/server/api.ts:174-190",
-          "apps/admin-web/src/server/api.ts:71-75",
-          "apps/admin-web/src/server/api.ts:76-83"
+          "apps/admin-web/src/server/api.ts:132-166",
+          "apps/admin-web/src/server/api.ts:167-174",
+          "apps/admin-web/src/server/api.ts:175-191",
+          "apps/admin-web/src/server/api.ts:72-76",
+          "apps/admin-web/src/server/api.ts:77-84"
         ]
       },
       "tables": [],
@@ -28323,19 +28323,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/sales/src/transport/discount-routes.ts",
@@ -28490,15 +28490,15 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/quote-editor.ts",
@@ -28506,7 +28506,7 @@
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/crm/src/transport/discovery-routes.ts",
@@ -28645,19 +28645,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/sales/src/transport/routes.ts",
@@ -28810,19 +28810,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/communications/src/transport/conversation-routes.ts",
@@ -29060,19 +29060,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/crm/src/transport/routes.ts",
@@ -29297,15 +29297,15 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/reports.ts",
@@ -29313,7 +29313,7 @@
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/billing/src/transport/routes.ts",
@@ -29656,19 +29656,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/billing/src/transport/routes.ts",
@@ -29842,19 +29842,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/identity/src/transport/routes.ts",
@@ -29962,19 +29962,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/communications/src/transport/routes.ts",
@@ -30095,19 +30095,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/sales/src/transport/rep-work-routes.ts",
@@ -30286,6 +30286,18 @@
           "resolution": "source-bound"
         },
         {
+          "method": "PATCH",
+          "path": "/v1/delivery/projects/:id",
+          "service": "delivery",
+          "resolution": "source-bound"
+        },
+        {
+          "method": "PATCH",
+          "path": "/v1/delivery/projects/:id/milestones/:milestoneId",
+          "service": "delivery",
+          "resolution": "source-bound"
+        },
+        {
           "method": "POST",
           "path": "/v1/delivery/projects/:id/complete",
           "service": "delivery",
@@ -30327,23 +30339,23 @@
       "sourceTrace": {
         "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
         "category": "view-read",
-        "rationale": "The explicit adminRouteTargets entry projects resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+        "rationale": "The explicit adminRouteTargets entry projects resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements. Reviewed additive metadata editing uses this registered PATCH contract with expectedVersion; commercial snapshots, assignments and lifecycle invariants remain server-owned. Reviewed additive metadata editing uses this registered PATCH contract with expectedVersion; commercial snapshots, assignments and lifecycle invariants remain server-owned.",
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/delivery/src/transport/routes.ts",
@@ -30584,6 +30596,76 @@
                 "services/delivery/src/application/projects.ts:264-299"
               ]
             }
+          },
+          {
+            "routeId": "api-route:delivery:backend:PATCH /v1/projects/:id",
+            "owningService": "delivery",
+            "source": {
+              "path": "services/delivery/src/transport/routes.ts",
+              "line": 34,
+              "endLine": 38,
+              "fingerprint": "04083e7006e93c1271ee804a8d543664c8c957d3d12eb013b133d8c326f56c3d"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "delivery", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/delivery/src/application/project-metadata.ts:13-69",
+                "services/delivery/src/application/projects.ts:18-22",
+                "services/delivery/src/transport/routes.ts:34-38"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["projects"],
+              "events": [],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/delivery/src/application/project-metadata.ts:13-69",
+                "services/delivery/src/application/projects.ts:18-22"
+              ]
+            }
+          },
+          {
+            "routeId": "api-route:delivery:backend:PATCH /v1/projects/:id/milestones/:milestoneId",
+            "owningService": "delivery",
+            "source": {
+              "path": "services/delivery/src/transport/routes.ts",
+              "line": 39,
+              "endLine": 49,
+              "fingerprint": "0f518c642d9ddbf1c7ed1595896665059c67cbb5eb677c6d6677cc974c1c5c54"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "delivery", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/delivery/src/application/project-metadata.ts:13-69",
+                "services/delivery/src/application/projects.ts:18-22",
+                "services/delivery/src/transport/routes.ts:39-49"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["projects"],
+              "events": [],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/delivery/src/application/project-metadata.ts:13-69",
+                "services/delivery/src/application/projects.ts:18-22"
+              ]
+            }
           }
         ],
         "delegateFeatureIds": [],
@@ -30656,15 +30738,15 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/quote-editor.ts",
@@ -30672,7 +30754,7 @@
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/sales/src/transport/discount-routes.ts",
@@ -30945,6 +31027,12 @@
           "resolution": "source-bound"
         },
         {
+          "method": "PATCH",
+          "path": "/v1/crm/regions/:id",
+          "service": "crm",
+          "resolution": "source-bound"
+        },
+        {
           "method": "POST",
           "path": "/v1/crm/regions",
           "service": "crm",
@@ -30962,23 +31050,23 @@
       "sourceTrace": {
         "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
         "category": "view-read",
-        "rationale": "The explicit adminRouteTargets entry regions resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements.",
+        "rationale": "The explicit adminRouteTargets entry regions resolves to the typed server workspace dispatcher, bounded API collection/detail reads and the listed operation forms. The bound operations below are those actually reachable in this screen, not every API owned by the service. UI mutation visibility is not an authorization boundary. API persistence, business completeness and browser evidence remain separate acceptance requirements. Reviewed additive metadata editing uses this registered PATCH contract with expectedVersion; commercial snapshots, assignments and lifecycle invariants remain server-owned.",
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/crm/src/transport/routes.ts",
@@ -31038,6 +31126,37 @@
               "evidence": [
                 "packages/service-kit/src/http.ts:124-150",
                 "services/crm/src/application/customers.ts:143-155"
+              ]
+            }
+          },
+          {
+            "routeId": "api-route:crm:backend:PATCH /v1/regions/:id",
+            "owningService": "crm",
+            "source": {
+              "path": "services/crm/src/transport/routes.ts",
+              "line": 85,
+              "endLine": 89,
+              "fingerprint": "9b27b37dc56e0c07eafef3d0e0af180dc9934934c7b5a436c250ad3204cf23b2"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireRole"],
+              "roles": ["admin"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/regions.ts:13-42",
+                "services/crm/src/transport/routes.ts:85-89"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["regions"],
+              "events": [],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/crm/src/application/regions.ts:13-42"
               ]
             }
           }
@@ -31124,15 +31243,15 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/reports.ts",
@@ -31140,7 +31259,7 @@
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/billing/src/transport/routes.ts",
@@ -31465,19 +31584,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/identity/src/transport/routes.ts",
@@ -31566,19 +31685,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/sales/src/transport/rep-work-routes.ts",
@@ -31743,6 +31862,179 @@
       "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
     },
     {
+      "featureId": "route:admin:server:service-requests",
+      "source": "apps/admin-web/src/server/workspace.ts",
+      "mode": "server",
+      "owner": null,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v1/sales/service-requests",
+          "service": "sales",
+          "resolution": "source-bound"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/sales/service-requests/:id",
+          "service": "sales",
+          "resolution": "source-bound"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/sales/service-requests/:id/review",
+          "service": "sales",
+          "resolution": "source-bound"
+        }
+      ],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "tables": [],
+      "events": [],
+      "sourceTrace": {
+        "status": "SOURCE_BOUND_NOT_RUNTIME_ACCEPTANCE",
+        "category": "view-read",
+        "rationale": "The service-request screen reads Sales-owned requests and reviews only submitted/in_review records using expectedVersion. It does not expose client-only creation or cancellation. Accepted resolution creates an opportunity atomically under Sales authorization and current CRM assignment checks. This source binding does not claim exhaustive browser or hosted acceptance.",
+        "evidence": [
+          {
+            "path": "apps/admin-web/src/server/api.ts",
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
+          },
+          {
+            "path": "apps/admin-web/src/server/forms.ts",
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
+          },
+          {
+            "path": "apps/admin-web/src/server/operations.ts",
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
+          },
+          {
+            "path": "apps/admin-web/src/server/workspace.ts",
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
+          },
+          {
+            "path": "services/sales/src/transport/service-request-routes.ts",
+            "sha256": "31bc15be67d4db3386b0ed6d480143a21100fb22c6d55549275a94c742c0ded5"
+          }
+        ],
+        "originalEndpoints": [],
+        "dynamicEndpointBindings": [],
+        "backendPolicies": [
+          {
+            "routeId": "api-route:sales:backend:GET /v1/service-requests",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/service-request-routes.ts",
+              "line": 16,
+              "endLine": 26,
+              "fingerprint": "f15ec287d716a94ba40e099bde0e1fb4e492bfe79d098489bc6d83e9627482ae"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["actorScopes", "requireRole"],
+              "roles": ["admin", "client", "delivery", "finance", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/pagination.ts:32-44",
+                "services/sales/src/application/assignment.ts:100-137",
+                "services/sales/src/application/service-requests.ts:67-83",
+                "services/sales/src/transport/service-request-routes.ts:16-26"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["service_requests"],
+              "events": [],
+              "evidence": [
+                "services/sales/src/application/service-requests.ts:67-83",
+                "services/sales/src/transport/service-request-routes.ts:16-26"
+              ]
+            }
+          },
+          {
+            "routeId": "api-route:sales:backend:GET /v1/service-requests/:id",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/service-request-routes.ts",
+              "line": 27,
+              "endLine": 37,
+              "fingerprint": "e2dd0af18935296f4f8106e5174b975bfb5309ea62f5eee5f5f353af1bbe1da8"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "services/sales/src/application/assignment.ts:19-51",
+                "services/sales/src/application/service-requests.ts:49-66",
+                "services/sales/src/transport/service-request-routes.ts:27-37"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["service_requests"],
+              "events": [],
+              "evidence": [
+                "services/sales/src/application/service-requests.ts:49-66",
+                "services/sales/src/transport/service-request-routes.ts:27-37"
+              ]
+            }
+          },
+          {
+            "routeId": "api-route:sales:backend:POST /v1/service-requests/:id/review",
+            "owningService": "sales",
+            "source": {
+              "path": "services/sales/src/transport/service-request-routes.ts",
+              "line": 62,
+              "endLine": 86,
+              "fingerprint": "5e3785edc3a3a2883f9aab12121468f0b0892f84a3341e5d3dae9f8040424de9"
+            },
+            "authorization": {
+              "status": "AUTHENTICATED_SERVICE_MIDDLEWARE_REQUIRES_POLICY_REVIEW",
+              "controls": ["requireOwner", "requireRole"],
+              "roles": ["admin", "client", "rep"],
+              "evidence": [
+                "packages/service-kit/src/auth.ts:139-140",
+                "packages/service-kit/src/auth.ts:141-148",
+                "packages/service-kit/src/auth.ts:149-161",
+                "packages/service-kit/src/auth.ts:162-168",
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/assignment.ts:19-51",
+                "services/sales/src/application/opportunities.ts:81-103",
+                "services/sales/src/application/service-requests.ts:159-220",
+                "services/sales/src/application/service-requests.ts:49-66",
+                "services/sales/src/transport/service-request-routes.ts:62-86"
+              ]
+            },
+            "persistenceEvent": {
+              "status": "SOURCE_REFERENCES_NOT_PERSISTENCE_PROOF",
+              "tables": ["contracts", "opportunities", "service_requests"],
+              "events": ["sales.service_request_updated.v1"],
+              "evidence": [
+                "packages/service-kit/src/http.ts:124-150",
+                "services/sales/src/application/opportunities.ts:16-80",
+                "services/sales/src/application/opportunities.ts:81-103",
+                "services/sales/src/application/service-requests.ts:159-220",
+                "services/sales/src/application/service-requests.ts:49-66"
+              ]
+            }
+          }
+        ],
+        "delegateFeatureIds": [],
+        "nativeMembers": [],
+        "testEffect": "NONE: candidate links, missing tests and planned IDs are unchanged"
+      },
+      "resolution": "SOURCE_OBSERVED_NOT_EXECUTION"
+    },
+    {
       "featureId": "route:admin:server:settings",
       "source": "apps/admin-web/src/server/workspace.ts",
       "mode": "server",
@@ -31776,19 +32068,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/identity/src/transport/routes.ts",
@@ -31904,19 +32196,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/sales/src/transport/rep-work-routes.ts",
@@ -32120,19 +32412,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/communications/src/transport/routes.ts",
@@ -32308,19 +32600,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/identity/src/transport/routes.ts",
@@ -32458,19 +32750,19 @@
         "evidence": [
           {
             "path": "apps/admin-web/src/server/api.ts",
-            "sha256": "8def2092fd0921dcaaeb7aa43daf1b7b7487eb70206ca68317f7ebf9abb8a8cc"
+            "sha256": "fa66ad246cc71683e862804bc28ef07227cb2328abdcb8fb9869ee7a5d646811"
           },
           {
             "path": "apps/admin-web/src/server/forms.ts",
-            "sha256": "d4e3da8dec4712d6a0ddc46504aaede791cf4279d07db74af1c739ed0cce2c0b"
+            "sha256": "42d4273e9f464df4a63c756aa4471acbaa38a979475f039d479d5b988c2d909d"
           },
           {
             "path": "apps/admin-web/src/server/operations.ts",
-            "sha256": "3f76b1d4d25e6b8d9d234647468a57b4980ad472653da5fc1fe3a7e5c8815788"
+            "sha256": "2a06d17fcfa21cdbb60d907287073514777c0191b8c1c23521057de7d71f1d23"
           },
           {
             "path": "apps/admin-web/src/server/workspace.ts",
-            "sha256": "a66cd11d383bb105d4c4c66751ed077635a566a4261531a97d8bfd28f64f5189"
+            "sha256": "3d377f6c52d67b2a38f840c768f8a19481ca6c58b2cf71d11f0b97b3ac02583f"
           },
           {
             "path": "services/sales/src/transport/routes.ts",

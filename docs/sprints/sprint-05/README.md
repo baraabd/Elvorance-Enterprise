@@ -1,5 +1,9 @@
 # Sprint 05 — Admin server platform increment
 
+## 28 November 2026 reconciliation
+
+The later preproduction increment connects service-request review and region/project/milestone metadata, plus bounded current-data CSV export. See `docs/preproduction/2026-11-28/EXECUTION.md` and the updated JSON matrix. Historical results below remain dated evidence; exact candidate CI and hosted acceptance must be read separately. Full Admin acceptance remains partial.
+
 ## Acceptance decision
 
 **PARTIAL / NOT SPRINT DONE. Keep the PR draft until exact-source CI and remaining business acceptance are satisfied. No merge, deployment, infrastructure change or company-data mutation is authorized by this implementation.**

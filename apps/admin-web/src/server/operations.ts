@@ -97,6 +97,7 @@ export const titles: Record<Resource, string> = {
   visits: 'الزيارات',
   tasks: 'المهام',
   opportunities: 'الفرص',
+  'service-requests': 'طلبات الخدمة',
   routes: 'مسارات الزيارات',
   quotes: 'عروض الأسعار',
   approvals: 'الموافقات التجارية',
@@ -173,6 +174,23 @@ export function recordOperations(resource: Resource, row: Row): Operation[] {
           { key: 'doNotContact', label: 'عدم التواصل مع العميل', type: 'checkbox' },
         ]),
       ];
+    case 'regions':
+      return [
+        update([
+          text('name', 'اسم المنطقة', 2, 150),
+          text('code', 'رمز المنطقة', 1, 30),
+          { key: 'active', label: 'منطقة فعالة', type: 'checkbox' },
+        ]),
+      ];
+    case 'service-requests':
+      return ['submitted', 'in_review'].includes(String(row.status))
+        ? [
+            command('review', 'مراجعة طلب الخدمة', [
+              choice('decision', 'القرار', ['in_review', 'accepted', 'declined']),
+              { ...text('note', 'سبب القرار', 5, 3000), type: 'textarea' },
+            ]),
+          ]
+        : [];
     case 'tasks':
       return [update([...taskFields, choice('status', 'الحالة', ['open', 'done', 'cancelled'])])];
     case 'opportunities':
@@ -249,6 +267,7 @@ export function recordOperations(resource: Resource, row: Row): Operation[] {
       return row.status === 'completed'
         ? []
         : [
+            update([text('title', 'عنوان المشروع', 3, 300)]),
             command('milestones', 'إضافة مرحلة', [
               text('title', 'عنوان المرحلة', 3, 300),
               date('dueOn', 'موعد المرحلة', false),
@@ -307,6 +326,18 @@ export function nestedProjectOperations(row: Row): Operation[] {
     if (!item || typeof item !== 'object') continue;
     const value = item as Record<string, unknown>;
     if (value.status !== 'pending' && value.status !== 'in_progress') continue;
+    result.push({
+      id: `milestone-edit-${String(value.id)}`,
+      label: `تعديل بيانات المرحلة: ${String(value.title)}`,
+      method: 'PATCH',
+      path: `${base}/milestones/${segment(String(value.id))}`,
+      versioned: true,
+      fields: [
+        { ...text('milestoneTitle', 'عنوان المرحلة', 3, 300), default: value.title },
+        { ...date('milestoneDueOn', 'موعد المرحلة', false), default: value.dueOn },
+      ],
+      prepare: (input) => ({ title: input.milestoneTitle, dueOn: input.milestoneDueOn }),
+    });
     result.push({
       id: `milestone-${String(value.id)}`,
       label: `تحديث المرحلة: ${String(value.title)}`,

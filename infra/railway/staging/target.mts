@@ -38,7 +38,9 @@ export function assertStaging(env: NodeJS.ProcessEnv = process.env): void {
   );
   ensure(env.ELVORANCE_ENVIRONMENT === 'staging', 'Explicit staging environment required.');
   ensure(
-    env.STAGING_OPERATION === 'bootstrap' || env.STAGING_OPERATION === 'acceptance',
+    env.STAGING_OPERATION === 'bootstrap' ||
+      env.STAGING_OPERATION === 'acceptance' ||
+      env.STAGING_OPERATION === 'backup-restore',
     'Unknown staging operation.',
   );
   ensure(env.KEYCLOAK_BASE_URL === stagingTarget.identityOrigin, 'Unexpected identity origin.');

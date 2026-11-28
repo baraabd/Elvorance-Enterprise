@@ -1,4 +1,5 @@
 import { writeFile, mkdir } from 'node:fs/promises';
+import { runRetainedBackup } from './backup.mts';
 import { bootstrapStaging } from './bootstrap.mts';
 import { runHostedAcceptance } from './acceptance.mts';
 import { assertStaging, sourceRevision } from './target.mts';
@@ -8,7 +9,12 @@ try {
   const startedAt = new Date().toISOString();
   const source = sourceRevision();
   const mode = process.env.STAGING_OPERATION;
-  const result = mode === 'bootstrap' ? await bootstrapStaging() : await runHostedAcceptance();
+  const result =
+    mode === 'bootstrap'
+      ? await bootstrapStaging()
+      : mode === 'backup-restore'
+        ? await runRetainedBackup()
+        : await runHostedAcceptance();
   const evidence = {
     schemaVersion: 1,
     scope: 'hosted-staging-' + mode,

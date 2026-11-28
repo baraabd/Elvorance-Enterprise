@@ -4,6 +4,10 @@
 
 The local diagnostic uses actual service/gateway HTTP handlers and synthetic identities/data with in-memory storage. Its reload/reopen checks are not PostgreSQL durability proof. Chromium/PostgreSQL execution is a mandatory CI lane, not a locally claimed pass. See README for the exact evidence boundary.
 
+## 28 November 2026 reconciliation
+
+The machine-readable matrix now adds Sales service-request review, region metadata updates, project/milestone metadata editing and explicit-scope CSV exports. Their local DOM/HTTP/memory journey passed; exact-candidate Chromium/PostgreSQL and hosted acceptance remain separate gates. The original matrix below is preserved as the earlier Sprint 05 snapshot, not an assertion that these newly implemented operations are still absent. Account/role administration, durable audit and other unimplemented capabilities remain blockers.
+
 ## Shared acceptance criteria
 
 1. Load authenticated owning-service data without demo fallback.

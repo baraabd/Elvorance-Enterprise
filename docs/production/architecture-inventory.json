@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "73bc0b23d77a98f5d5346f0e045ca8d7d51932ac1305c4038caee3aaf5e8e845",
+  "sourceDigest": "f0f69913a739de9182945bcc63efd0072600cb9e1b6f61fb4f21999fdae6820d",
   "workspaces": [
     {
       "name": "@elvorance/admin-web",
@@ -254,6 +254,8 @@
     { "source": "apps/admin-web/src/server-main.ts", "specifier": "./server/workspace.ts" },
     { "source": "apps/admin-web/src/server/api.ts", "specifier": "@elvorance/api-client" },
     { "source": "apps/admin-web/src/server/api.ts", "specifier": "@elvorance/contracts" },
+    { "source": "apps/admin-web/src/server/export.ts", "specifier": "./api.ts" },
+    { "source": "apps/admin-web/src/server/export.ts", "specifier": "./reports.ts" },
     { "source": "apps/admin-web/src/server/forms.ts", "specifier": "./api.ts" },
     { "source": "apps/admin-web/src/server/operations.ts", "specifier": "./api.ts" },
     { "source": "apps/admin-web/src/server/operations.ts", "specifier": "./forms.ts" },
@@ -271,6 +273,7 @@
     { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "./forms.ts" },
     { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "./operations.ts" },
     { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "./reports.ts" },
+    { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "./export.ts" },
     { "source": "apps/admin-web/src/server/workspace.ts", "specifier": "./quote-editor.ts" },
     { "source": "apps/client-mobile/src/app.ts", "specifier": "./context.ts" },
     { "source": "apps/client-mobile/src/app.ts", "specifier": "./state/local-demo.ts" },
@@ -555,6 +558,26 @@
     { "source": "infra/railway/staging/acceptance.mts", "specifier": "./load.mts" },
     { "source": "infra/railway/staging/acceptance.mts", "specifier": "./recovery.mts" },
     { "source": "infra/railway/staging/acceptance.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/backup-crypto.mts", "specifier": "node:crypto" },
+    { "source": "infra/railway/staging/backup-crypto.mts", "specifier": "node:fs" },
+    { "source": "infra/railway/staging/backup-crypto.mts", "specifier": "node:fs/promises" },
+    { "source": "infra/railway/staging/backup-crypto.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/backup-store.mts", "specifier": "@aws-sdk/client-s3" },
+    { "source": "infra/railway/staging/backup-store.mts", "specifier": "node:fs" },
+    { "source": "infra/railway/staging/backup-store.mts", "specifier": "node:fs/promises" },
+    { "source": "infra/railway/staging/backup-store.mts", "specifier": "node:stream" },
+    { "source": "infra/railway/staging/backup-store.mts", "specifier": "node:stream/promises" },
+    { "source": "infra/railway/staging/backup-store.mts", "specifier": "./backup-crypto.mts" },
+    { "source": "infra/railway/staging/backup-store.mts", "specifier": "./target.mts" },
+    { "source": "infra/railway/staging/backup.mts", "specifier": "node:crypto" },
+    { "source": "infra/railway/staging/backup.mts", "specifier": "node:fs/promises" },
+    { "source": "infra/railway/staging/backup.mts", "specifier": "node:os" },
+    { "source": "infra/railway/staging/backup.mts", "specifier": "node:path" },
+    { "source": "infra/railway/staging/backup.mts", "specifier": "node:perf_hooks" },
+    { "source": "infra/railway/staging/backup.mts", "specifier": "./recovery.mts" },
+    { "source": "infra/railway/staging/backup.mts", "specifier": "./backup-crypto.mts" },
+    { "source": "infra/railway/staging/backup.mts", "specifier": "./backup-store.mts" },
+    { "source": "infra/railway/staging/backup.mts", "specifier": "./target.mts" },
     { "source": "infra/railway/staging/bootstrap.mts", "specifier": "pg" },
     {
       "source": "infra/railway/staging/bootstrap.mts",
@@ -567,6 +590,7 @@
     },
     { "source": "infra/railway/staging/bootstrap.mts", "specifier": "./target.mts" },
     { "source": "infra/railway/staging/entry.mts", "specifier": "node:fs/promises" },
+    { "source": "infra/railway/staging/entry.mts", "specifier": "./backup.mts" },
     { "source": "infra/railway/staging/entry.mts", "specifier": "./bootstrap.mts" },
     { "source": "infra/railway/staging/entry.mts", "specifier": "./acceptance.mts" },
     { "source": "infra/railway/staging/entry.mts", "specifier": "./target.mts" },
@@ -1715,6 +1739,17 @@
     { "source": "tests/admin/e2e.ts", "specifier": "./chromium.mts" },
     { "source": "tests/admin/e2e.ts", "specifier": "./dom.mts" },
     { "source": "tests/admin/e2e.ts", "specifier": "../../apps/admin-web/src/server/api.ts" },
+    { "source": "tests/admin/export.test.ts", "specifier": "node:test" },
+    { "source": "tests/admin/export.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/admin/export.test.ts", "specifier": "node:module" },
+    {
+      "source": "tests/admin/export.test.ts",
+      "specifier": "../../apps/admin-web/src/server/export.ts"
+    },
+    {
+      "source": "tests/admin/export.test.ts",
+      "specifier": "../../apps/admin-web/src/server/api.ts"
+    },
     { "source": "tests/admin/fixture.mts", "specifier": "node:crypto" },
     { "source": "tests/admin/fixture.mts", "specifier": "node:fs/promises" },
     { "source": "tests/admin/fixture.mts", "specifier": "node:path" },
@@ -1782,6 +1817,20 @@
     {
       "source": "tests/admin/fixture.mts",
       "specifier": "../../services/communications/src/application/events.ts"
+    },
+    { "source": "tests/admin/release-gaps.test.ts", "specifier": "node:test" },
+    { "source": "tests/admin/release-gaps.test.ts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/admin/release-gaps.test.ts",
+      "specifier": "../../apps/admin-web/src/server/api.ts"
+    },
+    {
+      "source": "tests/admin/release-gaps.test.ts",
+      "specifier": "../../apps/admin-web/src/server/workspace.ts"
+    },
+    {
+      "source": "tests/admin/release-gaps.test.ts",
+      "specifier": "../../apps/admin-web/src/server/operations.ts"
     },
     { "source": "tests/admin/run-e2e.mts", "specifier": "esbuild" },
     { "source": "tests/admin/run-e2e.mts", "specifier": "node:child_process" },
@@ -2013,6 +2062,16 @@
       "source": "tests/backend/hosted-admin-transport.test.ts",
       "specifier": "../../infra/identity/admin-client.mts"
     },
+    { "source": "tests/backend/hosted-backup-crypto.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/hosted-backup-crypto.test.ts", "specifier": "node:assert/strict" },
+    { "source": "tests/backend/hosted-backup-crypto.test.ts", "specifier": "node:crypto" },
+    { "source": "tests/backend/hosted-backup-crypto.test.ts", "specifier": "node:fs/promises" },
+    { "source": "tests/backend/hosted-backup-crypto.test.ts", "specifier": "node:path" },
+    { "source": "tests/backend/hosted-backup-crypto.test.ts", "specifier": "node:os" },
+    {
+      "source": "tests/backend/hosted-backup-crypto.test.ts",
+      "specifier": "../../infra/railway/staging/backup-crypto.mts"
+    },
     { "source": "tests/backend/hosted-load.test.ts", "specifier": "node:test" },
     { "source": "tests/backend/hosted-load.test.ts", "specifier": "node:assert/strict" },
     {
@@ -2024,6 +2083,20 @@
     {
       "source": "tests/backend/hosted-pg-command.test.ts",
       "specifier": "../../infra/railway/staging/pg-command.mts"
+    },
+    { "source": "tests/backend/hosted-retained-backup.test.ts", "specifier": "node:test" },
+    { "source": "tests/backend/hosted-retained-backup.test.ts", "specifier": "node:assert/strict" },
+    {
+      "source": "tests/backend/hosted-retained-backup.test.ts",
+      "specifier": "../../infra/railway/staging/backup-store.mts"
+    },
+    {
+      "source": "tests/backend/hosted-retained-backup.test.ts",
+      "specifier": "../../infra/railway/staging/backup.mts"
+    },
+    {
+      "source": "tests/backend/hosted-retained-backup.test.ts",
+      "specifier": "../../infra/railway/staging/target.mts"
     },
     { "source": "tests/backend/hosted-staging-guards.test.ts", "specifier": "node:assert/strict" },
     { "source": "tests/backend/hosted-staging-guards.test.ts", "specifier": "node:test" },
@@ -3797,6 +3870,9 @@
     "infra/railway/domain-service.json",
     "infra/railway/gateway.json",
     "infra/railway/staging/acceptance.mts",
+    "infra/railway/staging/backup-crypto.mts",
+    "infra/railway/staging/backup-store.mts",
+    "infra/railway/staging/backup.mts",
     "infra/railway/staging/bootstrap.mts",
     "infra/railway/staging/entry.mts",
     "infra/railway/staging/http.mts",

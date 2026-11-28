@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "baseline": "63a266cfcc8c968a65e8b61237494f71ef8ad4a7",
+  "scope": "Required evidence contract; not executed acceptance results",
+  "productionApproved": false,
+  "required": {
+    "staging": [
+      "Exact candidate on every service and server-only web app",
+      "Readiness and event convergence",
+      "No staging/production resource overlap"
+    ],
+    "product": [
+      "Approved release-scope feature matrix",
+      "Every included mutation and negative path",
+      "No undisclosed demo or missing account/audit operations"
+    ],
+    "hostedSecurityJourney": [
+      "Actual OIDC and three-role commercial journey",
+      "Tenant/owner/role denial",
+      "Durable effects and idempotency"
+    ],
+    "operations": [
+      "Retained encrypted backup download and isolated restore",
+      "Approved measured load and abort policy",
+      "Monitoring, alerts, owner, retention and recovery targets"
+    ],
+    "mobile": [
+      "Separate Client and Representative signed artifacts",
+      "Source and binary digests",
+      "Physical Android and iPhone acceptance with OS/model and operator evidence"
+    ],
+    "governance": [
+      "Live required-check and review enforcement readback",
+      "Independent qualified review of exact candidate",
+      "No self-approval or fabricated CODEOWNERS"
+    ],
+    "release": [
+      "Immutable release manifest",
+      "Reviewed migration and tested compatible rollback",
+      "Explicit accountable release decision"
+    ]
+  },
+  "missingEvidenceDecision": "BLOCKED",
+  "signatureOrReviewerPlaceholdersAccepted": false
+}
