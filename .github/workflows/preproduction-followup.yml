@@ -1,0 +1,99 @@
+name: Materialize reviewed preproduction followup
+on:
+  push:
+    branches: [chore/preproduction-toolchain-20261128]
+    paths: [.github/workflows/preproduction-followup.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  prepare:
+    if: github.ref == 'refs/heads/chore/preproduction-toolchain-20261128'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.22.1
+      - run: npm install --global npm@11.19.0
+      - name: Materialize only the reviewed repair on its exact product parent
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = 'baraabd/Elvorance-Enterprise'
+          test "$(git ls-remote origin refs/heads/fix/preproduction-readiness-20261128 | cut -f1)" = '5f54a8bfa5b9166b67a9a0eff8cbe7d28449dcf9'
+          gh api repos/baraabd/Elvorance-Enterprise/git/blobs/a93618104f002d3b57c2456e2b965d5c46bcc8f4 --jq .content | base64 --decode > /tmp/repair.patch.xz
+          echo 'e8194aa65cf171a0732cf657cc9e967182dc2a040c94c0adec48fc4afbb0fd93  /tmp/repair.patch.xz' | sha256sum --check
+          xz --decompress --stdout /tmp/repair.patch.xz > /tmp/repair.patch
+          git worktree add --detach /tmp/repair-product 5f54a8bfa5b9166b67a9a0eff8cbe7d28449dcf9
+          git -C /tmp/repair-product apply --check /tmp/repair.patch
+          git -C /tmp/repair-product apply /tmp/repair.patch
+          mkdir -p /tmp/repair-evidence
+      - name: Regenerate traceability, verify exact files and test the repair
+        working-directory: /tmp/repair-product
+        run: |
+          set -euo pipefail
+          npm ci
+          npm run inventory:write
+          node tooling/qa/sprint09-matrix.mts --write
+          python3 - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          expected={
+            'docs/production/architecture-inventory.json':'409bfa364482c1a17c387b4c456f6eb3d7297449c2c40a6ee5ed2bc8d7bb9f17',
+            'docs/production/data-flow-inventory.json':'70ba8671b24f841ff21b4afd166a300edeb99f9ba81030fb1b2e9b135e0803c4',
+            'docs/production/feature-matrix.json':'86dbe55e626e12f7d08d03d33b12f67f84be12d085fe9415b55d0d929d6ca35b',
+            'docs/production/ownership-dependency-map.json':'e5634e3925c13c001f27c74e7ad84056946480a2d35ada8d7ad07f39ba9eb93e',
+            'docs/production/semantic-review.json':'8e18e5ad5185f369c103a65b249906fe7cd97f7381b942130d4c992a6a90ec0f',
+            'docs/qa/sprint09/test-matrix.json':'26edb213d7a3c6de37d6528476897627be25f8ed395edea73544694767118abd',
+            'infra/railway/staging/backup-crypto.mts':'241eafcad5d2913e55deedd562c1e4a44af3e7f29e09265b721f5afdb6b175ed',
+            'tests/backend/hosted-backup-crypto.test.ts':'03f321dba8ff6b947f257b69d77e51cc6cf0c19477cb792460437009283afb47'
+          }
+          for name,digest in expected.items():
+              assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()==digest,name
+          subprocess.run(['git','add','--',*expected],check=True)
+          changed=subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')
+          assert set(filter(None,changed))==set(expected),'unexpected file set'
+          assert not subprocess.check_output(['git','ls-files','--others','--exclude-standard']).strip(),'untracked files'
+          pathlib.Path('/tmp/repair-evidence/expected-files.json').write_text(json.dumps(expected,indent=2))
+          print('VERIFIED: eight exact reviewed files; no helper/workflow or baseline changes')
+          PY
+          npm run inventory:check
+          node tooling/qa/sprint09-matrix.mts
+          npm run check:types
+          npm run check:boundaries
+          npm run check:format
+          npm run build
+          node tooling/scripts/hosted/build-ops.mts
+          npm test > /tmp/repair-evidence/node-tests.log 2>&1
+      - name: Publish a clean descendant without main mutation or force push
+        working-directory: /tmp/repair-product
+        env:
+          GIT_AUTHOR_NAME: Elvorance CI Materializer
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: Elvorance CI Materializer
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          TREE=$(git write-tree)
+          COMMIT=$(printf '%s\n' 'fix: remove backup file-open races and refresh source-bound QA matrix' | git commit-tree "$TREE" -p 5f54a8bfa5b9166b67a9a0eff8cbe7d28449dcf9)
+          test -z "$(git ls-remote origin refs/heads/chore/preproduction-followup-20261128)"
+          git push origin "$COMMIT:refs/heads/chore/preproduction-followup-20261128"
+          export TREE COMMIT
+          python3 - <<'PY'
+          import json,os,pathlib
+          result={'parent':'5f54a8bfa5b9166b67a9a0eff8cbe7d28449dcf9','head':os.environ['COMMIT'],'tree':os.environ['TREE'],'runId':os.environ['GITHUB_RUN_ID'],'fullCiSatisfied':False,'productionApproved':False}
+          pathlib.Path('/tmp/repair-evidence/candidate.json').write_text(json.dumps(result,indent=2)+'\n')
+          print(json.dumps(result))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: preproduction-followup-evidence
+          path: /tmp/repair-evidence/
+          if-no-files-found: error
+          retention-days: 7
