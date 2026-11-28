@@ -1,8 +1,6 @@
 import { createCipheriv, createDecipheriv, createHash, randomBytes } from 'node:crypto';
-import { createReadStream, createWriteStream } from 'node:fs';
-import { appendFile, lstat, open, rm, writeFile } from 'node:fs/promises';
-import { Readable } from 'node:stream';
-import { pipeline } from 'node:stream/promises';
+import { constants } from 'node:fs';
+import { open, rm, type FileHandle } from 'node:fs/promises';
 import { ensure } from './target.mts';
 
 const MAGIC = Buffer.from('ELVSBK01', 'ascii');
@@ -23,19 +21,54 @@ export function backupKey(value: string): Buffer {
   ensure(key.length === 32, 'A protected 256-bit backup encryption key is required.');
   return key;
 }
-export async function fileDigest(path: string): Promise<FileDigest> {
-  const info = await lstat(path);
-  ensure(info.isFile() && info.size <= MAX_BACKUP_BYTES, 'Backup must be a bounded regular file.');
-  const hash = createHash('sha256');
-  let bytes = 0;
-  for await (const chunk of createReadStream(path)) {
-    const buffer: Buffer = chunk;
-    bytes += buffer.length;
-    ensure(bytes <= MAX_BACKUP_BYTES, 'Backup exceeded its size bound.');
-    hash.update(buffer);
+async function openInput(path: string) {
+  // Validate the opened descriptor, not a path checked before a separate open.
+  // O_NONBLOCK avoids hanging on an unexpected FIFO; fstat rejects non-regular files.
+  const input = await open(path, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
+  try {
+    const info = await input.stat();
+    ensure(
+      info.isFile() && info.size <= MAX_BACKUP_BYTES,
+      'Backup must be a bounded regular file.',
+    );
+    return { input, info };
+  } catch (error) {
+    await input.close();
+    throw error;
   }
-  ensure(bytes === info.size, 'Backup changed while its digest was computed.');
-  return { bytes, sha256: hash.digest('hex') };
+}
+async function* chunks(input: FileHandle, start: number, end: number) {
+  let position = start;
+  while (position < end) {
+    const buffer = Buffer.alloc(Math.min(65536, end - position));
+    const { bytesRead } = await input.read(buffer, 0, buffer.length, position);
+    ensure(bytesRead > 0, 'Backup was truncated during reading.');
+    position += bytesRead;
+    yield buffer.subarray(0, bytesRead);
+  }
+}
+async function writeBytes(output: FileHandle, bytes: Buffer) {
+  let offset = 0;
+  while (offset < bytes.length) {
+    const result = await output.write(bytes, offset, bytes.length - offset);
+    ensure(result.bytesWritten > 0, 'Backup output made no progress.');
+    offset += result.bytesWritten;
+  }
+}
+export async function fileDigest(path: string): Promise<FileDigest> {
+  const { input, info } = await openInput(path);
+  try {
+    const hash = createHash('sha256');
+    for await (const chunk of chunks(input, 0, info.size)) hash.update(chunk);
+    const after = await input.stat();
+    ensure(
+      after.size === info.size && after.mtimeMs === info.mtimeMs,
+      'Backup changed while its digest was computed.',
+    );
+    return { bytes: info.size, sha256: hash.digest('hex') };
+  } finally {
+    await input.close();
+  }
 }
 export async function encryptBackup(
   source: string,
@@ -46,38 +79,65 @@ export async function encryptBackup(
   ensure(key.length === 32, 'Invalid backup key length.');
   const metadata = Buffer.from(context, 'utf8');
   ensure(metadata.length > 0 && metadata.length <= MAX_CONTEXT_BYTES, 'Invalid backup context.');
-  const plain = await fileDigest(source);
-  ensure(
-    plain.bytes + PREFIX_BYTES + metadata.length + TAG_BYTES <= MAX_BACKUP_BYTES,
-    'Backup envelope exceeds its size bound.',
-  );
-  const prefix = Buffer.alloc(PREFIX_BYTES);
-  MAGIC.copy(prefix);
-  prefix.writeUInt32BE(metadata.length, 8);
-  randomBytes(12).copy(prefix, 12);
-  const header = Buffer.concat([prefix, metadata]);
-  const cipher = createCipheriv('aes-256-gcm', key, prefix.subarray(12), {
-    authTagLength: TAG_BYTES,
-  });
-  cipher.setAAD(header);
-  // Exclusive creation prevents an existing retained or temporary artifact being overwritten.
-  await writeFile(destination, header, { flag: 'wx', mode: 0o600 });
+  const { input, info } = await openInput(source);
+  let output: FileHandle | undefined;
   try {
-    await pipeline(
-      createReadStream(source),
-      cipher,
-      createWriteStream(destination, { flags: 'a', mode: 0o600 }),
-    );
-    await appendFile(destination, cipher.getAuthTag());
-    const encrypted = await fileDigest(destination);
     ensure(
-      encrypted.bytes === plain.bytes + header.length + TAG_BYTES,
+      info.size + PREFIX_BYTES + metadata.length + TAG_BYTES <= MAX_BACKUP_BYTES,
+      'Backup envelope exceeds its size bound.',
+    );
+    const prefix = Buffer.alloc(PREFIX_BYTES);
+    MAGIC.copy(prefix);
+    prefix.writeUInt32BE(metadata.length, 8);
+    randomBytes(12).copy(prefix, 12);
+    const header = Buffer.concat([prefix, metadata]);
+    const cipher = createCipheriv('aes-256-gcm', key, prefix.subarray(12), {
+      authTagLength: TAG_BYTES,
+    });
+    cipher.setAAD(header);
+    output = await open(destination, 'wx', 0o600);
+    const plainHash = createHash('sha256');
+    const encryptedHash = createHash('sha256');
+    let encryptedBytes = 0;
+    const append = async (data: Buffer) => {
+      ensure(output, 'Backup output is not open.');
+      await writeBytes(output, data);
+      encryptedHash.update(data);
+      encryptedBytes += data.length;
+    };
+    await append(header);
+    for await (const chunk of chunks(input, 0, info.size)) {
+      plainHash.update(chunk);
+      await append(cipher.update(chunk));
+    }
+    await append(cipher.final());
+    await append(cipher.getAuthTag());
+    const after = await input.stat();
+    ensure(
+      after.size === info.size && after.mtimeMs === info.mtimeMs,
+      'Backup changed during encryption.',
+    );
+    ensure(
+      encryptedBytes === info.size + header.length + TAG_BYTES,
       'Invalid encrypted backup length.',
     );
-    return { plain, encrypted, algorithm: 'AES-256-GCM' as const, envelopeVersion: 1 as const };
+    await output.sync();
+    return {
+      plain: { bytes: info.size, sha256: plainHash.digest('hex') },
+      encrypted: { bytes: encryptedBytes, sha256: encryptedHash.digest('hex') },
+      algorithm: 'AES-256-GCM' as const,
+      envelopeVersion: 1 as const,
+    };
   } catch (error) {
-    await rm(destination, { force: true });
+    if (output) {
+      await output.close();
+      output = undefined;
+      await rm(destination, { force: true });
+    }
     throw error;
+  } finally {
+    await output?.close();
+    await input.close();
   }
 }
 export async function decryptBackup(
@@ -87,16 +147,10 @@ export async function decryptBackup(
   expectedContext: string,
 ): Promise<FileDigest> {
   ensure(key.length === 32, 'Invalid backup key length.');
-  const info = await lstat(source);
-  ensure(
-    info.isFile() && info.size >= PREFIX_BYTES + TAG_BYTES && info.size <= MAX_BACKUP_BYTES,
-    'Invalid encrypted backup size.',
-  );
-  const input = await open(source, 'r');
-  let header: Buffer;
-  let tag: Buffer;
-  let nonce: Buffer;
+  const { input, info } = await openInput(source);
+  let output: FileHandle | undefined;
   try {
+    ensure(info.size >= PREFIX_BYTES + TAG_BYTES, 'Invalid encrypted backup size.');
     const prefix = Buffer.alloc(PREFIX_BYTES);
     ensure(
       (await input.read(prefix, 0, prefix.length, 0)).bytesRead === prefix.length,
@@ -117,32 +171,48 @@ export async function decryptBackup(
       metadata.equals(Buffer.from(expectedContext, 'utf8')),
       'Backup context does not match the approved restore source.',
     );
-    header = Buffer.concat([prefix, metadata]);
-    nonce = Buffer.from(prefix.subarray(12));
-    tag = Buffer.alloc(TAG_BYTES);
+    const header = Buffer.concat([prefix, metadata]);
+    const tag = Buffer.alloc(TAG_BYTES);
     ensure(
       (await input.read(tag, 0, TAG_BYTES, info.size - TAG_BYTES)).bytesRead === TAG_BYTES,
       'Truncated backup authentication tag.',
     );
-  } finally {
-    await input.close();
-  }
-  const decipher = createDecipheriv('aes-256-gcm', key, nonce, { authTagLength: TAG_BYTES });
-  decipher.setAAD(header);
-  decipher.setAuthTag(tag);
-  // A failed GCM check can produce a private partial file; it is deleted before rejection.
-  // Callers must never pass the output to pg_restore until this promise has resolved.
-  const output = await open(destination, 'wx', 0o600);
-  await output.close();
-  try {
-    const body =
-      info.size === header.length + TAG_BYTES
-        ? Readable.from([])
-        : createReadStream(source, { start: header.length, end: info.size - TAG_BYTES - 1 });
-    await pipeline(body, decipher, createWriteStream(destination, { flags: 'a', mode: 0o600 }));
-    return await fileDigest(destination);
+    const decipher = createDecipheriv('aes-256-gcm', key, prefix.subarray(12), {
+      authTagLength: TAG_BYTES,
+    });
+    decipher.setAAD(header);
+    decipher.setAuthTag(tag);
+    // Keep the exclusive output descriptor open throughout verification. No path is reopened.
+    // pg_restore must never receive this private output until authenticated decryption succeeds.
+    output = await open(destination, 'wx', 0o600);
+    const hash = createHash('sha256');
+    let bytes = 0;
+    for await (const chunk of chunks(input, header.length, info.size - TAG_BYTES)) {
+      const plain = decipher.update(chunk);
+      await writeBytes(output, plain);
+      hash.update(plain);
+      bytes += plain.length;
+    }
+    const tail = decipher.final();
+    await writeBytes(output, tail);
+    hash.update(tail);
+    bytes += tail.length;
+    const after = await input.stat();
+    ensure(
+      after.size === info.size && after.mtimeMs === info.mtimeMs,
+      'Backup changed during decryption.',
+    );
+    await output.sync();
+    return { bytes, sha256: hash.digest('hex') };
   } catch (error) {
-    await rm(destination, { force: true });
+    if (output) {
+      await output.close();
+      output = undefined;
+      await rm(destination, { force: true });
+    }
     throw error;
+  } finally {
+    await output?.close();
+    await input.close();
   }
 }

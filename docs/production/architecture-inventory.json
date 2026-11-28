@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "3feea11a18780bd66ec6d49cc50c091e6fd1d1cbeafde0b1f216fda351c570f2",
+  "sourceDigest": "f0f69913a739de9182945bcc63efd0072600cb9e1b6f61fb4f21999fdae6820d",
   "workspaces": [
     {
       "name": "@elvorance/admin-web",
@@ -561,8 +561,6 @@
     { "source": "infra/railway/staging/backup-crypto.mts", "specifier": "node:crypto" },
     { "source": "infra/railway/staging/backup-crypto.mts", "specifier": "node:fs" },
     { "source": "infra/railway/staging/backup-crypto.mts", "specifier": "node:fs/promises" },
-    { "source": "infra/railway/staging/backup-crypto.mts", "specifier": "node:stream" },
-    { "source": "infra/railway/staging/backup-crypto.mts", "specifier": "node:stream/promises" },
     { "source": "infra/railway/staging/backup-crypto.mts", "specifier": "./target.mts" },
     { "source": "infra/railway/staging/backup-store.mts", "specifier": "@aws-sdk/client-s3" },
     { "source": "infra/railway/staging/backup-store.mts", "specifier": "node:fs" },

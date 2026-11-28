@@ -118,3 +118,28 @@ test('retained backup digest refuses symlinks and directories', async (t) => {
     await assert.rejects(fileDigest(link));
   }
 });
+
+test('retained backup opens inputs without following links and preserves exclusive output links', async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), 'elv-backup-links-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const key = randomBytes(32);
+  const source = join(directory, 'source');
+  const encrypted = join(directory, 'encrypted');
+  await writeFile(source, 'private fixture');
+  await encryptBackup(source, encrypted, key, context);
+  await assert.rejects(encryptBackup(directory, join(directory, 'bad-enc'), key, context));
+  await assert.rejects(decryptBackup(directory, join(directory, 'bad-plain'), key, context));
+  if (process.platform !== 'win32') {
+    const sourceLink = join(directory, 'source-link');
+    const encryptedLink = join(directory, 'encrypted-link');
+    const destinationLink = join(directory, 'destination-link');
+    await symlink(source, sourceLink);
+    await symlink(encrypted, encryptedLink);
+    await symlink(source, destinationLink);
+    await assert.rejects(encryptBackup(sourceLink, join(directory, 'link-enc'), key, context));
+    await assert.rejects(decryptBackup(encryptedLink, join(directory, 'link-plain'), key, context));
+    await assert.rejects(encryptBackup(source, destinationLink, key, context));
+    await assert.rejects(decryptBackup(encrypted, destinationLink, key, context));
+    assert.equal(await readFile(source, 'utf8'), 'private fixture');
+  }
+});

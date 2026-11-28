@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "methodology": "Actual demo registries and Fastify onRoute probes + actual live sections + AST rep pages + AST handlers/forms/API calls/jobs/failure/config/permission scans. Source fingerprints bind every observation; no historical count used as a ceiling.",
-  "sourceDigest": "3feea11a18780bd66ec6d49cc50c091e6fd1d1cbeafde0b1f216fda351c570f2",
+  "sourceDigest": "f0f69913a739de9182945bcc63efd0072600cb9e1b6f61fb4f21999fdae6820d",
   "sourceFiles": [
     {
       "path": ".gitattributes",
@@ -1001,7 +1001,7 @@
     },
     {
       "path": "infra/railway/staging/backup-crypto.mts",
-      "sha256": "f953621437edf6af4f800a1fa6aa9d9973b9fd09c02da9ea368efc523ad61eea"
+      "sha256": "241eafcad5d2913e55deedd562c1e4a44af3e7f29e09265b721f5afdb6b175ed"
     },
     {
       "path": "infra/railway/staging/backup-store.mts",
@@ -1941,7 +1941,7 @@
     },
     {
       "path": "tests/backend/hosted-backup-crypto.test.ts",
-      "sha256": "0de3f6c35e6eb16e742a44885abbac567e702d37c3ed52a85654103622243e40"
+      "sha256": "03f321dba8ff6b947f257b69d77e51cc6cf0c19477cb792460437009283afb47"
     },
     {
       "path": "tests/backend/hosted-load.test.ts",
@@ -79310,16 +79310,16 @@
       ]
     },
     {
-      "id": "failure-state:infra/railway/staging/backup-crypto.mts:8549dcb7fc24:1",
-      "key": "catch:1013dbf27cdf",
+      "id": "failure-state:infra/railway/staging/backup-crypto.mts:2f689083daca:1",
+      "key": "catch:5dbb7d11d152",
       "kind": "failure-state",
       "apps": [],
       "mode": "backend",
       "source": {
         "path": "infra/railway/staging/backup-crypto.mts",
-        "line": 78,
-        "endLine": 81,
-        "fingerprint": "eec106190f4baafc34cc5890562ce808b7ca98707edeefc70ec3daa6073a47ca"
+        "line": 131,
+        "endLine": 138,
+        "fingerprint": "568b9df5e67115a7052ae3a2a8243d7913e152cc022209cab85d0e8aa93efbb8"
       },
       "owningService": null,
       "targetService": null,
@@ -79345,6 +79345,7 @@
           "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
         ],
@@ -79353,6 +79354,7 @@
           "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
         ],
@@ -79360,17 +79362,17 @@
       },
       "requiredTests": [
         {
-          "id": "PLANNED:contract:failure-state:infra/railway/staging/backup-crypto.mts:8549dcb7fc24:1",
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/backup-crypto.mts:2f689083daca:1",
           "scope": "contract",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:integration:failure-state:infra/railway/staging/backup-crypto.mts:8549dcb7fc24:1",
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/backup-crypto.mts:2f689083daca:1",
           "scope": "integration",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:e2e:failure-state:infra/railway/staging/backup-crypto.mts:8549dcb7fc24:1",
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/backup-crypto.mts:2f689083daca:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -79379,16 +79381,16 @@
       "unresolved": []
     },
     {
-      "id": "failure-state:infra/railway/staging/backup-crypto.mts:8549dcb7fc24:2",
-      "key": "catch:1013dbf27cdf",
+      "id": "failure-state:infra/railway/staging/backup-crypto.mts:2f689083daca:2",
+      "key": "catch:5dbb7d11d152",
       "kind": "failure-state",
       "apps": [],
       "mode": "backend",
       "source": {
         "path": "infra/railway/staging/backup-crypto.mts",
-        "line": 144,
-        "endLine": 147,
-        "fingerprint": "eec106190f4baafc34cc5890562ce808b7ca98707edeefc70ec3daa6073a47ca"
+        "line": 207,
+        "endLine": 214,
+        "fingerprint": "568b9df5e67115a7052ae3a2a8243d7913e152cc022209cab85d0e8aa93efbb8"
       },
       "owningService": null,
       "targetService": null,
@@ -79414,6 +79416,7 @@
           "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
         ],
@@ -79422,6 +79425,7 @@
           "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
         ],
@@ -79429,17 +79433,88 @@
       },
       "requiredTests": [
         {
-          "id": "PLANNED:contract:failure-state:infra/railway/staging/backup-crypto.mts:8549dcb7fc24:2",
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/backup-crypto.mts:2f689083daca:2",
           "scope": "contract",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:integration:failure-state:infra/railway/staging/backup-crypto.mts:8549dcb7fc24:2",
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/backup-crypto.mts:2f689083daca:2",
           "scope": "integration",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         },
         {
-          "id": "PLANNED:e2e:failure-state:infra/railway/staging/backup-crypto.mts:8549dcb7fc24:2",
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/backup-crypto.mts:2f689083daca:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": null,
+      "unresolved": []
+    },
+    {
+      "id": "failure-state:infra/railway/staging/backup-crypto.mts:85e736320dfd:1",
+      "key": "catch:f8b4e393a95f",
+      "kind": "failure-state",
+      "apps": [],
+      "mode": "backend",
+      "source": {
+        "path": "infra/railway/staging/backup-crypto.mts",
+        "line": 35,
+        "endLine": 38,
+        "fingerprint": "2c529aba51058bd65f7b7ccb799b0665a325b2bcae8e0727c40010ce62501434"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": ["failure-states"],
+      "tests": {
+        "contract": [],
+        "integration": [
+          "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
+        ],
+        "e2e": [],
+        "related": [
+          "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/backup-crypto.mts:85e736320dfd:1",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/backup-crypto.mts:85e736320dfd:1",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/backup-crypto.mts:85e736320dfd:1",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -79455,8 +79530,8 @@
       "mode": "backend",
       "source": {
         "path": "infra/railway/staging/backup-crypto.mts",
-        "line": 80,
-        "endLine": 80,
+        "line": 37,
+        "endLine": 37,
         "fingerprint": "8c468a57ba68bc74d4da2e446572891a3884d987edae85e551db81ebbee3f4d4"
       },
       "owningService": null,
@@ -79483,6 +79558,7 @@
           "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
         ],
@@ -79491,6 +79567,7 @@
           "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
         ],
@@ -79524,8 +79601,8 @@
       "mode": "backend",
       "source": {
         "path": "infra/railway/staging/backup-crypto.mts",
-        "line": 146,
-        "endLine": 146,
+        "line": 137,
+        "endLine": 137,
         "fingerprint": "8c468a57ba68bc74d4da2e446572891a3884d987edae85e551db81ebbee3f4d4"
       },
       "owningService": null,
@@ -79552,6 +79629,7 @@
           "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
         ],
@@ -79560,6 +79638,7 @@
           "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
           "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
         ],
@@ -79578,6 +79657,77 @@
         },
         {
           "id": "PLANNED:e2e:failure-state:infra/railway/staging/backup-crypto.mts:a869ffb2f7e0:2",
+          "scope": "e2e",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        }
+      ],
+      "presentationOnly": null,
+      "unresolved": []
+    },
+    {
+      "id": "failure-state:infra/railway/staging/backup-crypto.mts:a869ffb2f7e0:3",
+      "key": "throw:8c468a57ba68",
+      "kind": "failure-state",
+      "apps": [],
+      "mode": "backend",
+      "source": {
+        "path": "infra/railway/staging/backup-crypto.mts",
+        "line": 213,
+        "endLine": 213,
+        "fingerprint": "8c468a57ba68bc74d4da2e446572891a3884d987edae85e551db81ebbee3f4d4"
+      },
+      "owningService": null,
+      "targetService": null,
+      "endpoints": [],
+      "authorization": {
+        "status": "UNRESOLVED_OR_NOT_APPLICABLE",
+        "controls": [],
+        "roles": [],
+        "evidence": []
+      },
+      "persistenceEvent": {
+        "status": "UNRESOLVED_OR_NO_WRITE",
+        "tables": [],
+        "events": [],
+        "evidence": []
+      },
+      "currentStatus": "IMPLEMENTATION_OBSERVED_UNVERIFIED",
+      "targetSprint": "S10",
+      "categories": [],
+      "tests": {
+        "contract": [],
+        "integration": [
+          "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
+        ],
+        "e2e": [],
+        "related": [
+          "T:tests/backend/hosted-backup-crypto.test.ts:65b2fc98a2cc:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:90939cd43365:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:a0811409b772:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
+          "T:tests/backend/hosted-backup-crypto.test.ts:f8967246c184:1"
+        ],
+        "verification": "STATIC_REFERENCE_CANDIDATES_ONLY; not asserted coverage or current execution"
+      },
+      "requiredTests": [
+        {
+          "id": "PLANNED:contract:failure-state:infra/railway/staging/backup-crypto.mts:a869ffb2f7e0:3",
+          "scope": "contract",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:integration:failure-state:infra/railway/staging/backup-crypto.mts:a869ffb2f7e0:3",
+          "scope": "integration",
+          "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
+        },
+        {
+          "id": "PLANNED:e2e:failure-state:infra/railway/staging/backup-crypto.mts:a869ffb2f7e0:3",
           "scope": "e2e",
           "implementationStatus": "REVIEW_REQUIRED_NOT_EXECUTED"
         }
@@ -169517,6 +169667,14 @@
       "environment": "node"
     },
     {
+      "id": "T:tests/backend/hosted-backup-crypto.test.ts:b201a5858d12:1",
+      "path": "tests/backend/hosted-backup-crypto.test.ts",
+      "line": 122,
+      "title": "retained backup opens inputs without following links and preserves exclusive output links",
+      "scope": "integration",
+      "environment": "node"
+    },
+    {
       "id": "T:tests/backend/hosted-backup-crypto.test.ts:e04d77934e7e:1",
       "path": "tests/backend/hosted-backup-crypto.test.ts",
       "line": 55,
@@ -172862,10 +173020,10 @@
     }
   ],
   "totals": {
-    "features": 2173,
+    "features": 2175,
     "sourceFiles": 642,
     "runtimeRegistrations": 466,
-    "testCatalogEntries": 586,
+    "testCatalogEntries": 587,
     "unmappedWorkflows": 242,
     "unresolvedFeatures": 1335,
     "kind:account-lifecycle": 73,
@@ -172875,7 +173033,7 @@
     "kind:background-job": 26,
     "kind:configuration": 49,
     "kind:export": 36,
-    "kind:failure-state": 545,
+    "kind:failure-state": 547,
     "kind:form": 99,
     "kind:handler": 256,
     "kind:native-adapter": 28,
