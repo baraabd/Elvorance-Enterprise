@@ -348,6 +348,159 @@ test(
       },
     );
     await t.test(
+      'region metadata edits persist, reject stale writes and cannot change assignments',
+      async () => {
+        await route('regions/new');
+        await form();
+        await page.fill('name', 'منطقة اختبار الإصدار');
+        await page.fill('code', 'PREPROD');
+        await submit();
+        await page.wait("Boolean(document.querySelector('tbody tr'))");
+        const region = ((await apiRecord(paths.regions)).items as Record<string, unknown>[]).find(
+          (row) => row.code === 'PREPROD',
+        );
+        assert.ok(region);
+        await route('regions/' + String(region.id));
+        await page.click('تعديل');
+        await form();
+        await page.fill('name', 'منطقة معدلة من الواجهة');
+        await page.fill('active', false);
+        await submit();
+        await page.wait("!document.querySelector('form[data-admin-form]')");
+        await page.reload();
+        await loaded();
+        const reread = ((await apiRecord(paths.regions)).items as Record<string, unknown>[]).find(
+          (row) => row.id === region.id,
+        );
+        assert.ok(reread);
+        assert.equal(reread.name, 'منطقة معدلة من الواجهة');
+        assert.equal(reread.active, false);
+        assert.equal(reread.version, Number(region.version) + 1);
+        const path = paths.regions + '/' + String(region.id);
+        assert.equal(
+          (
+            await stack.call(path, 'PATCH', {
+              expectedVersion: region.version,
+              name: 'stale overwrite',
+            })
+          ).status,
+          409,
+        );
+        assert.equal(
+          (
+            await stack.call(path, 'PATCH', {
+              expectedVersion: reread.version,
+              repId: 'rep-foreign',
+            })
+          ).status,
+          400,
+        );
+        assert.equal(
+          (
+            await stack.call(
+              path,
+              'PATCH',
+              { expectedVersion: reread.version, name: 'foreign overwrite' },
+              stack.outsider,
+            )
+          ).status,
+          404,
+        );
+        assert.equal(
+          (
+            await stack.call(
+              path,
+              'PATCH',
+              { expectedVersion: reread.version, name: 'client overwrite' },
+              clientToken,
+            )
+          ).status,
+          403,
+        );
+      },
+    );
+    await t.test(
+      'client service request is reviewed in Admin and creates exactly one opportunity with authorization and conflict guards',
+      async () => {
+        const catalog = await apiRecord('/v1/crm/catalog');
+        const body = {
+          serviceId: 's05web',
+          catalogVersion: catalog.recordVersion,
+          currency: 'SAR',
+          title: 'طلب خدمة فعلي من العميل',
+          brief: 'يرغب العميل في خدمة إضافية موثقة من الكتالوج المنشور للاختبار.',
+          budgetMinor: 12000,
+        };
+        assert.equal((await stack.call(paths['service-requests'], 'POST', body)).status, 403);
+        const request = await stack.call(paths['service-requests'], 'POST', body, clientToken);
+        assert.equal(request.status, 200, JSON.stringify(request.data));
+        const path = paths['service-requests'] + '/' + String(request.data.id);
+        const otherClient = await stack.token('client', 'tenant-s05', 'unrelated-client');
+        assert.ok(
+          [403, 404].includes((await stack.call(path, 'GET', undefined, otherClient)).status),
+        );
+        assert.equal((await stack.call(path, 'GET', undefined, stack.outsider)).status, 404);
+        assert.equal(
+          (
+            await stack.call(
+              path + '/review',
+              'POST',
+              {
+                expectedVersion: 1,
+                decision: 'accepted',
+                note: 'client cannot approve their request',
+              },
+              clientToken,
+            )
+          ).status,
+          403,
+        );
+        const count = ((await apiRecord(paths.opportunities)).items as unknown[]).length;
+        await route('service-requests/' + String(request.data.id));
+        await page.click('مراجعة طلب الخدمة');
+        await form();
+        await page.fill('decision', 'in_review');
+        await page.fill('note', 'بدء مراجعة الطلب من المسؤول المخول');
+        await submit();
+        await page.wait("!document.querySelector('form[data-admin-form]')");
+        assert.equal((await apiRecord(path)).status, 'in_review');
+        assert.equal(
+          (
+            await stack.call(path + '/review', 'POST', {
+              expectedVersion: 1,
+              decision: 'accepted',
+              note: 'stale transaction must not create an opportunity',
+            })
+          ).status,
+          409,
+        );
+        assert.equal(((await apiRecord(paths.opportunities)).items as unknown[]).length, count);
+        await page.click('مراجعة طلب الخدمة');
+        await form();
+        await page.fill('decision', 'accepted');
+        await page.fill('note', 'اعتماد الطلب ضمن نطاق الخدمة المنشورة');
+        await submit();
+        await page.wait("!document.querySelector('form[data-admin-form]')");
+        await page.reload();
+        await loaded();
+        const accepted = await apiRecord(path);
+        assert.equal(accepted.status, 'accepted');
+        assert.equal(typeof accepted.opportunityId, 'string');
+        assert.equal(((await apiRecord(paths.opportunities)).items as unknown[]).length, count + 1);
+        assert.equal(
+          (
+            await stack.call(path + '/review', 'POST', {
+              expectedVersion: accepted.version,
+              decision: 'accepted',
+              note: 'second approval must not create another opportunity',
+            })
+          ).status,
+          409,
+        );
+        assert.equal(((await apiRecord(paths.opportunities)).items as unknown[]).length, count + 1);
+      },
+    );
+    await t.test(
       'invoice collection, ledger reread and reload use the external-payment recording contract',
       async () => {
         await route('invoices');
@@ -375,16 +528,68 @@ test(
         await route('projects');
         await page.click('فتح السجل');
         await page.wait("Boolean(document.querySelector('main dl'))");
+        const initialProject = (
+          (await apiRecord(paths.projects)).items as Record<string, unknown>[]
+        )[0];
+        assert.ok(initialProject);
+        const projectPath = paths.projects + '/' + String(initialProject.id);
+        await page.click('تعديل');
+        await form();
+        await page.fill('title', 'عنوان المشروع المعدل من الإدارة');
+        await submit();
+        await page.wait("!document.querySelector('form[data-admin-form]')");
+        await page.reload();
+        await loaded();
+        const renamed = await apiRecord(projectPath);
+        assert.equal(renamed.title, 'عنوان المشروع المعدل من الإدارة');
+        assert.equal(
+          (
+            await stack.call(projectPath, 'PATCH', {
+              expectedVersion: initialProject.version,
+              title: 'stale project title',
+            })
+          ).status,
+          409,
+        );
+        assert.equal(
+          (
+            await stack.call(
+              projectPath,
+              'PATCH',
+              { expectedVersion: renamed.version, title: 'unauthorized client title' },
+              clientToken,
+            )
+          ).status,
+          403,
+        );
         await page.click('إضافة مرحلة');
         await form();
         await page.fill('title', 'مرحلة تنفيذ الاختبار');
         await submit();
         await page.wait("!document.querySelector('form[data-admin-form]')");
-        await page.click('تحديث المرحلة: مرحلة تنفيذ الاختبار');
+        await page.click('تعديل بيانات المرحلة: مرحلة تنفيذ الاختبار');
+        await form();
+        assert.equal(
+          await page.evaluate('document.querySelector("[name=milestoneTitle]").value'),
+          'مرحلة تنفيذ الاختبار',
+        );
+        await page.fill('milestoneTitle', 'مرحلة معدلة دون تغيير المشروع');
+        await page.fill('milestoneDueOn', '2030-01-03');
+        await submit();
+        await page.wait("!document.querySelector('form[data-admin-form]')");
+        await page.reload();
+        await loaded();
+        const withMilestone = await apiRecord(projectPath);
+        assert.equal(withMilestone.title, 'عنوان المشروع المعدل من الإدارة');
+        const editedMilestone = (withMilestone.milestones as Record<string, unknown>[])[0];
+        assert.ok(editedMilestone);
+        assert.equal(editedMilestone.title, 'مرحلة معدلة دون تغيير المشروع');
+        assert.equal(editedMilestone.dueOn, '2030-01-03');
+        await page.click('تحديث المرحلة: مرحلة معدلة دون تغيير المشروع');
         await form();
         await submit();
         await page.wait("!document.querySelector('form[data-admin-form]')");
-        await page.click('تحديث المرحلة: مرحلة تنفيذ الاختبار');
+        await page.click('تحديث المرحلة: مرحلة معدلة دون تغيير المشروع');
         await form();
         await submit();
         await page.wait("!document.querySelector('form[data-admin-form]')");
@@ -501,6 +706,10 @@ test(
     await t.test(
       'real pagination, whole-scope search and query state survive a page reload',
       async () => {
+        // Functional fixtures must respect the unmodified production request budget.
+        // Separate the preceding workflows from 104 explicit API seed writes and list checks.
+        // This wait is not excluded or reported as a performance measurement.
+        await new Promise((resolve) => setTimeout(resolve, 61000));
         for (let i = 0; i < 104; i++) {
           const result = await stack.call(paths.customers, 'POST', {
             name: `صفحة عميل ${String(i).padStart(3, '0')}`,

@@ -14,9 +14,9 @@
     {
       "route": "#/admin/dashboard",
       "category": "partial",
-      "implemented": "Nine real-domain counts, state drilldowns and currency-separated invoice totals.",
+      "implemented": "Nine real-domain counts, state drilldowns and currency-separated invoice totals. CSV of bounded current operational observation with capture time and separate currencies.",
       "api": "/v1/crm/customers; /v1/sales/{visits,tasks,opportunities,quotes,quote-discount-approvals,contracts}; /v1/delivery/projects; /v1/billing/invoices",
-      "localEvidence": "Unit: invoice totals, cursor bounds, route/filter selection. E2E: navigation smoke only.",
+      "localEvidence": "Unit: invoice totals, cursor bounds, route/filter selection. E2E: navigation smoke only. CSV unit tests cover scope, currencies and exclusions; historical/atomic reports not claimed.",
       "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
       "chromiumPostgres": "PENDING_CI",
       "gaps": "No atomic server snapshot, historical analytics, recognized-revenue metric or large-tenant aggregation API.",
@@ -32,12 +32,12 @@
     {
       "route": "#/admin/reports",
       "category": "partial",
-      "implemented": "Refreshable bounded totals with status drilldowns and capture time.",
+      "implemented": "Refreshable bounded totals with status drilldowns and capture time. CSV of bounded current operational observation with capture time and separate currencies.",
       "api": "Same nine reads as dashboard",
-      "localEvidence": "Unit: aggregation rejects invalid money and incomplete traversal. E2E: smoke only.",
+      "localEvidence": "Unit: aggregation rejects invalid money and incomplete traversal. E2E: smoke only. CSV unit tests cover scope, currencies and exclusions; historical/atomic reports not claimed.",
       "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
       "chromiumPostgres": "PENDING_CI",
-      "gaps": "No date-range historical reports, scheduled reports, CSV/PDF export or cross-service snapshot isolation.",
+      "gaps": "No date-range historical reports, scheduled reports, historical/PDF export or cross-service snapshot isolation.",
       "criteria": [
         "Load authenticated owning-service data without demo fallback.",
         "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
@@ -68,12 +68,12 @@
     {
       "route": "#/admin/regions",
       "category": "partial",
-      "implemented": "List, create and inspect a row obtained from the real list API.",
-      "api": "GET/POST /v1/crm/regions",
-      "localEvidence": "E2E: list smoke.",
+      "implemented": "List, create, inspect and versioned metadata edit (name/code/active), without assignment transfer.",
+      "api": "GET/POST /v1/crm/regions; PATCH /v1/crm/regions/{id}",
+      "localEvidence": "Extended DOM + real HTTP/memory journey: create/edit/reload, stale/unknown-field/client/foreign-tenant denial. Exact-candidate Chromium/PostgreSQL remains separate.",
       "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
       "chromiumPostgres": "PENDING_CI",
-      "gaps": "Region update/delete, polygon assignment and map editor are not implemented by this contract/UI.",
+      "gaps": "No region delete, polygon assignment or map editor; not full territory workflow acceptance.",
       "criteria": [
         "Load authenticated owning-service data without demo fallback.",
         "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
@@ -284,9 +284,9 @@
     {
       "route": "#/admin/projects",
       "category": "partial",
-      "implemented": "Milestones, actual deliverables, requested revisions and completion with service guards.",
+      "implemented": "Milestones, actual deliverables, requested revisions and completion with service guards. Versioned project title and unfinished milestone title/date editing.",
       "api": "GET /v1/delivery/projects; GET /{id}; POST /{id}/milestones; POST /{id}/milestones/{milestoneId}; POST /{id}/deliverables; POST /{id}/deliverables/{deliverableId}/revise; POST /{id}/complete",
-      "localEvidence": "E2E: each milestone stage -> deliverable -> separate client approval -> complete/reload.",
+      "localEvidence": "E2E: each milestone stage -> deliverable -> separate client approval -> complete/reload. Extended DOM/HTTP/memory metadata edit/reload and stale/client-write denials.",
       "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
       "chromiumPostgres": "PENDING_CI",
       "gaps": "Rejected/revised-deliverable browser path and all concurrency cases pending.",
@@ -416,6 +416,24 @@
       "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
       "chromiumPostgres": "PENDING_CI",
       "gaps": "Same limitations as users; this is compatibility, not an extra completed screen.",
+      "criteria": [
+        "Load authenticated owning-service data without demo fallback.",
+        "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
+        "Show loading, empty, error and explicit retry states.",
+        "Validate and confirm supported writes; persist through reload; reject a stale version without overwriting.",
+        "Distinguish current-page search from bounded all-page search; preserve filters/sort in the URL.",
+        "Verify keyboard/labels/focus, Arabic RTL and 390/768/1440 pixel layouts in Chromium."
+      ]
+    },
+    {
+      "route": "#/admin/service-requests",
+      "category": "partial",
+      "implemented": "Sales-owned list/detail/review with expectedVersion; accepted request creates one opportunity. No client impersonation.",
+      "api": "GET /v1/sales/service-requests; GET /v1/sales/service-requests/{id}; POST /v1/sales/service-requests/{id}/review",
+      "localEvidence": "Extended DOM/HTTP/memory journey: client creates from published catalog, Admin reviews/accepts, exact-once opportunity, stale/client/foreign-owner/foreign-tenant denials.",
+      "acceptance": "NOT_ACCEPTED_AS_COMPLETE",
+      "chromiumPostgres": "PENDING_EXACT_CANDIDATE_CI",
+      "gaps": "Hosted OIDC and exhaustive business acceptance pending; client-only request creation/cancellation are not Admin operations.",
       "criteria": [
         "Load authenticated owning-service data without demo fallback.",
         "Verify allowed role and tenant in the backend; direct forbidden access must fail.",
@@ -602,5 +620,7 @@
       "status": "PARTIAL_SEE_SERVER_MATRIX",
       "note": "Existing demo preview is retained separately; rendering it is not API migration acceptance."
     }
-  ]
+  ],
+  "reconciledFrom": "63a266cfcc8c968a65e8b61237494f71ef8ad4a7",
+  "reconciliationDate": "2026-11-28"
 }
